@@ -1,4 +1,4 @@
-package com.walab.hgu;
+package com.walab.hgu.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
