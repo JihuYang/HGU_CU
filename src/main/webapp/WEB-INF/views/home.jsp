@@ -1,9 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-
 <html>
-<head>
 <head>
 <meta charset="utf-8" />
 <meta name="viewport"
@@ -31,7 +29,10 @@
 	rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="./resources/css/styles.css" rel="stylesheet" />
+<link href="./resources/css/home.css" rel="stylesheet" />
+
 </head>
+<script src="https://kit.fontawesome.com/6333a60c65.js" crossorigin="anonymous"></script>
 <body id="page-top">
 	<!-- Navigation-->
 	<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3"
@@ -46,54 +47,48 @@
 			</button>
 			<div class="collapse navbar-collapse" id="navbarResponsive">
 				<ul class="navbar-nav ms-auto my-2 my-lg-0">
-					<li class="nav-item"><a class="nav-link" href="#about">총동연 소개</a></li>
-					<li class="nav-item"><a class="nav-link" href="#services">동아리 소개</a></li>
-					<li class="nav-item"><a class="nav-link" href="#portfolio">시설 예약</a></li>
+					<li class="nav-item"><a class="nav-link" href="#about">총동연
+							소개</a></li>
+					<li class="nav-item"><a class="nav-link" href="#services">동아리
+							소개</a></li>
+					<li class="nav-item"><a class="nav-link" href="#portfolio">시설
+							예약</a></li>
 					<li class="nav-item"><a class="nav-link" href="#contact">커뮤니티</a></li>
-					<li class="nav-item"><a class="nav-link" href="#contact">동아리 홍보</a></li>		
+					<li class="nav-item"><a class="nav-link" href="#contact">동아리
+							홍보</a></li>
 				</ul>
 			</div>
 		</div>
 	</nav>
 	<!-- Masthead-->
-		<div class="container px-4 px-lg-5 h-100">
-			<div
-				class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
-				<div class="col-lg-8 align-self-end">
-					<h1 class="font-weight-bold">Your Favorite Place
-						for Free Bootstrap Themes</h1>
-					<hr class="divider" />
+	<div class="container px-4 px-lg-5 h-100">
+		<div
+			class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
+			<div class="col-lg-8 align-self-end">
+				<h3 class="font-weight-bold">총동아리연합회 홈페이지에 오신 것을 환영합니다</h3>
+			</div>
+			<div class="col-lg-8 align-self-baseline">
+				<p class="mb-5 text-muted">제 27대 총동아리연합회 ‘제자리’</p>
+				<div class="input-group mb-3">
+					<input type="text" class="form-control"
+						placeholder="공지사항, 동아리 홍보, 자료실 검색"
+						aria-label="Recipient's username" aria-describedby="button-addon2">
+					<button class="btn btn-outline-secondary" type="button"
+						id="button-addon2">
+						<i class="fas fa-search"></i>
+					</button>
 				</div>
-				<div class="col-lg-8 align-self-baseline">
-					<p class="mb-5">Start Bootstrap can help you
-						build better websites using the Bootstrap framework! Just download
-						a theme and start customizing, no strings attached!</p>
-					<a class="btn btn-primary btn-xl" href="#about">Find Out More</a>
-				</div>
+				<!-- 				<a class="btn btn-primary btn-xl" href="#about">Find Out More</a>
+ -->
 			</div>
 		</div>
-	<!-- About-->
-	<section class="page-section bg-primary" id="about">
-		<div class="container px-4 px-lg-5">
-			<div class="row gx-4 gx-lg-5 justify-content-center">
-				<div class="col-lg-8 text-center">
-					<h2 class="mt-0">We've got what you need!</h2>
-					<hr class="divider divider-light" />
-					<p class="text-white-75 mb-4">Start Bootstrap has everything
-						you need to get your new website up and running in no time! Choose
-						one of our open source, free to download, and easy to use themes!
-						No strings attached!</p>
-					<a class="btn btn-light btn-xl" href="#services">Get Started!</a>
-				</div>
-			</div>
-		</div>
-	</section>
-\
+	</div>
+
 	<!-- Footer-->
 	<footer class="bg-light py-5">
 		<div class="container px-4 px-lg-5">
 			<div class="small text-center text-muted">Copyright &copy; 2021
-				- Company Name</div>
+				- 한동대학교 총동아리연합회</div>
 		</div>
 	</footer>
 	<!-- Bootstrap core JS-->
