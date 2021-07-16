@@ -32,34 +32,11 @@
 <link href="./resources/css/home.css" rel="stylesheet" />
 
 </head>
-<script src="https://kit.fontawesome.com/6333a60c65.js" crossorigin="anonymous"></script>
+<jsp:include page="/WEB-INF/views/inc/header.jsp"/>
+
+<script src="https://kit.fontawesome.com/6333a60c65.js"
+	crossorigin="anonymous"></script>
 <body id="page-top">
-	<!-- Navigation-->
-	<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3"
-		id="mainNav">
-		<div class="container px-4 px-lg-5">
-			<a class="navbar-brand" href="#page-top">한동대학교 총동아리연합회</a>
-			<button class="navbar-toggler navbar-toggler-right" type="button"
-				data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
-				aria-controls="navbarResponsive" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarResponsive">
-				<ul class="navbar-nav ms-auto my-2 my-lg-0">
-					<li class="nav-item"><a class="nav-link" href="#about">총동연
-							소개</a></li>
-					<li class="nav-item"><a class="nav-link" href="#services">동아리
-							소개</a></li>
-					<li class="nav-item"><a class="nav-link" href="#portfolio">시설
-							예약</a></li>
-					<li class="nav-item"><a class="nav-link" href="#contact">커뮤니티</a></li>
-					<li class="nav-item"><a class="nav-link" href="#contact">동아리
-							홍보</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
 	<!-- Masthead-->
 	<div class="container px-4 px-lg-5 h-100">
 		<div
@@ -67,12 +44,11 @@
 			<div class="col-lg-8 align-self-end">
 				<h3 class="font-weight-bold">총동아리연합회 홈페이지에 오신 것을 환영합니다</h3>
 			</div>
-			<div class="col-lg-8 align-self-baseline">
+			<div class="col-lg-5 align-self-baseline ">
 				<p class="mb-5 text-muted">제 27대 총동아리연합회 ‘제자리’</p>
 				<div class="input-group mb-3">
 					<input type="text" class="form-control"
-						placeholder="공지사항, 동아리 홍보, 자료실 검색"
-						aria-label="Recipient's username" aria-describedby="button-addon2">
+						placeholder="공지사항, 동아리 홍보, 자료실 검색">
 					<button class="btn btn-outline-secondary" type="button"
 						id="button-addon2">
 						<i class="fas fa-search"></i>

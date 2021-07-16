@@ -10923,21 +10923,21 @@ hr.divider-light {
     color: black;
   }
   #mainNav .navbar-brand:hover {
-    color: #fff;
+    color: #6c757d;
   }
   #mainNav .navbar-nav .nav-item .nav-link {
     color: black;
-    padding: 0 1rem;
+    padding-right: 3rem;
   }
   #mainNav .navbar-nav .nav-item .nav-link:hover {
-    color: #fff;
+    color: #6c757d;
   }
   #mainNav .navbar-nav .nav-item:last-child .nav-link {
     padding-right: 0;
   }
   #mainNav.navbar-shrink {
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
-    background-color: #fff;
+    background-color: #6c757d;
   }
   #mainNav.navbar-shrink .navbar-brand {
     color: #212529;
