@@ -29,10 +29,11 @@
 	rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="./resources/css/styles.css" rel="stylesheet" />
-<link href="./resources/css/home.css" rel="stylesheet" />
+
 
 </head>
-<jsp:include page="/WEB-INF/views/inc/header.jsp"/>
+<jsp:include page="/WEB-INF/views/inc/header.jsp" />
+<link href="./resources/css/login.css" rel="stylesheet" />
 
 <script src="https://kit.fontawesome.com/6333a60c65.js"
 	crossorigin="anonymous"></script>
@@ -41,23 +42,25 @@
 	<div class="container px-4 px-lg-5 h-100">
 		<div
 			class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
-			<div class="col-lg-8 align-self-end">
-				<h3 class="font-weight-bold">총동아리연합회 홈페이지에 오신 것을 환영합니다</h3>
+			<div class="col-lg-8 align-self-end ">
+				<h3 class="font-weight-bold mb-3">로그인</h3>
 			</div>
-			<div class="col-lg-5 align-self-baseline ">
-				<p class="mb-5 text-muted">제 27대 총동아리연합회 ‘제자리’</p>
-				<div class="input-group mb-3">
-					<input type="text" class="form-control"
-						placeholder="공지사항, 동아리 홍보, 자료실 검색">
-					<button class="btn btn-outline-secondary" type="button"
-						id="button-addon2">
-						<i class="fas fa-search"></i>
-					</button>
-				</div>
-				<!-- 				<a class="btn btn-primary btn-xl" href="#about">Find Out More</a>
- -->
+			<div class="col-lg-5 align-self-baseline login-form">
+				<form>
+					<div class="input-group mb-1">
+						<input type="text" class="form-control" placeholder="아이디">
+					</div>
+					<div class="input-group mb-3">
+						<input type="password" class="form-control" placeholder="비밀번호"/>
+					</div>
+					<div class="input-group mb-3">
+							<button type="button" class="btn btn-secondary ">로그인</button>
+							<button type="button" class="btn btn-secondary ">회원가입</button>
+					</div>					
+				</form>
 			</div>
 		</div>
+
 	</div>
 
 	<!-- Footer-->
