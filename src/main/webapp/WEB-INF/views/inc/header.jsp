@@ -29,15 +29,15 @@
 	rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="./resources/css/styles.css" rel="stylesheet" />
-<link href="./resources/css/home.css" rel="stylesheet" />
 <link href="./resources/css/header.css" rel="stylesheet" />
+
 </head>
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light fixed-top py-5"
 	id="mainNav">
 	<div class="container px-4 px-lg-5">
 		<img src="https://www.handong.edu/site/handong/res/img/sub_802-02.png" class="logo"></img>
-		<a class="navbar-brand" href="#page-top">한동대학교 총동아리연합회<br><span id="name">HANDONG GLOBAL UNIVERSITY CLUB UNION</span></a>
+		<a class="navbar-brand" onclick="location.href='./'">한동대학교 총동아리연합회<br><span id="name">HANDONG GLOBAL UNIVERSITY CLUB UNION</span></a>
 		<button class="navbar-toggler navbar-toggler-right" type="button"
 			data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
 			aria-controls="navbarResponsive" aria-expanded="false"
@@ -46,14 +46,14 @@
 		</button>
 		<div class="collapse navbar-collapse align-items-center" id="navbarResponsive">
 			<ul class="navbar-nav ms-auto my-2 my-lg-0">
-				<li class="nav-item"><a class="nav-link" href="">총동연 소개</a></li>
+				<li class="nav-item"><a class="nav-link" >총동연 소개</a></li>
 				<li class="nav-item"><a class="nav-link" href="">동아리 소개</a></li>
 				<li class="nav-item"><a class="nav-link" href="">시설 예약</a></li>
 				<li class="nav-item"><a class="nav-link" href="">커뮤니티</a></li>
 				<li class="nav-item"><a class="nav-link" href="">동아리 홍보</a></li>
 				<li class="nav-item ">
 					<button type="button" class=" login-btn btn-outline-secondary ">회원가입</button>
-					<button type="button" class=" login-btn btn-outline-secondary ">로그인</button>
+					<button type="button" class=" login-btn btn-outline-secondary " onclick="location.href='./login'">로그인</button>
 				</li>
 			</ul>
 		</div>

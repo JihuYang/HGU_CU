@@ -30,10 +30,9 @@
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="./resources/css/styles.css" rel="stylesheet" />
 
-
 </head>
 <jsp:include page="/WEB-INF/views/inc/header.jsp" />
-<link href="./resources/css/login.css" rel="stylesheet" />
+<link href="./resources/css/home.css" rel="stylesheet" />
 
 <script src="https://kit.fontawesome.com/6333a60c65.js"
 	crossorigin="anonymous"></script>
@@ -41,26 +40,39 @@
 	<!-- Masthead-->
 	<div class="container px-4 px-lg-5 h-100">
 		<div
-			class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
-			<div class="col-lg-8 align-self-end ">
-				<h3 class="font-weight-bold mb-3">로그인</h3>
+			class="row gx-4 gx-lg-5 h-75 align-items-center justify-content-center text-center">
+			<div class="col-lg-6 align-self-end">
+				<h3 class="font-weight-bold">공지사항</h3>
 			</div>
-			<div class="col-lg-5 align-self-baseline login-form">
-				<form>
-					<div class="input-group mb-1">
-						<input type="text" class="form-control" placeholder="아이디">
-					</div>
-					<div class="input-group mb-3">
-						<input type="password" class="form-control" placeholder="비밀번호"/>
-					</div>
-					<div class="input-group mb-3">
-							<button type="button" class="btn btn-secondary ">로그인</button>
-							<button type="button" class="btn btn-secondary ">회원가입</button>
-					</div>					
-				</form>
-			</div>
+			
+			<table class="table text-center">
+				<thead>
+					<tr>
+						<th scope="col" class="col-1 text-center">번호</th>
+						<th scope="col" class="col-6 text-center">제목</th>
+						<th scope="col" class="col-1 text-center">작성자</th>
+						<th scope="col" class="col-1 text-center">날짜</th>
+						<th scope="col" class="col-1 text-center">조회</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th scope="row">1</th>
+						<td class="text-start">[지원모집] 총동아리연합회 ’제자리’ 국장/국원 모집</td>
+						<td>관리자</td>
+						<td>2021.06.23</td>
+						<td>15</td>	
+					</tr>
+					<tr>
+						<th scope="row">2</th>
+						<td class="text-start">[행정국] 오피스아워 운영 시간 변경</td>
+						<td>관리자</td>
+						<td>2021.06.25</td>
+						<td>30</td>	
+					</tr>
+				</tbody>
+			</table>
 		</div>
-
 	</div>
 
 	<!-- Footer-->

@@ -30,39 +30,38 @@
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="./resources/css/styles.css" rel="stylesheet" />
 
-
 </head>
 <jsp:include page="/WEB-INF/views/inc/header.jsp" />
-<link href="./resources/css/login.css" rel="stylesheet" />
+<link href="./resources/css/community.css" rel="stylesheet" />
 
 <script src="https://kit.fontawesome.com/6333a60c65.js"
 	crossorigin="anonymous"></script>
 <body id="page-top">
 	<!-- Masthead-->
+<!-- 	<div class="container px-4 px-lg-5 h-100">
+		<div
+			class="row gx-4 gx-lg-5 h-75 align-items-center justify-content-center text-center">
+			<div class="col-lg-6 align-self-end">
+				<h3 class="font-weight-bold">민원 및 문의</h3>
+			</div>
+			<div class="col-lg-5 align-self-baseline complaints">
+				<h5>민원 및 문의사항은 아래 메일을 통해 연락주시면 감사하겠습니다.</h5>
+				<h5>clubunion@handong.edu</h5>
+			</div>
+		</div>
+	</div> -->
 	<div class="container px-4 px-lg-5 h-100">
 		<div
 			class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
-			<div class="col-lg-8 align-self-end ">
-				<h3 class="font-weight-bold mb-3">로그인</h3>
+			<div class="col-lg-8 align-self-end mb-5">
+				<h3 class="font-weight-bold">민원 및 문의</h3>
 			</div>
-			<div class="col-lg-5 align-self-baseline login-form">
-				<form>
-					<div class="input-group mb-1">
-						<input type="text" class="form-control" placeholder="아이디">
-					</div>
-					<div class="input-group mb-3">
-						<input type="password" class="form-control" placeholder="비밀번호"/>
-					</div>
-					<div class="input-group mb-3">
-							<button type="button" class="btn btn-secondary ">로그인</button>
-							<button type="button" class="btn btn-secondary ">회원가입</button>
-					</div>					
-				</form>
+			<div class="col-lg-6 align-self-baseline complaints">
+				<h5 class="space">민원 및 문의사항은 아래 메일을 통해 연락주시면 감사하겠습니다.</h5>
+				<h5>clubunion@handong.edu</h5>
 			</div>
 		</div>
-
 	</div>
-
 	<!-- Footer-->
 	<footer class="bg-light py-5">
 		<div class="container px-4 px-lg-5">

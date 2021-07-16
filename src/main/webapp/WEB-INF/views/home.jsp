@@ -29,10 +29,10 @@
 	rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="./resources/css/styles.css" rel="stylesheet" />
-<link href="./resources/css/home.css" rel="stylesheet" />
 
 </head>
 <jsp:include page="/WEB-INF/views/inc/header.jsp"/>
+<link href="./resources/css/home.css" rel="stylesheet" />
 
 <script src="https://kit.fontawesome.com/6333a60c65.js"
 	crossorigin="anonymous"></script>
@@ -54,8 +54,6 @@
 						<i class="fas fa-search"></i>
 					</button>
 				</div>
-				<!-- 				<a class="btn btn-primary btn-xl" href="#about">Find Out More</a>
- -->
 			</div>
 		</div>
 	</div>
