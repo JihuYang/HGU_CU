@@ -35,6 +35,19 @@
 <link href="./resources/css/calendar.css" rel="stylesheet"/>
 
 
+
+<!-- calendar를 위한 라이브러리 -->
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src='https://fullcalendar.io/releases/fullcalendar/3.9.0/lib/moment.min.js'></script>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css'rel='stylesheet'/>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.print.css' rel='stylesheet' media='print'/>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js'></script>
+
+<!-- calendar2를 위한 라이브러리 -->
+<link href="./resources/css/fullcalendar.css" rel="stylesheet"/>
+<script src="./resources/js/fullcalendar.js"></script>
+<script src="./resources/js/daygrid.js"></script>
+
 </head>
 <jsp:include page="/WEB-INF/views/inc/header.jsp"/>
 <script src="https://kit.fontawesome.com/6333a60c65.js"
@@ -44,23 +57,22 @@
 	<!-- Masthead-->
         <div class="R_container h-100">
       		<div class="side_bar">	
-       			<div id="reservation">
+       			<div class="reservation" style="background-color:black"><a href="./reservation">
                 	<div>
-                		<i class="fa fa-home fa-3x white" aria-hidden="true"></i><br>조회 및 예약하기
-                	</div>
+                		<i class="fa fa-home fa-3x white" aria-hidden="true"></i><br><div class="side_text">조회 및 예약하기</div>
+                	</div></a>
                </div>   
-	           <div id="myReservation">
+	           <div class="reservation" style="background-color:gray"><a href="./myReservation">
 	           	<div>
-	           	<i class="fa fa-user fa-3x" aria-hidden="true"></i><br>내 예약
-	           	</div>
+	           	<i class="fa fa-user fa-3x" aria-hidden="true"></i><br><div class="side_text">내 예약</div>
+	           	</div></a>
 	           </div>
 	            
             </div>
-            
-	        <div id="top_margin"></div>
+           
         	<div class="content">
         	
-            <h4>조회/예약하기</h4><br>
+            <h5>조회/예약하기</h5><br>
             <div>
                 <button type="button" class="btn">CCR - 대형</button>
                 <button type="button" class="btn">CCR - 중대형</button>
@@ -96,16 +108,69 @@
                 <div>지난예약</div>
             </div>
             
+            <div id='calendar'></div>
+         <script type="text/javascript">
+         document.addEventListener('DOMContentLoaded', function() {
+      		var calendarEl = document.getElementById('calendar');
+      		
+      		var calendar = new FullCalendar.Calendar(calendarEl, {
+      		plugins: [ 'interaction', 'dayGrid', 'timeGrid' ],
+      		defaultView: 'dayGridMonth', 
+      		defaultDate: new Date(), 
+      		header: { 
+      		left: 'prev,next today',
+      		center: 'title', 
+      		right: '' 
+      		}, 
+      		}); 
+      		 calendar.render(); });
+         
+         </script>
+            
          </div>
-         </div>
-            
-            
-            
-            
-            <!-- calendar -->
-
-		
-		<!-- Footer-->
+         
+         
+         
+         <!-- calendar1
+        
+         <div class="container calendar-container">
+			<div id="calendar" style="max-width:900px; margin:40px auto;"></div>
+		</div>
+         
+         <script type="text/javascript">
+			$(document).ready(function(){
+				  $('#calendar').fullCalendar({
+				    header: {
+				      right: 'custom2 prevYear,prev,next,nextYear'
+				    },
+			        // 출석체크를 위한 버튼 생성
+				    customButtons: { 
+				        custom2: {
+				          text: '출석체크하기',
+				          id: 'check',
+				          click: function() {	
+			                    // ajax 통신으로 출석 정보 저장하기 
+			                    // POST "/users/attendances" -> { status: "success", date:"2018-07-01"}
+			                    // 통신 성공시 버튼 바꾸고, property disabled 만들기 
+				          }
+				        }
+				    },
+			       // 달력 정보 가져오기 
+				    eventSources: [
+				    	{
+							// ajax 통신으로 달력 정보 가져오기 
+			                // GET "/users/attendances" -> {dateList:[ date: "2016-03-21", ... ]}
+							color: 'purple',   
+						 	textColor: 'white' 
+				    	}
+				    ]
+				  }); 
+			});
+		</script>
+		-->
+			      
+         	
+	<!-- Footer-->
 	<footer class="bg-light py-5">
 		<div class="container px-4 px-lg-5">
 			<div class="small text-center text-muted">Copyright &copy; 2021
@@ -113,6 +178,14 @@
 		</div>
 	</footer>
 
+
+         </div>
+            
+            
+            
+
+		
+	
 
 	<!-- Bootstrap core JS-->
 	<script
