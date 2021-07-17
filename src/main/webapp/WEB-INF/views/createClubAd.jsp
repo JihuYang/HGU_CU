@@ -67,14 +67,26 @@
 				<h3 class="font-weight-bold pt-title">동아리 홍보</h3>
 			</div>
 			<!-- 홍보글 테이블 -->
+			<!-- 
+			<button class="btn btn-primary search-btn" type="submit">검색</button> 
+			<a class="btn btn-primary writing-btn" href="#" role="button">글쓰기</a> 
+			-->
 			<div class="col-sm-10 justify-content-md-center">
 				<form accept-charset="UTF-8" name="searchForm" action="<%=request.getContextPath()%>/createClubAd" method="POST" >
+					<div class="title-bar">
+						<p class="rows title-bold">제목</p><input class="form-control title-input" type="text">
+					</div>
 					<div class="mb-3">
-						<p class="rows title-bold">제목</p><input class="form-control search-input" type="text">
-						<button class="btn btn-primary search-btn" type="submit">검색</button>
+						<textarea class="form-control textarea" rows="15"></textarea>
+					</div>
+					<div class="mb-3">
+  						<input class="form-control file" type="file" multiple>
+					</div>
+					<div>
+						<a class="btn btn-primary back-btn bottom-btn" href="./clubAdvertise" role="button">뒤로</a>
+						<button class="btn btn-primary submit-btn bottom-btn" type="submit">저장</button> 
 					</div>
 				</form>
-				<a class="btn btn-primary writing-btn" href="#" role="button">글쓰기</a>
 			</div>
 		</div>
 	</div>
