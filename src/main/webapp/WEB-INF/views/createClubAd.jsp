@@ -68,17 +68,9 @@
 			</div>
 			<!-- 홍보글 테이블 -->
 			<div class="col-sm-10 justify-content-md-center">
-				<form accept-charset="UTF-8" name="searchForm" action="<%=request.getContextPath()%>/clubAdvertise" method="POST" >
-					<div class="rows">
-						<!-- 검색 기능바 -->
-						<select class="form-select form-select-sm search-selector">
-							<option value="title" selected>제목</option>
-							<option value="clubName">동아리 이름</option>
-							<option value="content">내용</option>
-						</select>
-					</div>
-					<div class="rows mb-3">
-						<input class="form-control form-control-sm search-input" type="text">
+				<form accept-charset="UTF-8" name="searchForm" action="<%=request.getContextPath()%>/createClubAd" method="POST" >
+					<div class="mb-3">
+						<p class="rows title-bold">제목</p><input class="form-control search-input" type="text">
 						<button class="btn btn-primary search-btn" type="submit">검색</button>
 					</div>
 				</form>
