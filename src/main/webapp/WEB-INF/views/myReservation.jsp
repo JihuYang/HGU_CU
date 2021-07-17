@@ -44,12 +44,12 @@
 	<!-- Masthead-->
         <div class="R_container h-100">
       		<div class="side_bar">	
-       			<div class="reservation" style="background-color:black"><a href="./reservation">
+       			<div class="reservation" style="background-color:gray"><a href="./reservation">
                 	<div>
                 		<i class="fa fa-home fa-3x white" aria-hidden="true"></i><br><div class="side_text">조회 및 예약하기</div>
                 	</div></a>
                </div>   
-	           <div class="reservation" style="background-color:gray"><a href="./myReservation">
+	           <div class="reservation" style="background-color:black"><a href="./myReservation.jsp">
 	           	<div>
 	           	<i class="fa fa-user fa-3x" aria-hidden="true"></i><br><div class="side_text">내 예약</div>
 	           	</div></a>
@@ -60,40 +60,50 @@
 	        <div id="top_margin"></div>
         	<div class="content">
         	
-            <h5>조회/예약하기</h5><br>
+            <h5>내 예약 목록</h5><br>
             <div>
-                <button type="button" class="btn">CCR - 대형</button>
-                <button type="button" class="btn">CCR - 중대형</button>
-                <button type="button" class="btn">CCR - 중형</button>
-                <button type="button" class="btn">CCR - 소형</button>
-                <button type="button" class="btn">지하연습실 - 대형</button>
-                <button type="button" class="btn">지하연습실 - 중형</button>
-                <button type="button" class="btn">지하연습실 - 소형</button>
-                <button type="button" class="btn">밴드연습실</button>
-            </div>
-            <div class="section2">
-                <button type="button" class="btn_02">이용안내</button>
-                <button type="button" class="btn_02">예약하기</button>
-            </div>
+            	<input type="checkbox" class="btn-check" id="btn-check-2-ccr1" checked autocomplete="off">
+				<label class="btn btn-outline-secondary" for="btn-check-2-ccr1">CCR - 대형</label>
+				<input type="checkbox" class="btn-check" id="btn-check-2-ccr2" checked autocomplete="off">
+				<label class="btn btn-outline-secondary" for="btn-check-2-ccr2">CCR - 중대형</label>
+				<input type="checkbox" class="btn-check" id="btn-check-2-ccr3" checked autocomplete="off">
+				<label class="btn btn-outline-secondary" for="btn-check-2-ccr3">CCR - 중형</label>
+				<input type="checkbox" class="btn-check" id="btn-check-2-ccr4" checked autocomplete="off">
+				<label class="btn btn-outline-secondary" for="btn-check-2-ccr4">CCR - 소형</label>
+				<input type="checkbox" class="btn-check" id="btn-check-2-room1" checked autocomplete="off">
+				<label class="btn btn-outline-secondary" for="btn-check-2-room1">지하연습실 - 대형</label>
+				<input type="checkbox" class="btn-check" id="btn-check-2-room2" checked autocomplete="off">
+				<label class="btn btn-outline-secondary" for="btn-check-2-room2">지하연습실 - 중형</label>
+				<input type="checkbox" class="btn-check" id="btn-check-2-room3" checked autocomplete="off">
+				<label class="btn btn-outline-secondary" for="btn-check-2-room3">지하연습실 - 소형</label>
+				<input type="checkbox" class="btn-check" id="btn-check-2-room4" checked autocomplete="off">
+				<label class="btn btn-outline-secondary" for="btn-check-2-room4">밴드연습실</label><br>
+            </div>     
 
-            <table>
-                <tr>
-                    <td>공간</td>
-                    <td>CCR-대형</td>
-                </tr>
-                <tr>
-                    <td>수용 가능 인원</td>
-                    <td>1500명</td>
-                </tr>
-                <tr>
-                    <td>추가 설명</td>
-                    <td>대형 CCR 입니다</td>
-                </tr>
-            </table>
-
-            <div class="section3">
-                <div>예약</div>
-                <div>지난예약</div>
+            
+            <div>
+	            <select id="selectbox" class="form-select form-select-sm" aria-label=".form-select-sm example">
+				  <option selected>정렬 방법 선택</option>
+				  <option value="1">신청일 순</option>
+				  <option value="2">사용일 순</option>
+				</select>
+			
+                <table class="table">
+				  <thead class="table-light">
+				    <td>NO</td>
+				    <td>공간</td>
+				    <td>승인여부</td>
+				    <td>사용날짜</td>
+				    <td>사용시간</td>
+				    <td>사용목적</td>
+				    <td>신청인</td>
+				    <td>신청일</td>
+				    <td>예약상태</td>
+				  </thead>
+				  <tbody>
+				    
+				  </tbody>
+				</table>
             </div>
             
          </div>

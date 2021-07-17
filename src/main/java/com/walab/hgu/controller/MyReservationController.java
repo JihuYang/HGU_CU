@@ -17,14 +17,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
  * Handles requests for the application home page.
  */
 @Controller
-public class ReservationController {
+public class MyReservationController {
 	
-	private static final Logger logger = LoggerFactory.getLogger(ReservationController.class);
+	private static final Logger logger = LoggerFactory.getLogger(MyReservationController.class);
 	
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/myReservation", method = RequestMethod.GET)
+	@RequestMapping(value = "/reservation", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
@@ -35,7 +35,7 @@ public class ReservationController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "myReservation";
+		return "reservation";
 	}
 	
 }

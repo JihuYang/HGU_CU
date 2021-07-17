@@ -14,18 +14,16 @@
 	box-shadow: 0 4px 4px -4px black;
 }
 
-#reservation{
-	padding:0;
-	background-color:black;
+.reservation div{
+	padding:7px;
+	margin:0;
 }
 
-#myReservation{
-	background-color:gray;
+.reservation{
 	color:black;
-	padding:0;
 }
 
-#myReservation div:hover{
+.reservation div:hover{
 	background-color:black;
 }
 
@@ -40,19 +38,17 @@
     bottom:0;
     left:0;
 	border:0;
+	padding:0;
 }
 
 .side_bar div{
     color:white;
     font-size: small;
     text-align: center;
-    padding: 5px;
-
 }
 
 .R_container{
 	width:100%;
-	
 }
 
 .R_container .content{
@@ -112,21 +108,45 @@ tr{
     background-color: white;
 }
 
+#selectbox{
+	width:120px;
+	font-size:x-small;
+	margin:10px 0;
+	float:right;
+}
+
+.table{
+	margin:10px 0;
+}
 
 @media(max-width: 990px){
 	#top_margin{
 		display:none;
 	}
 	.side_bar{
-		position:relative;
-		top:90px;
-        width: 100%;     
-        height:70px;
+		display:flex;
+		flex-direction:row;  
+		width:100%; 
+		height:57px;
+		position:absolute;
+		top:88px;
+	}
+	
+	.reservation{
+		flex-grow: 1; 
+	}
+	
+	.side_text{
+		display:none;
 	}
 	
 	.R_container .content{
 		margin:0;
-		padding-top:50px;
+	}
+	
+	.R_container{
+		display:felx;
+		margin-top:30px;
 	}
 }
 
