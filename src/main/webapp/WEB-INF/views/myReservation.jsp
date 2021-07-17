@@ -56,8 +56,7 @@
 	           </div>
 	            
             </div>
-            
-	        <div id="top_margin"></div>
+           
         	<div class="content">
         	
             <h5>내 예약 목록</h5><br>
