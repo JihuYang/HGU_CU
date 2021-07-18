@@ -16,7 +16,7 @@ public class ClubAdvertiseController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(ClubAdvertiseController.class);
 	
-	//동아리 홍보 페이지 컨트롤러 
+		//동아리 홍보 페이지 컨트롤러 
 		@RequestMapping(value = "/clubAdvertise", method = RequestMethod.GET)
 		public String clubAdvertise(Locale locale, Model model) {
 			logger.info("Welcome home! The client locale is {}.", locale);
@@ -29,6 +29,20 @@ public class ClubAdvertiseController {
 			model.addAttribute("serverTime", formattedDate );
 			
 			return "clubAdvertise";
+		}
+		//동아리 홍보 게시글 쓰는 페이지 
+		@RequestMapping(value = "/createClubAd", method = RequestMethod.GET)
+		public String createClubAd(Locale locale, Model model) {
+			logger.info("Welcome home! The client locale is {}.", locale);
+			
+			Date date = new Date();
+			DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+			
+			String formattedDate = dateFormat.format(date);
+			
+			model.addAttribute("serverTime", formattedDate );
+			
+			return "createClubAd";
 		}
 
 }

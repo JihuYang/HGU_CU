@@ -35,6 +35,19 @@
 <link href="./resources/css/calendar.css" rel="stylesheet"/>
 
 
+
+<!-- calendar를 위한 라이브러리 -->
+<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+<script src='https://fullcalendar.io/releases/fullcalendar/3.9.0/lib/moment.min.js'></script>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css'rel='stylesheet'/>
+<link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.print.css' rel='stylesheet' media='print'/>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js'></script>
+
+<!-- calendar2를 위한 라이브러리 -->
+<link href="./resources/css/fullcalendar.css" rel="stylesheet"/>
+<script src="./resources/js/fullcalendar.js"></script>
+<script src="./resources/js/daygrid.js"></script>
+
 </head>
 <jsp:include page="/WEB-INF/views/inc/header.jsp"/>
 <script src="https://kit.fontawesome.com/6333a60c65.js"
@@ -56,8 +69,7 @@
 	           </div>
 	            
             </div>
-            
-	        <div id="top_margin"></div>
+           
         	<div class="content">
         	
             <h5>조회/예약하기</h5><br>
@@ -72,9 +84,27 @@
                 <button type="button" class="btn">밴드연습실</button>
             </div>
             <div class="section2">
-                <button type="button" class="btn_02">이용안내</button>
-                <button type="button" class="btn_02">예약하기</button>
+                <button type="button" class="btn_02" onclick="info()">이용안내</button>
+                <button type="button" class="btn_02" onclick="info(); location.href='./reserve'">예약하기</button>
             </div>
+            
+            
+            <script type="text/javascript">
+  				function info() { 
+  					alert("<이용안내>"
+      						+"\n1. 각 공간의 이용시간을 준수합니다."
+      						+"\n2. 예약은 사용 1일 전까지 신청가능합니다. 당일 예약은 불가합니다."
+      						+"\n3. 밴드연습실의 경우, 별도의 hisnet 공지를 참고해주세요."
+      						+"\n4. 공간 사용시 안전사고가 발생하지 않도록 주의합니다."
+      						+"\n5. 이용시간 종료 전까지 이전 상태로 돌려놓습니다."
+
+      						+"\n\n<주의사항>"
+      						+"\n1. 예약자 이름을 바꾸는 식으로 연속 사용 불가합니다."
+      						+"\n2. 취식은 금지합니다."
+      						+"\n3. 위 주의사항들을 어겼을시 개인 혹은 소속단체에게 학칙이 정하는 선에서 불이익을 드릴 수 있습니다."
+                  );
+  				}
+  			</script>
 
             <table>
                 <tr>
@@ -96,16 +126,30 @@
                 <div>지난예약</div>
             </div>
             
+            <div id='calendar'></div>
+         <script type="text/javascript">
+         document.addEventListener('DOMContentLoaded', function() {
+      		var calendarEl = document.getElementById('calendar');
+      		
+      		var calendar = new FullCalendar.Calendar(calendarEl, {
+      		plugins: [ 'interaction', 'dayGrid', 'timeGrid' ],
+      		defaultView: 'dayGridMonth', 
+      		defaultDate: new Date(), 
+      		header: { 
+      		left: 'prev,next today',
+      		center: 'title', 
+      		right: '' 
+      		}, 
+      		}); 
+      		 calendar.render(); });
+         
+         </script>
+            
          </div>
-         </div>
-            
-            
-            
-            
-            <!-- calendar -->
-
-		
-		<!-- Footer-->
+	
+			      
+         	
+	<!-- Footer-->
 	<footer class="bg-light py-5">
 		<div class="container px-4 px-lg-5">
 			<div class="small text-center text-muted">Copyright &copy; 2021
@@ -113,6 +157,14 @@
 		</div>
 	</footer>
 
+
+         </div>
+            
+            
+            
+
+		
+	
 
 	<!-- Bootstrap core JS-->
 	<script

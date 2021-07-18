@@ -1,0 +1,78 @@
+.pt-title{
+	padding-top:100px !important;
+	padding-bottom:50px !important;
+	margin-bottom: 0px;
+}
+
+.title-bold{
+	font-size: 15px !important;
+}
+
+.rows{
+    display: inline-block;
+}
+
+.search-selector{
+	width: 70px !important;
+	margin-left: 70px !important;
+	margin-right: 10px !important;
+}
+
+.bottom-btn{
+	background-color: #326295 !important;
+	border-color: #326295 !important;
+	height: 28px;
+    padding: 2px 25px;
+	font-size: 15px;
+}
+
+.submit-btn{
+    float:right;
+}
+
+.back-btn{
+    float: left;
+}
+
+.title-input{
+	margin-right:10px !important;
+	margin-left: 10px !important;
+	display:inline-block !important;
+	width: 400px !important;
+	box-sizing: border-box;
+  	border: none;
+  	border-bottom: 1px solid gray;
+  	background-color:white;
+  	border-radius:0px;
+  	padding-bottom:0px;
+}
+
+.title-bar{
+	float:left;
+}
+
+.textarea{
+	background-color:white;
+	resize: none;
+}
+
+.file{
+	background-color:white;
+	border:none;
+	padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 12px;
+    padding-right: 0px;
+    height: 30px;
+    font-size: 15px;
+}
+
+.writing-btn{
+	background-color: lightgray !important;
+	border-color: lightgray !important;
+	color: black !important;
+	height: 32px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    float:right;
+}
