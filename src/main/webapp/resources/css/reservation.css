@@ -15,7 +15,7 @@
 	background-color:black;
 }
 
-a{
+a:link ,a:visited{
 	text-decoration:none;
 }
 
@@ -24,9 +24,8 @@ a{
 	position:fixed;
 	width:250px;
 	height:200px;
-	margin-bottom:120px;
 	background-color:#fff;
-	top:120px;
+	top:100px;
     bottom:0;
     left:0;
 	border:0;
@@ -42,7 +41,7 @@ a{
 .R_container{
 	width:100%;
 	height:auto;
-	margin-top:120px;
+	margin-top:100px;
 }
 
 .R_container .content{
@@ -129,9 +128,9 @@ tr{
 		display:flex;
 		flex-direction:row;  
 		width:100%; 
-		height:57px;
+		height:52.5px;
 		position:absolute;
-		top:88px;
+		top:70px;
 	}
 	
 	.reservation{
@@ -140,6 +139,8 @@ tr{
 	
 	.side_text{
 		display:none;
+		width:0;
+		height:0;
 	}
 	
 	.R_container .content{
@@ -148,7 +149,7 @@ tr{
 	
 	.R_container{
 		display:felx;
-		margin-top:30px;
+		margin-top:100px;
 	}
 }
 
