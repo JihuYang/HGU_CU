@@ -50,25 +50,25 @@
 		<div class="collapse navbar-collapse justify-content-md-center"
 			id="navbarResponsive">
 			<ul class="navbar-nav ms-auto my-2 my-lg-0">
-				<li class="nav-item"><a class="nav-link">총동연 소개</a></li>
+				<li class="nav-item" onclick="location.href='./info'"><a class="nav-link">총동연 소개</a></li>
 				<li class="nav-item dropdown"><a
-					class="nav-link dropdown-toggle" href=""
+					class="nav-link dropdown-toggle"
 					id="dropdown10" data-toggle="dropdown" aria-haspopup="true"
 					aria-expanded="false">동아리 소개</a>
-					<div class="dropdown-menu" aria-labelledby="dropdown10">
-						<a class="dropdown-item" href="#">공연분과</a> 
-						<a class="dropdown-item" href="#">봉사분과</a> 
-						<a class="dropdown-item" href="#">학술분과</a> 
-						<a class="dropdown-item" href="#">전산분과</a> 
-						<a class="dropdown-item" href="#">체육분과</a> 
-						<a class="dropdown-item" href="#">종교분과</a> 
-						<a class="dropdown-item" href="#">전시분과</a> 
-						<a class="dropdown-item" href="#">아기동아리</a> 
-					</div></li>				
-				<li class="nav-item"><a class="nav-link" href="">시설 예약</a></li>
-				<li class="nav-item"><a class="nav-link" href="">커뮤니티</a></li>
+					<ul class="dropdown-menu">
+						<li><a class="dropdown-item" href="#">공연분과</a></li>
+						<li><a class="dropdown-item" href="#">봉사분과</a></li> 
+						<li><a class="dropdown-item" href="#">학술분과</a></li> 
+						<li><a class="dropdown-item" href="#">전산분과</a></li> 
+						<li><a class="dropdown-item" href="#">체육분과</a></li> 
+						<li><a class="dropdown-item" href="#">종교분과</a></li> 
+						<li><a class="dropdown-item" href="#">전시분과</a></li> 
+						<li><a class="dropdown-item" href="#">아기동아리</a></li> 
+					</ul></li>				
+				<li class="nav-item"><a class="nav-link" onclick="location.href='./reservation'">시설 예약</a></li>
+				<li class="nav-item"><a class="nav-link" onclick="location.href='./communityInfo'">커뮤니티</a></li>
 
-				<li class="nav-item"><a class="nav-link" href="">동아리 홍보</a></li>
+				<li class="nav-item"><a class="nav-link" onclick="location.href='./clubAdvertise'">동아리 홍보</a></li>
 				<li class="nav-item ">
 					<button type="button" class=" login-btn btn-outline-secondary ">회원가입</button>
 					<button type="button" class=" login-btn btn-outline-secondary "
