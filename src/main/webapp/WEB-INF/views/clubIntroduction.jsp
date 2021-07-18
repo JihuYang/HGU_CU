@@ -3,36 +3,39 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
 <head>
-	<meta charset="utf-8" />
-	<meta name="viewport"
-		content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-	<meta name="description" content="" />
-	<meta name="author" content="" />
-	<title>한동대학교 총동아리연합회</title>
-	<!-- Favicon-->
-	<link rel="icon" type="image/x-icon"
-		href="./resources/assets/img/favicon.ico" />
-	<!-- Bootstrap Icons-->
-	<link
-		href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
-		rel="stylesheet" />
-	<!-- Google fonts-->
-	<link
-		href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700"
-		rel="stylesheet" />
-	<link
-		href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic"
-		rel="stylesheet" type="text/css" />
-	<!-- SimpleLightbox plugin CSS-->
-	<link
-		href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css"
-		rel="stylesheet" />
-	<!-- Core theme CSS (includes Bootstrap)-->
-	<link href="../resources/css/styles.css" rel="stylesheet" />
-	<link href="../resources/css/clubIntroduction.css" rel="stylesheet" />
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<title>한동대학교 총동아리연합회</title>
+<!-- Favicon-->
+<link rel="icon" type="image/x-icon"
+	href="./resources/assets/img/favicon.ico" />
+<!-- Bootstrap Icons-->
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
+	rel="stylesheet" />
+<!-- Google fonts-->
+<link
+	href="https://fonts.googleapis.com/css?family=Merriweather+Sans:400,700"
+	rel="stylesheet" />
+<link
+	href="https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic"
+	rel="stylesheet" type="text/css" />
+<!-- SimpleLightbox plugin CSS-->
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css"
+	rel="stylesheet" />
+
+<!-- Core theme CSS (includes Bootstrap)-->
+<link href="../resources/css/styles.css" rel="stylesheet" />
+<link href="../resources/css/clubIntroduction.css" rel="stylesheet" />
+
 
 </head>
-<script src="https://kit.fontawesome.com/6333a60c65.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/6333a60c65.js"
+	crossorigin="anonymous"></script>
 <body id="page-top">
 	<!-- Navigation-->
 	<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3"
@@ -73,8 +76,7 @@
 				<!--  검색창  -->
 				<div class=" col-sm-4 align-self-baseline search-bar">
 					<div class="input-group mb-3">
-						<input type="text" class="form-control"
-							placeholder="검색">
+						<input type="text" class="form-control" placeholder="검색">
 						<button class="btn btn-outline-secondary" type="button"
 							id="button-addon2">
 							<i class="fas fa-search"></i>
@@ -83,28 +85,89 @@
 				</div>
 				<!-- 동아리 내 -->
 				<div>
-					<a  href="#" class="col logos">
+					<!-- <a  href="#" class="col logos">
 						<img alt="logo" class="img-thumbnail" src="https://cdn.pixabay.com/photo/2021/07/09/02/29/family-6398107_960_720.jpg">
-						<div class="hover_text">[제자리]<br>창립연도: 1995.05.12<br>대표자명: 방승민<br>연락처: 010 – xxxx - xxxx<br>인스타/페북: <br>동방: 302호</div>
+						<div class="overlay">
+							<div class="hover_text">[제자리]<br>창립연도: 1995.05.12<br>대표자명: 방승민<br>연락처: 010 – xxxx - xxxx<br>인스타/페북: <br>동방: 302호</div>
+						</div>
 					</a>
 					<a  href="#" class="col logos">
-						<img alt="logo2" class="img-thumbnail" src="https://cdn.pixabay.com/photo/2020/10/07/18/40/dog-5635960_960_720.jpg">
-						<div class="hover_text">이미지에 마우스를 올리면 나타나는 텍스트입니다.</div>
+						<img alt="logo2" class="img-thumbnail image" src="https://cdn.pixabay.com/photo/2020/10/07/18/40/dog-5635960_960_720.jpg">
+						<div class="overlay">
+							<div class="hover_text">이미지에 마우스를 올리면 나타나는 텍스트입니다.</div>
+						</div>
 					</a>
 					<a href="#" class="col logos">
 						<img alt="logo3" class="img-thumbnail" src="https://cdn.pixabay.com/photo/2020/10/12/22/15/glass-5650335_960_720.jpg">
-						<div class="hover_text">이미지에 마우스를 올리면 나타나는 텍스트입니다.</div>
+						<div class="overlay">
+							<div class="hover_text">이미지에 마우스를 올리면 나타나는 텍스트입니다.</div>
+						</div>
 					</a>
 					<a href="#" class="col logos">
 						<img alt="logo4" class="img-thumbnail" src="https://cdn.pixabay.com/photo/2021/07/13/11/34/cat-6463284_960_720.jpg">
-						<div class="hover_text">이미지에 마우스를 올리면 나타나는 텍스트입니다.</div>
-					</a>
-				</div>
-					
+						<div class="overlay">
+							<div class="hover_text">이미지에 마우스를 올리면 나타나는 텍스트입니다.</div>
+						</div>
+					</a> -->
+					<div class="col-xs-6 col-sm-3">
+						<div class="overlay-item overlay-effect">
+							<img
+								src="https://cdn.pixabay.com/photo/2021/07/09/02/29/family-6398107_960_720.jpg"
+								alt="" />
+							<div class="mask">
+								<p>
+									[제자리]<br>창립연도: 1995.05.12<br>대표자명: 방승민<br>연락처:
+									010 – xxxx - xxxx<br>인스타/페북: <br>동방: 302호
+								</p>
+								<a href="#" class="btn btn-default">Read More</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-6 col-sm-3">
+						<div class="overlay-item overlay-effect">
+							<img
+								src="https://cdn.pixabay.com/photo/2020/10/07/18/40/dog-5635960_960_720.jpg"
+								alt="" />
+							<div class="mask">
+								<p>
+									[피치파이프 ]<br>창립연도: 1995.05.12<br>대표자명: 방승민<br>연락처:
+									010 – xxxx - xxxx<br>인스타/페북: <br>동방: 302호
+								</p>
+								<a href="#" class="btn btn-default">Read More</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-6 col-sm-3">
+						<div class="overlay-item overlay-effect">
+							<img
+								src="https://cdn.pixabay.com/photo/2020/10/12/22/15/glass-5650335_960_720.jpg"
+								alt="" />
+							<div class="mask">
+								<p>
+									[하향 ]<br>창립연도: 1995.05.12<br>대표자명: 방승민<br>연락처:
+									010 – xxxx - xxxx<br>인스타/페북: <br>동방: 302호
+								</p>
+								<a href="#" class="btn btn-default">Read More</a>
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-6 col-sm-3">
+						<div class="overlay-item overlay-effect">
+							<img
+								src="https://cdn.pixabay.com/photo/2021/07/13/11/34/cat-6463284_960_720.jpg"
+								alt="" />
+							<div class="mask">
+								<p>
+									[MIC]<br>창립연도: 1995.05.12<br>대표자명: 방승민<br>연락처:
+									010 – xxxx - xxxx<br>인스타/페북: <br>동방: 302호
+								</p>
+								<a href="#" class="btn btn-default">Read More</a>
+							</div>
+						</div>
+					</div>
 			</div>
 		</div>
 	</div>
-
 	<!-- Footer-->
 	<footer class="bg-light py-5">
 		<div class="container px-4 px-lg-5">
