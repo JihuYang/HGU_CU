@@ -67,10 +67,6 @@
 				<h3 class="font-weight-bold pt-title">동아리 홍보</h3>
 			</div>
 			<!-- 홍보글 테이블 -->
-			<!-- 
-			<button class="btn btn-primary search-btn" type="submit">검색</button> 
-			<a class="btn btn-primary writing-btn" href="#" role="button">글쓰기</a> 
-			-->
 			<div class="col-sm-10 justify-content-md-center">
 				<form accept-charset="UTF-8" name="searchForm" action="<%=request.getContextPath()%>/createClubAd" method="POST" >
 					<div class="title-bar">

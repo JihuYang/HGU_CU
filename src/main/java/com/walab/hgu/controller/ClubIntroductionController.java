@@ -17,7 +17,7 @@ public class ClubIntroductionController {
 	private static final Logger logger = LoggerFactory.getLogger(ClubAdvertiseController.class);
 	
 	//동아리 홍보 페이지 컨트롤러 
-	@RequestMapping(value = "/clubIntriduction", method = RequestMethod.GET)
+	@RequestMapping(value = "/clubIntroduction", method = RequestMethod.GET)
 	public String clubAdvertise(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
@@ -28,6 +28,6 @@ public class ClubIntroductionController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "clubIntriduction";
+		return "clubIntroduction";
 	}
 }

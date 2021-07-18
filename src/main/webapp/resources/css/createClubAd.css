@@ -12,12 +12,6 @@
     display: inline-block;
 }
 
-.search-selector{
-	width: 70px !important;
-	margin-left: 70px !important;
-	margin-right: 10px !important;
-}
-
 .bottom-btn{
 	background-color: #326295 !important;
 	border-color: #326295 !important;
@@ -65,14 +59,4 @@
     padding-right: 0px;
     height: 30px;
     font-size: 15px;
-}
-
-.writing-btn{
-	background-color: lightgray !important;
-	border-color: lightgray !important;
-	color: black !important;
-	height: 32px;
-    padding-bottom: 2px;
-    padding-top: 2px;
-    float:right;
 }
