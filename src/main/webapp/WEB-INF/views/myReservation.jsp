@@ -49,7 +49,7 @@
                 		<i class="fa fa-home fa-3x white" aria-hidden="true"></i><br><div class="side_text">조회 및 예약하기</div>
                 	</div></a>
                </div>   
-	           <div class="reservation" style="background-color:black"><a href="./myReservation.jsp">
+	           <div class="reservation" style="background-color:black"><a href="./myReservation">
 	           	<div>
 	           	<i class="fa fa-user fa-3x" aria-hidden="true"></i><br><div class="side_text">내 예약</div>
 	           	</div></a>
@@ -57,25 +57,25 @@
 	            
             </div>
            
-        	<div class="content">
+        	<div class="content" style="height:100vh;">
         	
             <h5>내 예약 목록</h5><br>
             <div>
-            	<input type="checkbox" class="btn-check" id="btn-check-2-ccr1" checked autocomplete="off">
+            	<input type="checkbox" class="btn-check" id="btn-check-2-ccr1" unchecked autocomplete="off">
 				<label class="btn btn-outline-secondary" for="btn-check-2-ccr1">CCR - 대형</label>
-				<input type="checkbox" class="btn-check" id="btn-check-2-ccr2" checked autocomplete="off">
+				<input type="checkbox" class="btn-check" id="btn-check-2-ccr2" unchecked autocomplete="off">
 				<label class="btn btn-outline-secondary" for="btn-check-2-ccr2">CCR - 중대형</label>
-				<input type="checkbox" class="btn-check" id="btn-check-2-ccr3" checked autocomplete="off">
+				<input type="checkbox" class="btn-check" id="btn-check-2-ccr3" unchecked autocomplete="off">
 				<label class="btn btn-outline-secondary" for="btn-check-2-ccr3">CCR - 중형</label>
-				<input type="checkbox" class="btn-check" id="btn-check-2-ccr4" checked autocomplete="off">
+				<input type="checkbox" class="btn-check" id="btn-check-2-ccr4" unchecked autocomplete="off">
 				<label class="btn btn-outline-secondary" for="btn-check-2-ccr4">CCR - 소형</label>
-				<input type="checkbox" class="btn-check" id="btn-check-2-room1" checked autocomplete="off">
+				<input type="checkbox" class="btn-check" id="btn-check-2-room1" unchecked autocomplete="off">
 				<label class="btn btn-outline-secondary" for="btn-check-2-room1">지하연습실 - 대형</label>
-				<input type="checkbox" class="btn-check" id="btn-check-2-room2" checked autocomplete="off">
+				<input type="checkbox" class="btn-check" id="btn-check-2-room2" unchecked autocomplete="off">
 				<label class="btn btn-outline-secondary" for="btn-check-2-room2">지하연습실 - 중형</label>
-				<input type="checkbox" class="btn-check" id="btn-check-2-room3" checked autocomplete="off">
+				<input type="checkbox" class="btn-check" id="btn-check-2-room3" unchecked autocomplete="off">
 				<label class="btn btn-outline-secondary" for="btn-check-2-room3">지하연습실 - 소형</label>
-				<input type="checkbox" class="btn-check" id="btn-check-2-room4" checked autocomplete="off">
+				<input type="checkbox" class="btn-check" id="btn-check-2-room4" unchecked autocomplete="off">
 				<label class="btn btn-outline-secondary" for="btn-check-2-room4">밴드연습실</label><br>
             </div>     
 

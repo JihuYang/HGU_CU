@@ -84,9 +84,27 @@
                 <button type="button" class="btn">밴드연습실</button>
             </div>
             <div class="section2">
-                <button type="button" class="btn_02">이용안내</button>
-                <button type="button" class="btn_02">예약하기</button>
+                <button type="button" class="btn_02" onclick="info()">이용안내</button>
+                <button type="button" class="btn_02" onclick="info(); location.href='./reserve'">예약하기</button>
             </div>
+            
+            
+            <script type="text/javascript">
+  				function info() { 
+  					alert("<이용안내>"
+      						+"\n1. 각 공간의 이용시간을 준수합니다."
+      						+"\n2. 예약은 사용 1일 전까지 신청가능합니다. 당일 예약은 불가합니다."
+      						+"\n3. 밴드연습실의 경우, 별도의 hisnet 공지를 참고해주세요."
+      						+"\n4. 공간 사용시 안전사고가 발생하지 않도록 주의합니다."
+      						+"\n5. 이용시간 종료 전까지 이전 상태로 돌려놓습니다."
+
+      						+"\n\n<주의사항>"
+      						+"\n1. 예약자 이름을 바꾸는 식으로 연속 사용 불가합니다."
+      						+"\n2. 취식은 금지합니다."
+      						+"\n3. 위 주의사항들을 어겼을시 개인 혹은 소속단체에게 학칙이 정하는 선에서 불이익을 드릴 수 있습니다."
+                  );
+  				}
+  			</script>
 
             <table>
                 <tr>
@@ -128,46 +146,7 @@
          </script>
             
          </div>
-         
-         
-         
-         <!-- calendar1
-        
-         <div class="container calendar-container">
-			<div id="calendar" style="max-width:900px; margin:40px auto;"></div>
-		</div>
-         
-         <script type="text/javascript">
-			$(document).ready(function(){
-				  $('#calendar').fullCalendar({
-				    header: {
-				      right: 'custom2 prevYear,prev,next,nextYear'
-				    },
-			        // 출석체크를 위한 버튼 생성
-				    customButtons: { 
-				        custom2: {
-				          text: '출석체크하기',
-				          id: 'check',
-				          click: function() {	
-			                    // ajax 통신으로 출석 정보 저장하기 
-			                    // POST "/users/attendances" -> { status: "success", date:"2018-07-01"}
-			                    // 통신 성공시 버튼 바꾸고, property disabled 만들기 
-				          }
-				        }
-				    },
-			       // 달력 정보 가져오기 
-				    eventSources: [
-				    	{
-							// ajax 통신으로 달력 정보 가져오기 
-			                // GET "/users/attendances" -> {dateList:[ date: "2016-03-21", ... ]}
-							color: 'purple',   
-						 	textColor: 'white' 
-				    	}
-				    ]
-				  }); 
-			});
-		</script>
-		-->
+	
 			      
          	
 	<!-- Footer-->
