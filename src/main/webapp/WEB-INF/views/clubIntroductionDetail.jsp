@@ -29,7 +29,7 @@
 		rel="stylesheet" />
 	<!-- Core theme CSS (includes Bootstrap)-->
 	<link href="../resources/css/styles.css" rel="stylesheet" />
-	<link href="../resources/css/clubIntroduction.css" rel="stylesheet" />
+	<link href="../resources/css/clubIntroductionDetail.css" rel="stylesheet" />
 
 </head>
 <script src="https://kit.fontawesome.com/6333a60c65.js" crossorigin="anonymous"></script>
@@ -68,39 +68,20 @@
 				<h3 class="font-weight-bold pt-title">공연분과 동아리 소개</h3>
 				<p class="text-muted mb-0">한동대 공연분과 모든 동아리들을 응원합니다 !</p>
 			</div>
-			<div class="col-sm-10 justify-content-md-center">
+			<div class="col-sm-10">
 				<hr>
-				<!--  검색창  -->
-				<div class=" col-sm-4 align-self-baseline search-bar">
-					<div class="input-group mb-3">
-						<input type="text" class="form-control"
-							placeholder="검색">
-						<button class="btn btn-outline-secondary" type="button"
-							id="button-addon2">
-							<i class="fas fa-search"></i>
-						</button>
-					</div>
+				<!-- 동아리 대표 내용  -->
+				<div class="align">
+					<h5 class="text-align">[제자리]</h5>
+					<p class="text-align">대표자명: 방승민</p>
+					<p class="text-align">연락처: 010 – xxxx - xxxx</p>
+					<p class="text-align">인스타/페북: </p>
+					<p class="text-align">동방: 302호</p>
+					<p class="text-align content-size">동아리 소개글<br>🌿2021 피치파이프 리크루팅🍑🌿<br>YES, WE ARE PITCHPIPE!<br>_<br>안녕하세요, 21학번 🌊함께하는 세대🌊 여러분!<br>하나님을 찬양하는 아카펠라 동아리 피치파이프입니다🎶<br>저희와 함께 목소리로 하나님을 찬양할 21학번 방울이💧분들을 모집합니다💚<br>😌 나는 찬양하는 것을 좋아한다!<br>🤔 아카펠라를 잘 모르지만 한 번 도전해보고 싶다!<br>🤗 아카펠라로 아름다운 하모니를 만들어보고 싶다!<br>🥺 피치파이프라는 동아리에 너무너무 들어오고 싶다!<br><br>하신다면, 누구나 환영합니다 😊🙌🏻<br>함께 찬양하고, 함께 기뻐하고, 함께 추억을 만들어나갈 21학번 새내기🐥들의 많은 지원을 기다립니다✨</p>
 				</div>
-				<!-- 동아리 내 -->
 				<div>
-					<a  href="#" class="col logos">
-						<img alt="logo" class="img-thumbnail" src="https://cdn.pixabay.com/photo/2021/07/09/02/29/family-6398107_960_720.jpg">
-						<div class="hover_text">[제자리]<br>창립연도: 1995.05.12<br>대표자명: 방승민<br>연락처: 010 – xxxx - xxxx<br>인스타/페북: <br>동방: 302호</div>
-					</a>
-					<a  href="#" class="col logos">
-						<img alt="logo2" class="img-thumbnail" src="https://cdn.pixabay.com/photo/2020/10/07/18/40/dog-5635960_960_720.jpg">
-						<div class="hover_text">이미지에 마우스를 올리면 나타나는 텍스트입니다.</div>
-					</a>
-					<a href="#" class="col logos">
-						<img alt="logo3" class="img-thumbnail" src="https://cdn.pixabay.com/photo/2020/10/12/22/15/glass-5650335_960_720.jpg">
-						<div class="hover_text">이미지에 마우스를 올리면 나타나는 텍스트입니다.</div>
-					</a>
-					<a href="#" class="col logos">
-						<img alt="logo4" class="img-thumbnail" src="https://cdn.pixabay.com/photo/2021/07/13/11/34/cat-6463284_960_720.jpg">
-						<div class="hover_text">이미지에 마우스를 올리면 나타나는 텍스트입니다.</div>
-					</a>
+					<img alt="logo" class="logo" src="https://cdn.pixabay.com/photo/2021/07/13/11/34/cat-6463284_960_720.jpg">
 				</div>
-					
 			</div>
 		</div>
 	</div>

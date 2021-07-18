@@ -1,0 +1,30 @@
+.pt-title{
+	padding-top:100px !important;
+	padding-bottom:10px !important;
+}
+.align{
+	float:left !important;
+}
+
+.text-align{
+	text-align:left !important;
+}
+
+.content-size{
+	height: 300px !important;
+    max-width: 480px;
+    overflow: scroll;
+    
+}
+.logo{
+	float:right;
+	width: 380px;
+}
+
+@media screen and (max-width: 1199px) { 
+	.logo{
+		width: 100%;
+		float:none;
+	}
+	
+}
