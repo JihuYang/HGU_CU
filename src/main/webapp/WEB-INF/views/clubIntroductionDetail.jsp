@@ -27,6 +27,8 @@
 	<link
 		href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css"
 		rel="stylesheet" />
+	<jsp:include page="/WEB-INF/views/inc/header.jsp"/>
+		
 	<!-- Core theme CSS (includes Bootstrap)-->
 	<link href="../resources/css/styles.css" rel="stylesheet" />
 	<link href="../resources/css/clubIntroductionDetail.css" rel="stylesheet" />

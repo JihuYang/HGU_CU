@@ -34,7 +34,7 @@
 </head>
 <!-- Navigation-->
 <nav
-	class="navbar navbar-expand-lg navbar-light fixed-top py-5 bg-white"
+	class="navbar navbar-expand-lg navbar-light fixed-top py-4 bg-white"
 	id="mainNav">
 	<div class="container px-4 px-lg-5">
 		<img src="https://www.handong.edu/site/handong/res/img/sub_802-02.png"

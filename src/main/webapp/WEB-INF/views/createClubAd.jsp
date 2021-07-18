@@ -28,38 +28,14 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css"
 	rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
+<jsp:include page="/WEB-INF/views/inc/header.jsp"/>
+
 <link href="./resources/css/styles.css" rel="stylesheet" />
 <link href="./resources/css/createClubAd.css" rel="stylesheet" />
 
 </head>
 <script src="https://kit.fontawesome.com/6333a60c65.js" crossorigin="anonymous"></script>
 <body id="page-top">
-	<!-- Navigation-->
-	<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3"
-		id="mainNav">
-		<div class="container px-4 px-lg-5">
-			<a class="navbar-brand" href="#page-top">한동대학교 총동아리연합회</a>
-			<button class="navbar-toggler navbar-toggler-right" type="button"
-				data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
-				aria-controls="navbarResponsive" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarResponsive">
-				<ul class="navbar-nav ms-auto my-2 my-lg-0">
-					<li class="nav-item"><a class="nav-link" href="#about">총동연
-							소개</a></li>
-					<li class="nav-item"><a class="nav-link" href="#services">동아리
-							소개</a></li>
-					<li class="nav-item"><a class="nav-link" href="#portfolio">시설
-							예약</a></li>
-					<li class="nav-item"><a class="nav-link" href="#contact">커뮤니티</a></li>
-					<li class="nav-item"><a class="nav-link" href="#contact">동아리
-							홍보</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
 	<!-- Masthead-->
 	<div class="container px-4 px-lg-5 h-100">
 		<div class="row gx-4 gx-lg-5 align-items-center justify-content-center text-center">

@@ -2,13 +2,14 @@
 	
 	.py-5 {
 	  padding-top: 1rem !important;
-	  padding-bottom: 0 !important;
+	  padding-bottom: 0.5rem !important;
 	}
 }
 @media (max-width: 1200px) {
 	
 	#mainNav .navbar-nav .nav-item .nav-link {
-		font-size: 0.7rem;
+		font-size: 0.5rem;
+		padding-right: 2rem;
 	}
 }
 
