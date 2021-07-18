@@ -33,6 +33,7 @@
 </head>
 <jsp:include page="/WEB-INF/views/inc/header.jsp" />
 <link href="./resources/css/home.css" rel="stylesheet" />
+<link href="./resources/css/community.css" rel="stylesheet" />
 
 <script src="https://kit.fontawesome.com/6333a60c65.js"
 	crossorigin="anonymous"></script>
@@ -44,7 +45,7 @@
 			<div class="col-lg-6 align-self-end">
 				<h3 class="font-weight-bold">공지사항</h3>
 			</div>
-			
+
 			<table class="table text-center">
 				<thead>
 					<tr>
@@ -61,20 +62,50 @@
 						<td class="text-start">[지원모집] 총동아리연합회 ’제자리’ 국장/국원 모집</td>
 						<td>관리자</td>
 						<td>2021.06.23</td>
-						<td>15</td>	
+						<td>15</td>
 					</tr>
 					<tr>
 						<th scope="row">2</th>
 						<td class="text-start">[행정국] 오피스아워 운영 시간 변경</td>
 						<td>관리자</td>
 						<td>2021.06.25</td>
-						<td>30</td>	
+						<td>30</td>
 					</tr>
 				</tbody>
 			</table>
 		</div>
+		<div class="row gx-4 gx-lg-5  align-items-center justify-content-center text-center">
+			<form accept-charset="UTF-8" name="searchForm">
+				<div class="rows">
+					<select class="form-select form-select-sm search-selector">
+						<option value="title" selected>제목</option>
+						<option value="content">내용</option>
+					</select>
+				</div>
+				<div class="rows">
+					<input class="form-control form-control-sm search-input"
+						type="text">
+					<button class="btn btn-primary search-btn" type="submit">검색</button>
+				</div>
+			</form>
+		</div>
 	</div>
-
+		<nav>
+			<ul
+				class="pagination align-items-center justify-content-center">
+				<li class="page-item"><a class="page-link" href="#"
+					aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+						<span class="sr-only">Previous</span>
+				</a></li>
+				<li class="page-item"><a class="page-link" href="#">1</a></li>
+				<li class="page-item"><a class="page-link" href="#">2</a></li>
+				<li class="page-item"><a class="page-link" href="#">3</a></li>
+				<li class="page-item"><a class="page-link" href="#"
+					aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
+						class="sr-only">Next</span>
+				</a></li>
+			</ul>
+		</nav>
 	<!-- Footer-->
 	<footer class="bg-light py-5">
 		<div class="container px-4 px-lg-5">
