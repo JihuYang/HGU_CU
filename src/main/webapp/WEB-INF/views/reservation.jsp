@@ -72,7 +72,7 @@
            
         	<div class="content">
         	
-            <h5>조회/예약하기</h5><br>
+            <div id="Head"><h3>조회/예약하기</h3></div><br><br>
             <div>
                 <button type="button" class="btn">CCR - 대형</button>
                 <button type="button" class="btn">CCR - 중대형</button>
@@ -82,7 +82,7 @@
                 <button type="button" class="btn">지하연습실 - 중형</button>
                 <button type="button" class="btn">지하연습실 - 소형</button>
                 <button type="button" class="btn">밴드연습실</button>
-            </div>
+            </div><br>
             <div class="section2">
                 <button type="button" class="btn_02" onclick="info()">이용안내</button>
                 <button type="button" class="btn_02" onclick="info(); location.href='./reserve'">예약하기</button>
@@ -125,7 +125,7 @@
                 <div>예약</div>
                 <div>지난예약</div>
             </div>
-            
+            <br>
             <div id='calendar'></div>
          <script type="text/javascript">
          document.addEventListener('DOMContentLoaded', function() {
