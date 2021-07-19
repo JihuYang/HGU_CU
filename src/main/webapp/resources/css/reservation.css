@@ -45,12 +45,14 @@ a:link ,a:visited{
 }
 
 .R_container .content{
-	background-color: #f0f0f0;
     margin-left:250px;
     padding:50px;
     padding-bottom:10px;
-    margin-top:0;
-    
+    margin-top:0; 
+}
+
+#Head{
+	text-align:center;
 }
 
 .section2{
@@ -83,11 +85,13 @@ a:link ,a:visited{
     box-shadow: none;
     border: 0;
     outline:0;
+    border: 1px solid gray;
 }
 
 table{
-    border: 1px solid black;
-    width:100%;
+    border: 1px solid gray;
+    width:98%;
+    margin:auto;
     text-align: center;
 }
 
@@ -95,7 +99,7 @@ td{
     padding:0 10px;
 }
 tr{
-    border: 1px solid black;
+    border: 1px solid gray;
 }
 
 .section3 div{
@@ -116,8 +120,13 @@ tr{
 #calendar{
 	position:relative !important;
 	margin:20px 0;
-	background-color:lightgray;
-	
+	background-color:#f0f0f0;
+	width:98%;
+	margin:auto;
+}
+
+.section3 div{
+	border: 1px solid gray;
 }
 
 @media(max-width: 990px){

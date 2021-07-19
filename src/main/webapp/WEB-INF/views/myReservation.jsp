@@ -59,7 +59,7 @@
            
         	<div class="content" style="height:100vh;">
         	
-            <h5>내 예약 목록</h5><br>
+            <div id="Head"><h3>내 예약 목록</h3></div><br><br>
             <div>
             	<input type="checkbox" class="btn-check" id="btn-check-2-ccr1" unchecked autocomplete="off">
 				<label class="btn btn-outline-secondary" for="btn-check-2-ccr1">CCR - 대형</label>
