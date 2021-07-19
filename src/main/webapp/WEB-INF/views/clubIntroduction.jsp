@@ -29,8 +29,8 @@
 	rel="stylesheet" />
 
 <!-- Core theme CSS (includes Bootstrap)-->
-<link href="../resources/css/styles.css" rel="stylesheet" />
-<link href="../resources/css/clubIntroduction.css" rel="stylesheet" />
+<link href="./resources/css/styles.css" rel="stylesheet" />
+<link href="./resources/css/clubIntroduction.css" rel="stylesheet" />
 
 
 </head>
