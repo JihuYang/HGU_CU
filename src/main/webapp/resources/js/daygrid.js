@@ -4,7 +4,7 @@
 
     var calendar = new FullCalendar.Calendar(calendarEl, {
       headerToolbar: {
-        left: 'prevYear,prev,next,nextYear today',
+        left: 'prev,next today',
         center: 'title',
         right: 'dayGridMonth,dayGridWeek,dayGridDay'
       },

@@ -78,6 +78,13 @@ a:link ,a:visited{
     border:3px solid lightgray !important;
 }
 
+.btn.focus, .btn:focus {
+    outline: 0;
+    box-shadow: none!important;
+    border-color:darkblue !important;
+}
+
+
 .btn_02{
     margin: 10px;
     background-color: #fff;
