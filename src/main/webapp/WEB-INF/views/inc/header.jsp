@@ -11,7 +11,7 @@
 <title>한동대학교 총동아리연합회</title>
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon"
-	href="./resources/assets/img/favicon.ico" />
+	href="./resources/assets/favicon.ico" />
 <!-- Bootstrap Icons-->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
@@ -51,12 +51,11 @@
 		</button>
 		<div class="collapse navbar-collapse justify-content-md-center"
 			id="navbarResponsive">
-			<ul class="navbar-nav ms-auto my-2 my-lg-0">
-				<li class="nav-item" onclick="location.href='./info'"><a class="nav-link">총동연 소개</a></li>
-				<li class="nav-item dropdown"><a
+			<ul class="navbar-nav my-2 my-lg-0">
+				<li class="nav-item" onclick="location.href='./info'"><a class="nav-link mx-2">총동연 소개</a></li>
+				<li class="nav-item mx-2 ropdown"><a
 					class="nav-link dropdown-toggle"
-					id="dropdown10" data-toggle="dropdown" aria-haspopup="true"
-					aria-expanded="false">동아리 소개</a>
+					data-toggle="dropdown" onclick = "location.href='./clubIntroduction'">동아리 소개</a>
 					<ul class="dropdown-menu">
 						<li><a class="dropdown-item" href="#">공연분과</a></li>
 						<li><a class="dropdown-item" href="#">봉사분과</a></li> 
@@ -67,12 +66,14 @@
 						<li><a class="dropdown-item" href="#">전시분과</a></li> 
 						<li><a class="dropdown-item" href="#">아기동아리</a></li> 
 					</ul></li>				
-				<li class="nav-item"><a class="nav-link" onclick="location.href='./reservation'">시설 예약</a></li>
-				<li class="nav-item"><a class="nav-link" onclick="location.href='./communityInfo'">커뮤니티</a></li>
+				<li class="nav-item"><a class="nav-link mx-2" onclick="location.href='./reservation'">시설 예약</a></li>
+				<li class="nav-item"><a class="nav-link mx-2" id="community" onclick="location.href='./communityInfo'">커뮤니티</a></li>
 
-				<li class="nav-item"><a class="nav-link" onclick="location.href='./clubAdvertise'">동아리 홍보</a></li>
-				<li class="nav-item ">
+				<li class="nav-item"><a class="nav-link mx-2" onclick="location.href='./clubAdvertise'">동아리 홍보</a></li>
+				<li class="nav-item button-padding">
 					<button type="button" class=" login-btn btn-outline-secondary ">회원가입</button>
+				</li>
+				<li class="nav-item ">
 					<button type="button" class=" login-btn btn-outline-secondary "
 						onclick="location.href='./login'">로그인</button>
 				</li>

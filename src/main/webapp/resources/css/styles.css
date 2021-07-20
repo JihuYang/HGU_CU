@@ -7043,7 +7043,6 @@ textarea.form-control-lg {
 .ms-5 {
   margin-left: 3rem !important;
 }
-
 .ms-auto {
   margin-left: auto !important;
 }
@@ -10935,7 +10934,8 @@ hr.divider-light {
   }
   #mainNav .navbar-nav .nav-item .nav-link {
     color: black;
-    padding-right: 3rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
   }
   #mainNav .navbar-nav .nav-item .nav-link:hover {
     color: #6c757d;
