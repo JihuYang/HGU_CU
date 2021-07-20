@@ -1,14 +1,34 @@
+@media (max-width: 576px) {
+	.respx-3 {
+		padding-right: 1rem !important;
+		padding-left: 1rem !important;
+	}
+	.respy-4 {
+		padding-top: 0.7rem !important;
+	  	padding-bottom: 0.7rem !important;
+	}
+	.navbar-brand {
+		font-size: 1rem !important;
+	}
+	#mainNav .logo {
+		width: 40px;
+	}
+	.navbar-toggler {
+		padding: 0.25rem 0.35rem;
+	}
+}
 @media (max-width: 992px) {
 	
-	.py-5 {
+	.respy-4 {
 	  padding-top: 1rem !important;
-	  padding-bottom: 0 !important;
+	  padding-bottom: 0.5rem !important;
 	}
 }
 @media (max-width: 1200px) {
 	
 	#mainNav .navbar-nav .nav-item .nav-link {
-		font-size: 0.7rem;
+		font-size: 0.5rem;
+		padding-right: 2rem;
 	}
 }
 
@@ -48,6 +68,3 @@
 	font-size: 0.5rem;
 	
 }
-	.py-5 {
-	  padding-bottom: 0 !important;
-	}
