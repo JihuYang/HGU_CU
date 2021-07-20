@@ -113,9 +113,10 @@ buildNumber.properties
 .mvn/wrapper/maven-wrapper.jar
 
 config.properties
-codingTogether/.classpath
-codingTogether/.project
-codingToegther/src/main/webapp/META-INF/maven/com.walab/coding/pom.properties
-codingToegther/src/main/webapp/META-INF/maven/com.walab/MANIFEST.MF
-
+HGU_CU/.classpath
+HGU_CU/.project
+HGU_CU/src/main/webapp/META-INF/maven/com.walab/coding/pom.properties
+HGU_CU/src/main/webapp/META-INF/maven/com.walab/MANIFEST.MF
+target/m2e-wtp/web-resources/META-INF/maven/com.walab/hgu/pom.properties
+target/m2e-wtp/web-resources/META-INF/MANIFEST.MF
 # End of https://www.toptal.com/developers/gitignore/api/macos,java-web,eclipse,maven
