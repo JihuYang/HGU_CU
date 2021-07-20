@@ -51,25 +51,25 @@
 					<tr>
 						<th scope="col" class="col-1 text-center">번호</th>
 						<th scope="col" class="col-6 text-center">제목</th>
-						<th scope="col" class="col-1 text-center">작성자</th>
-						<th scope="col" class="col-1 text-center">날짜</th>
-						<th scope="col" class="col-1 text-center">조회</th>
+						<th scope="col" class="col-1 text-center" id="writer">작성자</th>
+						<th scope="col" class="col-1 text-center" id="date">날짜</th>
+						<th scope="col" class="col-1 text-center" id="count">조회</th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
 						<th scope="row">1</th>
 						<td class="text-start">[지원모집] 총동아리연합회 ’제자리’ 국장/국원 모집</td>
-						<td>관리자</td>
-						<td>2021.06.23</td>
-						<td>15</td>
+						<td id="writer">관리자</td>
+						<td id="date">2021.06.23</td>
+						<td id="count">15</td>
 					</tr>
 					<tr>
 						<th scope="row">2</th>
 						<td class="text-start">[행정국] 오피스아워 운영 시간 변경</td>
-						<td>관리자</td>
-						<td>2021.06.25</td>
-						<td>30</td>
+						<td id="writer">관리자</td>
+						<td id="date">2021.06.25</td>
+						<td id="count">30</td>
 					</tr>
 				</tbody>
 			</table>

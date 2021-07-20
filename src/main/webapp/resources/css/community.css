@@ -63,3 +63,26 @@
 .page-item {
     margin: 0.2rem;
 }
+
+@media (max-width: 576px) {
+	#date {
+		display:none;
+	}
+	.search-input{ 
+		width: 75px !important;
+	}
+	
+}
+
+@media (max-width: 768px) {
+	#writer {
+		display:none;
+	}
+	#count {
+		display:none;
+	}
+}
+
+/* min-width: 768px
+min-width: 992px */
+

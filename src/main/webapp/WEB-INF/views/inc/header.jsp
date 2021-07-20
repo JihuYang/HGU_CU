@@ -34,9 +34,9 @@
 </head>
 <!-- Navigation-->
 <nav
-	class="navbar navbar-expand-lg navbar-light fixed-top py-4 bg-white"
+	class="navbar navbar-expand-lg navbar-light fixed-top py-4 bg-white respy-4"
 	id="mainNav">
-	<div class="container px-4 px-lg-5">
+	<div class="container px-4 px-lg-5 respx-3 ">
 		<img src="https://www.handong.edu/site/handong/res/img/sub_802-02.png"
 			class="logo"></img> <a class="navbar-brand"
 			onclick="location.href='./'">한동대학교 총동아리연합회<br>
