@@ -199,10 +199,10 @@ When it's NOT activated, the fc-button classes won't even be in the DOM.
 .fc .fc-button-primary {
     color: #fff;
     color: var(--fc-button-text-color, #fff);
-    background-color: #2C3E50;
-    background-color: var(--fc-button-bg-color, #2C3E50);
-    border-color: #2C3E50;
-    border-color: var(--fc-button-border-color, #2C3E50);
+    background-color: #00205B;
+    background-color: var(--fc-button-bg-color, #00205B);
+    border-color: #00205B;
+    border-color: var(--fc-button-border-color, #00205B);
   }
 .fc .fc-button-primary:hover {
     color: #fff;
@@ -282,7 +282,7 @@ When it's NOT activated, the fc-button classes won't even be in the DOM.
   }
 .fc .fc-toolbar {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
   }
 .fc .fc-toolbar.fc-header-toolbar {
@@ -570,10 +570,10 @@ A HORIZONTAL event
 */
 .fc-h-event { /* allowed to be top-level */
   display: block;
-  border: 1px solid #3788d8;
-  border: 1px solid var(--fc-event-border-color, #3788d8);
-  background-color: #3788d8;
-  background-color: var(--fc-event-bg-color, #3788d8)
+  border: 1px solid #326295;
+  border: 1px solid var(--fc-event-border-color, #326295);
+  background-color: #326295;
+  background-color: var(--fc-event-bg-color, #326295)
 
 }
 .fc-h-event .fc-event-main {
@@ -696,14 +696,18 @@ A HORIZONTAL event
 .fc-daygrid-day-frame:before, .fc-daygrid-day-events:before, .fc-daygrid-event-harness:before {
   content: "";
   clear: both;
-  display: table; }
+  display: table; 
+  
+  }
 .fc-daygrid-day-frame:after, .fc-daygrid-day-events:after, .fc-daygrid-event-harness:after {
   content: "";
   clear: both;
-  display: table; }
+  display: table; 
+  }
 .fc .fc-daygrid-body { /* a <div> that wraps the table */
     position: relative;
     z-index: 1; /* container inner z-index's because <tr>s can't do it */
+    color:black !important;
   }
 .fc .fc-daygrid-day.fc-day-today {
       background-color: rgba(255, 220, 40, 0.15);
@@ -712,6 +716,7 @@ A HORIZONTAL event
 .fc .fc-daygrid-day-frame {
     position: relative;
     min-height: 100%; /* seems to work better than `height` because sets height after rows/cells naturally do it */
+    color:black;
   }
 .fc {
 
@@ -726,7 +731,6 @@ A HORIZONTAL event
     opacity: 0.3;
   }
 .fc {
-
   /* day number (within cell top) */
 
 }
@@ -734,6 +738,7 @@ A HORIZONTAL event
     position: relative;
     z-index: 4;
     padding: 4px;
+    color:black;
   }
 .fc {
 
@@ -907,8 +912,8 @@ A HORIZONTAL event
   box-sizing: content-box;
   width: 0;
   height: 0;
-  border: 4px solid #3788d8;
-  border: calc(var(--fc-daygrid-event-dot-width, 8px) / 2) solid var(--fc-event-border-color, #3788d8);
+  border: 4px solid #326295;
+  border: calc(var(--fc-daygrid-event-dot-width, 8px) / 2) solid var(--fc-event-border-color, #326295);
   border-radius: 4px;
   border-radius: calc(var(--fc-daygrid-event-dot-width, 8px) / 2);
 }
@@ -927,10 +932,10 @@ A VERTICAL event
 
 .fc-v-event { /* allowed to be top-level */
   display: block;
-  border: 1px solid #3788d8;
-  border: 1px solid var(--fc-event-border-color, #3788d8);
+  border: 1px solid #326295;
+  border: 1px solid var(--fc-event-border-color, #326295);
   background-color: #3788d8;
-  background-color: var(--fc-event-bg-color, #3788d8)
+  background-color: var(--fc-event-bg-color, #326295)
 
 }
 
@@ -1376,10 +1381,12 @@ A VERTICAL event
   content: "";
   clear: both;
   display: table; /* clear floating */
+  
     }
 .fc-theme-standard .fc-list-day-cushion {
     background-color: rgba(208, 208, 208, 0.3);
     background-color: var(--fc-neutral-bg-color, rgba(208, 208, 208, 0.3));
+    
   }
 .fc-direction-ltr .fc-list-day-text,
 .fc-direction-rtl .fc-list-day-side-text {
@@ -1414,8 +1421,8 @@ A VERTICAL event
     box-sizing: content-box;
     width: 0;
     height: 0;
-    border: 5px solid #3788d8;
-    border: calc(var(--fc-list-event-dot-width, 10px) / 2) solid var(--fc-event-border-color, #3788d8);
+    border: 5px solid #326295;
+    border: calc(var(--fc-list-event-dot-width, 10px) / 2) solid var(--fc-event-border-color, #326295);
     border-radius: 5px;
     border-radius: calc(var(--fc-list-event-dot-width, 10px) / 2);
   }
@@ -1425,7 +1432,7 @@ A VERTICAL event
 
 }
 .fc .fc-list-event-title a {
-    color: inherit;
+    color: black;
     text-decoration: none;
   }
 .fc {
@@ -1439,7 +1446,8 @@ A VERTICAL event
 
 
 
-  .fc-theme-bootstrap a:not([href]) {
-    color: inherit; /* natural color for navlinks */
+.fc-theme-bootstrap a:not([href]) {
+    color: black; /* natural color for navlinks */
   }
+
 
