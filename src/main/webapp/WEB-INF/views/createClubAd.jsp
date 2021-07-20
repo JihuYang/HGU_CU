@@ -49,7 +49,7 @@
 						<p class="rows title-bold">제목</p><input class="form-control title-input" type="text">
 					</div>
 					<div class="mb-3">
-						<textarea class="form-control textarea" rows="15"></textarea>
+						<textarea class="form-control textarea" rows="13"></textarea>
 					</div>
 					<div class="mb-3">
   						<input class="form-control file" type="file" multiple>

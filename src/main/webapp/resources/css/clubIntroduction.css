@@ -42,11 +42,16 @@
 	position:relative;
 }
 
+.logo-display{
+	display:inline-flex !important;
+}
+
 .overlay-item {
        display: block;
        position: relative;
        overflow: hidden;
        text-align: center;
+       margin: 0.5em 0.5em !important;
 
     }
     .overlay-item .mask {
@@ -56,6 +61,7 @@
        top: 0;
        left: 0;
        height: 100%;
+       width: 100%;
     }
     .overlay-item img {
        display: block;
@@ -65,7 +71,7 @@
        x-margin-left: auto;
     }
     .overlay-item p {
-       text-align: center;
+       text-align: center !important;
     }
     .overlay-item a.btn {
       margin: 10px 0;

@@ -33,7 +33,7 @@
 	<link href="../resources/css/styles.css" rel="stylesheet" />
 	<link href="../resources/css/clubIntroductionDetail.css" rel="stylesheet" />
 
-</head>
+</head> 
 <script src="https://kit.fontawesome.com/6333a60c65.js" crossorigin="anonymous"></script>
 <body id="page-top">
 	<!-- Navigation-->
@@ -79,7 +79,7 @@
 					<p class="text-align">연락처: 010 – xxxx - xxxx</p>
 					<p class="text-align">인스타/페북: </p>
 					<p class="text-align">동방: 302호</p>
-					<p class="text-align content-size">동아리 소개글<br>🌿2021 피치파이프 리크루팅🍑🌿<br>YES, WE ARE PITCHPIPE!<br>_<br>안녕하세요, 21학번 🌊함께하는 세대🌊 여러분!<br>하나님을 찬양하는 아카펠라 동아리 피치파이프입니다🎶<br>저희와 함께 목소리로 하나님을 찬양할 21학번 방울이💧분들을 모집합니다💚<br>😌 나는 찬양하는 것을 좋아한다!<br>🤔 아카펠라를 잘 모르지만 한 번 도전해보고 싶다!<br>🤗 아카펠라로 아름다운 하모니를 만들어보고 싶다!<br>🥺 피치파이프라는 동아리에 너무너무 들어오고 싶다!<br><br>하신다면, 누구나 환영합니다 😊🙌🏻<br>함께 찬양하고, 함께 기뻐하고, 함께 추억을 만들어나갈 21학번 새내기🐥들의 많은 지원을 기다립니다✨</p>
+					<p class="text-align content-size">동아리 소개글<br>🌿2021 피치파이프 리크루팅🍑🌿<br>YES, WE ARE PITCHPIPE!<br>_<br>안녕하세요, 21학번 🌊함께하는 세대🌊 여러분!<br>하나님을 찬양하는 아카펠라 동아리 피치파이프입니다🎶<br>저희와 함께 목소리로 하나님을 찬양할 21학번 방울이💧분들을 모집합니다💚<br>😌 나는 찬양하는 것을 좋아한다!<br>🤔 아카펠라를 잘 모르지만 한 번 도전해보고 싶다!<br>🤗 아카펠라로 아름다운 하모니를 만들어보고 싶다!<br>🥺 피치파이프라는 동아리에 너무너무 들어오고 싶다!<br><br>하신다면, 누구나 환영합니다 😊🙌🏻<br>함께 찬양하고, 함께 기뻐하고, 함께 추억을 만들어나갈 21학번 새내기🐥들의 많은 지원을 기다립니다✨<br>동아리 소개글<br>🌿2021 피치파이프 리크루팅🍑🌿<br>YES, WE ARE PITCHPIPE!<br>_<br>안녕하세요, 21학번 🌊함께하는 세대🌊 여러분!<br>하나님을 찬양하는 아카펠라 동아리 피치파이프입니다🎶<br>저희와 함께 목소리로 하나님을 찬양할 21학번 방울이💧분들을 모집합니다💚<br>😌 나는 찬양하는 것을 좋아한다!<br>🤔 아카펠라를 잘 모르지만 한 번 도전해보고 싶다!<br>🤗 아카펠라로 아름다운 하모니를 만들어보고 싶다!<br>🥺 피치파이프라는 동아리에 너무너무 들어오고 싶다!<br><br>하신다면, 누구나 환영합니다 😊🙌🏻<br>함께 찬양하고, 함께 기뻐하고, 함께 추억을 만들어나갈 21학번 새내기🐥들의 많은 지원을 기다립니다✨</p>
 				</div>
 				<div>
 					<img alt="logo" class="logo" src="https://cdn.pixabay.com/photo/2021/07/13/11/34/cat-6463284_960_720.jpg">
