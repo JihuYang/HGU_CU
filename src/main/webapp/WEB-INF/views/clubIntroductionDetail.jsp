@@ -31,7 +31,7 @@
 	<link href="../resources/css/styles.css" rel="stylesheet" />
 	<link href="../resources/css/clubIntroductionDetail.css" rel="stylesheet" />
 
-</head>
+</head> 
 <script src="https://kit.fontawesome.com/6333a60c65.js" crossorigin="anonymous"></script>
 <body id="page-top">
 	<!-- Navigation-->

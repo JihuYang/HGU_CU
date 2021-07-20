@@ -13,7 +13,8 @@
 .content-size{
 	height: 300px !important;
     max-width: 480px;
-    overflow: scroll;
+    overflow: scroll !important;  
+    overflow-y: scroll !important;
     
 }
 .logo{
