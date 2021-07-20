@@ -36,32 +36,6 @@
 </head> 
 <script src="https://kit.fontawesome.com/6333a60c65.js" crossorigin="anonymous"></script>
 <body id="page-top">
-	<!-- Navigation-->
-	<nav class="navbar navbar-expand-lg navbar-light fixed-top py-3"
-		id="mainNav">
-		<div class="container px-4 px-lg-5">
-			<a class="navbar-brand" href="#page-top">한동대학교 총동아리연합회</a>
-			<button class="navbar-toggler navbar-toggler-right" type="button"
-				data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
-				aria-controls="navbarResponsive" aria-expanded="false"
-				aria-label="Toggle navigation">
-				<span class="navbar-toggler-icon"></span>
-			</button>
-			<div class="collapse navbar-collapse" id="navbarResponsive">
-				<ul class="navbar-nav ms-auto my-2 my-lg-0">
-					<li class="nav-item"><a class="nav-link" href="#about">총동연
-							소개</a></li>
-					<li class="nav-item"><a class="nav-link" href="#services">동아리
-							소개</a></li>
-					<li class="nav-item"><a class="nav-link" href="#portfolio">시설
-							예약</a></li>
-					<li class="nav-item"><a class="nav-link" href="#contact">커뮤니티</a></li>
-					<li class="nav-item"><a class="nav-link" href="#contact">동아리
-							홍보</a></li>
-				</ul>
-			</div>
-		</div>
-	</nav>
 	<!-- Masthead-->
 	<div class="container px-4 px-lg-5 h-100">
 		<div
@@ -87,14 +61,7 @@
 			</div>
 		</div>
 	</div>
-
-	<!-- Footer-->
-	<footer class="bg-light py-5">
-		<div class="container px-4 px-lg-5">
-			<div class="small text-center text-muted">Copyright &copy; 2021
-				- 한동대학교 총동아리연합회</div>
-		</div>
-	</footer>
+	<jsp:include page="/WEB-INF/views/inc/footer.jsp"/>
 	<!-- Bootstrap core JS-->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
