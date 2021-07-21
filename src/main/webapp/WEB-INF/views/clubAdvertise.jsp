@@ -37,53 +37,56 @@
 <script src="https://kit.fontawesome.com/6333a60c65.js" crossorigin="anonymous"></script>
 <body id="page-top">
 	<!-- Masthead-->
-	<div class="container px-4 px-lg-5 h-100">
+	<div class="container px-4 px-lg-5 h-auto">
 		<div class="row gx-4 gx-lg-5 align-items-center justify-content-center text-center">
 			<div class="col-lg-8 align-self-center">
 				<h3 class="font-weight-bold pt-title">동아리 홍보</h3>
 			</div>
 			<!-- 홍보글 테이블 -->
 			<div class="col-sm-10 align-self-baseline table-responsive table-height">
-				<table class="table table-hover">
+				<table class="table table-hover table-mb">
 					<tr>
-						<td><img src="https://cdn.pixabay.com/photo/2020/02/11/16/25/manarola-4840080_1280.jpg" class="img-thumbnail rounded img-size"></td>
+						<td><img src="https://cdn.pixabay.com/photo/2020/02/11/16/25/manarola-4840080_1280.jpg" class="img-thumbnail rounded club-img"></td>
 						<td>
-							<h5>♪2021년도 피치파이프 리쿠르팅♪(제목)</h5>
-							<p class="text-muted">안녕하세요, 하나님을 찬양하는 아카펠라 동아리 피치파이프입니다.
+							<h5>♪2021년도 피치파이프 리쿠르팅♪(제목) 더 길어지면 어떻게...?될까??</h5>
+							<p class="text-muted p-size">안녕하세요, 하나님을 찬양하는 아카펠라 동아리 피치파이프입니다.
 								이번학기 신입기수들을 모집하려고 합니다 ! (게시글 일부)</p>
 						</td>
 					</tr>
 					<tr>
-						<td><img src="https://cdn.pixabay.com/photo/2021/01/28/21/12/wave-5959087_1280.jpg" class="img-thumbnail rounded img-size"></td>
+						<td><img src="https://cdn.pixabay.com/photo/2021/01/28/21/12/wave-5959087_1280.jpg" class="img-thumbnail rounded club-img"></td>
 						<td>
 							<h5>(제목)</h5> 
-							<p class="text-muted">(게시글 일부)</p>
+							<p class="text-muted p-size">안녕하세요, 하나님을 찬양하는 아카펠라 동아리 피치파이프입니다.
+								이번학기 신입기수들을 모집하려고 합니다 ! (게시글 일부)</p>
 						</td> 
 					</tr>
 					<tr>
-						<td><img src="https://cdn.pixabay.com/photo/2021/01/28/21/12/wave-5959087_1280.jpg" class="img-thumbnail rounded img-size"></td>
+						<td><img src="https://cdn.pixabay.com/photo/2021/01/28/21/12/wave-5959087_1280.jpg" class="img-thumbnail rounded club-img"></td>
 						<td>
 							<h5>(제목)</h5> 
-							<p class="text-muted">(게시글 일부)</p>
+							<p class="text-muted p-size">(게시글 일부)</p>
 						</td> 
 					</tr>
 				</table>
 			</div>
-			<div class="col-sm-10 justify-content-md-center">
-				<form accept-charset="UTF-8" name="searchForm" action="<%=request.getContextPath()%>/clubAdvertise" method="POST" >
-					<div class="rows">
-						<!-- 검색 기능바 -->
-						<select class="form-select form-select-sm search-selector">
-							<option value="title" selected>제목</option>
-							<option value="clubName">동아리 이름</option>
-							<option value="content">내용</option>
-						</select>
-					</div>
-					<div class="rows mb-3">
-						<input class="form-control form-control-sm search-input" type="text">
-						<button class="btn btn-primary search-btn" type="submit">검색</button>
-					</div>
-				</form>
+			<div class="col-sm-10 justify-content-md-center position">
+				<div class="search-form">
+					<form accept-charset="UTF-8" class="form-form" name="searchForm" action="<%=request.getContextPath()%>/clubAdvertise" method="POST" >
+						<div class="rows">
+							<!-- 검색 기능바 -->
+							<select class="form-select form-select-sm search-selector">
+								<option value="title" selected>제목</option>
+								<option value="clubName">동아리 이름</option>
+								<option value="content">내용</option>
+							</select>
+						</div>
+						<div class="rows mb-3">
+							<input class="form-control form-control-sm search-input" type="text">
+							<button class="btn btn-primary search-btn" type="submit">검색</button>
+						</div>
+					</form>
+				</div>
 				<nav>
 					<ul
 						class="pagination align-items-center justify-content-center">
@@ -106,12 +109,7 @@
 	</div>
 
 	<!-- Footer-->
-	<footer class="bg-light py-5">
-		<div class="container px-4 px-lg-5">
-			<div class="small text-center text-muted">Copyright &copy; 2021
-				- 한동대학교 총동아리연합회</div>
-		</div>
-	</footer>
+	<jsp:include page="/WEB-INF/views/inc/footer.jsp"/>
 	<!-- Bootstrap core JS-->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>

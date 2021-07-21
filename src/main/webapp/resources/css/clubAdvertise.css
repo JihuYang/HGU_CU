@@ -1,18 +1,38 @@
+.h-auto{
+	height:auto;
+}
+
 .pt-title{
-	padding-top:100px !important;
-	padding-bottom:50px !important;
+	padding-top: 4em !important;
+    padding-bottom: 1em !important;
 }
 
 .table-height{
-	height:430px;
+	height:auto;
 }
 
-.img-size{
+.table-mb{
+	margin-bottom:0.5em;
+}
+
+.club-img{
 	height:120px !important;
+}
+
+.position{
+	position:relative;
 }
 
 .rows{
     display: inline-block;
+}
+
+.search-form{
+	margin-top:1em;
+}
+
+.form-form{
+	margin-bottom:0 !important;
 }
 
 .search-selector{
@@ -22,7 +42,7 @@
 }
 
 .search-btn{
-	margin-right: 10px !important;
+	margin-right: 90px !important;
 	margin-left: 10px !important;
 	background-color: #326295 !important;
 	border-color: #326295 !important;
@@ -60,5 +80,51 @@
 	height: 32px;
     padding-bottom: 2px;
     padding-top: 2px;
-    float:right;
+    position:absolute;
+    top:0;
+    right:0;
+    
+}
+
+@media (max-width: 1200px){
+	.club-img{
+		display:none;
+	}
+}
+
+@media (max-width: 768px){
+	.search-btn {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+    background-color: #326295 !important;
+    border-color: #326295 !important;
+    height: 32px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+	}
+	
+	.search-input {
+    margin-right: 10px !important;
+    margin-left: 10px !important;
+    display: inline-block !important;
+    width: 150px !important;
+	}
+	
+	.search-form {
+    margin-top: 3em;
+	}
+	
+	.search-selector{
+	width: 70px !important;
+	margin-left: 0 !important;
+	margin-right: 0 !important;
+	}
+	
+	h5{
+		font-size: 1.15em;
+	}
+	
+	.p-size{
+	font-size:0.9em;
+	}
 }
