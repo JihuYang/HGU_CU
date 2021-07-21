@@ -11,3 +11,19 @@ window.addEventListener('resize', detectMediaSize, false);
 
 // Initialization
 detectMediaSize();
+
+
+$(document).ready(function () 
+{
+    $('#dropdown-display').hover(function(){
+		$('#dropdown-content').slideDown();
+    }, function() {
+        $('#dropdown-content').slideUp();
+    });
+    $('#dropdown-display-community').hover(function(){
+		$('#dropdown-content-community').slideDown();
+    }, function() {
+        $('#dropdown-content-community').slideUp();
+    });    
+});
+
