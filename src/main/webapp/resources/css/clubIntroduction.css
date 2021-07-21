@@ -1,6 +1,6 @@
 .pt-title{
-	padding-top:100px !important;
-	padding-bottom:10px !important;
+	padding-top: 4em !important;
+    padding-bottom: 1em !important;
 }
 
 .search-bar{
@@ -10,6 +10,11 @@
 
 .mb-0{
 	margin-bottom:0px;
+}
+
+.pd-0{
+	padding-right:0;
+	padding-left:0;
 }
 
 .btn {
@@ -70,11 +75,10 @@
        x-margin-right: auto;
        x-margin-left: auto;
     }
-    .overlay-item p {
+    .overlay-item a {
        text-align: center !important;
-    }
-    .overlay-item a.btn {
-      margin: 10px 0;
+       color:black;
+       text-decoration:none;
     }
 
     .overlay-effect img {
@@ -101,36 +105,6 @@
        opacity: 0;
     }
     
-    .overlay-effect p {
-       -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
-       filter: alpha(opacity=0);
-       opacity: 0;
-       -webkit-transform: scale(0);
-       -moz-transform: scale(0);
-       -o-transform: scale(0);
-       -ms-transform: scale(0);
-       transform: scale(0);
-       -webkit-transition: all 0.5s linear;
-       -moz-transition: all 0.5s linear;
-       -o-transition: all 0.5s linear;
-       -ms-transition: all 0.5s linear;
-       transition: all 0.5s linear;
-    }
-    .overlay-effect a.btn {
-       -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
-       filter: alpha(opacity=0);
-       opacity: 0;
-       -webkit-transform: scale(0);
-       -moz-transform: scale(0);
-       -o-transform: scale(0);
-       -ms-transform: scale(0);
-       transform: scale(0);
-       -webkit-transition: all 0.5s linear;
-       -moz-transition: all 0.5s linear;
-       -o-transition: all 0.5s linear;
-       -ms-transition: all 0.5s linear;
-       transition: all 0.5s linear;
-    }
     .overlay-effect:hover img {
        -webkit-transform: scale(10);
        -moz-transform: scale(10);
@@ -146,13 +120,18 @@
        filter: alpha(opacity=100);
        opacity: 1;
     }
-    .overlay-effect:hover p,.overlay-effect:hover a.btn {
-       -webkit-transform: scale(1);
-       -moz-transform: scale(1);
-       -o-transform: scale(1);
-       -ms-transform: scale(1);
-       transform: scale(1);
-       -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=100)";
-       filter: alpha(opacity=100);
-       opacity: 1;
-    }
+
+    @media screen and (max-width: 992px) and (min-width: 576px) { 	
+	.pd-0{
+	padding-right:0;
+	padding-left:0;
+	width:auto;
+	}
+}
+
+@media screen and (max-width: 992px) { 	
+	.overlay-item a{
+	font-size : 1.5em !important; 
+	} 
+	
+}

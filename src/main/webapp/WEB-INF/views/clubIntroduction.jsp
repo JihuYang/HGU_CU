@@ -39,7 +39,7 @@
 	crossorigin="anonymous"></script>
 <body id="page-top">
 	<!-- Masthead-->
-	<div class="container px-4 px-lg-5 h-100">
+	<div class="container px-4 px-lg-5 h-auto">
 		<div
 			class="row gx-4 gx-lg-5 align-items-center justify-content-center text-center">
 			<div class="col-lg-8 align-self-center">
@@ -60,76 +60,61 @@
 				</div>
 				<!-- 동아리 내 -->
 				<div class="row logo-display">
-					<div class="col-xs-6 col-sm-4">
+					<div class="col-xs-6 col-sm-4 pd-0">
 						<div class="overlay-item overlay-effect">
 							<img
 								src="https://cdn.pixabay.com/photo/2021/07/09/02/29/family-6398107_960_720.jpg"
 								alt="" />
-							<div class="mask">
-								<p>
+							<a href="./clubIntroduction/detail" class="mask">	
 									[제자리]<br>창립연도: 1995.05.12<br>대표자명: 방승민<br>연락처:
 									010 – xxxx - xxxx<br>인스타/페북: <br>동방: 302호
-								</p>
-								<a href="./clubIntroduction/detail" class="btn btn-default">Read More</a>
-							</div>
+							</a>
 						</div>
 					</div>
-					<div class="col-xs-6 col-sm-4">
+					<div class="col-xs-6 col-sm-4 pd-0">
 						<div class="overlay-item overlay-effect">
 							<img
 								src="https://cdn.pixabay.com/photo/2020/10/07/18/40/dog-5635960_960_720.jpg"
 								alt="" />
-							<div class="mask">
-								<p>
-									[피치파이프 ]<br>창립연도: 1995.05.12<br>대표자명: 방승민<br>연락처:
-									010 – xxxx - xxxx<br>인스타/페북: <br>동방: 302호
-								</p>
-								<a href="./clubIntroduction/detail" class="btn btn-default">Read More</a>
-							</div>
+							<a href="./clubIntroduction/detail" class="mask">		
+								[피치파이프 ]<br>창립연도: 1995.05.12<br>대표자명: 방승민<br>연락처:
+								010 – xxxx - xxxx<br>인스타/페북: <br>동방: 302호
+							</a>
 						</div>
 					</div>
-					<div class="col-xs-6 col-sm-4">
+					<div class="col-xs-6 col-sm-4 pd-0">
 						<div class="overlay-item overlay-effect">
 							<img
 								src="https://cdn.pixabay.com/photo/2020/10/12/22/15/glass-5650335_960_720.jpg"
 								alt="" />
-							<div class="mask">
-								<p>
+							<a href="./clubIntroduction/detail" class="mask">
 									[하향 ]<br>창립연도: 1995.05.12<br>대표자명: 방승민<br>연락처:
 									010 – xxxx - xxxx<br>인스타/페북: <br>동방: 302호
-								</p>
-								<a href="./clubIntroduction/detail" class="btn btn-default">Read More</a>
-							</div>
+							</a>
 						</div>
 					</div>
 				</div>
 				<div class="row logo-display">
-					<div class="col-xs-6 col-sm-4">
+					<div class="col-xs-6 col-sm-4 pd-0">
 						<div class="overlay-item overlay-effect">
 							<img
 								src="https://cdn.pixabay.com/photo/2021/07/13/11/34/cat-6463284_960_720.jpg"
 								alt="" />
-							<div class="mask">
-								<p>
+							<a href="./clubIntroduction/detail" class="mask">
 									[MIC]<br>창립연도: 1995.05.12<br>대표자명: 방승민<br>연락처:
 									010 – xxxx - xxxx<br>인스타/페북: <br>동방: 302호
-								</p>
-								<a href="./clubIntroduction/detail" class="btn btn-default">Read More</a>
-							</div>
+							</a>
 						</div>
 					</div>
-					<div class="col-xs-6 col-sm-4">
+					<div class="col-xs-6 col-sm-4 pd-0">
 						<div class="overlay-item overlay-effect">
 							<img
 								src="https://cdn.pixabay.com/photo/2021/07/09/02/29/family-6398107_960_720.jpg"
 								alt="" />
-							<div class="mask">
-								<p>
+							<a href="./clubIntroduction/detail" class="mask">
 									[제자리]<br>창립연도: 1995.05.12<br>대표자명: 방승민<br>연락처:
 									010 – xxxx - xxxx<br>인스타/페북: <br>동방: 302호
-								</p>
-								<a href="./clubIntroduction/detail" class="btn btn-default">Read More</a>
-							</div>
+							</a>
 						</div>
 					</div>
 				</div>
@@ -137,12 +122,7 @@
 		</div>	
 	</div>
 	<!-- Footer-->
-	<footer class="bg-light py-5">
-		<div class="container px-4 px-lg-5">
-			<div class="small text-center text-muted">Copyright &copy; 2021
-				- 한동대학교 총동아리연합회</div>
-		</div>
-	</footer>
+	<jsp:include page="/WEB-INF/views/inc/footer.jsp"/>
 	<!-- Bootstrap core JS-->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
