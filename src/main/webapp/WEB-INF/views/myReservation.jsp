@@ -44,12 +44,12 @@
 	<!-- Masthead-->
         <div class="R_container h-100">
       		<div class="side_bar">	
-       			<div class="reservation" style="background-color:gray"><a href="./reservation">
+       			<div class="reservation" style="background-color:#D0D0CE"><a href="./reservation">
                 	<div>
                 		<i class="fa fa-home fa-3x white" aria-hidden="true"></i><br><div class="side_text">조회 및 예약하기</div>
                 	</div></a>
                </div>   
-	           <div class="reservation" style="background-color:black"><a href="./myReservation">
+	           <div class="reservation" style="background-color:#212721"><a href="./myReservation">
 	           	<div>
 	           	<i class="fa fa-user fa-3x" aria-hidden="true"></i><br><div class="side_text">내 예약</div>
 	           	</div></a>

@@ -33,20 +33,7 @@
 <link href="./resources/css/home.css" rel="stylesheet" />
 <link href="./resources/css/reservation.css" rel="stylesheet" />
 <link href="./resources/css/calendar.css" rel="stylesheet"/>
-
-
-
-<!-- calendar를 위한 라이브러리 -->
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src='https://fullcalendar.io/releases/fullcalendar/3.9.0/lib/moment.min.js'></script>
-<link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.css'rel='stylesheet'/>
-<link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.print.css' rel='stylesheet' media='print'/>
-<script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.min.js'></script>
-
-<!-- calendar2를 위한 라이브러리 -->
-<link href="./resources/css/fullcalendar.css" rel="stylesheet"/>
-<script src="./resources/js/fullcalendar.js"></script>
-<script src="./resources/js/daygrid.js"></script>
+<link rel='stylesheet' href='https://fullcalendar.io/releases/fullcalendar/3.9.0/fullcalendar.min.css'>
 
 </head>
 <jsp:include page="/WEB-INF/views/inc/header.jsp"/>
@@ -57,12 +44,12 @@
 	<!-- Masthead-->
         <div class="R_container h-100">
       		<div class="side_bar">	
-       			<div class="reservation" style="background-color:black"><a href="./reservation">
+       			<div class="reservation" style="background-color:#212721"><a href="./reservation">
                 	<div>
                 		<i class="fa fa-home fa-3x white" aria-hidden="true"></i><br><div class="side_text">조회 및 예약하기</div>
                 	</div></a>
                </div>   
-	           <div class="reservation" style="background-color:gray"><a href="./myReservation">
+	           <div class="reservation" style="background-color:#D0D0CE"><a href="./myReservation">
 	           	<div>
 	           	<i class="fa fa-user fa-3x" aria-hidden="true"></i><br><div class="side_text">내 예약</div>
 	           	</div></a>
@@ -126,24 +113,31 @@
                 <div>지난예약</div>
             </div>
             <br>
-            <div id='calendar'></div>
-         <script type="text/javascript">
-         document.addEventListener('DOMContentLoaded', function() {
-      		var calendarEl = document.getElementById('calendar');
-      		
-      		var calendar = new FullCalendar.Calendar(calendarEl, {
-      		plugins: [ 'interaction', 'dayGrid', 'timeGrid' ],
-      		defaultView: 'dayGridMonth', 
-      		defaultDate: new Date(), 
-      		header: { 
-      		left: 'prev,next today',
-      		center: 'title', 
-      		right: '' 
-      		}, 
-      		}); 
-      		 calendar.render(); });
          
-         </script>
+        <div id='calendar'></div>
+		<!-- partial -->
+		<script src='https://fullcalendar.io/releases/fullcalendar/3.9.0/lib/moment.min.js'></script>
+		<script src='https://fullcalendar.io/releases/fullcalendar/3.9.0/lib/jquery.min.js'></script>
+		<script src='https://fullcalendar.io/releases/fullcalendar/3.9.0/fullcalendar.min.js'></script>
+		<script type="text/javascript">
+		$(function() {
+			  $('#calendar').fullCalendar({
+			    selectable: true,
+			    longPressDelay: 0,
+			    header: {
+			      left: 'prev,next today',
+			      center: 'title',
+			      right: 'month,agendaWeek,agendaDay'
+			    },
+			    dayClick: function(date) {
+			    },
+			    select: function(startDate, endDate) {
+			    }
+			  });
+
+			});
+
+		</script>
             
          </div>
 	
@@ -161,11 +155,6 @@
          </div>
             
             
-            
-
-		
-	
-
 	<!-- Bootstrap core JS-->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
