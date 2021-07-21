@@ -134,13 +134,19 @@ tr{
 .table{
 	margin:10px 0;
 }
-
+/*
 #calendar{
 	position:relative !important;
 	margin:20px 0;
 	background-color:#f0f0f0;
 	width:98%;
 	margin:auto;
+}
+*/
+
+#calendar{
+	max-width: 900px;
+  	margin: 40px auto;
 }
 
 #calendar a{
@@ -181,6 +187,24 @@ tr{
 	.R_container{
 		display:felx;
 		margin-top:100px;
+	}
+}
+
+
+/* 모바일 */
+@media (max-width: 767px){
+	
+	div.content{
+		padding:4em 1em !important;
+	}
+	
+	td{
+		font-size:2px !important;
+		padding:7px 2px !important;
+	}
+	
+	btn{
+	
 	}
 }
 
