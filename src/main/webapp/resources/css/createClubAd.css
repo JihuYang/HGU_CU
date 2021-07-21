@@ -1,6 +1,6 @@
 .pt-title{
-	padding-top:100px !important;
-	padding-bottom:50px !important;
+	padding-top: 4em !important;
+    padding-bottom: 1em !important;
 	margin-bottom: 0px;
 }
 
@@ -59,4 +59,24 @@
     padding-right: 0px;
     height: 30px;
     font-size: 15px;
+}
+
+@media screen and (max-width: 768px) { 
+	.title-bold{
+		font-size: 15px !important;
+		margin-bottom: 0;
+	}
+	.title-input{
+		margin-right:10px !important;
+		margin-left: 10px !important;
+		display:inline-block !important;
+		width: auto !important;
+		box-sizing: border-box;
+	  	border: none;
+	  	border-bottom: 1px solid gray;
+	  	background-color:white;
+	  	border-radius:0px;
+	  	padding-bottom:0px;
+	  	margin-bottom: 7px;
+	}
 }

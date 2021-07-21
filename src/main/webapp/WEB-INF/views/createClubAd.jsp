@@ -49,7 +49,7 @@
 						<p class="rows title-bold">제목</p><input class="form-control title-input" type="text">
 					</div>
 					<div class="mb-3">
-						<textarea class="form-control textarea" rows="13"></textarea>
+						<textarea class="form-control textarea justify-content-center" rows="13"></textarea>
 					</div>
 					<div class="mb-3">
   						<input class="form-control file" type="file" multiple>
@@ -64,12 +64,7 @@
 	</div>
 
 	<!-- Footer-->
-	<footer class="bg-light py-5">
-		<div class="container px-4 px-lg-5">
-			<div class="small text-center text-muted">Copyright &copy; 2021
-				- 한동대학교 총동아리연합회</div>
-		</div>
-	</footer>
+	<jsp:include page="/WEB-INF/views/inc/footer.jsp"/>
 	<!-- Bootstrap core JS-->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
