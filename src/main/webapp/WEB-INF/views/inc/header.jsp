@@ -29,6 +29,8 @@
 	rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="./resources/css/styles.css" rel="stylesheet" />
+<link href="../resources/css/styles.css" rel="stylesheet" />
+
 <link href="../resources/css/header.css" rel="stylesheet" />
 
 <link href="./resources/css/header.css" rel="stylesheet" />
@@ -36,6 +38,7 @@
 <script src="https://code.jquery.com/jquery-1.11.3.js" type="text/javascript"></script>
 
 <script src="./resources/js/header.js"></script>
+<script src="../resources/js/header.js"></script>
 
 </head>
 <!-- Navigation-->
