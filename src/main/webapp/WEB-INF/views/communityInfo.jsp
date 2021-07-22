@@ -57,20 +57,23 @@
 					</tr>
 				</thead>
 				<tbody>
+					<c:forEach items="${communityInfoList}" var="communityInfoList">			
 					<tr>
 						<th scope="row">1</th>
-						<td class="text-start">[지원모집] 총동아리연합회 ’제자리’ 국장/국원 모집</td>
-						<td id="writer">관리자</td>
-						<td id="date">2021.06.23</td>
-						<td id="count">15</td>
+						<td class="text-start">${communityInfoList.title}</td>
+						<td id="writer">${communityInfoList.userId}</td>
+						<td id="date">${communityInfoList.regdate}</td>
+						<td id="count">${communityInfoList.viewCount}</td>
 					</tr>
+					</c:forEach>
+<!-- 					
 					<tr>
 						<th scope="row">2</th>
 						<td class="text-start">[행정국] 오피스아워 운영 시간 변경</td>
 						<td id="writer">관리자</td>
 						<td id="date">2021.06.25</td>
 						<td id="count">30</td>
-					</tr>
+					</tr> -->
 				</tbody>
 			</table>
 		</div>
