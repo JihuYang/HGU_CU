@@ -63,7 +63,9 @@
 .page-item {
     margin: 0.2rem;
 }
-
+.nav-link #community {
+    border-bottom: 4px solid black;
+}
 @media (max-width: 576px) {
 	#date {
 		display:none;

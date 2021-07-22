@@ -8,11 +8,11 @@
 }
 
 .reservation{
-	color:black;
+	color:#212721;
 }
 
 .reservation div:hover{
-	background-color:black;
+	background-color:#212721;
 }
 
 a:link ,a:visited{
@@ -37,6 +37,7 @@ a:link ,a:visited{
     font-size: small;
     text-align: center;
 }
+
 
 .R_container{
 	width:100%;
@@ -69,34 +70,41 @@ a:link ,a:visited{
 .section3 div{
     width: 100%;
     margin: 10px;
+	border:none !important;
+    background-color: #D0D0CE !important; 
+    border-radius:5px;
+}
+
+.section3 div:nth-child(1){
+	background-color: #326295 !important;
+	color:white;
 }
 
 .btn{
     border-radius: 25px !important;
     margin: 2px;
-    background-color: #fff;
-    border:3px solid lightgray !important;
+    border:3px solid#D0D0CE !important;
 }
 
 .btn.focus, .btn:focus {
     outline: 0;
     box-shadow: none!important;
-    border-color:darkblue !important;
+    border-color:#326295 !important;
 }
 
 
 .btn_02{
     margin: 10px;
-    background-color: #fff;
+    background-color: #D0D0CE;
     outline:none;
     box-shadow: none;
     border: 0;
     outline:0;
-    border: 1px solid gray;
+    border-radius:25px;
 }
 
 table{
-    border: 1px solid gray;
+    border: 1px solid #f0f0f0;
     width:98%;
     margin:auto;
     text-align: center;
@@ -104,13 +112,16 @@ table{
 
 td{
     padding:0 10px;
+    padding:10px 0;
 }
 tr{
-    border: 1px solid gray;
+    border: 1px solid gray !important;
+    
 }
 
 .section3 div{
     background-color: white;
+    border-radius:25px;
 }
 
 #selectbox{
@@ -123,7 +134,7 @@ tr{
 .table{
 	margin:10px 0;
 }
-
+/*
 #calendar{
 	position:relative !important;
 	margin:20px 0;
@@ -131,12 +142,22 @@ tr{
 	width:98%;
 	margin:auto;
 }
+*/
+
+#calendar{
+	max-width: 900px;
+  	margin: 40px auto;
+}
+
+#calendar a{
+	color:black !important;
+}
 
 .section3 div{
 	border: 1px solid gray;
 }
 
-@media(max-width: 990px){
+@media(max-width: 992px){
 	#top_margin{
 		display:none;
 	}
@@ -166,6 +187,24 @@ tr{
 	.R_container{
 		display:felx;
 		margin-top:100px;
+	}
+}
+
+
+/* 모바일 */
+@media (max-width: 767px){
+	
+	div.content{
+		padding:4em 1em !important;
+	}
+	
+	td{
+		font-size:2px !important;
+		padding:7px 2px !important;
+	}
+	
+	btn{
+	
 	}
 }
 
