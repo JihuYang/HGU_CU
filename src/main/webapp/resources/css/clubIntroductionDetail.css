@@ -1,6 +1,10 @@
+.h-auto{
+	height:auto;
+}
+
 .pt-title{
-	padding-top:100px !important;
-	padding-bottom:10px !important;
+	padding-top: 4em !important;
+    padding-bottom: 1em !important;
 }
 .align{
 	float:left !important;
@@ -11,10 +15,7 @@
 }
 
 .content-size{
-	height: 300px !important;
     max-width: 480px;
-    overflow: scroll !important;  
-    overflow-y: scroll !important;
     
 }
 .logo{
@@ -22,10 +23,100 @@
 	width: 380px;
 }
 
+.carousel-inner {
+    position: relative;
+    width: 380px;
+    overflow: hidden;
+    
+}
+
 @media screen and (max-width: 1199px) { 
 	.logo{
 		width: 100%;
 		float:none;
 	}
+	.carousel-inner {
+	    position: relative;
+	    width: 100%;
+	    overflow: hidden;
+	}
+	
+	.carousel-control-prev{
+    position: relative;
+    top: -13em;
+    bottom: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15%;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+    background: none;
+    border: 0;
+    opacity: 0.5;
+    transition: opacity 0.15s ease;
+    height: 100px;
+}
+	.carousel-control-next {
+    position: relative;
+    float: right;
+    top: -19em;
+    bottom: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15%;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+    background: none;
+    border: 0;
+    opacity: 0.5;
+    transition: opacity 0.15s ease;
+    height: 100px;
+}
+}
+
+@media screen and (max-width: 375px) { 
+	.carousel-control-prev{
+    position: relative;
+    top: -9em;
+    bottom: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15%;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+    background: none;
+    border: 0;
+    opacity: 0.5;
+    transition: opacity 0.15s ease;
+    height: 100px;
+}
+	.carousel-control-next {
+    position: relative;
+    float: right;
+    top: -15em;
+    bottom: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15%;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+    background: none;
+    border: 0;
+    opacity: 0.5;
+    transition: opacity 0.15s ease;
+    height: 100px;
+}
 	
 }
