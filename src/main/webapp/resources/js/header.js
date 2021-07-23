@@ -16,14 +16,14 @@ detectMediaSize();
 $(document).ready(function () 
 {
     $('#dropdown-display').hover(function(){
-		$('#dropdown-content').slideDown();
+		$('#dropdown-content').show();
     }, function() {
-        $('#dropdown-content').slideUp();
+        $('#dropdown-content').hide();
     });
     $('#dropdown-display-community').hover(function(){
-		$('#dropdown-content-community').slideDown();
+		$('#dropdown-content-community').show();
     }, function() {
-        $('#dropdown-content-community').slideUp();
+        $('#dropdown-content-community').hide();
     });    
 });
 

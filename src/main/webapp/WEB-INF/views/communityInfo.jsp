@@ -34,7 +34,7 @@
 <jsp:include page="/WEB-INF/views/inc/header.jsp" />
 <link href="./resources/css/home.css" rel="stylesheet" />
 <link href="./resources/css/community.css" rel="stylesheet" />
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <script src="https://kit.fontawesome.com/6333a60c65.js"
 	crossorigin="anonymous"></script>
 <body id="page-top">
@@ -57,13 +57,14 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${communityInfoList}" var="communityInfoList">			
+					<c:forEach items="${communityInfoList}" var="communityInfo" varStatus="status">		
+					<fmt:formatDate value="${communityInfo.regdate}" var="formattedRegDate" type="date" pattern="yyyy-MM-dd" />	
 					<tr>
-						<th scope="row">1</th>
-						<td class="text-start">${communityInfoList.title}</td>
-						<td id="writer">${communityInfoList.userId}</td>
-						<td id="date">${communityInfoList.regdate}</td>
-						<td id="count">${communityInfoList.viewCount}</td>
+						<th scope="row">${status.count}</th>
+						<td class="text-start">${communityInfo.title}</td>
+						<td id="writer">${communityInfo.writer}</td>
+						<td id="date">${formattedRegDate}</td>
+						<td id="count">${communityInfo.viewCount}</td>
 					</tr>
 					</c:forEach>
 <!-- 					

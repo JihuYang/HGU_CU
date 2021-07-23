@@ -34,7 +34,7 @@
 <jsp:include page="/WEB-INF/views/inc/header.jsp" />
 <link href="./resources/css/home.css" rel="stylesheet" />
 <link href="./resources/css/community.css" rel="stylesheet" />
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <script src="https://kit.fontawesome.com/6333a60c65.js"
 	crossorigin="anonymous"></script>
 <body id="page-top">
@@ -57,26 +57,24 @@
 					</tr>
 				</thead>
 				<tbody>
-					<tr>
-						<th scope="row">1</th>
-						<td class="text-start">2021년도 1학기 총동연 집행부 예산안</td>
-						<td id="writer">관리자</td>
-						<td id="date">2021.06.23</td>
-						<td id="count">15</td>
-					</tr>
-					<tr>
-						<th scope="row">2</th>
-						<td class="text-start">2021년도 1학기 총동연 집행부 결산안</td>
-						<td id="writer">관리자</td>
-						<td id="date">2021.06.25</td>
-						<td id="count">30</td>
-					</tr>
+					<c:forEach items="${communityMaterialList}" var="communityMaterial"
+						varStatus="status">
+						<fmt:formatDate value="${communityMaterial.regdate}" var="formattedRegDate" type="date" pattern="yyyy-MM-dd" />	
+						<tr>
+							<th scope="row">${status.count}</th>
+							<td class="text-start">${communityMaterial.title}</td>
+							<td id="writer">${communityMaterial.writer}</td>
+							<td id="date">${formattedRegDate}</td>
+							<td id="count">${communityMaterial.viewCount}</td>
+						</tr>
+					</c:forEach>
 				</tbody>
 			</table>
 		</div>
 		<div
 			class="row gx-4 gx-lg-5  align-items-center justify-content-center text-center">
-			<form accept-charset="UTF-8" name="searchForm" class="align-items-center justify-content-center">
+			<form accept-charset="UTF-8" name="searchForm"
+				class="align-items-center justify-content-center">
 				<div class="rows">
 					<select class="form-select form-select-sm search-selector">
 						<option value="title" selected>제목</option>
@@ -91,8 +89,7 @@
 			</form>
 		</div>
 		<nav>
-			<ul
-				class="pagination align-items-center justify-content-center">
+			<ul class="pagination align-items-center justify-content-center">
 				<li class="page-item"><a class="page-link" href="#"
 					aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
 						<span class="sr-only">Previous</span>

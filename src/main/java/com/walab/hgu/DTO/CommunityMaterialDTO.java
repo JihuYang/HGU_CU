@@ -2,7 +2,7 @@ package com.walab.hgu.DTO;
 
 import java.util.Date;
 
-public class CommunityInfoDTO {
+public class CommunityMaterialDTO {
 
 	private int id;
 	private int userId;
@@ -50,7 +50,7 @@ public class CommunityInfoDTO {
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
-	
+
 	public int getViewCount() {
 		return viewCount;
 	}
