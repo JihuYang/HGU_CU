@@ -6,6 +6,7 @@ public class CommunityInfoDTO {
 
 	private int id;
 	private int userId;
+	private String writer;
 	private String title;
 	private Date regdate;
 	private int viewCount;
@@ -22,10 +23,18 @@ public class CommunityInfoDTO {
 		return userId;
 	}
 
-	public void setUserId(int userId) {
+	public void setName(int userId) {
 		this.userId = userId;
 	}
+	
+	public String getWriter() {
+		return writer;
+	}
 
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
+	
 	public String getTitle() {
 		return title;
 	}
@@ -52,8 +61,8 @@ public class CommunityInfoDTO {
 	
 	@Override
 	public String toString() {
-		return "CommunityInfoDTO [id=" + id + ", userId=" + userId + ", title=" + title + ", regdate=" + regdate
-				+ ", viewCount=" + viewCount + "]";
+		return "CommunityInfoDTO [id=" + id + ", userId=" + userId + ", writer=" + writer + ", title=" + title
+				+ ", regdate=" + regdate + ", viewCount=" + viewCount + "]";
 	}
 	
 }

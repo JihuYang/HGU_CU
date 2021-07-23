@@ -57,11 +57,11 @@
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${communityInfoList}" var="communityInfoList">			
+					<c:forEach items="${communityInfoList}" var="communityInfoList" varStatus="status">			
 					<tr>
-						<th scope="row">1</th>
+						<th scope="row">${status.count}</th>
 						<td class="text-start">${communityInfoList.title}</td>
-						<td id="writer">${communityInfoList.userId}</td>
+						<td id="writer">${communityInfoList.writer}</td>
 						<td id="date">${communityInfoList.regdate}</td>
 						<td id="count">${communityInfoList.viewCount}</td>
 					</tr>
