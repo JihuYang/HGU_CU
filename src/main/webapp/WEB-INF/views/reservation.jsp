@@ -61,15 +61,12 @@
         	
             <div id="Head"><h3>조회/예약하기</h3></div><br><br>
             <div>
-                <button type="button" class="btn">CCR - 대형</button>
-                <button type="button" class="btn">CCR - 중대형</button>
-                <button type="button" class="btn">CCR - 중형</button>
-                <button type="button" class="btn">CCR - 소형</button>
-                <button type="button" class="btn">지하연습실 - 대형</button>
-                <button type="button" class="btn">지하연습실 - 중형</button>
-                <button type="button" class="btn">지하연습실 - 소형</button>
-                <button type="button" class="btn">밴드연습실</button>
-            </div><br>
+            
+            <c:forEach items="${spaceList}" var="spaceList">			
+				<input type="button" class="btn" name="btn_name" value="${spaceList.name}" onclick="btn_listener(event)"/>
+			</c:forEach>
+			
+			<br>
             <div class="section2">
                 <button type="button" class="btn_02" onclick="info()">이용안내</button>
                 <button type="button" class="btn_02" onclick="info(); location.href='./reserve'">예약하기</button>
@@ -91,28 +88,47 @@
       						+"\n3. 위 주의사항들을 어겼을시 개인 혹은 소속단체에게 학칙이 정하는 선에서 불이익을 드릴 수 있습니다."
                   );
   				}
+
+  
+  				function btn_listener(event){
+	  				var name=event.target.value;
+	  				
+	  				<c:forEach items="${spaceList}" var="space" >
+	  					if("${space.name}"==name){
+		  					document.getElementById("space_name").innerHTML="${space.name}";
+			                document.getElementById("space_capacity").innerHTML="${space.capacity}";
+			                document.getElementById("sapce_description").innerHTML="${space.description}";
+	  					}
+	  				</c:forEach>	          
+			    }
+  			
   			</script>
-
+  			  
+		 
             <table>
-                <tr>
-                    <td>공간</td>
-                    <td>CCR-대형</td>
-                </tr>
-                <tr>
-                    <td>수용 가능 인원</td>
-                    <td>1500명</td>
-                </tr>
-                <tr>
-                    <td>추가 설명</td>
-                    <td>대형 CCR 입니다</td>
-                </tr>
-            </table>
-
+	                <tr>
+	                    <td>공간</td>
+	                    <td id="space_name"></td>
+	                </tr>
+	                <tr>
+	                    <td>수용 가능 인원</td>
+	                    <td id="space_capacity"></td>
+	                </tr>
+	                <tr>
+	                    <td>추가 설명</td>
+	                    <td id="sapce_description"></td>
+	                </tr>
+	            </table>
+        
+ 
             <div class="section3">
                 <div>예약</div>
                 <div>지난예약</div>
             </div>
+            
             <br>
+            
+            
          
         <div id='calendar'></div>
 		<!-- partial -->

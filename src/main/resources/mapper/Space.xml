@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="CommunityInfo">
+<mapper namespace="Space">
 
-	<select id="readCommunityInfo" resultType="com.walab.hgu.DTO.CommunityInfoDTO" parameterType="hashmap">
-		SELECT * FROM communityInfo;
+	<select id="readSpace" resultType="com.walab.hgu.DTO.SpaceDTO" parameterType="hashmap">
+		SELECT * FROM space;
  	</select>
 
 </mapper>

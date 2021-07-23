@@ -24,7 +24,7 @@ public class MyReservationController {
 	/**
 	 * Simply selects the home view to render by returning its name.
 	 */
-	@RequestMapping(value = "/reservation", method = RequestMethod.GET)
+	@RequestMapping(value = "/myReservation", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
@@ -35,7 +35,7 @@ public class MyReservationController {
 		
 		model.addAttribute("serverTime", formattedDate );
 		
-		return "reservation";
+		return "myReservation";
 	}
 	
 }
