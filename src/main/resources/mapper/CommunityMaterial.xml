@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="CommunityMaterial">
+
+	<select id="readCommunityMaterial"
+		resultType="com.walab.hgu.DTO.CommunityMaterialDTO"
+		parameterType="hashmap">
+		SELECT c.id, name as writer, title, c.regdate, viewCount FROM hguclub.communityMaterial as c
+		INNER JOIN hguclub.user as u ON c.userId = u.id;
+	</select>
+
+</mapper>
