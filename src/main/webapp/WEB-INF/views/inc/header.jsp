@@ -80,7 +80,8 @@
 					<ul class="dropdown-menu dropdown-menu-community" id="dropdown-content-community">
 						<li><a class="dropdown-item" onclick = "location.href='./communityInfo'">공지사항</a></li>
 						<li><a class="dropdown-item" onclick = "location.href='./communityMaterials'">자료실</a></li> 
-						<li><a class="dropdown-item" onclick = "location.href='./communityComplaints'">민원</a></li>  
+						<li><a class="dropdown-item" onclick = "location.href='./communityEvent'">행사일정</a></li>   
+						<li><a class="dropdown-item" onclick = "location.href='./communityComplaints'">민원</a></li> 
 					</ul></li>	
 				<li class="nav-item nav-bottom-border"><a class="nav-link mx-2" onclick="location.href='./clubAdvertise'">동아리 홍보</a></li>
 				<li class="nav-item button-padding button-left border-none">
