@@ -39,77 +39,78 @@
 	crossorigin="anonymous"></script>
 <body id="page-top">
 	<!-- Masthead-->
-	<div class="container px-4 px-lg-5 h-100">
+	<div class="container width-80 h-100">
 		<div
-			class="row gx-4 gx-lg-5 h-75 align-items-center justify-content-center text-center">
+			class="row h-25 align-items-center justify-content-center text-center">
 			<div class="col-lg-6 align-self-end">
 				<h3 class="font-weight-bold">공지사항</h3>
 			</div>
-
+		</div>
+		<div
+			class="row h-50 align-items-center justify-content-center text-center">
 			<table class="table text-center">
 				<thead>
 					<tr>
 						<th scope="col" class="col-1 text-center">번호</th>
-						<th scope="col" class="col-6 text-center">제목</th>
+						<th scope="col" class="col-5 text-center">제목</th>
 						<th scope="col" class="col-1 text-center" id="writer">작성자</th>
-						<th scope="col" class="col-1 text-center" id="date">날짜</th>
+						<th scope="col" class="col-2 text-center" id="date">날짜</th>
 						<th scope="col" class="col-1 text-center" id="count">조회</th>
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach items="${communityInfoList}" var="communityInfo" varStatus="status">		
-					<fmt:formatDate value="${communityInfo.regdate}" var="formattedRegDate" type="date" pattern="yyyy-MM-dd" />	
-					<tr>
-						<th scope="row">${status.count}</th>
-						<td class="text-start">${communityInfo.title}</td>
-						<td id="writer">${communityInfo.writer}</td>
-						<td id="date">${formattedRegDate}</td>
-						<td id="count">${communityInfo.viewCount}</td>
-					</tr>
+					<c:forEach items="${communityInfoList}" var="communityInfo"
+						varStatus="status">
+						<fmt:formatDate value="${communityInfo.regdate}"
+							var="formattedRegDate" type="date" pattern="yyyy-MM-dd" />
+						<tr>
+							<th scope="row">${status.count}</th>
+							<td class="text-start">${communityInfo.title}</td>
+							<td id="writer">${communityInfo.writer}</td>
+							<td id="date">${formattedRegDate}</td>
+							<td id="count">${communityInfo.viewCount}</td>
+						</tr>
 					</c:forEach>
-<!-- 					
-					<tr>
-						<th scope="row">2</th>
-						<td class="text-start">[행정국] 오피스아워 운영 시간 변경</td>
-						<td id="writer">관리자</td>
-						<td id="date">2021.06.25</td>
-						<td id="count">30</td>
-					</tr> -->
 				</tbody>
 			</table>
+			<div class="row justify-content-end">
+				<button class="btn btn-primary search-btn" type="submit">글쓰기</button>
+			</div>			
 		</div>
-		<div class="row gx-4 gx-lg-5  align-items-center justify-content-center text-center">
+		<div
+			class="row h-25 align-items-center text-center">			
 			<form accept-charset="UTF-8" name="searchForm">
-				<div class="rows">
+				<div class="rows justify-content-center">
 					<select class="form-select form-select-sm search-selector">
 						<option value="title" selected>제목</option>
 						<option value="content">내용</option>
 					</select>
 				</div>
-				<div class="rows">
+				<div class="rows justify-content-center">
 					<input class="form-control form-control-sm search-input"
 						type="text">
 					<button class="btn btn-primary search-btn" type="submit">검색</button>
 				</div>
 			</form>
+			<nav>
+				<ul class="pagination align-items-center justify-content-center">
+					<li class="page-item"><a class="page-link" href="#"
+						aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+							<span class="sr-only">Previous</span>
+					</a></li>
+					<li class="page-item"><a class="page-link" href="#">1</a></li>
+					<li class="page-item"><a class="page-link" href="#">2</a></li>
+					<li class="page-item"><a class="page-link" href="#">3</a></li>
+					<li class="page-item"><a class="page-link" href="#"
+						aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
+							class="sr-only">Next</span>
+					</a></li>
+				</ul>
+			</nav>
 		</div>
+
 	</div>
-		<nav>
-			<ul
-				class="pagination align-items-center justify-content-center">
-				<li class="page-item"><a class="page-link" href="#"
-					aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-						<span class="sr-only">Previous</span>
-				</a></li>
-				<li class="page-item"><a class="page-link" href="#">1</a></li>
-				<li class="page-item"><a class="page-link" href="#">2</a></li>
-				<li class="page-item"><a class="page-link" href="#">3</a></li>
-				<li class="page-item"><a class="page-link" href="#"
-					aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
-						class="sr-only">Next</span>
-				</a></li>
-			</ul>
-		</nav>
+
 	<!-- Footer-->
 	<footer class="bg-light py-5">
 		<div class="container px-4 px-lg-5">
