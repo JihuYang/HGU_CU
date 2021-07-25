@@ -33,9 +33,7 @@ public class CommunityInfoController {
 		mv.addObject("communityInfoList", communityInfoList);
 		
 		mv.setViewName("communityInfo");
-		
-		System.out.println(mv);
-	
+			
 		return mv;
 	}
 

@@ -608,7 +608,10 @@ progress {
   margin-right: auto;
   margin-left: auto;
 }
-
+.width-80 {
+	width: 80%;
+	
+}
 @media (min-width: 576px) {
   .container-sm, .container {
     max-width: 540px;
@@ -2367,9 +2370,9 @@ textarea.form-control-lg {
   }
 }
 .form-select:focus {
-  border-color: #fab19d;
+  border-color: #D0D0CE;
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(244, 98, 58, 0.25);
+  box-shadow: 0 0 0 0.15rem D0D0CE;
 }
 .form-select[multiple], .form-select[size]:not([size="1"]) {
   padding-right: 0.75rem;
@@ -2841,7 +2844,7 @@ textarea.form-control-lg {
   width: 100%;
   margin-top: 0.25rem;
   font-size: 0.875em;
-  color: #dc3545;
+  color: #D0D0CE;
 }
 
 .invalid-tooltip {
@@ -2865,8 +2868,8 @@ textarea.form-control-lg {
   display: block;
 }
 
-.was-validated .form-control:invalid, .form-control.is-invalid {
-  border-color: #dc3545;
+.was-validated .D0D0CE:invalid, .form-control.is-invalid {
+  border-color: #D0D0CE;
   padding-right: calc(1.5em + 0.75rem);
   background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
   background-repeat: no-repeat;
@@ -2874,8 +2877,8 @@ textarea.form-control-lg {
   background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
 }
 .was-validated .form-control:invalid:focus, .form-control.is-invalid:focus {
-  border-color: #dc3545;
-  box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
+  border-color: #D0D0CE;
+  box-shadow: 0 0 0 0.25rem D0D0CE;
 }
 
 .was-validated textarea.form-control:invalid, textarea.form-control.is-invalid {
@@ -2884,7 +2887,7 @@ textarea.form-control-lg {
 }
 
 .was-validated .form-select:invalid, .form-select.is-invalid {
-  border-color: #dc3545;
+  border-color: #D0D0CE;
 }
 .was-validated .form-select:invalid:not([multiple]):not([size]), .was-validated .form-select:invalid:not([multiple])[size="1"], .form-select.is-invalid:not([multiple]):not([size]), .form-select.is-invalid:not([multiple])[size="1"] {
   padding-right: 4.125rem;
@@ -2893,21 +2896,21 @@ textarea.form-control-lg {
   background-size: 16px 12px, calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
 }
 .was-validated .form-select:invalid:focus, .form-select.is-invalid:focus {
-  border-color: #dc3545;
-  box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
+  border-color: #D0D0CE;
+  box-shadow: 0 0 0 0.25rem D0D0CE;
 }
 
 .was-validated .form-check-input:invalid, .form-check-input.is-invalid {
-  border-color: #dc3545;
+  border-color: #D0D0CE;
 }
 .was-validated .form-check-input:invalid:checked, .form-check-input.is-invalid:checked {
-  background-color: #dc3545;
+  background-color: #D0D0CE;
 }
 .was-validated .form-check-input:invalid:focus, .form-check-input.is-invalid:focus {
-  box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
+  box-shadow: 0 0 0 0.25rem D0D0CE;
 }
 .was-validated .form-check-input:invalid ~ .form-check-label, .form-check-input.is-invalid ~ .form-check-label {
-  color: #dc3545;
+  color: #D0D0CE;
 }
 
 .form-check-inline .form-check-input ~ .invalid-feedback {
@@ -4570,7 +4573,6 @@ textarea.form-control-lg {
 .page-link {
   position: relative;
   display: block;
-  color: #f4623a;
   text-decoration: none;
   background-color: #fff;
   border: 1px solid #dee2e6;
@@ -4588,10 +4590,9 @@ textarea.form-control-lg {
 }
 .page-link:focus {
   z-index: 3;
-  color: #c34e2e;
   background-color: #e9ecef;
   outline: 0;
-  box-shadow: 0 0 0 0.25rem rgba(244, 98, 58, 0.25);
+  box-shadow: 0 0 0 0.15rem #D0D0CE;
 }
 
 .page-item:not(:first-child) .page-link {
@@ -4600,11 +4601,11 @@ textarea.form-control-lg {
 .page-item.active .page-link {
   z-index: 3;
   color: #fff;
-  background-color: #f4623a;
-  border-color: #f4623a;
+  background-color: #D0D0CE;
+  border-color: #D0D0CE;
 }
 .page-item.disabled .page-link {
-  color: #6c757d;
+  color: #D0D0CE;
   pointer-events: none;
   background-color: #fff;
   border-color: #dee2e6;
@@ -6610,6 +6611,14 @@ textarea.form-control-lg {
   min-width: 100vw !important;
 }
 
+.h-10 {
+  height: 10% !important;
+}
+
+.h-15 {
+  height: 15% !important;
+}
+
 .h-25 {
   height: 25% !important;
 }
@@ -6618,8 +6627,16 @@ textarea.form-control-lg {
   height: 50% !important;
 }
 
+.h-60 {
+  height: 60% !important;
+}
+
 .h-75 {
   height: 75% !important;
+}
+
+.h-85 {
+  height: 85% !important;
 }
 
 .h-100 {
