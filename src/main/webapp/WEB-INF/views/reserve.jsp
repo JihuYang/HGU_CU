@@ -50,12 +50,12 @@
       		<div class="side_bar">	
        			<div class="reservation" style="background-color:gray"><a href="./reservation">
                 	<div>
-                		<i class="fa fa-home fa-3x white" aria-hidden="true"></i><br><div class="side_text">조회 및 예약하기</div>
+                		<i class="fa fa-home fa-2x white" aria-hidden="true" style="padding-top:10px;"></i><br><div class="side_text">조회 및 예약하기</div>
                 	</div></a>
                </div>   
 	           <div class="reservation" style="background-color:gray"><a href="./myReservation">
 	           	<div>
-	           	<i class="fa fa-user fa-3x" aria-hidden="true"></i><br><div class="side_text">내 예약</div>
+	           	<i class="fa fa-user fa-2x" aria-hidden="true" style="padding-top:10px;"></i><br><div class="side_text">내 예약</div>
 	           	</div></a>
 	           </div>
 	            
@@ -67,15 +67,21 @@
 				  <tbody>
 				    <tr>
 				      <th scope="row">장소</th>
-				      <td>CCR - 대형</td>
+				      	<td>
+					      	<select id='startTimeSelect' class="input-resize">
+					      	<c:forEach items="${reservationInfoList}" var="list">
+      							<option value="${list.spaceName}">${list.spaceName}</option>
+    						</c:forEach>
+							</select>
+						</td>
 				    </tr>
 				    <tr>
 				      <th scope="row">이름</th>
-				      <td>홍길동</td>
+				      <td>${reservationInfoList[1].person}</td>
 				    </tr>
 				    <tr>
 				      <th scope="row">이메일</th>
-				      <td>12345678@handong.edu</td>
+				      <td>${reservationInfoList[1].email}</td>
 				    </tr>
 				    <tr>
 				      <th scope="row">예약 가능한 시간</th>
@@ -88,12 +94,51 @@
 				    </tr>
 				    <tr>
 				      <th scope="row">시작 시간</th>
-				      <td><select id='startTimeSelect' class="input-resize">
-						</select></td>
+				      <td>
+				        <select id='startTime' class="input-resize" onchange="handleTimeLimit(this)">
+				      		<script>
+				      			var hour=7;
+				      			for(var i =0; i<32; i++){
+				      				var min =':00';
+				      				hour++;
+				      				if(i%2!=0){
+				      					hour--;
+				      					min=':30';
+				      				}
+				      				document
+				      					.write('<option value='+hour+min+'>'
+				      							+hour
+				      							+min
+				      							+'</option>');
+				      				}
+				      		</script>
+						</select>
+					  </td>
 				    </tr>
 				    <tr>
 				      <th scope="row">종료 시간</th>
-				      <td><select id='endTimeSelect' class="input-resize">
+				      <td>
+				        <select id='endTime' class="input-resize">
+				          <script>
+				          function handleTimeLimit(e){
+							 const text = e.options[e.selectedIndex].text;
+							 var time = text.split(':');
+							 time[0]++;
+							 document.getElementById('endTime').insertAdjacentHTML('afterbegin',
+							    "<option value="+time[0]+time[1]+">"
+      							+time[0]+':'
+      							+time[1]
+      							+"</option>");
+							/*
+							 time[0]++;
+							 document
+		      					.write('<option value='+time[0]+time[1]+'>'
+		      							+time[0]+':'
+		      							+time[1]
+		      							+'</option>');
+							 */
+				          }
+				      		</script>
 						</select>
 					  </td>
 				    </tr>

@@ -8,6 +8,7 @@
 		parameterType="hashmap">
 		SELECT c.id, name as writer, title, c.regdate, viewCount FROM hguclub.communityMaterial as c
 		INNER JOIN hguclub.user as u ON c.userId = u.id;
+		
 	</select>
 
 </mapper>
