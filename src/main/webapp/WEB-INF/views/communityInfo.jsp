@@ -73,17 +73,20 @@
 					</c:forEach>
 				</tbody>
 			</table>
+			<div class="row justify-content-end">
+				<button class="btn btn-primary search-btn" type="submit">글쓰기</button>
+			</div>			
 		</div>
 		<div
-			class="row h-25 align-items-center justify-content-center text-center">
+			class="row h-25 align-items-center text-center">			
 			<form accept-charset="UTF-8" name="searchForm">
-				<div class="rows">
+				<div class="rows justify-content-center">
 					<select class="form-select form-select-sm search-selector">
 						<option value="title" selected>제목</option>
 						<option value="content">내용</option>
 					</select>
 				</div>
-				<div class="rows">
+				<div class="rows justify-content-center">
 					<input class="form-control form-control-sm search-input"
 						type="text">
 					<button class="btn btn-primary search-btn" type="submit">검색</button>
@@ -104,7 +107,7 @@
 					</a></li>
 				</ul>
 			</nav>
-			</div>
+		</div>
 
 	</div>
 
