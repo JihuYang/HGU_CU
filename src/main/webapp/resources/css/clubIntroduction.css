@@ -3,6 +3,10 @@
     padding-bottom: 1em !important;
 }
 
+.club-content{
+	display:flex; 
+	margin-top:80px;
+}
 .search-bar{
 	float:right !important;
 	display:block !important;

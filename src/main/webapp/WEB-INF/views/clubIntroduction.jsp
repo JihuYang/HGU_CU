@@ -59,7 +59,7 @@
 					</div>
 				</div>
 				<!-- 동아리 내 -->
-				<div style="display:flex; margin-top:80px;">
+				<div class="club-content"style="display:flex; margin-top:80px;">
 				<div class="row logo-display">
 					<div class="col-xs-6 col-sm-4 pd-0">
 						<div class="overlay-item overlay-effect">
