@@ -31,7 +31,6 @@
 .title-input{
 	margin-right:10px !important;
 	margin-left: 10px !important;
-	margin-bottom: 0.3em;
 	display:inline-block !important;
 	width: 320px !important;
 	box-sizing: border-box;
@@ -47,6 +46,7 @@
     width: 50%;
     justify-content: center;
     display: inline-grid;
+    margin-bottom: 0.7em;
 }
 
 .title-bar p{
@@ -101,6 +101,7 @@
     justify-content: space-around;
     display: flex;
     flex-direction: column;
+    margin-bottom: 0.7em;
 }
 	.select-option {
     width: 100%;
@@ -115,7 +116,6 @@
 	.title-input{
 		margin-right:10px !important;
 		margin-left: 10px !important;
-		margin-bottom: 0.3em;
 		display:inline-block !important;
 		width: 250px !important;
 		box-sizing: border-box;

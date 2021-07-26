@@ -1,0 +1,9 @@
+package com.walab.hgu.service;
+
+import java.util.List;
+
+import com.walab.hgu.DTO.ClubDTO;
+
+public interface ClubService {
+	public List<ClubDTO> readClubIntroductionPreview();
+}

@@ -30,8 +30,8 @@
 <jsp:include page="/WEB-INF/views/inc/header.jsp"/>
 
 <!-- Core theme CSS (includes Bootstrap)-->
-<link href="./resources/css/styles.css" rel="stylesheet" />
-<link href="./resources/css/clubIntroduction.css" rel="stylesheet" />
+<link href="<%=request.getContextPath()%>/resources/css/styles.css" rel="stylesheet" />
+<link href="<%=request.getContextPath()%>/resources/css/clubIntroduction.css" rel="stylesheet" />
 
 
 </head>
@@ -118,6 +118,7 @@
 						</div>
 					</div>
 				</div>
+				
 			</div>
 		</div>	
 	</div>
