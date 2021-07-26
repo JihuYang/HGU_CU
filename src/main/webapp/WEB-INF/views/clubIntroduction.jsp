@@ -59,6 +59,7 @@
 					</div>
 				</div>
 				<!-- 동아리 내 -->
+				<div style="display:flex; margin-top:80px;">
 				<div class="row logo-display">
 					<div class="col-xs-6 col-sm-4 pd-0">
 						<div class="overlay-item overlay-effect">
@@ -93,8 +94,10 @@
 							</a>
 						</div>
 					</div>
+					<!--  
 				</div>
 				<div class="row logo-display">
+				-->
 					<div class="col-xs-6 col-sm-4 pd-0">
 						<div class="overlay-item overlay-effect">
 							<img
@@ -116,6 +119,7 @@
 									010 – xxxx - xxxx<br>인스타/페북: <br>동방: 302호
 							</a>
 						</div>
+					</div>
 					</div>
 				</div>
 			</div>
