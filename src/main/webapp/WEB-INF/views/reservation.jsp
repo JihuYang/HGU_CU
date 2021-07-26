@@ -32,7 +32,6 @@
 <link href="./resources/css/styles.css" rel="stylesheet" />
 <link href="./resources/css/home.css" rel="stylesheet" />
 <link href="./resources/css/reservation.css" rel="stylesheet" />
-<link href="./resources/css/calendar.css" rel="stylesheet"/>
 <link rel='stylesheet' href='https://fullcalendar.io/releases/fullcalendar/3.9.0/fullcalendar.min.css'>
 
 </head>
@@ -46,12 +45,12 @@
       		<div class="side_bar">	
        			<div class="reservation" style="background-color:#212721"><a href="./reservation">
                 	<div>
-                		<i class="fa fa-home fa-3x white" aria-hidden="true"></i><br><div class="side_text">조회 및 예약하기</div>
+                		<i class="fa fa-home fa-2x white" aria-hidden="true" style="padding-top:10px;"></i><br><div class="side_text">조회 및 예약하기</div>
                 	</div></a>
                </div>   
 	           <div class="reservation" style="background-color:#D0D0CE"><a href="./myReservation">
 	           	<div>
-	           	<i class="fa fa-user fa-3x" aria-hidden="true"></i><br><div class="side_text">내 예약</div>
+	           	<i class="fa fa-user fa-2x" aria-hidden="true" style="padding-top:10px;"></i><br><div class="side_text">내 예약</div>
 	           	</div></a>
 	           </div>
 	            
@@ -59,7 +58,7 @@
            
         	<div class="content">
         	
-            <div id="Head"><h3>조회/예약하기</h3></div><br><br>
+            <h3 style="text-align:center;">조회/예약하기</h3><br><br>
             <div>
             
             <c:forEach items="${spaceList}" var="spaceList">			
@@ -129,46 +128,74 @@
             <br>
             
             
-         
+  
         <div id='calendar'></div>
-		<!-- partial -->
+	
 		<script src='https://fullcalendar.io/releases/fullcalendar/3.9.0/lib/moment.min.js'></script>
 		<script src='https://fullcalendar.io/releases/fullcalendar/3.9.0/lib/jquery.min.js'></script>
 		<script src='https://fullcalendar.io/releases/fullcalendar/3.9.0/fullcalendar.min.js'></script>
 		<script type="text/javascript">
-		$(function() {
+		 $(function() {
 			  $('#calendar').fullCalendar({
 			    selectable: true,
+			    allDaySlot: false,
 			    longPressDelay: 0,
 			    header: {
 			      left: 'prev,next today',
 			      center: 'title',
 			      right: 'month,agendaWeek,agendaDay'
 			    },
-			    dayClick: function(date) {
-			    },
+			    dayClick: function(date, jsEvent, view) {
+			    	if(view.name == 'month' || view.name == 'basicWeek') {
+			    	    $('#calendar').fullCalendar('changeView', 'agendaDay');
+			    	    $('#calendar').fullCalendar('gotoDate', date);      
+			    	  }
+			    	},
 			    select: function(startDate, endDate) {
-			    }
+			    },
+			    
+			    events: [
+				 	{
+				 		id: 1,
+				 		title: "${reservationInfoList[0].spaceName}",
+				 		start: '2021-07-23T14:30:00',
+				 		allDay: false
+				 	},
+				 	{
+				 		id: 2,
+				 		title: 'Test2',
+				 		start: '2021-07-13T14:00:00',
+				 		end: '2021-07-13T16:00:00',
+				 		allDay: false
+				 	},
+				 	{
+				 		id: 3,
+				 		title: 'Test3',
+				 		start: '2021-07-13T14:00:00',
+				 		end: '2021-07-13T16:00:00',
+				 		allDay: false
+				 	}
+				 ],
+				 eventColor: '#326295'
+			  
 			  });
+		
 
 			});
-
-		</script>
-            
-         </div>
 	
-			      
-         	
-	<!-- Footer-->
-	<footer class="bg-light py-5">
-		<div class="container px-4 px-lg-5">
-			<div class="small text-center text-muted">Copyright &copy; 2021
-				- 한동대학교 총동아리연합회</div>
-		</div>
-	</footer>
+		</script>
+        
+        </div>
 
-
-         </div>
+        </div>
+         
+        <!-- Footer-->
+		<footer class="bg-light py-5">
+			<div class="container px-4 px-lg-5">
+				<div class="small text-center text-muted">Copyright &copy; 2021
+					- 한동대학교 총동아리연합회</div>
+			</div>
+		</footer>
             
             
 	<!-- Bootstrap core JS-->

@@ -12,7 +12,6 @@ public class SpaceDTO {
 	private Date regdate;
 
 	
-	
 	public int getId() {
 		return id;
 	}

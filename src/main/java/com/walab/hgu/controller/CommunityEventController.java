@@ -12,27 +12,25 @@ import org.springframework.web.servlet.ModelAndView;
 //import org.mybatis.spring.SqlSessionTemplate;
 //import org.springframework.beans.factory.annotation.Autowired;
 
-import com.walab.hgu.DTO.CommunityInfoDTO;
-import com.walab.hgu.service.CommunityInfoService;
 
 /**
  * Handles requests for the application home page.
  */
 @Controller
-public class CommunityInfoController {
+public class CommunityEventController {
 	
 	
-	@Autowired
-	CommunityInfoService communityInfoService;
+//	@Autowired
+//	CommunityInfoService communityInfoService;
 
-	@RequestMapping(value = "/communityInfo", method = RequestMethod.GET)
-	public ModelAndView readCommunityInfo(ModelAndView mv) {
+	@RequestMapping(value = "/communityEvent", method = RequestMethod.GET)
+	public ModelAndView communityEvent(ModelAndView mv) {
 
-		List<CommunityInfoDTO> communityInfoList = communityInfoService.readCommunityInfo();
+		//List<CommunityInfoDTO> communityInfoList = communityInfoService.readCommunityInfo();
 		
-		mv.addObject("communityInfoList", communityInfoList);
+		//mv.addObject("communityInfoList", communityInfoList);
 		
-		mv.setViewName("communityInfo");
+		mv.setViewName("communityEvent");
 			
 		return mv;
 	}

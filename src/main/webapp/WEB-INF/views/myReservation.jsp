@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
 <meta charset="utf-8" />
@@ -46,12 +47,12 @@
       		<div class="side_bar">	
        			<div class="reservation" style="background-color:#D0D0CE"><a href="./reservation">
                 	<div>
-                		<i class="fa fa-home fa-3x white" aria-hidden="true"></i><br><div class="side_text">조회 및 예약하기</div>
+                		<i class="fa fa-home fa-2x white" aria-hidden="true" style="padding-top:10px;"></i><br><div class="side_text">조회 및 예약하기</div>
                 	</div></a>
                </div>   
 	           <div class="reservation" style="background-color:#212721"><a href="./myReservation">
 	           	<div>
-	           	<i class="fa fa-user fa-3x" aria-hidden="true"></i><br><div class="side_text">내 예약</div>
+	           	<i class="fa fa-user fa-2x" aria-hidden="true" style="padding-top:10px;"></i><br><div class="side_text">내 예약</div>
 	           	</div></a>
 	           </div>
 	            
@@ -59,24 +60,13 @@
            
         	<div class="content" style="height:100vh;">
         	
-            <div id="Head"><h3>내 예약 목록</h3></div><br><br>
+            <h3 style="text-align:center;">내 예약 목록</h3><br><br>
+            
             <div>
-            	<input type="checkbox" class="btn-check" id="btn-check-2-ccr1" unchecked autocomplete="off">
-				<label class="btn btn-outline-secondary" for="btn-check-2-ccr1">CCR - 대형</label>
-				<input type="checkbox" class="btn-check" id="btn-check-2-ccr2" unchecked autocomplete="off">
-				<label class="btn btn-outline-secondary" for="btn-check-2-ccr2">CCR - 중대형</label>
-				<input type="checkbox" class="btn-check" id="btn-check-2-ccr3" unchecked autocomplete="off">
-				<label class="btn btn-outline-secondary" for="btn-check-2-ccr3">CCR - 중형</label>
-				<input type="checkbox" class="btn-check" id="btn-check-2-ccr4" unchecked autocomplete="off">
-				<label class="btn btn-outline-secondary" for="btn-check-2-ccr4">CCR - 소형</label>
-				<input type="checkbox" class="btn-check" id="btn-check-2-room1" unchecked autocomplete="off">
-				<label class="btn btn-outline-secondary" for="btn-check-2-room1">지하연습실 - 대형</label>
-				<input type="checkbox" class="btn-check" id="btn-check-2-room2" unchecked autocomplete="off">
-				<label class="btn btn-outline-secondary" for="btn-check-2-room2">지하연습실 - 중형</label>
-				<input type="checkbox" class="btn-check" id="btn-check-2-room3" unchecked autocomplete="off">
-				<label class="btn btn-outline-secondary" for="btn-check-2-room3">지하연습실 - 소형</label>
-				<input type="checkbox" class="btn-check" id="btn-check-2-room4" unchecked autocomplete="off">
-				<label class="btn btn-outline-secondary" for="btn-check-2-room4">밴드연습실</label><br>
+            <c:forEach items="${reservationInfoList}" var="space">
+            	<input type="checkbox" class="btn-check" id="${space.spaceName}" unchecked autocomplete="off">
+				<label class="btn btn-outline-secondary" for="${space.spaceName}">${space.spaceName}</label>
+			</c:forEach>
             </div>     
 
             
@@ -100,7 +90,29 @@
 				    <td>예약상태</td>
 				  </thead>
 				  <tbody>
-				    
+				  
+				  <c:forEach items="${reservationInfoList}" var="reservationInfo" varStatus="status">
+				  <c:if test="${reservationInfo.userId!=0}">
+				  <fmt:formatDate value="${reservationInfo.regdate}" var="formattedRegDate" type="date" pattern="yyyy-MM-dd" />
+				  <fmt:formatDate value="${reservationInfo.reservationDate}" var="formattedDate" type="date" pattern="yyyy-MM-dd" />
+				  <fmt:formatDate value="${reservationInfo.startTime}" var="startTime" type="time" pattern="HH" />
+				  <fmt:parseNumber value="${(startTime / (1000*60))/60}" integerOnly="true" var="endDate"></fmt:parseNumber>
+				  <fmt:formatDate value="${reservationInfo.endTime}" var="endTime" type="time" pattern="HH" />
+				  <fmt:parseNumber value="${(endTime / (1000*60))/60}" integerOnly="true" var="endDate"></fmt:parseNumber>
+
+					  <tr>
+					  	<td>${status.count}</td> 
+					    <td>${reservationInfo.spaceName}</td>
+					    <td>??</td>
+					    <td>${formattedDate}</td>
+					    <td>${endTime-startTime}</td>
+					    <td>${reservationInfo.purpose}</td>
+					    <td>${reservationInfo.person}</td>
+					    <td>${formattedRegDate}</td>
+					    <td>??</td>
+					  </tr>
+					  </c:if>
+				  </c:forEach>
 				  </tbody>
 				</table>
             </div>
@@ -108,9 +120,7 @@
          </div>
          </div>
             
-            
-            
-            
+              
             <!-- calendar -->
 
 		

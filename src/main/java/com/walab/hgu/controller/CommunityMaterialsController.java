@@ -28,8 +28,6 @@ public class CommunityMaterialsController {
 		mv.addObject("communityMaterialList", communityMaterialList);
 		
 		mv.setViewName("communityMaterials");
-		
-		System.out.println(mv);
 	
 		return mv;
 	}
