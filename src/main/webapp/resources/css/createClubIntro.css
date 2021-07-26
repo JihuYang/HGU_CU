@@ -1,0 +1,128 @@
+.pt-title{
+	padding-top: 4em !important;
+    padding-bottom: 1em !important;
+	margin-bottom: 0px;
+}
+
+.title-bold{
+	font-size: 15px !important;
+}
+
+.rows{
+    display: inline-block;
+}
+
+.bottom-btn{
+	background-color: #326295 !important;
+	border-color: #326295 !important;
+	height: 28px;
+    padding: 2px 25px;
+	font-size: 15px;
+}
+
+.submit-btn{
+    float:right;
+}
+
+.back-btn{
+    float: left;
+}
+
+.title-input{
+	margin-right:10px !important;
+	margin-left: 10px !important;
+	margin-bottom: 0.3em;
+	display:inline-block !important;
+	width: 320px !important;
+	box-sizing: border-box;
+  	border: none;
+  	border-bottom: 1px solid gray;
+  	background-color:white;
+  	border-radius:0px;
+  	padding-bottom:0px;
+}
+
+.title-bar{
+	float: left;
+    width: 50%;
+    justify-content: center;
+    display: inline-grid;
+}
+
+.title-bar p{
+	margin-bottom:0px;
+}
+
+.select-bar{
+	margin-right:15px;
+}
+
+.select-option{
+	width:320;
+}
+.textarea{
+	background-color:white;
+	resize: none;
+}
+
+.file{
+	background-color:white;
+	border:none;
+	padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 12px;
+    padding-right: 0px;
+    height: 30px;
+    font-size: 15px;
+}
+
+@media screen and (max-width: 768px) { 
+	.title-bold{
+		font-size: 15px !important;
+		margin-bottom: 0;
+	}
+	.title-input{
+		margin-right:10px !important;
+		margin-left: 10px !important;
+		display:inline-block !important;
+		width: auto !important;
+		box-sizing: border-box;
+	  	border: none;
+	  	border-bottom: 1px solid gray;
+	  	background-color:white;
+	  	border-radius:0px;
+	  	padding-bottom:0px;
+	  	margin-bottom: 7px;
+	}
+
+	.title-bar{
+	float: left;
+    width: 100%;
+    justify-content: space-around;
+    display: flex;
+    flex-direction: column;
+}
+	.select-option {
+    width: 100%;
+}
+}
+
+@media screen and (max-width: 992px) and (min-width: 769px){ 
+
+	.select-option {
+	    width: 250;
+	}
+	.title-input{
+		margin-right:10px !important;
+		margin-left: 10px !important;
+		margin-bottom: 0.3em;
+		display:inline-block !important;
+		width: 250px !important;
+		box-sizing: border-box;
+	  	border: none;
+	  	border-bottom: 1px solid gray;
+	  	background-color:white;
+	  	border-radius:0px;
+	  	padding-bottom:0px;
+	}
+}

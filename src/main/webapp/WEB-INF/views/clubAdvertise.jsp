@@ -45,7 +45,16 @@
 			<!-- 홍보글 테이블 -->
 			<div class="col-sm-10 align-self-baseline table-responsive table-height">
 				<table class="table table-hover table-mb">
-					<tr>
+					<c:forEach items="${clubAdvertiseList}" var="clubAdvertiseList" varStatus="status">
+						<tr>
+							<td><img src="<%=request.getContextPath()%>/resources/img/${clubAdvertiseList.originalUrl}" class="img-thumbnail rounded"></td>
+							<td>
+								<h5>${clubAdvertiseList.title}</h5>
+								<p class="text-muted p-size">${clubAdvertiseList.content}</p>
+							</td>
+						</tr>
+					</c:forEach>
+					<!-- <tr>
 						<td><img src="https://cdn.pixabay.com/photo/2020/02/11/16/25/manarola-4840080_1280.jpg" class="img-thumbnail rounded club-img"></td>
 						<td>
 							<h5>♪2021년도 피치파이프 리쿠르팅♪(제목) 더 길어지면 어떻게...?될까??</h5>
@@ -67,7 +76,7 @@
 							<h5>(제목)</h5> 
 							<p class="text-muted p-size">(게시글 일부)</p>
 						</td> 
-					</tr>
+					</tr> -->
 				</table>
 			</div>
 			<div class="col-sm-10 justify-content-md-center position">
