@@ -8,6 +8,10 @@ public class CommunityInfoDTO {
 	private int userId;
 	private String writer;
 	private String title;
+	private String content;
+	private String originalUrl;
+	private String realUrl;
+	private int order;
 	private Date regdate;
 	private int viewCount;
 
@@ -42,11 +46,47 @@ public class CommunityInfoDTO {
 	public void setTitle(String title) {
 		this.title = title;
 	}
+	
+	public String getContent() {
+		return content;
+	}
 
+	public void setContent(String content) {
+		this.content = content;
+	}
+
+	public String getOriginalUrl() {
+		return originalUrl;
+	}
+
+	public void setOriginalUrl(String originalUrl) {
+		this.originalUrl = originalUrl;
+	}
+
+	public String getRealUrl() {
+		return realUrl;
+	}
+
+	public void setRealUrl(String realUrl) {
+		this.realUrl = realUrl;
+	}
+
+	public int getOrder() {
+		return order;
+	}
+
+	public void setOrder(int order) {
+		this.order = order;
+	}
+
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
+	
 	public Date getRegdate() {
 		return regdate;
 	}
-
+	
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
@@ -62,6 +102,7 @@ public class CommunityInfoDTO {
 	@Override
 	public String toString() {
 		return "CommunityInfoDTO [id=" + id + ", userId=" + userId + ", writer=" + writer + ", title=" + title
+				+ ", content=" + content + ", originalUrl=" + originalUrl + ", realUrl=" + realUrl + ", order=" + order
 				+ ", regdate=" + regdate + ", viewCount=" + viewCount + "]";
 	}
 	

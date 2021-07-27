@@ -40,6 +40,11 @@ public class CommunityInfoController {
 	@RequestMapping(value = "/communityInfo/detail", method = RequestMethod.GET)
 	public ModelAndView readCommunityInfoDetail(ModelAndView mv) {
 
+		List<CommunityInfoDTO> communityInfoDetailList = communityInfoService.readCommunityInfoDetail();
+		
+		mv.addObject("communityInfoDetailList", communityInfoDetailList);
+		
+		System.out.println(mv);
 		
 		mv.setViewName("communityInfoDetail");
 			
