@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ page session="false"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
@@ -30,8 +31,8 @@
 <jsp:include page="/WEB-INF/views/inc/header.jsp"/>
 
 <!-- Core theme CSS (includes Bootstrap)-->
-<link href="/resources/css/styles.css" rel="stylesheet" />
-<link href="/resources/css/clubIntroduction.css" rel="stylesheet" />
+<link href="../resources/css/styles.css" rel="stylesheet" />
+<link href="../resources/css/clubIntroduction.css" rel="stylesheet" />
 
 
 </head>
@@ -60,69 +61,82 @@
 				</div>
 				<!-- 동아리 내 -->
 				<div class="club-content"style="display:flex; margin-top:80px;">
-				<div class="row logo-display">
-					<div class="col-xs-6 col-sm-4 pd-0">
-						<div class="overlay-item overlay-effect">
-							<img
-								src="https://cdn.pixabay.com/photo/2021/07/09/02/29/family-6398107_960_720.jpg"
-								alt="" />
-							<a href="./clubIntroduction/detail" class="mask">	
-									[제자리]<br>창립연도: 1995.05.12<br>대표자명: 방승민<br>연락처:
+					<div class="row logo-display">
+						<c:forEach items="${clubIntroList}" var="clubIntroList" varStatus="status">
+							<fmt:formatDate value="${clubIntroList.foundationDate}" var="formattedFdDate" type="date" pattern="yyyy-MM-dd" />
+							<div class="col-xs-6 col-sm-4 pd-0">
+								<div class="overlay-item overlay-effect">
+									<img
+										src="https://cdn.pixabay.com/photo/2020/10/07/18/40/dog-5635960_960_720.jpg"
+										alt="" />
+									<a href="<%=request.getContextPath()%>/clubIntroduction/{categoryId}/{clubId}" class="mask">		
+										[${clubIntroList.clubName}]<br>창립일자: ${formattedFdDate}<br>대표자명: ${clubIntroList.clubCeoName}<br>연락처:
+										${clubIntroList.phone}<br>동방: ${clubIntroList.clubLocation}<br>인스타/페북: ${clubIntroList.snsLink}
+									</a>
+								</div>
+							</div>
+						</c:forEach>
+						<%-- <div class="col-xs-6 col-sm-4 pd-0">
+							<div class="overlay-item overlay-effect">
+								<img
+									src="https://cdn.pixabay.com/photo/2021/07/09/02/29/family-6398107_960_720.jpg"
+									alt="" />
+								<a href="<%=request.getContextPath()%>/clubIntroduction/{categoryId}/{clubId}" class="mask">	
+										[제자리]<br>창립연도: 1995.05.12<br>대표자명: 방승민<br>연락처:
+										010 – xxxx - xxxx<br>인스타/페북: <br>동방: 302호
+								</a>
+							</div>
+						</div>
+						<div class="col-xs-6 col-sm-4 pd-0">
+							<div class="overlay-item overlay-effect">
+								<img
+									src="https://cdn.pixabay.com/photo/2020/10/07/18/40/dog-5635960_960_720.jpg"
+									alt="" />
+								<a href="<%=request.getContextPath()%>/clubIntroduction/{categoryId}/{clubId}" class="mask">		
+									[피치파이프 ]<br>창립연도: 1995.05.12<br>대표자명: 방승민<br>연락처:
 									010 – xxxx - xxxx<br>인스타/페북: <br>동방: 302호
-							</a>
+								</a>
+							</div>
 						</div>
-					</div>
-					<div class="col-xs-6 col-sm-4 pd-0">
-						<div class="overlay-item overlay-effect">
-							<img
-								src="https://cdn.pixabay.com/photo/2020/10/07/18/40/dog-5635960_960_720.jpg"
-								alt="" />
-							<a href="./clubIntroduction/detail" class="mask">		
-								[피치파이프 ]<br>창립연도: 1995.05.12<br>대표자명: 방승민<br>연락처:
-								010 – xxxx - xxxx<br>인스타/페북: <br>동방: 302호
-							</a>
+						<div class="col-xs-6 col-sm-4 pd-0">
+							<div class="overlay-item overlay-effect">
+								<img
+									src="https://cdn.pixabay.com/photo/2020/10/12/22/15/glass-5650335_960_720.jpg"
+									alt="" />
+								<a href="<%=request.getContextPath()%>/clubIntroduction/{categoryId}/{clubId}" class="mask">
+										[하향 ]<br>창립연도: 1995.05.12<br>대표자명: 방승민<br>연락처:
+										010 – xxxx - xxxx<br>인스타/페북: <br>동방: 302호
+								</a>
+							</div>
 						</div>
+						<!--  
 					</div>
-					<div class="col-xs-6 col-sm-4 pd-0">
-						<div class="overlay-item overlay-effect">
-							<img
-								src="https://cdn.pixabay.com/photo/2020/10/12/22/15/glass-5650335_960_720.jpg"
-								alt="" />
-							<a href="./clubIntroduction/detail" class="mask">
-									[하향 ]<br>창립연도: 1995.05.12<br>대표자명: 방승민<br>연락처:
-									010 – xxxx - xxxx<br>인스타/페북: <br>동방: 302호
-							</a>
+					<div class="row logo-display">
+					-->
+						<div class="col-xs-6 col-sm-4 pd-0">
+							<div class="overlay-item overlay-effect">
+								<img
+									src="https://cdn.pixabay.com/photo/2021/07/13/11/34/cat-6463284_960_720.jpg"
+									alt="" />
+								<a href="<%=request.getContextPath()%>/clubIntroduction/{categoryId}/{clubId}" class="mask">
+										[MIC]<br>창립연도: 1995.05.12<br>대표자명: 방승민<br>연락처:
+										010 – xxxx - xxxx<br>인스타/페북: <br>동방: 302호
+								</a>
+							</div>
 						</div>
+						<div class="col-xs-6 col-sm-4 pd-0">
+							<div class="overlay-item overlay-effect">
+								<img
+									src="https://cdn.pixabay.com/photo/2021/07/09/02/29/family-6398107_960_720.jpg"
+									alt="" />
+								<a href="<%=request.getContextPath()%>/clubIntroduction/{categoryId}/{clubId}" class="mask">
+										[제자리]<br>창립연도: 1995.05.12<br>대표자명: 방승민<br>연락처:
+										010 – xxxx - xxxx<br>인스타/페북: <br>동방: 302호
+								</a>
+							</div>
+						</div> --%>
 					</div>
-					<!--  
-				</div>
-				<div class="row logo-display">
-				-->
-					<div class="col-xs-6 col-sm-4 pd-0">
-						<div class="overlay-item overlay-effect">
-							<img
-								src="https://cdn.pixabay.com/photo/2021/07/13/11/34/cat-6463284_960_720.jpg"
-								alt="" />
-							<a href="./clubIntroduction/detail" class="mask">
-									[MIC]<br>창립연도: 1995.05.12<br>대표자명: 방승민<br>연락처:
-									010 – xxxx - xxxx<br>인스타/페북: <br>동방: 302호
-							</a>
-						</div>
-					</div>
-					<div class="col-xs-6 col-sm-4 pd-0">
-						<div class="overlay-item overlay-effect">
-							<img
-								src="https://cdn.pixabay.com/photo/2021/07/09/02/29/family-6398107_960_720.jpg"
-								alt="" />
-							<a href="./clubIntroduction/detail" class="mask">
-									[제자리]<br>창립연도: 1995.05.12<br>대표자명: 방승민<br>연락처:
-									010 – xxxx - xxxx<br>인스타/페북: <br>동방: 302호
-							</a>
-						</div>
-					</div>
-					</div>
-				</div>
-				
+				</div>	
 			</div>
 		</div>	
 	</div>

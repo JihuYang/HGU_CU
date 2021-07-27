@@ -10,6 +10,7 @@ public class ClubDTO {
 	private int clubId;
 	private String categoryName;//분과 이
 	private String clubName;//동아리 이름 
+	private String clubCeoName;
 	private String clubLocation;//동방 위치 
 	private String phone;//대표 번호 
 	private Date foundationDate;//창립일 
@@ -98,12 +99,19 @@ public class ClubDTO {
 		this.snsLink = snsLink;
 	}
 	
+	public String getClubCeoName() {
+		return clubCeoName;
+	}
+	public void setClubCeoName(String clubCeoName) {
+		this.clubCeoName = clubCeoName;
+	}
 	@Override
 	public String toString() {
 		return "ClubDTO [id=" + id + ", categoryId=" + categoryId + ", userId=" + userId + ", clubId=" + clubId
-				+ ", categoryName=" + categoryName + ", clubName=" + clubName + ", clubLocation=" + clubLocation
-				+ ", phone=" + phone + ", foundationDate=" + foundationDate + ", clubDescription=" + clubDescription
-				+ ", snsName=" + snsName + ", snsLink=" + snsLink + ", regdate=" + regdate + "]";
+				+ ", categoryName=" + categoryName + ", clubName=" + clubName + ", clubCeoName=" + clubCeoName
+				+ ", clubLocation=" + clubLocation + ", phone=" + phone + ", foundationDate=" + foundationDate
+				+ ", clubDescription=" + clubDescription + ", snsName=" + snsName + ", snsLink=" + snsLink
+				+ ", regdate=" + regdate + "]";
 	}
 	
 	
