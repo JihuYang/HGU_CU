@@ -8,9 +8,9 @@
 	<thead>
 		<tr>
 			<th scope="col" class="col-1 text-center">번호</th>
-			<th scope="col" class="col-6 text-center">제목</th>
+			<th scope="col" class="col-5 text-center">제목</th>
 			<th scope="col" class="col-1 text-center" id="writer">작성자</th>
-			<th scope="col" class="col-1 text-center" id="date">날짜</th>
+			<th scope="col" class="col-2 text-center" id="date">날짜</th>
 			<th scope="col" class="col-1 text-center" id="count">조회</th>
 		</tr>
 	</thead>
