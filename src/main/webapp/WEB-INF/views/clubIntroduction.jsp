@@ -30,8 +30,8 @@
 <jsp:include page="/WEB-INF/views/inc/header.jsp"/>
 
 <!-- Core theme CSS (includes Bootstrap)-->
-<link href="<%=request.getContextPath()%>/resources/css/styles.css" rel="stylesheet" />
-<link href="<%=request.getContextPath()%>/resources/css/clubIntroduction.css" rel="stylesheet" />
+<link href="/resources/css/styles.css" rel="stylesheet" />
+<link href="/resources/css/clubIntroduction.css" rel="stylesheet" />
 
 
 </head>
@@ -135,7 +135,7 @@
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
 	<!-- Core theme JS-->
-	<script src="../resources/js/scripts.js"></script>
+	<script src="/resources/js/scripts.js"></script>
 	<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
 	<!-- * *                               SB Forms JS                               * *-->
 	<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->

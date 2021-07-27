@@ -28,17 +28,15 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css"
 	rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
-<link href="./resources/css/styles.css" rel="stylesheet" />
-<link href="../resources/css/styles.css" rel="stylesheet" />
+<link href="<%=request.getContextPath()%>/resources/css/styles.css" rel="stylesheet" />
 
-<link href="../resources/css/header.css" rel="stylesheet" />
+<link href="<%=request.getContextPath()%>/resources/css/header.css" rel="stylesheet" />
 
-<link href="./resources/css/header.css" rel="stylesheet" />
-<link href="./resources/js/header.js" rel="stylesheet" />
+<link href="<%=request.getContextPath()%>/resources/js/header.js" rel="stylesheet" />
 <script src="https://code.jquery.com/jquery-1.11.3.js" type="text/javascript"></script>
 
-<script src="./resources/js/header.js"></script>
-<script src="../resources/js/header.js"></script>
+<script src="<%=request.getContextPath()%>/resources/js/header.js"></script>
+
 
 </head>
 <!-- Navigation-->
@@ -64,7 +62,7 @@
 					class="nav-link dropdown-toggle" 
 					data-toggle="dropdown" onclick = "location.href='./clubIntroduction'">동아리 소개</a>
 					<ul class="dropdown-menu" id="dropdown-content">
-						<li><a class="dropdown-item" href="#">공연분과</a></li>
+						<li><a class="dropdown-item" href="./clubIntroduction/3">공연분과</a></li>
 						<li><a class="dropdown-item" href="#">봉사분과</a></li> 
 						<li><a class="dropdown-item" href="#">학술분과</a></li> 
 						<li><a class="dropdown-item" href="#">전산분과</a></li> 

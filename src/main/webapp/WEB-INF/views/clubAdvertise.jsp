@@ -30,7 +30,7 @@
 <jsp:include page="/WEB-INF/views/inc/header.jsp"/>
 	
 <!-- Core theme CSS (includes Bootstrap)-->
-<link href="./resources/css/styles.css" rel="stylesheet" />
+<link href="<%=request.getContextPath()%>/resources/css/styles.css" rel="stylesheet" />
 <link href="./resources/css/clubAdvertise.css" rel="stylesheet" />
 
 </head>
@@ -44,17 +44,7 @@
 			</div>
 			<!-- 홍보글 테이블 -->
 			<div class="col-sm-10 align-self-baseline table-responsive table-height">
-				<table class="table table-hover table-mb">
-					<c:forEach items="${clubAdvertiseList}" var="clubAdvertiseList" varStatus="status">
-						<tr>
-							<td><img src="<%=request.getContextPath()%>/resources/img/${clubAdvertiseList.originalUrl}" class="img-thumbnail rounded"></td>
-							<td>
-								<h5>${clubAdvertiseList.title}</h5>
-								<p class="text-muted p-size">${clubAdvertiseList.content}</p>
-							</td>
-						</tr>
-					</c:forEach>
-				</table>
+				<jsp:include page="/WEB-INF/views/ajaxContent/clubAdvertise.jsp"/>
 			</div>
 			<div class="col-sm-10 justify-content-md-center position">
 				<div class="search-form">

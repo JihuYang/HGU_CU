@@ -30,10 +30,10 @@ public class ClubIntroductionController {
 	ClubService clubService;
 	
 	//동아리 홍보 페이지 컨트롤러 
-	@RequestMapping(value = "/clubIntroduction/{category}")
-	public ModelAndView clubIntroduction(@PathVariable String category, HttpSession session, HttpServletRequest request ) {
+	@RequestMapping(value = "/clubIntroduction/{categoryId}")
+	public ModelAndView clubIntroduction(@PathVariable int categoryId, HttpSession session, HttpServletRequest request ) {
 		ModelAndView mv = new ModelAndView();
-		
+		System.out.println(categoryId);
 		List<ClubDTO> clubIntroList = clubService.readClubIntroductionPreview();
 		
 		mv.addObject("clubIntroList", clubIntroList);
@@ -45,16 +45,10 @@ public class ClubIntroductionController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "/clubIntroduction/detail", method = RequestMethod.GET)//나중에는 동아리별 이름이나 번호로 연결하면 될것같아요..? 
-	public String clubIntroductionDetail(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
+	@RequestMapping(value = "/clubIntroduction/{categoryId}/{clubId}", method = RequestMethod.GET)//나중에는 동아리별 이름이나 번호로 연결하면 될것같아요..? 
+	public String clubIntroductionDetail(@PathVariable int categoryId,@PathVariable int clubId, HttpSession session, HttpServletRequest request ) {
 		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
 		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
 		
 		return "clubIntroductionDetail";
 	}

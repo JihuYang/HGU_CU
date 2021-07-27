@@ -1,3 +1,7 @@
+ .h-auto{
+ 	height:auto;
+ }
+
 .pt-title{
 	padding-top: 4em !important;
     padding-bottom: 1em !important;
