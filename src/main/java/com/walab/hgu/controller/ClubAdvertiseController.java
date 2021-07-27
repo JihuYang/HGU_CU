@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.walab.hgu.DTO.ClubAdvertiseDTO;
-import com.walab.hgu.DTO.CommunityInfoDTO;
 import com.walab.hgu.service.ClubAdvertiseService;
 
 @Controller

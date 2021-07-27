@@ -54,29 +54,6 @@
 							</td>
 						</tr>
 					</c:forEach>
-					<!-- <tr>
-						<td><img src="https://cdn.pixabay.com/photo/2020/02/11/16/25/manarola-4840080_1280.jpg" class="img-thumbnail rounded club-img"></td>
-						<td>
-							<h5>♪2021년도 피치파이프 리쿠르팅♪(제목) 더 길어지면 어떻게...?될까??</h5>
-							<p class="text-muted p-size">안녕하세요, 하나님을 찬양하는 아카펠라 동아리 피치파이프입니다.
-								이번학기 신입기수들을 모집하려고 합니다 ! (게시글 일부)</p>
-						</td>
-					</tr>
-					<tr>
-						<td><img src="https://cdn.pixabay.com/photo/2021/01/28/21/12/wave-5959087_1280.jpg" class="img-thumbnail rounded club-img"></td>
-						<td>
-							<h5>(제목)</h5> 
-							<p class="text-muted p-size">안녕하세요, 하나님을 찬양하는 아카펠라 동아리 피치파이프입니다.
-								이번학기 신입기수들을 모집하려고 합니다 ! (게시글 일부)</p>
-						</td> 
-					</tr>
-					<tr>
-						<td><img src="https://cdn.pixabay.com/photo/2021/01/28/21/12/wave-5959087_1280.jpg" class="img-thumbnail rounded club-img"></td>
-						<td>
-							<h5>(제목)</h5> 
-							<p class="text-muted p-size">(게시글 일부)</p>
-						</td> 
-					</tr> -->
 				</table>
 			</div>
 			<div class="col-sm-10 justify-content-md-center position">
