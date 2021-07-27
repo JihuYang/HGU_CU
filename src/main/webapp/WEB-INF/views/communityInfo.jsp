@@ -35,8 +35,7 @@
 <link href="./resources/css/home.css" rel="stylesheet" />
 <link href="./resources/css/community.css" rel="stylesheet" />
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<script src="https://kit.fontawesome.com/6333a60c65.js"
-	crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/6333a60c65.js"></script>
 <body id="page-top">
 	<!-- Masthead-->
 	<div class="container width-80 h-100">
@@ -48,37 +47,12 @@
 		</div>
 		<div
 			class="row h-50 align-items-center justify-content-center text-center">
-			<table class="table text-center">
-				<thead>
-					<tr>
-						<th scope="col" class="col-1 text-center">번호</th>
-						<th scope="col" class="col-5 text-center">제목</th>
-						<th scope="col" class="col-1 text-center" id="writer">작성자</th>
-						<th scope="col" class="col-2 text-center" id="date">날짜</th>
-						<th scope="col" class="col-1 text-center" id="count">조회</th>
-					</tr>
-				</thead>
-				<tbody>
-					<c:forEach items="${communityInfoList}" var="communityInfo"
-						varStatus="status">
-						<fmt:formatDate value="${communityInfo.regdate}"
-							var="formattedRegDate" type="date" pattern="yyyy-MM-dd" />
-						<tr>
-							<th scope="row">${status.count}</th>
-							<td class="text-start">${communityInfo.title}</td>
-							<td id="writer">${communityInfo.writer}</td>
-							<td id="date">${formattedRegDate}</td>
-							<td id="count">${communityInfo.viewCount}</td>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
+				<%@ include file="./ajaxContent/communityInfoList.jsp"%>
 			<div class="row justify-content-end">
-				<button class="btn btn-primary search-btn" type="submit" onclick="location.href='./createCommunity'">글쓰기</button>
-			</div>			
+				<button class="btn btn-primary search-btn" type="submit">글쓰기</button>
+			</div>
 		</div>
-		<div
-			class="row h-25 align-items-center text-center">			
+		<div class="row h-25 align-items-center text-center">
 			<form accept-charset="UTF-8" name="searchForm">
 				<div class="rows justify-content-center">
 					<select class="form-select form-select-sm search-selector">
@@ -128,7 +102,7 @@
 	<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
 	<!-- * *                               SB Forms JS                               * *-->
 	<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-	<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+	<!— * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *—>
 	<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 </body>
 </html>

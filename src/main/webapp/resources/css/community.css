@@ -184,11 +184,15 @@ td{
     padding:0 10px;
     padding:10px 0;
 }
-tr{
+/* tr{
     border: 1px solid gray !important;
     
-}
+} */
 
+thead, tbody, tfoot, tr, td, th {
+	border: 1px solid white;
+	
+}
 .section3 div{
     background-color: white;
     border-radius:25px;
@@ -204,15 +208,6 @@ tr{
 .table{
 	margin:10px 0;
 }
-/*
-#calendar{
-	position:relative !important;
-	margin:20px 0;
-	background-color:#f0f0f0;
-	width:98%;
-	margin:auto;
-}
-*/
 
 #calendar{
 	max-width: 900px;
@@ -226,7 +221,6 @@ tr{
 .section3 div{
 	border: 1px solid gray;
 }
-
 
 @media(max-width: 992px){
 	#top_margin{
