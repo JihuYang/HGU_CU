@@ -67,6 +67,7 @@
 .nav-link #community {
 	border-bottom: 4px solid black;
 }
+
 /* 캘린더 */
 .white, .white a {
     color: #fff;
@@ -184,10 +185,7 @@ td{
     padding:0 10px;
     padding:10px 0;
 }
-/* tr{
-    border: 1px solid gray !important;
-    
-} */
+
 
 thead, tbody, tfoot, tr, td, th {
 	border: 1px solid white;
@@ -216,11 +214,38 @@ thead, tbody, tfoot, tr, td, th {
 
 #calendar a{
 	color:black !important;
+	text-decoration:none !important;
 }
 
 .section3 div{
 	border: 1px solid gray;
 }
+
+.modal-header{
+	display:block !important;
+	border:none !important;
+}
+
+#modal-title{
+	width:80%;
+	margin : 0 auto;
+	margin-top:20px;
+}
+
+.btn-close{
+	float:right !important;
+	margin-bottom:10px !important;
+}
+
+.modal-dialog{
+	width:400px !important;
+	border-radius:30px !important;
+}
+
+.modal-footer{
+	border:none !important;
+}
+
 
 @media(max-width: 992px){
 	#top_margin{

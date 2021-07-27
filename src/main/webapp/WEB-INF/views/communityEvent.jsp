@@ -59,8 +59,10 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
+      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      	<div id="modal-title">
         <h3><input class="modal-title form-control" style="margin: 0 auto;" type="text" name="title" id="title" placeholder="제목 추가" /></h3>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
       </div>
       <div class="modal-body">
         <div class="row">
