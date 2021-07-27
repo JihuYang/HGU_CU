@@ -47,52 +47,61 @@
 				<h3 class="font-weight-bold pt-title">행사일정</h3>				
 			</div>
 		</div>
-		<div class="row h-50 align-items-center justify-content-center text-center">
-			
-			
-	
-<div id='datepicker'></div>
+		<div
+			class="row h-auto align-items-center justify-content-center text-center">
 
-<div class="modal fade" tabindex="-1" role="dialog">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      	<div id="modal-title">
-        <h3><input class="modal-title form-control" style="margin: 0 auto;" type="text" name="title" id="title" placeholder="제목 추가" /></h3>
-        </div>
-      </div>
-      <div class="modal-body">
-        <div class="row">
-          <div class="col-xs-12">
-            <label class="col-xs-4 mx-3 b-primary " for="place">장소</label>
-            <input type="text" name="place" id="place"/>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-12">
-            <label class="col-xs-4 mx-3 b-primary" for="starts-at">시간</label>
-            <input class="my-3 b-success" type="text" name="starts_at" id="starts-at" />
-          </div>
-        </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn " id="save-event">저장</button>
-      </div>
-    </div>
-  </div>
-</div>
+			<div id='datepicker'></div>
 
-        <div id='calendar'></div>
-		<!-- partial -->
-		
-		<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
-		<script src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment-with-locales.min.js'></script>
-		<script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/fullcalendar.js'></script>
-		<script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
-		<script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.42/js/bootstrap-datetimepicker.min.js'></script>
-					
-		<script type="text/javascript">
+			<div class="modal fade" tabindex="-1" role="dialog">
+				<div class="modal-dialog modal-dialog-centered" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="btn-close" data-bs-dismiss="modal"
+								aria-label="Close"></button>
+							<div id="modal-title">
+								<h3>
+									<input class="modal-title form-control" style="margin: 0 auto;"
+										type="text" name="title" id="title" placeholder="제목 추가" />
+								</h3>
+							</div>
+						</div>
+						<div class="modal-body">
+							<div class="row">
+								<div class="col-xs-12">
+									<label class="col-xs-4 mx-3 b-primary " for="place">장소</label>
+									<input type="text" name="place" id="place" />
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12">
+									<label class="col-xs-4 mx-3 b-primary" for="starts-at">시간</label>
+									<input class="my-3 b-success" type="text" name="starts_at"
+										id="starts-at" />
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn " id="save-event">저장</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id='calendar'></div>
+			<!-- partial -->
+
+			<script
+				src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+			<script
+				src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment-with-locales.min.js'></script>
+			<script
+				src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/fullcalendar.js'></script>
+			<script
+				src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
+			<script
+				src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.42/js/bootstrap-datetimepicker.min.js'></script>
+
+			<script type="text/javascript">
 
 		$(function() {
 			  $('#calendar').fullCalendar({
@@ -185,8 +194,8 @@
 
 
 		</script>
+		</div>
 	</div>
-</div>
 
 
 	<!-- Footer-->

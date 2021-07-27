@@ -55,7 +55,7 @@
 				<button class="btn btn-primary search-btn" type="submit">글쓰기</button>
 			</div>
 		</div>
-		<div class="row h-25 align-items-center text-center">
+		<div class="row h-auto align-items-center text-center">
 			<form accept-charset="UTF-8" name="searchForm">
 				<div class="rows justify-content-center">
 					<select class="form-select form-select-sm search-selector">
