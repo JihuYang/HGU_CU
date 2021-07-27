@@ -41,8 +41,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <script src="https://kit.fontawesome.com/6333a60c65.js"></script>
 <body id="page-top">
-	<!-- Masthead-->
-	<div class="container width-80 h-100">
+	<div class="container width-80 h-auto">
 		<div
 			class="row align-items-center justify-content-center text-center">
 			<div class="col-lg-6 align-self-end">
@@ -50,7 +49,7 @@
 			</div>
 		</div>
 		<div
-			class="row h-50 align-items-center justify-content-center text-center">
+			class="row h-auto align-items-center justify-content-center text-center">
 
         <div id='calendar'></div>
 		<!-- partial -->
@@ -58,6 +57,7 @@
 		<script src='https://fullcalendar.io/releases/fullcalendar/3.9.0/lib/jquery.min.js'></script>
 		<script src='https://fullcalendar.io/releases/fullcalendar/3.9.0/fullcalendar.min.js'></script>
 		<script type="text/javascript">
+
 		$(function() {
 			  $('#calendar').fullCalendar({
 			    selectable: true,

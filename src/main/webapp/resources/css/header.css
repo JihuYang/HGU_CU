@@ -5,7 +5,7 @@
 }
 
 #mainNav .logo {
-	width: 50px;
+	width:300px;
 	padding-right: 5px;
 }
 
@@ -125,5 +125,8 @@
 	}
 	.button-left {
 		margin-left: 2rem !important;
+	}
+	.navbar-expand-lg .navbar-collapse {
+		display: contents !important;
 	}
 }
