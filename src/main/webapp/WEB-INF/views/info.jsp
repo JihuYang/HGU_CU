@@ -34,27 +34,30 @@
 <jsp:include page="/WEB-INF/views/inc/header.jsp" />
 <link href="./resources/css/home.css" rel="stylesheet" />
 
-<script src="https://kit.fontawesome.com/6333a60c65.js"
-	crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/6333a60c65.js"></script>
 <body id="page-top">
-	<!-- Masthead-->
-        <section class="page-section align-items-center justify-content-center ">
-            <div class="container px-4 px-lg-5 text-center">
-                <h3 class="mb-5">총동아리연합회 소개</h3>
-            </div>
-            <div class="container px-4 px-lg-5 text-start">
-                <h4 class="mb-4 ps-5 py-5">총동아리연합회란</h4>
-            </div>   
-            <div class="container px-4 px-lg-5 text-start">
-                <h4 class="mb-4 ps-5 py-5">총동아리연합회 구성도</h4>
-                <img src="./resources/assets/img/구성도.png" class="img-fluid col-8 mx-auto d-block" alt="총동아리연합회 구성도">
-                
-            </div>  
-            <div class="container px-4 px-lg-5 text-start">
-                <h4 class="mb-4 ps-5 py-5">총동아리연합회 집행부 조직도</h4>
-                <img src="./resources/assets/img/조직도.jpg" class="img-fluid col-8 mx-auto d-block" alt="총동아리연합회 구성도">
-            </div>                                 
-        </section>
+	<div class="container width-80 h-auto">
+		<div
+			class="row h-25 align-items-center justify-content-center text-center">
+			<div class="col-lg-6 align-self-end">
+				<h3 class="font-weight-bold pt-title">총동아리연합회 소개</h3>
+			</div>
+		</div>
+		<div class="container px-4 px-lg-5 text-start">
+			<h4 class="mb-4 ps-5 py-5">총동아리연합회란</h4>
+		</div>
+		<div class="container px-4 px-lg-5 text-start">
+			<h4 class="mb-4 ps-5 py-5">총동아리연합회 구성도</h4>
+			<img src="./resources/assets/img/구성도.png"
+				class="img-fluid col-8 mx-auto d-block" alt="총동아리연합회 구성도">
+
+		</div>
+		<div class="container px-4 px-lg-5 text-start">
+			<h4 class="mb-4 ps-5 py-5">총동아리연합회 집행부 조직도</h4>
+			<img src="./resources/assets/img/조직도.jpg"
+				class="img-fluid col-8 mx-auto d-block" alt="총동아리연합회 구성도">
+		</div>
+	</div>
 
 	<!-- Footer-->
 	<jsp:include page="/WEB-INF/views/inc/footer.jsp" />

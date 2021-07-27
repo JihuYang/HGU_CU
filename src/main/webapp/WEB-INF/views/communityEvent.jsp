@@ -40,16 +40,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <script src="https://kit.fontawesome.com/6333a60c65.js"></script>
 <body id="page-top">
-	<!-- Masthead-->
-	<div class="container width-80 h-100">
+	<div class="container width-80 h-auto">
 		<div
 			class="row align-items-center justify-content-center text-center">
 			<div class="col-lg-6 align-self-end">
 				<h3 class="font-weight-bold pt-title">행사일정</h3>				
 			</div>
 		</div>
-		<div
-			class="row h-50 align-items-center justify-content-center text-center">
+		<div class="row h-50 align-items-center justify-content-center text-center">
 			
 			
 	
@@ -87,6 +85,9 @@
 
 
 
+=======
+			class="row h-auto align-items-center justify-content-center text-center">
+>>>>>>> branch 'main' of https://github.com/JihuYang/HGU_CU.git
 
         <div id='calendar'></div>
 		<!-- partial -->
@@ -98,8 +99,16 @@
 		<script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.42/js/bootstrap-datetimepicker.min.js'></script>
 					
 		<script type="text/javascript">
+<<<<<<< HEAD
 		$(document).ready(function() {
 			  $("#calendar").fullCalendar({
+=======
+
+		$(function() {
+			  $('#calendar').fullCalendar({
+			    selectable: true,
+			    longPressDelay: 0,
+>>>>>>> branch 'main' of https://github.com/JihuYang/HGU_CU.git
 			    header: {
 			      left: "prev,next today",
 			      center: "title",
