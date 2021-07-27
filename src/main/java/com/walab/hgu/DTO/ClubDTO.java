@@ -17,6 +17,7 @@ public class ClubDTO {
 	private String clubDescription;//동아리 소개 설명글 
 	private String snsName;
 	private String snsLink;
+	private String originalUrl;
 	private Date regdate;
 	
 	
@@ -105,13 +106,19 @@ public class ClubDTO {
 	public void setClubCeoName(String clubCeoName) {
 		this.clubCeoName = clubCeoName;
 	}
+	public String getOriginalUrl() {
+		return originalUrl;
+	}
+	public void setOriginalUrl(String originalUrl) {
+		this.originalUrl = originalUrl;
+	}
 	@Override
 	public String toString() {
 		return "ClubDTO [id=" + id + ", categoryId=" + categoryId + ", userId=" + userId + ", clubId=" + clubId
 				+ ", categoryName=" + categoryName + ", clubName=" + clubName + ", clubCeoName=" + clubCeoName
 				+ ", clubLocation=" + clubLocation + ", phone=" + phone + ", foundationDate=" + foundationDate
 				+ ", clubDescription=" + clubDescription + ", snsName=" + snsName + ", snsLink=" + snsLink
-				+ ", regdate=" + regdate + "]";
+				+ ", originalUrl=" + originalUrl + ", regdate=" + regdate + "]";
 	}
 	
 	

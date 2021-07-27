@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.walab.hgu.DAO.ClubDAO;
-import com.walab.hgu.DTO.ClubAdvertiseDTO;
 import com.walab.hgu.DTO.ClubDTO;
 
 @Service
@@ -16,11 +15,22 @@ public class ClubServiceImpl implements ClubService{
 	ClubDAO clubDAO ;
 	
 	@Override
-	public List<ClubDTO> readClubIntroductionPreview() {
+	public List<ClubDTO> readClubIntroductionPreview(int categoryId) {
 		
-		List<ClubDTO> clubIntroList = clubDAO.readClubIntroductionPreview();
+		List<ClubDTO> clubIntroList = clubDAO.readClubIntroductionPreview(categoryId);
 		
 		return clubIntroList;
 	}
+
+	@Override
+	public List<ClubDTO> getCategoryNameList() {
+		
+
+		List<ClubDTO> categoryNameList = clubDAO.getCategoryNameList();
+		
+		return categoryNameList;
+	}
+	
+	
 
 }

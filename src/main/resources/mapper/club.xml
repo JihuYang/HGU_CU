@@ -4,11 +4,15 @@
 <!-- club 소개 페이지에 보통 쓰일 쿼리들 모을 예정 -->
 <mapper namespace="Club">
 
-	<select id="readClubIntroductionPreview"
-		resultType="com.walab.hgu.DTO.ClubDTO" parameterType="hashmap">
-		SELECT CL.clubName, u.name as clubCeoName, CL.clubLocation,u.phone,categoryId, CL.foundationDate, cS.snsName, cS.snsLink
-		FROM hguclub.club as CL ,hguclub.clubImage cI , hguclub.category CA ,hguclub.user u ,hguclub.clubSNS cS
-		where CA.id = CL.categoryId and CL.userId = u.id and CL.id = cS.clubId and CL.id = cI.clubId;
+	<select id="readClubIntroductionPreview" parameterType="HashMap" resultType="com.walab.hgu.DTO.ClubDTO">
+		SELECT CL.clubName, u.name as clubCeoName, CL.clubLocation, u.phone,categoryId, categoryName, CL.foundationDate, cS.snsName, cS.snsLink ,cI.originalUrl
+        FROM hguclub.club as CL ,hguclub.clubImage cI ,hguclub.category CA,hguclub.user u ,hguclub.clubSNS cS
+		where CA.id = CL.categoryId and CL.userId = u.id and  CL.id = cS.clubId and CL.id = cI.clubId
+		and CA.id = #{categoryId}
+	</select>
+	
+	<select id="getCategoryNameList" resultType="com.walab.hgu.DTO.ClubDTO">
+		Select categoryName FROM hguclub.category
 	</select>
 
 </mapper>

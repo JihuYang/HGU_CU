@@ -12,7 +12,7 @@
 <title>한동대학교 총동아리연합회</title>
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon"
-	href="./resources/assets/img/favicon.ico" />
+	href="../resources/assets/img/favicon.ico" />
 <!-- Bootstrap Icons-->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
@@ -44,8 +44,8 @@
 		<div
 			class="row gx-4 gx-lg-5 align-items-center justify-content-center text-center">
 			<div class="col-lg-8 align-self-center">
-				<h3 class="font-weight-bold pt-title">공연분과 동아리 소개</h3>
-				<p class="text-muted mb-0">한동대 공연분과 모든 동아리들을 응원합니다 !</p>
+				<h3 class="font-weight-bold pt-title">${categoryName} 동아리 소개</h3>
+				<p class="text-muted mb-0">한동대 ${categoryName} 모든 동아리들을 응원합니다 !</p>
 			</div>
 			<div class="col-sm-10 justify-content-md-center">
 				<hr>
@@ -67,8 +67,8 @@
 							<div class="col-xs-6 col-sm-4 pd-0">
 								<div class="overlay-item overlay-effect">
 									<img
-										src="https://cdn.pixabay.com/photo/2020/10/07/18/40/dog-5635960_960_720.jpg"
-										alt="" />
+										src="<%=request.getContextPath()%>/resources/img/${clubIntroList.originalUrl}"
+										alt="임시" />
 									<a href="<%=request.getContextPath()%>/clubIntroduction/{categoryId}/{clubId}" class="mask">		
 										[${clubIntroList.clubName}]<br>창립일자: ${formattedFdDate}<br>대표자명: ${clubIntroList.clubCeoName}<br>연락처:
 										${clubIntroList.phone}<br>동방: ${clubIntroList.clubLocation}<br>인스타/페북: ${clubIntroList.snsLink}
@@ -76,65 +76,6 @@
 								</div>
 							</div>
 						</c:forEach>
-						<%-- <div class="col-xs-6 col-sm-4 pd-0">
-							<div class="overlay-item overlay-effect">
-								<img
-									src="https://cdn.pixabay.com/photo/2021/07/09/02/29/family-6398107_960_720.jpg"
-									alt="" />
-								<a href="<%=request.getContextPath()%>/clubIntroduction/{categoryId}/{clubId}" class="mask">	
-										[제자리]<br>창립연도: 1995.05.12<br>대표자명: 방승민<br>연락처:
-										010 – xxxx - xxxx<br>인스타/페북: <br>동방: 302호
-								</a>
-							</div>
-						</div>
-						<div class="col-xs-6 col-sm-4 pd-0">
-							<div class="overlay-item overlay-effect">
-								<img
-									src="https://cdn.pixabay.com/photo/2020/10/07/18/40/dog-5635960_960_720.jpg"
-									alt="" />
-								<a href="<%=request.getContextPath()%>/clubIntroduction/{categoryId}/{clubId}" class="mask">		
-									[피치파이프 ]<br>창립연도: 1995.05.12<br>대표자명: 방승민<br>연락처:
-									010 – xxxx - xxxx<br>인스타/페북: <br>동방: 302호
-								</a>
-							</div>
-						</div>
-						<div class="col-xs-6 col-sm-4 pd-0">
-							<div class="overlay-item overlay-effect">
-								<img
-									src="https://cdn.pixabay.com/photo/2020/10/12/22/15/glass-5650335_960_720.jpg"
-									alt="" />
-								<a href="<%=request.getContextPath()%>/clubIntroduction/{categoryId}/{clubId}" class="mask">
-										[하향 ]<br>창립연도: 1995.05.12<br>대표자명: 방승민<br>연락처:
-										010 – xxxx - xxxx<br>인스타/페북: <br>동방: 302호
-								</a>
-							</div>
-						</div>
-						<!--  
-					</div>
-					<div class="row logo-display">
-					-->
-						<div class="col-xs-6 col-sm-4 pd-0">
-							<div class="overlay-item overlay-effect">
-								<img
-									src="https://cdn.pixabay.com/photo/2021/07/13/11/34/cat-6463284_960_720.jpg"
-									alt="" />
-								<a href="<%=request.getContextPath()%>/clubIntroduction/{categoryId}/{clubId}" class="mask">
-										[MIC]<br>창립연도: 1995.05.12<br>대표자명: 방승민<br>연락처:
-										010 – xxxx - xxxx<br>인스타/페북: <br>동방: 302호
-								</a>
-							</div>
-						</div>
-						<div class="col-xs-6 col-sm-4 pd-0">
-							<div class="overlay-item overlay-effect">
-								<img
-									src="https://cdn.pixabay.com/photo/2021/07/09/02/29/family-6398107_960_720.jpg"
-									alt="" />
-								<a href="<%=request.getContextPath()%>/clubIntroduction/{categoryId}/{clubId}" class="mask">
-										[제자리]<br>창립연도: 1995.05.12<br>대표자명: 방승민<br>연락처:
-										010 – xxxx - xxxx<br>인스타/페북: <br>동방: 302호
-								</a>
-							</div>
-						</div> --%>
 					</div>
 				</div>	
 			</div>

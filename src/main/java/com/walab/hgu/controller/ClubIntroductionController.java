@@ -34,9 +34,15 @@ public class ClubIntroductionController {
 	public ModelAndView clubIntroduction(@PathVariable int categoryId, HttpSession session, HttpServletRequest request ) {
 		ModelAndView mv = new ModelAndView();
 		System.out.println(categoryId);
-		List<ClubDTO> clubIntroList = clubService.readClubIntroductionPreview();
+		List<ClubDTO> clubIntroList = clubService.readClubIntroductionPreview(categoryId);
+		List<ClubDTO> categoryNameList = clubService.getCategoryNameList();
+		//String categoryName = clubIntroList.get(0).getCategoryName();
+		
+		String categoryName = categoryNameList.get(categoryId-1).getCategoryName();
+		
 		
 		mv.addObject("clubIntroList", clubIntroList);
+		mv.addObject("categoryName", categoryName);
 		
 		mv.setViewName("clubIntroduction");
 		
@@ -53,6 +59,7 @@ public class ClubIntroductionController {
 		return "clubIntroductionDetail";
 	}
 	
+	//동아리 홍보 글쓰기 
 	@RequestMapping(value = "/createClubIntro", method = RequestMethod.GET)//나중에는 동아리별 이름이나 번호로 연결하면 될것같아요..? 
 	public String createClubIntro(Locale locale, Model model) {
 		logger.info("Welcome home! The client locale is {}.", locale);
