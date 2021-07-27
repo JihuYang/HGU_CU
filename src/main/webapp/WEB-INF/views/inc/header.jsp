@@ -46,7 +46,7 @@
 	<div class="container px-4 px-lg-5 respx-3 ">
 		<img src="https://www.handong.edu/site/handong/res/img/sub_802-02.png"
 			class="logo"></img> <a class="navbar-brand"
-			onclick="location.href='./'">한동대학교 총동아리연합회<br>
+			onclick="location.href='<%=request.getContextPath()%>/'">한동대학교 총동아리연합회<br>
 		<span id="name">HANDONG GLOBAL UNIVERSITY CLUB UNION</span></a>
 		<button class="navbar-toggler navbar-toggler-right" type="button"
 			data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
@@ -57,10 +57,10 @@
 		<div class="collapse navbar-collapse justify-content-md-center"
 			id="navbarResponsive">
 			<ul class="navbar-nav my-2 my-lg-0">
-				<li class="nav-item nav-bottom-border mx-2" onclick="location.href='./info'"><a class="nav-link">총동연 소개</a></li>
+				<li class="nav-item nav-bottom-border mx-2" onclick="location.href='<%=request.getContextPath()%>/info'"><a class="nav-link">총동연 소개</a></li>
 				<li class="nav-item nav-bottom-border mx-2 dropdown" id="dropdown-display"><a
 					class="nav-link dropdown-toggle" 
-					data-toggle="dropdown" onclick = "location.href='./clubIntroduction'">동아리 소개</a>
+					data-toggle="dropdown" onclick = "location.href='<%=request.getContextPath()%>/clubIntroduction'">동아리 소개</a>
 					<ul class="dropdown-menu" id="dropdown-content">
 						<li><a class="dropdown-item" href="./clubIntroduction/3">공연분과</a></li>
 						<li><a class="dropdown-item" href="#">봉사분과</a></li> 
@@ -71,15 +71,15 @@
 						<li><a class="dropdown-item" href="#">전시분과</a></li> 
 						<li><a class="dropdown-item" href="#">아기동아리</a></li> 
 					</ul></li>				
-				<li class="nav-item nav-bottom-border mx-2"><a class="nav-link" onclick="location.href='./reservation'">시설 예약</a></li>
+				<li class="nav-item nav-bottom-border mx-2"><a class="nav-link" onclick="location.href='<%=request.getContextPath()%>/reservation'">시설 예약</a></li>
 				<li class="nav-item nav-bottom-border mx-2 dropdown" id="dropdown-display-community"><a
 					class="nav-link dropdown-toggle" 
-					data-toggle="dropdown" onclick = "location.href='./communityInfo'">커뮤니티</a>
+					data-toggle="dropdown" onclick = "location.href='<%=request.getContextPath()%>/communityInfo'">커뮤니티</a>
 					<ul class="dropdown-menu dropdown-menu-community" id="dropdown-content-community">
-						<li><a class="dropdown-item" onclick = "location.href='./communityInfo'">공지사항</a></li>
-						<li><a class="dropdown-item" onclick = "location.href='./communityMaterials'">자료실</a></li> 
-						<li><a class="dropdown-item" onclick = "location.href='./communityEvent'">행사일정</a></li>   
-						<li><a class="dropdown-item" onclick = "location.href='./communityComplaints'">민원</a></li> 
+						<li><a class="dropdown-item" onclick = "location.href='<%=request.getContextPath()%>/communityInfo'">공지사항</a></li>
+						<li><a class="dropdown-item" onclick = "location.href='<%=request.getContextPath()%>/communityMaterials'">자료실</a></li> 
+						<li><a class="dropdown-item" onclick = "location.href='<%=request.getContextPath()%>/communityEvent'">행사일정</a></li>   
+						<li><a class="dropdown-item" onclick = "location.href='<%=request.getContextPath()%>/communityComplaints'">민원</a></li> 
 					</ul></li>	
 				<li class="nav-item nav-bottom-border"><a class="nav-link mx-2" onclick="location.href='./clubAdvertise'">동아리 홍보</a></li>
 				<li class="nav-item button-padding button-left border-none">
@@ -87,7 +87,7 @@
 				</li>
 				<li class="nav-item button-padding border-none">
 					<button type="button" class=" login-btn btn-outline-secondary "
-						onclick="location.href='./login'">로그인</button>
+						onclick="location.href='<%=request.getContextPath()%>/login'">로그인</button>
 				</li>
 			</ul>
 		</div>
