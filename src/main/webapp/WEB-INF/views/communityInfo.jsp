@@ -74,7 +74,7 @@
 				</tbody>
 			</table>
 			<div class="row justify-content-end">
-				<button class="btn btn-primary search-btn" type="submit">글쓰기</button>
+				<button class="btn btn-primary search-btn" type="submit" onclick="location.href='./createCommunity'">글쓰기</button>
 			</div>			
 		</div>
 		<div

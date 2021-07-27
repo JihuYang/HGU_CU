@@ -99,18 +99,19 @@ a:link ,a:visited{
     border-radius:25px;
 }
 
-table{
+#space-table{
     border: 1px solid #D0D0CE;
     width:98%;
     margin:auto;
-    text-align: center;
 }
 
-td{
-    padding:0 10px;
+#space-table td{
+	width:100;
     padding:10px 0;
+    text-align: center; 
 }
-tr{
+
+#space-table tr{
     border: 1px solid #D0D0CE !important;
 }
 
@@ -132,6 +133,7 @@ tr{
 
 #calendar{
 	max-width: 900px;
+	margin:0 auto;
 }
 
 .section3 div{

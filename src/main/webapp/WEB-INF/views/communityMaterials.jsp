@@ -39,13 +39,15 @@
 	crossorigin="anonymous"></script>
 <body id="page-top">
 	<!-- Masthead-->
-	<div class="container px-4 px-lg-5 h-100">
+	<div class="container width-80 h-100">
 		<div
-			class="row gx-4 gx-lg-5 h-75 align-items-center justify-content-center text-center">
+			class="row h-25 align-items-center justify-content-center text-center">
 			<div class="col-lg-6 align-self-end">
 				<h3 class="font-weight-bold">자료실</h3>
 			</div>
-
+		</div>
+		<div
+		class="row h-50 align-items-center justify-content-center text-center">
 			<table class="table text-center">
 				<thead>
 					<tr>
@@ -70,6 +72,9 @@
 					</c:forEach>
 				</tbody>
 			</table>
+			<div class="row justify-content-end">
+				<button class="btn btn-primary search-btn" type="submit" onclick="location.href='./createMaterials'">글쓰기</button>
+			</div>	
 		</div>
 		<div
 			class="row gx-4 gx-lg-5  align-items-center justify-content-center text-center">
