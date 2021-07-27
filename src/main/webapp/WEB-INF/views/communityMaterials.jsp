@@ -35,18 +35,17 @@
 <link href="./resources/css/home.css" rel="stylesheet" />
 <link href="./resources/css/community.css" rel="stylesheet" />
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<script src="https://kit.fontawesome.com/6333a60c65.js"></script>
+<script src="https://kit.fontawesome.com/6333a60c65.js"
+	crossorigin="anonymous"></script>
 <body id="page-top">
 	<!-- Masthead-->
-	<div class="container width-80 h-100">
+	<div class="container px-4 px-lg-5 h-100">
 		<div
-			class="row h-25 align-items-center justify-content-center text-center">
+			class="row gx-4 gx-lg-5 h-75 align-items-center justify-content-center text-center">
 			<div class="col-lg-6 align-self-end">
-				<h3 class="font-weight-bold pt-title">자료실</h3>
+				<h3 class="font-weight-bold">자료실</h3>
 			</div>
-		</div>
-		<div
-		class="row h-50 align-items-center justify-content-center text-center">
+
 			<table class="table text-center">
 				<thead>
 					<tr>
@@ -71,47 +70,39 @@
 					</c:forEach>
 				</tbody>
 			</table>
-			<div class="row justify-content-end">
-				<button class="btn btn-primary search-btn" type="submit" onclick="location.href='./createMaterials'">글쓰기</button>
-			</div>	
 		</div>
-		
 		<div
-			class="row h-50 align-items-center justify-content-center text-center">		
-			<!-- 자료실 리스트  -->
-			<%@ include file="./ajaxContent/communityMaterialList.jsp"%>
-
-		</div>
-		<div class="row h-25 align-items-center text-center">
-			<form accept-charset="UTF-8" name="searchForm">
-				<div class="rows justify-content-center">
+			class="row gx-4 gx-lg-5  align-items-center justify-content-center text-center">
+			<form accept-charset="UTF-8" name="searchForm"
+				class="align-items-center justify-content-center">
+				<div class="rows">
 					<select class="form-select form-select-sm search-selector">
 						<option value="title" selected>제목</option>
 						<option value="content">내용</option>
 					</select>
 				</div>
-				<div class="rows justify-content-center">
+				<div class="rows">
 					<input class="form-control form-control-sm search-input"
 						type="text">
 					<button class="btn btn-primary search-btn" type="submit">검색</button>
 				</div>
 			</form>
-			<nav>
-				<ul class="pagination align-items-center justify-content-center">
-					<li class="page-item"><a class="page-link" href="#"
-						aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-							<span class="sr-only">Previous</span>
-					</a></li>
-					<li class="page-item"><a class="page-link" href="#">1</a></li>
-					<li class="page-item"><a class="page-link" href="#">2</a></li>
-					<li class="page-item"><a class="page-link" href="#">3</a></li>
-					<li class="page-item"><a class="page-link" href="#"
-						aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
-							class="sr-only">Next</span>
-					</a></li>
-				</ul>
-			</nav>
 		</div>
+		<nav>
+			<ul class="pagination align-items-center justify-content-center">
+				<li class="page-item"><a class="page-link" href="#"
+					aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+						<span class="sr-only">Previous</span>
+				</a></li>
+				<li class="page-item"><a class="page-link" href="#">1</a></li>
+				<li class="page-item"><a class="page-link" href="#">2</a></li>
+				<li class="page-item"><a class="page-link" href="#">3</a></li>
+				<li class="page-item"><a class="page-link" href="#"
+					aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
+						class="sr-only">Next</span>
+				</a></li>
+			</ul>
+		</nav>
 	</div>
 
 	<!-- Footer-->
@@ -131,8 +122,8 @@
 	<script src="js/scripts.js"></script>
 	<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
 	<!-- * *                               SB Forms JS                               * *-->
-	<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-	<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+	<!— * * Activate your form at https://startbootstrap.com/solution/contact-forms * *—>
+	<!— * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *—>
 	<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 </body>
 </html>
