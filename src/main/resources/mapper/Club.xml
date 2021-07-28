@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- club 소개 페이지에 보통 쓰일 쿼리들 모을 예정 -->
+<mapper namespace="Club">
+
+	<select id="readClubIntroductionPreview" parameterType="HashMap" resultType="com.walab.hgu.DTO.ClubDTO">
+		SELECT CL.id,CL.clubName, u.name as clubCeoName, CL.clubLocation, u.phone,categoryId, categoryName, CL.foundationDate, cS.snsName, cS.snsLink ,cI.originalUrl
+        FROM hguclub.club as CL ,hguclub.clubImage cI ,hguclub.category CA,hguclub.user u ,hguclub.clubSNS cS
+		where CA.id = CL.categoryId and CL.userId = u.id and  CL.id = cS.clubId and CL.id = cI.clubId
+		and CA.id = #{categoryId} and cI.`order` = 1
+	</select>
+	
+	<select id="getCategoryNameList" resultType="com.walab.hgu.DTO.ClubDTO">
+		Select categoryName FROM hguclub.category
+	</select>
+	
+	<select id="getClubDetailList" parameterType="HashMap" resultType="com.walab.hgu.DTO.ClubDTO">
+		SELECT CL.id,CL.clubName,u.name as clubCeoName,CL.clubLocation,CL.clubDescription,u.phone,categoryId,categoryName,CL.foundationDate,cS.snsName,cS.snsLink ,cI.originalUrl
+        FROM hguclub.club as CL ,hguclub.clubImage cI ,hguclub.category CA,hguclub.user u ,hguclub.clubSNS cS
+		where CA.id = CL.categoryId and CL.userId = u.id and  CL.id = cS.clubId and CL.id = cI.clubId
+		and CA.id = #{categoryId} and CL.id = #{clubId}
+	</select>
+
+</mapper>
