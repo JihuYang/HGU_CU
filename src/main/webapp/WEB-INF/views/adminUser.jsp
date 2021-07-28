@@ -34,7 +34,7 @@
 <script src="https://kit.fontawesome.com/6333a60c65.js"></script>
 <body id="page-top">
 	<!-- Masthead-->
-	<div class="container width-80 h-auto">
+	<div class="container width-80 h-auto h-min">
 		<div
 			class="row h-auto align-items-center justify-content-center text-center">
 			<div class="col-lg-6 align-self-end">
@@ -56,89 +56,13 @@
 		</nav>
 
 		<div
-			class="row h-auto align-items-center justify-content-center text-center mt-5 ">
+			class="row h-auto align-items-center justify-content-center text-center my-5 ">
 
-			<!-- 공지사항 리스트  -->
-			<%-- 			<%@ include file="./ajaxContent/communityInfoList.jsp"%>
- --%>
-			<table
-				class="table align-items-center justify-content-center text-center ">
-				<thead class="p-4">
-					<tr class="tr-border">
-						<th scope="col" class="col-1" id="username">이름</th>
-						<th scope="col" class="col-3" id="contact">연락처</th>
-						<th scope="col" class="col-3" id="email">이메일</th>
-						<th scope="col" class="col-2" id="club">소속단체</th>
-						<th scope="col" class="col-1" id="authority">권한</th>
-					</tr>
-				</thead>
-				<tbody class="align-items-center p-4">
-					<c:forEach items="${userList}" var="userList" varStatus="status">
-						<tr>
-							<td id="username">${userList.name}</td>
-							<td id="contact">${userList.phone}</td>
-							<td id="email">${userList.email}</td>
-							<td id="club">${userList.clubName}</td>
+			<!-- 회원 리스트  -->
+			<%@ include file="./ajaxContent/adminUserList.jsp"%>
 
-							<td id="authority"><c:if test="${userList.admin == 2}">
-									<select class="adminSelect">
-										<option value="2" selected>일반회원</option>
-										<option value="1">동아리대표자</option>
-										<option value="3">차단</option>
-										<option value="0">관리자</option>
-									</select>
-								</c:if> <c:if test="${userList.admin == 1}">
-									<select class="adminSelect">
-										<option value="2">일반회원</option>
-										<option value="1" selected>동아리대표자</option>
-										<option value="3">차단</option>
-										<option value="0">관리자</option>
-									</select>
-								</c:if> <c:if test="${userList.admin == 3}">
-									<select class="adminSelect">
-										<option value="2">일반회원</option>
-										<option value="1">동아리대표자</option>
-										<option value="3" selected>차단</option>
-										<option value="0">관리자</option>
-									</select>
-								</c:if> <c:if test="${userList.admin == 0}">
-									<select class="adminSelect">
-										<option value="2">일반회원</option>
-										<option value="1">동아리대표자</option>
-										<option value="3">차단</option>
-										<option value="0" selected>관리자</option>
-									</select>
-								</c:if> <!-- 								<div class="dropdown">
-									<button class="btn btn-secondary dropdown-toggle authority-btn"
-										type="button" id="dropdownMenuButton1"
-										data-bs-toggle="dropdown" aria-expanded="false">권한 설정</button>
-									<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-										<li><a class="dropdown-item" href="#">일반회원</a></li>
-										<li><a class="dropdown-item" href="#">동아리대표</a></li>
-										<li><a class="dropdown-item" href="#">차단</a></li>
-										<li><a class="dropdown-item" href="#">관리자</a></li>
-									</ul>
-								</div> --></td>
-						</tr>
-					</c:forEach>
-
-				</tbody>
-			</table>
 		</div>
 		<div class="row h-auto align-items-center text-center">
-			<form accept-charset="UTF-8" name="searchForm">
-				<div class="rows justify-content-center">
-					<select class="form-select form-select-sm search-selector">
-						<option value="title" selected>제목</option>
-						<option value="content">내용</option>
-					</select>
-				</div>
-				<div class="rows justify-content-center">
-					<input class="form-control form-control-sm search-input"
-						type="text">
-					<button class="btn btn-primary search-btn" type="submit">검색</button>
-				</div>
-			</form>
 			<nav>
 				<ul class="pagination align-items-center justify-content-center">
 					<li class="page-item"><a class="page-link" href="#"

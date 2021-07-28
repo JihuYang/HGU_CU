@@ -11049,3 +11049,6 @@ header.masthead h1, header.masthead .h1 {
 	padding-top: 4em;
 	padding-bottom: 1em;
 }
+.h-min {
+	 min-height: 100%;
+}
