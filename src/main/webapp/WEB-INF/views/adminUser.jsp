@@ -79,8 +79,36 @@
 							<td id="contact">${userList.phone}</td>
 							<td id="email">${userList.email}</td>
 							<td id="club">${userList.clubName}</td>
-							<td id="authority">
-								<div class="dropdown">
+
+							<td id="authority"><c:if test="${userList.admin == 2}">
+									<select class="adminSelect">
+										<option value="2" selected>일반회원</option>
+										<option value="1">동아리대표자</option>
+										<option value="3">차단</option>
+										<option value="0">관리자</option>
+									</select>
+								</c:if> <c:if test="${userList.admin == 1}">
+									<select class="adminSelect">
+										<option value="2">일반회원</option>
+										<option value="1" selected>동아리대표자</option>
+										<option value="3">차단</option>
+										<option value="0">관리자</option>
+									</select>
+								</c:if> <c:if test="${userList.admin == 3}">
+									<select class="adminSelect">
+										<option value="2">일반회원</option>
+										<option value="1">동아리대표자</option>
+										<option value="3" selected>차단</option>
+										<option value="0">관리자</option>
+									</select>
+								</c:if> <c:if test="${userList.admin == 0}">
+									<select class="adminSelect">
+										<option value="2">일반회원</option>
+										<option value="1">동아리대표자</option>
+										<option value="3">차단</option>
+										<option value="0" selected>관리자</option>
+									</select>
+								</c:if> <!-- 								<div class="dropdown">
 									<button class="btn btn-secondary dropdown-toggle authority-btn"
 										type="button" id="dropdownMenuButton1"
 										data-bs-toggle="dropdown" aria-expanded="false">권한 설정</button>
@@ -90,8 +118,7 @@
 										<li><a class="dropdown-item" href="#">차단</a></li>
 										<li><a class="dropdown-item" href="#">관리자</a></li>
 									</ul>
-								</div>
-							</td>
+								</div> --></td>
 						</tr>
 					</c:forEach>
 
