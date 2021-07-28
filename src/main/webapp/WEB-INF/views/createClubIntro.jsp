@@ -37,7 +37,7 @@
 <script src="https://kit.fontawesome.com/6333a60c65.js" crossorigin="anonymous"></script>
 <body id="page-top">
 	<!-- Masthead-->
-	<div class="container px-4 px-lg-5 h-100">
+	<div class="container px-4 px-lg-5 h-auto">
 		<div class="row gx-4 gx-lg-5 align-items-center justify-content-center text-center">
 			<div class="col-lg-8 align-self-center">
 				<h3 class="font-weight-bold pt-title">동아리 소개</h3>

@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ page session="false"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
@@ -11,7 +12,7 @@
 <title>한동대학교 총동아리연합회</title>
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon"
-	href="./resources/assets/img/favicon.ico" />
+	href="../resources/assets/img/favicon.ico" />
 <!-- Bootstrap Icons-->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
@@ -30,8 +31,8 @@
 <jsp:include page="/WEB-INF/views/inc/header.jsp" />
 
 <!-- Core theme CSS (includes Bootstrap)-->
-<link href="../resources/css/styles.css" rel="stylesheet" />
-<link href="../resources/css/clubIntroductionDetail.css"
+<link href="../../resources/css/styles.css" rel="stylesheet" />
+<link href="../../resources/css/clubIntroductionDetail.css"
 	rel="stylesheet" />
 
 </head>
@@ -43,35 +44,40 @@
 		<div
 			class="row gx-4 gx-lg-5 align-items-center justify-content-center text-center">
 			<div class="col-lg-8 align-self-center">
-				<h3 class="font-weight-bold pt-title">공연분과 동아리 소개</h3>
-				<p class="text-muted mb-0">한동대 공연분과 모든 동아리들을 응원합니다 !</p>
+				<h3 class="font-weight-bold pt-title">${categoryName} 동아리 소개</h3>
+				<p class="text-muted mb-0">한동대 ${categoryName} 모든 동아리들을 응원합니다 !</p>
 			</div>
 			<div class="col-sm-10">
 				<hr>
 				<!-- 동아리 대표 내용  -->
 				<div class="align">
-					<h5 class="text-align">[제자리]</h5>
-					<p class="text-align">대표자명: 방승민</p>
-					<p class="text-align">연락처: 010 – xxxx - xxxx</p>
-					<p class="text-align">인스타/페북:</p>
-					<p class="text-align">동방: 302호</p>
-					<p class="text-align content-size">
-						동아리 소개글<br>🌿2021 피치파이프 리크루팅🍑🌿<br>YES, WE ARE
-						PITCHPIPE!<br>_<br>안녕하세요, 21학번 🌊함께하는 세대🌊 여러분!<br>하나님을
-						찬양하는 아카펠라 동아리 피치파이프입니다🎶<br>저희와 함께 목소리로 하나님을 찬양할 21학번
-						방울이💧분들을 모집합니다💚<br>😌 나는 찬양하는 것을 좋아한다!<br>🤔 아카펠라를 잘
-						모르지만 한 번 도전해보고 싶다!<br>🤗 아카펠라로 아름다운 하모니를 만들어보고 싶다!<br>🥺
-						피치파이프라는 동아리에 너무너무 들어오고 싶다!<br> <br>하신다면, 누구나 환영합니다
-						😊🙌🏻<br>함께 찬양하고, 함께 기뻐하고, 함께 추억을 만들어나갈 21학번 새내기🐥들의 많은 지원을
-						기다립니다✨<br>동아리 소개글<br>🌿2021 피치파이프 리크루팅🍑🌿<br>YES,
-						WE ARE PITCHPIPE!<br>_<br>안녕하세요, 21학번 🌊함께하는 세대🌊 여러분!<br>하나님을
-						찬양하는 아카펠라 동아리 피치파이프입니다🎶<br>저희와 함께 목소리로 하나님을 찬양할 21학번
-						방울이💧분들을 모집합니다💚<br>😌 나는 찬양하는 것을 좋아한다!<br>🤔 아카펠라를 잘
-						모르지만 한 번 도전해보고 싶다!<br>🤗 아카펠라로 아름다운 하모니를 만들어보고 싶다!<br>🥺
-						피치파이프라는 동아리에 너무너무 들어오고 싶다!<br> <br>하신다면, 누구나 환영합니다
-						😊🙌🏻<br>함께 찬양하고, 함께 기뻐하고, 함께 추억을 만들어나갈 21학번 새내기🐥들의 많은 지원을
-						기다립니다✨
-					</p>
+					<c:forEach items="${clubDetailList}" var="clubDetailList" varStatus="status">
+						<fmt:formatDate value="${clubDetailList.foundationDate}" var="formattedFdDate" type="date" pattern="yyyy-MM-dd" />
+						<h5 class="text-align">[${clubDetailList.clubName}]</h5>
+						<p class="text-align">창립일자: ${formattedFdDate}</p>
+						<p class="text-align">대표자명: ${clubDetailList.clubCeoName}</p>
+						<p class="text-align">연락처: ${clubDetailList.phone}</p>
+						<p class="text-align">동방: ${clubDetailList.clubLocation}</p>
+						<p class="text-align">인스타/페북: ${clubDetailList.snsLink}</p>
+						<p class="text-align content-size">
+							동아리 소개<br>${clubDetailList.clubDescription}
+							<!-- 동아리 소개글<br>🌿2021 피치파이프 리크루팅🍑🌿<br>YES, WE ARE
+							PITCHPIPE!<br>_<br>안녕하세요, 21학번 🌊함께하는 세대🌊 여러분!<br>하나님을
+							찬양하는 아카펠라 동아리 피치파이프입니다🎶<br>저희와 함께 목소리로 하나님을 찬양할 21학번
+							방울이💧분들을 모집합니다💚<br>😌 나는 찬양하는 것을 좋아한다!<br>🤔 아카펠라를 잘
+							모르지만 한 번 도전해보고 싶다!<br>🤗 아카펠라로 아름다운 하모니를 만들어보고 싶다!<br>🥺
+							피치파이프라는 동아리에 너무너무 들어오고 싶다!<br> <br>하신다면, 누구나 환영합니다
+							😊🙌🏻<br>함께 찬양하고, 함께 기뻐하고, 함께 추억을 만들어나갈 21학번 새내기🐥들의 많은 지원을
+							기다립니다✨<br>동아리 소개글<br>🌿2021 피치파이프 리크루팅🍑🌿<br>YES,
+							WE ARE PITCHPIPE!<br>_<br>안녕하세요, 21학번 🌊함께하는 세대🌊 여러분!<br>하나님을
+							찬양하는 아카펠라 동아리 피치파이프입니다🎶<br>저희와 함께 목소리로 하나님을 찬양할 21학번
+							방울이💧분들을 모집합니다💚<br>😌 나는 찬양하는 것을 좋아한다!<br>🤔 아카펠라를 잘
+							모르지만 한 번 도전해보고 싶다!<br>🤗 아카펠라로 아름다운 하모니를 만들어보고 싶다!<br>🥺
+							피치파이프라는 동아리에 너무너무 들어오고 싶다!<br> <br>하신다면, 누구나 환영합니다
+							😊🙌🏻<br>함께 찬양하고, 함께 기뻐하고, 함께 추억을 만들어나갈 21학번 새내기🐥들의 많은 지원을
+							기다립니다✨ -->
+						</p>
+					</c:forEach>
 				</div>
 				<div class="logo">
 					<div id="carouselExampleControls" class="carousel slide"
@@ -116,7 +122,7 @@
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
 	<!-- Core theme JS-->
-	<script src="../resources/js/scripts.js"></script>
+	<script src="/resources/js/scripts.js"></script>
 	<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
 	<!-- * *                               SB Forms JS                               * *-->
 	<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
