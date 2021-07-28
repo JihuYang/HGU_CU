@@ -31,21 +31,13 @@
 <link href="<%=request.getContextPath()%>/resources/css/clubAdvertise.css" rel="stylesheet" />
 
 </head>
-<script src="https://kit.fontawesome.com/6333a60c65.js"></script>
+<script src="https://kit.fontawesome.com/6333a60c65.js" crossorigin="anonymous"></script>
 <body id="page-top">
-<<<<<<< HEAD
 	<div class="container px-4 px-lg-5 h-auto h-min">
 		<div class="row gx-4 gx-lg-5 align-items-center justify-content-center text-center">
 			<div class="col-lg-8 align-self-center">
-=======
-	<div class="container width-80 h-auto h-min">
-		<div
-			class="row h-25 align-items-center justify-content-center text-center">
-			<div class="col-lg-6 align-self-center">
->>>>>>> branch 'main' of https://github.com/JihuYang/HGU_CU.git
 				<h3 class="font-weight-bold pt-title">동아리 홍보</h3>
 			</div>
-		</div>
 			<!-- 홍보글 테이블 -->
 			<div class="col-sm-10 align-self-baseline table-responsive table-height">
 				<jsp:include page="/WEB-INF/views/ajaxContent/clubAdvertise.jsp"/>
