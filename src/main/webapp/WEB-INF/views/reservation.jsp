@@ -36,19 +36,18 @@
 <script src="https://kit.fontawesome.com/6333a60c65.js"></script>
 
 <body id="page-top">
-        <div class="R_container h-100">
+        <div class="R_container h-auto h-min">
       		<div class="side_bar">	
-       			<div class="reservation" style="background-color:#212721"><a href="./reservation">
-                	<div>
+       			<div class="reservation" style="background-color:#212721">
+                	<div OnClick="location.href ='./reservation'" style="cursor:pointer;">
                 		<i class="fa fa-home fa-2x white" aria-hidden="true" style="padding-top:10px;"></i><br><div class="side_text">조회 및 예약하기</div>
-                	</div></a>
+                	</div>
                </div>   
-	           <div class="reservation" style="background-color:#D0D0CE"><a href="./myReservation">
-	           	<div>
+	           <div class="reservation" style="background-color:#D0D0CE">
+	           	<div OnClick="location.href ='./myReservation'" style="cursor:pointer;">
 	           	<i class="fa fa-user fa-2x" aria-hidden="true" style="padding-top:10px;"></i><br><div class="side_text">내 예약</div>
-	           	</div></a>
+	           	</div>
 	           </div>
-	            
             </div>
            
         	<div class="content">
@@ -179,8 +178,7 @@
 			});
 	
 		</script>
-        
-
+        </div>
         </div>
          
         <!-- Footer-->

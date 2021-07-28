@@ -36,25 +36,21 @@
 <script src="https://kit.fontawesome.com/6333a60c65.js"></script>
 
 <body id="page-top">
-	<div class="R_container h-100">
+	<div class="R_container h-auto h-min">
 		<div class="side_bar">
 			<div class="reservation" style="background-color: #D0D0CE">
-				<a href="./reservation">
-					<div>
-						<i class="fa fa-home fa-2x white" aria-hidden="true"
-							style="padding-top: 10px;"></i><br>
-						<div class="side_text">조회 및 예약하기</div>
-					</div>
-				</a>
+				<div OnClick="location.href ='./reservation'" style="cursor:pointer;">
+					<i class="fa fa-home fa-2x white" aria-hidden="true"
+						style="padding-top: 10px;"></i><br>
+					<div class="side_text">조회 및 예약하기</div>
+				</div>
 			</div>
 			<div class="reservation" style="background-color: #212721">
-				<a href="./myReservation">
-					<div>
+					<div OnClick="location.href ='./myReservation'" style="cursor:pointer;">
 						<i class="fa fa-user fa-2x" aria-hidden="true"
 							style="padding-top: 10px;"></i><br>
 						<div class="side_text">내 예약</div>
 					</div>
-				</a>
 			</div>
 
 		</div>
@@ -67,8 +63,7 @@
 
 			<div>
 				<c:forEach items="${reservationInfoList}" var="space">
-					<input type="checkbox" class="btn-check" id="${space.spaceName}"
-						unchecked autocomplete="off">
+					<input type="checkbox" class="btn-check" id="${space.spaceName}" autocomplete="off">
 					<label class="btn btn-outline-secondary" for="${space.spaceName}">${space.spaceName}</label>
 				</c:forEach>
 			</div>
@@ -84,66 +79,22 @@
 			
                 <table class="table">
 				  <thead class="table-light">
-				    <td>NO</td>
-				    <td>공간</td>
-				    <td>승인여부</td>
-				    <td>사용날짜</td>
-				    <td>사용시간</td>
-				    <td>사용목적</td>
-				    <td>신청인</td>
-				    <td>신청일</td>
-				    <td>예약상태</td>
+				  	<tr>
+					    <td>NO</td>
+					    <td>공간</td>
+					    <td>승인여부</td>
+					    <td>사용날짜</td>
+					    <td>사용시간</td>
+					    <td>사용목적</td>
+					    <td>신청인</td>
+					    <td>신청일</td>
+					    <td>예약상태</td>
+				    </tr>
 				  </thead>
 				  <tbody>
 				  <%@ include file="./ajaxContent/myReservationList.jsp"%>
-				  
 				  </tbody>
 
-				<table class="table">
-					<thead class="table-light">
-						<td>NO</td>
-						<td>공간</td>
-						<td>승인여부</td>
-						<td>사용날짜</td>
-						<td>사용시간</td>
-						<td>사용목적</td>
-						<td>신청인</td>
-						<td>신청일</td>
-						<td>예약상태</td>
-					</thead>
-					<tbody>
-
-						<c:forEach items="${reservationInfoList}" var="reservationInfo"
-							varStatus="status">
-							<c:if test="${reservationInfo.userId!=0}">
-								<fmt:formatDate value="${reservationInfo.regdate}"
-									var="formattedRegDate" type="date" pattern="yyyy-MM-dd" />
-								<fmt:formatDate value="${reservationInfo.reservationDate}"
-									var="formattedDate" type="date" pattern="yyyy-MM-dd" />
-								<fmt:formatDate value="${reservationInfo.startTime}"
-									var="startTime" type="time" pattern="HH" />
-								<fmt:parseNumber value="${(startTime / (1000*60))/60}"
-									integerOnly="true" var="endDate"></fmt:parseNumber>
-								<fmt:formatDate value="${reservationInfo.endTime}" var="endTime"
-									type="time" pattern="HH" />
-								<fmt:parseNumber value="${(endTime / (1000*60))/60}"
-									integerOnly="true" var="endDate"></fmt:parseNumber>
-
-								<tr>
-									<td>${status.count}</td>
-									<td>${reservationInfo.spaceName}</td>
-									<td>??</td>
-									<td>${formattedDate}</td>
-									<td>${endTime-startTime}</td>
-									<td>${reservationInfo.purpose}</td>
-									<td>${reservationInfo.person}</td>
-									<td>${formattedRegDate}</td>
-									<td>??</td>
-								</tr>
-							</c:if>
-						</c:forEach>
-					</tbody>
->>>>>>> branch 'main' of https://github.com/JihuYang/HGU_CU.git
 				</table>
 			</div>
 
