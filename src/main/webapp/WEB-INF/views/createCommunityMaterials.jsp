@@ -55,7 +55,11 @@
 				</div>
 				<div>
 					<a class="btn btn-primary back-btn bottom-btn"
+<<<<<<< HEAD
 						href="./communityMaterials" role="button">뒤로</a>
+=======
+						onclick="location.href='<%=request.getContextPath()%>/communityMaterials'" role="button">뒤로</a>
+>>>>>>> branch 'main' of https://github.com/JihuYang/HGU_CU.git
 					<button class="btn btn-primary submit-btn bottom-btn" type="submit">저장</button>
 				</div>
 			</form>

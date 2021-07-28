@@ -34,8 +34,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <script src="https://kit.fontawesome.com/6333a60c65.js"></script>
 <body id="page-top">
-	<!-- Masthead-->
-	<div class="container width-80 h-100">
+	<div class="container width-80 h-auto h-min">
 		<div
 			class="row h-25 align-items-center justify-content-center text-center">
 			<div class="col-lg-6 align-self-center">
@@ -49,7 +48,7 @@
 			<%@ include file="./ajaxContent/communityInfoList.jsp"%>
 
 			<div class="row justify-content-end">
-				<button class="btn btn-primary search-btn" type="submit">글쓰기</button>
+				<button class="btn btn-primary search-btn" onclick="location.href='<%=request.getContextPath()%>/communityInfo/write'">글쓰기</button>
 			</div>
 		</div>
 		<div class="row h-auto align-items-center text-center">
