@@ -9,9 +9,6 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>한동대학교 총동아리연합회</title>
-<!-- Favicon-->
-<link rel="icon" type="image/x-icon"
-	href="./resources/assets/img/favicon.ico" />
 <!-- Bootstrap Icons-->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
@@ -32,7 +29,6 @@
 
 </head>
 <jsp:include page="/WEB-INF/views/inc/header.jsp" />
-<link href="./resources/css/home.css" rel="stylesheet" />
 <link href="./resources/css/admin.css" rel="stylesheet" />
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <script src="https://kit.fontawesome.com/6333a60c65.js"></script>
@@ -60,32 +56,32 @@
 		</nav>
 
 		<div
-			class="row h-auto align-items-center justify-content-center text-center mt-5">
+			class="row h-auto align-items-center justify-content-center text-center mt-5 ">
 
 			<!-- 공지사항 리스트  -->
 			<%-- 			<%@ include file="./ajaxContent/communityInfoList.jsp"%>
  --%>
-			<table class="table text-center">
-				<thead>
-					<tr>
-						<th scope="col" class="col-1 text-center" id="user">이름</th>
-						<th scope="col" class="col-3 text-center" id="contact">연락처</th>
-						<th scope="col" class="col-3 text-center" id="email">이메일</th>
-						<th scope="col" class="col-2 text-center" id="club">소속단체</th>
-						<th scope="col" class="col-1 text-center" id="authority">권한</th>
+			<table class="table align-items-center justify-content-center text-center ">
+				<thead class="p-4">
+					<tr class="tr-border">
+						<th scope="col" class="col-1" id="username">이름</th>
+						<th scope="col" class="col-3" id="contact">연락처</th>
+						<th scope="col" class="col-3" id="email">이메일</th>
+						<th scope="col" class="col-2" id="club">소속단체</th>
+						<th scope="col" class="col-1" id="authority">권한</th>
 					</tr>
 				</thead>
-				<tbody>
+				<tbody class="align-items-center p-4">
 					<tr>
-						<th id="user">양지후</th>
+						<td id="username">양지후</td>
 						<td id="contact">01055640429</td>
 						<td id="email">21900433@handong.edu</td>
 						<td id="club">하향</td>
 						<td id="authority">
 							<div class="dropdown">
-								<button class="btn btn-secondary dropdown-toggle" type="button"
+								<button class="btn btn-secondary dropdown-toggle authority-btn" type="button"
 									id="dropdownMenuButton1" data-bs-toggle="dropdown"
-									aria-expanded="false">Dropdown button</button>
+									aria-expanded="false">권한 설정</button>
 								<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
 									<li><a class="dropdown-item" href="#">일반회원</a></li>
 									<li><a class="dropdown-item" href="#">동아리대표</a></li>
@@ -97,9 +93,6 @@
 					</tr>
 				</tbody>
 			</table>
-			<div class="row justify-content-end">
-				<button class="btn btn-primary search-btn" type="submit">글쓰기</button>
-			</div>
 		</div>
 		<div class="row h-auto align-items-center text-center">
 			<form accept-charset="UTF-8" name="searchForm">
@@ -135,12 +128,8 @@
 	</div>
 
 	<!-- Footer-->
-	<footer class="bg-light py-5">
-		<div class="container px-4 px-lg-5">
-			<div class="small text-center text-muted">Copyright &copy; 2021
-				- 한동대학교 총동아리연합회</div>
-		</div>
-	</footer>
+	<jsp:include page="/WEB-INF/views/inc/footer.jsp"/>
+
 	<!-- Bootstrap core JS-->
 	<script
 		src="<%=request.getContextPath()%>/resources/assets/js/pagenation.js"></script>

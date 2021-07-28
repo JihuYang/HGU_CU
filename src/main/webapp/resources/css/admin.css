@@ -36,16 +36,6 @@
 	width: 300px !important;
 }
 
-.writing-btn {
-	background-color: lightgray !important;
-	border-color: lightgray !important;
-	color: black !important;
-	height: 32px;
-	padding-bottom: 2px;
-	padding-top: 2px;
-	float: right;
-}
-
 .pagnation {
 	display: flex;
 	padding-left: 0;
@@ -103,93 +93,90 @@ thead, tbody, tfoot, tr, td, th {
 	border-bottom: 4px solid black;
 }
 
-@media ( max-width : 992px) {
+.authority-btn {
+	background-color: white;
+	color: black;
+	border: none;
 }
 
-@media ( max-width : 992px) {
+.tr-border{
+	border-bottom: 4px solid rgb(140, 142, 244);
 }
-
 /* 모바일 */
-@media ( max-width : 767px) {
-	div.content {
-		padding: 4em 1em !important;
+@media ( max-width : 576px) {
+	#email {
+		display: none;
 	}
-	td {
-		font-size: 2px !important;
-		padding: 7px 2px !important;
+	.search-selector {
+		width: 70px !important;
+		margin-right: 3px !important;
 	}
-	@media ( max-width : 576px) {
-		#email {
-			display: none;
-		}
-		.search-selector {
-			width: 70px !important;
-			margin-right: 3px !important;
-		}
-		.search-btn {
-			margin-right: 3px !important;
-			margin-left: 3px !important;
-			background-color: #326295 !important;
-			border-color: #326295 !important;
-			width: 70px !important;
-			height: 32px;
-			padding-bottom: 2px;
-			padding-top: 2px;
-		}
-		.search-input {
-			margin-right: 3px !important;
-			margin-left: 3px !important;
-			display: inline-block !important;
-			width: 100px !important;
-		}
+	.search-btn {
+		margin-right: 3px !important;
+		margin-left: 3px !important;
+		background-color: #326295 !important;
+		border-color: #326295 !important;
+		width: 70px !important;
+		height: 32px;
+		padding-bottom: 2px;
+		padding-top: 2px;
 	}
-	@media ( max-width : 768px) {
-		#contact {
-			display: none;
-		}
+	.search-input {
+		margin-right: 3px !important;
+		margin-left: 3px !important;
+		display: inline-block !important;
+		width: 100px !important;
 	}
-	@media ( min-width : 576px) {
-		.search-selector {
-			width: 70px !important;
-			margin-right: 5px !important;
-		}
-		.search-btn {
-			margin-right: 5px !important;
-			margin-left: 5px !important;
-			background-color: #326295 !important;
-			border-color: #326295 !important;
-			width: 70px !important;
-			height: 32px;
-			padding-bottom: 2px;
-			padding-top: 2px;
-		}
-		.search-input {
-			margin-right: 5px !important;
-			margin-left: 5px !important;
-			display: inline-block !important;
-			width: 200px !important;
-		}
+}
+
+@media ( max-width : 768px) {
+	#contact {
+		display: none;
 	}
-	@media ( min-width : 768px) {
-		.search-selector {
-			width: 100px !important;
-			margin-right: 10px !important;
-		}
-		.search-btn {
-			margin-right: 10px !important;
-			margin-left: 10px !important;
-			background-color: #326295 !important;
-			border-color: #326295 !important;
-			width: 75px !important;
-			height: 32px;
-			padding-bottom: 2px;
-			padding-top: 2px;
-		}
-		.search-input {
-			margin-right: 10px !important;
-			margin-left: 10px !important;
-			display: inline-block !important;
-			width: 300px !important;
-		}
+}
+
+@media ( min-width : 576px) {
+	.search-selector {
+		width: 70px !important;
+		margin-right: 5px !important;
+	}
+	.search-btn {
+		margin-right: 5px !important;
+		margin-left: 5px !important;
+		background-color: #326295 !important;
+		border-color: #326295 !important;
+		width: 70px !important;
+		height: 32px;
+		padding-bottom: 2px;
+		padding-top: 2px;
+	}
+	.search-input {
+		margin-right: 5px !important;
+		margin-left: 5px !important;
+		display: inline-block !important;
+		width: 200px !important;
+	}
+}
+
+@media ( min-width : 768px) {
+	.search-selector {
+		width: 100px !important;
+		margin-right: 10px !important;
+	}
+	.search-btn {
+		margin-right: 10px !important;
+		margin-left: 10px !important;
+		background-color: #326295 !important;
+		border-color: #326295 !important;
+		width: 75px !important;
+		height: 32px;
+		padding-bottom: 2px;
+		padding-top: 2px;
+	}
+	.search-input {
+		margin-right: 10px !important;
+		margin-left: 10px !important;
+		display: inline-block !important;
+		width: 300px !important;
 	}
 }
