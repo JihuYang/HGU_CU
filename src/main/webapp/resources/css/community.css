@@ -91,38 +91,6 @@ a:link ,a:visited{
 }
 
 
-.side_bar{
-	position:fixed;
-	width:250px;
-	height:200px;
-	background-color:#fff;
-	top:100px;
-    bottom:0;
-    left:0;
-	border:0;
-	padding:0;
-}
-
-.side_bar div{
-    color:white;
-    font-size: small;
-    text-align: center;
-}
-
-
-.R_container{
-	width:100%;
-	height:auto;
-	margin-top:100px;
-}
-
-.R_container .content{
-    margin-left:250px;
-    padding:50px;
-    padding-bottom:10px;
-    margin-top:0; 
-}
-
 #Head{
 	text-align:center;
 }
