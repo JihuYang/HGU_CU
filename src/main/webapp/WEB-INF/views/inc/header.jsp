@@ -9,9 +9,6 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>한동대학교 총동아리연합회</title>
-<!-- Favicon-->
-<link rel="icon" type="image/x-icon"
-	href="./resources/assets/favicon.ico" />
 <!-- Bootstrap Icons-->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
@@ -63,6 +60,9 @@
 					class="nav-link dropdown-toggle" 
 					data-toggle="dropdown" onclick = "location.href='<%=request.getContextPath()%>/clubIntroduction'">동아리 소개</a>
 					<ul class="dropdown-menu" id="dropdown-content">
+<%-- 						<c:forEach items="${categoryNameList}" var="categoryNameList" varStatus="status">
+							<li><a class="dropdown-item" href="<%=request.getContextPath()%>/clubIntroduction/${categoryNameList.categoryId}">${categoryNameList.categoryName}</a></li>
+						</c:forEach> --%>
 						<li><a class="dropdown-item" href="#">공연분과</a></li>
 						<li><a class="dropdown-item" href="#">봉사분과</a></li> 
 						<li><a class="dropdown-item" href="#">학술분과</a></li> 
