@@ -3874,7 +3874,7 @@ textarea.form-control-lg {
 .nav-link {
   display: block;
   padding: 0.5rem 1rem;
-  color: #f4623a;
+  color: black;
   text-decoration: none;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out;
 }
@@ -3884,7 +3884,7 @@ textarea.form-control-lg {
   }
 }
 .nav-link:hover, .nav-link:focus {
-  color: #c34e2e;
+  color:gray;
 }
 .nav-link.disabled {
   color: #6c757d;
@@ -11057,4 +11057,7 @@ header.masthead h1, header.masthead .h1 {
 .pt-title{
 	padding-top: 4em;
 	padding-bottom: 1em;
+}
+.h-min {
+	 min-height: 100%;
 }

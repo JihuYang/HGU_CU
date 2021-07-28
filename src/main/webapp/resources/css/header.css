@@ -86,9 +86,6 @@
 	.navbar-brand {
 		font-size: 1rem !important;
 	}
-	#mainNav .logo {
-		width: 40px;
-	}
 	.navbar-toggler {
 		padding: 0.25rem 0.35rem;
 	} 

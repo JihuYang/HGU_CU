@@ -9,9 +9,6 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>한동대학교 총동아리연합회</title>
-<!-- Favicon-->
-<link rel="icon" type="image/x-icon"
-	href="./resources/assets/img/favicon.ico" />
 <!-- Bootstrap Icons-->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
@@ -32,8 +29,8 @@
 
 </head>
 <jsp:include page="/WEB-INF/views/inc/header.jsp" />
-<link href="./resources/css/home.css" rel="stylesheet" />
-<link href="./resources/css/community.css" rel="stylesheet" />
+<link href="<%=request.getContextPath()%>/resources/css/home.css" rel="stylesheet" />
+<link href="<%=request.getContextPath()%>/resources/css/community.css" rel="stylesheet" />
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <script src="https://kit.fontawesome.com/6333a60c65.js"></script>
 <body id="page-top">
@@ -41,16 +38,16 @@
 	<div class="container width-80 h-100">
 		<div
 			class="row h-25 align-items-center justify-content-center text-center">
-			<div class="col-lg-6 align-self-end">
-				<h3 class="font-weight-bo--ld pt-title">공지사항</h3>
+			<div class="col-lg-6 align-self-center">
+				<h3 class="font-weight-bold pt-title">공지사항</h3>
 			</div>
 		</div>
 		<div
 			class="row h-50 align-items-center justify-content-center text-center">
-					
-		    <!-- 공지사항 리스트  -->
+
+			<!-- 공지사항 리스트  -->
 			<%@ include file="./ajaxContent/communityInfoList.jsp"%>
-			
+
 			<div class="row justify-content-end">
 				<button class="btn btn-primary search-btn" type="submit">글쓰기</button>
 			</div>
@@ -89,8 +86,11 @@
 	</div>
 
 	<!-- Footer-->
-	<<jsp:include page="/WEB-INF/views/inc/footer.jsp"/>
+	<jsp:include page="/WEB-INF/views/inc/footer.jsp"/>
 	<!-- Bootstrap core JS-->
+	<script
+		src="<%=request.getContextPath()%>/resources/assets/js/pagenation.js"></script>
+
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 	<!-- SimpleLightbox plugin JS-->
@@ -100,7 +100,7 @@
 	<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
 	<!-- * *                               SB Forms JS                               * *-->
 	<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-	<!— * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *—>
+	<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
 	<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 </body>
 </html>

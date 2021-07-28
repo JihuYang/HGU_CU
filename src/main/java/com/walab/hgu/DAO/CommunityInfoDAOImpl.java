@@ -22,10 +22,16 @@ public class CommunityInfoDAOImpl implements CommunityInfoDAO {
 	@Override
 	public List<CommunityInfoDTO> readCommunityInfo() {
 		
-		Map<String, Object> communityInfoParam = new HashMap<String, Object>();
+		Map<String, Object> infoList = new HashMap<String, Object>();
 				
-		return sqlSession.selectList(namespace+".readCommunityInfo", communityInfoParam);
+		return sqlSession.selectList(namespace+".readCommunityInfo", infoList);
 	}
 	
-	
+	@Override
+	public List<CommunityInfoDTO> readCommunityInfoDetail() {
+		
+		Map<String, Object> infoDetailList = new HashMap<String, Object>();
+				
+		return sqlSession.selectList(namespace+".readCommunityInfoDetail", infoDetailList);
+	}	
 }

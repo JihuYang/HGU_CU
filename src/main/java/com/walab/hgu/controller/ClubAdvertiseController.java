@@ -40,7 +40,7 @@ public class ClubAdvertiseController {
 			return mv;
 		}
 		//동아리 홍보 게시글 쓰는 페이지 
-		@RequestMapping(value = "/createClubAd", method = RequestMethod.GET)
+		@RequestMapping(value = "/clubAdvertise/write", method = RequestMethod.GET)
 		public String createClubAd(Locale locale, Model model) {
 			logger.info("Welcome home! The client locale is {}.", locale);
 			

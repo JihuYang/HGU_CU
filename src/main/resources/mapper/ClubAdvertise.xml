@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<!-- club 홍보  페이지에 보통 쓰일 쿼리들 모을 예정  -->
+<!-- club 홍보  페이지에 보통 쓰일 쿼리들 모을 예정 -->
 <mapper namespace="ClubAdvertise">
 
 	<select id="readClubAdvertisePreview"
