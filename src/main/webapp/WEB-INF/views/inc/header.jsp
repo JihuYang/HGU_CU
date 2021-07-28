@@ -46,7 +46,7 @@
 	class="navbar navbar-expand-lg navbar-light fixed-top py-4 bg-white respy-4"
 	id="mainNav">
 	<div class="container px-4 px-lg-5 respx-3 ">
-		<img src="./resources/assets/img/로고.png"
+		<img src="<%=request.getContextPath()%>/resources/assets/img/로고.png"`	
 			class="logo navbar-brand"></img> 
 <!-- 			<a class="navbar-brand"
 			onclick="location.href='./'">한동대학교 총동아리연합회<br>

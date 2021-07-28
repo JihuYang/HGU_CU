@@ -36,5 +36,13 @@ public class CommunityInfoController {
 			
 		return mv;
 	}
+	
+	@RequestMapping(value = "/communityInfo/detail", method = RequestMethod.GET)
+	public ModelAndView readCommunityInfoDetail(ModelAndView mv) {
 
+		
+		mv.setViewName("communityInfoDetail");
+			
+		return mv;
+	}
 }

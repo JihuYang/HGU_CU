@@ -70,123 +70,142 @@
 
 /* 캘린더 */
 .white, .white a {
-    color: #fff;
+	color: #fff;
 }
 
-.reservation div{
-	padding:7px;
-	margin:0;
+.reservation div {
+	padding: 7px;
+	margin: 0;
 }
 
-.reservation{
-	color:#212721;
+.reservation {
+	color: #212721;
 }
 
-.reservation div:hover{
-	background-color:#212721;
+.reservation div:hover {
+	background-color: #212721;
 }
 
-a:link ,a:visited{
-	text-decoration:none;
+a:link, a:visited {
+	text-decoration: none;
 }
 
 
-#Head{
-	text-align:center;
+.section2 {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
 }
 
-.section2{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+.section3 {
+	display: flex;
+	justify-content: space-around;
+	text-align: center;
 }
 
-.section3{
-    display: flex;
-    justify-content: space-around;
-    text-align: center;
+.section3 div {
+	width: 100%;
+	margin: 10px;
+	border: none !important;
+	background-color: #D0D0CE !important;
+	border-radius: 5px;
 }
 
-.section3 div{
-    width: 100%;
-    margin: 10px;
-	border:none !important;
-    background-color: #D0D0CE !important; 
-    border-radius:5px;
+
+
+.section2 {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
 }
 
-.section3 div:nth-child(1){
+.section3 {
+	display: flex;
+	justify-content: space-around;
+	text-align: center;
+}
+
+.section3 div {
+	width: 100%;
+	margin: 10px;
+	border: none !important;
+	background-color: #D0D0CE !important;
+	border-radius: 5px;
+}
+
+.section3 div:nth-child(1) {
 	background-color: #326295 !important;
-	color:white;
+	color: white;
 }
 
-.btn{
-    border-radius: 25px !important;
-    margin: 2px;
-    border:3px solid#D0D0CE !important;
+.btn {
+	margin: 2px;
 }
 
 .btn.focus, .btn:focus {
-    outline: 0;
-    box-shadow: none!important;
-    border-color:#326295 !important;
+	outline: 0;
+	box-shadow: none !important;
+	border-color: #326295 !important;
 }
 
-
-.btn_02{
-    margin: 10px;
-    background-color: #D0D0CE;
-    outline:none;
-    box-shadow: none;
-    border: 0;
-    outline:0;
-    border-radius:25px;
+.btn_02 {
+	margin: 10px;
+	background-color: #D0D0CE;
+	outline: none;
+	box-shadow: none;
+	border: 0;
+	outline: 0;
+	border-radius: 25px;
 }
 
-table{
-    border: 1px solid #f0f0f0;
-    width:98%;
-    margin:auto;
-    text-align: center;
+table {
+	border: 1px solid #f0f0f0;
+	width: 98%;
+	margin: auto;
+	text-align: center;
 }
 
-td{
-    padding:0 10px;
-    padding:10px 0;
+td {
+	padding: 0 10px;
+	padding: 10px 0;
 }
-
 
 thead, tbody, tfoot, tr, td, th {
 	border: 1px solid white;
-	
-}
-.section3 div{
-    background-color: white;
-    border-radius:25px;
 }
 
-#selectbox{
-	width:120px;
-	font-size:x-small;
-	margin:10px 0;
-	float:right;
+.section3 div {
+	background-color: white;
+	border-radius: 25px;
 }
 
-.table{
-	margin:10px 0;
+#selectbox {
+	width: 120px;
+	font-size: x-small;
+	margin: 10px 0;
+	float: right;
+}
+
+.table {
+	margin: 10px 0;
 }
 
 #calendar{
 	max-width: 900px;
-  	margin: 40px auto;
+	margin: 40px auto;
 }
+
 
 #calendar a{
 	color:black !important;
 	text-decoration:none !important;
 }
-
-.section3 div{
+.section3 div {
 	border: 1px solid gray;
+}
+
+/*detail 페이지*/
+.community-detail-title {
+	background-color: rgb(242, 242, 242);
+	border: 1px solid #D0D0CE;
 }
 
 .modal-header{
@@ -248,21 +267,58 @@ thead, tbody, tfoot, tr, td, th {
 	}
 }
 
+.detail-info {
+	color: black;
+}
+
+.detail-content {
+	color: black;
+	min-height: 5em;
+}
+
+.file {
+	background-color: rgb(242, 242, 242) !important;
+}
+.list-btn{
+	margin-left: 0 !important;
+}
+@media ( max-width : 992px) {
+	#top_margin {
+		display: none;
+	}
+	.side_bar {
+		display: flex;
+		flex-direction: row;
+		width: 100%;
+		height: 52.5px;
+		position: absolute;
+		top: 70px;
+	}
+	.reservation {
+		flex-grow: 1;
+	}
+	.side_text {
+		display: none;
+		width: 0;
+		height: 0;
+	}
+	.R_container .content {
+		margin: 0;
+	}
+	.R_container {
+		display: felx;
+		margin-top: 100px;
+	}
+}
 
 /* 모바일 */
-@media (max-width: 767px){
-	
-	div.content{
-		padding:4em 1em !important;
+@media ( max-width : 767px) {
+	div.content {
+		padding: 4em 1em !important;
 	}
-	
-	td{
-		font-size:2px !important;
-		padding:7px 2px !important;
-	}
-	
-	btn{
-	
+	td {
+		font-size: 2px !important;
+		padding: 7px 2px !important;
 	}
 }
 
@@ -290,7 +346,7 @@ thead, tbody, tfoot, tr, td, th {
 		margin-left: 3px !important;
 		display: inline-block !important;
 		width: 100px !important;
-	}	
+	}
 }
 
 @media ( max-width : 768px) {
@@ -301,6 +357,7 @@ thead, tbody, tfoot, tr, td, th {
 		display: none;
 	}
 }
+
 @media ( min-width : 576px) {
 	.search-selector {
 		width: 70px !important;
@@ -323,6 +380,7 @@ thead, tbody, tfoot, tr, td, th {
 		width: 200px !important;
 	}
 }
+
 @media ( min-width : 768px) {
 	.search-selector {
 		width: 100px !important;
