@@ -47,7 +47,7 @@
 			<%@ include file="./ajaxContent/communityMaterialList.jsp"%>
 			
 			<div class="row justify-content-end">
-				<button class="btn btn-primary search-btn" type="submit">글쓰기</button>
+				<button class="btn btn-primary search-btn" onclick="location.href='<%=request.getContextPath()%>/communityMaterials/write'">글쓰기</button>
 			</div>
 		</div>
 		<div class="row h-auto align-items-center text-center">

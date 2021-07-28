@@ -35,10 +35,11 @@
 <body id="page-top">
 	<div class="container width-80 h-auto h-min">
 		<div
-			class="row h-auto align-items-center justify-content-center text-center">
-			<div class="col-lg-6 align-self-end">
+			class="row h-25 align-items-center justify-content-center text-center">
+			<div class="col-lg-6 align-self-center">
 				<h3 class="font-weight-bold pt-title">관리자 페이지</h3>
 			</div>
+		</div>
 		</div>
 		<nav class="navbar navbar-expand-lg bg-white justify-content-center">
 			<div
