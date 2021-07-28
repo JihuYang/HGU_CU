@@ -1,6 +1,5 @@
 package com.walab.hgu.DAO;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -34,5 +33,15 @@ public class ClubDAOImpl implements ClubDAO{
 		Map<String, Object> categoryNameList = new HashMap<String, Object>();
 		
 		return sqlSession.selectList(namespace+".getCategoryNameList", categoryNameList);
+	}
+
+	@Override
+	public List<ClubDTO> getClubDetailList(int categoryId,int clubId) {
+		
+		Map<String, Object> clubDetailList = new HashMap<String, Object>();
+		clubDetailList.put("categoryId", categoryId);
+		clubDetailList.put("clubId", clubId);
+		
+		return sqlSession.selectList(namespace+".getClubDetailList", clubDetailList);
 	}
 }

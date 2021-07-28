@@ -2,6 +2,7 @@ package com.walab.hgu.controller;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
@@ -52,11 +53,25 @@ public class ClubIntroductionController {
 	}
 	
 	@RequestMapping(value = "/clubIntroduction/{categoryId}/{clubId}", method = RequestMethod.GET)//나중에는 동아리별 이름이나 번호로 연결하면 될것같아요..? 
-	public String clubIntroductionDetail(@PathVariable int categoryId,@PathVariable int clubId, HttpSession session, HttpServletRequest request ) {
+	public ModelAndView clubIntroductionDetail(@PathVariable int categoryId,@PathVariable int clubId, HttpSession session, HttpServletRequest request ) {
+		ModelAndView mv = new ModelAndView();
+		
+		HashMap<String, Integer> clubMappingInfo = new HashMap<String, Integer>();
+		clubMappingInfo.put("categoryId", categoryId);
+		clubMappingInfo.put("clubId", clubId);
+		List<ClubDTO> clubDetailList = clubService.getClubDetailList(categoryId,clubId);
+		List<ClubDTO> categoryNameList = clubService.getCategoryNameList();
+		
+		String categoryName = categoryNameList.get(categoryId-1).getCategoryName();
+		mv.addObject("categoryName", categoryName);
+		
+		mv.addObject("clubDetailList", clubDetailList);
+		mv.setViewName("clubIntroductionDetail");
+		
+		System.out.println(mv);
 		
 		
-		
-		return "clubIntroductionDetail";
+		return mv;
 	}
 	
 	//동아리 홍보 글쓰기 

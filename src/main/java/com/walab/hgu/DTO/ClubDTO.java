@@ -4,10 +4,9 @@ import java.util.Date;
 
 public class ClubDTO {
 
-	private int id;
 	private int categoryId;
 	private int userId;
-	private int clubId;
+	private int id;//동아리 아이디 
 	private String categoryName;//분과 이
 	private String clubName;//동아리 이름 
 	private String clubCeoName;
@@ -20,13 +19,7 @@ public class ClubDTO {
 	private String originalUrl;
 	private Date regdate;
 	
-	
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+
 	public int getCategoryId() {
 		return categoryId;
 	}
@@ -63,11 +56,11 @@ public class ClubDTO {
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
-	public int getClubId() {
-		return clubId;
+	public int getId() {
+		return id;
 	}
-	public void setClubId(int clubId) {
-		this.clubId = clubId;
+	public void setId(int id) {
+		this.id = id;
 	}
 	public String getClubLocation() {
 		return clubLocation;
@@ -114,7 +107,7 @@ public class ClubDTO {
 	}
 	@Override
 	public String toString() {
-		return "ClubDTO [id=" + id + ", categoryId=" + categoryId + ", userId=" + userId + ", clubId=" + clubId
+		return "ClubDTO [ categoryId=" + categoryId + ", userId=" + userId + ", ClubId=" + id
 				+ ", categoryName=" + categoryName + ", clubName=" + clubName + ", clubCeoName=" + clubCeoName
 				+ ", clubLocation=" + clubLocation + ", phone=" + phone + ", foundationDate=" + foundationDate
 				+ ", clubDescription=" + clubDescription + ", snsName=" + snsName + ", snsLink=" + snsLink
