@@ -9,9 +9,6 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>한동대학교 총동아리연합회</title>
-<!-- Favicon-->
-<link rel="icon" type="image/x-icon"
-	href="./resources/assets/img/favicon.ico" />
 <!-- Bootstrap Icons-->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
@@ -28,32 +25,78 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css"
 	rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
-<link href="<%=request.getContextPath()%>/resources/css/styles.css" rel="stylesheet" />
+<link href="./resources/css/styles.css" rel="stylesheet" />
 
 </head>
 <jsp:include page="/WEB-INF/views/inc/header.jsp" />
-<link href="./resources/css/home.css" rel="stylesheet" />
-<link href="./resources/css/community.css" rel="stylesheet" />
+<link href="./resources/css/admin.css" rel="stylesheet" />
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <script src="https://kit.fontawesome.com/6333a60c65.js"></script>
 <body id="page-top">
 	<!-- Masthead-->
-	<div class="container width-80 h-100">
+	<div class="container width-80 h-auto">
 		<div
-			class="row h-25 align-items-center justify-content-center text-center">
+			class="row h-auto align-items-center justify-content-center text-center">
 			<div class="col-lg-6 align-self-end">
-				<h3 class="font-weight-bold pt-title">공지사항</h3>
+				<h3 class="font-weight-bold pt-title">관리자 페이지</h3>
 			</div>
 		</div>
+		<nav class="navbar navbar-expand-lg bg-white justify-content-center">
+			<div
+				class="h-auto align-items-center justify-content-center text-center admin-nav-border">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item mx-3"><a class="nav-link font-weight"
+						href="#">홈페이지 관리</a></li>
+					<li class="nav-item mx-3"><a class="nav-link font-weight"
+						href="#">회원 관리</a></li>
+					<li class="nav-item mx-3"><a class="nav-link font-weight"
+						href="#">예약 관리</a></li>
+				</ul>
+			</div>
+		</nav>
+
 		<div
-			class="row h-50 align-items-center justify-content-center text-center">
+			class="row h-auto align-items-center justify-content-center text-center mt-5 ">
 
 			<!-- 공지사항 리스트  -->
-			<%@ include file="./ajaxContent/communityInfoList.jsp"%>
+			<%-- 			<%@ include file="./ajaxContent/communityInfoList.jsp"%>
+ --%>
+			<table
+				class="table align-items-center justify-content-center text-center ">
+				<thead class="p-4">
+					<tr class="tr-border">
+						<th scope="col" class="col-1" id="username">이름</th>
+						<th scope="col" class="col-3" id="contact">연락처</th>
+						<th scope="col" class="col-3" id="email">이메일</th>
+						<th scope="col" class="col-2" id="club">소속단체</th>
+						<th scope="col" class="col-1" id="authority">권한</th>
+					</tr>
+				</thead>
+				<tbody class="align-items-center p-4">
+					<c:forEach items="${userList}" var="userList" varStatus="status">
+						<tr>
+							<td id="username">${userList.name}</td>
+							<td id="contact">${userList.phone}</td>
+							<td id="email">${userList.email}</td>
+							<td id="club">${userList.clubName}</td>
+							<td id="authority">
+								<div class="dropdown">
+									<button class="btn btn-secondary dropdown-toggle authority-btn"
+										type="button" id="dropdownMenuButton1"
+										data-bs-toggle="dropdown" aria-expanded="false">권한 설정</button>
+									<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+										<li><a class="dropdown-item" href="#">일반회원</a></li>
+										<li><a class="dropdown-item" href="#">동아리대표</a></li>
+										<li><a class="dropdown-item" href="#">차단</a></li>
+										<li><a class="dropdown-item" href="#">관리자</a></li>
+									</ul>
+								</div>
+							</td>
+						</tr>
+					</c:forEach>
 
-			<div class="row justify-content-end">
-				<button class="btn btn-primary search-btn" type="submit">글쓰기</button>
-			</div>
+				</tbody>
+			</table>
 		</div>
 		<div class="row h-auto align-items-center text-center">
 			<form accept-charset="UTF-8" name="searchForm">
@@ -89,7 +132,8 @@
 	</div>
 
 	<!-- Footer-->
-	<<jsp:include page="/WEB-INF/views/inc/footer.jsp"/>
+	<jsp:include page="/WEB-INF/views/inc/footer.jsp" />
+
 	<!-- Bootstrap core JS-->
 	<script
 		src="<%=request.getContextPath()%>/resources/assets/js/pagenation.js"></script>

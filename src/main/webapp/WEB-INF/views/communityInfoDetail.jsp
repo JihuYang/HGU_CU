@@ -47,15 +47,17 @@
 		<div
 			class="row h-auto align-items-center justify-content-center text-center">
 			<div class="community-detail-title py-5">
-				<h3>제목</h3>
+				<h4>${communityInfoDetailList[0].title}</h4>
 			</div>
 		</div>
 		<div
 			class="row h-auto align-items-center justify-content-end text-end">
-			<div class="py-3 detail-info">작성자: 관리자 | 조회수 : 15 | 2021-06-21</div>
+			<fmt:formatDate value="${communityInfoDetailList[0].regdate}"
+				var="formattedRegDate" type="date" pattern="yyyy-MM-dd" />
+			<div class="py-3 detail-info">작성자: ${communityInfoDetailList[0].writer} | 조회수 : ${communityInfoDetailList[0].viewCount} | ${formattedRegDate}</div>
 		</div>
 		<div class="row h-auto align-items-center justify-content-center">
-			<div class="px-4 detail-content">2021년도 내용...</div>
+			<div class="px-4 detail-content">${communityInfoDetailList[0].content}</div>
 		</div>
 		<div
 			class="row h-25 align-items-center justify-content-center text-center">
@@ -74,7 +76,7 @@
 			</table>
 
 			<div class="row justify-content-start mt-4 list-btn">
-				<button class="btn btn-primary search-btn list-btn" type="submit">목록</button>
+				<button class="btn btn-primary search-btn list-btn" onclick="location.href='.'">목록</button>
 			</div>
 		</div>
 
@@ -88,6 +90,8 @@
 		</div>
 	</footer>
 	<!-- Bootstrap core JS-->
+	
+	
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 	<!-- SimpleLightbox plugin JS-->

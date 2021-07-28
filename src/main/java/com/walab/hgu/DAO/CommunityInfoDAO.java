@@ -7,5 +7,6 @@ import com.walab.hgu.DTO.CommunityInfoDTO;
 public interface CommunityInfoDAO {
 		
 	public List<CommunityInfoDTO> readCommunityInfo();
+	public List<CommunityInfoDTO> readCommunityInfoDetail();
 	
 }

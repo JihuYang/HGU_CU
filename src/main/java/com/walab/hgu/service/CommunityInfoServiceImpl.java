@@ -22,5 +22,14 @@ public class CommunityInfoServiceImpl implements CommunityInfoService {
 		return infoList;
 		
 	}
+	
+	@Override
+	public List<CommunityInfoDTO> readCommunityInfoDetail(){
+		
+		List<CommunityInfoDTO> infoDetailList = communityInfoDAO.readCommunityInfoDetail();
+
+		return infoDetailList;
+		
+	}
 
 }
