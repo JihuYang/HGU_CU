@@ -10,9 +10,6 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>한동대학교 총동아리연합회</title>
-<!-- Favicon-->
-<link rel="icon" type="image/x-icon"
-	href="../resources/assets/img/favicon.ico" />
 <!-- Bootstrap Icons-->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
@@ -66,10 +63,8 @@
 							<fmt:formatDate value="${clubIntroList.foundationDate}" var="formattedFdDate" type="date" pattern="yyyy-MM-dd" />
 							<div class="col-xs-6 col-sm-4 pd-0">
 								<div class="overlay-item overlay-effect">
-									<img
-										src="<%=request.getContextPath()%>/resources/img/${clubIntroList.originalUrl}"
-										alt="임시" />
-									<a href="<%=request.getContextPath()%>/clubIntroduction/{categoryId}/{clubId}" class="mask">		
+									<img src="<%=request.getContextPath()%>/resources/img/${clubIntroList.originalUrl}" alt="임시" />
+									<a href="<%=request.getContextPath()%>/clubIntroduction/${clubIntroList.categoryId}/${clubIntroList.id}" class="mask">		
 										[${clubIntroList.clubName}]<br>창립일자: ${formattedFdDate}<br>대표자명: ${clubIntroList.clubCeoName}<br>연락처:
 										${clubIntroList.phone}<br>동방: ${clubIntroList.clubLocation}<br>인스타/페북: ${clubIntroList.snsLink}
 									</a>
@@ -90,7 +85,7 @@
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
 	<!-- Core theme JS-->
-	<script src="/resources/js/scripts.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/scripts.js"></script>
 	<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
 	<!-- * *                               SB Forms JS                               * *-->
 	<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
