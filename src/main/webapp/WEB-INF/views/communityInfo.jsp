@@ -38,7 +38,7 @@
 	<div class="container width-80 h-100">
 		<div
 			class="row h-25 align-items-center justify-content-center text-center">
-			<div class="col-lg-6 align-self-end">
+			<div class="col-lg-6 align-self-center">
 				<h3 class="font-weight-bold pt-title">공지사항</h3>
 			</div>
 		</div>
@@ -86,7 +86,7 @@
 	</div>
 
 	<!-- Footer-->
-	<<jsp:include page="/WEB-INF/views/inc/footer.jsp"/>
+	<jsp:include page="/WEB-INF/views/inc/footer.jsp"/>
 	<!-- Bootstrap core JS-->
 	<script
 		src="<%=request.getContextPath()%>/resources/assets/js/pagenation.js"></script>

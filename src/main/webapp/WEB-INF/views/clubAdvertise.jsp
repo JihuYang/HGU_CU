@@ -9,9 +9,6 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>한동대학교 총동아리연합회</title>
-<!-- Favicon-->
-<link rel="icon" type="image/x-icon"
-	href="./resources/assets/img/favicon.ico" />
 <!-- Bootstrap Icons-->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
@@ -31,13 +28,12 @@
 	
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="<%=request.getContextPath()%>/resources/css/styles.css" rel="stylesheet" />
-<link href="./resources/css/clubAdvertise.css" rel="stylesheet" />
+<link href="<%=request.getContextPath()%>/resources/css/clubAdvertise.css" rel="stylesheet" />
 
 </head>
 <script src="https://kit.fontawesome.com/6333a60c65.js" crossorigin="anonymous"></script>
 <body id="page-top">
-	<!-- Masthead-->
-	<div class="container px-4 px-lg-5 h-auto">
+	<div class="container px-4 px-lg-5 h-auto h-min">
 		<div class="row gx-4 gx-lg-5 align-items-center justify-content-center text-center">
 			<div class="col-lg-8 align-self-center">
 				<h3 class="font-weight-bold pt-title">동아리 홍보</h3>
@@ -93,7 +89,7 @@
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
 	<!-- Core theme JS-->
-	<script src="js/scripts.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/scripts.js"></script>
 	<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
 	<!-- * *                               SB Forms JS                               * *-->
 	<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->

@@ -28,17 +28,16 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css"
 	rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
-<link href="./resources/css/styles.css" rel="stylesheet" />
+<link href="<%=request.getContextPath()%>/resources/css/styles.css" rel="stylesheet" />
 
 </head>
 <jsp:include page="/WEB-INF/views/inc/header.jsp"/>
-<link href="./resources/css/home.css" rel="stylesheet" />
+<link href="<%=request.getContextPath()%>/resources/css/home.css" rel="stylesheet" />
 
-<script src="https://kit.fontawesome.com/6333a60c65.js"
-	crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/6333a60c65.js"></script>
 <body id="page-top">
 	<!-- Masthead-->
-	<div class="container px-4 px-lg-5 h-100">
+	<div class="container width-80 h-auto h-min">
 		<div
 			class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
 			<div class="col-lg-8 align-self-end">
@@ -68,7 +67,7 @@
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
 	<!-- Core theme JS-->
-	<script src="./resources/js/scripts.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/scripts.js"></script>
 	
 	<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
 	<!-- * *                               SB Forms JS                               * *-->
