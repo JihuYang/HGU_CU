@@ -12,8 +12,8 @@ import org.springframework.web.servlet.ModelAndView;
 //import org.mybatis.spring.SqlSessionTemplate;
 //import org.springframework.beans.factory.annotation.Autowired;
 
-import com.walab.hgu.DTO.CommunityInfoDTO;
-import com.walab.hgu.service.CommunityInfoService;
+import com.walab.hgu.DTO.UserDTO;
+import com.walab.hgu.service.UserService;
 
 /**
  * Handles requests for the application home page.
@@ -21,10 +21,18 @@ import com.walab.hgu.service.CommunityInfoService;
 @Controller
 public class AdminUserController {
 	
-	
+	@Autowired
+	UserService userService;	
 
 	@RequestMapping(value = "/adminUser", method = RequestMethod.GET)
-	public ModelAndView readCommunityInfo(ModelAndView mv) {
+	public ModelAndView readUser(ModelAndView mv) {
+		
+		List<UserDTO> userList = userService.readUser();
+		
+		mv.addObject("userList", userList); 
+		
+		System.out.println(mv);
+
 		
 		mv.setViewName("adminUser");
 			

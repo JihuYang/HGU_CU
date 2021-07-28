@@ -61,7 +61,8 @@
 			<!-- 공지사항 리스트  -->
 			<%-- 			<%@ include file="./ajaxContent/communityInfoList.jsp"%>
  --%>
-			<table class="table align-items-center justify-content-center text-center ">
+			<table
+				class="table align-items-center justify-content-center text-center ">
 				<thead class="p-4">
 					<tr class="tr-border">
 						<th scope="col" class="col-1" id="username">이름</th>
@@ -72,25 +73,28 @@
 					</tr>
 				</thead>
 				<tbody class="align-items-center p-4">
-					<tr>
-						<td id="username">양지후</td>
-						<td id="contact">01055640429</td>
-						<td id="email">21900433@handong.edu</td>
-						<td id="club">하향</td>
-						<td id="authority">
-							<div class="dropdown">
-								<button class="btn btn-secondary dropdown-toggle authority-btn" type="button"
-									id="dropdownMenuButton1" data-bs-toggle="dropdown"
-									aria-expanded="false">권한 설정</button>
-								<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-									<li><a class="dropdown-item" href="#">일반회원</a></li>
-									<li><a class="dropdown-item" href="#">동아리대표</a></li>
-									<li><a class="dropdown-item" href="#">차단</a></li>
-									<li><a class="dropdown-item" href="#">관리자</a></li>
-								</ul>
-							</div>
-						</td>
-					</tr>
+					<c:forEach items="${userList}" var="userList" varStatus="status">
+						<tr>
+							<td id="username">${userList.name}</td>
+							<td id="contact">${userList.phone}</td>
+							<td id="email">${userList.email}</td>
+							<td id="club">${userList.clubName}</td>
+							<td id="authority">
+								<div class="dropdown">
+									<button class="btn btn-secondary dropdown-toggle authority-btn"
+										type="button" id="dropdownMenuButton1"
+										data-bs-toggle="dropdown" aria-expanded="false">권한 설정</button>
+									<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+										<li><a class="dropdown-item" href="#">일반회원</a></li>
+										<li><a class="dropdown-item" href="#">동아리대표</a></li>
+										<li><a class="dropdown-item" href="#">차단</a></li>
+										<li><a class="dropdown-item" href="#">관리자</a></li>
+									</ul>
+								</div>
+							</td>
+						</tr>
+					</c:forEach>
+
 				</tbody>
 			</table>
 		</div>
@@ -128,7 +132,7 @@
 	</div>
 
 	<!-- Footer-->
-	<jsp:include page="/WEB-INF/views/inc/footer.jsp"/>
+	<jsp:include page="/WEB-INF/views/inc/footer.jsp" />
 
 	<!-- Bootstrap core JS-->
 	<script

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="User">
+
+	<select id="readUser" resultType="com.walab.hgu.DTO.UserDTO"
+		parameterType="hashmap">
+		SELECT u.id, name, email, admin, phone, clubName FROM (hguclub.user as u
+		INNER JOIN hguclub.club as c ON c.userId=u.id);
+	</select>
+
+</mapper>
