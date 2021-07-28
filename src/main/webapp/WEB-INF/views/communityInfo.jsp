@@ -42,17 +42,20 @@
 		<div
 			class="row h-25 align-items-center justify-content-center text-center">
 			<div class="col-lg-6 align-self-end">
-				<h3 class="font-weight-bold">공지사항</h3>
+				<h3 class="font-weight-bo--ld pt-title">공지사항</h3>
 			</div>
 		</div>
 		<div
 			class="row h-50 align-items-center justify-content-center text-center">
-				<%@ include file="./ajaxContent/communityInfoList.jsp"%>
+					
+		    <!-- 공지사항 리스트  -->
+			<%@ include file="./ajaxContent/communityInfoList.jsp"%>
+			
 			<div class="row justify-content-end">
 				<button class="btn btn-primary search-btn" type="submit">글쓰기</button>
 			</div>
 		</div>
-		<div class="row h-25 align-items-center text-center">
+		<div class="row h-auto align-items-center text-center">
 			<form accept-charset="UTF-8" name="searchForm">
 				<div class="rows justify-content-center">
 					<select class="form-select form-select-sm search-selector">
@@ -97,7 +100,7 @@
 	<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
 	<!-- * *                               SB Forms JS                               * *-->
 	<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-	<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+	<!— * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *—>
 	<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 </body>
 </html>

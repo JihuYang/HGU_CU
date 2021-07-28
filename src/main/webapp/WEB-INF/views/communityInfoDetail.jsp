@@ -31,37 +31,62 @@
 <link href="./resources/css/styles.css" rel="stylesheet" />
 
 </head>
+<link href="../resources/css/header.css" rel="stylesheet" />
 <jsp:include page="/WEB-INF/views/inc/header.jsp" />
-<link href="./resources/css/home.css" rel="stylesheet" />
-
+<link href="../resources/css/community.css" rel="stylesheet" />
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <script src="https://kit.fontawesome.com/6333a60c65.js"></script>
 <body id="page-top">
-	<div class="container width-80 h-auto">
+	<div class="container width-80 h-100">
 		<div
 			class="row h-25 align-items-center justify-content-center text-center">
-			<div class="col-lg-6 align-self-end">
-				<h3 class="font-weight-bold pt-title">총동아리연합회 소개</h3>
+			<div class="align-self-end">
+				<h3 class="font-weight-bold pt-title">자료실</h3>
 			</div>
 		</div>
-		<div class="container px-4 px-lg-5 text-start">
-			<h4 class="mb-4 ps-5 py-5">총동아리연합회란</h4>
+		<div
+			class="row h-auto align-items-center justify-content-center text-center">
+			<div class="community-detail-title py-5">
+				<h3>제목</h3>
+			</div>
 		</div>
-		<div class="container px-4 px-lg-5 text-start">
-			<h4 class="mb-4 ps-5 py-5">총동아리연합회 구성도</h4>
-			<img src="./resources/assets/img/구성도.png"
-				class="img-fluid col-8 mx-auto d-block" alt="총동아리연합회 구성도">
+		<div
+			class="row h-auto align-items-center justify-content-end text-end">
+			<div class="py-3 detail-info">작성자: 관리자 | 조회수 : 15 | 2021-06-21</div>
+		</div>
+		<div class="row h-auto align-items-center justify-content-center">
+			<div class="px-4 detail-content">2021년도 내용...</div>
+		</div>
+		<div
+			class="row h-25 align-items-center justify-content-center text-center">
 
+			<table class="table text-center">
+				<tbody>
+					<tr>
+						<th scope="col" class="col-3 text-center file py-4">첨부파일</th>
+						<th scope="col" class="col-7 text-start px-3 py-4">파일이름.exel</th>
+					</tr>
+					<tr>
+						<th scope="col" class="col-3 text-center file py-4">첨부파일</th>
+						<th scope="col" class="col-7 text-start px-3 py-4">파일이름.exel</th>
+					</tr>
+				</tbody>
+			</table>
+
+			<div class="row justify-content-start mt-4 list-btn">
+				<button class="btn btn-primary search-btn list-btn" type="submit">목록</button>
+			</div>
 		</div>
-		<div class="container px-4 px-lg-5 text-start">
-			<h4 class="mb-4 ps-5 py-5">총동아리연합회 집행부 조직도</h4>
-			<img src="./resources/assets/img/조직도.jpg"
-				class="img-fluid col-8 mx-auto d-block" alt="총동아리연합회 구성도">
-		</div>
+
 	</div>
 
 	<!-- Footer-->
-	<jsp:include page="/WEB-INF/views/inc/footer.jsp" />
-
+	<footer class="bg-light py-5">
+		<div class="container px-4 px-lg-5">
+			<div class="small text-center text-muted">Copyright &copy; 2021
+				- 한동대학교 총동아리연합회</div>
+		</div>
+	</footer>
 	<!-- Bootstrap core JS-->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -69,7 +94,6 @@
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
 	<!-- Core theme JS-->
-	<script src="js/scripts.js"></script>
 	<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
 	<!-- * *                               SB Forms JS                               * *-->
 	<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->

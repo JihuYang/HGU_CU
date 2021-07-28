@@ -32,4 +32,13 @@ public class CommunityMaterialsController {
 		return mv;
 	}
 	
+	@RequestMapping(value = "/communityMaterial/detail", method = RequestMethod.GET)
+	public ModelAndView readCommunityInfoDetail(ModelAndView mv) {
+
+		
+		mv.setViewName("communityMaterialDetail");
+			
+		return mv;
+	}
+	
 }

@@ -102,9 +102,9 @@
 			    }
   			
   			</script>
-  			  
+  			 </div>
 		 
-            <table>
+            <table id="space-table">
 	                <tr>
 	                    <td>공간</td>
 	                    <td id="space_name"></td>
@@ -185,7 +185,6 @@
 	
 		</script>
         
-        </div>
 
         </div>
          

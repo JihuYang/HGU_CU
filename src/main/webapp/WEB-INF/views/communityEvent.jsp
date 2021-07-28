@@ -35,14 +35,12 @@
 <link href="./resources/css/home.css" rel="stylesheet" />
 <link href="./resources/css/community.css" rel="stylesheet"/>
 
-<link href="./resources/css/calendar.css" rel="stylesheet"/>
 <link rel='stylesheet' href='https://fullcalendar.io/releases/fullcalendar/3.9.0/fullcalendar.min.css'>
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <script src="https://kit.fontawesome.com/6333a60c65.js"></script>
 <body id="page-top">
-	<!-- Masthead-->
-	<div class="container width-80 h-100">
+	<div class="container width-80 h-auto">
 		<div
 			class="row align-items-center justify-content-center text-center">
 			<div class="col-lg-6 align-self-end">
@@ -50,35 +48,154 @@
 			</div>
 		</div>
 		<div
-			class="row h-50 align-items-center justify-content-center text-center">
+			class="row h-auto align-items-center justify-content-center text-center">
 
-        <div id='calendar'></div>
-		<!-- partial -->
-		<script src='https://fullcalendar.io/releases/fullcalendar/3.9.0/lib/moment.min.js'></script>
-		<script src='https://fullcalendar.io/releases/fullcalendar/3.9.0/lib/jquery.min.js'></script>
-		<script src='https://fullcalendar.io/releases/fullcalendar/3.9.0/fullcalendar.min.js'></script>
-		<script type="text/javascript">
+			<div id='datepicker'></div>
+
+			<div class="modal fade" tabindex="-1" role="dialog">
+				<div class="modal-dialog modal-dialog-centered" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="btn-close" data-bs-dismiss="modal"
+								aria-label="Close"></button>
+							<div id="modal-title">
+								<h3>
+									<input class="modal-title form-control" style="margin: 0 auto;"
+										type="text" name="title" id="title" placeholder="제목 추가" />
+								</h3>
+							</div>
+						</div>
+						<div class="modal-body">
+							<div class="row">
+								<div class="col-xs-12">
+									<label class="col-xs-4 mx-3 b-primary " for="place">장소</label>
+									<input type="text" name="place" id="place" />
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12">
+									<label class="col-xs-4 mx-3 b-primary" for="starts-at">시간</label>
+									<input class="my-3 b-success" type="text" name="starts_at"
+										id="starts-at" />
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn " id="save-event">저장</button>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id='calendar'></div>
+			<!-- partial -->
+
+			<script
+				src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+			<script
+				src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment-with-locales.min.js'></script>
+			<script
+				src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/fullcalendar.js'></script>
+			<script
+				src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
+			<script
+				src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.42/js/bootstrap-datetimepicker.min.js'></script>
+
+			<script type="text/javascript">
+
 		$(function() {
 			  $('#calendar').fullCalendar({
 			    selectable: true,
 			    longPressDelay: 0,
 			    header: {
-			      left: 'prev,next today',
-			      center: 'title',
-			      right: 'month,agendaWeek,agendaDay'
+			      left: "prev,next today",
+			      center: "title",
+			      right: "month,agendaWeek,agendaDay"
 			    },
-			    dayClick: function(date) {
+
+			    defaultView: "month",
+			    navLinks: true, // can click day/week names to navigate views
+			    selectable: true,
+			    selectHelper: true,
+			    editable: true,
+			    eventLimit: true, // allow "more" link when too many events
+
+			    select: function(start, end) {
+			      // Display the modal.
+			      // You could fill in the start and end fields based on the parameters
+			      $(".modal").modal("show");
+			      $(".modal")
+			        .find("#title")
+			        .val("");
+			      $(".modal")
+			        .find("#place")
+			        .val("");
+			      $(".modal")
+			        .find("#starts-at")
+			        .val("");
+			      $("#save-event").show();
+			      $("input").prop("readonly", false);
 			    },
-			    select: function(startDate, endDate) {
+
+			    eventRender: function(event, element) {
+			      //dynamically prepend close button to event
+			      element
+			        .find(".fc-content")
+			        .prepend("<span class='closeon material-icons'>&#xe5cd;</span>");
+			      element.find(".closeon").on("click", function() {
+			        $("#calendar").fullCalendar("removeEvents", event._id);
+			      });
+			    },
+
+			    eventClick: function(calEvent, jsEvent) {
+			      // Display the modal and set event values.
+			      $(".modal").modal("show");
+			      $(".modal")
+			        .find("#title")
+			        .val(calEvent.title);
+			      $(".modal")
+			        .find("#place")
+			        .val(calEvent.place);
+			      $(".modal")
+			        .find("#starts-at")
+			        .val(calEvent.start);
+			      $("#save-event").hide();
+			      $("input").prop("readonly", true);
 			    }
 			  });
 
+			  // Bind the dates to datetimepicker.
+			  $("#starts-at").datetimepicker();
+
+			  //click to save "save"
+			  $("#save-event").on("click", function(event) {
+			    var title = $("#title").val();
+			    if (title) {
+			      var eventData = {
+			        title: title,
+			        start: $("#starts-at").val(),
+			        place: $("#place").val()
+			        
+			      };
+			      $("#calendar").fullCalendar("renderEvent", eventData, true); // stick? = true
+			    }
+			    $("#calendar").fullCalendar("unselect");
+
+			    // Clear modal inputs
+			    $(".modal")
+			      .find("input")
+			      .val("");
+			    // hide modal
+			    $(".modal").modal("hide");
+			  });
+
+			  $("textarea").autosize();
 			});
 
+
 		</script>
+		</div>
 	</div>
-</div>
-           
 
 
 	<!-- Footer-->

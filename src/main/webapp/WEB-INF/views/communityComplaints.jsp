@@ -34,31 +34,20 @@
 <jsp:include page="/WEB-INF/views/inc/header.jsp" />
 <link href="./resources/css/community.css" rel="stylesheet" />
 
-<script src="https://kit.fontawesome.com/6333a60c65.js"
-	crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/6333a60c65.js"></script>
 <body id="page-top">
-	<!-- Masthead-->
-<!-- 	<div class="container px-4 px-lg-5 h-100">
+	<div class="container width-80 h-100">
 		<div
-			class="row gx-4 gx-lg-5 h-75 align-items-center justify-content-center text-center">
+			class="row h-25 align-items-center justify-content-center text-center">
 			<div class="col-lg-6 align-self-end">
-				<h3 class="font-weight-bold">민원 및 문의</h3>
+				<h3 class="font-weight-bold pt-title">민원 및 문의사항</h3>
 			</div>
-			<div class="col-lg-5 align-self-baseline complaints">
-				<h5>민원 및 문의사항은 아래 메일을 통해 연락주시면 감사하겠습니다.</h5>
-				<h5>clubunion@handong.edu</h5>
-			</div>
-		</div>
-	</div> -->
-	<div class="container px-4 px-lg-5 h-100">
-		<div
-			class="row gx-4 gx-lg-5 h-100 align-items-center justify-content-center text-center">
-			<div class="col-lg-8 align-self-end mb-5">
-				<h3 class="font-weight-bold">민원 및 문의</h3>
-			</div>
-			<div class="col-lg-6 align-self-baseline complaints">
-				<h5 class="space">민원 및 문의사항은 아래 메일을 통해 연락주시면 감사하겠습니다.</h5>
-				<h5>clubunion@handong.edu</h5>
+			<div
+				class="row h-75 align-items-center justify-content-center text-center">
+				<div class="col-lg-8 align-self-baseline complaints">
+					<h5 class="space">민원 및 문의사항은 아래 메일을 통해 연락주시면 감사하겠습니다.</h5>
+					<h5>clubunion@handong.edu</h5>
+				</div>
 			</div>
 		</div>
 	</div>
