@@ -14,8 +14,8 @@ public class ClubDTO {
 	private String phone;//대표 번호 
 	private Date foundationDate;//창립일 
 	private String clubDescription;//동아리 소개 설명글 
-	private String snsName;
-	private String snsLink;
+	private String instagramLink;
+	private String facebookLink;
 	private String originalUrl;
 	private Date regdate;
 	
@@ -80,19 +80,6 @@ public class ClubDTO {
 	public void setCategoryName(String categoryName) {
 		this.categoryName = categoryName;
 	}
-	public String getSnsName() {
-		return snsName;
-	}
-	public void setSnsName(String snsName) {
-		this.snsName = snsName;
-	}
-	public String getSnsLink() {
-		return snsLink;
-	}
-	public void setSnsLink(String snsLink) {
-		this.snsLink = snsLink;
-	}
-	
 	public String getClubCeoName() {
 		return clubCeoName;
 	}
@@ -105,12 +92,24 @@ public class ClubDTO {
 	public void setOriginalUrl(String originalUrl) {
 		this.originalUrl = originalUrl;
 	}
+	public String getInstagramLink() {
+		return instagramLink;
+	}
+	public void setInstagramLink(String instagramLink) {
+		this.instagramLink = instagramLink;
+	}
+	public String getFacebookLink() {
+		return facebookLink;
+	}
+	public void setFacebookLink(String facebookLink) {
+		this.facebookLink = facebookLink;
+	}
 	@Override
 	public String toString() {
-		return "ClubDTO [ categoryId=" + categoryId + ", userId=" + userId + ", ClubId=" + id
-				+ ", categoryName=" + categoryName + ", clubName=" + clubName + ", clubCeoName=" + clubCeoName
-				+ ", clubLocation=" + clubLocation + ", phone=" + phone + ", foundationDate=" + foundationDate
-				+ ", clubDescription=" + clubDescription + ", snsName=" + snsName + ", snsLink=" + snsLink
+		return "ClubDTO [categoryId=" + categoryId + ", userId=" + userId + ", id=" + id + ", categoryName="
+				+ categoryName + ", clubName=" + clubName + ", clubCeoName=" + clubCeoName + ", clubLocation="
+				+ clubLocation + ", phone=" + phone + ", foundationDate=" + foundationDate + ", clubDescription="
+				+ clubDescription + ", instagramLink=" + instagramLink + ", facebookLink=" + facebookLink
 				+ ", originalUrl=" + originalUrl + ", regdate=" + regdate + "]";
 	}
 	

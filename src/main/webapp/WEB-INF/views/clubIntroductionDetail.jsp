@@ -1,5 +1,6 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page session="false"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <html>
@@ -28,8 +29,10 @@
 <jsp:include page="/WEB-INF/views/inc/header.jsp" />
 
 <!-- Core theme CSS (includes Bootstrap)-->
-<link href="<%=request.getContextPath()%>/resources/css/styles.css" rel="stylesheet" />
-<link href="<%=request.getContextPath()%>/resources/css/clubIntroductionDetail.css"
+<link href="<%=request.getContextPath()%>/resources/css/styles.css"
+	rel="stylesheet" />
+<link
+	href="<%=request.getContextPath()%>/resources/css/clubIntroductionDetail.css"
 	rel="stylesheet" />
 
 </head>
@@ -39,46 +42,49 @@
 		<div
 			class="row h-auto align-items-center justify-content-center text-center">
 			<div class="col-lg-6 align-self-end">
-				<h3 class="font-weight-bold pt-title">${categoryName} 동아리 소개</h3>
+				<h3 class="font-weight-bold pt-title">${categoryName}동아리소개</h3>
 				<p class="text-muted mb-0">한동대 ${categoryName} 모든 동아리들을 응원합니다 !</p>
 			</div>
 			<div class="col-sm-10">
 				<hr>
 				<!-- 동아리 대표 내용  -->
 				<div class="align">
-					<c:forEach items="${clubDetailList}" var="clubDetailList" varStatus="status">
-						<fmt:formatDate value="${clubDetailList.foundationDate}" var="formattedFdDate" type="date" pattern="yyyy-MM-dd" />
+					<c:forEach items="${clubDetailList}" var="clubDetailList"
+						varStatus="status">
+						<fmt:formatDate value="${clubDetailList.foundationDate}"
+							var="formattedFdDate" type="date" pattern="yyyy-MM-dd" />
 						<h5 class="text-align">[${clubDetailList.clubName}]</h5>
 						<p class="text-align">창립일자: ${formattedFdDate}</p>
 						<p class="text-align">대표자명: ${clubDetailList.clubCeoName}</p>
 						<p class="text-align">연락처: ${clubDetailList.phone}</p>
 						<p class="text-align">동방: ${clubDetailList.clubLocation}</p>
-						<p class="text-align">인스타/페북: ${clubDetailList.snsLink}</p>
+						<p class="text-align">인스타그램: ${clubDetailList.instagramLink}</p>
+						<p class="text-align">페이스북: ${clubDetailList.facebookLink}</p>
 						<p class="text-align content-size">
-							동아리 소개<br>${clubDetailList.clubDescription}
-							<!-- 동아리 소개글<br>🌿2021 피치파이프 리크루팅🍑🌿<br>YES, WE ARE
-							PITCHPIPE!<br>_<br>안녕하세요, 21학번 🌊함께하는 세대🌊 여러분!<br>하나님을
-							찬양하는 아카펠라 동아리 피치파이프입니다🎶<br>저희와 함께 목소리로 하나님을 찬양할 21학번
-							방울이💧분들을 모집합니다💚<br>😌 나는 찬양하는 것을 좋아한다!<br>🤔 아카펠라를 잘
-							모르지만 한 번 도전해보고 싶다!<br>🤗 아카펠라로 아름다운 하모니를 만들어보고 싶다!<br>🥺
-							피치파이프라는 동아리에 너무너무 들어오고 싶다!<br> <br>하신다면, 누구나 환영합니다
-							😊🙌🏻<br>함께 찬양하고, 함께 기뻐하고, 함께 추억을 만들어나갈 21학번 새내기🐥들의 많은 지원을
-							기다립니다✨<br>동아리 소개글<br>🌿2021 피치파이프 리크루팅🍑🌿<br>YES,
-							WE ARE PITCHPIPE!<br>_<br>안녕하세요, 21학번 🌊함께하는 세대🌊 여러분!<br>하나님을
-							찬양하는 아카펠라 동아리 피치파이프입니다🎶<br>저희와 함께 목소리로 하나님을 찬양할 21학번
-							방울이💧분들을 모집합니다💚<br>😌 나는 찬양하는 것을 좋아한다!<br>🤔 아카펠라를 잘
-							모르지만 한 번 도전해보고 싶다!<br>🤗 아카펠라로 아름다운 하모니를 만들어보고 싶다!<br>🥺
-							피치파이프라는 동아리에 너무너무 들어오고 싶다!<br> <br>하신다면, 누구나 환영합니다
-							😊🙌🏻<br>함께 찬양하고, 함께 기뻐하고, 함께 추억을 만들어나갈 21학번 새내기🐥들의 많은 지원을
-							기다립니다✨ -->
-						</p>
+							동아리 소개: <br>${clubDetailList.clubDescription}</p>
 					</c:forEach>
 				</div>
 				<div class="logo">
 					<div id="carouselExampleControls" class="carousel slide"
 						data-bs-ride="carousel">
 						<div class="carousel-inner">
-							<div class="carousel-item active">
+							<c:forEach var="clubImgList" items="${clubImgList}"
+								varStatus="status" begin="0" end="0">
+								<div class="carousel-item active">
+									<img
+										src="<%=request.getContextPath()%>/resources/img/${clubImgList.originalUrl}"
+										class="d-block logo" alt="...">
+								</div>
+							</c:forEach>
+							<c:forEach var="clubImgList" items="${clubImgList}"
+								varStatus="status" begin="1">
+								<div class="carousel-item">
+									<img
+										src="<%=request.getContextPath()%>/resources/img/${clubImgList.originalUrl}"
+										class="d-block logo" alt="...">
+								</div>
+							</c:forEach>
+							<!-- <div class="carousel-item active">
 								<img
 									src="https://cdn.pixabay.com/photo/2021/07/13/11/34/cat-6463284_960_720.jpg"
 									class="d-block logo" alt="...">
@@ -88,22 +94,31 @@
 									src="https://cdn.pixabay.com/photo/2021/07/15/08/44/town-6467851_960_720.jpg"
 									class="d-block logo" alt="...">
 							</div>
-							<div class="carousel-item">
+							<div class="carousel-item ">
 								<img
 									src="https://cdn.pixabay.com/photo/2021/07/14/18/34/poppies-6466826_960_720.jpg"
 									class="d-block logo" alt="...">
-							</div>
+							</div> -->
 						</div>
-						<button class="carousel-control-prev " type="button"
-							data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-							<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-							<span class="visually-hidden">Previous</span>
-						</button>
-						<button class="carousel-control-next" type="button"
-							data-bs-target="#carouselExampleControls" data-bs-slide="next">
-							<span class="carousel-control-next-icon" aria-hidden="true"></span>
-							<span class="visually-hidden">Next</span>
-						</button>
+						<c:choose>
+							<c:when test="${fn:length(clubImgList) == 0}">
+        						업로드된 동아리 사진이 없습니다.
+   							</c:when>
+							<c:when test="${fn:length(clubImgList) == 1}">
+							</c:when>
+							<c:otherwise>
+								<button class="carousel-control-prev " type="button"
+									data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+									<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+									<span class="visually-hidden">Previous</span>
+								</button>
+								<button class="carousel-control-next" type="button"
+									data-bs-target="#carouselExampleControls" data-bs-slide="next">
+									<span class="carousel-control-next-icon" aria-hidden="true"></span>
+									<span class="visually-hidden">Next</span>
+								</button>
+							</c:otherwise>
+						</c:choose>
 					</div>
 				</div>
 			</div>

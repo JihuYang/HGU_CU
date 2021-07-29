@@ -5,7 +5,7 @@
 <mapper namespace="Club">
 
 	<select id="readClubIntroductionPreview" parameterType="HashMap" resultType="com.walab.hgu.DTO.ClubDTO">
-		SELECT CL.id,CL.clubName, u.name as clubCeoName, CL.clubLocation, u.phone,categoryId, categoryName, CL.foundationDate, cS.snsName, cS.snsLink ,cI.originalUrl
+		SELECT CL.id,CL.clubName, u.name as clubCeoName, CL.clubLocation, u.phone,categoryId, categoryName, CL.foundationDate, cS.instagramLink, cS.facebookLink ,cI.originalUrl
         FROM hguclub.club as CL ,hguclub.clubImage cI ,hguclub.category CA,hguclub.user u ,hguclub.clubSNS cS
 		where CA.id = CL.categoryId and CL.userId = u.id and  CL.id = cS.clubId and CL.id = cI.clubId
 		and CA.id = #{categoryId} and cI.`order` = 1
@@ -16,10 +16,15 @@
 	</select>
 	
 	<select id="getClubDetailList" parameterType="HashMap" resultType="com.walab.hgu.DTO.ClubDTO">
-		SELECT CL.id,CL.clubName,u.name as clubCeoName,CL.clubLocation,CL.clubDescription,u.phone,categoryId,categoryName,CL.foundationDate,cS.snsName,cS.snsLink ,cI.originalUrl
+		SELECT CL.id,CL.clubName,u.name as clubCeoName,CL.clubLocation,CL.clubDescription,u.phone,categoryId,categoryName,CL.foundationDate,cS.instagramLink,cS.facebookLink ,cI.originalUrl
         FROM hguclub.club as CL ,hguclub.clubImage cI ,hguclub.category CA,hguclub.user u ,hguclub.clubSNS cS
 		where CA.id = CL.categoryId and CL.userId = u.id and  CL.id = cS.clubId and CL.id = cI.clubId
-		and CA.id = #{categoryId} and CL.id = #{clubId}
+		and CA.id = #{categoryId} and CL.id = #{clubId} and cI.`order` = 1
 	</select>
-
+	<select id="getClubImg" parameterType="HashMap" resultType="com.walab.hgu.DTO.ClubDTO">
+		SELECT cI.originalUrl
+        FROM hguclub.club as CL ,hguclub.clubImage cI
+		where CL.id = cI.clubId
+		and CL.id = #{clubId} order by `order`
+	</select>
 </mapper>

@@ -12,5 +12,7 @@ public interface ClubDAO {
 	public List<CategoryDTO> getCategoryNameList();
 
 	public List<ClubDTO> getClubDetailList(int categoryId, int clubId);
+	
+	public List<ClubDTO> getClubImg(int clubId);
 
 }

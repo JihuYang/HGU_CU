@@ -62,14 +62,6 @@
  						<c:forEach items="${categoryNameList}" var="categoryNameList" varStatus="status">
 							<li><a class="dropdown-item" href="<%=request.getContextPath()%>/clubIntroduction/${categoryNameList.id}">${categoryNameList.categoryName}</a></li>
 						</c:forEach>
-						<!-- <li><a class="dropdown-item" href="#">공연분과</a></li>
-						<li><a class="dropdown-item" href="#">봉사분과</a></li> 
-						<li><a class="dropdown-item" href="#">학술분과</a></li> 
-						<li><a class="dropdown-item" href="#">전산분과</a></li> 
-						<li><a class="dropdown-item" href="#">체육분과</a></li> 
-						<li><a class="dropdown-item" href="#">종교분과</a></li> 
-						<li><a class="dropdown-item" href="#">전시분과</a></li> 
-						<li><a class="dropdown-item" href="#">아기동아리</a></li>  -->
 					</ul></li>				
 				<li class="nav-item nav-bottom-border mx-2"><a class="nav-link" onclick="location.href='<%=request.getContextPath()%>/reservation'">시설 예약</a></li>
 				<li class="nav-item nav-bottom-border mx-2 dropdown" id="dropdown-display-community"><a
