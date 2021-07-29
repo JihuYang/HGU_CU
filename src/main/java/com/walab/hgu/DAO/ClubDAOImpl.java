@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.walab.hgu.DTO.CategoryDTO;
 import com.walab.hgu.DTO.ClubDTO;
 
 @Repository
@@ -28,7 +29,7 @@ public class ClubDAOImpl implements ClubDAO{
 	}
 
 	@Override
-	public List<ClubDTO> getCategoryNameList() {
+	public List<CategoryDTO> getCategoryNameList() {
 		
 		Map<String, Object> categoryNameList = new HashMap<String, Object>();
 		
