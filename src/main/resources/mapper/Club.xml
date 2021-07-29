@@ -11,8 +11,8 @@
 		and CA.id = #{categoryId} and cI.`order` = 1
 	</select>
 	
-	<select id="getCategoryNameList" resultType="com.walab.hgu.DTO.ClubDTO">
-		Select categoryName FROM hguclub.category
+	<select id="getCategoryNameList" resultType="com.walab.hgu.DTO.CategoryDTO">
+		Select id,categoryName FROM hguclub.category
 	</select>
 	
 	<select id="getClubDetailList" parameterType="HashMap" resultType="com.walab.hgu.DTO.ClubDTO">

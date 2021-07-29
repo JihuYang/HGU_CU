@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.walab.hgu.DAO.ClubDAO;
+import com.walab.hgu.DTO.CategoryDTO;
 import com.walab.hgu.DTO.ClubDTO;
 
 @Service
@@ -23,10 +24,10 @@ public class ClubServiceImpl implements ClubService{
 	}
 
 	@Override
-	public List<ClubDTO> getCategoryNameList() {
+	public List<CategoryDTO> getCategoryNameList() {
 		
 
-		List<ClubDTO> categoryNameList = clubDAO.getCategoryNameList();
+		List<CategoryDTO> categoryNameList = clubDAO.getCategoryNameList();
 		
 		return categoryNameList;
 	}
