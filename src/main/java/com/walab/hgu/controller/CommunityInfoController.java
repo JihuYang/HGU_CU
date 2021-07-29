@@ -66,16 +66,20 @@ public class CommunityInfoController {
 	public ModelAndView createCommunityInfo(ModelAndView mv,
 			@RequestParam(value="userId") int userId,
 			@RequestParam(value="title") String title,
-			@RequestParam(value="content") String content) {
+			@RequestParam(value="content") String content,
+			@RequestParam(value="originalUrl") String originalUrl) {
 		
 		CommunityInfoDTO info = new CommunityInfoDTO();
 		
 		info.setUserId(userId);
 		info.setTitle(title);
 		info.setContent(content);
+		
+		//info.setOriginalUrl(originalUrl);
 
 		System.out.println(info.toString());
 		
+		System.out.println(originalUrl);
 
 		communityInfoService.createCommunityInfo(info);
 		
