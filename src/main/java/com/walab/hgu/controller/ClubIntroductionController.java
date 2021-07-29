@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.walab.hgu.DTO.CategoryDTO;
 import com.walab.hgu.DTO.ClubDTO;
 import com.walab.hgu.service.ClubService;
 
@@ -36,7 +37,7 @@ public class ClubIntroductionController {
 		ModelAndView mv = new ModelAndView();
 		System.out.println(categoryId);
 		List<ClubDTO> clubIntroList = clubService.readClubIntroductionPreview(categoryId);
-		List<ClubDTO> categoryNameList = clubService.getCategoryNameList();
+		List<CategoryDTO> categoryNameList = clubService.getCategoryNameList();
 		//String categoryName = clubIntroList.get(0).getCategoryName();
 		
 		String categoryName = categoryNameList.get(categoryId-1).getCategoryName();
@@ -60,7 +61,7 @@ public class ClubIntroductionController {
 		clubMappingInfo.put("categoryId", categoryId);
 		clubMappingInfo.put("clubId", clubId);
 		List<ClubDTO> clubDetailList = clubService.getClubDetailList(categoryId,clubId);
-		List<ClubDTO> categoryNameList = clubService.getCategoryNameList();
+		List<CategoryDTO> categoryNameList = clubService.getCategoryNameList();
 		
 		String categoryName = categoryNameList.get(categoryId-1).getCategoryName();
 		mv.addObject("categoryName", categoryName);

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.walab.hgu.service.ClubService;
+import com.walab.hgu.DTO.CategoryDTO;
 import com.walab.hgu.DTO.ClubDTO;
 
 /**
@@ -46,7 +47,7 @@ public class HomeController {
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView header(ModelAndView mv) {
 		
-		List<ClubDTO> categoryNameList = clubService.getCategoryNameList();
+		List<CategoryDTO> categoryNameList = clubService.getCategoryNameList();
 		mv.addObject("categoryNameList", categoryNameList);//인터셉터에서 넣어주기
 		mv.setViewName("home");
 		System.out.println(mv);

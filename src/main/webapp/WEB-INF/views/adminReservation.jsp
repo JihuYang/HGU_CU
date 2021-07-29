@@ -46,19 +46,30 @@
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item mx-3"><a class="nav-link font-weight"
 						href="<%=request.getContextPath()%>/admin">홈페이지 관리</a></li>
-					<li class="nav-item mx-3"><a class="nav-link font-weight" style="background-color: rgb(239, 247, 253);"
-						href="<%=request.getContextPath()%>/adminUser">회원 관리</a></li>
 					<li class="nav-item mx-3"><a class="nav-link font-weight"
+						href="<%=request.getContextPath()%>/adminUser">회원 관리</a></li>
+					<li class="nav-item mx-3"><a class="nav-link font-weight" style="background-color: rgb(239, 247, 253);"
 						href="<%=request.getContextPath()%>/adminReservation">예약 관리</a></li>
 				</ul>
 			</div>
 		</nav>
+		
+		<div class="d-flex justify-content-between align-items-center mt-3">
+			<nav class="navbar-expand-lg">
+			  <form class="d-inline-flex p-2 align-items-center ">
+			    <input class="form-control mr-sm-2 " type="search" id="search" placeholder="이름, 단체, 이메일 등을 입력하세요" aria-label="Search">
+			    <button class="btn btn-primary search-btn my-2 my-sm-0" type="submit">검색</button>
+			  </form>
+			</nav>
+			<button class="btn btn-primary search-btn justify-content-end">추가</button>
+		</div>
+	
 
 		<div
-			class="row h-auto align-items-center justify-content-center text-center my-5 ">
+			class="row h-auto align-items-center justify-content-center text-center">
 
 			<!-- 회원 리스트  -->
-			<%@ include file="./ajaxContent/adminUserList.jsp"%>
+			<%@ include file="./ajaxContent/adminReservationList.jsp"%>
 
 		</div>
 		<div class="row h-auto align-items-center text-center">

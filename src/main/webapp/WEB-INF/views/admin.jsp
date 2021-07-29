@@ -44,9 +44,9 @@
 			<div
 				class="h-auto align-items-center justify-content-center text-center admin-nav-border">
 				<ul class="navbar-nav mr-auto">
-					<li class="nav-item mx-3"><a class="nav-link font-weight"
-						href="<%=request.getContextPath()%>/admin">홈페이지 관리</a></li>
 					<li class="nav-item mx-3"><a class="nav-link font-weight" style="background-color: rgb(239, 247, 253);"
+						href="<%=request.getContextPath()%>/admin">홈페이지 관리</a></li>
+					<li class="nav-item mx-3"><a class="nav-link font-weight"
 						href="<%=request.getContextPath()%>/adminUser">회원 관리</a></li>
 					<li class="nav-item mx-3"><a class="nav-link font-weight"
 						href="<%=request.getContextPath()%>/adminReservation">예약 관리</a></li>
@@ -58,7 +58,7 @@
 			class="row h-auto align-items-center justify-content-center text-center my-5 ">
 
 			<!-- 회원 리스트  -->
-			<%@ include file="./ajaxContent/adminUserList.jsp"%>
+			<%@ include file="./ajaxContent/adminSettingList.jsp"%>
 
 		</div>
 		<div class="row h-auto align-items-center text-center">
