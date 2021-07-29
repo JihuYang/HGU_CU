@@ -9,9 +9,6 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>한동대학교 총동아리연합회</title>
-<!-- Favicon-->
-<link rel="icon" type="image/x-icon"
-	href="./resources/assets/img/favicon.ico" />
 <!-- Bootstrap Icons-->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
@@ -31,13 +28,12 @@
 <link href="./resources/css/styles.css" rel="stylesheet" />
 
 </head>
-<link href="../resources/css/header.css" rel="stylesheet" />
 <jsp:include page="/WEB-INF/views/inc/header.jsp" />
-<link href="../resources/css/community.css" rel="stylesheet" />
+<link href="<%=request.getContextPath()%>/resources/css/community.css" rel="stylesheet" />
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <script src="https://kit.fontawesome.com/6333a60c65.js"></script>
 <body id="page-top">
-	<div class="container width-80 h-100">
+	<div class="container width-80 h-auto h-min">
 		<div
 			class="row h-25 align-items-center justify-content-center text-center">
 			<div class="align-self-end">

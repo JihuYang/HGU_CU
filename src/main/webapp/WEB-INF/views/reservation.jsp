@@ -9,9 +9,6 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>한동대학교 총동아리연합회</title>
-<!-- Favicon-->
-<link rel="icon" type="image/x-icon"
-	href="./resources/assets/img/favicon.ico" />
 <!-- Bootstrap Icons-->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
@@ -29,31 +26,28 @@
 	rel="stylesheet" />
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css" rel="stylesheet">
 <!-- Core theme CSS (includes Bootstrap)-->
-<link href="./resources/css/styles.css" rel="stylesheet" />
-<link href="./resources/css/home.css" rel="stylesheet" />
-<link href="./resources/css/reservation.css" rel="stylesheet" />
+<link href="<%=request.getContextPath()%>/resources/css/styles.css" rel="stylesheet" />
+<link href="<%=request.getContextPath()%>/resources/css/home.css" rel="stylesheet" />
+<link href="<%=request.getContextPath()%>/resources/css/reservation.css" rel="stylesheet" />
 <link rel='stylesheet' href='https://fullcalendar.io/releases/fullcalendar/3.9.0/fullcalendar.min.css'>
 
 </head>
 <jsp:include page="/WEB-INF/views/inc/header.jsp"/>
-<script src="https://kit.fontawesome.com/6333a60c65.js"
-	crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/6333a60c65.js"></script>
 
 <body id="page-top">
-	<!-- Masthead-->
-        <div class="R_container h-100">
+        <div class="R_container h-auto h-min">
       		<div class="side_bar">	
-       			<div class="reservation" style="background-color:#212721"><a href="./reservation">
-                	<div>
+       			<div class="reservation" style="background-color:#212721">
+                	<div OnClick="location.href ='./reservation'" style="cursor:pointer;">
                 		<i class="fa fa-home fa-2x white" aria-hidden="true" style="padding-top:10px;"></i><br><div class="side_text">조회 및 예약하기</div>
-                	</div></a>
+                	</div>
                </div>   
-	           <div class="reservation" style="background-color:#D0D0CE"><a href="./myReservation">
-	           	<div>
+	           <div class="reservation" style="background-color:#D0D0CE">
+	           	<div OnClick="location.href ='./myReservation'" style="cursor:pointer;">
 	           	<i class="fa fa-user fa-2x" aria-hidden="true" style="padding-top:10px;"></i><br><div class="side_text">내 예약</div>
-	           	</div></a>
+	           	</div>
 	           </div>
-	            
             </div>
            
         	<div class="content">
@@ -184,8 +178,7 @@
 			});
 	
 		</script>
-        
-
+        </div>
         </div>
          
         <!-- Footer-->
@@ -199,7 +192,7 @@
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
 	<!-- Core theme JS-->
-	<script src="js/scripts.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/scripts.js"></script>
 	<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
 	<!-- * *                               SB Forms JS                               * *-->
 	<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->

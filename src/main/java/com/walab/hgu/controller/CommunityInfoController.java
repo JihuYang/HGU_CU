@@ -50,4 +50,12 @@ public class CommunityInfoController {
 			
 		return mv;
 	}
+	
+	@RequestMapping(value = "/communityInfo/write", method = RequestMethod.GET)
+	public ModelAndView createCommunityInfo(ModelAndView mv) {
+
+		mv.setViewName("createCommunityInfo");
+			
+		return mv;
+	}
 }

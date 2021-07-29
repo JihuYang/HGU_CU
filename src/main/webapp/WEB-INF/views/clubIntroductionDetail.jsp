@@ -10,9 +10,6 @@
 <meta name="description" content="" />
 <meta name="author" content="" />
 <title>한동대학교 총동아리연합회</title>
-<!-- Favicon-->
-<link rel="icon" type="image/x-icon"
-	href="../resources/assets/img/favicon.ico" />
 <!-- Bootstrap Icons-->
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css"
@@ -31,19 +28,17 @@
 <jsp:include page="/WEB-INF/views/inc/header.jsp" />
 
 <!-- Core theme CSS (includes Bootstrap)-->
-<link href="../../resources/css/styles.css" rel="stylesheet" />
-<link href="../../resources/css/clubIntroductionDetail.css"
+<link href="<%=request.getContextPath()%>/resources/css/styles.css" rel="stylesheet" />
+<link href="<%=request.getContextPath()%>/resources/css/clubIntroductionDetail.css"
 	rel="stylesheet" />
 
 </head>
-<script src="https://kit.fontawesome.com/6333a60c65.js"
-	crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/6333a60c65.js"></script>
 <body id="page-top">
-	<!-- Masthead-->
-	<div class="container px-4 px-lg-5 h-auto">
+	<div class="container width-80 h-auto h-min">
 		<div
-			class="row gx-4 gx-lg-5 align-items-center justify-content-center text-center">
-			<div class="col-lg-8 align-self-center">
+			class="row h-auto align-items-center justify-content-center text-center">
+			<div class="col-lg-6 align-self-end">
 				<h3 class="font-weight-bold pt-title">${categoryName} 동아리 소개</h3>
 				<p class="text-muted mb-0">한동대 ${categoryName} 모든 동아리들을 응원합니다 !</p>
 			</div>
@@ -122,7 +117,7 @@
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
 	<!-- Core theme JS-->
-	<script src="/resources/js/scripts.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/scripts.js"></script>
 	<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
 	<!-- * *                               SB Forms JS                               * *-->
 	<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->

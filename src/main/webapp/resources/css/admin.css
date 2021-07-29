@@ -86,6 +86,7 @@ td {
 
 thead, tbody, tfoot, tr, td, th {
 	border: none;
+	justify-items: center;
 }
 
 .admin-nav-border {
@@ -101,6 +102,11 @@ thead, tbody, tfoot, tr, td, th {
 
 .tr-border{
 	border-bottom: 4px solid rgb(140, 142, 244);
+}
+.adminSelect{
+	padding: 0.5rem;
+	border: 1px solid #D0D0CE;
+	border-radius: 0.5rem;
 }
 /* 모바일 */
 @media ( max-width : 576px) {

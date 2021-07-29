@@ -90,40 +90,27 @@ a:link, a:visited {
 	text-decoration: none;
 }
 
-.side_bar {
-	position: fixed;
-	width: 250px;
-	height: 200px;
-	background-color: #fff;
-	top: 100px;
-	bottom: 0;
-	left: 0;
-	border: 0;
-	padding: 0;
+
+.section2 {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
 }
 
-.side_bar div {
-	color: white;
-	font-size: small;
+.section3 {
+	display: flex;
+	justify-content: space-around;
 	text-align: center;
 }
 
-.R_container {
+.section3 div {
 	width: 100%;
-	height: auto;
-	margin-top: 100px;
+	margin: 10px;
+	border: none !important;
+	background-color: #D0D0CE !important;
+	border-radius: 5px;
 }
 
-.R_container .content {
-	margin-left: 250px;
-	padding: 50px;
-	padding-bottom: 10px;
-	margin-top: 0;
-}
 
-#Head {
-	text-align: center;
-}
 
 .section2 {
 	display: grid;
@@ -333,6 +320,7 @@ thead, tbody, tfoot, tr, td, th {
 		font-size: 2px !important;
 		padding: 7px 2px !important;
 	}
+}
 
 
 @media ( max-width : 576px) {

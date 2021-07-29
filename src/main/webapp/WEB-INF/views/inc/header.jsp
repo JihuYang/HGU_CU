@@ -38,12 +38,11 @@
 </head>
 <!-- Navigation-->
 <nav
-	class="navbar navbar-expand-lg navbar-light fixed-top py-4 bg-white respy-4"
+	class="navbar navbar-expand-lg navbar-light fixed-top py-2 bg-white respy-4"
 	id="mainNav">
 	<div class="container px-4 px-lg-5 respx-3 ">
 		<img src="<%=request.getContextPath()%>/resources/assets/img/로고.png"
-			class="logo navbar-brand"></img> <!-- 			<a class="navbar-brand"
-			onclick="location.href='./'">한동대학교 총동아리연합회<br>
+			class="logo navbar-brand" onclick="location.href='./'">		<!--한동대학교 총동아리연합회<br>
 		<span id="name">HANDONG GLOBAL UNIVERSITY CLUB UNION</span></a> -->
 		<button class="navbar-toggler navbar-toggler-right" type="button"
 			data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
@@ -82,7 +81,7 @@
 						<li><a class="dropdown-item" onclick = "location.href='<%=request.getContextPath()%>/communityEvent'">행사일정</a></li>   
 						<li><a class="dropdown-item" onclick = "location.href='<%=request.getContextPath()%>/communityComplaints'">민원</a></li> 
 					</ul></li>	
-				<li class="nav-item nav-bottom-border mx-2"><a class="nav-link" onclick="location.href='./clubAdvertise'">동아리 홍보</a></li>
+				<li class="nav-item nav-bottom-border mx-2"><a class="nav-link" onclick="location.href='<%=request.getContextPath()%>/clubAdvertise'">동아리 홍보</a></li>
 				</ul>
 				</div>
 				<div class="justify-content-md-end">

@@ -28,19 +28,17 @@
 <jsp:include page="/WEB-INF/views/inc/header.jsp"/>
 
 <!-- Core theme CSS (includes Bootstrap)-->
-<link href="../resources/css/styles.css" rel="stylesheet" />
-<link href="../resources/css/clubIntroduction.css" rel="stylesheet" />
+<link href="<%=request.getContextPath()%>/resources/css/styles.css" rel="stylesheet" />
+<link href="<%=request.getContextPath()%>/resources/css/clubIntroduction.css" rel="stylesheet" />
 
 
 </head>
-<script src="https://kit.fontawesome.com/6333a60c65.js"
-	crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/6333a60c65.js"></script>
 <body id="page-top">
-	<!-- Masthead-->
-	<div class="container px-4 px-lg-5 h-auto">
+	<div class="container width-80 h-auto h-min">
 		<div
-			class="row gx-4 gx-lg-5 align-items-center justify-content-center text-center">
-			<div class="col-lg-8 align-self-center">
+			class="row h-auto align-items-center justify-content-center text-center">
+			<div class="col-lg-6 align-self-end">
 				<h3 class="font-weight-bold pt-title">${categoryName} 동아리 소개</h3>
 				<p class="text-muted mb-0">한동대 ${categoryName} 모든 동아리들을 응원합니다 !</p>
 			</div>
