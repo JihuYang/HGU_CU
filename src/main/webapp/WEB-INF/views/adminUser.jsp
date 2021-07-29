@@ -35,18 +35,10 @@
 <body id="page-top">
 	<div class="container width-80 h-auto h-min">
 		<div
-<<<<<<< HEAD
-			class="row h-auto align-items-center justify-content-center text-center">
-			<div class="col-lg-6 align-self-end">
-				<h3 class="font-weight-bold pt-title">관리자 페이지</h3>
-			</div>
-=======
 			class="row h-25 align-items-center justify-content-center text-center">
 			<div class="col-lg-6 align-self-center">
 				<h3 class="font-weight-bold pt-title">관리자 페이지</h3>
 			</div>
-		</div>
->>>>>>> branch 'main' of https://github.com/JihuYang/HGU_CU.git
 		</div>
 		<nav class="navbar navbar-expand-lg bg-white justify-content-center">
 			<div
@@ -86,7 +78,6 @@
 				</ul>
 			</nav>
 		</div>
-
 	</div>
 
 	<!-- Footer-->
