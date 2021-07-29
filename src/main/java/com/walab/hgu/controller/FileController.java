@@ -35,7 +35,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class FileController {
 	
-	@RequestMapping(value="upload.do", method= {RequestMethod.GET, RequestMethod.POST})
+	@RequestMapping(value="/communityInfo/upload.do", method= {RequestMethod.GET, RequestMethod.POST})
 	public String uploadFile(MultipartHttpServletRequest request, MultipartFile upload) {
 		//파일이 업로드 될 경로 설정 
 		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file");

@@ -43,8 +43,9 @@
 		</div>
 		<!-- 홍보글 테이블 -->
 		<div class="justify-content-md-center align-items-center">
+
 			<form accept-charset="UTF-8" name="searchForm"
-				action="<%=request.getContextPath()%>/communityInfo" method="POST" enctype="multipart/form-data">
+				action="<%=request.getContextPath()%>/communityInfo/upload.do" method="POST" enctype="multipart/form-data">
 				<div class="title-bar">
 					<p class="rows title-bold">제목</p>
 					<input class="form-control title-input" type="text">
@@ -69,6 +70,7 @@
 							<input type="submit" value="업로드" /> 
 			</form>
 				 -->
+
 		</div>
 	</div>
 
@@ -82,6 +84,7 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
 	<!-- Core theme JS-->
 	<script src="<%=request.getContextPath()%>/resources/js/scripts.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/community.js"></script>
 	<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
 	<!-- * *                               SB Forms JS                               * *-->
 	<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
