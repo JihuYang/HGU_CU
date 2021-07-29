@@ -108,6 +108,35 @@ thead, tbody, tfoot, tr, td, th {
 	border: 1px solid #D0D0CE;
 	border-radius: 0.5rem;
 }
+
+#search{
+	width:250px;
+	font-size:0.8em;
+}
+
+.modal-content{
+	border:2px solid black;
+	border-radius:20px;
+}
+
+.modal-body{
+	display:grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-template-rows: repeat(6, 1fr);
+	text-align:center;
+	margin:30px;
+	grid-row-gap: 20px;
+	align-items: center !important;
+}
+
+
+.modal-footer{
+	border:none !important;
+	justify-content:center;
+	margin:20px;
+}
+
+
 /* 모바일 */
 @media ( max-width : 576px) {
 	#email {

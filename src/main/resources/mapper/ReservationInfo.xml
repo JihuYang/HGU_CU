@@ -5,7 +5,7 @@
 
 	<select id="readReservationInfo" resultType="com.walab.hgu.DTO.ReservationInfoDTO" parameterType="hashmap">	
 		SELECT r.userId, r.spaceId,r.reservationDate, r.startTime, r.endTime, r.purpose, 
-		r.memo, r.regdate,s.name as spaceName, u.name as person, u.email as email
+		r.memo, r.regdate,s.name as spaceName, u.name as person, u.email as email, u.phone as phone
 		FROM hguclub.reservationInfo as r
 		
 		LEFT JOIN hguclub.user as u ON r.userId = u.id

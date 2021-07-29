@@ -11,6 +11,7 @@
 		INNER JOIN hguclub.user as u ON
 		c.userId = u.id;
 	</select>
+
 	<select id="readCommunityInfoDetail"
 		resultType="com.walab.hgu.DTO.CommunityInfoDTO"
 		parameterType="hashmap">
@@ -18,9 +19,17 @@
 		viewCount, originalUrl, realUrl, f.order FROM ((hguclub.communityInfo
 		as c
 		INNER JOIN hguclub.user as u ON c.userId = u.id)
-		INNER JOIN hguclub.communityMaterialFile as f ON f.communityMaterialId =
+		INNER JOIN
+		hguclub.communityMaterialFile as f ON f.communityMaterialId =
 		c.id)
 		WHERE c.id = 1;
 	</select>
-	
+
+	<!-- 커뮤니티 공지사항 글 작성 쿼리 -->
+	<insert id="creatCommunityInfo"
+		parameterType="com.walab.hgu.DTO.CommunityInfoDTO">
+		INSERT INTO hguclub.communityInfo (userId, title, content) 
+		VALUES (#{userId}, #{title}, #{content});
+	</insert>
+
 </mapper>

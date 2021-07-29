@@ -8,6 +8,5 @@ public interface CommunityInfoService {
 	
 	public List<CommunityInfoDTO> readCommunityInfo();
 	public List<CommunityInfoDTO> readCommunityInfoDetail();
-
-
+	public int createCommunityInfo(CommunityInfoDTO communityInfo);
 }
