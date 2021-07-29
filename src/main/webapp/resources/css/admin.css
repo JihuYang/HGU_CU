@@ -108,6 +108,13 @@ thead, tbody, tfoot, tr, td, th {
 	border: 1px solid #D0D0CE;
 	border-radius: 0.5rem;
 }
+
+#search{
+	width:250px;
+	font-size:0.8em;
+}
+
+
 /* 모바일 */
 @media ( max-width : 576px) {
 	#email {
