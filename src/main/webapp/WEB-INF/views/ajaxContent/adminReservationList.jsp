@@ -24,7 +24,7 @@
 				<td id="contact">${reservationList.spaceName}</td>
 				<td id="time">${reservationList.startTime}</td>
 				<td id="club">${reservationList.purpose}</td>
-				<td id="email">${reservationList.email}</td>
+				<td id="email">${reservationList.phone} ${reservationList.email} </td>
 				<td></td>	
 				<td id="">
 				<button type="button" class="btn btn-warning">수정</button>

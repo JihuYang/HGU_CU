@@ -44,7 +44,7 @@
 		<!-- 홍보글 테이블 -->
 		<div class="justify-content-md-center align-items-center">
 			<form accept-charset="UTF-8" name="searchForm"
-				action="<%=request.getContextPath()%>/createClubAd" method="POST">
+				action="<%=request.getContextPath()%>/communityInfo" method="POST" enctype="multipart/form-data">
 				<div class="title-bar">
 					<p class="rows title-bold">제목</p>
 					<input class="form-control title-input" type="text">
@@ -54,14 +54,21 @@
 						rows="13"></textarea>
 				</div>
 				<div class="mb-3">
-					<input class="form-control file" type="file" multiple>
+					<input class="form-control file" type="file" name="upload"id = "upload" multiple >
 				</div>
 				<div>
 					<a class="btn btn-primary back-btn bottom-btn"
 						href="./" role="button">뒤로</a>
-					<button class="btn btn-primary submit-btn bottom-btn" type="submit">저장</button>
+					<button class="btn btn-primary submit-btn bottom-btn" onclick="location.href='<%=request.getContextPath()%>/communityInfo'" type="submit">저장</button>
 				</div>
 			</form>
+			
+			<!-- 
+			<form action="upload.do" method="post" enctype="multipart/form-data"> 
+							<label><input type="file" name="upload" id = "upload"/></label> 
+							<input type="submit" value="업로드" /> 
+			</form>
+				 -->
 		</div>
 	</div>
 

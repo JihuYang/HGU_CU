@@ -61,8 +61,50 @@
 			    <button class="btn btn-primary search-btn my-2 my-sm-0" type="submit">검색</button>
 			  </form>
 			</nav>
-			<button class="btn btn-primary search-btn justify-content-end">추가</button>
+			<button class="btn btn-primary search-btn justify-content-end" data-toggle="modal" id="openModalBtn" data-target="#addModal">추가</button>
 		</div>
+		
+		<!-- Modal -->
+		<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+		    <div class="modal-content">
+		      <div class="modal-body">
+		        <label for="reservationPerson">대여자 이름</label>
+    			<input type="name" class="form-control form-control-sm" id="reservationPerson">
+		        <label for="user">사용 단체</label>
+    			<input type="name" class="form-control form-control-sm" id="user">
+		        <label for="user">대여 시간</label>
+		        <div style="display:flex;">
+    				<input type="name" class="form-control form-control-sm" placeholder="yyyy-mm-dd" id="user">
+    				<input type="name" class="form-control form-control-sm" placeholder="시작시간" id="user">
+    				<input type="name" class="form-control form-control-sm" placeholder="종료시간"id="user">
+    			</div>
+		        <label for="purpose">사용 목적</label>
+    			<input type="name" class="form-control form-control-sm" id="purpose">
+		        <label for="contact">연락처(이메일)</label>
+		        <div style="display:flex;">
+	    			<input type="name" class="form-control form-control-sm" placeholder="전화번호" id="phone">
+	    			<input type="name" class="form-control form-control-sm" placeholder="이메일" id="email">
+    			</div>
+		        <label for="etc">비고</label>
+    			<input type="name" class="form-control form-control-sm" id="etc">
+		      </div>
+		      
+		      <div class="modal-footer">
+			      	<button type="button" class="btn btn-outline-secondary">등록</button>
+			        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">취소</button>
+		      </div>
+		      
+		    </div>
+		  </div>
+		</div>
+		
+		<script>
+			$("#openModalBtn").on('click', function(){
+				$('#addModal').modal('show');
+			});
+		</script>
+
 	
 
 		<div

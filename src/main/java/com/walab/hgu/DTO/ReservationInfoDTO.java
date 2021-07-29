@@ -10,6 +10,7 @@ public class ReservationInfoDTO {
 	private String spaceName;
 	private String person;
 	private String email;
+	private String phone;
 	private Date reservationDate;
 	private Time startTime;
 	private Time endTime;
@@ -71,6 +72,14 @@ public class ReservationInfoDTO {
 	
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+	public String getPhone() {
+		return phone;
+	}
+	
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
 
 
