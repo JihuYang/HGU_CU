@@ -34,4 +34,12 @@ public class CommunityInfoDAOImpl implements CommunityInfoDAO {
 				
 		return sqlSession.selectList(namespace+".readCommunityInfoDetail", infoDetailList);
 	}	
+	
+	@Override
+	public int createCommunityInfo(CommunityInfoDTO communityInfo) {
+		
+		sqlSession.insert(namespace+".creatCommunityInfo", communityInfo);
+		
+		return 0;
+	}
 }
