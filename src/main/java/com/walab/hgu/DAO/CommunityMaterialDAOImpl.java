@@ -26,6 +26,16 @@ public class CommunityMaterialDAOImpl implements CommunityMaterialDAO {
 				
 		return sqlSession.selectList(namespace+".readCommunityMaterial", communityMaterialParam);
 	}
+
+
+	@Override
+	public List<CommunityMaterialDTO> readCommunityMaterialDetail(int id) {
+		
+		Map<String, Object> materialDetailList = new HashMap<String, Object>();
+		materialDetailList.put("id", id);
+		
+		return sqlSession.selectList(namespace+".readCommunityMaterialDetail", materialDetailList);
+	}
 	
 	
 }

@@ -25,7 +25,7 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css"
 	rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
-<link href="./resources/css/styles.css" rel="stylesheet" />
+<link href="<%=request.getContextPath()%>/resources/css/styles.css" rel="stylesheet" />
 
 </head>
 <jsp:include page="/WEB-INF/views/inc/header.jsp" />
@@ -37,21 +37,25 @@
 		<div
 			class="row h-25 align-items-center justify-content-center text-center">
 			<div class="align-self-end">
-				<h3 class="font-weight-bold pt-title">공지사항</h3>
+				<h3 class="font-weight-bold pt-title">자료실</h3>
 			</div>
 		</div>
 		<div
 			class="row h-auto align-items-center justify-content-center text-center">
 			<div class="community-detail-title py-5">
-				<h3>제목</h3>
+				<h4>${communityMaterialDetail[0].title}</h4>
 			</div>
 		</div>
 		<div
 			class="row h-auto align-items-center justify-content-end text-end">
-			<div class="py-3 detail-info">작성자: 관리자 | 조회수 : 15 | 2021-06-21</div>
+			<fmt:formatDate value="${communityMaterialDetail[0].regdate}"
+				var="formattedRegDate" type="date" pattern="yyyy-MM-dd" />
+			<div class="py-3 detail-info">작성자:
+				${communityMaterialDetail[0].writer} | 조회수 :
+				${communityMaterialDetail[0].viewCount} | ${formattedRegDate}</div>
 		</div>
 		<div class="row h-auto align-items-center justify-content-center">
-			<div class="px-4 detail-content">2021년도 내용...</div>
+			<div class="px-4 detail-content">${communityMaterialDetail[0].content}</div>
 		</div>
 		<div
 			class="row h-25 align-items-center justify-content-center text-center">
@@ -77,12 +81,7 @@
 	</div>
 
 	<!-- Footer-->
-	<footer class="bg-light py-5">
-		<div class="container px-4 px-lg-5">
-			<div class="small text-center text-muted">Copyright &copy; 2021
-				- 한동대학교 총동아리연합회</div>
-		</div>
-	</footer>
+	<jsp:include page="/WEB-INF/views/inc/footer.jsp" />
 	<!-- Bootstrap core JS-->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
