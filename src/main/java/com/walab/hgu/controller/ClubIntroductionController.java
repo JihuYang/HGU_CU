@@ -61,12 +61,15 @@ public class ClubIntroductionController {
 		clubMappingInfo.put("categoryId", categoryId);
 		clubMappingInfo.put("clubId", clubId);
 		List<ClubDTO> clubDetailList = clubService.getClubDetailList(categoryId,clubId);
+		
 		List<CategoryDTO> categoryNameList = clubService.getCategoryNameList();
-		
 		String categoryName = categoryNameList.get(categoryId-1).getCategoryName();
-		mv.addObject("categoryName", categoryName);
 		
+		List<ClubDTO> clubImgList = clubService.getClubImg(clubId);
+		
+		mv.addObject("categoryName", categoryName);
 		mv.addObject("clubDetailList", clubDetailList);
+		mv.addObject("clubImgList", clubImgList);
 		mv.setViewName("clubIntroductionDetail");
 		
 		System.out.println(mv);

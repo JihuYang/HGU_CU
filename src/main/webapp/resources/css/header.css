@@ -44,7 +44,7 @@
 
 .navbar-expand-lg .navbar-nav .dropdown-menu {
 	left: -24;
-	top: 50px;
+	top: 47px;
 	background-color: rgb(242, 242, 242) !important;
 	border-radius: 2rem;
 	border: none !important;
@@ -52,7 +52,7 @@
 
 .navbar-expand-lg .navbar-nav .dropdown-menu-community {
 	left: -39%;
-	top: 50px;
+	top: 47px;
 	background-color: rgb(242, 242, 242) !important;
 	border-radius: 2rem;
 	border: none !important;

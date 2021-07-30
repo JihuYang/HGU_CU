@@ -39,7 +39,7 @@
 		<div
 			class="row h-25 align-items-center justify-content-center text-center">
 			<div class="align-self-end">
-				<h3 class="font-weight-bold pt-title">자료실</h3>
+				<h3 class="font-weight-bold pt-title">공지사항</h3>
 			</div>
 		</div>
 		<div
@@ -70,14 +70,13 @@
 					</tr>
 					<tr>
 						<th scope="col" class="col-3 text-center file py-4">첨부파일</th>
-						<th scope="col" class="col-7 text-start px-3 py-4">파일이름.exel</th>
+						<th scope="col" class="col-7 text-start px-3 py-4"><a href="/communityInfo/detail/filedownload">파일다운로드클릭</a></th>
 					</tr>
 				</tbody>
 			</table>
 
 			<div class="row justify-content-start mt-4 list-btn">
-				<button class="btn btn-primary search-btn list-btn"
-					onclick="location.href='.'">목록</button>
+				<button class="btn btn-primary search-btn list-btn">목록</button>
 			</div>
 		</div>
 
