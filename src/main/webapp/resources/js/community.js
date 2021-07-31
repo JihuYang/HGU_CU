@@ -6,7 +6,8 @@ function createCommunityInfo(){
 		data: {
 			userId: $('#userId').val(),
 			title: $('#title').val(),
-			content: $('#content').val()
+			content: $('#content').val(),
+			originalUrl: $('#originalUrl').val()
 		},
 		success: function(data){	
 			console.log("커뮤니티 글쓰기 성공!!");

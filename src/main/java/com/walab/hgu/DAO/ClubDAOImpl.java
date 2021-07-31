@@ -27,6 +27,13 @@ public class ClubDAOImpl implements ClubDAO{
 		
 		return sqlSession.selectList(namespace+".readClubIntroductionPreview", clubPreviewParam);
 	}
+	
+	@Override
+	public List<ClubDTO> readClubList(){
+		Map<String, Object> infoList = new HashMap<String, Object>();
+		
+		return sqlSession.selectList(namespace+".readClubList", infoList);
+	}
 
 	@Override
 	public List<CategoryDTO> getCategoryNameList() {

@@ -45,6 +45,12 @@ public class ClubServiceImpl implements ClubService{
 		return clubImg;
 	}
 	
+	@Override
+	public List<ClubDTO> readClubList(){
+		List<ClubDTO> clubList = clubDAO.readClubList();
+		return clubList;
+	}
+	
 	
 
 }

@@ -61,23 +61,25 @@
 								</h3>
 							</div>
 						</div>
-						<div class="modal-body">
-							<div class="row">
-								<div class="col-xs-12">
-									<label class="col-xs-4 mx-3 b-primary " for="place">장소</label>
-									<input type="text" name="place" id="place" />
-								</div>
+						
+						<div class="event-modal-body">
+							<div class="grid-item1">장소</div>
+							<div class="grid-item2" >
+								<input type="text" name="place" id="place" />
 							</div>
-							<div class="row">
-								<div class="col-xs-12">
-									<label class="col-xs-4 mx-3 b-primary" for="starts-at">시간</label>
-									<input class="my-3 b-success" type="text" name="starts_at"
-										id="starts-at" />
-								</div>
+					
+							<div class="grid-item1">시간</div>
+							<div class="grid-item2">
+								<input class="modal-time" type="text" name="start_at"
+									id="starts-at" />
+								<label class="col-xs-4 mx-3 b-primary" for="end-at">-</label>
+								<input class="modal-time" type="text" name="end_at"
+									id="starts-at" />
 							</div>
 						</div>
+						
 						<div class="modal-footer">
-							<button type="button" class="btn " id="save-event">저장</button>
+							<button type="button" class="btn" id="save-event">저장</button>
 						</div>
 					</div>
 				</div>
@@ -160,8 +162,8 @@
 			    }
 			  });
 
-			  // Bind the dates to datetimepicker.
-			  $("#starts-at").datetimepicker();
+			  /* // Bind the dates to datetimepicker.
+			  $("#starts-at").datetimepicker(); */
 
 			  //click to save "save"
 			  $("#save-event").on("click", function(event) {

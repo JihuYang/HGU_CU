@@ -42,7 +42,7 @@
 			</div>
 		</div>
 		<div
-			class="row h-50 align-items-center justify-content-center text-center">
+			class="row h-auto align-items-center justify-content-center text-center">
 
 			<!-- 공지사항 리스트  -->
 			<%@ include file="./ajaxContent/communityInfoList.jsp"%>
@@ -89,8 +89,7 @@
 	<!-- Bootstrap core JS-->
 	<script
 		src="<%=request.getContextPath()%>/resources/assets/js/pagenation.js"></script>
-	<script
-		src="<%=request.getContextPath()%>/resources/assets/js/community.js"></script>
+
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 	<!-- SimpleLightbox plugin JS-->
