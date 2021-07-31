@@ -41,7 +41,7 @@
 			</div>
 		</div>
 		<div
-			class="row h-50 align-items-center justify-content-center text-center">
+			class="row h-auto align-items-center justify-content-center text-center">
 					
 		    <!-- 공지사항 리스트  -->
 			<%@ include file="./ajaxContent/communityMaterialList.jsp"%>

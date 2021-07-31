@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.walab.hgu.DTO.CommunityInfoDTO;
 import com.walab.hgu.DTO.CommunityMaterialDTO;
 
 @Repository
@@ -37,5 +38,12 @@ public class CommunityMaterialDAOImpl implements CommunityMaterialDAO {
 		return sqlSession.selectList(namespace+".readCommunityMaterialDetail", materialDetailList);
 	}
 	
+	@Override
+	public int createCommunityMaterial(CommunityMaterialDTO communityMaterial) {
+		
+		sqlSession.insert(namespace+".creatCommunityMaterial", communityMaterial);
+		
+		return 0;
+	}	
 	
 }

@@ -6,16 +6,31 @@
 	<select id="readCommunityMaterial"
 		resultType="com.walab.hgu.DTO.CommunityMaterialDTO"
 		parameterType="hashmap">
-		SELECT c.id, name as writer, title, c.regdate, viewCount FROM hguclub.communityMaterial as c
-		INNER JOIN hguclub.user as u ON c.userId = u.id;
-		
+		SELECT c.id, name as writer, title, c.regdate, viewCount
+		FROM hguclub.communityMaterial as c
+		INNER JOIN hguclub.user as u ON
+		c.userId = u.id
+		ORDER BY c.regdate DESC;
 	</select>
-	<select id="readCommunityMaterialDetail" 
+
+	<select id="readCommunityMaterialDetail"
 		resultType="com.walab.hgu.DTO.CommunityMaterialDTO"
 		parameterType="hashmap">
-		SELECT cM.id, name as writer, title, content, cM.regdate,viewCount, originalUrl, realUrl, cMF.order
-		FROM hguclub.communityMaterial as cM ,hguclub.user u,hguclub.communityMaterialFile as cMF
-		WHERE cM.userId = u.id and cM.id = #{id} LIMIT 1
+		SELECT cM.id, name as writer, title, content,
+		cM.regdate,viewCount, originalUrl, realUrl, cMF.order
+		FROM
+		hguclub.communityMaterial as cM ,hguclub.user
+		u,hguclub.communityMaterialFile as cMF
+		WHERE cM.userId = u.id and cM.id
+		= #{id} LIMIT 1
 	</select>
+
+	<!-- 커뮤니티 자료실 글 작성 쿼리 -->
+	<insert id="creatCommunityMaterial"
+		parameterType="com.walab.hgu.DTO.CommunityMaterialDTO">
+		INSERT INTO hguclub.communityMaterial (userId, title,
+		content)
+		VALUES (#{userId}, #{title}, #{content});
+	</insert>
 
 </mapper>
