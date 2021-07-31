@@ -12,7 +12,10 @@
 			<tr>
 				<td class="col-1" id="">환경변수 ${status.count}</td>
 				<td class="col-1" id="key">${settingList.key}</td>
-				<td class="col-1" id="value">${settingList.value}</td>
+				<td class="col-1" id="value">
+				<input class="form-control form-control-sm w-5" value="${settingList.value}">
+				</td>
+				
 			</tr>
 		</c:forEach>
 	</tbody>

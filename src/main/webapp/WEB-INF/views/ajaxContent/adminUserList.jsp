@@ -20,7 +20,13 @@
 				<td id="username">${userList.name}</td>
 				<td id="contact">${userList.phone}</td>
 				<td id="email">${userList.email}</td>
-				<td id="club">${userList.clubName}</td>
+				<td id="club">
+					<select class="clubSelect">
+						<c:forEach items="${clubList}" var="clubList" varStatus="status">
+							<option <c:if test="${userList.clubName eq clubList.clubName}">selected</c:if>>${clubList.clubName}</option>
+						</c:forEach>
+					</select>
+				</td>
 
 				<td id="authority"><c:if test="${userList.admin == 2}">
 						<select class="adminSelect">
