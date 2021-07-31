@@ -21,5 +21,9 @@
 		where CA.id = CL.categoryId and CL.userId = u.id and  CL.id = cS.clubId and CL.id = cI.clubId
 		and CA.id = #{categoryId} and CL.id = #{clubId}
 	</select>
+	
+	<select id="readClubList" parameterType="HashMap" resultType="com.walab.hgu.DTO.ClubDTO">
+		SELECT * FROM club
+	</select>
 
 </mapper>

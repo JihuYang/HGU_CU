@@ -38,6 +38,12 @@ public class ClubServiceImpl implements ClubService{
 		return clubDetailList;
 	}
 	
+	@Override
+	public List<ClubDTO> readClubList(){
+		List<ClubDTO> clubList = clubDAO.readClubList();
+		return clubList;
+	}
+	
 	
 
 }

@@ -77,34 +77,18 @@
 				      <td>${reservationInfoList[1].email}</td>
 				    </tr>
 				    <tr>
-				      <th scope="row">예약 가능한 시간</th>
-				      <td>2021-07-19 ~ 2021-07-25</td>
+				      <th scope="row">예약 가능한 기간</th>
+				      <td><div id="reservable"></div></td>
 				    </tr>
 				    <tr>
 				      <th scope="row">날짜 *</th>
 				      <td><input class="input-resize" id="date" type="date" name="date"
-						value=2021-07-19						min=2021-07-19						max=2021-07-25						></td>
+						value="2019-09-22"						min=1999-01-01						max=2100-12-30						></td>
 				    </tr>
 				    <tr>
 				      <th scope="row">시작 시간</th>
 				      <td>
 				        <select id='startTime' class="input-resize" onchange="handleTimeLimit(this)">
-				      		<script>
-				      			var hour=7;
-				      			for(var i =0; i<32; i++){
-				      				var min =':00';
-				      				hour++;
-				      				if(i%2!=0){
-				      					hour--;
-				      					min=':30';
-				      				}
-				      				document
-				      					.write('<option value='+hour+min+'>'
-				      							+hour
-				      							+min
-				      							+'</option>');
-				      				}
-				      		</script>
 						</select>
 					  </td>
 				    </tr>
@@ -112,26 +96,8 @@
 				      <th scope="row">종료 시간</th>
 				      <td>
 				        <select id='endTime' class="input-resize">
-				          <script>
-				          function handleTimeLimit(e){
-							 const text = e.options[e.selectedIndex].text;
-							 var time = text.split(':');
-							 time[0]++;
-							 document.getElementById('endTime').insertAdjacentHTML('afterbegin',
-							    "<option value="+time[0]+time[1]+">"
-      							+time[0]+':'
-      							+time[1]
-      							+"</option>");
-							/*
-							 time[0]++;
-							 document
-		      					.write('<option value='+time[0]+time[1]+'>'
-		      							+time[0]+':'
-		      							+time[1]
-		      							+'</option>');
-							 */
-				          }
-				      		</script>
+					        <option value='' selected> 9:00</option>
+					        <option value='' >10:00</option>
 						</select>
 					  </td>
 				    </tr>
@@ -183,13 +149,13 @@
 				 </textarea>
 		</div>
 
-		<input type="checkbox" name="ch" onclick="clause();">
+		<input id="checkbox" type="checkbox" name="ch" onclick="clause()">
 
 		약관에 동의하시겠습니까?<br>
 
 		<br/>
 			<div class="buttonContainer w3-right">
-			<input type="button" id="reserve_button" class="w3-button w3-blue" name="btn" disabled="disabled" value="예약하기" onclick="saveReservation();">
+			<input type="button" id="reserve_button" class="w3-button w3-blue" name="btn" disabled value="예약하기" onclick="saveReservation();">
 			<input type="button" id="cancle_button" class="w3-button w3-red" value="취소하기" onclick="location.href='./reservation'">
                         
          	</div>
@@ -200,7 +166,91 @@
 	<jsp:include page="/WEB-INF/views/inc/footer.jsp"/>
 
 
-         
+      <script>
+		   
+		   Date.prototype.addDays = function(days) {
+			    var date = new Date(this.valueOf());
+			    date.setDate(date.getDate() + days);
+			    return date;
+		   }
+		   
+		   function DateFormat(date) {
+			    var year = date.getFullYear();
+			    var month = date.getMonth() + 1;
+			    month = month >= 10 ? month : '0' + month;
+			    var day = date.getDate();
+			    day = day >= 10 ? day : '0' + day;
+			    return [year, month, day].join('-');
+			}
+    
+	      var today =new Date();
+	      var endDate = new Date();
+	      
+	      today=DateFormat(today);
+	      
+	      endDate.setDate(endDate.getDate() + 7);
+		  endDate=DateFormat(endDate);
+		  
+	      //today = yyyy+'-'+mm+'-'+dd;
+	      document.getElementById("date").setAttribute("min", today);
+	  
+		  //오늘 날짜부터 일주일까지
+	      document.getElementById("date").setAttribute("max", endDate);
+		  
+		  document.getElementById("reservable").innerHTML=today+" ~ "+endDate;
+		  
+		  document.getElementById('date').value = new Date().toISOString().substring(0, 10);
+		  
+		  
+	      /* 시작시간 구하기 */
+			var hour=7;
+	      	var startTime = document.getElementById('startTime');
+			for(var i =0; i<32; i++){
+				var min =':00';
+				hour++;
+				if(i%2!=0){
+					hour--;
+					min=':30';
+				}
+				startTime.innerHTML+='<option value='+hour+min+'>'
+							+hour
+							+min
+							+'</option>';
+				}
+		  
+		  
+			/* 종료 시간 설정 */
+          function handleTimeLimit(e){
+			 const text = e.options[e.selectedIndex].text;
+			 var time = text.split(':');
+			 time[0]++;
+			 document.getElementById('endTime').innerHTML=
+			    "<option value="+time[0]+time[1]+">"
+					+time[0]+':'
+					+time[1]
+					+"</option>";
+		
+			 time[0]++;
+			 if(time[0]==25)
+				 time[0]=1;
+			 document.getElementById('endTime').innerHTML+=
+				    "<option value="+time[0]+time[1]+">"
+						+time[0]+':'
+						+time[1]
+						+"</option>";
+          }
+			
+			
+          function clause(){
+        	  var checkBox = document.getElementById("checkbox");
+			  var target = document.getElementById('reserve_button');
+	  
+			  if (checkBox.checked == true)
+				  target.disabled = false;
+			  else
+				  target.disabled = true;
+		  }
+      </script>   
             
             
             
