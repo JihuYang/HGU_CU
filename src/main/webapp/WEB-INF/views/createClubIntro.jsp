@@ -55,8 +55,10 @@
 					<div class="title-bar">
 						<p class="rows select-bar">창립연도   </p>
 						<select class="form-select select-option" aria-label="Default select example">
-						  <option selected>창립연도</option>
-						  <option value="1995">1995</option>
+						  <c:forEach  items="${foundationYearList}" var="foundationYearList" varStatus="status">
+						  	<option value="${foundationYearList}">${foundationYearList}</option>
+						  </c:forEach>
+						 <!--  <option value="1995">1995</option>
 						  <option value="1996">1996</option>
 						  <option value="1997">1997</option>
 						  <option value="1998">1998</option>
@@ -82,7 +84,7 @@
 						  <option value="2018">2018</option>
 						  <option value="2019">2019</option>
 						  <option value="2020">2020</option>
-						  <option value="2021">2021</option>
+						  <option value="2021">2021</option> -->
 						</select>
 					</div>
 					<div class="title-bar">
