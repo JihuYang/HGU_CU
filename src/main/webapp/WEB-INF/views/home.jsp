@@ -28,11 +28,13 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css"
 	rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
-<link href="<%=request.getContextPath()%>/resources/css/styles.css" rel="stylesheet" />
+<link href="<%=request.getContextPath()%>/resources/css/styles.css"
+	rel="stylesheet" />
 
 </head>
-<jsp:include page="/WEB-INF/views/inc/header.jsp"/>
-<link href="<%=request.getContextPath()%>/resources/css/home.css" rel="stylesheet" />
+<jsp:include page="/WEB-INF/views/inc/header.jsp" />
+<link href="<%=request.getContextPath()%>/resources/css/home.css"
+	rel="stylesheet" />
 
 <script src="https://kit.fontawesome.com/6333a60c65.js"></script>
 <body id="page-top">
@@ -49,7 +51,7 @@
 					<input type="text" class="form-control"
 						placeholder="공지사항, 동아리 홍보, 자료실 검색">
 					<button class="btn btn-outline-secondary" type="button"
-						id="button-addon2">
+						id="button-addon2" onclick="search()">
 						<i class="fas fa-search"></i>
 					</button>
 				</div>
@@ -58,7 +60,7 @@
 	</div>
 
 	<!-- Footer-->
-	<jsp:include page="/WEB-INF/views/inc/footer.jsp"/>
+	<jsp:include page="/WEB-INF/views/inc/footer.jsp" />
 
 	<!-- Bootstrap core JS-->
 	<script
@@ -68,7 +70,8 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
 	<!-- Core theme JS-->
 	<script src="<%=request.getContextPath()%>/resources/js/scripts.js"></script>
-	
+	<script src="<%=request.getContextPath()%>/resources/js/home.js"></script>
+
 	<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
 	<!-- * *                               SB Forms JS                               * *-->
 	<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
