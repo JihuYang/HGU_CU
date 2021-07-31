@@ -19,7 +19,7 @@
 			varStatus="status">
 			<fmt:formatDate value="${communityInfo.regdate}"
 				var="formattedRegDate" type="date" pattern="yyyy-MM-dd" />
-			<tr>
+			<tr style="cursor:pointer;" onClick="location.href='<%=request.getContextPath()%>/communityInfo/detail/${communityInfo.id}'">
 				<th scope="row">${status.count}</th>
 				<td class="text-start">${communityInfo.title}</td>
 				<td id="writer">${communityInfo.writer}</td>

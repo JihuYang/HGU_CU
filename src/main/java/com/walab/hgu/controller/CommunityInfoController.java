@@ -2,8 +2,12 @@ package com.walab.hgu.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -38,10 +42,11 @@ public class CommunityInfoController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "/communityInfo/detail", method = RequestMethod.GET)
-	public ModelAndView readCommunityInfoDetail(ModelAndView mv) {
-
-		List<CommunityInfoDTO> communityInfoDetailList = communityInfoService.readCommunityInfoDetail();
+	@RequestMapping(value = "/communityInfo/detail/{id}", method = RequestMethod.GET)
+	public ModelAndView readCommunityInfoDetail(@PathVariable int id, HttpSession session, HttpServletRequest request ) {
+		ModelAndView mv = new ModelAndView();
+		
+		List<CommunityInfoDTO> communityInfoDetailList = communityInfoService.readCommunityInfoDetail(id);
 		
 		mv.addObject("communityInfoDetailList", communityInfoDetailList);
 		
@@ -66,16 +71,20 @@ public class CommunityInfoController {
 	public ModelAndView createCommunityInfo(ModelAndView mv,
 			@RequestParam(value="userId") int userId,
 			@RequestParam(value="title") String title,
-			@RequestParam(value="content") String content) {
+			@RequestParam(value="content") String content,
+			@RequestParam(value="originalUrl") String originalUrl) {
 		
 		CommunityInfoDTO info = new CommunityInfoDTO();
 		
 		info.setUserId(userId);
 		info.setTitle(title);
 		info.setContent(content);
+		
+		//info.setOriginalUrl(originalUrl);
 
 		System.out.println(info.toString());
 		
+		System.out.println(originalUrl);
 
 		communityInfoService.createCommunityInfo(info);
 		

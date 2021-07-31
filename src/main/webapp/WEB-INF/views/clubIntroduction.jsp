@@ -64,7 +64,7 @@
 									<img src="<%=request.getContextPath()%>/resources/img/${clubIntroList.originalUrl}" alt="임시" />
 									<a href="<%=request.getContextPath()%>/clubIntroduction/${clubIntroList.categoryId}/${clubIntroList.id}" class="mask">		
 										[${clubIntroList.clubName}]<br>창립일자: ${formattedFdDate}<br>대표자명: ${clubIntroList.clubCeoName}<br>연락처:
-										${clubIntroList.phone}<br>동방: ${clubIntroList.clubLocation}<br>인스타/페북: ${clubIntroList.snsLink}
+										${clubIntroList.phone}<br>동방: ${clubIntroList.clubLocation}<br>인스타그램: ${clubIntroList.instagramLink}<br>페이스북: ${clubIntroList.facebookLink}
 									</a>
 								</div>
 							</div>

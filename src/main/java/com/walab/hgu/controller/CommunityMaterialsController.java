@@ -2,8 +2,12 @@ package com.walab.hgu.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -32,9 +36,13 @@ public class CommunityMaterialsController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "/communityMaterials/detail", method = RequestMethod.GET)
-	public ModelAndView readCommunityInfoDetail(ModelAndView mv) {
-
+	@RequestMapping(value = "/communityMaterials/detail/{id}", method = RequestMethod.GET)
+	public ModelAndView readCommunityInfoDetail(@PathVariable int id, HttpSession session, HttpServletRequest request ) {
+		ModelAndView mv = new ModelAndView();
+		
+		List<CommunityMaterialDTO> communityMaterialDetail = communityMaterialService.readCommunityMaterialDetail(id);
+		
+		mv.addObject("communityMaterialDetail", communityMaterialDetail);
 		
 		mv.setViewName("communityMaterialDetail");
 			

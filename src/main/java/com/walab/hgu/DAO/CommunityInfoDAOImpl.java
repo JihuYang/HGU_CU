@@ -28,9 +28,11 @@ public class CommunityInfoDAOImpl implements CommunityInfoDAO {
 	}
 	
 	@Override
-	public List<CommunityInfoDTO> readCommunityInfoDetail() {
+	public List<CommunityInfoDTO> readCommunityInfoDetail(int id) {
 		
 		Map<String, Object> infoDetailList = new HashMap<String, Object>();
+		infoDetailList.put("id", id);
+		System.out.println(infoDetailList);
 				
 		return sqlSession.selectList(namespace+".readCommunityInfoDetail", infoDetailList);
 	}	

@@ -23,4 +23,13 @@ public class CommunityMaterialServiceImpl implements CommunityMaterialService{
 		
 	}
 
+	@Override
+	public List<CommunityMaterialDTO> readCommunityMaterialDetail(int id) {
+		
+
+		List<CommunityMaterialDTO> infoDetailList = communityMaterialDAO.readCommunityMaterialDetail(id);
+		
+		return infoDetailList;
+	}
+
 }

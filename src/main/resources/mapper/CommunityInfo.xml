@@ -15,14 +15,9 @@
 	<select id="readCommunityInfoDetail"
 		resultType="com.walab.hgu.DTO.CommunityInfoDTO"
 		parameterType="hashmap">
-		SELECT c.id, name as writer, title, content, c.regdate,
-		viewCount, originalUrl, realUrl, f.order FROM ((hguclub.communityInfo
-		as c
-		INNER JOIN hguclub.user as u ON c.userId = u.id)
-		INNER JOIN
-		hguclub.communityMaterialFile as f ON f.communityMaterialId =
-		c.id)
-		WHERE c.id = 1;
+		SELECT cI.id, name as writer, title, content, cI.regdate,viewCount, originalUrl, realUrl, cIF.order
+		FROM hguclub.communityInfo as cI ,hguclub.user u,hguclub.communityInfoFile as cIF
+		WHERE cI.userId = u.id and cI.id = #{id} LIMIT 1
 	</select>
 
 	<!-- 커뮤니티 공지사항 글 작성 쿼리 -->

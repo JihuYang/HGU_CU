@@ -39,7 +39,7 @@
 		<div
 			class="row h-25 align-items-center justify-content-center text-center">
 			<div class="align-self-end">
-				<h3 class="font-weight-bold pt-title">자료실</h3>
+				<h3 class="font-weight-bold pt-title">공지사항</h3>
 			</div>
 		</div>
 		<div

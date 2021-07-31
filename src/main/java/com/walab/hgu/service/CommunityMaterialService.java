@@ -8,4 +8,6 @@ public interface CommunityMaterialService {
 	
 	public List<CommunityMaterialDTO> readCommunityMaterial();
 
+	public List<CommunityMaterialDTO> readCommunityMaterialDetail(int id);
+
 }
