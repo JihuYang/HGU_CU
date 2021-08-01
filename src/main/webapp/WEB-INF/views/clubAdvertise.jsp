@@ -74,7 +74,7 @@
 								class="sr-only">Next</span>
 						</a></li>
 					</ul>
-					<a class="btn btn-primary writing-btn" href="#" role="button">글쓰기</a>
+					<a class="btn btn-primary writing-btn" href="<%=request.getContextPath()%>/clubAdvertise/write" role="button">글쓰기</a>
 				</nav>
 			</div>
 		</div>

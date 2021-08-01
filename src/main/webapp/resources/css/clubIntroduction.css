@@ -55,6 +55,23 @@
 	display:inline-flex !important;
 }
 
+.btn-container{
+	position:relative;
+}
+
+.writing-btn{
+	background-color: #326295 !important;
+	border-color: #326295 !important;
+	color: white !important;
+	height: 32px;
+    padding-bottom: 2px;
+    padding-top: 2px;
+    position:absolute;
+    top:0;
+    right:0;
+    
+}
+
 .overlay-item {
        display: block;
        position: relative;
