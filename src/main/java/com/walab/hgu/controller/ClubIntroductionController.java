@@ -1,6 +1,7 @@
 package com.walab.hgu.controller;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -22,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.walab.hgu.DTO.CategoryDTO;
 import com.walab.hgu.DTO.ClubDTO;
 import com.walab.hgu.service.ClubService;
+import com.walab.hgu.service.SettingService;
 
 @Controller
 public class ClubIntroductionController {
@@ -30,6 +32,8 @@ public class ClubIntroductionController {
 	
 	@Autowired
 	ClubService clubService;
+	@Autowired
+	SettingService settingService;
 	
 	//동아리 홍보 페이지 컨트롤러 
 	@RequestMapping(value = "/clubIntroduction/{categoryId}")
@@ -57,9 +61,9 @@ public class ClubIntroductionController {
 	public ModelAndView clubIntroductionDetail(@PathVariable int categoryId,@PathVariable int clubId, HttpSession session, HttpServletRequest request ) {
 		ModelAndView mv = new ModelAndView();
 		
-		HashMap<String, Integer> clubMappingInfo = new HashMap<String, Integer>();
-		clubMappingInfo.put("categoryId", categoryId);
-		clubMappingInfo.put("clubId", clubId);
+//		HashMap<String, Integer> clubMappingInfo = new HashMap<String, Integer>();
+//		clubMappingInfo.put("categoryId", categoryId);
+//		clubMappingInfo.put("clubId", clubId);
 		List<ClubDTO> clubDetailList = clubService.getClubDetailList(categoryId,clubId);
 		
 		List<CategoryDTO> categoryNameList = clubService.getCategoryNameList();
@@ -80,16 +84,19 @@ public class ClubIntroductionController {
 	
 	//동아리 홍보 글쓰기 
 	@RequestMapping(value = "/clubIntroduction/write", method = RequestMethod.GET)//나중에는 동아리별 이름이나 번호로 연결하면 될것같아요..? 
-	public String createClubIntro(Locale locale, Model model) {
-		logger.info("Welcome home! The client locale is {}.", locale);
+	public ModelAndView createClubIntro(Locale locale, Model model) {
+		ModelAndView mv = new ModelAndView();
 		
-		Date date = new Date();
-		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		int foundationYearEnd = settingService.getFoundationYearEnd();
 		
-		String formattedDate = dateFormat.format(date);
-		
-		model.addAttribute("serverTime", formattedDate );
-		
-		return "createClubIntro";
+		List<Integer> foundationYearList = new ArrayList<Integer>();
+		for(int i=1995;i<=foundationYearEnd;i++) {
+			foundationYearList.add(i);
+		}
+		mv.addObject("foundationYearList", foundationYearList);
+		mv.setViewName("createClubIntro");
+		 
+		System.out.println(mv);
+		return mv;
 	}
 }

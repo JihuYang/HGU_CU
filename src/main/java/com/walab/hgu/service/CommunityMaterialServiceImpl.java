@@ -32,4 +32,10 @@ public class CommunityMaterialServiceImpl implements CommunityMaterialService{
 		return infoDetailList;
 	}
 
+	@Override
+	public int createCommunityMaterial(CommunityMaterialDTO communityMaterial) {
+
+		return communityMaterialDAO.createCommunityMaterial(communityMaterial);
+		
+	}
 }

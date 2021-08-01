@@ -10,6 +10,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.walab.hgu.DTO.CommunityMaterialDTO;
@@ -25,7 +27,7 @@ public class CommunityMaterialsController {
 	CommunityMaterialService communityMaterialService;
 
 	@RequestMapping(value = "/communityMaterials", method = RequestMethod.GET)
-	public ModelAndView readCommunityInfo(ModelAndView mv) {
+	public ModelAndView readCommunityMaterial(ModelAndView mv) {
 
 		List<CommunityMaterialDTO> communityMaterialList = communityMaterialService.readCommunityMaterial();
 		
@@ -37,7 +39,7 @@ public class CommunityMaterialsController {
 	}
 	
 	@RequestMapping(value = "/communityMaterials/detail/{id}", method = RequestMethod.GET)
-	public ModelAndView readCommunityInfoDetail(@PathVariable int id, HttpSession session, HttpServletRequest request ) {
+	public ModelAndView readCommunityMaterialDetail(@PathVariable int id, HttpSession session, HttpServletRequest request ) {
 		ModelAndView mv = new ModelAndView();
 		
 		List<CommunityMaterialDTO> communityMaterialDetail = communityMaterialService.readCommunityMaterialDetail(id);
@@ -48,11 +50,39 @@ public class CommunityMaterialsController {
 			
 		return mv;
 	}
+	
 	@RequestMapping(value = "/communityMaterials/write", method = RequestMethod.GET)
-	public ModelAndView createCommunityInfo(ModelAndView mv) {
+	public ModelAndView createCommunityMaterial(ModelAndView mv) {
 
 		mv.setViewName("createCommunityMaterials");
 			
 		return mv;
 	}	
+	
+	@RequestMapping(value = "/communityMaterials/write/create", method = RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView createCommunityMaterial(ModelAndView mv,
+			@RequestParam(value="userId") int userId,
+			@RequestParam(value="title") String title,
+			@RequestParam(value="content") String content,
+			@RequestParam(value="originalUrl") String originalUrl) {
+		
+		CommunityMaterialDTO material = new CommunityMaterialDTO();
+		
+		material.setUserId(userId);
+		material.setTitle(title);
+		material.setContent(content);
+		material.setOriginalUrl(originalUrl);
+
+//		System.out.println(material.toString());
+//		
+//		System.out.println(originalUrl);
+
+		communityMaterialService.createCommunityMaterial(material);
+		
+
+		mv.setViewName("communityMaterials");
+			
+		return mv;
+	}
 }

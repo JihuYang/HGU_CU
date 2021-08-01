@@ -70,9 +70,9 @@
 }
 
 .writing-btn{
-	background-color: lightgray !important;
-	border-color: lightgray !important;
-	color: black !important;
+	background-color: #326295 !important;
+	border-color: #326295 !important;
+	color: white !important;
 	height: 32px;
     padding-bottom: 2px;
     padding-top: 2px;
@@ -94,6 +94,7 @@
     margin-left: 0 !important;
     background-color: #326295 !important;
     border-color: #326295 !important;
+    color:white;
     height: 32px;
     padding-bottom: 2px;
     padding-top: 2px;

@@ -51,7 +51,7 @@
   						<input class="form-control file" type="file" multiple>
 					</div>
 					<div>
-						<a class="btn btn-primary back-btn bottom-btn" href="./clubAdvertise" role="button">뒤로</a>
+						<a class="btn btn-primary back-btn bottom-btn" href="./" role="button">뒤로</a>
 						<button class="btn btn-primary submit-btn bottom-btn" type="submit">저장</button> 
 					</div>
 				</form>

@@ -26,6 +26,13 @@ public class SettingDAOImpl implements SettingDAO {
 				
 		return sqlSession.selectList(namespace+".readSetting", settingParam);
 	}
+
+
+	@Override
+	public int getFoundationYearEnd() {
+		
+		return sqlSession.selectOne(namespace+".getFoundationYearEnd");
+	}
 	
 	
 }

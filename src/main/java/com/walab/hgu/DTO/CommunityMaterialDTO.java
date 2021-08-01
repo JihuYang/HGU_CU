@@ -14,6 +14,7 @@ public class CommunityMaterialDTO {
 	private int order;
 	private Date regdate;
 	private int viewCount;
+	
 	public int getId() {
 		return id;
 	}

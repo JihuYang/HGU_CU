@@ -70,6 +70,9 @@
 							</div>
 						</c:forEach>
 					</div>
+				</div>
+				<div class="btn-container">
+					<a class="btn btn-primary writing-btn" href="<%=request.getContextPath()%>/clubIntroduction/write" role="button">글쓰기</a>
 				</div>	
 			</div>
 		</div>	

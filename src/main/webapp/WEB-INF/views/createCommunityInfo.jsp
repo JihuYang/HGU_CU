@@ -42,7 +42,7 @@
 			</div>
 		</div>
 		<!-- 홍보글 테이블 -->
-		<div class="justify-content-md-center align-items-center">
+ 		<div class="justify-content-md-center align-items-center">
 			<input id="userId" value='1' style="distpay: none;"></input>
 			<div class="title-bar">
 				<p class="rows title-bold">제목</p>
@@ -60,9 +60,9 @@
 					role="button">뒤로</a>
 				<button class="btn btn-primary submit-btn bottom-btn"
 					onclick="createCommunityInfo()">저장</button>
-			</div>
+			</div> 
 
-<%-- 			<form accept-charset="UTF-8" name="searchForm"
+<%--  			<form accept-charset="UTF-8" name="searchForm"
 				action="<%=request.getContextPath()%>/communityInfo/upload.do" method="POST" enctype="multipart/form-data">
 				<div class="title-bar">
 					<p class="rows title-bold">제목</p>
@@ -80,8 +80,8 @@
 						href="./" role="button">뒤로</a>
 					<button class="btn btn-primary submit-btn bottom-btn" onclick="location.href='<%=request.getContextPath()%>/communityInfo'" type="submit">저장</button>
 				</div>
-			</form>
-			 --%>
+			</form> --%>
+			 
 			<!-- 
 			<form action="upload.do" method="post" enctype="multipart/form-data"> 
 							<label><input type="file" name="upload" id = "upload"/></label> 

@@ -55,34 +55,9 @@
 					<div class="title-bar">
 						<p class="rows select-bar">창립연도   </p>
 						<select class="form-select select-option" aria-label="Default select example">
-						  <option selected>창립연도</option>
-						  <option value="1995">1995</option>
-						  <option value="1996">1996</option>
-						  <option value="1997">1997</option>
-						  <option value="1998">1998</option>
-						  <option value="1999">1999</option>
-						  <option value="2000">2000</option>
-						  <option value="2001">2001</option>
-						  <option value="2002">2002</option>
-						  <option value="2003">2003</option>
-						  <option value="2004">2004</option>
-						  <option value="2005">2005</option>
-						  <option value="2006">2006</option>
-						  <option value="2007">2007</option>
-						  <option value="2008">2008</option>
-						  <option value="2009">2009</option>
-						  <option value="2010">2010</option>
-						  <option value="2011">2011</option>
-						  <option value="2012">2012</option>
-						  <option value="2013">2013</option>
-						  <option value="2014">2014</option>
-						  <option value="2015">2015</option>
-						  <option value="2016">2016</option>
-						  <option value="2017">2017</option>
-						  <option value="2018">2018</option>
-						  <option value="2019">2019</option>
-						  <option value="2020">2020</option>
-						  <option value="2021">2021</option>
+						  <c:forEach  items="${foundationYearList}" var="foundationYearList" varStatus="status">
+						  	<option value="${foundationYearList}">${foundationYearList}</option>
+						  </c:forEach>
 						</select>
 					</div>
 					<div class="title-bar">
@@ -98,7 +73,7 @@
   						<input class="form-control file" type="file" multiple>
 					</div>
 					<div>
-						<a class="btn btn-primary back-btn bottom-btn" href="./clubIntroduction/{categoty}" role="button">뒤로</a>
+						<a class="btn btn-primary back-btn bottom-btn" href="./${categotyId}" role="button">뒤로</a>
 						<button class="btn btn-primary submit-btn bottom-btn" type="submit">저장</button> 
 					</div>
 				</form>
