@@ -95,7 +95,7 @@ public class ClubIntroductionController {
 		}
 		mv.addObject("foundationYearList", foundationYearList);
 		mv.setViewName("createClubIntro");
-		
+		 
 		System.out.println(mv);
 		return mv;
 	}
