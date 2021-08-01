@@ -11,9 +11,9 @@
 		<c:forEach items="${settingList}" var="settingList" varStatus="status">
 			<tr>
 				<td class="col-1" id="">환경변수 ${status.count}</td>
-				<td class="col-1" id="key">${settingList.key}</td>
-				<td class="col-1" id="value">
-				<input class="form-control form-control-sm w-5" value="${settingList.value}">
+				<td class="col-1 key">${settingList.key}</td>
+				<td class="col-1 value">
+				<input id="setting-input" class="form-control form-control-sm w-5" value="${settingList.value}">
 				</td>
 				
 			</tr>
