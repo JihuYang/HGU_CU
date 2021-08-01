@@ -57,7 +57,7 @@
 		<div
 			class="row h-auto align-items-center justify-content-center text-center my-5 ">
 
-			<!-- 회원 리스트  -->
+			<!-- 환경변수 리스트 -->
 			<%@ include file="./ajaxContent/adminSettingList.jsp"%>
 
 		</div>

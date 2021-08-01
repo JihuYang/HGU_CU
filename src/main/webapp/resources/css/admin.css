@@ -174,10 +174,22 @@ thead, tbody, tfoot, tr, td, th {
 	font-size:small;
 }
 
+#openModalBtn{
+	width:70px !important;
+	min-width:70px !important;
+}
+
+#setting-input{
+	width:120px;
+}
+
 
 /* 모바일 */
 @media ( max-width : 576px) {
-	#email {
+	table, h5{
+		font-size:small !important;
+	}
+	.email, .etc {
 		display: none;
 	}
 	.search-selector {
@@ -203,12 +215,16 @@ thead, tbody, tfoot, tr, td, th {
 }
 
 @media ( max-width : 768px) {
-	#contact {
+	.contact, .etc {
 		display: none;
+	}
+	table, h5{
+		font-size:small !important;
 	}
 }
 
 @media ( min-width : 576px) {
+	
 	.search-selector {
 		width: 70px !important;
 		margin-right: 5px !important;
