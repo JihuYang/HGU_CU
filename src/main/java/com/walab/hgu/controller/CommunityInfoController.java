@@ -60,7 +60,6 @@ public class CommunityInfoController {
 	@RequestMapping(value = "/communityInfo/write", method = RequestMethod.GET)
 	public ModelAndView createCommunityInfo(ModelAndView mv) {
 
-				
 		mv.setViewName("createCommunityInfo");
 			
 		return mv;
@@ -82,9 +81,9 @@ public class CommunityInfoController {
 		
 		//info.setOriginalUrl(originalUrl);
 
-		System.out.println(info.toString());
-		
-		System.out.println(originalUrl);
+//		System.out.println(info.toString());
+//		
+//		System.out.println(originalUrl);
 
 		communityInfoService.createCommunityInfo(info);
 		

@@ -9,7 +9,8 @@
 		SELECT c.id, name as writer, title, c.regdate, viewCount
 		FROM hguclub.communityInfo as c
 		INNER JOIN hguclub.user as u ON
-		c.userId = u.id;
+		c.userId = u.id
+		ORDER BY c.regdate DESC;
 	</select>
 
 	<select id="readCommunityInfoDetail"
