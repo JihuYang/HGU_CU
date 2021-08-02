@@ -78,7 +78,8 @@ public class ClubAdvertiseController {
 		public ModelAndView createClubAd(ModelAndView mv,
 				@RequestParam(value="title") String title,
 				@RequestParam(value="content") String content,
-				@RequestParam(value="originalUrl") String originalUrl) {
+				@RequestParam(value="originalUrl") String originalUrl,
+				@RequestParam(value="fileOriginalUrl") String fileOriginalUrl) {
 			
 			ClubAdvertiseDTO info = new ClubAdvertiseDTO();
 			

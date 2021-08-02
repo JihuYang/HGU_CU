@@ -6,7 +6,8 @@ function createClubAd(){
 		data: {
 			title: $('#title').val(),
 			content: $('#content').val(),
-			originalUrl: $('#originalUrl').val()
+			originalUrl: $('#originalUrl').val(),
+			fileOriginalUrl: $('#fileOriginalUrl').val()
 		},
 		success: function(data){	
 			console.log("동아리 홍보 글쓰기 성공!!");
