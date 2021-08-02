@@ -6,7 +6,9 @@
 	padding-top: 4.5em !important;
     padding-bottom: 1em !important;
 }
-
+.clubAd-img{
+	width:200px;
+}
 .table-height{
 	height:auto;
 }
@@ -14,7 +16,12 @@
 .table-mb{
 	margin-bottom:0.5em;
 }
-
+.clubAd-content{
+	 overflow: hidden;
+  	text-overflow: ellipsis;
+  	white-space: nowrap;
+  	width: 600px;
+}
 .position{
 	position:relative;
 }
@@ -83,7 +90,7 @@
 }
 
 @media (max-width: 1200px){
-	.club-img{
+	.clubAd-img{
 		display:none;
 	}
 }

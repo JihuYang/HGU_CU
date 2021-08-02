@@ -7,8 +7,31 @@
 	<select id="readClubAdvertisePreview"
 		resultType="com.walab.hgu.DTO.ClubAdvertiseDTO"
 		parameterType="hashmap">
-		SELECT title, content, originalUrl FROM hguclub.clubAdvertise
-    	INNER JOIN hguclub.clubAdvertiseFile cAF on clubAdvertise.id = cAF.clubAdvertiseId WHERE cAF.order = 1;
+		select  CA.id,title, content, originalUrl
+		from clubAdvertise CA LEFT JOIN clubAdvertiseFile cAF on CA.id = cAF.clubAdvertiseId
+		ORDER BY CA.regdate DESC
+		<!-- SELECT CA.id,title, content, originalUrl FROM hguclub.clubAdvertise CA
+    	LEFT JOIN clubAdvertiseFile cAF on CA.id = cAF.clubAdvertiseId WHERE cAF.order = 1 ORDER BY CA.regdate DESC -->
 	</select>
+	
+	<select id="readClubAdvertiseDetail" resultType="com.walab.hgu.DTO.ClubAdvertiseDTO"
+		parameterType="hashmap">
+			SELECT CA.id,clubId,title,content, CA.regdate
+			FROM clubAdvertise CA 
+			WHERE id = #{id}
+	</select>
+	
+	<select id="getClubAdImg" resultType="com.walab.hgu.DTO.ClubAdvertiseDTO"
+		parameterType="hashmap">
+			SELECT originalUrl
+			FROM clubAdvertiseFile RIGHT JOIN clubAdvertise cA on cA.id = clubAdvertiseFile.clubAdvertiseId
+			WHERE clubAdvertiseId = #{id} ORDER BY `order`
+	
+	</select>
+	
+	<insert id="createClubAd" parameterType="com.walab.hgu.DTO.ClubAdvertiseDTO">
+		INSERT INTO hguclub.clubAdvertise (title,content)
+		VALUES (#{title},#{content})
+	</insert>
 
 </mapper>

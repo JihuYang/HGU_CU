@@ -23,4 +23,23 @@ public class ClubAdvertiseServiceImpl implements ClubAdvertiseService{
 		return adList;
 	}
 
+	@Override
+	public List<ClubAdvertiseDTO> readClubAdvertiseDetail(int id) {
+		List<ClubAdvertiseDTO> infoDetailList = clubAdvertiseDAO.readClubAdvertiseDetail(id);
+		return infoDetailList;
+	}
+
+	@Override
+	public List<ClubAdvertiseDTO> getClubAdImg(int id) {
+		List<ClubAdvertiseDTO> clubAdImgList = clubAdvertiseDAO.getClubAdImg(id);
+		return clubAdImgList;
+	}
+
+	@Override
+	public int createClubAd(ClubAdvertiseDTO info) {
+		
+		return clubAdvertiseDAO.createClubAd(info);
+		
+	}
+
 }
