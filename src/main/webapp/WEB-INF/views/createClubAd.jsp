@@ -40,21 +40,19 @@
 			</div>
 			<!-- 홍보글 테이블 -->
 			<div class="col-sm-10 justify-content-md-center">
-				<form accept-charset="UTF-8" name="searchForm" action="<%=request.getContextPath()%>/createClubAd" method="POST" >
 					<div class="title-bar">
-						<p class="rows title-bold">제목</p><input class="form-control title-input" type="text">
+						<p class="rows title-bold">제목</p><input class="form-control title-input" type="text" id="title">
 					</div>
 					<div class="mb-3">
-						<textarea class="form-control textarea justify-content-center" rows="13"></textarea>
+						<textarea class="form-control textarea justify-content-center" rows="13" id="content"></textarea>
 					</div>
 					<div class="mb-3">
-  						<input class="form-control file" type="file" multiple>
+  						<input class="form-control file" type="file" id="originalUrl" multiple>
 					</div>
 					<div>
 						<a class="btn btn-primary back-btn bottom-btn" href="./" role="button">뒤로</a>
-						<button class="btn btn-primary submit-btn bottom-btn" type="submit">저장</button> 
+						<button class="btn btn-primary submit-btn bottom-btn" onclick="createClubAd()">저장</button> 
 					</div>
-				</form>
 			</div>
 		</div>
 	</div>
@@ -69,6 +67,7 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
 	<!-- Core theme JS-->
 	<script src="<%=request.getContextPath()%>/resources/js/scripts.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/clubAdvertise.js"></script>
 	<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
 	<!-- * *                               SB Forms JS                               * *-->
 	<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
