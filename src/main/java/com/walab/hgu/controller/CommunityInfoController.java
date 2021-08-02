@@ -1,9 +1,15 @@
 package com.walab.hgu.controller;
 
+import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.List;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +27,7 @@ import org.springframework.web.servlet.ModelAndView;
 //import org.springframework.beans.factory.annotation.Autowired;
 
 import com.walab.hgu.DTO.CommunityInfoDTO;
+import com.walab.hgu.DTO.FileDTO;
 import com.walab.hgu.service.CommunityInfoService;
 
 /**
@@ -45,12 +52,51 @@ public class CommunityInfoController {
 	}
 
 	@RequestMapping(value = "/communityInfo/detail/{id}", method = RequestMethod.GET)
-	public ModelAndView readCommunityInfoDetail(@PathVariable int id, HttpSession session, HttpServletRequest request) {
+	public ModelAndView readCommunityInfoDetail(@PathVariable int id, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView mv = new ModelAndView();
 
-		List<CommunityInfoDTO> communityInfoDetailList = communityInfoService.readCommunityInfoDetail(id);
-
-		mv.addObject("communityInfoDetailList", communityInfoDetailList);
+		CommunityInfoDTO communityInfoDetail = communityInfoService.readCommunityInfoDetail(id);
+		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file");
+		
+		String fileName = communityInfoDetail.getOriginalUrl();
+		System.out.println("filename: " + fileName);
+		
+		
+//		File file = new File(saveDir + "/" + fileName);
+//		FileInputStream fis = null;
+//		BufferedInputStream bis = null;
+//		ServletOutputStream sos = null;
+//		try {
+//			fis = new FileInputStream(file);
+//			bis = new BufferedInputStream(fis);
+//			sos = response.getOutputStream();
+//			String reFilename = "";
+//			boolean isMSIE = request.getHeader("user-agent").indexOf("MSIE") != -1
+//					|| request.getHeader("user-agent").indexOf("Trident") != -1;
+//			if (isMSIE) {
+//				reFilename = URLEncoder.encode("이미지 파일.jpg", "utf-8");
+//				reFilename = reFilename.replaceAll("\\+", "%20");
+//			} else {
+//				reFilename = new String("이미지 파일.jpg".getBytes("utf-8"), "ISO-8859-1");
+//			}
+//			response.setContentType("application/octet-stream;charset=utf-8");
+//			response.addHeader("Content-Disposition", "attachment;filename=\"" + reFilename + "\"");
+//			response.setContentLength((int) file.length());
+//			int read = 0;
+//			while ((read = bis.read()) != -1) {
+//				sos.write(read);
+//			}
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		} finally {
+//			try {
+//				sos.close();
+//				bis.close();
+//			} catch (IOException e) {
+//				e.printStackTrace();
+//			}
+//		}
+		mv.addObject("communityInfoDetail", communityInfoDetail);
 
 		System.out.println(mv);
 
@@ -69,24 +115,64 @@ public class CommunityInfoController {
 
 	@RequestMapping(value = "/communityInfo/write/create", method = RequestMethod.POST)
 	@ResponseBody
-	public ModelAndView createCommunityInfo(ModelAndView mv, @RequestParam(value = "userId") int userId,
-			@RequestParam(value = "title") String title, @RequestParam(value = "content") String content,
-			@RequestParam(value = "originalUrl") String originalUrl) {
+	public ModelAndView createCommunityInfo(ModelAndView mv, MultipartHttpServletRequest request, MultipartFile file) {
 
 		CommunityInfoDTO info = new CommunityInfoDTO();
+		FileDTO infoFile = new FileDTO();
+
+		int userId = Integer.parseInt(request.getParameter("userId"));
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+
+		MultipartFile newfile = request.getFile("file");
+		String originalUrl = newfile.getOriginalFilename();
 
 		info.setUserId(userId);
 		info.setTitle(title);
 		info.setContent(content);
-		info.setOriginalUrl(originalUrl);
+		info.setFile(file);
+		
+		communityInfoService.createCommunityInfo(info);
+		
+		int recentId = communityInfoService.readRecentCommunityInfo();
+		
+		System.out.println(recentId);
+	
+		infoFile.setCommunityInfoId(recentId);
+		infoFile.setOriginalUrl(originalUrl);
+		
+		communityInfoService.creatCommunityInfoFile(infoFile);
 
 		System.out.println(info.toString());
-//		
-//		System.out.println(originalUrl);
+		System.out.println(infoFile.toString());
 
-		communityInfoService.createCommunityInfo(info);
 
-		mv.setViewName("communityInfo");
+		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file");
+
+		File dir = new File(saveDir);
+		if (!dir.exists()) {
+			dir.mkdirs();
+		}
+
+		if (!newfile.isEmpty()) {
+			String ext = originalUrl.substring(originalUrl.lastIndexOf("."));
+
+			// SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd-HHmmssSSS");
+			// int rand = (int)(Math.random()*1000);
+
+			// String reName = sdf.format(System.currentTimeMillis()) + "_" + rand + ext;
+
+			try {
+				newfile.transferTo(new File(saveDir + "/" + originalUrl));
+			} catch (IllegalStateException | IOException e) {
+				e.printStackTrace();
+			}
+		}
+
+		System.out.println(saveDir);
+
+
+		mv.setViewName("redirect:/communityInfo");
 
 		return mv;
 	}
@@ -102,8 +188,6 @@ public class CommunityInfoController {
 			dir.mkdirs();
 		}
 		System.out.println(f);
-
-		mv.setViewName("communityInfo");
 
 		return mv;
 
@@ -135,5 +219,51 @@ public class CommunityInfoController {
 //		System.out.println(saveDir);
 //		return "communityInfo";
 
+	}
+
+	@RequestMapping("/communityInfo/detail/{id}/filedownload")
+	public void fileDownload(int id, HttpServletRequest request, HttpServletResponse response) {
+		ModelAndView mv = new ModelAndView();
+
+		CommunityInfoDTO communityInfoDetail = communityInfoService.readCommunityInfoDetail(id);
+		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file");
+		
+		String fileName = communityInfoDetail.getOriginalUrl();
+		System.out.println("filename: " + fileName);
+
+		File file = new File(saveDir + "/" + fileName);
+		FileInputStream fis = null;
+		BufferedInputStream bis = null;
+		ServletOutputStream sos = null;
+		try {
+			fis = new FileInputStream(file);
+			bis = new BufferedInputStream(fis);
+			sos = response.getOutputStream();
+			String reFilename = "";
+			boolean isMSIE = request.getHeader("user-agent").indexOf("MSIE") != -1
+					|| request.getHeader("user-agent").indexOf("Trident") != -1;
+			if (isMSIE) {
+				reFilename = URLEncoder.encode("이미지 파일.jpg", "utf-8");
+				reFilename = reFilename.replaceAll("\\+", "%20");
+			} else {
+				reFilename = new String("이미지 파일.jpg".getBytes("utf-8"), "ISO-8859-1");
+			}
+			response.setContentType("application/octet-stream;charset=utf-8");
+			response.addHeader("Content-Disposition", "attachment;filename=\"" + reFilename + "\"");
+			response.setContentLength((int) file.length());
+			int read = 0;
+			while ((read = bis.read()) != -1) {
+				sos.write(read);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				sos.close();
+				bis.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
 	}
 }

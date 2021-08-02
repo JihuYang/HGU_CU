@@ -2,6 +2,8 @@ package com.walab.hgu.DTO;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class CommunityInfoDTO {
 
 	private int id;
@@ -11,6 +13,7 @@ public class CommunityInfoDTO {
 	private String content;
 	private String originalUrl;
 	private String realUrl;
+	private MultipartFile file; 
 	private int order;
 	private Date regdate;
 	private int viewCount;
@@ -66,7 +69,14 @@ public class CommunityInfoDTO {
 	public String getRealUrl() {
 		return realUrl;
 	}
+	
+	public MultipartFile getFile() {
+		return file;
+	}
 
+	public void setFile(MultipartFile file) {
+		this.file = file;
+	}
 	public void setRealUrl(String realUrl) {
 		this.realUrl = realUrl;
 	}
@@ -102,8 +112,8 @@ public class CommunityInfoDTO {
 	@Override
 	public String toString() {
 		return "CommunityInfoDTO [id=" + id + ", userId=" + userId + ", writer=" + writer + ", title=" + title
-				+ ", content=" + content + ", originalUrl=" + originalUrl + ", realUrl=" + realUrl + ", order=" + order
-				+ ", regdate=" + regdate + ", viewCount=" + viewCount + "]";
+				+ ", content=" + content + ", originalUrl=" + originalUrl + ", realUrl=" + realUrl + ", file=" + file
+				+ ", order=" + order + ", regdate=" + regdate + ", viewCount=" + viewCount + "]";
 	}
 	
 }

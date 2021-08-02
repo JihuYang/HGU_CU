@@ -16,16 +16,32 @@
 	<select id="readCommunityInfoDetail"
 		resultType="com.walab.hgu.DTO.CommunityInfoDTO"
 		parameterType="hashmap">
-		SELECT cI.id, name as writer, title, content, cI.regdate,viewCount, originalUrl, realUrl, cIF.order
-		FROM hguclub.communityInfo as cI ,hguclub.user u,hguclub.communityInfoFile as cIF
-		WHERE cI.userId = u.id and cI.id = #{id} LIMIT 1
+		SELECT cI.id, name as writer, title, content,
+		cI.regdate, viewCount, originalUrl, realUrl, cIF.order
+		FROM
+		hguclub.communityInfo as cI ,hguclub.user u, hguclub.communityInfoFile
+		as cIF
+		WHERE cI.userId = u.id and cI.id = #{id} and cIF.communityInfoId = cI.id LIMIT 1
+	</select>
+
+	<select id="readRecentCommunityInfo" resultType="int"
+		parameterType="hashmap">
+		SELECT MAX(id) FROM hguclub.communityInfo
 	</select>
 
 	<!-- 커뮤니티 공지사항 글 작성 쿼리 -->
 	<insert id="creatCommunityInfo"
 		parameterType="com.walab.hgu.DTO.CommunityInfoDTO">
-		INSERT INTO hguclub.communityInfo (userId, title, content) 
-		VALUES (#{userId}, #{title}, #{content});
+		INSERT INTO hguclub.communityInfo (userId, title,
+		content)
+		VALUES (#{userId}, #{title}, #{content})
 	</insert>
 
+	<!-- 커뮤니티 공지사항 파일 업로드 쿼리 -->
+	<insert id="creatCommunityInfoFile"
+		parameterType="com.walab.hgu.DTO.FileDTO">
+		INSERT INTO hguclub.communityInfoFile (communityInfoId,
+		originalUrl)
+		VALUES (#{communityInfoId}, #{originalUrl})
+	</insert>
 </mapper>

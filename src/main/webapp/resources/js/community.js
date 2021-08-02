@@ -43,8 +43,7 @@ function createCommunityMaterial() {
 }
 
 function uploadFile() {
-	var formData = new FormData();
-	formData.append("test4", $("input[name=file]")[0].files[0]);
+
 
 	$.ajax({
 		type: "POST",
@@ -57,7 +56,7 @@ function uploadFile() {
 		contentType: false,
 		success: function(data) {
 			console.log("파일 업로드 성공!!");		
-			location.href = "/hgu/communityInfo";
+			//location.href = "/hgu/communityInfo";
 		},
 		error: function(e) {
 			console.log("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);

@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.walab.hgu.DAO.CommunityInfoDAO;
 import com.walab.hgu.DTO.CommunityInfoDTO;
+import com.walab.hgu.DTO.FileDTO;
 
 @Service
 public class CommunityInfoServiceImpl implements CommunityInfoService {
@@ -24,11 +25,20 @@ public class CommunityInfoServiceImpl implements CommunityInfoService {
 	}
 
 	@Override
-	public List<CommunityInfoDTO> readCommunityInfoDetail(int id) {
+	public CommunityInfoDTO readCommunityInfoDetail(int id) {
 
-		List<CommunityInfoDTO> infoDetailList = communityInfoDAO.readCommunityInfoDetail(id);
+		CommunityInfoDTO infoDetailList = communityInfoDAO.readCommunityInfoDetail(id);
 
 		return infoDetailList;
+
+	}
+	
+	@Override
+	public int readRecentCommunityInfo() {
+
+		int recentId = communityInfoDAO.readRecentCommunityInfo();
+
+		return recentId;
 
 	}
 
@@ -36,6 +46,13 @@ public class CommunityInfoServiceImpl implements CommunityInfoService {
 	public int createCommunityInfo(CommunityInfoDTO communityInfo) {
 
 		return communityInfoDAO.createCommunityInfo(communityInfo);
+		
+	}
+	
+	@Override
+	public int creatCommunityInfoFile(FileDTO communityInfoFile) {
+
+		return communityInfoDAO.creatCommunityInfoFile(communityInfoFile);
 		
 	}
 
