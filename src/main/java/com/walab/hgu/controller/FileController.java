@@ -35,37 +35,42 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class FileController {
 
-	@RequestMapping(value = "/communityInfo/upload.do", method = { RequestMethod.GET, RequestMethod.POST })
-	public String uploadFile(MultipartHttpServletRequest request, MultipartFile upload) {
-		// 파일이 업로드 될 경로 설정
-		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file");
-		MultipartFile f = upload;
-		// 위에서 설정한 경로의 폴더가 없을 경우 생성
-		File dir = new File(saveDir);
-		if (!dir.exists()) {
-			dir.mkdirs();
-		}
-
-		if (!f.isEmpty()) {
-			String orifileName = f.getOriginalFilename();
-			String ext = orifileName.substring(orifileName.lastIndexOf("."));
-
-			// SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd-HHmmssSSS");
-			// int rand = (int)(Math.random()*1000);
-
-			// String reName = sdf.format(System.currentTimeMillis()) + "_" + rand + ext;
-
-			try {
-				f.transferTo(new File(saveDir + "/" + orifileName));
-			} catch (IllegalStateException | IOException e) {
-				e.printStackTrace();
-			}
-		}
-
-		System.out.println(saveDir);
-		return "communityInfo";
-
-	}
+//	@RequestMapping(value = "/communityInfo/upload.do", method = { RequestMethod.GET, RequestMethod.POST })
+//	public ModelAndView uploadFile(ModelAndView mv, MultipartHttpServletRequest request,
+//			@RequestParam(value = "originalUrl") MultipartFile upload) {
+//		MultipartFile f = upload;
+//		System.out.println(f);
+//		return mv;
+//
+////		// 파일이 업로드 될 경로 설정
+////		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file");
+////		MultipartFile f = upload;
+////		// 위에서 설정한 경로의 폴더가 없을 경우 생성
+////		File dir = new File(saveDir);
+////		if (!dir.exists()) {
+////			dir.mkdirs();
+////		}
+////
+////		if (!f.isEmpty()) {
+////			String orifileName = f.getOriginalFilename();
+////			String ext = orifileName.substring(orifileName.lastIndexOf("."));
+////
+////			// SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd-HHmmssSSS");
+////			// int rand = (int)(Math.random()*1000);
+////
+////			// String reName = sdf.format(System.currentTimeMillis()) + "_" + rand + ext;
+////
+////			try {
+////				f.transferTo(new File(saveDir + "/" + orifileName));
+////			} catch (IllegalStateException | IOException e) {
+////				e.printStackTrace();
+////			}
+////		}
+////
+////		System.out.println(saveDir);
+////		return "communityInfo";
+//
+//	}
 
 	@RequestMapping("/communityInfo/detail/filedownload")
 	public void fileDownload(HttpServletRequest request, HttpServletResponse response) {
