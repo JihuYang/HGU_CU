@@ -60,4 +60,24 @@ public class ClubDAOImpl implements ClubDAO{
 		//System.out.println(clubImg);
 		return sqlSession.selectList(namespace+".getClubImg", clubImg);
 	}
+
+	@Override
+	public int createClubIntro(ClubDTO intro) {
+		
+		sqlSession.insert(namespace+".createClubIntro", intro);
+		
+		return 0;
+	}
+
+	@Override
+	public List<ClubDTO> getClubList() {
+		Map<String, Object> clubList = new HashMap<String, Object>();
+		return sqlSession.selectList(namespace+".getClubList", clubList);
+	}
+
+	@Override
+	public int createClubSNS(ClubDTO sns) {
+		sqlSession.insert(namespace+".createClubSNS", sns);
+		return 0;
+	}
 }

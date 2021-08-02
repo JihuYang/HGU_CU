@@ -6,6 +6,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
 
+
+<!-- 추가 모달 -->
 <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
     <div class="modal-content">
@@ -39,6 +41,50 @@
     </div>
   </div>
 </div>
+
+
+<!-- 수정 모달 -->
+<c:forEach items="${reservationInfoList}" var="reservationList" varStatus="status">
+<c:if test="${reservationList.person != null}">
+<div class="modal fade" id="editModal${status.count}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-body">
+        <label for="reservationPerson">대여자 이름</label>
+  			<input class="form-control form-control-sm" id="modal-user${status.count}" value=''>
+        <label for="user">사용 단체</label>
+  			<input class="form-control form-control-sm" id="user">
+        <label for="user">대여 시간</label>
+        <div style="display:flex;">
+  				<input type="text" class="form-control date" placeholder="yyyy-mm-dd">
+  				<input class="form-control form-control-sm" placeholder="시작시간" id="user">
+  				<input class="form-control form-control-sm" placeholder="종료시간"id="user">
+  			</div>
+        <label for="purpose">사용 목적</label>
+  			<input class="form-control form-control-sm" id="purpose">
+        <label for="contact">연락처(이메일)</label>
+        <div style="display:flex;">
+   			<input class="form-control form-control-sm" placeholder="전화번호" id="phone">
+   			<input class="form-control form-control-sm" placeholder="이메일" id="email">
+  			</div>
+        <label for="etc">비고</label>
+  			<input class="form-control form-control-sm" id="etc">
+      </div>
+      
+      <div class="modal-footer">
+	      	<button type="button" class="btn btn-outline-secondary">등록</button>
+	        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">취소</button>
+      </div>
+      
+    </div>
+  </div>
+</div>
+</c:if>
+</c:forEach>
+
+
+
+
 
 <script>
 	$("#openModalBtn").on('click', function(){

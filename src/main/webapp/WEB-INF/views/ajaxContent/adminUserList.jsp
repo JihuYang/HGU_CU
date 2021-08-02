@@ -7,20 +7,20 @@
 	class="table align-items-center justify-content-center text-center ">
 	<thead class="p-4">
 		<tr class="tr-border">
-			<th scope="col" class="col-1" id="username"><h5>이름</h5></th>
-			<th scope="col" class="col-3" id="contact"><h5>연락처</h5></th>
-			<th scope="col" class="col-3" id="email"><h5>이메일</h5></th>
-			<th scope="col" class="col-2" id="club"><h5>소속단체</h5></th>
-			<th scope="col" class="col-1" id="authority"><h5>권한</h5></th>
+			<th scope="col" class="username col-1"><h5>이름</h5></th>
+			<th scope="col" class="contact col-3"><h5>연락처</h5></th>
+			<th scope="col" class="email col-3"><h5>이메일</h5></th>
+			<th scope="col" class="club col-2"><h5>소속단체</h5></th>
+			<th scope="col" class="authority col-1"><h5>권한</h5></th>
 		</tr>
 	</thead>
 	<tbody class="align-items-center p-4">
 		<c:forEach items="${userList}" var="userList" varStatus="status">
 			<tr>
-				<td id="username">${userList.name}</td>
-				<td id="contact">${userList.phone}</td>
-				<td id="email">${userList.email}</td>
-				<td id="club">
+				<td class="username">${userList.name}</td>
+				<td class="contact">${userList.phone}</td>
+				<td class="email">${userList.email}</td>
+				<td class="club">
 					<select class="clubSelect">
 						<c:forEach items="${clubList}" var="clubList" varStatus="status">
 							<option <c:if test="${userList.clubName eq clubList.clubName}">selected</c:if>>${clubList.clubName}</option>
