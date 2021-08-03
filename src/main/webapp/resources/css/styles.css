@@ -10938,7 +10938,7 @@ hr.divider-light {
 #mainNav .navbar-nav .nav-item .nav-link {
   color: black;
   font-weight: 700;
-  font-size: 0.8rem;
+  font-size: 1rem;
   padding: 0.75rem 0;
 }
 #mainNav .navbar-nav .nav-item .nav-link:hover, #mainNav .navbar-nav .nav-item .nav-link:active {
@@ -10960,8 +10960,8 @@ hr.divider-light {
 
   #mainNav .navbar-nav .nav-item .nav-link {
     color: black;
-    padding-right: 1rem;
-    padding-left: 1rem;
+    margin-left: 0.3rem;
+    margin-right: 0.3rem;
   }
   #mainNav .navbar-nav .nav-item .nav-link:hover {
     color: black;
