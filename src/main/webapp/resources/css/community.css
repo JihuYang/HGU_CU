@@ -157,7 +157,6 @@ a:link, a:visited {
 }
 
 table {
-	border: 1px solid #f0f0f0;
 	width: 98%;
 	margin: auto;
 	text-align: center;
@@ -168,8 +167,17 @@ td {
 	padding: 10px 0;
 }
 
-thead, tbody, tfoot, tr, td, th {
-	border: 1px solid white;
+td, th {
+	border-style: hidden;
+}
+
+tr{
+	border-style: solid;
+	border-bottom: 1px solid black;
+}
+
+.tr-hover:hover{
+	background-color: rgb(242, 242, 242);
 }
 
 .section3 div {
@@ -258,6 +266,8 @@ thead, tbody, tfoot, tr, td, th {
 .modal-time{
 	width:100px;
 }
+
+
 
 @media(max-width: 992px){
 	#top_margin{
