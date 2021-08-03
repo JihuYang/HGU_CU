@@ -222,6 +222,18 @@ tr{
 	margin-bottom:15px;
 }
 
+.fc-title{
+    color: white;
+}
+
+.fc-event-container .fc-time{
+	display:none;
+}
+
+.fc-content{
+	padding:5px 0;
+}
+
 /*detail 페이지*/
 .community-detail-title {
 	background-color: rgb(242, 242, 242);

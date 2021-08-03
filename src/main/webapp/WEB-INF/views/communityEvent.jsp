@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <html>
 <head>
 <meta charset="utf-8" />
@@ -72,9 +73,9 @@
 							<div class="grid-item2">
 								<input class="modal-time" type="text" name="start_at"
 									id="starts-at" />
-								<label class="col-xs-4 mx-3 b-primary" for="end-at">-</label>
+								<label class="col-xs-4 mx-3 b-primary" for="end_at">-</label>
 								<input class="modal-time" type="text" name="end_at"
-									id="starts-at" />
+									id="end-at" />
 							</div>
 						</div>
 						
@@ -100,6 +101,7 @@
 				src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.42/js/bootstrap-datetimepicker.min.js'></script>
 
 			<script type="text/javascript">
+			
 		$(function() {
 			  $('#calendar').fullCalendar({
 			    selectable: true,
@@ -107,11 +109,11 @@
 			    header: {
 			      left: "prev,next today",
 			      center: "title",
-			      right: "month,agendaWeek,agendaDay"
+			      right: "month,agendaWeek"
 			    },
 			    defaultView: "month",
+			    dayMaxEvents: true,
 			    navLinks: true, // can click day/week names to navigate views
-			    selectable: true,
 			    selectHelper: true,
 			    editable: true,
 			    eventLimit: true, // allow "more" link when too many events
@@ -127,6 +129,9 @@
 			        .val("");
 			      $(".modal")
 			        .find("#starts-at")
+			        .val("");
+			      $(".modal")
+			        .find("#end-at")
 			        .val("");
 			      $("#save-event").show();
 			      $("input").prop("readonly", false);
@@ -152,9 +157,34 @@
 			      $(".modal")
 			        .find("#starts-at")
 			        .val(calEvent.start);
+			      $(".modal")
+			        .find("#end-at")
+			        .val(calEvent.end);
 			      $("#save-event").hide();
 			      $("input").prop("readonly", true);
-			    }
+			    },
+			   events:[
+				   <c:forEach items="${eventList}" var="eventList">
+				   <fmt:formatDate value="${eventList.startDate}" var="startDate" type="date" pattern="yyyy-MM-dd'T'HH:mm:ssz"/>
+				   <fmt:formatDate value="${eventList.endDate}" var="endDate" type="date" pattern="yyyy-MM-dd'T'HH:mm:ssz"/>
+				   {
+				 		id: 1,
+				 		title: '${eventList.eventName}',
+				 		start: '${startDate}',
+				 		end:'${endDate}',
+				 		allDay: false,
+				 		textColor:'white',
+				 		place:'학교',
+				 		color: '#326295'
+				 	},
+				 	</c:forEach>
+				 	{
+				 		title: "",
+				 		start: "1990-01-01",
+				 		allDay: false
+				 	}
+			   ]
+
 			  });
 			  /* // Bind the dates to datetimepicker.
 			  $("#starts-at").datetimepicker(); */

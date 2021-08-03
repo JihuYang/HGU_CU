@@ -1,5 +1,7 @@
 package com.walab.hgu.DTO;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class EventDTO {
@@ -53,14 +55,14 @@ public class EventDTO {
 
 
 
-	public Date getStartDate() {
+	public Date getStartDate(){
 		return startDate;
 	}
 
 
 
 
-	public void setStartDate(Date startDate) {
+	public void setStartDate(Date startDate){
 		this.startDate = startDate;
 	}
 
@@ -79,8 +81,6 @@ public class EventDTO {
 	}
 
 
-
-
 	public Date getRegdate() {
 		return regdate;
 	}
@@ -91,8 +91,6 @@ public class EventDTO {
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
-
-
 
 
 	@Override
