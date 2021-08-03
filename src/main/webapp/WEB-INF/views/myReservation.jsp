@@ -62,9 +62,9 @@
 			<br>
 
 			<div>
-				<c:forEach items="${reservationInfoList}" var="space">
-					<input type="checkbox" class="btn-check" id="${space.spaceName}" autocomplete="off">
-					<label class="btn btn-outline-secondary" for="${space.spaceName}">${space.spaceName}</label>
+				<c:forEach items="${spaceList}" var="space">
+					<input type="checkbox" class="btn-check" id="${space.name}" autocomplete="off">
+					<label class="btn btn-outline-secondary" for="${space.name}">${space.name}</label>
 				</c:forEach>
 			</div>
 

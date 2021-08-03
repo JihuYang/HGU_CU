@@ -106,6 +106,7 @@ public class AdminController {
 	@ResponseBody
 	public ModelAndView createAdminReservationInfo(ModelAndView mv,
 			@RequestParam(value="userId") int userId,
+			@RequestParam(value="spaceId") int spaceId,
 			@RequestParam(value="startTime") Time startTime,
 			@RequestParam(value="endTime") Time endTime,
 			@RequestParam(value="purpose") String purpose,
@@ -114,6 +115,7 @@ public class AdminController {
 		ReservationInfoDTO info = new ReservationInfoDTO();
 		
 		info.setUserId(userId);
+		info.setSpaceId(spaceId);
 		info.setStartTime(startTime);
 		info.setEndTime(endTime);
 		info.setPurpose(purpose);

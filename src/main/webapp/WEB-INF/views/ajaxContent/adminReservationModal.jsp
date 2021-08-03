@@ -18,7 +18,7 @@
   			<input class="form-control form-control-sm" id="user">
   		<label for="etc">장소</label>
   			<!-- <input class="form-control form-control-sm" id="space"> -->
-  			<select class='spaceSelect' id="spaceSelect">
+  			<select class='spaceSelect' id='spaceSelect'>
 		      	<c:forEach items="${spaceList}" var="spaceList">
 					<option value="${spaceList.name}">${spaceList.name}</option>
 				</c:forEach>

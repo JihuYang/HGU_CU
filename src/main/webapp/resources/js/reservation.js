@@ -5,9 +5,7 @@ function createAdminReservationInfo(){
 	var e=document.getElementById("endTime");
 	var et=e.options[e.selectedIndex].value;
 	et=et+":00";
-	var space=document.getElementById("spaceSelect");
-	var spaceId=space.options[space.selectedIndex].value;
-	//if(spaceId eq )
+	var spaceId=document.getElementById("spaceSelect").selectedIndex+1;
 
 	$.ajax({
 		url: "/hgu/adminReservation",
