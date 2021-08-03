@@ -38,4 +38,10 @@ public class CommunityMaterialServiceImpl implements CommunityMaterialService{
 		return communityMaterialDAO.createCommunityMaterial(communityMaterial);
 		
 	}
+
+	@Override
+	public int updateViewCount(int id) {
+		// TODO Auto-generated method stub
+		return communityMaterialDAO.updateViewCount(id);
+	}
 }

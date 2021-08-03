@@ -9,5 +9,6 @@ public interface CommunityMaterialDAO {
 	public List<CommunityMaterialDTO> readCommunityMaterial();
 	public List<CommunityMaterialDTO> readCommunityMaterialDetail(int id);
 	public int createCommunityMaterial(CommunityMaterialDTO communityMaterial);
+	public int updateViewCount(int id);
 	
 }

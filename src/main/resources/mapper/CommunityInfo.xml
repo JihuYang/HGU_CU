@@ -44,4 +44,8 @@
 		originalUrl)
 		VALUES (#{communityInfoId}, #{originalUrl})
 	</insert>
+	
+	<update id="updateViewCount" parameterType="int">
+		update communityInfo set viewCount = viewCount + 1 where id = #{id}
+	</update>
 </mapper>
