@@ -16,7 +16,7 @@
 	
 	<select id="readClubAdvertiseDetail" resultType="com.walab.hgu.DTO.ClubAdvertiseDTO"
 		parameterType="hashmap">
-			SELECT CA.id,clubId,title,content, CA.regdate
+			SELECT CA.id,title,content, CA.regdate
 			FROM clubAdvertise CA 
 			WHERE id = #{id}
 	</select>
