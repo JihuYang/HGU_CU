@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.walab.hgu.DTO.CommunityInfoDTO;
+import com.walab.hgu.DTO.FileDTO;
 
 @Repository
 public class CommunityInfoDAOImpl implements CommunityInfoDAO {
@@ -28,14 +29,23 @@ public class CommunityInfoDAOImpl implements CommunityInfoDAO {
 	}
 	
 	@Override
-	public List<CommunityInfoDTO> readCommunityInfoDetail(int id) {
+	public CommunityInfoDTO readCommunityInfoDetail(int id) {
 		
 		Map<String, Object> infoDetailList = new HashMap<String, Object>();
 		infoDetailList.put("id", id);
 		System.out.println(infoDetailList);
 				
-		return sqlSession.selectList(namespace+".readCommunityInfoDetail", infoDetailList);
+		return sqlSession.selectOne(namespace+".readCommunityInfoDetail", infoDetailList);
 	}	
+	
+	@Override
+	public int readRecentCommunityInfo() {
+		
+		Map<String, Object> recentId = new HashMap<String, Object>();
+
+		return sqlSession.selectOne(namespace+".readRecentCommunityInfo", recentId);
+
+	}
 	
 	@Override
 	public int createCommunityInfo(CommunityInfoDTO communityInfo) {
@@ -44,4 +54,14 @@ public class CommunityInfoDAOImpl implements CommunityInfoDAO {
 		
 		return 0;
 	}
+	
+	@Override
+	public int creatCommunityInfoFile(FileDTO communityInfoFile) {
+		
+		sqlSession.insert(namespace+".creatCommunityInfoFile", communityInfoFile);
+
+		return 0;
+	}
+
+
 }

@@ -50,6 +50,28 @@ public class ClubServiceImpl implements ClubService{
 		List<ClubDTO> clubList = clubDAO.readClubList();
 		return clubList;
 	}
+
+	@Override
+	public int createClubIntro(ClubDTO intro) {
+		
+		return clubDAO.createClubIntro(intro);
+		
+	}
+	
+	//club id & name을 데이터베이스 추가 최신 순으로 가져옴
+	@Override
+	public List<ClubDTO> getClubList() {
+		
+		List<ClubDTO> clubIntroList = clubDAO.getClubList();
+
+		return clubIntroList;
+	}
+
+	@Override
+	public int createClubSNS(ClubDTO sns) {
+		
+		return clubDAO.createClubSNS(sns);
+	}
 	
 	
 

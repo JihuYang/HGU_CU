@@ -42,41 +42,41 @@
 			</div>
 			<!-- 소개글 내용쓰기 -->
 			<div class="col-sm-10 justify-content-md-center">
-				<form accept-charset="UTF-8" name="createClubIntro" action="<%=request.getContextPath()%>/createClubIntro" method="POST" >
 					<div class="title-bar">
-						<p class="rows">동아리 분과  </p><input class="form-control title-input" type="text">
+						<p class="rows">동아리 분과  </p><input class="form-control title-input" type="text" id="categoryName">
 					</div>
 					<div class="title-bar">
-						<p class="rows">동아리 이름  </p><input class="form-control title-input" type="text">
+						<p class="rows">동아리 이름  </p><input class="form-control title-input" type="text" id="clubName">
 					</div>
 					<div class="title-bar">
-						<p class="rows">동아리방 위치 </p><input class="form-control title-input" type="text">
+						<p class="rows">동아리방 위치 </p><input class="form-control title-input" type="text" id="clubLocation">
 					</div>
 					<div class="title-bar">
 						<p class="rows select-bar">창립연도   </p>
-						<select class="form-select select-option" aria-label="Default select example">
+						<input class="form-control title-input" type="date" id="foundationDate">
+						<%-- <select class="form-select select-option" aria-label="Default select example">
+						  <option value="">--선택--</option>
 						  <c:forEach  items="${foundationYearList}" var="foundationYearList" varStatus="status">
 						  	<option value="${foundationYearList}">${foundationYearList}</option>
 						  </c:forEach>
-						</select>
+						</select> --%>
 					</div>
 					<div class="title-bar">
-						<p class="rows">인스타그램 주소</p><input class="form-control title-input" type="text">
+						<p class="rows">인스타그램 주소</p><input class="form-control title-input" type="text" id="instagramLink">
 					</div>
 					<div class="title-bar">
-						<p class="rows">페이스북 주소</p><input class="form-control title-input" type="text">
+						<p class="rows">페이스북 주소</p><input class="form-control title-input" type="text" id="facebookLink">
 					</div>
 					<div class="mb-3">
-						<textarea class="form-control textarea justify-content-center" rows="13"></textarea>
+						<textarea class="form-control textarea justify-content-center" rows="13" id="clubDescription"></textarea>
 					</div>
 					<div class="mb-3">
-  						<input class="form-control file" type="file" multiple>
+  						<input class="form-control file" type="file" id="originalUrl" multiple>
 					</div>
 					<div>
 						<a class="btn btn-primary back-btn bottom-btn" href="./${categotyId}" role="button">뒤로</a>
-						<button class="btn btn-primary submit-btn bottom-btn" type="submit">저장</button> 
+						<button class="btn btn-primary submit-btn bottom-btn" onclick="createClubIntro()">저장</button> 
 					</div>
-				</form>
 			</div>
 		</div>
 	</div>
@@ -91,6 +91,7 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
 	<!-- Core theme JS-->
 	<script src="<%=request.getContextPath()%>/resources/js/scripts.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/club.js"></script>
 	<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
 	<!-- * *                               SB Forms JS                               * *-->
 	<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->

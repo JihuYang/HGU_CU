@@ -1,6 +1,8 @@
 package com.walab.hgu.controller;
 
 import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -18,12 +20,16 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.walab.hgu.DTO.CategoryDTO;
 import com.walab.hgu.DTO.ClubDTO;
+import com.walab.hgu.DTO.CommunityInfoDTO;
 import com.walab.hgu.service.ClubService;
 import com.walab.hgu.service.SettingService;
+import com.walab.hgu.service.UserService;
 
 @Controller
 public class ClubIntroductionController {
@@ -34,6 +40,8 @@ public class ClubIntroductionController {
 	ClubService clubService;
 	@Autowired
 	SettingService settingService;
+	@Autowired
+	UserService userService;
 	
 	//동아리 홍보 페이지 컨트롤러 
 	@RequestMapping(value = "/clubIntroduction/{categoryId}")
@@ -97,6 +105,75 @@ public class ClubIntroductionController {
 		mv.setViewName("createClubIntro");
 		 
 		System.out.println(mv);
+		return mv;
+	}
+	
+	@RequestMapping(value = "/clubIntroduction/write/create", method = RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView createClubIntro(ModelAndView mv,
+			@RequestParam(value="categoryName") String categoryName,
+			@RequestParam(value="clubName") String clubName,
+			@RequestParam(value="clubLocation") String clubLocation,
+			@RequestParam(value="foundationDate") String foundationDate,
+			@RequestParam(value="instagramLink") String instagramLink,
+			@RequestParam(value="facebookLink") String facebookLink,
+			@RequestParam(value="clubDescription") String clubDescription,
+			@RequestParam(value="originalUrl") String originalUrl) {
+		System.out.println(foundationDate);
+		ClubDTO intro = new ClubDTO();
+		ClubDTO sns = new ClubDTO();
+		List<CategoryDTO> categoryNameList = clubService.getCategoryNameList();
+		int categoryId =0;
+		
+		for(int i=0;i<categoryNameList.size();i++) {
+			if(categoryNameList.get(i).getCategoryName().equals(categoryName)) {
+				categoryId=i+1;
+				break;
+			}
+		}
+		System.out.println(categoryId);
+		SimpleDateFormat fm = new SimpleDateFormat("yyyy-MM-dd");
+
+		Date foundationDateRE = null;
+		try {
+			foundationDateRE = fm.parse(foundationDate);
+			System.out.println(foundationDateRE);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		// userDTO끌고 와서 clubName 비교해서 userId 찾기
+		//userService.getUser --> 동아리 대표는 관리자가 나중에 삽입
+				
+		intro.setClubName(clubName);
+		intro.setCategoryId(categoryId);
+		intro.setClubLocation(clubLocation);
+		intro.setFoundationDate(foundationDateRE);
+		intro.setClubDescription(clubDescription);
+		
+		clubService.createClubIntro(intro);
+		
+		//위에 넣고 다시 club끌고 와서 마지막 추가된 것의 clubId 함께 ClubSns table에 삽입,,,
+		List<ClubDTO> clubList = clubService.getClubList();
+		int id = clubList.get(0).getId();
+		sns.setId(id);
+		sns.setInstagramLink(instagramLink);
+		sns.setFacebookLink(facebookLink);
+		
+		clubService.createClubSNS(sns);
+		
+		//intro.setOriginalUrl(originalUrl);
+
+//		System.out.println(intro.toString());
+//		
+//		System.out.println(originalUrl);
+
+		
+		
+
+		mv.setViewName("createClubIntro");
+			
 		return mv;
 	}
 }

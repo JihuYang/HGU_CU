@@ -32,4 +32,20 @@
 		where CL.id = cI.clubId
 		and CL.id = #{clubId} order by `order`
 	</select>
+	
+	<insert id="createClubIntro" parameterType="com.walab.hgu.DTO.ClubDTO">
+		INSERT INTO hguclub.club (categoryId,clubName,clubDescription,foundationDate,clubLocation)
+		VALUES (#{categoryId},#{clubName},#{clubDescription},#{foundationDate},#{clubLocation})
+	</insert>
+	
+	<select id="getClubList" parameterType="HashMap" resultType="com.walab.hgu.DTO.ClubDTO">
+		SELECT id,clubName
+		FROM hguclub.club
+		order by regdate DESC
+	</select>
+	
+	<insert id="createClubSNS" parameterType="com.walab.hgu.DTO.ClubDTO">
+		INSERT INTO hguclub.clubSNS (clubId,facebookLink,instagramLink)
+		VALUES (#{id},#{facebookLink},#{instagramLink})
+	</insert>
 </mapper>
