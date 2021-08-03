@@ -222,7 +222,7 @@ public class CommunityInfoController {
 	}
 
 	@RequestMapping("/communityInfo/detail/{id}/filedownload")
-	public void fileDownload(int id, HttpServletRequest request, HttpServletResponse response) {
+	public void fileDownload(@PathVariable int id, HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView mv = new ModelAndView();
 
 		CommunityInfoDTO communityInfoDetail = communityInfoService.readCommunityInfoDetail(id);
@@ -243,10 +243,10 @@ public class CommunityInfoController {
 			boolean isMSIE = request.getHeader("user-agent").indexOf("MSIE") != -1
 					|| request.getHeader("user-agent").indexOf("Trident") != -1;
 			if (isMSIE) {
-				reFilename = URLEncoder.encode("이미지 파일.jpg", "utf-8");
+				reFilename = URLEncoder.encode(fileName, "utf-8");
 				reFilename = reFilename.replaceAll("\\+", "%20");
 			} else {
-				reFilename = new String("이미지 파일.jpg".getBytes("utf-8"), "ISO-8859-1");
+				reFilename = new String(fileName.getBytes("utf-8"), "ISO-8859-1");
 			}
 			response.setContentType("application/octet-stream;charset=utf-8");
 			response.addHeader("Content-Disposition", "attachment;filename=\"" + reFilename + "\"");
