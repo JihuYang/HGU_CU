@@ -189,7 +189,7 @@ thead, tbody, tfoot, tr, td, th {
 	table, h5{
 		font-size:small !important;
 	}
-	.email, .etc {
+	.email, .reservation-space {
 		display: none;
 	}
 	.search-selector {
@@ -215,7 +215,7 @@ thead, tbody, tfoot, tr, td, th {
 }
 
 @media ( max-width : 768px) {
-	.contact, .etc {
+	.contact, .reservation-space {
 		display: none;
 	}
 	table, h5{

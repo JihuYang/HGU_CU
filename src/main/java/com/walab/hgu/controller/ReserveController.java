@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.walab.hgu.DTO.ReservationInfoDTO;
+import com.walab.hgu.DTO.SpaceDTO;
 import com.walab.hgu.service.ReservationInfoService;
 import com.walab.hgu.service.SpaceService;
 
@@ -48,14 +49,18 @@ public class ReserveController {
 	
 	@Autowired
 	ReservationInfoService reservationInfoService;
+	
+	@Autowired
 	SpaceService spaceService;
 
 	@RequestMapping(value = "/reserve", method = RequestMethod.GET)
 	public ModelAndView readReservationInfo(ModelAndView mv) {
 
 		List<ReservationInfoDTO> reservationInfoList = reservationInfoService.readReservationInfo();
+		List<SpaceDTO> spaceList = spaceService.readSpace();
 		
 		mv.addObject("reservationInfoList", reservationInfoList);
+		mv.addObject("spaceList", spaceList);
 		
 		mv.setViewName("reserve");
 		

@@ -1,7 +1,12 @@
 package com.walab.hgu.DTO;
 
 import java.sql.Time;
-import java.util.Date;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.sql.Date;
+import java.util.TimeZone;
+
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class ReservationInfoDTO {
 	private int id;
@@ -94,6 +99,9 @@ public class ReservationInfoDTO {
 
 
 	public Time getStartTime() {
+//		SimpleDateFormat format = new SimpleDateFormat("HH:mm");
+//		String time = format.format(startTime);
+//        Time t = Time.valueOf(time);
 		return startTime;
 	}
 
@@ -145,7 +153,7 @@ public class ReservationInfoDTO {
 
 	@Override
 	public String toString() {
-		return "SpaceDTO [id=" + id + " + regdate=" + regdate + " + startTime="+startTime+ "]";
+		return "ReservaionDTO [id=" + id + " startTime="+startTime+" regdate=" + regdate+"]";
 	}
 	
 }
