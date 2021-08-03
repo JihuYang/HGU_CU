@@ -70,7 +70,7 @@
 					</tr>
 					<tr>
 						<th scope="col" class="col-3 text-center file py-4">첨부파일</th>
-						<th scope="col" class="col-7 text-start px-3 py-4"><a href="/communityInfo/detail/{id}/filedownload">${communityInfoDetail.originalUrl}</a></th>
+						<th scope="col" class="col-7 text-start px-3 py-4"><a href="/hgu/communityInfo/detail/${communityInfoDetail.id}/filedownload">${communityInfoDetail.originalUrl}</a></th>
 					</tr>
 				</tbody>
 			</table>

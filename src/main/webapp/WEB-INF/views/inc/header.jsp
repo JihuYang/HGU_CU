@@ -42,7 +42,7 @@
 	id="mainNav">
 	<div class="container px-4 px-lg-5 respx-3 ">
 		<img src="<%=request.getContextPath()%>/resources/assets/img/로고.png"
-			class="logo navbar-brand" onclick="location.href='./'">		<!--한동대학교 총동아리연합회<br>
+			class="logo navbar-brand" onclick="location.href='<%=request.getContextPath()%>'">		<!--한동대학교 총동아리연합회<br>
 		<span id="name">HANDONG GLOBAL UNIVERSITY CLUB UNION</span></a> -->
 		<button class="navbar-toggler navbar-toggler-right" type="button"
 			data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
