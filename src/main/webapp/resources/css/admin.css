@@ -132,6 +132,7 @@ thead, tbody, tfoot, tr, td, th {
 	border: 1px solid #D0D0CE;
 	border-radius: 0.5rem;
 	font-size:small;
+	width:120px;
 }
 
 .btn-warning{
@@ -181,6 +182,14 @@ thead, tbody, tfoot, tr, td, th {
 
 #setting-input{
 	width:120px;
+}
+
+.spaceSelect, #startTime, #endTime{
+	padding: 0.5rem;
+	border: 1px solid #D0D0CE;
+	border-radius: 0.3rem;
+	font-size:small;
+	width:160px;
 }
 
 

@@ -5,7 +5,9 @@ function createAdminReservationInfo(){
 	var e=document.getElementById("endTime");
 	var et=e.options[e.selectedIndex].value;
 	et=et+":00";
-	var reservationDate=document.getElementById("reservationDate").value;
+	var space=document.getElementById("spaceSelect");
+	var spaceId=space.options[space.selectedIndex].value;
+	//if(spaceId eq )
 
 	$.ajax({
 		url: "/hgu/adminReservation",
@@ -13,10 +15,11 @@ function createAdminReservationInfo(){
 		async: false,
 		data: {
 			userId: $('#reservationPerson').val(),
+			spaceId: spaceId,
 			startTime: st,
 			endTime: et,
 			purpose: $('#purpose').val(),
-			reservationDate: reservationDate
+			reservationDate: $('#reservationDate').val()
 		},
 		success: function(data){	
 			console.log("예약 추가 성공!!");
