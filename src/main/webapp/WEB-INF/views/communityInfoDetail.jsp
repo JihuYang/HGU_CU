@@ -45,19 +45,19 @@
 		<div
 			class="row h-auto align-items-center justify-content-center text-center">
 			<div class="community-detail-title py-5">
-				<h4>${communityInfoDetailList[0].title}</h4>
+				<h4>${communityInfoDetail.title}</h4>
 			</div>
 		</div>
 		<div
 			class="row h-auto align-items-center justify-content-end text-end">
-			<fmt:formatDate value="${communityInfoDetailList[0].regdate}"
+			<fmt:formatDate value="${communityInfoDetail.regdate}"
 				var="formattedRegDate" type="date" pattern="yyyy-MM-dd" />
 			<div class="py-3 detail-info">작성자:
-				${communityInfoDetailList[0].writer} | 조회수 :
-				${communityInfoDetailList[0].viewCount} | ${formattedRegDate}</div>
+				${communityInfoDetail.writer} | 조회수 :
+				${communityInfoDetail.viewCount} | ${formattedRegDate}</div>
 		</div>
 		<div class="row h-auto align-items-center justify-content-center">
-			<div class="px-4 detail-content">${communityInfoDetailList[0].content}</div>
+			<div class="px-4 detail-content">${communityInfoDetail.content}</div>
 		</div>
 		<div
 			class="row h-25 align-items-center justify-content-center text-center">
@@ -70,7 +70,7 @@
 					</tr>
 					<tr>
 						<th scope="col" class="col-3 text-center file py-4">첨부파일</th>
-						<th scope="col" class="col-7 text-start px-3 py-4"><a href="/communityInfo/detail/filedownload">파일다운로드클릭</a></th>
+						<th scope="col" class="col-7 text-start px-3 py-4"><a href="/hgu/communityInfo/detail/${communityInfoDetail.id}/filedownload">${communityInfoDetail.originalUrl}</a></th>
 					</tr>
 				</tbody>
 			</table>

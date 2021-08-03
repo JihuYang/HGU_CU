@@ -7,5 +7,6 @@ import com.walab.hgu.DTO.ReservationInfoDTO;
 public interface ReservationInfoDAO {
 		
 	public List<ReservationInfoDTO> readReservationInfo();
+	public int createAdminReservationInfo(ReservationInfoDTO reservationInfo);
 	
 }

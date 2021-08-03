@@ -3,6 +3,7 @@
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <table class="table text-center">
 	<thead>
@@ -20,7 +21,7 @@
 			<fmt:formatDate value="${communityInfo.regdate}"
 				var="formattedRegDate" type="date" pattern="yyyy-MM-dd" />
 			<tr style="cursor:pointer;" onClick="location.href='<%=request.getContextPath()%>/communityInfo/detail/${communityInfo.id}'">
-				<th scope="row">${status.count}</th>
+				<th scope="row">${fn:length(communityInfoList) - status.index}</th>
 				<td class="text-start">${communityInfo.title}</td>
 				<td id="writer">${communityInfo.writer}</td>
 				<td id="date">${formattedRegDate}</td>

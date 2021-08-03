@@ -61,9 +61,9 @@
 				    <tr>
 				      <th scope="row">장소</th>
 				      	<td>
-					      	<select id='startTimeSelect' class="input-resize">
-					      	<c:forEach items="${reservationInfoList}" var="list">
-      							<option value="${list.spaceName}">${list.spaceName}</option>
+					      	<select id='spaceSelect' class="input-resize">
+					      	<c:forEach items="${spaceList}" var="spaceList">
+      							<option value="${spaceList.name}">${spaceList.name}</option>
     						</c:forEach>
 							</select>
 						</td>
@@ -160,46 +160,42 @@
                         
          	</div>
 	
-	</div>   
-         	
-	<!-- Footer-->
-	<jsp:include page="/WEB-INF/views/inc/footer.jsp"/>
-
-
-      <script>
+	</div>  
+	
+	<script>
+	/* reserve.jsp */
+	Date.prototype.addDays = function(days) {
+		var date = new Date(this.valueOf());
+		date.setDate(date.getDate() + days);
+		return date;
+	}
 		   
-		   Date.prototype.addDays = function(days) {
-			    var date = new Date(this.valueOf());
-			    date.setDate(date.getDate() + days);
-			    return date;
-		   }
-		   
-		   function DateFormat(date) {
-			    var year = date.getFullYear();
-			    var month = date.getMonth() + 1;
-			    month = month >= 10 ? month : '0' + month;
-			    var day = date.getDate();
-			    day = day >= 10 ? day : '0' + day;
-			    return [year, month, day].join('-');
-			}
-    
-	      var today =new Date();
-	      var endDate = new Date();
+	function DateFormat(date) {
+	    var year = date.getFullYear();
+	    var month = date.getMonth() + 1;
+	    month = month >= 10 ? month : '0' + month;
+	    var day = date.getDate();
+	    day = day >= 10 ? day : '0' + day;
+	    return [year, month, day].join('-');
+	}
+
+	var today =new Date();
+	var endDate = new Date();
 	      
-	      today=DateFormat(today);
+	today=DateFormat(today);
 	      
-	      endDate.setDate(endDate.getDate() + 7);
-		  endDate=DateFormat(endDate);
+	endDate.setDate(endDate.getDate() + 7);
+	endDate=DateFormat(endDate);
 		  
-	      //today = yyyy+'-'+mm+'-'+dd;
-	      document.getElementById("date").setAttribute("min", today);
+	//today = yyyy+'-'+mm+'-'+dd;
+	document.getElementById("date").setAttribute("min", today);
 	  
-		  //오늘 날짜부터 일주일까지
-	      document.getElementById("date").setAttribute("max", endDate);
+	//오늘 날짜부터 일주일까지
+	document.getElementById("date").setAttribute("max", endDate);
 		  
-		  document.getElementById("reservable").innerHTML=today+" ~ "+endDate;
+	document.getElementById("reservable").innerHTML=today+" ~ "+endDate;
 		  
-		  document.getElementById('date').value = new Date().toISOString().substring(0, 10);
+	document.getElementById('date').value = new Date().toISOString().substring(0, 10);
 		  
 		  
 	      /* 시작시간 구하기 */
@@ -220,7 +216,7 @@
 		  
 		  
 			/* 종료 시간 설정 */
-          function handleTimeLimit(e){
+	      function handleTimeLimit(e){
 			 const text = e.options[e.selectedIndex].text;
 			 var time = text.split(':');
 			 time[0]++;
@@ -238,11 +234,11 @@
 						+time[0]+':'
 						+time[1]
 						+"</option>";
-          }
+	      }
 			
 			
-          function clause(){
-        	  var checkBox = document.getElementById("checkbox");
+	      function clause(){
+	    	  var checkBox = document.getElementById("checkbox");
 			  var target = document.getElementById('reserve_button');
 	  
 			  if (checkBox.checked == true)
@@ -250,13 +246,10 @@
 			  else
 				  target.disabled = true;
 		  }
-      </script>   
-            
-            
-            
-
-		
-	
+	</script> 
+         	
+	<!-- Footer-->
+	<jsp:include page="/WEB-INF/views/inc/footer.jsp"/>
 
 	<!-- Bootstrap core JS-->
 	<script

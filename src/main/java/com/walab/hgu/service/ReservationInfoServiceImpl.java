@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.walab.hgu.DAO.ReservationInfoDAO;
+import com.walab.hgu.DTO.CommunityInfoDTO;
 import com.walab.hgu.DTO.ReservationInfoDTO;
 
 @Service
@@ -20,6 +21,13 @@ public class ReservationInfoServiceImpl implements ReservationInfoService{
 		List<ReservationInfoDTO> infoList = reservationInfoDAO.readReservationInfo();
 		
 		return infoList;
+		
+	}
+	
+	@Override
+	public int createAdminReservationInfo(ReservationInfoDTO reservationInfo) {
+
+		return reservationInfoDAO.createAdminReservationInfo(reservationInfo);
 		
 	}
 

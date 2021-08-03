@@ -1,7 +1,11 @@
 package com.walab.hgu.controller;
 
 import java.io.IOException;
+import java.sql.Time;
+import java.time.LocalDate;
+import java.sql.Date;
 import java.util.List;
+import java.util.TimeZone;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,9 +14,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.walab.hgu.DTO.ClubDTO;
+import com.walab.hgu.DTO.CommunityInfoDTO;
 import com.walab.hgu.DTO.ReservationInfoDTO;
 import com.walab.hgu.DTO.SettingDTO;
 import com.walab.hgu.DTO.UserDTO;
@@ -85,19 +92,32 @@ public class AdminController {
 			
 		return mv;
 	}
+
 	
-	@RequestMapping(value = "/favicon.ico", method = RequestMethod.GET)
-	public void favicon( HttpServletRequest request, HttpServletResponse reponse ) {
+	
+	@RequestMapping(value = "/adminReservation", method = RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView createAdminReservationInfo(ModelAndView mv,
+			@RequestParam(value="userId") int userId,
+			@RequestParam(value="startTime") Time startTime,
+			@RequestParam(value="endTime") Time endTime,
+			@RequestParam(value="purpose") String purpose,
+			@RequestParam(value="reservationDate") Date reservationDate) {
+		
+		ReservationInfoDTO info = new ReservationInfoDTO();
+		
+		info.setUserId(userId);
+		info.setStartTime(startTime);
+		info.setEndTime(endTime);
+		info.setPurpose(purpose);
+		info.setReservationDate(reservationDate);
+		
+		System.out.println(info.toString());
 
-		try {
-
-			reponse.sendRedirect("/resources/favicon.ico");
-
-		} catch (IOException e) {
-
-			e.printStackTrace();
-
-		}
-
+		reservationInfoService.createAdminReservationInfo(info);
+	
+		mv.setViewName("adminReservation");
+			
+		return mv;
 	}
 }

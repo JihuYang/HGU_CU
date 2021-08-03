@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.walab.hgu.DTO.CommunityInfoDTO;
 import com.walab.hgu.DTO.ReservationInfoDTO;
 
 @Repository
@@ -25,6 +26,14 @@ public class ReservationInfoDAOImpl implements ReservationInfoDAO {
 		Map<String, Object> reservationInfoParam = new HashMap<String, Object>();
 				
 		return sqlSession.selectList(namespace+".readReservationInfo", reservationInfoParam);
+	}
+	
+	@Override
+	public int createAdminReservationInfo(ReservationInfoDTO reservationInfo) {
+		
+		sqlSession.insert(namespace+".createAdminReservationInfo", reservationInfo);
+		
+		return 0;
 	}
 	
 	
