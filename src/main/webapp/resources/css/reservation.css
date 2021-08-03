@@ -99,6 +99,11 @@ a:link ,a:visited{
     border-radius:25px;
 }
 
+table td{
+	vertical-align: middle;
+	text-align:center;
+}
+
 #space-table{
     border: 1px solid #D0D0CE;
     width:98%;

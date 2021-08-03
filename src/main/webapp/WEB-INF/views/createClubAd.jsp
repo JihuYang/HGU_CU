@@ -47,7 +47,12 @@
 						<textarea class="form-control textarea justify-content-center" rows="13" id="content"></textarea>
 					</div>
 					<div class="mb-3">
-  						<input class="form-control file" type="file" id="originalUrl" multiple>
+						<p class="float-l">이미지 파일용</p>
+  						<input class="form-control file" type="file" id="originalUrl" accept="image/*" multiple>
+					</div>
+					<div class="mb-3">
+						<p class="float-l">첨부파일용</p>
+  						<input class="form-control file" type="file" id="fileOriginalUrl" multiple>
 					</div>
 					<div>
 						<a class="btn btn-primary back-btn bottom-btn" href="./" role="button">뒤로</a>

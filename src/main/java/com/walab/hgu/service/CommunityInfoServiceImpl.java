@@ -56,4 +56,10 @@ public class CommunityInfoServiceImpl implements CommunityInfoService {
 		
 	}
 
+	@Override
+	public int updateViewCount(int id) {
+		
+		return communityInfoDAO.updateViewCount(id);
+	}
+
 }

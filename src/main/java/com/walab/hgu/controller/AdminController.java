@@ -22,9 +22,11 @@ import com.walab.hgu.DTO.ClubDTO;
 import com.walab.hgu.DTO.CommunityInfoDTO;
 import com.walab.hgu.DTO.ReservationInfoDTO;
 import com.walab.hgu.DTO.SettingDTO;
+import com.walab.hgu.DTO.SpaceDTO;
 import com.walab.hgu.DTO.UserDTO;
 import com.walab.hgu.service.ReservationInfoService;
 import com.walab.hgu.service.SettingService;
+import com.walab.hgu.service.SpaceService;
 import com.walab.hgu.service.UserService;
 import com.walab.hgu.service.ClubService;
 
@@ -45,13 +47,18 @@ public class AdminController {
 	
 	@Autowired
 	ClubService clubService;
+	
+	@Autowired
+	SpaceService spaceService;
 
 	@RequestMapping(value = "/adminReservation", method = RequestMethod.GET)
 	public ModelAndView readReservationInfo(ModelAndView mv) {
 		
 		List<ReservationInfoDTO> reservationInfoList = reservationInfoService.readReservationInfo();
+		List<SpaceDTO> spaceList = spaceService.readSpace();
 		
-		mv.addObject("reservationInfoList", reservationInfoList); 
+		mv.addObject("reservationInfoList", reservationInfoList);
+		mv.addObject("spaceList", spaceList);
 		
 		System.out.println(mv);
 
@@ -99,6 +106,7 @@ public class AdminController {
 	@ResponseBody
 	public ModelAndView createAdminReservationInfo(ModelAndView mv,
 			@RequestParam(value="userId") int userId,
+			@RequestParam(value="spaceId") int spaceId,
 			@RequestParam(value="startTime") Time startTime,
 			@RequestParam(value="endTime") Time endTime,
 			@RequestParam(value="purpose") String purpose,
@@ -107,6 +115,7 @@ public class AdminController {
 		ReservationInfoDTO info = new ReservationInfoDTO();
 		
 		info.setUserId(userId);
+		info.setSpaceId(spaceId);
 		info.setStartTime(startTime);
 		info.setEndTime(endTime);
 		info.setPurpose(purpose);

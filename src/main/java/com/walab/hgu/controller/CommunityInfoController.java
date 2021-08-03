@@ -54,13 +54,14 @@ public class CommunityInfoController {
 	@RequestMapping(value = "/communityInfo/detail/{id}", method = RequestMethod.GET)
 	public ModelAndView readCommunityInfoDetail(@PathVariable int id, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView mv = new ModelAndView();
+		
+		communityInfoService.updateViewCount(id);
 
 		CommunityInfoDTO communityInfoDetail = communityInfoService.readCommunityInfoDetail(id);
 		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file");
 		
 		String fileName = communityInfoDetail.getOriginalUrl();
 		System.out.println("filename: " + fileName);
-		
 		
 //		File file = new File(saveDir + "/" + fileName);
 //		FileInputStream fis = null;

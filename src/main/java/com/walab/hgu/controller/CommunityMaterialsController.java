@@ -42,6 +42,8 @@ public class CommunityMaterialsController {
 	public ModelAndView readCommunityMaterialDetail(@PathVariable int id, HttpSession session, HttpServletRequest request ) {
 		ModelAndView mv = new ModelAndView();
 		
+		communityMaterialService.updateViewCount(id);
+		
 		List<CommunityMaterialDTO> communityMaterialDetail = communityMaterialService.readCommunityMaterialDetail(id);
 		
 		mv.addObject("communityMaterialDetail", communityMaterialDetail);

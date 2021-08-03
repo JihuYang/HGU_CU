@@ -17,8 +17,8 @@
  	<!-- 예약 추가(관리자) 쿼리 -->
 	<insert id="createAdminReservationInfo"
 		parameterType="com.walab.hgu.DTO.ReservationInfoDTO">
-		INSERT INTO hguclub.reservationInfo (userId, startTime, endTime, purpose, reservationDate) 
-		VALUES (#{userId}, #{startTime}, #{endTime}, #{purpose},#{reservationDate});
+		INSERT INTO hguclub.reservationInfo (userId, spaceId, startTime, endTime, purpose, reservationDate) 
+		VALUES (#{userId}, #{spaceId}, #{startTime}, #{endTime}, #{purpose},#{reservationDate});
 	</insert>
 
 </mapper>

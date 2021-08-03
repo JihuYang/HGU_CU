@@ -29,26 +29,17 @@ public class MyReservationController {
 	
 	@Autowired
 	ReservationInfoService reservationInfoService;
+	
+	@Autowired
 	SpaceService spaceService;
 
 	@RequestMapping(value = "/myReservation", method = RequestMethod.GET)
 	public ModelAndView readReservationInfo(ModelAndView mv) {
 
 		List<ReservationInfoDTO> reservationInfoList = reservationInfoService.readReservationInfo();
+		List<SpaceDTO> spaceList = spaceService.readSpace();
 		
 		mv.addObject("reservationInfoList", reservationInfoList);
-		
-		mv.setViewName("myReservation");
-		
-		System.out.println(mv);
-	
-		return mv;
-	}
-	
-	public ModelAndView readSpace(ModelAndView mv) {
-
-		List<SpaceDTO> spaceList = spaceService.readSpace();
-		
 		mv.addObject("spaceList", spaceList);
 		
 		mv.setViewName("myReservation");
@@ -57,19 +48,4 @@ public class MyReservationController {
 	
 		return mv;
 	}
-	/*
-	public ModelAndView readSpace(ModelAndView mv) {
-
-		List<SpaceDTO> spaceList = spaceService.readSpace();
-		
-		mv.addObject("spaceList", spaceList);
-		
-		mv.setViewName("myReservation");
-		
-		System.out.println(mv);
-	
-		return mv;
-	}
-	*/
-	
 }

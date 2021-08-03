@@ -46,11 +46,14 @@
 }
 
 .title-bar{
-	float: left;
     width: 50%;
     justify-content: center;
     display: inline-grid;
     margin-bottom: 0.7em;
+}
+.dp-it{
+	display: inline-table;
+
 }
 
 .title-bar p{

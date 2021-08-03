@@ -17,7 +17,12 @@
         <label for="user">사용 단체</label>
   			<input class="form-control form-control-sm" id="user">
   		<label for="etc">장소</label>
-  			<input class="form-control form-control-sm" id="space">
+  			<!-- <input class="form-control form-control-sm" id="space"> -->
+  			<select class='spaceSelect' id='spaceSelect'>
+		      	<c:forEach items="${spaceList}" var="spaceList">
+					<option value="${spaceList.name}">${spaceList.name}</option>
+				</c:forEach>
+			</select>
         <label for="user">대여 시간</label>
         <div style="display:flex;">
   				<input class="form-control date" placeholder="yyyy-mm-dd" id="reservationDate">

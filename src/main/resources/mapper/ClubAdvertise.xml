@@ -8,7 +8,7 @@
 		resultType="com.walab.hgu.DTO.ClubAdvertiseDTO"
 		parameterType="hashmap">
 		select  CA.id,title, content, originalUrl
-		from clubAdvertise CA LEFT JOIN clubAdvertiseFile cAF on CA.id = cAF.clubAdvertiseId
+		from clubAdvertise CA LEFT JOIN clubAdvertiseImage cAF on CA.id = cAF.clubAdvertiseId
 		ORDER BY CA.regdate DESC
 		<!-- SELECT CA.id,title, content, originalUrl FROM hguclub.clubAdvertise CA
     	LEFT JOIN clubAdvertiseFile cAF on CA.id = cAF.clubAdvertiseId WHERE cAF.order = 1 ORDER BY CA.regdate DESC -->
@@ -24,7 +24,7 @@
 	<select id="getClubAdImg" resultType="com.walab.hgu.DTO.ClubAdvertiseDTO"
 		parameterType="hashmap">
 			SELECT originalUrl
-			FROM clubAdvertiseFile RIGHT JOIN clubAdvertise cA on cA.id = clubAdvertiseFile.clubAdvertiseId
+			FROM clubAdvertiseImage RIGHT JOIN clubAdvertise cA on cA.id = clubAdvertiseImage.clubAdvertiseId
 			WHERE clubAdvertiseId = #{id} ORDER BY `order`
 	
 	</select>

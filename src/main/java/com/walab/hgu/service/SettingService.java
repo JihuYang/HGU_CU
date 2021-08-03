@@ -8,6 +8,4 @@ public interface SettingService {
 	
 	public List<SettingDTO> readSetting();
 
-	public int getFoundationYearEnd();
-
 }

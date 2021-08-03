@@ -44,6 +44,13 @@ public class CommunityMaterialDAOImpl implements CommunityMaterialDAO {
 		sqlSession.insert(namespace+".creatCommunityMaterial", communityMaterial);
 		
 		return 0;
+	}
+
+
+	@Override
+	public int updateViewCount(int id) {
+		sqlSession.update(namespace+".updateViewCount", id);
+		return 0;
 	}	
 	
 }

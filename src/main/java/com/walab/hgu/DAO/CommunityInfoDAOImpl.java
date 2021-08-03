@@ -63,5 +63,11 @@ public class CommunityInfoDAOImpl implements CommunityInfoDAO {
 		return 0;
 	}
 
+	@Override
+	public int updateViewCount(int id) {
+		sqlSession.update(namespace+".updateViewCount", id);
+		return 0;
+	}
+
 
 }

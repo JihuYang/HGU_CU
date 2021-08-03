@@ -44,7 +44,10 @@
 .title-bar{
 	float:left;
 }
-
+.float-l{
+	float:left;
+	margin-bottom:0;
+}
 .textarea{
 	background-color:white;
 	resize: none;

@@ -33,4 +33,7 @@
 		VALUES (#{userId}, #{title}, #{content});
 	</insert>
 
+	<update id="updateViewCount" parameterType="int">
+		update communityMaterial set viewCount = viewCount + 1 where id = #{id}
+	</update>
 </mapper>
