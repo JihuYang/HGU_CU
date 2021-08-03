@@ -1,19 +1,16 @@
 package com.walab.hgu.controller;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,7 +23,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.walab.hgu.DTO.CategoryDTO;
 import com.walab.hgu.DTO.ClubDTO;
-import com.walab.hgu.DTO.CommunityInfoDTO;
 import com.walab.hgu.service.ClubService;
 import com.walab.hgu.service.SettingService;
 import com.walab.hgu.service.UserService;
@@ -34,8 +30,6 @@ import com.walab.hgu.service.UserService;
 @Controller
 public class ClubIntroductionController {
 
-	private static final Logger logger = LoggerFactory.getLogger(ClubAdvertiseController.class);
-	
 	@Autowired
 	ClubService clubService;
 	@Autowired
@@ -43,7 +37,25 @@ public class ClubIntroductionController {
 	@Autowired
 	UserService userService;
 	
-	//동아리 홍보 페이지 컨트롤러 
+	//동아리 홍보 페이지 컨트롤러
+	@RequestMapping(value = "/clubIntroduction")
+	public ModelAndView clubIntroductionDefault(HttpSession session, HttpServletRequest request ) {
+		ModelAndView mv = new ModelAndView();
+		//System.out.println(categoryId);
+		List<ClubDTO> clubIntroList = clubService.getAllClubIntroduction();
+		//List<CategoryDTO> categoryNameList = clubService.getCategoryNameList();
+		//String categoryName = clubIntroList.get(0).getCategoryName();
+		
+		mv.addObject("clubIntroList", clubIntroList);
+		
+		mv.setViewName("clubIntroduction");
+		
+		System.out.println(mv);
+		
+		return mv;
+	}
+	
+	//동아리 소개 분과별 페이 
 	@RequestMapping(value = "/clubIntroduction/{categoryId}")
 	public ModelAndView clubIntroduction(@PathVariable int categoryId, HttpSession session, HttpServletRequest request ) {
 		ModelAndView mv = new ModelAndView();
@@ -95,13 +107,16 @@ public class ClubIntroductionController {
 	public ModelAndView createClubIntro(Locale locale, Model model) {
 		ModelAndView mv = new ModelAndView();
 		
-		int foundationYearEnd = settingService.getFoundationYearEnd();
+		//int foundationYearEnd = settingService.getFoundationYearEnd();
+		int recentYear = Calendar.getInstance().get(Calendar.YEAR);
+		List<CategoryDTO> categoryNameList = clubService.getCategoryNameList();
 		
 		List<Integer> foundationYearList = new ArrayList<Integer>();
-		for(int i=1995;i<=foundationYearEnd;i++) {
+		for(int i=1995;i<=recentYear;i++) {
 			foundationYearList.add(i);
 		}
 		mv.addObject("foundationYearList", foundationYearList);
+		mv.addObject("categoryNameList", categoryNameList);
 		mv.setViewName("createClubIntro");
 		 
 		System.out.println(mv);

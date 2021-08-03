@@ -72,6 +72,12 @@ public class ClubServiceImpl implements ClubService{
 		
 		return clubDAO.createClubSNS(sns);
 	}
+
+	@Override
+	public List<ClubDTO> getAllClubIntroduction() {
+		List<ClubDTO> clubIntroList = clubDAO.getAllClubIntroduction();
+		return clubIntroList;
+	}
 	
 	
 

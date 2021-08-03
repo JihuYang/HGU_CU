@@ -23,4 +23,6 @@ public interface ClubDAO {
 
 	public int createClubSNS(ClubDTO sns);
 
+	public List<ClubDTO> getAllClubIntroduction();
+
 }

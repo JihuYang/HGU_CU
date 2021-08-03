@@ -42,8 +42,15 @@
 			</div>
 			<!-- 소개글 내용쓰기 -->
 			<div class="col-sm-10 justify-content-md-center">
+				<div class="dp-it">
 					<div class="title-bar">
-						<p class="rows">동아리 분과  </p><input class="form-control title-input" type="text" id="categoryName">
+						<p class="rows">동아리 분과  </p><!-- <input class="form-control title-input" type="text" id="categoryName"> -->
+						<select class="form-select select-option" aria-label="Default select example">
+						  <option value="">--선택--</option>
+						  <c:forEach  items="${categoryNameList}" var="categoryNameList" varStatus="status">
+						  	<option value="${categoryNameList.categoryName}">${categoryNameList.categoryName}</option>
+						  </c:forEach>
+						</select>
 					</div>
 					<div class="title-bar">
 						<p class="rows">동아리 이름  </p><input class="form-control title-input" type="text" id="clubName">
@@ -53,13 +60,13 @@
 					</div>
 					<div class="title-bar">
 						<p class="rows select-bar">창립연도   </p>
-						<input class="form-control title-input" type="date" id="foundationDate">
-						<%-- <select class="form-select select-option" aria-label="Default select example">
+						<!-- <input class="form-control title-input" type="date" id="foundationDate"> -->
+						<select class="form-select select-option" aria-label="Default select example">
 						  <option value="">--선택--</option>
 						  <c:forEach  items="${foundationYearList}" var="foundationYearList" varStatus="status">
 						  	<option value="${foundationYearList}">${foundationYearList}</option>
 						  </c:forEach>
-						</select> --%>
+						</select>
 					</div>
 					<div class="title-bar">
 						<p class="rows">인스타그램 주소</p><input class="form-control title-input" type="text" id="instagramLink">
@@ -67,6 +74,7 @@
 					<div class="title-bar">
 						<p class="rows">페이스북 주소</p><input class="form-control title-input" type="text" id="facebookLink">
 					</div>
+				</div>
 					<div class="mb-3">
 						<textarea class="form-control textarea justify-content-center" rows="13" id="clubDescription"></textarea>
 					</div>

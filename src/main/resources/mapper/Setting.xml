@@ -7,10 +7,4 @@
 		SELECT * FROM setting;
  	</select>
 
-	
-	<select id="getFoundationYearEnd" resultType="Integer">
-		SELECT value
-		FROM setting
-		WHERE `key` = 'foundationYearEnd'
- 	</select>
 </mapper>

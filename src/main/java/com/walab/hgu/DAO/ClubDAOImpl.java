@@ -80,4 +80,10 @@ public class ClubDAOImpl implements ClubDAO{
 		sqlSession.insert(namespace+".createClubSNS", sns);
 		return 0;
 	}
+
+	@Override
+	public List<ClubDTO> getAllClubIntroduction() {
+		Map<String, Object> clubPreviewParam = new HashMap<String, Object>();
+		return sqlSession.selectList(namespace+".getAllClubIntroduction", clubPreviewParam);
+	}
 }

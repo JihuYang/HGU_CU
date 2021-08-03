@@ -16,7 +16,7 @@ function createClubIntro(){
 		success: function(data){	
 			console.log("동아리 소개 글쓰기 성공!!");
 			console.log("clubName: " + clubName);
-			location.href="/hgu";
+			location.href="/hgu/clubIntroduction";
 		}, 
 		error:function(request, status, error){
 			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
