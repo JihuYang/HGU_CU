@@ -20,7 +20,7 @@
 			varStatus="status">
 			<fmt:formatDate value="${communityInfo.regdate}"
 				var="formattedRegDate" type="date" pattern="yyyy-MM-dd" />
-			<tr style="cursor:pointer;" onClick="location.href='<%=request.getContextPath()%>/communityInfo/detail/${communityInfo.id}'">
+			<tr class="tr-hover" style="cursor:pointer;" onClick="location.href='<%=request.getContextPath()%>/communityInfo/detail/${communityInfo.id}'">
 				<th scope="row">${fn:length(communityInfoList) - status.index}</th>
 				<td class="text-start">${communityInfo.title}</td>
 				<td id="writer">${communityInfo.writer}</td>
