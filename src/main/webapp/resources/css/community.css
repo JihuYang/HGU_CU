@@ -218,6 +218,10 @@ tr{
 	border: 1px solid gray;
 }
 
+.fc-toolbar{
+	margin-bottom:15px;
+}
+
 /*detail 페이지*/
 .community-detail-title {
 	background-color: rgb(242, 242, 242);

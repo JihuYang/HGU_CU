@@ -22,7 +22,7 @@
 	</thead>
 	<tbody class="align-items-center p-4">
 		<c:forEach items="${reservationInfoList}" var="reservationList" varStatus="status">
-		<%-- <c:if test="${reservationList.person != null}"> --%>
+		<c:if test="${reservationList.person != null}">
 			<tr>
 			<fmt:formatDate value="${reservationList.startTime}"
 				var="formattedStartTime" type="date" pattern="hh:mm" />
@@ -41,7 +41,7 @@
 					<button type="button" class="btn btn-warning">삭제</button>
 				</td>
 			</tr>
-		<%-- </c:if> --%>
+		</c:if>
 		</c:forEach>
 
 	</tbody>
