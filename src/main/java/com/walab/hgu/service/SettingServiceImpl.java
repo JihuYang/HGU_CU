@@ -23,12 +23,4 @@ public class SettingServiceImpl implements SettingService{
 		
 	}
 
-	@Override
-	public int getFoundationYearEnd() {
-		
-		int foundationYearEnd = settingDAO.getFoundationYearEnd();
-		
-		return foundationYearEnd;
-	}
-
 }

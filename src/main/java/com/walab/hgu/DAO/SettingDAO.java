@@ -7,7 +7,4 @@ import com.walab.hgu.DTO.SettingDTO;
 public interface SettingDAO {
 		
 	public List<SettingDTO> readSetting();
-
-	public int getFoundationYearEnd();
-	
 }
