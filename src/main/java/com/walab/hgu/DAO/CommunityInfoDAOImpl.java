@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.walab.hgu.DTO.CommunityInfoDTO;
 import com.walab.hgu.DTO.FileDTO;
+import com.walab.hgu.DTO.PagingDTO;
 
 @Repository
 public class CommunityInfoDAOImpl implements CommunityInfoDAO {
@@ -21,11 +22,11 @@ public class CommunityInfoDAOImpl implements CommunityInfoDAO {
 	
 	
 	@Override
-	public List<CommunityInfoDTO> readCommunityInfo() {
+	public List<CommunityInfoDTO> readCommunityInfo(PagingDTO pagination) {
 		
-		Map<String, Object> infoList = new HashMap<String, Object>();
+		//Map<String, Object> infoList = new HashMap<String, Object>();
 				
-		return sqlSession.selectList(namespace+".readCommunityInfo", infoList);
+		return sqlSession.selectList(namespace+".readCommunityInfo", pagination);
 	}
 	
 	@Override
@@ -67,6 +68,12 @@ public class CommunityInfoDAOImpl implements CommunityInfoDAO {
 	public int updateViewCount(int id) {
 		sqlSession.update(namespace+".updateViewCount", id);
 		return 0;
+	}
+
+	@Override
+	public int countInfo() {
+		
+		return sqlSession.selectOne(namespace+".countInfo");
 	}
 
 

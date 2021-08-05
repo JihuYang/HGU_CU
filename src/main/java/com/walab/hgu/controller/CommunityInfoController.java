@@ -28,6 +28,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.walab.hgu.DTO.CommunityInfoDTO;
 import com.walab.hgu.DTO.FileDTO;
+import com.walab.hgu.DTO.PagingDTO;
 import com.walab.hgu.service.CommunityInfoService;
 
 /**
@@ -40,12 +41,22 @@ public class CommunityInfoController {
 	CommunityInfoService communityInfoService;
 
 	@RequestMapping(value = "/communityInfo", method = RequestMethod.GET)
-	public ModelAndView readCommunityInfo(ModelAndView mv) {
+	public ModelAndView readCommunityInfo(ModelAndView mv
+										, @RequestParam(required = false, defaultValue = "1") int page
+										, @RequestParam(required = false, defaultValue = "1") int range) {
+		
+		int listCnt = communityInfoService.countInfo();
+		
+		PagingDTO pagination = new PagingDTO();
+		pagination.pageInfo(page, range, listCnt);
 
-		List<CommunityInfoDTO> communityInfoList = communityInfoService.readCommunityInfo();
+		List<CommunityInfoDTO> communityInfoList = communityInfoService.readCommunityInfo(pagination);
 
+		mv.addObject("pagination", pagination);
 		mv.addObject("communityInfoList", communityInfoList);
-
+		
+		System.out.println(mv);
+		
 		mv.setViewName("communityInfo");
 
 		return mv;

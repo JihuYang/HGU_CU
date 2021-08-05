@@ -25,12 +25,20 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css"
 	rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
-<link href="<%=request.getContextPath()%>/resources/css/styles.css" rel="stylesheet" />
+<link href="<%=request.getContextPath()%>/resources/css/styles.css"
+	rel="stylesheet" />
 
 </head>
+<c:url var="communityInfoURL" value="/hgu/communityInfo">
+	<c:param name="page" value="${pagination.page}"/>
+
+	<c:param name="range" value="${pagination.range}"/>
+</c:url>
 <jsp:include page="/WEB-INF/views/inc/header.jsp" />
-<link href="<%=request.getContextPath()%>/resources/css/home.css" rel="stylesheet" />
-<link href="<%=request.getContextPath()%>/resources/css/community.css" rel="stylesheet" />
+<link href="<%=request.getContextPath()%>/resources/css/home.css"
+	rel="stylesheet" />
+<link href="<%=request.getContextPath()%>/resources/css/community.css"
+	rel="stylesheet" />
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <script src="https://kit.fontawesome.com/6333a60c65.js"></script>
 <body id="page-top">
@@ -48,7 +56,8 @@
 			<%@ include file="./ajaxContent/communityInfoList.jsp"%>
 
 			<div class="row justify-content-end">
-				<button class="btn btn-primary search-btn" onclick="location.href='<%=request.getContextPath()%>/communityInfo/write'">글쓰기</button>
+				<button class="btn btn-primary search-btn"
+					onclick="location.href='<%=request.getContextPath()%>/communityInfo/write'">글쓰기</button>
 			</div>
 		</div>
 		<div class="row h-auto align-items-center text-center">
@@ -65,10 +74,35 @@
 					<button class="btn btn-primary search-btn" type="submit">검색</button>
 				</div>
 			</form>
-			<nav>
+			<!-- Pagination -->
+			<nav id="paginationBox">
 				<ul class="pagination align-items-center justify-content-center">
-					<li class="page-item"><a class="page-link" href="#"
-						aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+					<c:if test="${pagination.prev}">
+						<li class="page-item">
+							<a class="page-link" href="#" onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')" aria-label="Previous">
+							<span aria-hidden="true">&laquo;</span>
+							<span class="sr-only">Previous</span>
+							</a>
+						</li>
+					</c:if>
+					
+					<c:forEach begin="${pagination.startPage}" end="${pagination.endPage}" var="idx">
+						<li class="page-item <c:out value="${pagination.page == idx ? 'active' : ''}"/> ">
+							<a class="page-link" href="#" onClick="fn_pagination('${idx}', '${pagination.range}', '${pagination.rangeSize}')"> 
+								${idx} 
+							</a>
+						</li>
+					</c:forEach>
+					
+					<c:if test="${pagination.next}">
+						<li class="page-item">
+							<a class="page-link" href="#" onClick="fn_next('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')" aria-label="Next">
+								<span aria-hidden="true">&raquo;</span>
+								<span class="sr-only">Next</span>
+							</a>
+						</li>
+					</c:if>
+					<!-- <li class="page-item"><a class="page-link" href="#" aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
 							<span class="sr-only">Previous</span>
 					</a></li>
 					<li class="page-item"><a class="page-link" href="#">1</a></li>
@@ -77,7 +111,7 @@
 					<li class="page-item"><a class="page-link" href="#"
 						aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
 							class="sr-only">Next</span>
-					</a></li>
+					</a></li> -->
 				</ul>
 			</nav>
 		</div>
@@ -85,10 +119,9 @@
 	</div>
 
 	<!-- Footer-->
-	<jsp:include page="/WEB-INF/views/inc/footer.jsp"/>
+	<jsp:include page="/WEB-INF/views/inc/footer.jsp" />
 	<!-- Bootstrap core JS-->
-	<script
-		src="<%=request.getContextPath()%>/resources/assets/js/pagenation.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/assets/js/community.js"></script>
 
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
