@@ -13,7 +13,6 @@ import com.walab.hgu.service.ClubService;
 import com.walab.hgu.service.CommunityInfoService;
 import com.walab.hgu.DTO.CategoryDTO;
 import com.walab.hgu.DTO.CommunityInfoDTO;
-import com.walab.hgu.DTO.PagingDTO;
 
 /**
  * Handles requests for the application home page.
@@ -55,19 +54,25 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public ModelAndView searchHome(ModelAndView mv, @RequestParam(required = false, defaultValue = "1") int page,
-			@RequestParam(required = false, defaultValue = "1") int range) {
+	public ModelAndView searchHome(ModelAndView mv, @RequestParam("num") int num) {
+		//ModelAndView mv = new ModelAndView();
+		
+		//게시물 총 갯수 
+		int count = communityInfoService.countInfo();
+		
+		//한 페이지에 출력할 게시물 갯수 
+		int postNum = 10;
+		//하단 페이징 번호
+		int pageNum = (int)Math.ceil((double)count/postNum);
+		
+		int displayPost = (num - 1) * postNum;
 
-		int listCnt = communityInfoService.countInfo();
-
-		PagingDTO pagination = new PagingDTO();
-		pagination.pageInfo(page, range, listCnt);
-
-		List<CommunityInfoDTO> communityInfoList = communityInfoService.readCommunityInfo(pagination);
-
-		mv.addObject("pagination", pagination);
+		List<CommunityInfoDTO> communityInfoList = communityInfoService.readCommunityInfo(displayPost,postNum);
+		
 		mv.addObject("communityInfoList", communityInfoList);
-
+		mv.addObject("pageNum", pageNum);
+		
+		System.out.println(mv);
 		mv.setViewName("homeSearch");
 
 		return mv;

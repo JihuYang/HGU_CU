@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import com.walab.hgu.DAO.CommunityInfoDAO;
 import com.walab.hgu.DTO.CommunityInfoDTO;
 import com.walab.hgu.DTO.FileDTO;
-import com.walab.hgu.DTO.PagingDTO;
 
 @Service
 public class CommunityInfoServiceImpl implements CommunityInfoService {
@@ -17,9 +16,9 @@ public class CommunityInfoServiceImpl implements CommunityInfoService {
 	CommunityInfoDAO communityInfoDAO;
 
 	@Override
-	public List<CommunityInfoDTO> readCommunityInfo(PagingDTO pagination) {
+	public List<CommunityInfoDTO> readCommunityInfo(int displayPost, int postNum) {
 
-		List<CommunityInfoDTO> infoList = communityInfoDAO.readCommunityInfo(pagination);
+		List<CommunityInfoDTO> infoList = communityInfoDAO.readCommunityInfo(displayPost,postNum);
 
 		return infoList;
 

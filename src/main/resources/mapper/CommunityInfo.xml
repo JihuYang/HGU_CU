@@ -5,12 +5,13 @@
 
 	<select id="readCommunityInfo"
 		resultType="com.walab.hgu.DTO.CommunityInfoDTO"
-		parameterType="com.walab.hgu.DTO.PagingDTO">
+		parameterType="hashMap">
 		SELECT c.id, name as writer, title, c.regdate, viewCount
 		FROM hguclub.communityInfo as c
 		INNER JOIN hguclub.user as u ON
 		c.userId = u.id
-		ORDER BY c.regdate DESC LIMIT #{startList}, #{listSize}
+		ORDER BY c.regdate DESC 
+		LIMIT #{displayPost}, #{postNum}
 	</select>
 
 	<select id="readCommunityInfoDetail"

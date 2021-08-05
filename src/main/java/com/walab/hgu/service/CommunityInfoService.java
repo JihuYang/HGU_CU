@@ -4,11 +4,9 @@ import java.util.List;
 
 import com.walab.hgu.DTO.CommunityInfoDTO;
 import com.walab.hgu.DTO.FileDTO;
-import com.walab.hgu.DTO.PagingDTO;
-
 public interface CommunityInfoService {
 	
-	public List<CommunityInfoDTO> readCommunityInfo(PagingDTO pagination);
+	public List<CommunityInfoDTO> readCommunityInfo(int displayPost, int postNum);
 	public CommunityInfoDTO readCommunityInfoDetail(int id);
 	public int readRecentCommunityInfo();
 	public int createCommunityInfo(CommunityInfoDTO communityInfo);

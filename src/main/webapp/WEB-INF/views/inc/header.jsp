@@ -66,9 +66,9 @@
 				<li class="nav-item nav-bottom-border mx-2"><a class="nav-link" onclick="location.href='<%=request.getContextPath()%>/reservation'">시설 예약</a></li>
 				<li class="nav-item nav-bottom-border mx-2 dropdown" id="dropdown-display-community"><a
 					class="nav-link dropdown-toggle" 
-					data-toggle="dropdown" onclick = "location.href='<%=request.getContextPath()%>/communityInfo'">커뮤니티</a>
+					data-toggle="dropdown" onclick = "location.href='<%=request.getContextPath()%>/communityInfo?num=1'">커뮤니티</a>
 					<ul class="dropdown-menu dropdown-menu-community" id="dropdown-content-community">
-						<li><a class="dropdown-item" onclick = "location.href='<%=request.getContextPath()%>/communityInfo'">공지사항</a></li>
+						<li><a class="dropdown-item" onclick = "location.href='<%=request.getContextPath()%>/communityInfo?num=1'">공지사항</a></li>
 						<li><a class="dropdown-item" onclick = "location.href='<%=request.getContextPath()%>/communityMaterials'">자료실</a></li> 
 						<li><a class="dropdown-item" onclick = "location.href='<%=request.getContextPath()%>/communityEvent'">행사일정</a></li>   
 						<li><a class="dropdown-item" onclick = "location.href='<%=request.getContextPath()%>/communityComplaints'">민원</a></li> 

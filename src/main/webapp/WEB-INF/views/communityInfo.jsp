@@ -77,30 +77,28 @@
 			<!-- Pagination -->
 			<nav id="paginationBox">
 				<ul class="pagination align-items-center justify-content-center">
-					<c:if test="${pagination.prev}">
-						<li class="page-item">
-							<a class="page-link" href="#" onClick="fn_prev('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')" aria-label="Previous">
-							<span aria-hidden="true">&laquo;</span>
-							<span class="sr-only">Previous</span>
-							</a>
-						</li>
+					<c:if test="${prev}">
+						<li class="page-item"><a class="page-link" href="<%=request.getContextPath()%>/communityInfo?num=${startPageNum - 1}"
+							aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+								<span class="sr-only">Previous</span>
+						</a></li>
 					</c:if>
 					
-					<c:forEach begin="${pagination.startPage}" end="${pagination.endPage}" var="idx">
-						<li class="page-item <c:out value="${pagination.page == idx ? 'active' : ''}"/> ">
-							<a class="page-link" href="#" onClick="fn_pagination('${idx}', '${pagination.range}', '${pagination.rangeSize}')"> 
-								${idx} 
-							</a>
-						</li>
-					</c:forEach>
-					
-					<c:if test="${pagination.next}">
-						<li class="page-item">
-							<a class="page-link" href="#" onClick="fn_next('${pagination.page}', '${pagination.range}', '${pagination.rangeSize}')" aria-label="Next">
-								<span aria-hidden="true">&raquo;</span>
-								<span class="sr-only">Next</span>
-							</a>
-						</li>
+					 <c:forEach begin="${startPageNum}" end="${endPageNum}" var="num">
+					 	<c:if test="${selected != num}">
+					 		<li class="page-item"><a class="page-link" href="<%=request.getContextPath()%>/communityInfo?num=${num}">${num}</a></li>
+					 	</c:if>
+					 	
+					 	<c:if test="${selected == num}">
+					 		<li class="page-item active"><a class="page-link" href="#">${num}</a></li>
+					 	</c:if>
+ 					</c:forEach>
+ 					
+ 					<c:if test="${next}">
+	 					<li class="page-item"><a class="page-link"  href="<%=request.getContextPath()%>/communityInfo?num=${endPageNum + 1}"
+							aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
+								class="sr-only">Next</span>
+						</a></li>
 					</c:if>
 					<!-- <li class="page-item"><a class="page-link" href="#" aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
 							<span class="sr-only">Previous</span>
