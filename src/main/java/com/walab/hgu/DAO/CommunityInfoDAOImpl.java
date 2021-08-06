@@ -21,9 +21,11 @@ public class CommunityInfoDAOImpl implements CommunityInfoDAO {
 	
 	
 	@Override
-	public List<CommunityInfoDTO> readCommunityInfo() {
+	public List<CommunityInfoDTO> readCommunityInfo(int displayPost, int postNum) {
 		
 		Map<String, Object> infoList = new HashMap<String, Object>();
+		infoList.put("displayPost", displayPost);
+		infoList.put("postNum", postNum);
 				
 		return sqlSession.selectList(namespace+".readCommunityInfo", infoList);
 	}
@@ -67,6 +69,12 @@ public class CommunityInfoDAOImpl implements CommunityInfoDAO {
 	public int updateViewCount(int id) {
 		sqlSession.update(namespace+".updateViewCount", id);
 		return 0;
+	}
+
+	@Override
+	public int countInfo() {
+		
+		return sqlSession.selectOne(namespace+".countInfo");
 	}
 
 
