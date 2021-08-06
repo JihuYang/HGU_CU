@@ -13,9 +13,9 @@
 		<tr class="tr-border">
 			<th scope="col" class="username col-2"><h5>대여자 이름</h5></th>
 			<th scope="col" class="contact col-1"><h5>사용단체</h5></th>
-			<th scope="col" class="reservation-space col-1"><h5>장소</h5></th>
-			<th scope="col" class="time col-1"><h5>대여시간</h5></th>
-			<th scope="col" class="purpose col-2"><h5>사용목적</h5></th>
+			<th scope="col" class="reservatin-space col-1"><h5>장소</h5></th>
+			<th scope="col" class="time col-2"><h5>대여시간</h5></th>
+			<th scope="col" class="purpose col-1"><h5>사용목적</h5></th>
 			<th scope="col" class="email col-2"><h5>연락처(이메일)</h5></th>
 			<th scope="col" class="manage col-2"><h5>관리</h5></th>
 		</tr>
@@ -25,16 +25,19 @@
 		<c:if test="${reservationList.person != null}">
 			<tr>
 			<fmt:formatDate value="${reservationList.startTime}"
-				var="formattedStartTime" type="date" pattern="hh:mm" />
+				var="formattedStartTime" type="date" pattern="H:mm" />
 			<fmt:formatDate value="${reservationList.endTime}"
-				var="formattedEndTime" type="date" pattern="hh:mm" /> 
+				var="formattedEndTime" type="date" pattern="H:mm" /> 
 				<td id="username${status.count}" class="username">${reservationList.person}</td>
 				<td id="contact${status.count}" class="contact"></td>
 				<td id="space${status.count}" class="reservation-space">${reservationList.spaceName}</td>	
-				<td id="time${status.count}" class="time">${formattedStartTime} <br>~ ${formattedEndTime}
+				<td id="time${status.count}" class="time">
+					<span id='reservationDate${status.count}'>${reservationList.reservationDate}</span>
+					<br><span id='startTime${status.count}'>${formattedStartTime}</span> ~ 
+					<span id='endTime${status.count}'>${formattedEndTime}</span>
 				</td>
 				<td id="purpose${status.count}" class="purpose">${reservationList.purpose}</td>
-				<td id="email${status.count}" class="email">${reservationList.phone} ${reservationList.email} </td>
+				<td><span id="phone${status.count}">${reservationList.phone}</span> <span id="email${status.count}">${reservationList.email}</span> </td>
 				<td id="manage${status.count}" class="manage">
 					<button type="button" class="btn btn-warning" id="${status.count}"
 					onclick="editBtn(this.id)"data-toggle="modal" data-target="#editModal${status.count}">수정</button>
@@ -46,19 +49,3 @@
 
 	</tbody>
 </table>
-
-<script>
-	function editBtn(clickedId){
-		/* var name = "username"+clickedId; *//* 
-		var name = ${reservationInfoList[count].person}; */
-		var name = '${reservationInfoList.get(clicked).person}';
-		
-		$('#editModal'+clickedId).modal('show');
-		$('#modal-user'+clickedId).val(name);	
-	}
-
-	$('.date').datepicker({
-		format: 'yyyy-mm-dd'
-	});
-
-</script>

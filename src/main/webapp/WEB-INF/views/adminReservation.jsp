@@ -65,8 +65,6 @@
 			  <button class="btn btn-primary search-btn justify-content-end align-items-center" data-toggle="modal" id="openModalBtn" data-target="#addModal">추가</button>
 		</div>
 		
-		<!-- Modal -->
-		<%@ include file="./ajaxContent/adminReservationModal.jsp"%>
 
 		<div class="row h-auto align-items-center justify-content-center text-center">
 			<!-- 예약 리스트  -->
