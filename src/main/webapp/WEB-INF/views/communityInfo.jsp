@@ -77,14 +77,14 @@
 			<!-- Pagination -->
 			<nav id="paginationBox">
 				<ul class="pagination align-items-center justify-content-center">
-					<c:if test="${prev}">
-						<li class="page-item"><a class="page-link" href="<%=request.getContextPath()%>/communityInfo?num=${startPageNum - 1}"
+					<c:if test="${page.prev}">
+						<li class="page-item"><a class="page-link" href="<%=request.getContextPath()%>/communityInfo?num=${page.startPageNum - 1}"
 							aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
 								<span class="sr-only">Previous</span>
 						</a></li>
 					</c:if>
 					
-					 <c:forEach begin="${startPageNum}" end="${endPageNum}" var="num">
+					 <c:forEach begin="${page.startPageNum}" end="${page.endPageNum}" var="num">
 					 	<c:if test="${selected != num}">
 					 		<li class="page-item"><a class="page-link" href="<%=request.getContextPath()%>/communityInfo?num=${num}">${num}</a></li>
 					 	</c:if>
@@ -94,8 +94,8 @@
 					 	</c:if>
  					</c:forEach>
  					
- 					<c:if test="${next}">
-	 					<li class="page-item"><a class="page-link"  href="<%=request.getContextPath()%>/communityInfo?num=${endPageNum + 1}"
+ 					<c:if test="${page.next}">
+	 					<li class="page-item"><a class="page-link"  href="<%=request.getContextPath()%>/communityInfo?num=${page.endPageNum + 1}"
 							aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
 								class="sr-only">Next</span>
 						</a></li>
