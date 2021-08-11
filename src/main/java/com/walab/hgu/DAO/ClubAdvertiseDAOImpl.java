@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.walab.hgu.DTO.ClubAdvertiseDTO;
+import com.walab.hgu.DTO.FileDTO;
 
 @Repository
 public class ClubAdvertiseDAOImpl implements ClubAdvertiseDAO{
@@ -47,6 +48,15 @@ public class ClubAdvertiseDAOImpl implements ClubAdvertiseDAO{
 		
 		return sqlSession.selectList(namespace+".getClubAdImg", clubAdImgList);
 	}
+	
+	@Override
+	public int readRecentClubAd() {
+		
+		Map<String, Object> recentId = new HashMap<String, Object>();
+
+		return sqlSession.selectOne(namespace+".readRecentClubAd", recentId);
+
+	}
 
 
 	@Override
@@ -54,6 +64,14 @@ public class ClubAdvertiseDAOImpl implements ClubAdvertiseDAO{
 		
 		 sqlSession.insert(namespace+".createClubAd", info);
 		
+		return 0;
+	}
+	
+	@Override
+	public int createClubAdFile(FileDTO clubAdFile) {
+		
+		sqlSession.insert(namespace+".createClubAdFile", clubAdFile);
+
 		return 0;
 	}
 }

@@ -3,6 +3,7 @@ package com.walab.hgu.DAO;
 import java.util.List;
 
 import com.walab.hgu.DTO.ClubAdvertiseDTO;
+import com.walab.hgu.DTO.FileDTO;
 
 public interface ClubAdvertiseDAO {
 	
@@ -11,6 +12,10 @@ public interface ClubAdvertiseDAO {
 	public List<ClubAdvertiseDTO> readClubAdvertiseDetail(int id);
 
 	public List<ClubAdvertiseDTO> getClubAdImg(int id);
+	
+	public int readRecentClubAd();
 
 	public int createClubAd(ClubAdvertiseDTO info);
+	
+	public int createClubAdFile(FileDTO clubAdFile);
 }
