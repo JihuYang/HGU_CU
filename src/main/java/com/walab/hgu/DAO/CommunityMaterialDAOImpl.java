@@ -21,9 +21,11 @@ public class CommunityMaterialDAOImpl implements CommunityMaterialDAO {
 	
 	
 	@Override
-	public List<CommunityMaterialDTO> readCommunityMaterial() {
+	public List<CommunityMaterialDTO> readCommunityMaterial(int displayPost, int postNum) {
 		
 		Map<String, Object> communityMaterialParam = new HashMap<String, Object>();
+		communityMaterialParam.put("displayPost", displayPost);
+		communityMaterialParam.put("postNum", postNum);
 				
 		return sqlSession.selectList(namespace+".readCommunityMaterial", communityMaterialParam);
 	}
@@ -51,6 +53,13 @@ public class CommunityMaterialDAOImpl implements CommunityMaterialDAO {
 	public int updateViewCount(int id) {
 		sqlSession.update(namespace+".updateViewCount", id);
 		return 0;
+	}
+
+
+	@Override
+	public int countInfo() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace+".countInfo");
 	}	
 	
 }

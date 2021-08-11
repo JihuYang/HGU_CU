@@ -10,7 +10,8 @@
 		FROM hguclub.communityMaterial as c
 		INNER JOIN hguclub.user as u ON
 		c.userId = u.id
-		ORDER BY c.regdate DESC;
+		ORDER BY c.regdate DESC
+		LIMIT #{displayPost}, #{postNum}
 	</select>
 
 	<select id="readCommunityMaterialDetail"
@@ -23,6 +24,11 @@
 		u,hguclub.communityMaterialFile as cMF
 		WHERE cM.userId = u.id and cM.id
 		= #{id} LIMIT 1
+	</select>
+	
+	<select id="countInfo" resultType="int">
+		SELECT COUNT(*) as listCnt
+		FROM communityMaterial
 	</select>
 
 	<!-- 커뮤니티 자료실 글 작성 쿼리 -->

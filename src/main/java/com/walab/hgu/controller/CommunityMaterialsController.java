@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.walab.hgu.DTO.CommunityMaterialDTO;
+import com.walab.hgu.DTO.Page;
 import com.walab.hgu.service.CommunityMaterialService;
 
 /**
@@ -27,11 +28,17 @@ public class CommunityMaterialsController {
 	CommunityMaterialService communityMaterialService;
 
 	@RequestMapping(value = "/communityMaterials", method = RequestMethod.GET)
-	public ModelAndView readCommunityMaterial(ModelAndView mv) {
+	public ModelAndView readCommunityMaterial(ModelAndView mv, @RequestParam("num") int num) {
+		
+		Page page = new Page();
+		page.setNum(num);
+		page.setCount(communityMaterialService.countInfo());
 
-		List<CommunityMaterialDTO> communityMaterialList = communityMaterialService.readCommunityMaterial();
+		List<CommunityMaterialDTO> communityMaterialList = communityMaterialService.readCommunityMaterial(page.getDisplayPost(),page.getPostNum());
 		
 		mv.addObject("communityMaterialList", communityMaterialList);
+		mv.addObject("page", page);
+		mv.addObject("selected", num);
 		
 		mv.setViewName("communityMaterials");
 	

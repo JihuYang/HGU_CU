@@ -29,11 +29,6 @@
 	rel="stylesheet" />
 
 </head>
-<c:url var="communityInfoURL" value="/hgu/communityInfo">
-	<c:param name="page" value="${pagination.page}"/>
-
-	<c:param name="range" value="${pagination.range}"/>
-</c:url>
 <jsp:include page="/WEB-INF/views/inc/header.jsp" />
 <link href="<%=request.getContextPath()%>/resources/css/home.css"
 	rel="stylesheet" />
@@ -100,16 +95,6 @@
 								class="sr-only">Next</span>
 						</a></li>
 					</c:if>
-					<!-- <li class="page-item"><a class="page-link" href="#" aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-							<span class="sr-only">Previous</span>
-					</a></li>
-					<li class="page-item"><a class="page-link" href="#">1</a></li>
-					<li class="page-item"><a class="page-link" href="#">2</a></li>
-					<li class="page-item"><a class="page-link" href="#">3</a></li>
-					<li class="page-item"><a class="page-link" href="#"
-						aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
-							class="sr-only">Next</span>
-					</a></li> -->
 				</ul>
 			</nav>
 		</div>

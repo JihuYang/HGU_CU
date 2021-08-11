@@ -69,7 +69,7 @@
 					data-toggle="dropdown" onclick = "location.href='<%=request.getContextPath()%>/communityInfo?num=1'">커뮤니티</a>
 					<ul class="dropdown-menu dropdown-menu-community" id="dropdown-content-community">
 						<li><a class="dropdown-item" onclick = "location.href='<%=request.getContextPath()%>/communityInfo?num=1'">공지사항</a></li>
-						<li><a class="dropdown-item" onclick = "location.href='<%=request.getContextPath()%>/communityMaterials'">자료실</a></li> 
+						<li><a class="dropdown-item" onclick = "location.href='<%=request.getContextPath()%>/communityMaterials?num=1'">자료실</a></li> 
 						<li><a class="dropdown-item" onclick = "location.href='<%=request.getContextPath()%>/communityEvent'">행사일정</a></li>   
 						<li><a class="dropdown-item" onclick = "location.href='<%=request.getContextPath()%>/communityComplaints'">민원</a></li> 
 					</ul></li>	
