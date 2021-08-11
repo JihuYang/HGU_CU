@@ -206,7 +206,7 @@ public class CommunityInfoController {
 		System.out.println(saveDir);
 
 
-		mv.setViewName("redirect:/communityInfo");
+		mv.setViewName("redirect://communityInfo?num=1");
 
 		return mv;
 	}
@@ -233,15 +233,11 @@ public class CommunityInfoController {
 		info.setFile(file);
 		
 		communityInfoService.updateCommunityInfo(info);
-		
-		int recentId = communityInfoService.readRecentCommunityInfo();
-		
-		System.out.println(recentId);
 	
-		infoFile.setCommunityInfoId(recentId);
+		infoFile.setCommunityInfoId(id);
 		infoFile.setOriginalUrl(originalUrl);
 		
-		//communityInfoService.creatCommunityInfoFile(infoFile);
+		communityInfoService.updateCommunityInfoFile(infoFile);
 
 		System.out.println(info.toString());
 		System.out.println(infoFile.toString());

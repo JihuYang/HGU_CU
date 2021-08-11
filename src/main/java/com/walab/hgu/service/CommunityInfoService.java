@@ -12,6 +12,7 @@ public interface CommunityInfoService {
 	public int createCommunityInfo(CommunityInfoDTO communityInfo);
 	public int createCommunityInfoFile(FileDTO communityInfoFile);
 	public int updateCommunityInfo(CommunityInfoDTO communityInfo);
+	public int updateCommunityInfoFile(FileDTO communityInfoFile);
 	public int updateViewCount(int id);
 	public int countInfo();
 
