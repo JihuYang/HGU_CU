@@ -70,16 +70,21 @@
 					</tr>
 					<tr>
 						<th scope="col" class="col-3 text-center file py-4">첨부파일</th>
-						<th scope="col" class="col-7 text-start px-3 py-4"><a href="/hgu/communityInfo/detail/${communityInfoDetail.id}/filedownload">${communityInfoDetail.originalUrl}</a></th>
+						<th scope="col" class="col-7 text-start px-3 py-4"><a
+							href="/hgu/communityInfo/detail/${communityInfoDetail.id}/filedownload">${communityInfoDetail.originalUrl}</a></th>
 					</tr>
 				</tbody>
 			</table>
 
 			<div class="row justify-content-start mt-4 list-btn">
-				<button class="btn btn-primary search-btn list-btn" onclick="location.href='<%=request.getContextPath()%>/communityInfo'">목록</button>
+				<button class="btn btn-primary search-btn list-btn"
+					onclick = "location.href='<%=request.getContextPath()%>/communityInfo?num=1'">목록</button>
+				<button class="btn btn-primary search-btn list-btn"
+					onclick="location.href='<%=request.getContextPath()%>/communityInfo/update/${communityInfoDetail.id}'">수정</button>
+				<button class="btn btn-primary search-btn list-btn"
+					onclick="location.href='<%=request.getContextPath()%>/communityInfo'">삭제</button>
 			</div>
 		</div>
-
 	</div>
 
 	<!-- Footer-->

@@ -147,7 +147,29 @@ public class CommunityInfoController {
 
 		return mv;
 	}
+	
+	@RequestMapping(value = "/communityInfo/update/{id}", method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView updateCommunityInfo(@PathVariable int id, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
+		ModelAndView mv = new ModelAndView();
+		
+		communityInfoService.updateViewCount(id);
 
+		CommunityInfoDTO communityInfoDetail = communityInfoService.readCommunityInfoDetail(id);
+		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file");
+		
+		String fileName = communityInfoDetail.getOriginalUrl();
+		System.out.println("filename: " + fileName);
+		
+		mv.addObject("communityInfoDetail", communityInfoDetail);
+
+		System.out.println(mv);
+
+
+		mv.setViewName("updateCommunityInfo");
+
+		return mv;
+	}
+	
 	@RequestMapping(value = "/communityInfo/write/create", method = RequestMethod.POST)
 	@ResponseBody
 	public ModelAndView createCommunityInfo(ModelAndView mv, MultipartHttpServletRequest request, MultipartFile file) {
