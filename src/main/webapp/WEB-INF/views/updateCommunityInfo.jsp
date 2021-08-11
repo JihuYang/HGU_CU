@@ -45,12 +45,13 @@
 
 		<div class="justify-content-md-center align-items-center">
 			<form method="POST" enctype="multipart/form-data" id="uploadForm"
-				action="<%=request.getContextPath()%>/communityInfo/write/create">
+				action="<%=request.getContextPath()%>/communityInfo/write/update">
 				<input id="userId" name="userId" value='1' style="display: none;"></input>
+				<input id="id" name="id" value='${communityInfoDetail.id}' style="display: none;"></input>	
 				<div class="title-bar">
 					<p class="rows title-bold">제목</p>
 					<input class="form-control title-input" type="text" id="title"
-						name="title" value = "${communityInfoDetail.title}">
+						name="title" value="${communityInfoDetail.title}">
 				</div>
 				<div class="mb-3">
 					<textarea class="form-control textarea justify-content-center"

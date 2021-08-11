@@ -58,9 +58,17 @@ public class CommunityInfoDAOImpl implements CommunityInfoDAO {
 	}
 	
 	@Override
-	public int creatCommunityInfoFile(FileDTO communityInfoFile) {
+	public int createCommunityInfoFile(FileDTO communityInfoFile) {
 		
-		sqlSession.insert(namespace+".creatCommunityInfoFile", communityInfoFile);
+		sqlSession.insert(namespace+".createCommunityInfoFile", communityInfoFile);
+
+		return 0;
+	}
+	
+	@Override
+	public int updateCommunityInfo(CommunityInfoDTO communityInfo) {
+		
+		sqlSession.update(namespace+".updateCommunityInfo", communityInfo);
 
 		return 0;
 	}
