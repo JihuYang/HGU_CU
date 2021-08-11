@@ -29,7 +29,9 @@ public class Page {
 	public int getPostNum() {
 		return postNum;
 	}
-	
+	public void setPostNum(int postNum) {
+		this.postNum = postNum;
+	}
 	public int getPageNum() {
 		return pageNum;
 	}

@@ -73,7 +73,7 @@
 						<li><a class="dropdown-item" onclick = "location.href='<%=request.getContextPath()%>/communityEvent'">행사일정</a></li>   
 						<li><a class="dropdown-item" onclick = "location.href='<%=request.getContextPath()%>/communityComplaints'">민원</a></li> 
 					</ul></li>	
-				<li class="nav-item nav-bottom-border mx-2"><a class="nav-link" onclick="location.href='<%=request.getContextPath()%>/clubAdvertise'">동아리 홍보</a></li>
+				<li class="nav-item nav-bottom-border mx-2"><a class="nav-link" onclick="location.href='<%=request.getContextPath()%>/clubAdvertise?num=1'">동아리 홍보</a></li>
 				</ul>
 				</div>
 				<div class="justify-content-md-end">
