@@ -18,7 +18,7 @@ public class CommunityInfoServiceImpl implements CommunityInfoService {
 	@Override
 	public List<CommunityInfoDTO> readCommunityInfo(int displayPost, int postNum) {
 
-		List<CommunityInfoDTO> infoList = communityInfoDAO.readCommunityInfo(displayPost,postNum);
+		List<CommunityInfoDTO> infoList = communityInfoDAO.readCommunityInfo(displayPost, postNum);
 
 		return infoList;
 
@@ -32,7 +32,7 @@ public class CommunityInfoServiceImpl implements CommunityInfoService {
 		return infoDetailList;
 
 	}
-	
+
 	@Override
 	public int readRecentCommunityInfo() {
 
@@ -46,19 +46,25 @@ public class CommunityInfoServiceImpl implements CommunityInfoService {
 	public int createCommunityInfo(CommunityInfoDTO communityInfo) {
 
 		return communityInfoDAO.createCommunityInfo(communityInfo);
-		
-	}
-	
-	@Override
-	public int creatCommunityInfoFile(FileDTO communityInfoFile) {
 
-		return communityInfoDAO.creatCommunityInfoFile(communityInfoFile);
-		
+	}
+
+	@Override
+	public int createCommunityInfoFile(FileDTO communityInfoFile) {
+
+		return communityInfoDAO.createCommunityInfoFile(communityInfoFile);
+
+	}
+
+	@Override
+	public int updateCommunityInfo(CommunityInfoDTO communityInfo) {
+
+		return communityInfoDAO.updateCommunityInfo(communityInfo);
 	}
 
 	@Override
 	public int updateViewCount(int id) {
-		
+
 		return communityInfoDAO.updateViewCount(id);
 	}
 

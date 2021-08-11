@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.walab.hgu.DTO.CategoryDTO;
 import com.walab.hgu.DTO.ClubDTO;
+import com.walab.hgu.DTO.FileDTO;
 
 public interface ClubDAO {
 	
@@ -24,5 +25,6 @@ public interface ClubDAO {
 	public int createClubSNS(ClubDTO sns);
 
 	public List<ClubDTO> getAllClubIntroduction();
+	
 
 }

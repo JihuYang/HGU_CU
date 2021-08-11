@@ -40,24 +40,29 @@
 			</div>
 			<!-- 홍보글 테이블 -->
 			<div class="col-sm-10 justify-content-md-center">
+			<form method="POST" enctype="multipart/form-data" id="uploadForm"
+				action="<%=request.getContextPath()%>/clubAdvertise/write/create">
+				<input id="userId" name="userId" value='1' style="display: none;"></input>
 					<div class="title-bar">
 						<p class="rows title-bold">제목</p><input class="form-control title-input" type="text" id="title">
 					</div>
 					<div class="mb-3">
-						<textarea class="form-control textarea justify-content-center" rows="13" id="content"></textarea>
+						<textarea class="form-control textarea justify-content-center" rows="13" id="content">
+						</textarea>
 					</div>
 					<div class="mb-3">
 						<p class="float-l">이미지 파일용</p>
-  						<input class="form-control file" type="file" id="originalUrl" accept="image/*" multiple>
+  						<input class="form-control file" type="file" id="fileOriginalUrl" name="fileOriginalUrl" accept="image/*" multiple>
 					</div>
-					<div class="mb-3">
+					<!-- <div class="mb-3">
 						<p class="float-l">첨부파일용</p>
-  						<input class="form-control file" type="file" id="fileOriginalUrl" multiple>
-					</div>
+  						<input class="form-control file" type="file" id="originalUrl" multiple>
+					</div> -->
 					<div>
 						<a class="btn btn-primary back-btn bottom-btn" href="./" role="button">뒤로</a>
-						<button class="btn btn-primary submit-btn bottom-btn" onclick="createClubAd()">저장</button> 
+						<button class="btn btn-primary submit-btn bottom-btn"> <!-- onclick="createClubAd()" -->저장</button> 
 					</div>
+				</form>
 			</div>
 		</div>
 	</div>

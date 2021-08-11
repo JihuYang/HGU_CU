@@ -8,7 +8,9 @@ public class FileDTO {
 
 	private int id;
 	private int communityInfoId;
+	private int clubAdvertiseId;
 	private String originalUrl;
+	private String fileOriginalUrl;
 	private String realUrl;
 	private MultipartFile file; 
 	private int order;
@@ -57,6 +59,18 @@ public class FileDTO {
 		this.regdate = regdate;
 	}
 
+	public int getClubAdvertiseId() {
+		return clubAdvertiseId;
+	}
+	public void setClubAdvertiseId(int clubAdvertiseId) {
+		this.clubAdvertiseId = clubAdvertiseId;
+	}
+	public String getFileOriginalUrl() {
+		return fileOriginalUrl;
+	}
+	public void setFileOriginalUrl(String fileOriginalUrl) {
+		this.fileOriginalUrl = fileOriginalUrl;
+	}
 	@Override
 	public String toString() {
 		return "FileDTO [id=" + id + ", communityInfoId=" + communityInfoId + ", originalUrl=" + originalUrl

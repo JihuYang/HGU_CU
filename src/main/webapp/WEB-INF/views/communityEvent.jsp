@@ -117,7 +117,7 @@
 			    selectHelper: true,
 			    editable: true,
 			    eventLimit: true, // allow "more" link when too many events
-			    select: function(start, end) {
+			    /* select: function(start, end) {
 			      // Display the modal.
 			      // You could fill in the start and end fields based on the parameters
 			      $(".modal").modal("show");
@@ -135,8 +135,8 @@
 			        .val("");
 			      $("#save-event").show();
 			      $("input").prop("readonly", false);
-			    },
-			    eventRender: function(event, element) {
+			    }, */
+			    /* eventRender: function(event, element) {
 			      //dynamically prepend close button to event
 			      element
 			        .find(".fc-content")
@@ -162,7 +162,7 @@
 			        .val(calEvent.end);
 			      $("#save-event").hide();
 			      $("input").prop("readonly", true);
-			    },
+			    }, */
 			   events:[
 				   <c:forEach items="${eventList}" var="eventList">
 				   <fmt:formatDate value="${eventList.startDate}" var="startDate" type="date" pattern="yyyy-MM-dd'T'HH:mm:ssz"/>
@@ -184,7 +184,6 @@
 				 		allDay: false
 				 	}
 			   ]
-
 			  });
 			  /* // Bind the dates to datetimepicker.
 			  $("#starts-at").datetimepicker(); */

@@ -2,6 +2,8 @@ package com.walab.hgu.DTO;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class ClubAdvertiseDTO {
 
 	private int id;
@@ -9,6 +11,7 @@ public class ClubAdvertiseDTO {
 	private String title;
 	private String content;
 	private String originalUrl;
+	private MultipartFile file; 
 	private Date regdate;
 	
 	
@@ -47,6 +50,14 @@ public class ClubAdvertiseDTO {
 	}
 	public void setOriginalUrl(String originalUrl) {
 		this.originalUrl = originalUrl;
+	}
+	
+	
+	public MultipartFile getFile() {
+		return file;
+	}
+	public void setFile(MultipartFile file) {
+		this.file = file;
 	}
 	@Override
 	public String toString() {
