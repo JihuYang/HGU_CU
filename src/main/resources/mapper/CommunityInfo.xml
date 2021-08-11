@@ -47,6 +47,14 @@
 		VALUES (#{communityInfoId}, #{originalUrl})
 	</insert>
 
+	<!-- 커뮤니티 공지사항 파일 수정 쿼리 -->
+	<update id="updateCommunityInfoFile"
+		parameterType="com.walab.hgu.DTO.FileDTO">
+		UPDATE hguclub.communityInfoFile SET
+		originalUrl =
+		#{originalUrl} WHERE communityInfoId = #{communityInfoId}
+	</update>
+
 	<update id="updateViewCount" parameterType="int">
 		update communityInfo
 		set viewCount = viewCount + 1 where id = #{id}

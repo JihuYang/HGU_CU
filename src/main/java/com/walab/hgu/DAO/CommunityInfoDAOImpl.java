@@ -72,6 +72,14 @@ public class CommunityInfoDAOImpl implements CommunityInfoDAO {
 
 		return 0;
 	}
+	
+	@Override
+	public int updateCommunityInfoFile(FileDTO communityInfoFile) {
+		
+		sqlSession.update(namespace+".updateCommunityInfoFile", communityInfoFile);
+
+		return 0;
+	}
 
 	@Override
 	public int updateViewCount(int id) {

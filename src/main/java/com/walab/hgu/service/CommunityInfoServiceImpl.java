@@ -61,6 +61,12 @@ public class CommunityInfoServiceImpl implements CommunityInfoService {
 
 		return communityInfoDAO.updateCommunityInfo(communityInfo);
 	}
+	
+	@Override
+	public int updateCommunityInfoFile(FileDTO communityInfoFile) {
+
+		return communityInfoDAO.updateCommunityInfoFile(communityInfoFile);
+	}
 
 	@Override
 	public int updateViewCount(int id) {
