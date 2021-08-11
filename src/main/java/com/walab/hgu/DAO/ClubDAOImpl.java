@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.walab.hgu.DTO.CategoryDTO;
 import com.walab.hgu.DTO.ClubDTO;
+import com.walab.hgu.DTO.FileDTO;
 
 @Repository
 public class ClubDAOImpl implements ClubDAO{

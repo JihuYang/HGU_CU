@@ -21,6 +21,11 @@
 			WHERE id = #{id}
 	</select>
 	
+	<select id="readRecentClubAd" resultType="int"
+		parameterType="hashmap">
+		SELECT MAX(id) FROM hguclub.clubAdvertise
+	</select>
+	
 	<select id="getClubAdImg" resultType="com.walab.hgu.DTO.ClubAdvertiseDTO"
 		parameterType="hashmap">
 			SELECT originalUrl
@@ -32,6 +37,14 @@
 	<insert id="createClubAd" parameterType="com.walab.hgu.DTO.ClubAdvertiseDTO">
 		INSERT INTO hguclub.clubAdvertise (title,content)
 		VALUES (#{title},#{content})
+	</insert>
+	
+	<!-- 동아리 홍보 파일 업로드 쿼리 -->
+	<insert id="createClubAdFile"
+		parameterType="com.walab.hgu.DTO.FileDTO">
+		INSERT INTO hguclub.clubAdvertiseFile (clubAdvertiseId,
+		fileOriginalUrl)
+		VALUES (#{clubAdvertiseId}, #{fileOriginalUrl})
 	</insert>
 
 </mapper>

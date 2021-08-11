@@ -5,12 +5,13 @@
 
 	<select id="readCommunityInfo"
 		resultType="com.walab.hgu.DTO.CommunityInfoDTO"
-		parameterType="hashmap">
+		parameterType="hashMap">
 		SELECT c.id, name as writer, title, c.regdate, viewCount
 		FROM hguclub.communityInfo as c
 		INNER JOIN hguclub.user as u ON
 		c.userId = u.id
-		ORDER BY c.regdate DESC;
+		ORDER BY c.regdate DESC 
+		LIMIT #{displayPost}, #{postNum}
 	</select>
 
 	<select id="readCommunityInfoDetail"
@@ -48,4 +49,8 @@
 	<update id="updateViewCount" parameterType="int">
 		update communityInfo set viewCount = viewCount + 1 where id = #{id}
 	</update>
+
+	<select id="countInfo" resultType="int">
+		SELECT COUNT(*) as listCnt FROM communityInfo
+	</select>
 </mapper>

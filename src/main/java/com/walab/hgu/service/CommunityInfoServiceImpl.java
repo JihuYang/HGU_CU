@@ -16,9 +16,9 @@ public class CommunityInfoServiceImpl implements CommunityInfoService {
 	CommunityInfoDAO communityInfoDAO;
 
 	@Override
-	public List<CommunityInfoDTO> readCommunityInfo() {
+	public List<CommunityInfoDTO> readCommunityInfo(int displayPost, int postNum) {
 
-		List<CommunityInfoDTO> infoList = communityInfoDAO.readCommunityInfo();
+		List<CommunityInfoDTO> infoList = communityInfoDAO.readCommunityInfo(displayPost,postNum);
 
 		return infoList;
 
@@ -60,6 +60,12 @@ public class CommunityInfoServiceImpl implements CommunityInfoService {
 	public int updateViewCount(int id) {
 		
 		return communityInfoDAO.updateViewCount(id);
+	}
+
+	@Override
+	public int countInfo() {
+		// TODO Auto-generated method stub
+		return communityInfoDAO.countInfo();
 	}
 
 }
