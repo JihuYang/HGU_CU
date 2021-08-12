@@ -32,7 +32,10 @@
 			SELECT originalUrl
 			FROM clubAdvertiseImage RIGHT JOIN clubAdvertise cA on cA.id = clubAdvertiseImage.clubAdvertiseId
 			WHERE clubAdvertiseId = #{id} ORDER BY `order`
-	
+			
+			<!-- SELECT fileOriginalUrl
+			FROM hguclub.clubAdvertiseFile as CAF, hguclub.clubAdvertise as CA
+			WHERE CAF.clubAdvertiseId = CA.id ORDER BY `order` -->
 	</select>
 	
 	<select id="countInfo" resultType="int">

@@ -44,10 +44,10 @@
 				action="<%=request.getContextPath()%>/clubAdvertise/write/create">
 				<input id="userId" name="userId" value='1' style="display: none;"></input>
 					<div class="title-bar">
-						<p class="rows title-bold">제목</p><input class="form-control title-input" type="text" id="title">
+						<p class="rows title-bold">제목</p><input class="form-control title-input" type="text" id="title" name="title">
 					</div>
 					<div class="mb-3">
-						<textarea class="form-control textarea justify-content-center" rows="13" id="content">
+						<textarea class="form-control textarea justify-content-center" rows="13" id="content" name="content">
 						</textarea>
 					</div>
 					<div class="mb-3">
