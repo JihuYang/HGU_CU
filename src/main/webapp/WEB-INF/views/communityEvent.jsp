@@ -49,8 +49,6 @@
 		<div
 			class="row h-auto align-items-center justify-content-center text-center">
 
-			<!-- <div id='datepicker'></div> -->
-
 			<div class="modal fade" tabindex="-1" role="dialog" id="addModal">
 				<div class="modal-dialog modal-dialog-centered" role="document">
 					<div class="modal-content">
@@ -70,21 +68,19 @@
 							<div class="grid-item2" >
 								<input type="text" name="place" id="place" />
 							</div>
-							<div class="grid-item1">날짜</div>
+							<div class="grid-item1">날짜(시작)</div>
 							<div class="grid-item2">
-								<input type="date"/>
+								<input type="datetime-local" id="startDate"/>
 							</div>
 					
-							<div class="grid-item1">시간</div>
+							<div class="grid-item1">날짜(끝)</div>
 							<div class="grid-item2">
-								<input type="time" name="startTime"/>
-								<label class="col-xs-4 mx-3 b-primary" for="end_at">-</label>
-								<input type="time" name="endTime"/>
+								<input type="datetime-local" id="endDate"/>
 							</div>
 						</div>
 						
 						<div class="modal-footer">
-							<button type="button" class="btn" id="save-event">저장</button>
+							<button type="button" class="btn" onclick="createCommutinyEvent()">저장</button>
 						</div>
 					</div>
 				</div>
@@ -107,9 +103,10 @@
 
 			<script type="text/javascript">
 			
-		$(function() {
+			$(function() {
 			  $('#calendar').fullCalendar({
 			    selectable: true,
+			    timeZone: 'Asia/seoul',
 			    longPressDelay: 0,
 			    header: {
 			      left: "prev,next today",
@@ -124,8 +121,8 @@
 			    eventLimit: true, // allow "more" link when too many events
 			    events:[
 				   <c:forEach items="${eventList}" var="eventList">
-				   <fmt:formatDate value="${eventList.startDate}" var="startDate" type="date" pattern="yyyy-MM-dd'T'HH:mm:ssz"/>
-				   <fmt:formatDate value="${eventList.endDate}" var="endDate" type="date" pattern="yyyy-MM-dd'T'HH:mm:ssz"/>
+				   <fmt:formatDate value="${eventList.startDate}" var="startDate" type="date" pattern="yyyy-MM-dd'T'HH:mm:ss"/>
+				   <fmt:formatDate value="${eventList.endDate}" var="endDate" type="date" pattern="yyyy-MM-dd'T'HH:mm:ss"/>
 				   {
 				 		id: 1,
 				 		title: '${eventList.eventName}',
@@ -148,7 +145,6 @@
 		</script>
 		</div>
 		
-		
 		<div class="row justify-content-end mb-4" style="width:90%;">
 			<button class="btn btn-primary search-btn" id="eventAddBtn">추가</button>
 		</div>
@@ -158,28 +154,8 @@
 		$("#eventAddBtn").on('click', function(){
 			$('#addModal').modal('show');
 		});
-		
-		var timepicker = new TimePicker('time', {
-			  lang: 'en',
-			  theme: 'dark'
-			});
-			timepicker.on('change', function(evt) {
-			  
-			  var value = (evt.hour || '00') + ':' + (evt.minute || '00');
-			  evt.element.value = value;
-
-			});
-			
-			$("input").on("change", function() {
-			    this.setAttribute(
-			        "data-date",
-			        moment(this.value, "YYYY-MM-DD")
-			        .format( this.getAttribute("data-date-format") )
-			    )
-			}).trigger("change")
 	</script>
 
-	
 	<!-- Footer-->
 	<jsp:include page="/WEB-INF/views/inc/footer.jsp"/>
 	<!-- Bootstrap core JS-->
@@ -189,6 +165,8 @@
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
 	<!-- Core theme JS-->
+	<script src="<%=request.getContextPath()%>/resources/js/scripts.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/event.js"></script>
 	<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
 	<!-- * *                               SB Forms JS                               * *-->
 	<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->

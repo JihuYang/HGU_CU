@@ -8,10 +8,10 @@
  	</select>
  	
  	<!-- 예약 추가(관리자) 쿼리 -->
-	<!-- <insert id="createEvent"
+	<insert id="createEvent"
 		parameterType="com.walab.hgu.DTO.EventDTO">
-		INSERT INTO hguclub.event (eventName, spaceId, startTime, endTime, purpose, reservationDate) 
-		VALUES (#{userId}, #{spaceId}, #{startTime}, #{endTime}, #{purpose},#{reservationDate});
-	</insert> -->
+		INSERT INTO hguclub.event (eventName, startDate, endDate) 
+		VALUES (#{eventName}, #{startDate}, #{endDate});
+	</insert>
 
 </mapper>

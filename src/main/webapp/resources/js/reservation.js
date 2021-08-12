@@ -19,12 +19,11 @@ function createAdminReservationInfo(){
 			purpose: $('#purpose').val(),
 			reservationDate: $('#reservationDate').val()
 		},
-		success: function(data){	
+		success: function(){	
 			console.log("예약 추가 성공!!");
-			console.log("userId: " + userId);
 			location.href="/hgu/adminReservation";
 		}, 
-		error:function(request, status, error){
+		error:function(request, error){
 			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
         }
 	});
