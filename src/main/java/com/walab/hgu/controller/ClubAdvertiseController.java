@@ -19,8 +19,8 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.walab.hgu.DTO.ClubAdvertiseDTO;
-import com.walab.hgu.DTO.CommunityInfoDTO;
 import com.walab.hgu.DTO.FileDTO;
+import com.walab.hgu.DTO.Page;
 import com.walab.hgu.service.ClubAdvertiseService;
 
 @Controller
@@ -31,11 +31,17 @@ public class ClubAdvertiseController {
 	
 		//동아리 홍보 페이지 컨트롤러 
 		@RequestMapping(value = "/clubAdvertise", method = RequestMethod.GET)
-		public ModelAndView clubAdvertise(ModelAndView mv) {
+		public ModelAndView clubAdvertise(ModelAndView mv, @RequestParam("num") int num) {
+			Page page = new Page();
+			page.setPostNum(4);
+			page.setNum(num);
+			page.setCount(clubAdvertiseService.countInfo());
 			
-			List<ClubAdvertiseDTO> clubAdvertiseList = clubAdvertiseService.readClubAdvertisePreview();
+			List<ClubAdvertiseDTO> clubAdvertiseList = clubAdvertiseService.readClubAdvertisePreview(page.getDisplayPost(),page.getPostNum());
 			
 			mv.addObject("clubAdvertiseList", clubAdvertiseList);
+			mv.addObject("page", page);
+			mv.addObject("selected", num);
 			
 			mv.setViewName("clubAdvertise");
 			

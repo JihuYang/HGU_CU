@@ -29,6 +29,8 @@
 
 </head>
 <jsp:include page="/WEB-INF/views/inc/header.jsp" />
+<link href="<%=request.getContextPath()%>/resources/css/home.css"
+	rel="stylesheet" />
 <link href="<%=request.getContextPath()%>/resources/css/community.css" rel="stylesheet" />
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <script src="https://kit.fontawesome.com/6333a60c65.js"></script>
@@ -64,19 +66,31 @@
 					<button class="btn btn-primary search-btn" type="submit">검색</button>
 				</div>
 			</form>
-			<nav>
+			<nav id="paginationBox">
 				<ul class="pagination align-items-center justify-content-center">
-					<li class="page-item"><a class="page-link" href="#"
-						aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-							<span class="sr-only">Previous</span>
-					</a></li>
-					<li class="page-item"><a class="page-link" href="#">1</a></li>
-					<li class="page-item"><a class="page-link" href="#">2</a></li>
-					<li class="page-item"><a class="page-link" href="#">3</a></li>
-					<li class="page-item"><a class="page-link" href="#"
-						aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
-							class="sr-only">Next</span>
-					</a></li>
+					<c:if test="${page.prev}">
+						<li class="page-item"><a class="page-link" href="<%=request.getContextPath()%>/communityMaterials?num=${page.startPageNum - 1}"
+							aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+								<span class="sr-only">Previous</span>
+						</a></li>
+					</c:if>
+					
+					 <c:forEach begin="${page.startPageNum}" end="${page.endPageNum}" var="num">
+					 	<c:if test="${selected != num}">
+					 		<li class="page-item"><a class="page-link" href="<%=request.getContextPath()%>/communityMaterials?num=${num}">${num}</a></li>
+					 	</c:if>
+					 	
+					 	<c:if test="${selected == num}">
+					 		<li class="page-item active"><a class="page-link" href="#">${num}</a></li>
+					 	</c:if>
+ 					</c:forEach>
+ 					
+ 					<c:if test="${page.next}">
+	 					<li class="page-item"><a class="page-link"  href="<%=request.getContextPath()%>/communityMaterials?num=${page.endPageNum + 1}"
+							aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
+								class="sr-only">Next</span>
+						</a></li>
+					</c:if>
 				</ul>
 			</nav>
 		</div>

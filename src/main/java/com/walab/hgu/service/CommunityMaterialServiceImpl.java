@@ -15,9 +15,9 @@ public class CommunityMaterialServiceImpl implements CommunityMaterialService{
 	CommunityMaterialDAO communityMaterialDAO;
 	
 	@Override
-	public List<CommunityMaterialDTO> readCommunityMaterial(){
+	public List<CommunityMaterialDTO> readCommunityMaterial(int displayPost, int postNum){
 		
-		List<CommunityMaterialDTO> infoList = communityMaterialDAO.readCommunityMaterial();
+		List<CommunityMaterialDTO> infoList = communityMaterialDAO.readCommunityMaterial(displayPost, postNum);
 
 		return infoList;
 		
@@ -43,5 +43,11 @@ public class CommunityMaterialServiceImpl implements CommunityMaterialService{
 	public int updateViewCount(int id) {
 		// TODO Auto-generated method stub
 		return communityMaterialDAO.updateViewCount(id);
+	}
+
+	@Override
+	public int countInfo() {
+		// TODO Auto-generated method stub
+		return communityMaterialDAO.countInfo();
 	}
 }

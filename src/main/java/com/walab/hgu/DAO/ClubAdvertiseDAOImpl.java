@@ -22,9 +22,11 @@ public class ClubAdvertiseDAOImpl implements ClubAdvertiseDAO{
 	
 	
 	@Override//동아리 홍보페이지 리스트 창 
-	public List<ClubAdvertiseDTO> readClubAdvertisePreview() {
+	public List<ClubAdvertiseDTO> readClubAdvertisePreview(int displayPost, int postNum) {
 		
 		Map<String, Object> clubAdvertiseParam = new HashMap<String, Object>();
+		clubAdvertiseParam.put("displayPost", displayPost);
+		clubAdvertiseParam.put("postNum", postNum);
 				
 		return sqlSession.selectList(namespace+".readClubAdvertisePreview", clubAdvertiseParam);
 	}
@@ -73,5 +75,12 @@ public class ClubAdvertiseDAOImpl implements ClubAdvertiseDAO{
 		sqlSession.insert(namespace+".createClubAdFile", clubAdFile);
 
 		return 0;
+	}
+
+
+	@Override
+	public int countInfo() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace+".countInfo");
 	}
 }

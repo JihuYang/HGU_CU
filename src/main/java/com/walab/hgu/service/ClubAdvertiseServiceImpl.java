@@ -16,10 +16,10 @@ public class ClubAdvertiseServiceImpl implements ClubAdvertiseService{
 	ClubAdvertiseDAO clubAdvertiseDAO ;
 
 	@Override
-	public List<ClubAdvertiseDTO> readClubAdvertisePreview() {
+	public List<ClubAdvertiseDTO> readClubAdvertisePreview(int displayPost, int postNum) {
 		
 
-		List<ClubAdvertiseDTO> adList = clubAdvertiseDAO.readClubAdvertisePreview();
+		List<ClubAdvertiseDTO> adList = clubAdvertiseDAO.readClubAdvertisePreview(displayPost, postNum);
 		
 		return adList;
 	}
@@ -57,6 +57,12 @@ public class ClubAdvertiseServiceImpl implements ClubAdvertiseService{
 
 		return clubAdvertiseDAO.createClubAdFile(clubAdFile);
 		
+	}
+
+	@Override
+	public int countInfo() {
+		// TODO Auto-generated method stub
+		return clubAdvertiseDAO.countInfo();
 	}
 
 }

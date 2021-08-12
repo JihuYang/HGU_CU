@@ -10,7 +10,7 @@
 		FROM hguclub.communityInfo as c
 		INNER JOIN hguclub.user as u ON
 		c.userId = u.id
-		ORDER BY c.regdate DESC 
+		ORDER BY c.regdate DESC
 		LIMIT #{displayPost}, #{postNum}
 	</select>
 
@@ -22,7 +22,8 @@
 		FROM
 		hguclub.communityInfo as cI ,hguclub.user u, hguclub.communityInfoFile
 		as cIF
-		WHERE cI.userId = u.id and cI.id = #{id} and cIF.communityInfoId = cI.id LIMIT 1
+		WHERE cI.userId = u.id and cI.id = #{id} and cIF.communityInfoId
+		= cI.id LIMIT 1
 	</select>
 
 	<select id="readRecentCommunityInfo" resultType="int"
@@ -39,18 +40,37 @@
 	</insert>
 
 	<!-- 커뮤니티 공지사항 파일 업로드 쿼리 -->
-	<insert id="creatCommunityInfoFile"
+	<insert id="createCommunityInfoFile"
 		parameterType="com.walab.hgu.DTO.FileDTO">
 		INSERT INTO hguclub.communityInfoFile (communityInfoId,
 		originalUrl)
 		VALUES (#{communityInfoId}, #{originalUrl})
 	</insert>
-	
+
+	<!-- 커뮤니티 공지사항 파일 수정 쿼리 -->
+	<update id="updateCommunityInfoFile"
+		parameterType="com.walab.hgu.DTO.FileDTO">
+		UPDATE hguclub.communityInfoFile SET
+		originalUrl =
+		#{originalUrl} WHERE communityInfoId = #{communityInfoId}
+	</update>
+
 	<update id="updateViewCount" parameterType="int">
-		update communityInfo set viewCount = viewCount + 1 where id = #{id}
+		update communityInfo
+		set viewCount = viewCount + 1 where id = #{id}
 	</update>
 
 	<select id="countInfo" resultType="int">
-		SELECT COUNT(*) as listCnt FROM communityInfo
+		SELECT COUNT(*) as listCnt
+		FROM communityInfo
 	</select>
+
+	<!-- 커뮤니티 공지사항 글 수정 쿼리 -->
+	<update id="updateCommunityInfo"
+		parameterType="com.walab.hgu.DTO.CommunityInfoDTO">
+		UPDATE hguclub.communityInfo set userId = #{userId},
+		title=#{title},
+		content=#{content} WHERE id = #{id}
+	</update>
+
 </mapper>
