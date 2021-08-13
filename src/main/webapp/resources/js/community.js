@@ -71,8 +71,10 @@ function search(){
   			let searchType = document.getElementsByName("searchType")[0].value;
   			let keyword =  document.getElementsByName("keyword")[0].value;
   
-  			console.log(searchType)
-  			console.log(keyword)
+  			/* console.log(searchType)
+  			console.log(keyword) */
+  			
+  			location.href = "/hgu/communityInfo?num=1"+ "&searchType=" + searchType + "&keyword=" + keyword;
  		};
 }
 
