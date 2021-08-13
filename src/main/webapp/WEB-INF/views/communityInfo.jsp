@@ -68,7 +68,7 @@
 					<input hidden="hidden" />
 					<input class="form-control form-control-sm search-input"
 						type="text" name="keyword" value="${page.keyword}">
-					<button class="btn btn-primary search-btn" type="button" id="searchBtn"  onclik="search()">검색</button> 
+					<button class="btn btn-primary search-btn" type="button" id="searchBtn"  onclick="search()">검색</button> 
 				</div>
 			</form>
 			<!-- Pagination -->
@@ -104,19 +104,7 @@
 	</div>
 	<!-- Footer-->
 	<jsp:include page="/WEB-INF/views/inc/footer.jsp" />
-	<%-- <script>
-	document.getElementById("searchBtn").onclick = function () {
-	    
-			let searchType = document.getElementsByName("searchType")[0].value;
-			let keyword =  document.getElementsByName("keyword")[0].value;
 
-			/* console.log(searchType)
-			console.log(keyword) */
-
-		location.href = "<%=request.getContextPath()%>/communityInfo?num=1"+ "&searchType=" + searchType + "&keyword=" + keyword;
-			
-		};
-	</script> --%>
 	<script src="<%=request.getContextPath()%>/resources/js/community.js"></script>
 
 	<script
