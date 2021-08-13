@@ -6,6 +6,9 @@ import com.walab.hgu.DTO.UserDTO;
 
 public interface UserDAO {
 		
-	public List<UserDTO> readUser();
-	
+	public List<UserDTO> readUser(int displayPost, int postNum);
+
+	public int countInfo();
+	public int readUserIDByEmail(String email);
+	public int readAdminByUserID(int userID);
 }

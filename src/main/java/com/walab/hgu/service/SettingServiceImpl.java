@@ -15,12 +15,18 @@ public class SettingServiceImpl implements SettingService{
 	SettingDAO settingDAO;
 	
 	@Override
-	public List<SettingDTO> readSetting(){
+	public List<SettingDTO> readSetting(int displayPost, int postNum){
 	
-		List<SettingDTO> infoList = settingDAO.readSetting();
+		List<SettingDTO> infoList = settingDAO.readSetting(displayPost,postNum);
 		
 		return infoList;
 		
+	}
+
+	@Override
+	public int countInfo() {
+		// TODO Auto-generated method stub
+		return settingDAO.countInfo() ;
 	}
 
 }

@@ -48,11 +48,11 @@
 				class="h-auto align-items-center justify-content-center text-center admin-nav-border">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item mx-3"><a class="nav-link font-weight"
-						href="<%=request.getContextPath()%>/admin">홈페이지 관리</a></li>
+						href="<%=request.getContextPath()%>/admin?num=1">홈페이지 관리</a></li>
 					<li class="nav-item mx-3"><a class="nav-link font-weight"
-						href="<%=request.getContextPath()%>/adminUser">회원 관리</a></li>
+						href="<%=request.getContextPath()%>/adminUser?num=1">회원 관리</a></li>
 					<li class="nav-item mx-3"><a class="nav-link font-weight" style="background-color: rgb(239, 247, 253);"
-						href="<%=request.getContextPath()%>/adminReservation">예약 관리</a></li>
+						href="<%=request.getContextPath()%>/adminReservation?num=1">예약 관리</a></li>
 				</ul>
 			</div>
 		</nav>

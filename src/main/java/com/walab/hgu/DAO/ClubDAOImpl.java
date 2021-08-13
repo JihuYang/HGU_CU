@@ -30,8 +30,10 @@ public class ClubDAOImpl implements ClubDAO{
 	}
 	
 	@Override
-	public List<ClubDTO> readClubList(){
+	public List<ClubDTO> readClubList(int displayPost, int postNum){
 		Map<String, Object> infoList = new HashMap<String, Object>();
+		infoList.put("displayPost", displayPost);
+		infoList.put("postNum", postNum);
 		
 		return sqlSession.selectList(namespace+".readClubList", infoList);
 	}

@@ -52,6 +52,12 @@ public class HomeController {
 
 		return mv;
 	}
+	
+	@RequestMapping(value = "/logintest", method = RequestMethod.GET)
+	public ModelAndView logintest(ModelAndView mv) {
+		mv.setViewName("logintest");
+		return mv;
+	}
 
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
 	public ModelAndView searchHome(ModelAndView mv, @RequestParam("num") int num,
