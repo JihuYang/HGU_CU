@@ -129,14 +129,15 @@ public class CommunityInfoController {
 		CommunityInfoDTO communityInfoDetail = communityInfoService.readCommunityInfoDetail(id);
 		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file");
 		
-		String fileName = communityInfoDetail.getOriginalUrl();
-		System.out.println("filename: " + fileName);
+		//String fileName = communityInfoDetail.getOriginalUrl();
+
+		//System.out.println("filename: " + fileName);
 		
 		mv.addObject("communityInfoDetail", communityInfoDetail);
 
 		System.out.println(mv);
 
-		mv.setViewName("deleteCommunityInfo");
+		mv.setViewName("redirect:/communityInfo?num=1");
 
 		return mv;
 	}
@@ -200,7 +201,7 @@ public class CommunityInfoController {
 		System.out.println(saveDir);
 
 
-		mv.setViewName("redirect://communityInfo?num=1");
+		mv.setViewName("redirect:/communityInfo?num=1");
 
 		return mv;
 	}
