@@ -8,6 +8,7 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
+
 <title>한동대학교 총동아리연합회</title>
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon"

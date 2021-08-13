@@ -29,5 +29,19 @@ public class UserServiceImpl implements UserService {
 		return userDAO.countInfo();
 	}
 	
+	@Override
+	public int readUserIDByEmail(String email) {
+		
+		int userID = userDAO.readUserIDByEmail(email);
+		
+		return userID;
+	}
+	
+	@Override
+	public int readAdminByUserID(int userID) {
+		return userDAO.readAdminByUserID(userID);
+	}
+	
+	
 
 }

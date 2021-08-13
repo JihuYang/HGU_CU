@@ -9,6 +9,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 public class EventDTO {
 	private int id;
 	private String eventName;
+	private String eventSpace;
 	private String eventContent;
 	private Date startDate;
 	private Date endDate;
@@ -72,6 +73,14 @@ public class EventDTO {
 		this.regdate = regdate;
 	}
 
+
+	public String getEventSpace() {
+		return eventSpace;
+	}
+
+	public void setEventSpace(String eventSpace) {
+		this.eventSpace = eventSpace;
+	}
 
 	@Override
 	public String toString() {
