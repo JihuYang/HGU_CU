@@ -7,4 +7,6 @@ import com.walab.hgu.DTO.EventDTO;
 public interface EventDAO {
 		
 	public List<EventDTO> readEvent();
+	
+	public int createEvent(EventDTO event);
 }

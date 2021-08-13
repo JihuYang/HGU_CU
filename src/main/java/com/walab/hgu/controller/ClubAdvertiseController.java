@@ -130,7 +130,7 @@ public class ClubAdvertiseController {
 			System.out.println(infoFile.toString());
 
 
-			String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file");
+			String saveDir = request.getSession().getServletContext().getRealPath("/resources/img");
 
 			File dir = new File(saveDir);
 			if (!dir.exists()) {
@@ -155,7 +155,7 @@ public class ClubAdvertiseController {
 			System.out.println(saveDir);
 
 
-			mv.setViewName("redirect:/clubAdvertise");
+			mv.setViewName("redirect:/clubAdvertise?num=1");
 
 			return mv;
 		}

@@ -4,6 +4,8 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 public class EventDTO {
 	private int id;
 	private String eventName;
@@ -17,21 +19,13 @@ public class EventDTO {
 		return id;
 	}
 
-
-
-
 	public void setId(int id) {
 		this.id = id;
 	}
 
-
-
-
 	public String getEventName() {
 		return eventName;
 	}
-
-
 
 
 	public void setEventName(String eventName) {
@@ -39,13 +33,9 @@ public class EventDTO {
 	}
 
 
-
-
 	public String getEventContent() {
 		return eventContent;
 	}
-
-
 
 
 	public void setEventContent(String eventContent) {
@@ -53,13 +43,9 @@ public class EventDTO {
 	}
 
 
-
-
 	public Date getStartDate(){
 		return startDate;
 	}
-
-
 
 
 	public void setStartDate(Date startDate){
@@ -67,13 +53,9 @@ public class EventDTO {
 	}
 
 
-
-
 	public Date getEndDate() {
 		return endDate;
 	}
-
-
 
 
 	public void setEndDate(Date endDate) {
@@ -84,8 +66,6 @@ public class EventDTO {
 	public Date getRegdate() {
 		return regdate;
 	}
-
-
 
 
 	public void setRegdate(Date regdate) {

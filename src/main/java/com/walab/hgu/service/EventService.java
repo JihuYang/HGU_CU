@@ -7,5 +7,6 @@ import com.walab.hgu.DTO.EventDTO;
 public interface EventService {
 	
 	public List<EventDTO> readEvent();
+	public int createEvent(EventDTO evnet);
 
 }

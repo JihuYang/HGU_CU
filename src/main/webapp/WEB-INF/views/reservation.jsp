@@ -136,6 +136,7 @@
 			  $('#calendar').fullCalendar({
 			    selectable: true,
 			    allDaySlot: false,
+			    eventLimit:true,
 			    longPressDelay: 0,
 			    header: {
 			      left: 'prev,next today',
@@ -152,29 +153,23 @@
 			    },
 			    
 			    events: [
+			    	<c:forEach items="${reservationInfoList}" var="reservationInfoList">
 				 	{
-				 		id: 1,
-				 		title: "${reservationInfoList[0].spaceName}",
-				 		start: '${reservationInfoList[0].reservationDate}T${reservationInfoList[0].startTime}',
+				 		title: "${reservationInfoList.spaceName}",
+				 		start: '${reservationInfoList.reservationDate}T${reservationInfoList.startTime}',
 				 		allDay: false,
 				 		rendering:'list-item'
 				 	},
-				 	{
-				 		id: 2,
-				 		title: 'Test2',
-				 		start: '2021-07-13T14:00:00',
-				 		end: '2021-07-13T16:00:00',
-				 		allDay: false
-				 	},
+				 	</c:forEach>
 				 	{
 				 		id: 3,
 				 		title: 'Test3',
-				 		start: '2021-07-13T14:00:00',
-				 		end: '2021-07-13T16:00:00',
-				 		allDay: false
+				 		start: '1900-07-13T14:00:00',
+				 		end: '1900-07-13T16:00:00'
 				 	}
 				 ],
-				 eventColor: '#326295'
+				 eventColor: '#326295',
+				 timeFormat: 'H:mm' 
 			  
 			  });
 
@@ -182,81 +177,6 @@
 			});
 	
 		</script>
-		
-	<!-- 	
-  		<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.5.1/main.min.js'></script>
-  		<script>
-  		document.addEventListener('DOMContentLoaded', function() {
-  		    var calendarEl = document.getElementById('calendar');
-
-  		    var calendar = new FullCalendar.Calendar(calendarEl, {
-  		      headerToolbar: {
-  		        left: 'prev,next today',
-  		        center: 'title',
-  		        right: 'dayGridMonth,timeGridWeek,timeGridDay'
-  		      },
-  		      navLinks: true, // can click day/week names to navigate views
-  		      businessHours: true, // display business hours
-  		      editable: true,
-  		      selectable: true,
-  		      events: [
-  		        {
-  		          title: 'Business Lunch',
-  		          start: '2021-08-03T13:00:00',
-  		          constraint: 'businessHours'
-  		        },
-  		        {
-  		          title: 'Meeting',
-  		          start: '2021-08-13T11:00:00',
-  		          constraint: 'availableForMeeting', // defined below
-  		          color: '#257e4a'
-  		        },
-  		        {
-  		          title: 'Conference',
-  		          start: '2021-08-18',
-  		          end: '2020-09-20',
-  		          display: 'list-item'
-  		        },
-  		        {
-  		          title: 'Party',
-  		          start: '2021-08-29T20:00:00'
-  		        },
-
-  		        // areas where "Meeting" must be dropped
-  		        {
-  		          groupId: 'availableForMeeting',
-  		          start: '2021-08-11T10:00:00',
-  		          end: '2021-08-11T16:00:00',
-  		        },
-  		        {
-  		          groupId: 'availableForMeeting',
-  		          start: '2021-08-13T10:00:00',
-  		          end: '2021-08-13T16:00:00',
-  		          display: 'background'
-  		        },
-
-  		        // red areas where no events can be dropped
-  		        {
-  		          start: '2021-08-24',
-  		          end: '2021-08-28',
-  		          overlap: false,
-  		          display: 'background',
-  		          color: '#ff9f89'
-  		        },
-  		        {
-  		          start: '2021-08-06',
-  		          end: '2021-08-08',
-  		          overlap: false,
-  		          display: 'background',
-  		          color: '#ff9f89'
-  		        }
-  		      ]
-  		    });
-
-  		    calendar.render();
-  		  });
-  		
-  		</script> -->
         </div>
         </div>
          

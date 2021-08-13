@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.walab.hgu.DAO.EventDAO;
+import com.walab.hgu.DTO.CommunityInfoDTO;
 import com.walab.hgu.DTO.EventDTO;
 
 @Service
@@ -21,6 +22,13 @@ public class EventServiceImpl implements EventService{
 		
 		return infoList;
 		
+	}
+	
+	@Override
+	public int createEvent(EventDTO event) {
+
+		return eventDAO.createEvent(event);
+
 	}
 
 }

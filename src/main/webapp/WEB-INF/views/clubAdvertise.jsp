@@ -85,6 +85,7 @@
 						</a></li>
 					</c:if>
 					</ul>
+					<a class="btn btn-primary writing-btn" href="<%=request.getContextPath()%>/clubAdvertise/write" role="button">글쓰기</a>
 				</nav>
 					<%-- <ul
 						class="pagination align-items-center justify-content-center">

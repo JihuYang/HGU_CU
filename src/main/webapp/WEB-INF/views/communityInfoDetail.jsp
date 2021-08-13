@@ -82,7 +82,7 @@
 				<button class="btn btn-primary search-btn list-btn"
 					onclick="location.href='<%=request.getContextPath()%>/communityInfo/update/${communityInfoDetail.id}'">수정</button>
 				<button class="btn btn-primary search-btn list-btn"
-					onclick="location.href='<%=request.getContextPath()%>/communityInfo'">삭제</button>
+					onclick="location.href='<%=request.getContextPath()%>/communityInfo/delete/${communityInfoDetail.id}'">삭제</button>
 			</div>
 		</div>
 	</div>

@@ -64,11 +64,33 @@
 		originalUrl =
 		#{originalUrl} WHERE communityInfoId = #{communityInfoId}
 	</update>
-
+	
+	<!-- 커뮤니티 공지사항 글 수정 쿼리 -->
+	<update id="updateCommunityInfo"
+		parameterType="com.walab.hgu.DTO.CommunityInfoDTO">
+		UPDATE hguclub.communityInfo set userId = #{userId},
+		title=#{title},
+		content=#{content} WHERE id = #{id}
+	</update>
+	
 	<update id="updateViewCount" parameterType="int">
 		update communityInfo
 		set viewCount = viewCount + 1 where id = #{id}
 	</update>
+	
+	<!-- 커뮤니티 공지사항 파일 삭제 쿼리 -->
+	<delete id="deleteCommunityInfoFile"
+		parameterType="int">
+		DELETE FROM hguclub.communityInfoFile WHERE
+		communityInfoId = #{id}
+	</delete>
+
+	<!-- 커뮤니티 공지사항 글 삭제 쿼리 -->
+	<delete id="deleteCommunityInfo"
+		parameterType="int">
+		DELETE FROM hguclub.communityInfo WHERE id = #{id}
+	</delete>
+	
 
 	<select id="countInfo" resultType="int" parameterType="hashMap">
 		SELECT COUNT(*) as listCnt

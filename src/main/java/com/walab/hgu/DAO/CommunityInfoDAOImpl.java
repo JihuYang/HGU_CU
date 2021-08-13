@@ -82,6 +82,22 @@ public class CommunityInfoDAOImpl implements CommunityInfoDAO {
 
 		return 0;
 	}
+	
+	@Override
+	public int deleteCommunityInfoFile(int id) {
+		
+		sqlSession.delete(namespace+".deleteCommunityInfoFile", id);
+		
+		return 0;
+	}
+	
+	@Override
+	public int deleteCommunityInfo(int id) {
+		
+		sqlSession.delete(namespace+".deleteCommunityInfo", id);
+		
+		return 0;
+	}
 
 	@Override
 	public int updateViewCount(int id) {

@@ -145,17 +145,19 @@ table td{
 	border: 1px solid gray;
 }
 
-.fc-event-container .fc-time{
+/* .fc-event-container .fc-time{
 	display:none;
-}
+} */
 
 .fc-content{
 	padding:5px 0;
+	font-size:0.5rem;
 }
 
-.fc-event-dot {
-  background-color:yellow;
+.fc-event-dot{
+	background-color:yellow !important;
 }
+
 @media(max-width: 992px){
 	#top_margin{
 		display:none;

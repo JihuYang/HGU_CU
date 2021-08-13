@@ -55,8 +55,7 @@
 <script>
 	$("#openModalBtn").on('click', function(){
 		$(".modal-body")[0].reset();
-		$('#addModal').modal('show',{backdrop: 'static',keyboard: false});
-		
+		$('#addModal').modal('show');
 	});
 	
 	function editBtn(clickedId){
@@ -112,7 +111,7 @@
 	 time[0]++;
 	 
 	 endTime.innerHTML=
-	    "<option value="+time[0]+time[1]+">"
+	    "<option value="+time[0]+":"+time[1]+">"
 			+time[0]+':'
 			+time[1]
 			+"</option>";
@@ -123,7 +122,7 @@
 	 if(time[0]==25)
 		 time[0]=1;
  	endTime.innerHTML+=
-	    "<option value="+time[0]+time[1]+">"
+	    "<option value="+time[0]+":"+time[1]+">"
 			+time[0]+':'
 			+time[1]
 			+"</option>";

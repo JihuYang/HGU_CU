@@ -28,6 +28,8 @@
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="<%=request.getContextPath()%>/resources/css/styles.css" rel="stylesheet" />
 
+<link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
+
 </head>
 <jsp:include page="/WEB-INF/views/inc/header.jsp" />
 <link href="<%=request.getContextPath()%>/resources/css/community.css" rel="stylesheet"/>
@@ -47,9 +49,7 @@
 		<div
 			class="row h-auto align-items-center justify-content-center text-center">
 
-			<div id='datepicker'></div>
-
-			<div class="modal fade" tabindex="-1" role="dialog">
+			<div class="modal fade" tabindex="-1" role="dialog" id="addModal">
 				<div class="modal-dialog modal-dialog-centered" role="document">
 					<div class="modal-content">
 						<div class="modal-header">
@@ -58,7 +58,7 @@
 							<div id="modal-title">
 								<h3>
 									<input class="modal-title form-control" style="margin: 0 auto;"
-										type="text" name="title" id="title" placeholder="제목 추가" />
+										type="text" name="title" id="title" placeholder="행사 이름" />
 								</h3>
 							</div>
 						</div>
@@ -68,23 +68,24 @@
 							<div class="grid-item2" >
 								<input type="text" name="place" id="place" />
 							</div>
-					
-							<div class="grid-item1">시간</div>
+							<div class="grid-item1">날짜(시작)</div>
 							<div class="grid-item2">
-								<input class="modal-time" type="text" name="start_at"
-									id="starts-at" />
-								<label class="col-xs-4 mx-3 b-primary" for="end_at">-</label>
-								<input class="modal-time" type="text" name="end_at"
-									id="end-at" />
+								<input type="datetime-local" id="startDate"/>
+							</div>
+					
+							<div class="grid-item1">날짜(끝)</div>
+							<div class="grid-item2">
+								<input type="datetime-local" id="endDate"/>
 							</div>
 						</div>
 						
 						<div class="modal-footer">
-							<button type="button" class="btn" id="save-event">저장</button>
+							<button type="button" class="btn" onclick="createCommutinyEvent()">저장</button>
 						</div>
 					</div>
 				</div>
 			</div>
+			
 
 			<div id='calendar'></div>
 			<!-- partial -->
@@ -102,9 +103,10 @@
 
 			<script type="text/javascript">
 			
-		$(function() {
+			$(function() {
 			  $('#calendar').fullCalendar({
 			    selectable: true,
+			    timeZone: 'Asia/seoul',
 			    longPressDelay: 0,
 			    header: {
 			      left: "prev,next today",
@@ -117,56 +119,10 @@
 			    selectHelper: true,
 			    editable: true,
 			    eventLimit: true, // allow "more" link when too many events
-			    /* select: function(start, end) {
-			      // Display the modal.
-			      // You could fill in the start and end fields based on the parameters
-			      $(".modal").modal("show");
-			      $(".modal")
-			        .find("#title")
-			        .val("");
-			      $(".modal")
-			        .find("#place")
-			        .val("");
-			      $(".modal")
-			        .find("#starts-at")
-			        .val("");
-			      $(".modal")
-			        .find("#end-at")
-			        .val("");
-			      $("#save-event").show();
-			      $("input").prop("readonly", false);
-			    }, */
-			    /* eventRender: function(event, element) {
-			      //dynamically prepend close button to event
-			      element
-			        .find(".fc-content")
-			        .prepend("<span class='closeon material-icons'>&#xe5cd;</span>");
-			      element.find(".closeon").on("click", function() {
-			        $("#calendar").fullCalendar("removeEvents", event._id);
-			      });
-			    },
-			    eventClick: function(calEvent, jsEvent) {
-			      // Display the modal and set event values.
-			      $(".modal").modal("show");
-			      $(".modal")
-			        .find("#title")
-			        .val(calEvent.title);
-			      $(".modal")
-			        .find("#place")
-			        .val(calEvent.place);
-			      $(".modal")
-			        .find("#starts-at")
-			        .val(calEvent.start);
-			      $(".modal")
-			        .find("#end-at")
-			        .val(calEvent.end);
-			      $("#save-event").hide();
-			      $("input").prop("readonly", true);
-			    }, */
-			   events:[
+			    events:[
 				   <c:forEach items="${eventList}" var="eventList">
-				   <fmt:formatDate value="${eventList.startDate}" var="startDate" type="date" pattern="yyyy-MM-dd'T'HH:mm:ssz"/>
-				   <fmt:formatDate value="${eventList.endDate}" var="endDate" type="date" pattern="yyyy-MM-dd'T'HH:mm:ssz"/>
+				   <fmt:formatDate value="${eventList.startDate}" var="startDate" type="date" pattern="yyyy-MM-dd'T'HH:mm:ss"/>
+				   <fmt:formatDate value="${eventList.endDate}" var="endDate" type="date" pattern="yyyy-MM-dd'T'HH:mm:ss"/>
 				   {
 				 		id: 1,
 				 		title: '${eventList.eventName}',
@@ -185,34 +141,20 @@
 				 	}
 			   ]
 			  });
-			  /* // Bind the dates to datetimepicker.
-			  $("#starts-at").datetimepicker(); */
-			  //click to save "save"
-			  $("#save-event").on("click", function(event) {
-			    var title = $("#title").val();
-			    if (title) {
-			      var eventData = {
-			        title: title,
-			        start: $("#starts-at").val(),
-			        place: $("#place").val()
-			        
-			      };
-			      $("#calendar").fullCalendar("renderEvent", eventData, true); // stick? = true
-			    }
-			    $("#calendar").fullCalendar("unselect");
-			    // Clear modal inputs
-			    $(".modal")
-			      .find("input")
-			      .val("");
-			    // hide modal
-			    $(".modal").modal("hide");
-			  });
-			  $("textarea").autosize();
-			});
+			}); 
 		</script>
 		</div>
+		
+		<div class="row justify-content-end mb-4" style="width:90%;">
+			<button class="btn btn-primary search-btn" id="eventAddBtn">추가</button>
+		</div>
 	</div>
-
+	
+	<script>
+		$("#eventAddBtn").on('click', function(){
+			$('#addModal').modal('show');
+		});
+	</script>
 
 	<!-- Footer-->
 	<jsp:include page="/WEB-INF/views/inc/footer.jsp"/>
@@ -223,6 +165,8 @@
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
 	<!-- Core theme JS-->
+	<script src="<%=request.getContextPath()%>/resources/js/scripts.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/event.js"></script>
 	<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
 	<!-- * *                               SB Forms JS                               * *-->
 	<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
