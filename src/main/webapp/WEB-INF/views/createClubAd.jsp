@@ -52,11 +52,11 @@
 					</div>
 					<div class="mb-3">
 						<p class="float-l">이미지 파일용</p>
-  						<input class="form-control file" type="file" id="fileOriginalUrl" name="fileOriginalUrl" accept="image/*" multiple>
+  						<input class="form-control file" type="file" id="originalUrl" name="originalUrl" accept="image/*" multiple>
 					</div>
 					<!-- <div class="mb-3">
 						<p class="float-l">첨부파일용</p>
-  						<input class="form-control file" type="file" id="originalUrl" multiple>
+  						<input class="form-control file" type="file" id="fileOriginalUrl" name="fileOriginalUrl" multiple>
 					</div> -->
 					<div>
 						<a class="btn btn-primary back-btn bottom-btn" href="./" role="button">뒤로</a>
