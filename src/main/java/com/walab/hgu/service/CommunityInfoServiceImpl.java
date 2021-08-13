@@ -16,9 +16,9 @@ public class CommunityInfoServiceImpl implements CommunityInfoService {
 	CommunityInfoDAO communityInfoDAO;
 
 	@Override
-	public List<CommunityInfoDTO> readCommunityInfo(int displayPost, int postNum) {
+	public List<CommunityInfoDTO> readCommunityInfo(int displayPost, int postNum, String searchType,String keyword) {
 
-		List<CommunityInfoDTO> infoList = communityInfoDAO.readCommunityInfo(displayPost, postNum);
+		List<CommunityInfoDTO> infoList = communityInfoDAO.readCommunityInfo(displayPost, postNum,searchType,keyword);
 
 		return infoList;
 
@@ -75,9 +75,9 @@ public class CommunityInfoServiceImpl implements CommunityInfoService {
 	}
 
 	@Override
-	public int countInfo() {
+	public int countInfo(String searchType,String keyword) {
 		// TODO Auto-generated method stub
-		return communityInfoDAO.countInfo();
+		return communityInfoDAO.countInfo(searchType,keyword);
 	}
 
 }
