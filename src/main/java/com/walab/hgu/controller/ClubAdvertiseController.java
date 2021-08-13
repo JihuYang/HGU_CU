@@ -182,6 +182,29 @@ public class ClubAdvertiseController {
 			return mv;
 		}
 		
+		@RequestMapping(value = "/clubAdvertise/delete/{id}", method = { RequestMethod.GET, RequestMethod.POST })
+		public ModelAndView deleteclubAdvertise(@PathVariable int id, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
+			ModelAndView mv = new ModelAndView();
+			
+			clubAdvertiseService.deleteClubAdvertiseFile(id);
+			clubAdvertiseService.deleteClubAdvertiseImage(id);
+			clubAdvertiseService.deleteClubAdvertise(id);
+			
+			ClubAdvertiseDTO clubAdvertiseDetail = clubAdvertiseService.readClubAdvertiseDetailId(id);
+			String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file");
+			
+			String fileName = clubAdvertiseDetail.getOriginalUrl();
+			System.out.println("filename: " + fileName);
+			
+			mv.addObject("clubAdvertiseDetail", clubAdvertiseDetail);
+
+			System.out.println(mv);
+
+			mv.setViewName("deleteClubAdvertise");
+
+			return mv;
+		}
+		
 		@RequestMapping("/clubAdvertise/detail/{id}/filedownload")
 		public void fileDownload(@PathVariable int id, HttpServletRequest request, HttpServletResponse response) {
 			ModelAndView mv = new ModelAndView();

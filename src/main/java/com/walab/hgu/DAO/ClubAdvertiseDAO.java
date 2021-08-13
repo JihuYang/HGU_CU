@@ -23,4 +23,8 @@ public interface ClubAdvertiseDAO {
 	public int createClubAdFile(FileDTO clubAdFile);
 
 	public int countInfo();
+	
+	public int deleteClubAdvertiseFile(int id);
+	public int deleteClubAdvertiseImage(int id);
+	public int deleteClubAdvertise(int id);
 }

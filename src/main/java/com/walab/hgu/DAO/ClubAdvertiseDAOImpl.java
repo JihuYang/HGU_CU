@@ -90,6 +90,30 @@ public class ClubAdvertiseDAOImpl implements ClubAdvertiseDAO{
 		sqlSession.insert(namespace+".createClubAdFile", clubAdFile);
 		return 0;
 	}
+	
+	@Override
+	public int deleteClubAdvertiseFile(int id) {
+		
+		sqlSession.delete(namespace+".deleteClubAdvertiseFile", id);
+		
+		return 0;
+	}
+	
+	@Override
+	public int deleteClubAdvertiseImage(int id) {
+		
+		sqlSession.delete(namespace+".deleteClubAdvertiseImage", id);
+		
+		return 0;
+	}
+	
+	@Override
+	public int deleteClubAdvertise(int id) {
+		
+		sqlSession.delete(namespace+".deleteClubAdvertise", id);
+		
+		return 0;
+	}
 
 
 	@Override

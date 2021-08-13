@@ -69,5 +69,25 @@
 		fileOriginalUrl)
 		VALUES (#{clubAdvertiseId}, #{fileOriginalUrl})
 	</insert>
+	
+	<!-- 동아리 홍보 파일 삭제 쿼리 -->
+	<delete id="deleteClubAdvertiseFile"
+		parameterType="int">
+		DELETE FROM hguclub.clubAdvertiseFile WHERE
+		clubAdvertiseId = #{id}
+	</delete>
+	
+	<!-- 동아리 홍보 이미지 삭제 쿼리 -->
+	<delete id="deleteCommunityInfoFile"
+		parameterType="int">
+		DELETE FROM hguclub.clubAdvertiseImage WHERE
+		clubAdvertiseId = #{id}
+	</delete>
+
+	<!-- 동아리 홍보 글 삭제 쿼리 -->
+	<delete id="deleteCommunityInfo"
+		parameterType="int">
+		DELETE FROM hguclub.clubAdvertise WHERE id = #{id}
+	</delete>
 
 </mapper>

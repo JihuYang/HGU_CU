@@ -21,6 +21,10 @@ public interface ClubAdvertiseService{
 	public int createClubAdImage(FileDTO clubAdImage);
 	
 	public int createClubAdFile(FileDTO clubAdFile);
+	
+	public int deleteClubAdvertiseFile(int id);
+	public int deleteClubAdvertiseImage(int id);
+	public int deleteClubAdvertise(int id);
 
 	public int countInfo();
 	

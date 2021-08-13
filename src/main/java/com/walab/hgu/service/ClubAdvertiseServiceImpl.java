@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import com.walab.hgu.DAO.ClubAdvertiseDAO;
 import com.walab.hgu.DTO.ClubAdvertiseDTO;
-import com.walab.hgu.DTO.CommunityInfoDTO;
 import com.walab.hgu.DTO.FileDTO;
 
 @Service
@@ -72,6 +71,24 @@ public class ClubAdvertiseServiceImpl implements ClubAdvertiseService{
 
 		return clubAdvertiseDAO.createClubAdFile(clubAdFile);
 		
+	}
+	
+	@Override
+	public int deleteClubAdvertiseFile(int id) {
+
+		return clubAdvertiseDAO.deleteClubAdvertise(id);
+	}
+	
+	@Override
+	public int deleteClubAdvertiseImage(int id) {
+
+		return clubAdvertiseDAO.deleteClubAdvertise(id);
+	}
+
+	@Override
+	public int deleteClubAdvertise(int id) {
+
+		return clubAdvertiseDAO.deleteClubAdvertise(id);
 	}
 
 	@Override
