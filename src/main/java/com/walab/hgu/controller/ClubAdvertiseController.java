@@ -190,17 +190,18 @@ public class ClubAdvertiseController {
 			clubAdvertiseService.deleteClubAdvertiseImage(id);
 			clubAdvertiseService.deleteClubAdvertise(id);
 			
-			ClubAdvertiseDTO clubAdvertiseDetail = clubAdvertiseService.readClubAdvertiseDetailId(id);
-			String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file");
 			
-			String fileName = clubAdvertiseDetail.getOriginalUrl();
-			System.out.println("filename: " + fileName);
+			ClubAdvertiseDTO clubAdvertiseDetail = clubAdvertiseService.readClubAdvertiseDetailId(id);
+			//String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file");
+			
+			//String fileName = clubAdvertiseDetail.getOriginalUrl();
+			//System.out.println("filename: " + fileName);
 			
 			mv.addObject("clubAdvertiseDetail", clubAdvertiseDetail);
 
 			System.out.println(mv);
 
-			mv.setViewName("deleteClubAdvertise");
+			mv.setViewName("redirect:/clubAdvertise?num=1");
 
 			return mv;
 		}

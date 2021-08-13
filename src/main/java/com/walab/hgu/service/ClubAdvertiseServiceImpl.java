@@ -76,13 +76,13 @@ public class ClubAdvertiseServiceImpl implements ClubAdvertiseService{
 	@Override
 	public int deleteClubAdvertiseFile(int id) {
 
-		return clubAdvertiseDAO.deleteClubAdvertise(id);
+		return clubAdvertiseDAO.deleteClubAdvertiseFile(id);
 	}
 	
 	@Override
 	public int deleteClubAdvertiseImage(int id) {
 
-		return clubAdvertiseDAO.deleteClubAdvertise(id);
+		return clubAdvertiseDAO.deleteClubAdvertiseImage(id);
 	}
 
 	@Override

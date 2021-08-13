@@ -78,14 +78,14 @@
 	</delete>
 	
 	<!-- 동아리 홍보 이미지 삭제 쿼리 -->
-	<delete id="deleteCommunityInfoFile"
+	<delete id="deleteClubAdvertiseImage"
 		parameterType="int">
 		DELETE FROM hguclub.clubAdvertiseImage WHERE
 		clubAdvertiseId = #{id}
 	</delete>
 
 	<!-- 동아리 홍보 글 삭제 쿼리 -->
-	<delete id="deleteCommunityInfo"
+	<delete id="deleteClubAdvertise"
 		parameterType="int">
 		DELETE FROM hguclub.clubAdvertise WHERE id = #{id}
 	</delete>
