@@ -54,10 +54,10 @@
 						<p class="float-l">이미지 파일용</p>
   						<input class="form-control file" type="file" id="originalUrl" name="originalUrl" accept="image/*" multiple>
 					</div>
-					<!-- <div class="mb-3">
+					<div class="mb-3">
 						<p class="float-l">첨부파일용</p>
   						<input class="form-control file" type="file" id="fileOriginalUrl" name="fileOriginalUrl" multiple>
-					</div> -->
+					</div> 
 					<div>
 						<a class="btn btn-primary back-btn bottom-btn" href="./" role="button">뒤로</a>
 						<button class="btn btn-primary submit-btn bottom-btn"> <!-- onclick="createClubAd()" -->저장</button> 

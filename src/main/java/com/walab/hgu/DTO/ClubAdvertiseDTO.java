@@ -12,6 +12,7 @@ public class ClubAdvertiseDTO {
 	private String content;
 	private String originalUrl;
 	private MultipartFile file; 
+	private MultipartFile imageFile; 
 	private Date regdate;
 	
 	
@@ -58,6 +59,14 @@ public class ClubAdvertiseDTO {
 	}
 	public void setFile(MultipartFile file) {
 		this.file = file;
+	}
+	
+	
+	public MultipartFile getImageFile() {
+		return imageFile;
+	}
+	public void setImageFile(MultipartFile imagefile) {
+		this.imageFile = imagefile;
 	}
 	@Override
 	public String toString() {

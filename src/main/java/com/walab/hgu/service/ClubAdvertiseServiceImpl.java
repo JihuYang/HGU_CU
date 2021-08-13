@@ -53,6 +53,13 @@ public class ClubAdvertiseServiceImpl implements ClubAdvertiseService{
 	}
 	
 	@Override
+	public int createClubAdImage(FileDTO clubAdImage) {
+
+		return clubAdvertiseDAO.createClubAdImage(clubAdImage);
+		
+	}
+	
+	@Override
 	public int createClubAdFile(FileDTO clubAdFile) {
 
 		return clubAdvertiseDAO.createClubAdFile(clubAdFile);

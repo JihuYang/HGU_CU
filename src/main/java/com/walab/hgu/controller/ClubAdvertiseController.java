@@ -104,16 +104,20 @@ public class ClubAdvertiseController {
 
 			ClubAdvertiseDTO info = new ClubAdvertiseDTO();
 			FileDTO infoFile = new FileDTO();
+			FileDTO infoImageFile = new FileDTO();
 
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
 
-			MultipartFile newfile = request.getFile("originalUrl");
-			String originalUrl = newfile.getOriginalFilename();
+			MultipartFile imagefile = request.getFile("originalUrl");
+			String originalUrl = imagefile.getOriginalFilename();
+			
+			MultipartFile newfile = request.getFile("fileOriginalUrl");
+			String fileOriginalUrl = newfile.getOriginalFilename();
 
 			info.setTitle(title);
 			info.setContent(content);
-			info.setFile(file);
+			//info.setFile(file);
 			
 			clubAdvertiseService.createClubAd(info);
 			
@@ -121,20 +125,30 @@ public class ClubAdvertiseController {
 			
 			System.out.println(recentId);
 		
+			infoImageFile.setClubAdvertiseId(recentId);
+			infoImageFile.setOriginalUrl(originalUrl);
+			
 			infoFile.setClubAdvertiseId(recentId);
-			infoFile.setOriginalUrl(originalUrl);
+			infoFile.setFileOriginalUrl(fileOriginalUrl);
 			
 			clubAdvertiseService.createClubAdFile(infoFile);
+			clubAdvertiseService.createClubAdImage(infoImageFile);
 
 			System.out.println(info.toString());
 			System.out.println(infoFile.toString());
 
 
 			String saveDir = request.getSession().getServletContext().getRealPath("/resources/img");
+			String savefileDir = request.getSession().getServletContext().getRealPath("/resources/upload/file");
 
-			File dir = new File(saveDir);
+			File imgDir = new File(saveDir);
+			File dir = new File(savefileDir);
 			if (!dir.exists()) {
 				dir.mkdirs();
+			}
+			
+			if (!imgDir.exists()) {
+				imgDir.mkdirs();
 			}
 
 			if (!newfile.isEmpty()) {
@@ -146,13 +160,15 @@ public class ClubAdvertiseController {
 				// String reName = sdf.format(System.currentTimeMillis()) + "_" + rand + ext;
 
 				try {
-					newfile.transferTo(new File(saveDir + "/" + originalUrl));
+					imagefile.transferTo(new File(saveDir + "/" + originalUrl));
+					newfile.transferTo(new File(savefileDir + "/" + fileOriginalUrl));
 				} catch (IllegalStateException | IOException e) {
 					e.printStackTrace();
 				}
 			}
 
 			System.out.println(saveDir);
+			System.out.println(savefileDir);
 
 
 			mv.setViewName("redirect:/clubAdvertise?num=1");

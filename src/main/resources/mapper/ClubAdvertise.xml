@@ -40,17 +40,26 @@
 		FROM clubAdvertise
 	</select>
 	
+	<!-- 동아리 홍보  업로드 쿼리 -->
 	<insert id="createClubAd" parameterType="com.walab.hgu.DTO.ClubAdvertiseDTO">
 		INSERT INTO hguclub.clubAdvertise (title,content)
 		VALUES (#{title},#{content})
 	</insert>
 	
-	<!-- 동아리 홍보 업로드 쿼리 -->
-	<insert id="createClubAdFile"
+	<!-- 동아리 홍보 이미지 업로드 쿼리 -->
+	<insert id="createClubAdImage"
 		parameterType="com.walab.hgu.DTO.FileDTO">
 		INSERT INTO hguclub.clubAdvertiseImage (clubAdvertiseId,
 		originalUrl)
 		VALUES (#{clubAdvertiseId}, #{originalUrl})
+	</insert>
+	
+	<!-- 동아리 홍보 일반 파일 업로드 쿼리 -->
+	<insert id="createClubAdFile"
+		parameterType="com.walab.hgu.DTO.FileDTO">
+		INSERT INTO hguclub.clubAdvertiseFile (clubAdvertiseId,
+		fileOriginalUrl)
+		VALUES (#{clubAdvertiseId}, #{fileOriginalUrl})
 	</insert>
 
 </mapper>

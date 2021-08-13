@@ -14,8 +14,8 @@
       <form class="modal-body">
         <label for="reservationPerson">대여자 이름</label>
   			<input class="form-control form-control-sm" id="reservationPerson">
-        <label for="user">사용 단체</label>
-  			<input class="form-control form-control-sm" id="user">
+        <!-- <label for="user">사용 단체</label>
+  			<input class="form-control form-control-sm" id="user"> -->
   		<label for="etc">장소</label>
   			<select class='spaceSelect' id='spaceSelect'>
 		      	<c:forEach items="${spaceList}" var="spaceList">

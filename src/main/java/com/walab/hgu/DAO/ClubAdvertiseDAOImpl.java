@@ -70,10 +70,14 @@ public class ClubAdvertiseDAOImpl implements ClubAdvertiseDAO{
 	}
 	
 	@Override
+	public int createClubAdImage(FileDTO clubAdImage) {
+		sqlSession.insert(namespace+".createClubAdImage", clubAdImage);
+		return 0;
+	}
+	
+	@Override
 	public int createClubAdFile(FileDTO clubAdFile) {
-		
 		sqlSession.insert(namespace+".createClubAdFile", clubAdFile);
-
 		return 0;
 	}
 

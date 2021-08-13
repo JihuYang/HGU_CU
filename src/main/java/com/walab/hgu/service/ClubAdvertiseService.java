@@ -17,6 +17,8 @@ public interface ClubAdvertiseService{
 
 	public int createClubAd(ClubAdvertiseDTO info);
 	
+	public int createClubAdImage(FileDTO clubAdImage);
+	
 	public int createClubAdFile(FileDTO clubAdFile);
 
 	public int countInfo();
