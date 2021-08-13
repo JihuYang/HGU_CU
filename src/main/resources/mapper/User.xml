@@ -8,5 +8,13 @@
 		SELECT u.id, name, email, admin, phone, clubName FROM (hguclub.user as u
 		INNER JOIN hguclub.club as c ON c.userId=u.id);
 	</select>
-
+	
+	<select id="reaadminByUserID" resultType="int" parameterType="hashmap">
+		SELECT admin FROM hguclub.user WHERE id=${userID}
+	</select>
+	
+	<select id="readUserIDByEmail" resultType="int" parameterType="hashmap">
+		SELECT id FROM user WHERE email=#{email}
+	</select>
+	
 </mapper>
