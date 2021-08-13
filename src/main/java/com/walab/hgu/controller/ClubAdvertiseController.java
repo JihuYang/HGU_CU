@@ -1,10 +1,15 @@
 package com.walab.hgu.controller;
 
+import java.io.BufferedInputStream;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.List;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +24,7 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.walab.hgu.DTO.ClubAdvertiseDTO;
+import com.walab.hgu.DTO.CommunityInfoDTO;
 import com.walab.hgu.DTO.FileDTO;
 import com.walab.hgu.DTO.Page;
 import com.walab.hgu.service.ClubAdvertiseService;
@@ -174,6 +180,52 @@ public class ClubAdvertiseController {
 			mv.setViewName("redirect:/clubAdvertise?num=1");
 
 			return mv;
+		}
+		
+		@RequestMapping("/clubAdvertise/detail/{id}/filedownload")
+		public void fileDownload(@PathVariable int id, HttpServletRequest request, HttpServletResponse response) {
+			ModelAndView mv = new ModelAndView();
+
+			ClubAdvertiseDTO clubAdDetail = clubAdvertiseService.readClubAdvertiseDetailId(id);
+			String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file");
+			
+			String fileName = clubAdDetail.getFileOriginalUrl();
+			System.out.println("filename: " + fileName);
+
+			File file = new File(saveDir + "/" + fileName);
+			FileInputStream fis = null;
+			BufferedInputStream bis = null;
+			ServletOutputStream sos = null;
+			try {
+				fis = new FileInputStream(file);
+				bis = new BufferedInputStream(fis);
+				sos = response.getOutputStream();
+				String reFilename = "";
+				boolean isMSIE = request.getHeader("user-agent").indexOf("MSIE") != -1
+						|| request.getHeader("user-agent").indexOf("Trident") != -1;
+				if (isMSIE) {
+					reFilename = URLEncoder.encode(fileName, "utf-8");
+					reFilename = reFilename.replaceAll("\\+", "%20");
+				} else {
+					reFilename = new String(fileName.getBytes("utf-8"), "ISO-8859-1");
+				}
+				response.setContentType("application/octet-stream;charset=utf-8");
+				response.addHeader("Content-Disposition", "attachment;filename=\"" + reFilename + "\"");
+				response.setContentLength((int) file.length());
+				int read = 0;
+				while ((read = bis.read()) != -1) {
+					sos.write(read);
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			} finally {
+				try {
+					sos.close();
+					bis.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
 		}
 
 }

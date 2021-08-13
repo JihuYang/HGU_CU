@@ -77,13 +77,17 @@
 					</tr>
 					<tr>
 						<th scope="col" class="col-3 text-center file py-4">첨부파일</th>
-						<th scope="col" class="col-7 text-start px-3 py-4"><a href="/clubAdvertise/detail/filedownload">파일다운로드클릭</a></th>
+						<th scope="col" class="col-7 text-start px-3 py-4"><a href="/hgu/clubAdvertise/detail/${clubAdDetailList[0].id}/filedownload">파일다운로드클릭</a></th>
 					</tr>
 				</tbody>
 			</table>
 
 			<div class="row justify-content-start mt-4 list-btn">
-				<button class="btn btn-primary search-btn list-btn" onclick="location.href='../'">목록</button>
+				<button class="btn btn-primary search-btn list-btn" onclick="location.href='<%=request.getContextPath()%>/clubAdvertise?num=1'">목록</button>
+				<button class="btn btn-primary search-btn list-btn"
+					onclick="location.href='<%=request.getContextPath()%>/clubAdvertise/update/${clubAdDetailList[0].id}'">수정</button>
+				<button class="btn btn-primary search-btn list-btn"
+					onclick="location.href='<%=request.getContextPath()%>/clubAdvertise/delete/${clubAdDetailList[0].id}'">삭제</button>
 			</div>
 		</div>
 	</div>

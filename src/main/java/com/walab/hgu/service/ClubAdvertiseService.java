@@ -10,6 +10,7 @@ public interface ClubAdvertiseService{
 	public List<ClubAdvertiseDTO> readClubAdvertisePreview(int displayPost, int postNum);
 
 	public List<ClubAdvertiseDTO> readClubAdvertiseDetail(int id);
+	public ClubAdvertiseDTO readClubAdvertiseDetailId(int id);
 
 	public List<ClubAdvertiseDTO> getClubAdImg(int id);
 	

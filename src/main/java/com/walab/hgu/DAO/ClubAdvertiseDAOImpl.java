@@ -40,6 +40,16 @@ public class ClubAdvertiseDAOImpl implements ClubAdvertiseDAO{
 		
 		return sqlSession.selectList(namespace+".readClubAdvertiseDetail", clubAdvertiseDetail);
 	}
+	
+	@Override
+	public ClubAdvertiseDTO readClubAdvertiseDetailId(int id) {
+		
+		Map<String, Object> infoDetailList = new HashMap<String, Object>();
+		infoDetailList.put("id", id);
+		System.out.println(infoDetailList);
+				
+		return sqlSession.selectOne(namespace+".readClubAdvertiseDetailId", infoDetailList);
+	}
 
 
 	@Override

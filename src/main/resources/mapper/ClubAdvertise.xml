@@ -22,6 +22,14 @@
 			WHERE id = #{id}
 	</select>
 	
+	<select id="readClubAdvertiseDetailId"
+		resultType="com.walab.hgu.DTO.ClubAdvertiseDTO"
+		parameterType="hashmap">
+		SELECT CA.id, CAF.fileOriginalUrl 
+			FROM clubAdvertise CA , hguclub.clubAdvertiseFile as CAF
+			WHERE CA.id = #{id} and CA.id=CAF.clubAdvertiseId LIMIT 1
+	</select>
+	
 	<select id="readRecentClubAd" resultType="int"
 		parameterType="hashmap">
 		SELECT MAX(id) FROM hguclub.clubAdvertise

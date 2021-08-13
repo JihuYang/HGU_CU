@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.walab.hgu.DAO.ClubAdvertiseDAO;
 import com.walab.hgu.DTO.ClubAdvertiseDTO;
+import com.walab.hgu.DTO.CommunityInfoDTO;
 import com.walab.hgu.DTO.FileDTO;
 
 @Service
@@ -27,6 +28,13 @@ public class ClubAdvertiseServiceImpl implements ClubAdvertiseService{
 	@Override
 	public List<ClubAdvertiseDTO> readClubAdvertiseDetail(int id) {
 		List<ClubAdvertiseDTO> infoDetailList = clubAdvertiseDAO.readClubAdvertiseDetail(id);
+		return infoDetailList;
+	}
+	
+	@Override
+	public ClubAdvertiseDTO readClubAdvertiseDetailId(int id) {
+		ClubAdvertiseDTO infoDetailList = clubAdvertiseDAO.readClubAdvertiseDetailId(id);
+
 		return infoDetailList;
 	}
 
