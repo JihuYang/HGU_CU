@@ -7,4 +7,9 @@
 		SELECT * FROM setting;
  	</select>
 
+	<select id="countInfo" resultType="int" parameterType="hashMap">
+		SELECT COUNT(*) as listCnt
+		FROM setting
+	</select>
+
 </mapper>

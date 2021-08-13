@@ -5,8 +5,15 @@
 
 	<select id="readUser" resultType="com.walab.hgu.DTO.UserDTO"
 		parameterType="hashmap">
-		SELECT u.id, name, email, admin, phone, clubName FROM (hguclub.user as u
-		INNER JOIN hguclub.club as c ON c.userId=u.id);
+		SELECT u.id, name, email, u.admin, phone, clubName FROM (hguclub.user as u
+		INNER JOIN hguclub.club as c ON c.userId=u.id)
+		ORDER BY u.regdate DESC
+		LIMIT #{displayPost}, #{postNum}
+	</select>
+	
+	<select id="countInfo" resultType="int">
+		SELECT COUNT(*) as listCnt
+		FROM user
 	</select>
 
 </mapper>

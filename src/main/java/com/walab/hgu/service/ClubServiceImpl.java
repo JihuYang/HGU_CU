@@ -46,8 +46,8 @@ public class ClubServiceImpl implements ClubService{
 	}
 	
 	@Override
-	public List<ClubDTO> readClubList(){
-		List<ClubDTO> clubList = clubDAO.readClubList();
+	public List<ClubDTO> readClubList(int displayPost, int postNum){
+		List<ClubDTO> clubList = clubDAO.readClubList(displayPost,postNum);
 		return clubList;
 	}
 

@@ -15,12 +15,18 @@ public class UserServiceImpl implements UserService {
 	UserDAO userDAO;
 
 	@Override
-	public List<UserDTO> readUser() {
+	public List<UserDTO> readUser(int displayPost, int postNum) {
 		
-		List<UserDTO> userList = userDAO.readUser();
+		List<UserDTO> userList = userDAO.readUser(displayPost,postNum);
 
 		return userList;
 		
+	}
+
+	@Override
+	public int countInfo() {
+		// TODO Auto-generated method stub
+		return userDAO.countInfo();
 	}
 	
 

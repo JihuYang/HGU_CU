@@ -8,7 +8,7 @@ import com.walab.hgu.DTO.ClubDTO;
 public interface ClubService {
 	public List<ClubDTO> readClubIntroductionPreview(int categoryId);
 	
-	public List<ClubDTO> readClubList();
+	public List<ClubDTO> readClubList(int displayPost, int postNum);
 
 	public List<CategoryDTO> getCategoryNameList();
 

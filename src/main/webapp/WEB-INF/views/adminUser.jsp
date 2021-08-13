@@ -45,11 +45,11 @@
 				class="h-auto align-items-center justify-content-center text-center admin-nav-border">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item mx-3"><a class="nav-link font-weight"
-						href="<%=request.getContextPath()%>/admin">홈페이지 관리</a></li>
+						href="<%=request.getContextPath()%>/admin?num=1">홈페이지 관리</a></li>
 					<li class="nav-item mx-3"><a class="nav-link font-weight" style="background-color: rgb(239, 247, 253);"
-						href="<%=request.getContextPath()%>/adminUser">회원 관리</a></li>
+						href="<%=request.getContextPath()%>/adminUser?num=1">회원 관리</a></li>
 					<li class="nav-item mx-3"><a class="nav-link font-weight"
-						href="<%=request.getContextPath()%>/adminReservation">예약 관리</a></li>
+						href="<%=request.getContextPath()%>/adminReservation?num=1">예약 관리</a></li>
 				</ul>
 			</div>
 		</nav>
@@ -62,19 +62,31 @@
 
 		</div>
 		<div class="row h-auto align-items-center text-center">
-			<nav>
+			<nav id="paginationBox">
 				<ul class="pagination align-items-center justify-content-center">
-					<li class="page-item"><a class="page-link" href="#"
-						aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-							<span class="sr-only">Previous</span>
-					</a></li>
-					<li class="page-item"><a class="page-link" href="#">1</a></li>
-					<li class="page-item"><a class="page-link" href="#">2</a></li>
-					<li class="page-item"><a class="page-link" href="#">3</a></li>
-					<li class="page-item"><a class="page-link" href="#"
-						aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
-							class="sr-only">Next</span>
-					</a></li>
+					<c:if test="${page.prev}">
+						<li class="page-item"><a class="page-link" href="<%=request.getContextPath()%>/adminUser?num=${page.startPageNum - 1}${page.searchTypeKeyword}"
+							aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+								<span class="sr-only">Previous</span>
+						</a></li>
+					</c:if>
+					
+					 <c:forEach begin="${page.startPageNum}" end="${page.endPageNum}" var="num">
+					 	<c:if test="${selected != num}">
+					 		<li class="page-item"><a class="page-link" href="<%=request.getContextPath()%>/adminUser?num=${num}${page.searchTypeKeyword}">${num}</a></li>
+					 	</c:if>
+					 	
+					 	<c:if test="${selected == num}">
+					 		<li class="page-item active"><a class="page-link" href="#">${num}</a></li>
+					 	</c:if>
+ 					</c:forEach>
+ 					
+ 					<c:if test="${page.next}">
+	 					<li class="page-item"><a class="page-link"  href="<%=request.getContextPath()%>/adminUser?num=${page.endPageNum + 1}${page.searchTypeKeyword}"
+							aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
+								class="sr-only">Next</span>
+						</a></li>
+					</c:if>
 				</ul>
 			</nav>
 		</div>
@@ -86,7 +98,7 @@
 
 	<!-- Bootstrap core JS-->
 	<script
-		src="<%=request.getContextPath()%>/resources/assets/js/pagenation.js"></script>
+		src="<%=request.getContextPath()%>/resources/js/pagenation.js"></script>
 
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>

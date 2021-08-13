@@ -20,11 +20,22 @@ public class UserDAOImpl implements UserDAO {
 	
 	
 	@Override
-	public List<UserDTO> readUser() {
+	public List<UserDTO> readUser(int displayPost, int postNum) {
 		
 		Map<String, Object> userList = new HashMap<String, Object>();
+		userList.put("displayPost", displayPost);
+		userList.put("postNum", postNum);
+		
+		System.out.println(userList);
 				
 		return sqlSession.selectList(namespace+".readUser", userList);
+	}
+
+
+	@Override
+	public int countInfo() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace+".countInfo");
 	}
 	
 }

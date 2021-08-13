@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.walab.hgu.DTO.ClubDTO;
 import com.walab.hgu.DTO.CommunityInfoDTO;
+import com.walab.hgu.DTO.Page;
 import com.walab.hgu.DTO.ReservationInfoDTO;
 import com.walab.hgu.DTO.SettingDTO;
 import com.walab.hgu.DTO.SpaceDTO;
@@ -69,11 +70,17 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
-	public ModelAndView readSetting(ModelAndView mv) {
+	public ModelAndView readSetting(ModelAndView mv, @RequestParam("num") int num) {
 		
-		List<SettingDTO> settingList = settingService.readSetting();
+		Page page = new Page();
+		page.setNum(num); 
+		page.setCount(settingService.countInfo());
+		
+		List<SettingDTO> settingList = settingService.readSetting(page.getDisplayPost(),page.getPostNum());
 		
 		mv.addObject("settingList", settingList); 
+		mv.addObject("page", page);
+		mv.addObject("selected", num);
 		
 		System.out.println(mv);
 
@@ -84,16 +91,21 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value = "/adminUser", method = RequestMethod.GET)
-	public ModelAndView readUser(ModelAndView mv) {
+	public ModelAndView readUser(ModelAndView mv, @RequestParam("num") int num) {
 		
-		List<UserDTO> userList = userService.readUser();
-		List<ClubDTO> clubList = clubService.readClubList();
+		Page page = new Page();
+		page.setNum(num); 
+		page.setCount(userService.countInfo());
+		
+		List<UserDTO> userList = userService.readUser(page.getDisplayPost(),page.getPostNum());
+		List<ClubDTO> clubList = clubService.readClubList(page.getDisplayPost(),page.getPostNum());
 		
 		mv.addObject("userList", userList); 
 		mv.addObject("clubList", clubList); 
+		mv.addObject("page", page);
+		mv.addObject("selected", num);
 		
 		System.out.println(mv);
-
 		
 		mv.setViewName("adminUser");
 			

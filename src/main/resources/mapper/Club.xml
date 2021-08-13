@@ -24,6 +24,8 @@
 	
 	<select id="readClubList" parameterType="HashMap" resultType="com.walab.hgu.DTO.ClubDTO">
 		SELECT * FROM club
+		ORDER BY regdate DESC
+		LIMIT #{displayPost}, #{postNum}
 	</select>
 
 	<select id="getClubImg" parameterType="HashMap" resultType="com.walab.hgu.DTO.ClubDTO">

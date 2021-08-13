@@ -6,5 +6,7 @@ import com.walab.hgu.DTO.SettingDTO;
 
 public interface SettingDAO {
 		
-	public List<SettingDTO> readSetting();
+	public List<SettingDTO> readSetting(int displayPost, int postNum);
+
+	public int countInfo();
 }

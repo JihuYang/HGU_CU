@@ -20,11 +20,20 @@ public class SettingDAOImpl implements SettingDAO {
 	
 	
 	@Override
-	public List<SettingDTO> readSetting() {
+	public List<SettingDTO> readSetting(int displayPost, int postNum) {
 		
 		Map<String, Object> settingParam = new HashMap<String, Object>();
+		settingParam.put("displayPost", displayPost);
+		settingParam.put("postNum", postNum);
 				
 		return sqlSession.selectList(namespace+".readSetting", settingParam);
+	}
+
+
+	@Override
+	public int countInfo() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace+".countInfo");
 	}
 	
 }
