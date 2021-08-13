@@ -106,12 +106,5 @@
 		</if>
 	</select>
 
-	<!-- 커뮤니티 공지사항 글 수정 쿼리 -->
-	<update id="updateCommunityInfo"
-		parameterType="com.walab.hgu.DTO.CommunityInfoDTO">
-		UPDATE hguclub.communityInfo set userId = #{userId},
-		title=#{title},
-		content=#{content} WHERE id = #{id}
-	</update>
 
 </mapper>
