@@ -46,12 +46,16 @@ public class CommunityEventController {
 	@ResponseBody
 	public ModelAndView createEvent(ModelAndView mv,
 			@RequestParam(value="eventName") String eventName,
+			@RequestParam(value="eventSpace") String eventSpace,
+			@RequestParam(value="eventContent") String eventContent,
 			@RequestParam(value="startDate") @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")Date startDate,
 			@RequestParam(value="endDate") @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")Date endDate) {
 		
 		EventDTO info = new EventDTO();
 		
 		info.setEventName(eventName);
+		info.setEventSpace(eventSpace);
+		info.setEventContent(eventContent);
 		info.setStartDate(startDate);
 		info.setEndDate(endDate);
 		

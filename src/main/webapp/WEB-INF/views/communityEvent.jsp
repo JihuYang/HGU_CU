@@ -64,9 +64,13 @@
 						</div>
 						
 						<div class="event-modal-body">
+							<div class="grid-item1">내용</div>
+							<div class="grid-item2" >
+								<input type="text" name="eventContent" id="eventContent" />
+							</div>
 							<div class="grid-item1">장소</div>
 							<div class="grid-item2" >
-								<input type="text" name="place" id="place" />
+								<input type="text" name="eventSpace" id="eventSpace" />
 							</div>
 							<div class="grid-item1">날짜(시작)</div>
 							<div class="grid-item2">

@@ -12,6 +12,8 @@ function createCommutinyEvent(){
 		async: false,
 		data: {
 			eventName: $('#title').val(),
+			eventSpace:$('#eventSpace').val(),
+			eventContent:$('#eventContent').val(),
 			startDate: startDate,
 			endDate: endDate
 		},

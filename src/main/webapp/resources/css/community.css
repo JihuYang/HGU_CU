@@ -246,7 +246,7 @@ tr{
 }
 
 #modal-title{
-	width:80%;
+	width:78%;
 	margin : 0 auto;
 	margin-top:20px;
 }
@@ -271,7 +271,7 @@ tr{
 .event-modal-body{
 	display:grid;
 	padding:0 40px;
-	grid-template-rows: repeat(3, 1fr);
+	grid-template-rows: repeat(4, 1fr);
 	grid-template-columns: 1fr 2fr;
 	align-items: center;
    	justify-content: center;
@@ -293,6 +293,10 @@ tr{
 
 .modal-time{
 	width:100px;
+}
+
+#eventContent, #eventSpace{
+	width:250px;
 }
 
 
