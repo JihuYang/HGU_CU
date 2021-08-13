@@ -41,15 +41,21 @@ public class CommunityInfoController {
 	CommunityInfoService communityInfoService;
 
 	@RequestMapping(value = "/communityInfo", method = RequestMethod.GET)
-	public ModelAndView readCommunityInfo(ModelAndView mv, @RequestParam("num") int num) {
+	public ModelAndView readCommunityInfo(ModelAndView mv, @RequestParam("num") int num, 
+			@RequestParam(value = "searchType",required = false, defaultValue = "title") String searchType, 
+			@RequestParam(value = "keyword",required = false, defaultValue = "") String keyword) {
+		
 		//ModelAndView mv = new ModelAndView();
 		
 		Page page = new Page();
-		
 		page.setNum(num);
-		page.setCount(communityInfoService.countInfo());
+		page.setCount(communityInfoService.countInfo( searchType, keyword));
 		
-		List<CommunityInfoDTO> communityInfoList = communityInfoService.readCommunityInfo(page.getDisplayPost(),page.getPostNum());
+		// 검색 타입과 검색어
+		page.setSearchType(searchType);
+		page.setKeyword(keyword);
+		
+		List<CommunityInfoDTO> communityInfoList = communityInfoService.readCommunityInfo(page.getDisplayPost(),page.getPostNum(),searchType,keyword);
 		
 		mv.addObject("communityInfoList", communityInfoList);
 		mv.addObject("page", page);

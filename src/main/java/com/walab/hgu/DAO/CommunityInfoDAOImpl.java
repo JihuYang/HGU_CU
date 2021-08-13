@@ -21,11 +21,13 @@ public class CommunityInfoDAOImpl implements CommunityInfoDAO {
 	
 	
 	@Override
-	public List<CommunityInfoDTO> readCommunityInfo(int displayPost, int postNum) {
+	public List<CommunityInfoDTO> readCommunityInfo(int displayPost, int postNum, String searchType,String keyword) {
 		
 		Map<String, Object> infoList = new HashMap<String, Object>();
 		infoList.put("displayPost", displayPost);
 		infoList.put("postNum", postNum);
+		infoList.put("searchType", searchType);
+		infoList.put("keyword", keyword);
 				
 		return sqlSession.selectList(namespace+".readCommunityInfo", infoList);
 	}
@@ -104,9 +106,13 @@ public class CommunityInfoDAOImpl implements CommunityInfoDAO {
 	}
 
 	@Override
-	public int countInfo() {
+	public int countInfo(String searchType,String keyword) {
 		
-		return sqlSession.selectOne(namespace+".countInfo");
+		Map<String, Object> count = new HashMap<String, Object>();
+		count.put("searchType", searchType);
+		count.put("keyword", keyword);
+		
+		return sqlSession.selectOne(namespace+".countInfo",count);
 	}
 
 

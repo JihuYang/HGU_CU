@@ -54,11 +54,13 @@ public class HomeController {
 	}
 
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
-	public ModelAndView searchHome(ModelAndView mv, @RequestParam("num") int num) {
+	public ModelAndView searchHome(ModelAndView mv, @RequestParam("num") int num,
+			@RequestParam(value = "searchType",required = false, defaultValue = "title") String searchType, 
+			@RequestParam(value = "keyword",required = false, defaultValue = "") String keyword) {
 		//ModelAndView mv = new ModelAndView();
 		
 		//게시물 총 갯수 
-		int count = communityInfoService.countInfo();
+		int count = communityInfoService.countInfo( searchType, keyword);
 		
 		//한 페이지에 출력할 게시물 갯수 
 		int postNum = 10;
@@ -67,7 +69,7 @@ public class HomeController {
 		
 		int displayPost = (num - 1) * postNum;
 
-		List<CommunityInfoDTO> communityInfoList = communityInfoService.readCommunityInfo(displayPost,postNum);
+		List<CommunityInfoDTO> communityInfoList = communityInfoService.readCommunityInfo(displayPost,postNum,searchType,keyword);
 		
 		mv.addObject("communityInfoList", communityInfoList);
 		mv.addObject("pageNum", pageNum);

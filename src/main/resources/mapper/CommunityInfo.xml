@@ -10,6 +10,16 @@
 		FROM hguclub.communityInfo as c
 		INNER JOIN hguclub.user as u ON
 		c.userId = u.id
+		
+		<if test='searchType.equals("title")'>
+			WHERE title LIKE concat('%',#{keyword},'%')
+		</if>
+		<if test='searchType.equals("content")'>
+			WHERE content LIKE concat('%',#{keyword},'%')
+		</if>
+		<if test='searchType.equals("title_content")'>
+			WHERE title LIKE concat('%',#{keyword},'%') or content LIKE concat('%',#{keyword},'%')
+		</if>
 		ORDER BY c.regdate DESC
 		LIMIT #{displayPost}, #{postNum}
 	</select>
@@ -54,7 +64,7 @@
 		originalUrl =
 		#{originalUrl} WHERE communityInfoId = #{communityInfoId}
 	</update>
-
+	
 	<!-- 커뮤니티 공지사항 글 수정 쿼리 -->
 	<update id="updateCommunityInfo"
 		parameterType="com.walab.hgu.DTO.CommunityInfoDTO">
@@ -62,12 +72,12 @@
 		title=#{title},
 		content=#{content} WHERE id = #{id}
 	</update>
-
+	
 	<update id="updateViewCount" parameterType="int">
 		update communityInfo
 		set viewCount = viewCount + 1 where id = #{id}
 	</update>
-
+	
 	<!-- 커뮤니티 공지사항 파일 삭제 쿼리 -->
 	<delete id="deleteCommunityInfoFile"
 		parameterType="int">
@@ -80,12 +90,21 @@
 		parameterType="int">
 		DELETE FROM hguclub.communityInfo WHERE id = #{id}
 	</delete>
+	
 
-	<select id="countInfo" resultType="int">
+	<select id="countInfo" resultType="int" parameterType="hashMap">
 		SELECT COUNT(*) as listCnt
 		FROM communityInfo
+		<if test='searchType.equals("title")'>
+			WHERE title LIKE concat('%',#{keyword},'%')
+		</if>
+		<if test='searchType.equals("content")'>
+			WHERE content LIKE concat('%',#{keyword},'%')
+		</if>
+		<if test='searchType.equals("title_content")'>
+			WHERE title LIKE concat('%',#{keyword},'%') or content LIKE concat('%',#{keyword},'%')
+		</if>
 	</select>
-
 
 
 </mapper>

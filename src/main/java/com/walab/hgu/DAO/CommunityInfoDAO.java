@@ -7,7 +7,7 @@ import com.walab.hgu.DTO.FileDTO;
 
 public interface CommunityInfoDAO {
 		
-	public List<CommunityInfoDTO> readCommunityInfo(int displayPost, int postNum);
+	public List<CommunityInfoDTO> readCommunityInfo(int displayPost, int postNum, String searchType,String keyword);
 	public CommunityInfoDTO readCommunityInfoDetail(int id);
 	public int readRecentCommunityInfo();
 	public int createCommunityInfo(CommunityInfoDTO communityInfo);
@@ -17,6 +17,6 @@ public interface CommunityInfoDAO {
 	public int deleteCommunityInfoFile(int id);
 	public int deleteCommunityInfo(int id);
 	public int updateViewCount(int id);
-	public int countInfo();
+	public int countInfo(String searchType,String keyword);
 
 }
