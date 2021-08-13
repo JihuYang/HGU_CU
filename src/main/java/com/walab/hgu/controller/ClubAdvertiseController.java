@@ -108,7 +108,7 @@ public class ClubAdvertiseController {
 			String title = request.getParameter("title");
 			String content = request.getParameter("content");
 
-			MultipartFile newfile = request.getFile("fileOriginalUrl");
+			MultipartFile newfile = request.getFile("originalUrl");
 			String originalUrl = newfile.getOriginalFilename();
 
 			info.setTitle(title);
@@ -122,7 +122,7 @@ public class ClubAdvertiseController {
 			System.out.println(recentId);
 		
 			infoFile.setClubAdvertiseId(recentId);
-			infoFile.setFileOriginalUrl(originalUrl);
+			infoFile.setOriginalUrl(originalUrl);
 			
 			clubAdvertiseService.createClubAdFile(infoFile);
 

@@ -33,9 +33,6 @@
 			FROM clubAdvertiseImage RIGHT JOIN clubAdvertise cA on cA.id = clubAdvertiseImage.clubAdvertiseId
 			WHERE clubAdvertiseId = #{id} ORDER BY `order`
 			
-			<!-- SELECT fileOriginalUrl
-			FROM hguclub.clubAdvertiseFile as CAF, hguclub.clubAdvertise as CA
-			WHERE CAF.clubAdvertiseId = CA.id ORDER BY `order` -->
 	</select>
 	
 	<select id="countInfo" resultType="int">
@@ -48,12 +45,12 @@
 		VALUES (#{title},#{content})
 	</insert>
 	
-	<!-- 동아리 홍보 파일 업로드 쿼리 -->
+	<!-- 동아리 홍보 업로드 쿼리 -->
 	<insert id="createClubAdFile"
 		parameterType="com.walab.hgu.DTO.FileDTO">
-		INSERT INTO hguclub.clubAdvertiseFile (clubAdvertiseId,
-		fileOriginalUrl)
-		VALUES (#{clubAdvertiseId}, #{fileOriginalUrl})
+		INSERT INTO hguclub.clubAdvertiseImage (clubAdvertiseId,
+		originalUrl)
+		VALUES (#{clubAdvertiseId}, #{originalUrl})
 	</insert>
 
 </mapper>
