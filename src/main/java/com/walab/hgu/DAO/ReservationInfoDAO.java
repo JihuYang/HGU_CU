@@ -8,5 +8,6 @@ public interface ReservationInfoDAO {
 		
 	public List<ReservationInfoDTO> readReservationInfo();
 	public int createAdminReservationInfo(ReservationInfoDTO reservationInfo);
+	public int createReservation(ReservationInfoDTO reservationInfo);
 	
 }

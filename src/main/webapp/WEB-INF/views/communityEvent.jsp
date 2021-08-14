@@ -134,7 +134,8 @@
 				 		end:'${endDate}',
 				 		allDay: false,
 				 		textColor:'white',
-				 		place:'학교',
+				 		place:'${eventList.eventSpace}',
+				 		content:'${eventList.eventContent}',
 				 		color: '#326295'
 				 	},
 				 	</c:forEach>
@@ -143,7 +144,45 @@
 				 		start: "1990-01-01",
 				 		allDay: false
 				 	}
-			   ]
+			   ],
+			   eventClick: function(event) {
+		            // opens events in a popup window
+		            // window.open(event.url, 'gcalevent', 'width=700,height=600');
+		    		var title = event.title;
+		    		document.getElementById('title').readOnly = true;
+		    		var content = event.content;
+		    		document.getElementById('eventContent').readOnly = true;
+		    		var place = event.place;
+		    		document.getElementById('eventSpace').readOnly = true;
+		    		var startDate = event.start;
+		    		document.getElementById('startDate').readOnly = true;
+
+		    		/*
+		    		var purpose = $('#purpose'+clickedId).text();
+		    		var space = $('#space'+clickedId).text();
+		    		var phone = $('#phone'+clickedId).text();
+		    		var email = $('#email'+clickedId).text();
+		    		var reservationDate = $('#reservationDate'+clickedId).text();
+		    		var startTime = $('#startTime'+clickedId).text();
+		    		var endTime = $('#endTime'+clickedId).text();
+		    		*/
+		    		
+		    		$('#addModal').modal('show');
+		    		$('#title').val(title);
+		    		$('#eventContent').val(content);
+		    		$('#eventSpace').val(place);
+		    		$('#startDate').val(startDate);
+		    		/*
+		    		$('#purpose').val(purpose);
+		    		$("#spaceSelect").val(space).attr("selected", "selected");
+		    		$('#phone').val(phone);
+		    		$('#email').val(email);
+		    		$('#reservationDate').val(reservationDate);
+		    		$("#startTime").val(startTime).attr("selected", "selected");
+		    		$("#endTime")[0].innerHTML="<option value='"+endTime+"' selected>"+endTime+"</option>";
+		    		*/
+		            return false;
+		        }
 			  });
 			}); 
 		</script>

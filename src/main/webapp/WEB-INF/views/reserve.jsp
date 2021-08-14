@@ -88,23 +88,23 @@
 				    <tr>
 				      <th scope="row">시작 시간</th>
 				      <td>
-				        <select id='startTime' class="input-resize" onchange="handleTimeLimit(this)">
+				        <select id='startTime' name ='startTime' class="input-resize" onchange="handleTimeLimit(this)">
 						</select>
 					  </td>
 				    </tr>
 				    <tr>
 				      <th scope="row">종료 시간</th>
 				      <td>
-				        <select id='endTime' class="input-resize">
-					        <option value='' selected> 9:00</option>
-					        <option value='' >10:00</option>
+				        <select id='endTime' name ='endTime' class="input-resize">
+					        <option value='9:00' selected> 9:00</option>
+					        <option value='10:00' >10:00</option>
 						</select>
 					  </td>
 				    </tr>
 				    <tr>
 				      <th scope="row">목적 *</th>
 				      <td>
-						<input type="text" class="input-resize" name="purpose"></input>
+						<input type="text" class="input-resize" name="purpose" id="purpose"></input>
 					  </td>
 				    </tr>
 				    <tr>
@@ -117,7 +117,7 @@
 				</table>
 				<br>
 				</div>
-				<form onsubmit="saveReservation();">
+				<form>
 				<div>
 			<h3><font size="4">개인정보 수집·이용·제공 동의</font></h3>
 			<textarea readonly="readonly" style="width:100%;height:100px;">
@@ -155,12 +155,13 @@
 
 		<br/>
 			<div class="buttonContainer w3-right">
-			<input type="button" id="reserve_button" class="w3-button w3-blue" name="btn" disabled value="예약하기" onclick="saveReservation();">
+			<input type="button" id="reserve_button" class="w3-button w3-blue" name="btn" disabled value="예약하기" onclick="createReservation()">
 			<input type="button" id="cancle_button" class="w3-button w3-red" value="취소하기" onclick="location.href='./reservation'">
                         
          	</div>
 	
 	</div>  
+	</div>
 	
 	<script>
 	/* reserve.jsp */
@@ -221,7 +222,7 @@
 			 var time = text.split(':');
 			 time[0]++;
 			 document.getElementById('endTime').innerHTML=
-			    "<option value="+time[0]+time[1]+">"
+			    "<option value="+time[0]+':'+time[1]+">"
 					+time[0]+':'
 					+time[1]
 					+"</option>";
@@ -259,6 +260,7 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
 	<!-- Core theme JS-->
 	<script src="<%=request.getContextPath()%>/resources/js/scripts.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/reservation.js"></script>
 	<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
 	<!-- * *                               SB Forms JS                               * *-->
 	<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->

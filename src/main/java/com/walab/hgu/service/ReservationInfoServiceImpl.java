@@ -30,5 +30,12 @@ public class ReservationInfoServiceImpl implements ReservationInfoService{
 		return reservationInfoDAO.createAdminReservationInfo(reservationInfo);
 		
 	}
+	
+	@Override
+	public int createReservation(ReservationInfoDTO reservationInfo) {
+
+		return reservationInfoDAO.createReservation(reservationInfo);
+		
+	}
 
 }

@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.walab.hgu.DTO.ClubDTO;
-import com.walab.hgu.DTO.CommunityInfoDTO;
 import com.walab.hgu.DTO.Page;
 import com.walab.hgu.DTO.ReservationInfoDTO;
 import com.walab.hgu.DTO.SettingDTO;

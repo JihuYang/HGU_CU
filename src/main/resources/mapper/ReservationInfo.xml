@@ -14,10 +14,10 @@
  	</select>
  	
  	<!-- 예약 추가 쿼리 -->
-	<insert id="createReservationInfo"
+	<insert id="createReservation"
 		parameterType="com.walab.hgu.DTO.ReservationInfoDTO">
-		INSERT INTO hguclub.reservationInfo (userId, spaceId, startTime, endTime, purpose, reservationDate) 
-		VALUES (#{userId}, #{spaceId}, #{startTime}, #{endTime}, #{purpose},#{reservationDate});
+		INSERT INTO hguclub.reservationInfo (userId, spaceId, startTime, endTime, purpose, memo, reservationDate) 
+		VALUES (#{userId}, #{spaceId}, #{startTime}, #{endTime}, #{purpose},#{memo},#{reservationDate});
 	</insert>
  	
  	

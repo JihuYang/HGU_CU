@@ -185,8 +185,6 @@ public class ClubIntroductionController {
 //		System.out.println(originalUrl);
 
 		
-		
-
 		mv.setViewName("createClubIntro");
 			
 		return mv;

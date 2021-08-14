@@ -8,5 +8,6 @@ public interface ReservationInfoService {
 	
 	public List<ReservationInfoDTO> readReservationInfo();
 	public int createAdminReservationInfo(ReservationInfoDTO reservationInfo);
+	public int createReservation(ReservationInfoDTO reservationInfo);
 
 }

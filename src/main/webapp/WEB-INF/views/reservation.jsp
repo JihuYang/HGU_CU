@@ -113,23 +113,18 @@
 	                </tr>
 	            </table>
         
- 
             <div class="section3">
                 <div>예약</div>
                 <div>지난예약</div>
             </div>
             
             <br>
-            
-            
   
         <div id='calendar'></div>
 	
 		<script src='https://fullcalendar.io/releases/fullcalendar/3.9.0/lib/moment.min.js'></script>
 		<script src='https://fullcalendar.io/releases/fullcalendar/3.9.0/lib/jquery.min.js'></script>
 		<script src='https://fullcalendar.io/releases/fullcalendar/3.9.0/fullcalendar.min.js'></script> 
-
-
 
 		<script type="text/javascript">
 		 $(function() {

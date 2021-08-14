@@ -79,7 +79,7 @@
 						<textarea class="form-control textarea justify-content-center" rows="13" id="clubDescription"></textarea>
 					</div>
 					<div class="mb-3">
-  						<input class="form-control file" type="file" id="originalUrl" multiple>
+  						<input class="form-control file" type="file" id="originalUrl" name="originalUrl" accept="image/*" multiple>
 					</div>
 					<div>
 						<a class="btn btn-primary back-btn bottom-btn" href="./${categotyId}" role="button">뒤로</a>

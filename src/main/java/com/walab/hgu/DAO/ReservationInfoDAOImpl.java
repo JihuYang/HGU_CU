@@ -36,5 +36,13 @@ public class ReservationInfoDAOImpl implements ReservationInfoDAO {
 		return 0;
 	}
 	
+	@Override
+	public int createReservation(ReservationInfoDTO reservationInfo) {
+		
+		sqlSession.insert(namespace+".createReservation", reservationInfo);
+		
+		return 0;
+	}
+	
 	
 }
