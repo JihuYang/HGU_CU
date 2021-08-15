@@ -52,13 +52,19 @@ public class AdminController {
 	SpaceService spaceService;
 
 	@RequestMapping(value = "/adminReservation", method = RequestMethod.GET)
-	public ModelAndView readReservationInfo(ModelAndView mv) {
+	public ModelAndView readReservationInfo(ModelAndView mv, @RequestParam("num") int num) {
 		
-		List<ReservationInfoDTO> reservationInfoList = reservationInfoService.readReservationInfo();
+		Page page = new Page();
+		page.setNum(num); 
+		page.setCount(reservationInfoService.countInfo());
+		
+		List<ReservationInfoDTO> reservationInfoList = reservationInfoService.readReservationInfoPaging(page.getDisplayPost(),page.getPostNum());
 		List<SpaceDTO> spaceList = spaceService.readSpace();
 		
 		mv.addObject("reservationInfoList", reservationInfoList);
 		mv.addObject("spaceList", spaceList);
+		mv.addObject("page", page);
+		mv.addObject("selected", num);
 		
 		System.out.println(mv);
 

@@ -47,14 +47,22 @@
 				<!--  검색창  -->
 				<div class=" col-sm-4 align-self-baseline search-bar">
 					<div class="input-group mb-3">
-						<input type="text" class="form-control" placeholder="검색">
-						<button class="btn btn-outline-secondary" type="button"
-							id="button-addon2">
-							<i class="fas fa-search"></i>
-						</button>
+						<input type="text" class="form-control" placeholder="동아리이름" name="keyword" value="${keyword}">
+						<c:if test="${categoryName eq null}">
+							<button class="btn btn-outline-secondary" type="button"
+								id="button-addon2" onclick="search()">
+								<i class="fas fa-search"></i>
+							</button>
+						</c:if>
+						<c:if test="${categoryName ne null}">
+							<button class="btn btn-outline-secondary" type="button"
+								id="button-addon2" onclick="searchInCategory(${clubIntroList[0].categoryId})">
+								<i class="fas fa-search"></i>
+							</button>
+						</c:if>
 					</div>
 				</div>
-				<!-- 동아리 내 -->
+				<!-- 동아리 내용 -->
 				<div class="club-content"style="display:flex; margin-top:80px;">
 					<div class="row logo-display">
 						<jsp:include page="/WEB-INF/views/ajaxContent/clubIntroduction.jsp"/>
@@ -76,6 +84,8 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
 	<!-- Core theme JS-->
 	<script src="<%=request.getContextPath()%>/resources/js/scripts.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/club.js"></script>
+	
 	<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
 	<!-- * *                               SB Forms JS                               * *-->
 	<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->

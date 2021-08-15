@@ -13,6 +13,24 @@
 		RIGHT OUTER JOIN hguclub.space as s ON r.spaceId = s.id
  	</select>
  	
+ 	<!-- admin 예약 관리 페이지에서 쓰이는 페이징을 위한 쿼리  -->
+ 	<select id="readReservationInfoPaging" resultType="com.walab.hgu.DTO.ReservationInfoDTO" parameterType="hashmap">
+		SELECT r.userId, r.spaceId,r.reservationDate, r.startTime , r.endTime, r.purpose, 
+		r.memo, r.regdate,s.name as spaceName, u.name as person, u.email as email, u.phone as phone
+		FROM hguclub.reservationInfo as r
+		
+		LEFT OUTER JOIN hguclub.user as u ON r.userId = u.id
+		RIGHT OUTER JOIN hguclub.space as s ON r.spaceId = s.id
+		
+		ORDER BY r.regdate DESC
+		LIMIT #{displayPost}, #{postNum}
+ 	</select>
+ 	
+ 	<select id="countInfo" resultType="int">
+ 		SELECT COUNT(*) as listCnt
+		FROM reservationInfo
+	</select>
+ 	
  	<!-- 예약 추가 쿼리 -->
 	<insert id="createReservation"
 		parameterType="com.walab.hgu.DTO.ReservationInfoDTO">

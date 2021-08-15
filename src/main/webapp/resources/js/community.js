@@ -64,7 +64,7 @@ function uploadFile() {
 	});
 }
 
-function search(){
+function searchInfo(){
 	
  		document.getElementById("searchBtn").onclick = function () {
     
@@ -73,8 +73,23 @@ function search(){
   
   			/* console.log(searchType)
   			console.log(keyword) */
-  			
+  			//alert("23");
   			location.href = "/hgu/communityInfo?num=1"+ "&searchType=" + searchType + "&keyword=" + keyword;
+ 		};
+}
+
+function searchMaterial(){
+	
+ 		document.getElementById("searchBtn2").onclick = function () {
+    
+  			let searchType = document.getElementsByName("searchType")[0].value;
+  			let keyword =  document.getElementsByName("keyword")[0].value;
+  
+  			/*console.log(searchType)
+  			console.log(keyword)*/
+  			
+  			location.href = "/hgu/communityMaterials?num=1"+ "&searchType=" + searchType + "&keyword=" + keyword;
+  			
  		};
 }
 

@@ -21,10 +21,11 @@ public class ClubDAOImpl implements ClubDAO{
 	private String namespace = "Club";
 	
 	@Override//동아리 홍보페이지 리스트 창 
-	public List<ClubDTO> readClubIntroductionPreview(int categoryId) {
+	public List<ClubDTO> readClubIntroductionPreview(int categoryId, String keyword) {
 		
 		Map<String, Object> clubPreviewParam = new HashMap<String, Object>();
 		clubPreviewParam.put("categoryId", categoryId);
+		clubPreviewParam.put("keyword", keyword);
 		
 		return sqlSession.selectList(namespace+".readClubIntroductionPreview", clubPreviewParam);
 	}
@@ -85,8 +86,10 @@ public class ClubDAOImpl implements ClubDAO{
 	}
 
 	@Override
-	public List<ClubDTO> getAllClubIntroduction() {
+	public List<ClubDTO> getAllClubIntroduction(String keyword) {
 		Map<String, Object> clubPreviewParam = new HashMap<String, Object>();
+		clubPreviewParam.put("keyword", keyword);
+		
 		return sqlSession.selectList(namespace+".getAllClubIntroduction", clubPreviewParam);
 	}
 }

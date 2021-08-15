@@ -39,14 +39,16 @@ public class ClubIntroductionController {
 	
 	//동아리 홍보 페이지 컨트롤러
 	@RequestMapping(value = "/clubIntroduction")
-	public ModelAndView clubIntroductionDefault(HttpSession session, HttpServletRequest request ) {
+	public ModelAndView clubIntroductionDefault(HttpSession session, HttpServletRequest request,
+			@RequestParam(value = "keyword",required = false, defaultValue = "") String keyword) {
 		ModelAndView mv = new ModelAndView();
 		//System.out.println(categoryId);
-		List<ClubDTO> clubIntroList = clubService.getAllClubIntroduction();
+		List<ClubDTO> clubIntroList = clubService.getAllClubIntroduction(keyword);
 		//List<CategoryDTO> categoryNameList = clubService.getCategoryNameList();
 		//String categoryName = clubIntroList.get(0).getCategoryName();
 		
 		mv.addObject("clubIntroList", clubIntroList);
+		mv.addObject("keyword", keyword);
 		
 		mv.setViewName("clubIntroduction");
 		
@@ -57,10 +59,13 @@ public class ClubIntroductionController {
 	
 	//동아리 소개 분과별 페이 
 	@RequestMapping(value = "/clubIntroduction/{categoryId}")
-	public ModelAndView clubIntroduction(@PathVariable int categoryId, HttpSession session, HttpServletRequest request ) {
+	public ModelAndView clubIntroduction(@PathVariable int categoryId, HttpSession session, HttpServletRequest request,
+			@RequestParam(value = "keyword",required = false, defaultValue = "") String keyword ) {
 		ModelAndView mv = new ModelAndView();
+		
 		System.out.println(categoryId);
-		List<ClubDTO> clubIntroList = clubService.readClubIntroductionPreview(categoryId);
+		
+		List<ClubDTO> clubIntroList = clubService.readClubIntroductionPreview(categoryId,keyword);
 		List<CategoryDTO> categoryNameList = clubService.getCategoryNameList();
 		//String categoryName = clubIntroList.get(0).getCategoryName();
 		

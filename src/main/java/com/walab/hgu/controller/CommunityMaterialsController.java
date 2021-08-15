@@ -28,14 +28,20 @@ public class CommunityMaterialsController {
 	CommunityMaterialService communityMaterialService;
 
 	@RequestMapping(value = "/communityMaterials", method = RequestMethod.GET)
-	public ModelAndView readCommunityMaterial(ModelAndView mv, @RequestParam("num") int num) {
+	public ModelAndView readCommunityMaterial(ModelAndView mv, @RequestParam("num") int num, 
+			@RequestParam(value = "searchType",required = false, defaultValue = "title") String searchType, 
+			@RequestParam(value = "keyword",required = false, defaultValue = "") String keyword) {
 		
 		Page page = new Page();
 		page.setNum(num);
-		page.setCount(communityMaterialService.countInfo());
-
-		List<CommunityMaterialDTO> communityMaterialList = communityMaterialService.readCommunityMaterial(page.getDisplayPost(),page.getPostNum());
+		page.setCount(communityMaterialService.countInfo(searchType, keyword));
 		
+		page.setSearchType(searchType);
+		page.setKeyword(keyword);
+
+		List<CommunityMaterialDTO> communityMaterialList = communityMaterialService.readCommunityMaterial(page.getDisplayPost(),page.getPostNum(),searchType, keyword);
+		
+		System.out.println(searchType + keyword);
 		mv.addObject("communityMaterialList", communityMaterialList);
 		mv.addObject("page", page);
 		mv.addObject("selected", num);

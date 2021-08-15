@@ -6,10 +6,18 @@
 	<select id="readCommunityMaterial"
 		resultType="com.walab.hgu.DTO.CommunityMaterialDTO"
 		parameterType="hashmap">
-		SELECT c.id, name as writer, title, c.regdate, viewCount
+		SELECT c.id, name as writer, title, content, c.regdate, viewCount
 		FROM hguclub.communityMaterial as c
-		INNER JOIN hguclub.user as u ON
-		c.userId = u.id
+		INNER JOIN hguclub.user as u ON c.userId = u.id
+		<if test='searchType.equals("title")'>
+			WHERE title LIKE concat('%',#{keyword},'%')
+		</if>
+		<if test='searchType.equals("content")'>
+			WHERE content LIKE concat('%',#{keyword},'%')
+		</if>
+		<if test='searchType.equals("title_content")'>
+			WHERE title LIKE concat('%',#{keyword},'%') or content LIKE concat('%',#{keyword},'%')
+		</if>
 		ORDER BY c.regdate DESC
 		LIMIT #{displayPost}, #{postNum}
 	</select>
@@ -29,6 +37,15 @@
 	<select id="countInfo" resultType="int">
 		SELECT COUNT(*) as listCnt
 		FROM communityMaterial
+		<if test='searchType.equals("title")'>
+			WHERE title LIKE concat('%',#{keyword},'%')
+		</if>
+		<if test='searchType.equals("content")'>
+			WHERE content LIKE concat('%',#{keyword},'%')
+		</if>
+		<if test='searchType.equals("title_content")'>
+			WHERE title LIKE concat('%',#{keyword},'%') or content LIKE concat('%',#{keyword},'%')
+		</if>
 	</select>
 
 	<!-- 커뮤니티 자료실 글 작성 쿼리 -->
