@@ -61,3 +61,16 @@ function createReservation(){
         }
 	});
 }
+
+function search(){
+	
+ 		document.getElementById("searchBtn").onclick = function () {
+    
+  			let keyword =  document.getElementsByName("keyword")[0].value;
+  
+  			/* console.log(searchType)
+  			console.log(keyword) */
+  			//alert(keyword);
+  			location.href = "/hgu/adminReservation?num=1" + "&keyword=" + keyword;
+ 		};
+}

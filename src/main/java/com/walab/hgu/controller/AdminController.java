@@ -2,13 +2,8 @@ package com.walab.hgu.controller;
 
 import java.io.IOException;
 import java.sql.Time;
-import java.time.LocalDate;
 import java.sql.Date;
 import java.util.List;
-import java.util.TimeZone;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -52,13 +47,22 @@ public class AdminController {
 	SpaceService spaceService;
 
 	@RequestMapping(value = "/adminReservation", method = RequestMethod.GET)
-	public ModelAndView readReservationInfo(ModelAndView mv) {
+	public ModelAndView readReservationInfo(ModelAndView mv, @RequestParam("num") int num, 
+			@RequestParam(value = "keyword",required = false, defaultValue = "") String keyword) {
 		
-		List<ReservationInfoDTO> reservationInfoList = reservationInfoService.readReservationInfo();
+		Page page = new Page();
+		page.setNum(num); 
+		page.setCount(reservationInfoService.countInfo(keyword));
+		
+		page.setKeyword(keyword);
+		
+		List<ReservationInfoDTO> reservationInfoList = reservationInfoService.readReservationInfoPaging(page.getDisplayPost(),page.getPostNum(),keyword);
 		List<SpaceDTO> spaceList = spaceService.readSpace();
 		
 		mv.addObject("reservationInfoList", reservationInfoList);
 		mv.addObject("spaceList", spaceList);
+		mv.addObject("page", page);
+		mv.addObject("selected", num);
 		
 		System.out.println(mv);
 

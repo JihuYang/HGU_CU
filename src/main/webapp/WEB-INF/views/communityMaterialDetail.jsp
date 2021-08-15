@@ -78,7 +78,7 @@
 
 			<div class="row justify-content-start mt-4 list-btn">
 				<button class="btn btn-primary search-btn list-btn"
-					onclick="location.href='<%=request.getContextPath()%>/communityMaterial?num=1'">목록</button>
+					onclick="location.href='<%=request.getContextPath()%>/communityMaterials?num=1'">목록</button>
 				<button class="btn btn-primary search-btn list-btn"
 					onclick="location.href='<%=request.getContextPath()%>/communityMaterials/update/${communityMaterialDetail.id}'">수정</button>
 				<button class="btn btn-primary search-btn list-btn"

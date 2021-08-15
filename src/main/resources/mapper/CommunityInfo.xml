@@ -6,7 +6,7 @@
 	<select id="readCommunityInfo"
 		resultType="com.walab.hgu.DTO.CommunityInfoDTO"
 		parameterType="hashMap">
-		SELECT c.id, name as writer, title, c.regdate, viewCount
+		SELECT c.id, name as writer, title, content, c.regdate, viewCount
 		FROM hguclub.communityInfo as c
 		INNER JOIN hguclub.user as u ON
 		c.userId = u.id

@@ -68,7 +68,7 @@
 					<input hidden="hidden" />
 					<input class="form-control form-control-sm search-input"
 						type="text" name="keyword" value="${page.keyword}">
-					<button class="btn btn-primary search-btn" type="button" id="searchBtn"  onclick="search()">검색</button> 
+					<button class="btn btn-primary search-btn" type="button" id="searchBtn"  onclick="searchInfo()">검색</button> 
 				</div>
 			</form>
 			<!-- Pagination -->

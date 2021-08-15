@@ -39,21 +39,26 @@ public class CommunityMaterialsController {
 	CommunityMaterialService communityMaterialService;
 
 	@RequestMapping(value = "/communityMaterials", method = RequestMethod.GET)
-	public ModelAndView readCommunityMaterial(ModelAndView mv, @RequestParam("num") int num) {
-
+	public ModelAndView readCommunityMaterial(ModelAndView mv, @RequestParam("num") int num, 
+			@RequestParam(value = "searchType",required = false, defaultValue = "title") String searchType, 
+			@RequestParam(value = "keyword",required = false, defaultValue = "") String keyword) {
+		
 		Page page = new Page();
 		page.setNum(num);
-		page.setCount(communityMaterialService.countInfo());
+		page.setCount(communityMaterialService.countInfo(searchType, keyword));
+		
+		page.setSearchType(searchType);
+		page.setKeyword(keyword);
 
-		List<CommunityMaterialDTO> communityMaterialList = communityMaterialService
-				.readCommunityMaterial(page.getDisplayPost(), page.getPostNum());
-
+		List<CommunityMaterialDTO> communityMaterialList = communityMaterialService.readCommunityMaterial(page.getDisplayPost(),page.getPostNum(),searchType, keyword);
+		
+		System.out.println(searchType + keyword);
 		mv.addObject("communityMaterialList", communityMaterialList);
 		mv.addObject("page", page);
 		mv.addObject("selected", num);
-
+		
 		mv.setViewName("communityMaterials");
-
+	
 		return mv;
 	}
 
@@ -65,11 +70,10 @@ public class CommunityMaterialsController {
 		communityMaterialService.updateViewCount(id);
 
 		CommunityMaterialDTO communityMaterialDetail = communityMaterialService.readCommunityMaterialDetail(id);
+		
 		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file");
 
 		String fileName = communityMaterialDetail.getOriginalUrl();
-
-		System.out.println("communityMaterialDetail controller: " + communityMaterialDetail);
 
 		System.out.println("filename: " + fileName);
 
@@ -174,7 +178,7 @@ public class CommunityMaterialsController {
 		
 		communityMaterialService.updateCommunityMaterial(material);
 	
-		materialFile.setCommunityInfoId(id);
+		materialFile.setCommunityMaterialId(id);
 		materialFile.setOriginalUrl(originalUrl);
 		
 		communityMaterialService.updateCommunityMaterialFile(materialFile);

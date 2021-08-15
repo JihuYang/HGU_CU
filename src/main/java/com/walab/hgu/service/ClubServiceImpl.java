@@ -16,9 +16,9 @@ public class ClubServiceImpl implements ClubService{
 	ClubDAO clubDAO ;
 	
 	@Override
-	public List<ClubDTO> readClubIntroductionPreview(int categoryId) {
+	public List<ClubDTO> readClubIntroductionPreview(int categoryId, String keyword) {
 		
-		List<ClubDTO> clubIntroList = clubDAO.readClubIntroductionPreview(categoryId);
+		List<ClubDTO> clubIntroList = clubDAO.readClubIntroductionPreview(categoryId,keyword);
 		
 		return clubIntroList;
 	}
@@ -74,8 +74,8 @@ public class ClubServiceImpl implements ClubService{
 	}
 
 	@Override
-	public List<ClubDTO> getAllClubIntroduction() {
-		List<ClubDTO> clubIntroList = clubDAO.getAllClubIntroduction();
+	public List<ClubDTO> getAllClubIntroduction(String keyword) {
+		List<ClubDTO> clubIntroList = clubDAO.getAllClubIntroduction(keyword);
 		return clubIntroList;
 	}
 	

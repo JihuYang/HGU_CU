@@ -52,6 +52,7 @@
 			<div class="modal fade" tabindex="-1" role="dialog" id="addModal">
 				<div class="modal-dialog modal-dialog-centered" role="document">
 					<div class="modal-content">
+					<form class="modal-body">
 						<div class="modal-header">
 							<button type="button" class="btn-close" data-bs-dismiss="modal"
 								aria-label="Close"></button>
@@ -84,8 +85,11 @@
 						</div>
 						
 						<div class="modal-footer">
-							<button type="button" class="btn" onclick="createCommutinyEvent()">저장</button>
+							<button type="button" class="btn" id="saveBtn" onclick="createCommutinyEvent()">저장</button>
+							<button type="button" class="btn" id="updateBtn" onclick="updateCommutinyEvent()">수정</button>
+							<button type="button" class="btn" id="deleteBtn" onclick="deleteCommutinyEvent()">삭제</button>
 						</div>
+						</form>
 					</div>
 				</div>
 			</div>
@@ -113,9 +117,10 @@
 			    timeZone: 'Asia/seoul',
 			    longPressDelay: 0,
 			    header: {
-			      left: "prev,next today",
-			      center: "title",
-			      right: "month,agendaWeek"
+			      left: " title",
+			      center: "",
+			      //right: "month,agendaWeek"
+			      right:'today, prev,next'
 			    },
 			    defaultView: "month",
 			    dayMaxEvents: true,
@@ -154,33 +159,21 @@
 		    		document.getElementById('eventContent').readOnly = true;
 		    		var place = event.place;
 		    		document.getElementById('eventSpace').readOnly = true;
-		    		var startDate = event.start;
+		    		var startDate = moment(event.start).format("YYYY-MM-DD[T]HH:mm:ss");
 		    		document.getElementById('startDate').readOnly = true;
-
-		    		/*
-		    		var purpose = $('#purpose'+clickedId).text();
-		    		var space = $('#space'+clickedId).text();
-		    		var phone = $('#phone'+clickedId).text();
-		    		var email = $('#email'+clickedId).text();
-		    		var reservationDate = $('#reservationDate'+clickedId).text();
-		    		var startTime = $('#startTime'+clickedId).text();
-		    		var endTime = $('#endTime'+clickedId).text();
-		    		*/
+		    		var endDate = moment(event.end).format("YYYY-MM-DD[T]HH:mm:ss");
+		    		document.getElementById('endDate').readOnly = true;
 		    		
 		    		$('#addModal').modal('show');
 		    		$('#title').val(title);
 		    		$('#eventContent').val(content);
 		    		$('#eventSpace').val(place);
 		    		$('#startDate').val(startDate);
-		    		/*
-		    		$('#purpose').val(purpose);
-		    		$("#spaceSelect").val(space).attr("selected", "selected");
-		    		$('#phone').val(phone);
-		    		$('#email').val(email);
-		    		$('#reservationDate').val(reservationDate);
-		    		$("#startTime").val(startTime).attr("selected", "selected");
-		    		$("#endTime")[0].innerHTML="<option value='"+endTime+"' selected>"+endTime+"</option>";
-		    		*/
+		    		$('#endDate').val(endDate);
+		    		document.getElementById("saveBtn").style.display = "none";
+					document.getElementById("deleteBtn").style.display = "block";
+					document.getElementById("updateBtn").style.display = "block";
+
 		            return false;
 		        }
 			  });
@@ -195,6 +188,10 @@
 	
 	<script>
 		$("#eventAddBtn").on('click', function(){
+			$(".modal-body")[0].reset();
+			document.getElementById("saveBtn").style.display = "block";
+			document.getElementById("deleteBtn").style.display = "none";
+			document.getElementById("updateBtn").style.display = "none";
 			$('#addModal').modal('show');
 		});
 	</script>

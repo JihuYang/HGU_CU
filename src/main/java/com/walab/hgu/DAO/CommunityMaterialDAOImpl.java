@@ -8,7 +8,6 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.walab.hgu.DTO.CommunityInfoDTO;
 import com.walab.hgu.DTO.CommunityMaterialDTO;
 import com.walab.hgu.DTO.FileDTO;
 
@@ -21,13 +20,15 @@ public class CommunityMaterialDAOImpl implements CommunityMaterialDAO {
 	private String namespace = "CommunityMaterial";
 
 	@Override
-	public List<CommunityMaterialDTO> readCommunityMaterial(int displayPost, int postNum) {
-
+	public List<CommunityMaterialDTO> readCommunityMaterial(int displayPost, int postNum,String searchType, String keyword) {
+		
 		Map<String, Object> communityMaterialParam = new HashMap<String, Object>();
 		communityMaterialParam.put("displayPost", displayPost);
 		communityMaterialParam.put("postNum", postNum);
-
-		return sqlSession.selectList(namespace + ".readCommunityMaterial", communityMaterialParam);
+		communityMaterialParam.put("searchType", searchType);
+		communityMaterialParam.put("keyword", keyword);
+				
+		return sqlSession.selectList(namespace+".readCommunityMaterial", communityMaterialParam);
 	}
 
 	@Override
@@ -104,9 +105,13 @@ public class CommunityMaterialDAOImpl implements CommunityMaterialDAO {
 	}
 
 	@Override
-	public int countInfo() {
-		// TODO Auto-generated method stub
-		return sqlSession.selectOne(namespace + ".countInfo");
-	}
-
+	public int countInfo(String searchType, String keyword) {
+		
+		Map<String, Object> communityMaterialParam = new HashMap<String, Object>();
+		communityMaterialParam.put("searchType", searchType);
+		communityMaterialParam.put("keyword", keyword);
+		
+		return sqlSession.selectOne(namespace+".countInfo",communityMaterialParam);
+	}	
+	
 }

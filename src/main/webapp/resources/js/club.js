@@ -23,3 +23,29 @@ function createClubIntro(){
         }
 	});
 }
+
+function search(){
+	
+ 		document.getElementById("button-addon2").onclick = function () {
+    
+  			let keyword =  document.getElementsByName("keyword")[0].value;
+  
+  			/* console.log(searchType)
+  			console.log(keyword) */
+  			//alert(keyword);
+  			location.href = "/hgu/clubIntroduction" + "?keyword=" + keyword;
+ 		};
+}
+
+function searchInCategory(categoryId){
+
+		document.getElementById("button-addon2").onclick = function () {
+    
+  			let keyword =  document.getElementsByName("keyword")[0].value;
+  
+  			/* console.log(searchType)
+  			console.log(keyword) */
+  			//alert(keyword);
+  			location.href = "/hgu/clubIntroduction/"+ categoryId + "?keyword=" + keyword;
+ 		};
+}

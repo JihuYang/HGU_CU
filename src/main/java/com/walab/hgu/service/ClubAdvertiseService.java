@@ -7,7 +7,7 @@ import com.walab.hgu.DTO.FileDTO;
 
 public interface ClubAdvertiseService{
 	////동아리 홍보페이지 리스트 창 
-	public List<ClubAdvertiseDTO> readClubAdvertisePreview(int displayPost, int postNum);
+	public List<ClubAdvertiseDTO> readClubAdvertisePreview(int displayPost, int postNum,String searchType, String keyword);
 
 	public List<ClubAdvertiseDTO> readClubAdvertiseDetail(int id);
 	public ClubAdvertiseDTO readClubAdvertiseDetailId(int id);
@@ -26,6 +26,6 @@ public interface ClubAdvertiseService{
 	public int deleteClubAdvertiseImage(int id);
 	public int deleteClubAdvertise(int id);
 
-	public int countInfo();
+	public int countInfo(String searchType, String keyword);
 	
 }

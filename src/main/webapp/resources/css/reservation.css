@@ -154,8 +154,19 @@ table td{
 	font-size:0.5rem;
 }
 
-.fc-event-dot{
-	background-color:yellow !important;
+.fc-center h2{
+    font-size: 25px !important;
+}
+
+.fc-prev-button, .fc-next-button, .fc-today-button, .fc-month-button
+, .fc-agendaWeek-button, .fc-agendaDay-button{
+	border-style:none !important;
+	background: none !important;
+	background-color:#f4f4f4 !important;
+}
+
+.fc-today{
+	background-color:#f4f4f4 !important;
 }
 
 @media(max-width: 992px){

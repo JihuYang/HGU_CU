@@ -7,7 +7,7 @@ import com.walab.hgu.DTO.FileDTO;
 
 public interface CommunityMaterialDAO {
 
-	public List<CommunityMaterialDTO> readCommunityMaterial(int displayPost, int postNum);
+	public List<CommunityMaterialDTO> readCommunityMaterial(int displayPost, int postNum,String searchType, String keyword);
 
 	public CommunityMaterialDTO readCommunityMaterialDetail(int id);
 
@@ -27,6 +27,6 @@ public interface CommunityMaterialDAO {
 
 	public int updateViewCount(int id);
 
-	public int countInfo();
+	public int countInfo(String searchType, String keyword);
 
 }
