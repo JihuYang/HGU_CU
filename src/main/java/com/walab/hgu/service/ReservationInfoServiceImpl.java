@@ -24,9 +24,9 @@ public class ReservationInfoServiceImpl implements ReservationInfoService{
 	}
 	
 	@Override
-	public List<ReservationInfoDTO> readReservationInfoPaging(int displayPost, int postNum) {
+	public List<ReservationInfoDTO> readReservationInfoPaging(int displayPost, int postNum,String keyword) {
 		
-		List<ReservationInfoDTO> infoList = reservationInfoDAO.readReservationInfoPaging(displayPost,postNum);
+		List<ReservationInfoDTO> infoList = reservationInfoDAO.readReservationInfoPaging(displayPost,postNum,keyword);
 		
 		return infoList;
 	}
@@ -46,9 +46,9 @@ public class ReservationInfoServiceImpl implements ReservationInfoService{
 	}
 
 	@Override
-	public int countInfo() {
+	public int countInfo(String keyword) {
 		// TODO Auto-generated method stub
-		return reservationInfoDAO.countInfo();
+		return reservationInfoDAO.countInfo(keyword);
 	}
 
 }

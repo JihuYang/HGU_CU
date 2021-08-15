@@ -98,8 +98,8 @@ public class Page {
 		 }
 	}
 
-	private String searchType;
-	private String keyword; 
+	private String searchType="";
+	private String keyword=""; 
 
 	public void setSearchType(String searchType) {
 		this.searchType = searchType;  

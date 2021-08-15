@@ -20,3 +20,17 @@ function createClubAd(){
         }
 	});
 }
+
+function search(){
+	
+ 		document.getElementById("searchBtn").onclick = function () {
+    
+  			let searchType = document.getElementsByName("searchType")[0].value;
+  			let keyword =  document.getElementsByName("keyword")[0].value;
+  
+  			/* console.log(searchType)
+  			console.log(keyword) */
+  			//alert("23");
+  			location.href = "/hgu/clubAdvertise?num=1"+ "&searchType=" + searchType + "&keyword=" + keyword;
+ 		};
+}

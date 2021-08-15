@@ -58,10 +58,11 @@
 		</nav>
 		
 		<div class="d-flex justify-content-between align-items-center mt-4 mb-3">
-			  <form class="d-inline-flex align-items-center" id="search-form">
-			    <input class="form-control" type="search" id="search" placeholder="이름, 단체, 이메일 등을 입력하세요" aria-label="Search">
-			    <button class="btn btn-primary search-btn" type="submit">검색</button>
-			  </form>
+			<div id="search-bar">
+			  	<input hidden="hidden" />
+			    <input class="form-control" type="text" id="search" placeholder="이름 또는 이메일을 입력하세요" aria-label="Search" name="keyword" value="${page.keyword}">
+			    <button class="btn btn-primary search-btn" type="button" id="searchBtn"  onclick="search()">검색</button>
+			</div>
 			  <button class="btn btn-primary search-btn justify-content-end align-items-center" data-toggle="modal" id="openModalBtn" data-target="#addModal">추가</button>
 		</div>
 		
@@ -74,7 +75,7 @@
 			<nav id="paginationBox">
 				<ul class="pagination align-items-center justify-content-center">
 					<c:if test="${page.prev}">
-						<li class="page-item"><a class="page-link" href="<%=request.getContextPath()%>/adminReservation?num=${page.startPageNum - 1}"
+						<li class="page-item"><a class="page-link" href="<%=request.getContextPath()%>/adminReservation?num=${page.startPageNum - 1}${page.searchTypeKeyword}"
 							aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
 								<span class="sr-only">Previous</span>
 						</a></li>
@@ -82,7 +83,7 @@
 					
 					 <c:forEach begin="${page.startPageNum}" end="${page.endPageNum}" var="num">
 					 	<c:if test="${selected != num}">
-					 		<li class="page-item"><a class="page-link" href="<%=request.getContextPath()%>/adminReservation?num=${num}">${num}</a></li>
+					 		<li class="page-item"><a class="page-link" href="<%=request.getContextPath()%>/adminReservation?num=${num}${page.searchTypeKeyword}">${num}</a></li>
 					 	</c:if>
 					 	
 					 	<c:if test="${selected == num}">
@@ -91,7 +92,7 @@
  					</c:forEach>
  					
  					<c:if test="${page.next}">
-	 					<li class="page-item"><a class="page-link"  href="<%=request.getContextPath()%>/adminReservation?num=${page.endPageNum + 1}"
+	 					<li class="page-item"><a class="page-link"  href="<%=request.getContextPath()%>/adminReservation?num=${page.endPageNum + 1}${page.searchTypeKeyword}"
 							aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
 								class="sr-only">Next</span>
 						</a></li>
