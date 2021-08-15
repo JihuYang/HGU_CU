@@ -8,7 +8,6 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.walab.hgu.DTO.CommunityInfoDTO;
 import com.walab.hgu.DTO.ReservationInfoDTO;
 
 @Repository
@@ -21,10 +20,20 @@ public class ReservationInfoDAOImpl implements ReservationInfoDAO {
 	
 	
 	@Override
+	public List<ReservationInfoDTO> readReservationInfoPaging(int displayPost, int postNum) {
+		
+		Map<String, Object> reservationInfoParam = new HashMap<String, Object>();
+		reservationInfoParam.put("displayPost", displayPost);
+		reservationInfoParam.put("postNum", postNum);
+				
+		return sqlSession.selectList(namespace+".readReservationInfoPaging", reservationInfoParam);
+	}
+
+	@Override
 	public List<ReservationInfoDTO> readReservationInfo() {
 		
 		Map<String, Object> reservationInfoParam = new HashMap<String, Object>();
-				
+		
 		return sqlSession.selectList(namespace+".readReservationInfo", reservationInfoParam);
 	}
 	
@@ -42,6 +51,12 @@ public class ReservationInfoDAOImpl implements ReservationInfoDAO {
 		sqlSession.insert(namespace+".createReservation", reservationInfo);
 		
 		return 0;
+	}
+
+	@Override
+	public int countInfo() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectOne(namespace+".countInfo");
 	}
 	
 	
