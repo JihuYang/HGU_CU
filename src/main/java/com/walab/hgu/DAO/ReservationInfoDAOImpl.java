@@ -20,11 +20,12 @@ public class ReservationInfoDAOImpl implements ReservationInfoDAO {
 	
 	
 	@Override
-	public List<ReservationInfoDTO> readReservationInfoPaging(int displayPost, int postNum) {
+	public List<ReservationInfoDTO> readReservationInfoPaging(int displayPost, int postNum,String keyword) {
 		
 		Map<String, Object> reservationInfoParam = new HashMap<String, Object>();
 		reservationInfoParam.put("displayPost", displayPost);
 		reservationInfoParam.put("postNum", postNum);
+		reservationInfoParam.put("keyword", keyword);
 				
 		return sqlSession.selectList(namespace+".readReservationInfoPaging", reservationInfoParam);
 	}
@@ -54,9 +55,12 @@ public class ReservationInfoDAOImpl implements ReservationInfoDAO {
 	}
 
 	@Override
-	public int countInfo() {
-		// TODO Auto-generated method stub
-		return sqlSession.selectOne(namespace+".countInfo");
+	public int countInfo(String keyword) {
+		
+		Map<String, Object> count = new HashMap<String, Object>();
+		count.put("keyword", keyword);
+		
+		return sqlSession.selectOne(namespace+".countInfo",count);
 	}
 	
 	

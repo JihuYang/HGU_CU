@@ -22,13 +22,18 @@
 		LEFT OUTER JOIN hguclub.user as u ON r.userId = u.id
 		RIGHT OUTER JOIN hguclub.space as s ON r.spaceId = s.id
 		
+		WHERE u.name LIKE concat('%',#{keyword},'%') or u.email LIKE concat('%',#{keyword},'%')
+		
 		ORDER BY r.regdate DESC
 		LIMIT #{displayPost}, #{postNum}
  	</select>
  	
- 	<select id="countInfo" resultType="int">
+ 	<select id="countInfo" resultType="int" parameterType="hashmap">
  		SELECT COUNT(*) as listCnt
-		FROM reservationInfo
+		FROM reservationInfo as r
+		LEFT OUTER JOIN hguclub.user as u ON r.userId = u.id
+		
+		WHERE u.name LIKE concat('%',#{keyword},'%') or u.email LIKE concat('%',#{keyword},'%')
 	</select>
  	
  	<!-- 예약 추가 쿼리 -->
