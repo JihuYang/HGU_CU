@@ -8,7 +8,10 @@
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="description" content="" />
 <meta name="author" content="" />
-
+<meta name="google-signin-scope" content="profile email">
+<meta name="google-signin-client_id"
+	content="330229354393-gevcnmd1sbv0fvmjovljh695o8pjq8q6.apps.googleusercontent.com">
+<script src="https://apis.google.com/js/platform.js" async defer></script>
 <title>한동대학교 총동아리연합회</title>
 <!-- Favicon-->
 <link rel="icon" type="image/x-icon"
@@ -52,12 +55,14 @@
 						<input type="text" class="form-control" placeholder="아이디">
 					</div>
 					<div class="input-group mb-3">
-						<input type="password" class="form-control" placeholder="비밀번호"/>
+						<input type="password" class="form-control" placeholder="비밀번호" />
 					</div>
 					<div class="input-group mb-3">
-							<button type="button" class="btn btn-secondary ">로그인</button>
-							<button type="button" class="btn btn-secondary ">회원가입</button>
-					</div>					
+						<!-- <button type="button" class="btn btn-secondary " onclick="onSignIn()">로그인</button> -->
+						<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark">dfd</div>
+						
+						<button type="button" class="btn btn-secondary ">회원가입</button>
+					</div>
 				</form>
 			</div>
 		</div>
@@ -65,7 +70,23 @@
 	</div>
 
 	<!-- Footer-->
-	<jsp:include page="/WEB-INF/views/inc/footer.jsp"/>
+	<jsp:include page="/WEB-INF/views/inc/footer.jsp" />
+	<script>
+		function onSignIn(googleUser) {
+			// Useful data for your client-side scripts:
+			var profile = googleUser.getBasicProfile();
+			console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+			console.log('Full Name: ' + profile.getName());
+			console.log('Given Name: ' + profile.getGivenName());
+			console.log('Family Name: ' + profile.getFamilyName());
+			console.log("Image URL: " + profile.getImageUrl());
+			console.log("Email: " + profile.getEmail());
+
+			// The ID token you need to pass to your backend:
+			var id_token = googleUser.getAuthResponse().id_token;
+			console.log("ID Token: " + id_token);
+		};
+	</script>
 	<!-- Bootstrap core JS-->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>

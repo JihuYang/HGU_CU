@@ -53,9 +53,9 @@ public class HomeController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "/logintest", method = RequestMethod.GET)
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public ModelAndView logintest(ModelAndView mv) {
-		mv.setViewName("logintest");
+		mv.setViewName("login");
 		return mv;
 	}
 
