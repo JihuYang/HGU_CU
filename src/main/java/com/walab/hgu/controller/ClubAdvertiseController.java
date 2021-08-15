@@ -37,13 +37,19 @@ public class ClubAdvertiseController {
 	
 		//동아리 홍보 페이지 컨트롤러 
 		@RequestMapping(value = "/clubAdvertise", method = RequestMethod.GET)
-		public ModelAndView clubAdvertise(ModelAndView mv, @RequestParam("num") int num) {
+		public ModelAndView clubAdvertise(ModelAndView mv, @RequestParam("num") int num, 
+				@RequestParam(value = "searchType",required = false, defaultValue = "title") String searchType, 
+				@RequestParam(value = "keyword",required = false, defaultValue = "") String keyword) {
+			
 			Page page = new Page();
 			page.setPostNum(4);
 			page.setNum(num);
-			page.setCount(clubAdvertiseService.countInfo());
+			page.setCount(clubAdvertiseService.countInfo(searchType, keyword));
 			
-			List<ClubAdvertiseDTO> clubAdvertiseList = clubAdvertiseService.readClubAdvertisePreview(page.getDisplayPost(),page.getPostNum());
+			page.setSearchType(searchType);
+			page.setKeyword(keyword);
+			
+			List<ClubAdvertiseDTO> clubAdvertiseList = clubAdvertiseService.readClubAdvertisePreview(page.getDisplayPost(),page.getPostNum(),searchType,keyword);
 			
 			mv.addObject("clubAdvertiseList", clubAdvertiseList);
 			mv.addObject("page", page);

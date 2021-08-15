@@ -7,7 +7,7 @@ import com.walab.hgu.DTO.FileDTO;
 
 public interface ClubAdvertiseDAO {
 	
-	public List<ClubAdvertiseDTO> readClubAdvertisePreview(int displayPost, int postNum);
+	public List<ClubAdvertiseDTO> readClubAdvertisePreview(int displayPost, int postNum, String searchType, String keyword);
 
 	public List<ClubAdvertiseDTO> readClubAdvertiseDetail(int id);
 	public ClubAdvertiseDTO readClubAdvertiseDetailId(int id);
@@ -22,7 +22,7 @@ public interface ClubAdvertiseDAO {
 	
 	public int createClubAdFile(FileDTO clubAdFile);
 
-	public int countInfo();
+	public int countInfo(String searchType, String keyword);
 	
 	public int deleteClubAdvertiseFile(int id);
 	public int deleteClubAdvertiseImage(int id);

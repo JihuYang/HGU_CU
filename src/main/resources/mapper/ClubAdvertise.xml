@@ -9,6 +9,17 @@
 		parameterType="hashmap">
 		select  CA.id,title, content, originalUrl
 		from clubAdvertise CA LEFT JOIN clubAdvertiseImage cAF on CA.id = cAF.clubAdvertiseId
+		
+		<if test='searchType.equals("title")'>
+			WHERE title LIKE concat('%',#{keyword},'%')
+		</if>
+		<if test='searchType.equals("content")'>
+			WHERE content LIKE concat('%',#{keyword},'%')
+		</if>
+		<if test='searchType.equals("title_content")'>
+			WHERE title LIKE concat('%',#{keyword},'%') or content LIKE concat('%',#{keyword},'%')
+		</if>
+		
 		ORDER BY CA.regdate DESC
 		LIMIT #{displayPost}, #{postNum}
 		<!-- SELECT CA.id,title, content, originalUrl FROM hguclub.clubAdvertise CA
@@ -43,9 +54,18 @@
 			
 	</select>
 	
-	<select id="countInfo" resultType="int">
+	<select id="countInfo" resultType="int" parameterType="hashmap">
 		SELECT COUNT(*) as listCnt
 		FROM clubAdvertise
+		<if test='searchType.equals("title")'>
+			WHERE title LIKE concat('%',#{keyword},'%')
+		</if>
+		<if test='searchType.equals("content")'>
+			WHERE content LIKE concat('%',#{keyword},'%')
+		</if>
+		<if test='searchType.equals("title_content")'>
+			WHERE title LIKE concat('%',#{keyword},'%') or content LIKE concat('%',#{keyword},'%')
+		</if>
 	</select>
 	
 	<!-- 동아리 홍보  업로드 쿼리 -->
