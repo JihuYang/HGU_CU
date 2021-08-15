@@ -18,14 +18,21 @@
 		resultType="com.walab.hgu.DTO.CommunityMaterialDTO"
 		parameterType="hashmap">
 		SELECT cM.id, name as writer, title, content,
-		cM.regdate,viewCount, originalUrl, realUrl, cMF.order
+		cM.regdate, viewCount,
+		originalUrl, realUrl
 		FROM
-		hguclub.communityMaterial as cM ,hguclub.user
-		u,hguclub.communityMaterialFile as cMF
-		WHERE cM.userId = u.id and cM.id
-		= #{id} LIMIT 1
+		hguclub.communityMaterial as cM
+		,hguclub.user u, hguclub.communityMaterialFile
+		as cMF
+		WHERE cM.userId = u.id and cM.id = #{id} and cMF.communityMaterialId
+		= cM.id LIMIT 1
 	</select>
-	
+
+	<select id="readRecentCommunityMaterial" resultType="int"
+		parameterType="hashmap">
+		SELECT MAX(id) FROM hguclub.communityMaterial
+	</select>
+
 	<select id="countInfo" resultType="int">
 		SELECT COUNT(*) as listCnt
 		FROM communityMaterial
@@ -39,7 +46,49 @@
 		VALUES (#{userId}, #{title}, #{content});
 	</insert>
 
-	<update id="updateViewCount" parameterType="int">
-		update communityMaterial set viewCount = viewCount + 1 where id = #{id}
+	<!-- 커뮤니티 자료실 파일 업로드 쿼리 -->
+	<insert id="createCommunityMaterialFile"
+		parameterType="com.walab.hgu.DTO.FileDTO">
+		INSERT INTO hguclub.communityMaterialFile
+		(communityMaterialId,
+		originalUrl)
+		VALUES (#{communityMaterialId},
+		#{originalUrl})
+	</insert>
+
+	<!-- 커뮤니티 자료실 파일 수정 쿼리 -->
+	<update id="updateCommunityMaterialFile"
+		parameterType="com.walab.hgu.DTO.FileDTO">
+		UPDATE hguclub.communityMaterialFile SET
+		originalUrl =
+		#{originalUrl} WHERE communityMaterialId = #{communityMaterialId}
 	</update>
+
+	<!-- 커뮤니티 자료실 글 수정 쿼리 -->
+	<update id="updateCommunityMaterial"
+		parameterType="com.walab.hgu.DTO.CommunityMaterialDTO">
+		UPDATE hguclub.communityMaterial set userId = #{userId},
+		title=#{title},
+		content=#{content} WHERE id = #{id}
+	</update>
+
+	<update id="updateViewCount" parameterType="int">
+		update
+		communityMaterial set viewCount = viewCount + 1 where id = #{id}
+	</update>
+
+	<!-- 커뮤니티 자료실 파일 삭제 쿼리 -->
+	<delete id="deleteCommunityMaterialFile" parameterType="int">
+		DELETE
+		FROM
+		hguclub.communityMaterialFile WHERE
+		communityMaterialId = #{id}
+	</delete>
+
+	<!-- 커뮤니티 자료실 글 삭제 쿼리 -->
+	<delete id="deleteCommunityMaterial" parameterType="int">
+		DELETE FROM
+		hguclub.communityMaterial WHERE id = #{id}
+	</delete>
+
 </mapper>

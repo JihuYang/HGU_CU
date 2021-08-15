@@ -6,37 +6,78 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.walab.hgu.DAO.CommunityMaterialDAO;
+import com.walab.hgu.DTO.CommunityInfoDTO;
 import com.walab.hgu.DTO.CommunityMaterialDTO;
+import com.walab.hgu.DTO.FileDTO;
 
 @Service
-public class CommunityMaterialServiceImpl implements CommunityMaterialService{
-	
+public class CommunityMaterialServiceImpl implements CommunityMaterialService {
+
 	@Autowired
 	CommunityMaterialDAO communityMaterialDAO;
-	
+
 	@Override
-	public List<CommunityMaterialDTO> readCommunityMaterial(int displayPost, int postNum){
-		
+	public List<CommunityMaterialDTO> readCommunityMaterial(int displayPost, int postNum) {
+
 		List<CommunityMaterialDTO> infoList = communityMaterialDAO.readCommunityMaterial(displayPost, postNum);
 
 		return infoList;
-		
+
 	}
 
 	@Override
-	public List<CommunityMaterialDTO> readCommunityMaterialDetail(int id) {
-		
+	public CommunityMaterialDTO readCommunityMaterialDetail(int id) {
 
-		List<CommunityMaterialDTO> infoDetailList = communityMaterialDAO.readCommunityMaterialDetail(id);
-		
-		return infoDetailList;
+		CommunityMaterialDTO materialDetail = communityMaterialDAO.readCommunityMaterialDetail(id);
+
+		return materialDetail;
+	}
+
+	@Override
+	public int readRecentCommunityMaterial() {
+
+		int recentId = communityMaterialDAO.readRecentCommunityMaterial();
+
+		return recentId;
+
 	}
 
 	@Override
 	public int createCommunityMaterial(CommunityMaterialDTO communityMaterial) {
 
 		return communityMaterialDAO.createCommunityMaterial(communityMaterial);
-		
+
+	}
+
+	@Override
+	public int createCommunityMaterialFile(FileDTO communityMaterialFile) {
+
+		return communityMaterialDAO.createCommunityMaterialFile(communityMaterialFile);
+
+	}
+
+	@Override
+	public int updateCommunityMaterial(CommunityMaterialDTO communityMaterial) {
+
+		return communityMaterialDAO.updateCommunityMaterial(communityMaterial);
+	}
+
+	@Override
+	public int updateCommunityMaterialFile(FileDTO communityMaterialFile) {
+
+		return communityMaterialDAO.updateCommunityMaterialFile(communityMaterialFile);
+	}
+
+	@Override
+	public int deleteCommunityMaterialFile(int id) {
+
+		return communityMaterialDAO.deleteCommunityMaterialFile(id);
+	}
+
+	@Override
+	public int deleteCommunityMaterial(int id) {
+
+		return communityMaterialDAO.deleteCommunityMaterial(id);
 	}
 
 	@Override
@@ -50,4 +91,5 @@ public class CommunityMaterialServiceImpl implements CommunityMaterialService{
 		// TODO Auto-generated method stub
 		return communityMaterialDAO.countInfo();
 	}
+
 }

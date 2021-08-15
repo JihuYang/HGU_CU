@@ -38,23 +38,27 @@
 		<div
 			class="row h-auto align-items-center justify-content-center text-center">
 			<div class="col-lg-6 align-self-center">
-				<h3 class="font-weight-bold pt-title">공지사항</h3>
+				<h3 class="font-weight-bold pt-title">자료실</h3>
 			</div>
 		</div>
+		<!-- 홍보글 테이블 -->
+
 		<div class="justify-content-md-center align-items-center">
 			<form method="POST" enctype="multipart/form-data" id="uploadForm"
-				action="<%=request.getContextPath()%>/communityInfo/write/create">
+				action="<%=request.getContextPath()%>/communityMaterials/write/update">
 				<input id="userId" name="userId" value='1' style="display: none;"></input>
+				<input id="id" name="id" value='${communityMaterialDetail.id}'
+					style="display: none;"></input>
 				<div class="title-bar">
 					<p class="rows title-bold">제목</p>
 					<input class="form-control title-input" type="text" id="title"
-						name="title">
+						name="title" value="${communityMaterialDetail.title}">
 				</div>
 				<div class="mb-3">
 					<textarea class="form-control textarea justify-content-center"
-						rows="13" id="content" name="content"></textarea>
+						rows="13" id="content" name="content">${communityMaterialDetail.content}</textarea>
 				</div>
-
+				<div class="mb-3">기존 파일명 : ${communityMaterialDetail.originalUrl}</div>
 				<div class="mb-3">
 					<input class="form-control file" type="file" name="file" id="file"
 						multiple>
@@ -63,39 +67,10 @@
 					<a class="btn btn-primary back-btn bottom-btn" href="./"
 						role="button">뒤로</a>
 					<button class="btn btn-primary submit-btn bottom-btn" type="submit">
-						<!-- onclick="createCommunityInfo(); uploadFile();" -->
-						저장
-					</button>
+						저장</button>
 				</div>
 
 			</form>
-
-			<%--  			<form accept-charset="UTF-8" name="searchForm"
-				action="<%=request.getContextPath()%>/communityInfo/upload.do" method="POST" enctype="multipart/form-data">
-				<div class="title-bar">
-					<p class="rows title-bold">제목</p>
-					<input class="form-control title-input" type="text">
-				</div>
-				<div class="mb-3">
-					<textarea class="form-control textarea justify-content-center"
-						rows="13"></textarea>
-				</div>
-				<div class="mb-3">
-					<input class="form-control file" type="file" name="upload"id = "upload" multiple >
-				</div>
-				<div>
-					<a class="btn btn-primary back-btn bottom-btn"
-						href="./" role="button">뒤로</a>
-					<button class="btn btn-primary submit-btn bottom-btn" onclick="location.href='<%=request.getContextPath()%>/communityInfo'" type="submit">저장</button>
-				</div>
-			</form> --%>
-
-			<!-- 
-			<form action="upload.do" method="post" enctype="multipart/form-data"> 
-							<label><input type="file" name="upload" id = "upload"/></label> 
-							<input type="submit" value="업로드" /> 
-			</form>
-				 -->
 
 		</div>
 	</div>

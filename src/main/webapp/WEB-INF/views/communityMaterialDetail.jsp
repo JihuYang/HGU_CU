@@ -25,11 +25,13 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css"
 	rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
-<link href="<%=request.getContextPath()%>/resources/css/styles.css" rel="stylesheet" />
+<link href="<%=request.getContextPath()%>/resources/css/styles.css"
+	rel="stylesheet" />
 
 </head>
 <jsp:include page="/WEB-INF/views/inc/header.jsp" />
-<link href="<%=request.getContextPath()%>/resources/css/community.css" rel="stylesheet" />
+<link href="<%=request.getContextPath()%>/resources/css/community.css"
+	rel="stylesheet" />
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <script src="https://kit.fontawesome.com/6333a60c65.js"></script>
 <body id="page-top">
@@ -43,19 +45,19 @@
 		<div
 			class="row h-auto align-items-center justify-content-center text-center">
 			<div class="community-detail-title py-5">
-				<h4>${communityMaterialDetail[0].title}</h4>
+				<h4>${communityMaterialDetail.title}</h4>
 			</div>
 		</div>
 		<div
 			class="row h-auto align-items-center justify-content-end text-end">
-			<fmt:formatDate value="${communityMaterialDetail[0].regdate}"
+			<fmt:formatDate value="${communityMaterialDetail.regdate}"
 				var="formattedRegDate" type="date" pattern="yyyy-MM-dd" />
 			<div class="py-3 detail-info">작성자:
-				${communityMaterialDetail[0].writer} | 조회수 :
-				${communityMaterialDetail[0].viewCount} | ${formattedRegDate}</div>
+				${communityMaterialDetail.writer} | 조회수 :
+				${communityMaterialDetail.viewCount} | ${formattedRegDate}</div>
 		</div>
 		<div class="row h-auto align-items-center justify-content-center">
-			<div class="px-4 detail-content">${communityMaterialDetail[0].content}</div>
+			<div class="px-4 detail-content">${communityMaterialDetail.content}</div>
 		</div>
 		<div
 			class="row h-25 align-items-center justify-content-center text-center">
@@ -68,13 +70,19 @@
 					</tr>
 					<tr>
 						<th scope="col" class="col-3 text-center file py-4">첨부파일</th>
-						<th scope="col" class="col-7 text-start px-3 py-4">파일이름.exel</th>
+						<th scope="col" class="col-7 text-start px-3 py-4"><a
+							href="/hgu/communityMaterial/detail/${communityMaterialDetail.id}/filedownload">${communityMaterialDetail.originalUrl}</a></th>
 					</tr>
 				</tbody>
 			</table>
 
 			<div class="row justify-content-start mt-4 list-btn">
-				<button class="btn btn-primary search-btn list-btn" onclick="location.href='<%=request.getContextPath()%>/communityMaterials'">목록</button>
+				<button class="btn btn-primary search-btn list-btn"
+					onclick="location.href='<%=request.getContextPath()%>/communityMaterial?num=1'">목록</button>
+				<button class="btn btn-primary search-btn list-btn"
+					onclick="location.href='<%=request.getContextPath()%>/communityMaterials/update/${communityMaterialDetail.id}'">수정</button>
+				<button class="btn btn-primary search-btn list-btn"
+					onclick="location.href='<%=request.getContextPath()%>/communityMaterials/delete/${communityMaterialDetail.id}'">삭제</button>
 			</div>
 		</div>
 
