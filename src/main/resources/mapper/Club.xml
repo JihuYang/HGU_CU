@@ -9,6 +9,8 @@
         FROM hguclub.club as CL ,hguclub.clubImage cI ,hguclub.category CA,hguclub.user u ,hguclub.clubSNS cS
 		where CA.id = CL.categoryId and CL.userId = u.id and  CL.id = cS.clubId and CL.id = cI.clubId
 		and CA.id = #{categoryId} and cI.`order` = 1
+		
+		AND clubName LIKE concat('%',#{keyword},'%')
 	</select>
 	
 	<select id="getCategoryNameList" resultType="com.walab.hgu.DTO.CategoryDTO">
@@ -35,11 +37,15 @@
 		and CL.id = #{clubId} order by `order`
 	</select>
 	
-	<select id="getAllClubIntroduction" resultType="com.walab.hgu.DTO.ClubDTO">
+	<select id="getAllClubIntroduction" resultType="com.walab.hgu.DTO.ClubDTO" parameterType="hashMap">
 		SELECT CL.id,CL.clubName, u.name as clubCeoName, CL.clubLocation, u.phone,categoryId, categoryName, CL.foundationDate, cS.instagramLink, cS.facebookLink ,cI.originalUrl
         FROM hguclub.club as CL ,hguclub.clubImage cI ,hguclub.category CA,hguclub.user u ,hguclub.clubSNS cS
 		where CA.id = CL.categoryId and CL.userId = u.id and  CL.id = cS.clubId and CL.id = cI.clubId
-		and cI.`order` = 1 ORDER BY clubName
+		and cI.`order` = 1 
+		
+		AND clubName LIKE concat('%',#{keyword},'%')
+		
+		ORDER BY clubName
 		<!-- 현재, 이미지가 없는 동아리들은 order자체가 없기 때문에 불러와지지 않는다. 없는 동아리들은 디폴트 이미지를 넣게하면 될 듯  -->
 	</select>
 	

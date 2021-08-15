@@ -8,7 +8,7 @@ import com.walab.hgu.DTO.FileDTO;
 
 public interface ClubDAO {
 	
-	public List<ClubDTO> readClubIntroductionPreview(int categoryId);
+	public List<ClubDTO> readClubIntroductionPreview(int categoryId, String keyword);
 	
 	public List<ClubDTO> readClubList(int displayPost, int postNum);
 
@@ -24,7 +24,7 @@ public interface ClubDAO {
 
 	public int createClubSNS(ClubDTO sns);
 
-	public List<ClubDTO> getAllClubIntroduction();
+	public List<ClubDTO> getAllClubIntroduction(String keyword);
 	
 
 }
