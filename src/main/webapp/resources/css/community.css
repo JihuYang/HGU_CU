@@ -206,7 +206,7 @@ tr{
 
 #calendar{
 	max-width: 900px;
-	margin: 40px auto;
+	margin: 20px auto;
 }
 
 
@@ -299,6 +299,21 @@ tr{
 	width:250px;
 }
 
+.fc-left h2{
+    font-size: 25px !important;
+    margin-left :10px !important;
+}
+
+.fc-prev-button, .fc-next-button, .fc-today-button{
+	border-style:none !important;
+	background: none !important;
+	background-color:#f4f4f4 !important;
+}
+
+
+.fc-state-highlight{
+	background-color:#f4f4f4 !important;
+}
 
 
 @media(max-width: 992px){

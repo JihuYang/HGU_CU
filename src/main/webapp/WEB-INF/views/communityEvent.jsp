@@ -113,9 +113,10 @@
 			    timeZone: 'Asia/seoul',
 			    longPressDelay: 0,
 			    header: {
-			      left: "prev,next today",
-			      center: "title",
-			      right: "month,agendaWeek"
+			      left: " title",
+			      center: "",
+			      //right: "month,agendaWeek"
+			      right:'today, prev,next'
 			    },
 			    defaultView: "month",
 			    dayMaxEvents: true,
