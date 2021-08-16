@@ -58,29 +58,43 @@
 			<div class="tag-list mb-5 text-start">
 				<input type="button" class="tag backgrond-white py-2"
 					name="btn_name" value="전체" /> <input type="button"
-					class="tag backgrond-white py-2" name="btn_name" value="공지사항 16" />
-				<input type="button" class="tag backgrond-white py-2"
-					name="btn_name" value="자료실 16" /> <input type="button"
-					class="tag backgrond-white py-2" name="btn_name" value="동아리 소개 16" />
-				<input type="button" class="tag backgrond-white py-2"
-					name="btn_name" value="동아리 홍보 16" />
+					class="tag backgrond-white py-2" name="btn_name"
+					value="공지사항 ${communityInfoListCount}" /> <input type="button"
+					class="tag backgrond-white py-2" name="btn_name"
+					value="자료실 ${communityMaterialListCount}" /> <input type="button"
+					class="tag backgrond-white py-2" name="btn_name"
+					value="동아리 소개 ${clubIntroListCount}" /> <input type="button"
+					class="tag backgrond-white py-2" name="btn_name"
+					value="동아리 홍보 ${clubAdvertiseListCount}" />
 			</div>
 		</div>
 		<div
 			class="row h-auto align-items-center justify-content-center text-center">
-			<div class="text-start">
-				<h4>공지사항 내 검색결과 16건</h4>
+			<div class="text-start p-3">
+				<h4>공지사항 내 검색결과 ${communityInfoListCount}건</h4>
 			</div>
 			<!-- 공지사항 리스트  -->
 			<%@ include file="./ajaxContent/communityInfoList.jsp"%>
-			<div class="text-start">
-				<h4>자료실 내 검색결과 16건</h4>
+			<div class="text-start p-3">
+				<h4>자료실 내 검색결과 ${communityMaterialListCount}건</h4>
 			</div>
-			<div class="text-start">
-				<h4>동아리 소개 내 검색결과 16건</h4>
+			<!-- 자료실 리스트  -->
+			<%@ include file="./ajaxContent/communityMaterialList.jsp"%>
+			<div class="text-start p-3">
+				<h4>동아리 소개 내 검색결과 ${clubIntroListCount}건</h4>
 			</div>
-			<div class="text-start">
-				<h4>동아리 홍보 내 검색결과 16건</h4>
+			<!-- 동아리 소개 리스트 -->
+			<div class="club-content" style="display: flex;">
+				<div class="row logo-display">
+					<jsp:include page="/WEB-INF/views/ajaxContent/clubIntroduction.jsp" />
+				</div>
+			</div>
+			<div class="text-start p-3">
+				<h4>동아리 홍보 내 검색결과 ${clubAdvertiseListCount}건</h4>
+			</div>
+			<div
+				class="col-sm-10 align-self-baseline table-responsive table-height">
+				<jsp:include page="/WEB-INF/views/ajaxContent/clubAdvertise.jsp" />
 			</div>
 		</div>
 		<div class="row h-auto align-items-center text-center">

@@ -37,7 +37,6 @@ public class CommunityInfoDAOImpl implements CommunityInfoDAO {
 		
 		Map<String, Object> infoDetailList = new HashMap<String, Object>();
 		infoDetailList.put("id", id);
-		System.out.println(infoDetailList);
 				
 		return sqlSession.selectOne(namespace+".readCommunityInfoDetail", infoDetailList);
 	}	
