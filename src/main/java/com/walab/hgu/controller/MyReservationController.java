@@ -1,19 +1,13 @@
 package com.walab.hgu.controller;
 
-import java.text.DateFormat;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
-import javax.servlet.http.HttpServlet;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.walab.hgu.DTO.ReservationInfoDTO;
@@ -34,13 +28,20 @@ public class MyReservationController {
 	SpaceService spaceService;
 
 	@RequestMapping(value = "/myReservation", method = RequestMethod.GET)
-	public ModelAndView readReservationInfo(ModelAndView mv) {
+	public ModelAndView readReservationInfo(ModelAndView mv,
+			@RequestParam(value = "spaceName",required = false, defaultValue = "") String spaceName) {
 
-		List<ReservationInfoDTO> reservationInfoList = reservationInfoService.readReservationInfo();
 		List<SpaceDTO> spaceList = spaceService.readSpace();
+		List<ReservationInfoDTO> reservationInfoList = new ArrayList<ReservationInfoDTO>();
+		if(spaceName.equals("전체")) {
+			reservationInfoList = reservationInfoService.readReservationInfo();
+		}else {
+			reservationInfoList = reservationInfoService.readReservationBySpaceName(spaceName);
+		}
 		
 		mv.addObject("reservationInfoList", reservationInfoList);
 		mv.addObject("spaceList", spaceList);
+		mv.addObject("spaceName",spaceName);
 		
 		mv.setViewName("myReservation");
 		

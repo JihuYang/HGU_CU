@@ -39,12 +39,12 @@
         <div class="R_container h-auto h-min">
       		<div class="side_bar">	
        			<div class="reservation" style="background-color:#212721">
-                	<div OnClick="location.href ='./reservation'" style="cursor:pointer;">
+                	<div OnClick="location.href ='./reservation?spaceName=전체'" style="cursor:pointer;">
                 		<i class="fa fa-home fa-2x white" aria-hidden="true" style="padding-top:10px;"></i><br><div class="side_text">조회 및 예약하기</div>
                 	</div>
                </div>   
 	           <div class="reservation" style="background-color:#D0D0CE">
-	           	<div OnClick="location.href ='./myReservation'" style="cursor:pointer;">
+	           	<div OnClick="location.href ='./myReservation?spaceName=전체'" style="cursor:pointer;">
 	           	<i class="fa fa-user fa-2x" aria-hidden="true" style="padding-top:10px;"></i><br><div class="side_text">내 예약</div>
 	           	</div>
 	           </div>
