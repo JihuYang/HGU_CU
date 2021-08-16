@@ -62,6 +62,15 @@ public class ReservationInfoDAOImpl implements ReservationInfoDAO {
 		
 		return sqlSession.selectOne(namespace+".countInfo",count);
 	}
+
+	@Override
+	public List<ReservationInfoDTO> readReservationBySpaceName(String spaceName) {
+		
+		Map<String, Object> reservationInfoParam = new HashMap<String, Object>();
+		reservationInfoParam.put("spaceName", spaceName);
+		
+		return sqlSession.selectList(namespace+".readReservationBySpaceName", reservationInfoParam);
+	}
 	
 	
 }
