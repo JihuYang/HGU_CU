@@ -58,9 +58,8 @@
 						<input type="password" class="form-control" placeholder="비밀번호" />
 					</div>
 					<div class="input-group mb-3">
-						<!-- <button type="button" class="btn btn-secondary " onclick="onSignIn()">로그인</button> -->
-						<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark">dfd</div>
-						
+						 <button type="button" class="btn btn-secondary " onclick="location.href='<%=request.getContextPath()%>/loginGoogle'">로그인</button>
+<!-- 						<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark">로그인</div> -->						
 						<button type="button" class="btn btn-secondary ">회원가입</button>
 					</div>
 				</form>

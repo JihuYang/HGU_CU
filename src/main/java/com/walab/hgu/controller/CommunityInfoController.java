@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletOutputStream;
@@ -77,11 +79,11 @@ public class CommunityInfoController {
 		communityInfoService.updateViewCount(id);
 
 		CommunityInfoDTO communityInfoDetail = communityInfoService.readCommunityInfoDetail(id);
-		
+
 		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file");
 
 		String fileName = communityInfoDetail.getOriginalUrl();
-		
+
 		System.out.println("filename: " + fileName);
 
 		mv.addObject("communityInfoDetail", communityInfoDetail);
@@ -107,8 +109,11 @@ public class CommunityInfoController {
 		communityInfoService.updateViewCount(id);
 
 		CommunityInfoDTO communityInfoDetail = communityInfoService.readCommunityInfoDetail(id);
-		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file");
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+		Date time = new Date();
+		String folder = format.format(time);
 
+		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file/" + folder);
 		String fileName = communityInfoDetail.getOriginalUrl();
 		System.out.println("filename: " + fileName);
 
@@ -178,7 +183,11 @@ public class CommunityInfoController {
 		System.out.println(info.toString());
 		System.out.println(infoFile.toString());
 
-		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file");
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+		Date time = new Date();
+		String folder = format.format(time);
+
+		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file/" + folder);
 
 		File dir = new File(saveDir);
 		if (!dir.exists()) {
@@ -238,7 +247,11 @@ public class CommunityInfoController {
 		System.out.println(info.toString());
 		System.out.println(infoFile.toString());
 
-		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file");
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+		Date time = new Date();
+		String folder = format.format(time);
+
+		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file/" + folder);
 
 		File dir = new File(saveDir);
 		if (!dir.exists()) {
@@ -267,30 +280,24 @@ public class CommunityInfoController {
 		return mv;
 	}
 
-	@RequestMapping(value = "/communityInfo/upload.do", method = RequestMethod.POST)
-	@ResponseBody
-	public ModelAndView uploadFile(ModelAndView mv, MultipartHttpServletRequest request,
-			@RequestParam(value = "originalUrl") MultipartFile upload) {
-		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file");
-		MultipartFile f = upload;
-		File dir = new File(saveDir);
-		if (!dir.exists()) {
-			dir.mkdirs();
-		}
-		System.out.println(f);
-
-		return mv;
-
-	}
-
 	@RequestMapping("/communityInfo/detail/{id}/filedownload")
 	public void fileDownload(@PathVariable int id, HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView mv = new ModelAndView();
 
 		CommunityInfoDTO communityInfoDetail = communityInfoService.readCommunityInfoDetail(id);
-		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file");
+		
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+		
+		Date time = new Date();
+		
+		String folder = format.format(communityInfoDetail.getRegdate());
+	
+		System.out.println("download: " + folder);
+
+		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file/" + folder);
 
 		String fileName = communityInfoDetail.getOriginalUrl();
+
 		System.out.println("filename: " + fileName);
 
 		File file = new File(saveDir + "/" + fileName);
