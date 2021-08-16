@@ -11,5 +11,6 @@ public interface ReservationInfoService {
 	public int createAdminReservationInfo(ReservationInfoDTO reservationInfo);
 	public int createReservation(ReservationInfoDTO reservationInfo);
 	public int countInfo(String keyword);
+	public List<ReservationInfoDTO> readReservationBySpaceName(String spaceName);
 
 }

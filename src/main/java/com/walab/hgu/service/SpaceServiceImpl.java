@@ -23,4 +23,12 @@ public class SpaceServiceImpl implements SpaceService{
 		
 	}
 
+	@Override
+	public List<SpaceDTO> readSpaceByName(String spaceName) {
+		
+		List<SpaceDTO> infoList = spaceDAO.readSpaceByName(spaceName);
+		
+		return infoList;
+	}
+
 }

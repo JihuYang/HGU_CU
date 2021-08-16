@@ -6,5 +6,10 @@
 	<select id="readSpace" resultType="com.walab.hgu.DTO.SpaceDTO" parameterType="hashmap">
 		SELECT * FROM space;
  	</select>
+ 	
+ 	<select id="readSpaceByName" resultType="com.walab.hgu.DTO.SpaceDTO" parameterType="hashmap">
+		SELECT * FROM space
+		Where name = #{spaceName}
+ 	</select>
 
 </mapper>

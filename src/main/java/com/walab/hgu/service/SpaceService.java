@@ -8,4 +8,6 @@ public interface SpaceService {
 	
 	public List<SpaceDTO> readSpace();
 
+	public List<SpaceDTO> readSpaceByName(String spaceName);
+
 }
