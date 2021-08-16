@@ -2,6 +2,8 @@ package com.walab.hgu.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,6 +17,7 @@ import com.walab.hgu.service.CommunityInfoService;
 import com.walab.hgu.service.CommunityMaterialService;
 import com.walab.hgu.service.SettingService;
 import com.walab.hgu.service.UserService;
+import com.walab.hgu.DTO.UserDTO;
 import com.walab.hgu.DTO.CategoryDTO;
 import com.walab.hgu.DTO.ClubAdvertiseDTO;
 import com.walab.hgu.DTO.ClubDTO;
@@ -57,8 +60,13 @@ public class HomeController {
 //		return "home";
 //	}
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView header(ModelAndView mv) {
-
+	public ModelAndView header(ModelAndView mv, HttpServletRequest httpServletRequest) {
+		
+		if(httpServletRequest.getSession().getAttribute("user") != null) {
+			int userID = ((UserDTO)httpServletRequest.getSession().getAttribute("user")).getId();
+			System.out.println(userID);
+			mv.addObject("userID", userID);
+		}
 		List<CategoryDTO> categoryNameList = clubService.getCategoryNameList();
 		mv.addObject("categoryNameList", categoryNameList);// 인터셉터에서 넣어주기
 		mv.setViewName("home");
