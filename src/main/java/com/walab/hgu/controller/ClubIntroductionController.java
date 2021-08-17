@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -54,6 +55,7 @@ public class ClubIntroductionController {
 		//String categoryName = clubIntroList.get(0).getCategoryName();
 		
 		mv.addObject("clubIntroList", clubIntroList);
+		System.out.println("clubIntroList 입니다"+clubIntroList);
 		mv.addObject("keyword", keyword);
 		
 		mv.setViewName("clubIntroduction");
@@ -134,21 +136,24 @@ public class ClubIntroductionController {
 		return mv;
 	}
 
-	/*
+	
 	@RequestMapping(value = "/clubIntroduction/write/create", method = RequestMethod.POST)
 	@ResponseBody
-	public ModelAndView createClubIntro(ModelAndView mv,
+	public ModelAndView createClubIntro(ModelAndView mv, MultipartHttpServletRequest request,
 			@RequestParam(value="categoryName") String categoryName,
 			@RequestParam(value="clubName") String clubName,
 			@RequestParam(value="clubLocation") String clubLocation,
-			@RequestParam(value="foundationDate") String foundationDate,
+			@RequestParam(value="foundationDate") @DateTimeFormat(pattern = "yyyy")Date foundationDate,
 			@RequestParam(value="instagramLink") String instagramLink,
 			@RequestParam(value="facebookLink") String facebookLink,
-			@RequestParam(value="clubDescription") String clubDescription,
-			@RequestParam(value="originalUrl") String originalUrl) {
-		System.out.println(foundationDate);
-		ClubDTO intro = new ClubDTO();
+			@RequestParam(value="clubDescription") String clubDescription
+			) throws ParseException {
+
+		ClubDTO info = new ClubDTO();
 		ClubDTO sns = new ClubDTO();
+		FileDTO infoImageFile = new FileDTO();
+		int recentId = clubService.readRecentClub()+1;
+		
 		List<CategoryDTO> categoryNameList = clubService.getCategoryNameList();
 		int categoryId =0;
 		
@@ -158,78 +163,13 @@ public class ClubIntroductionController {
 				break;
 			}
 		}
-		System.out.println(categoryId);
-		SimpleDateFormat fm = new SimpleDateFormat("yyyy-MM-dd");
 
-		Date foundationDateRE = null;
-		try {
-			foundationDateRE = fm.parse(foundationDate);
-			System.out.println(foundationDateRE);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		// userDTO끌고 와서 clubName 비교해서 userId 찾기
-		//userService.getUser --> 동아리 대표는 관리자가 나중에 삽입
-				
-		intro.setClubName(clubName);
-		intro.setCategoryId(categoryId);
-		intro.setClubLocation(clubLocation);
-		intro.setFoundationDate(foundationDateRE);
-		intro.setClubDescription(clubDescription);
-		
-		clubService.createClubIntro(intro);
-		
-		//위에 넣고 다시 club끌고 와서 마지막 추가된 것의 clubId 함께 ClubSns table에 삽입,,,
-		List<ClubDTO> clubList = clubService.getClubList();
-		int id = clubList.get(0).getId();
-		sns.setId(id);
-		sns.setInstagramLink(instagramLink);
-		sns.setFacebookLink(facebookLink);
-		
-		clubService.createClubSNS(sns);
-		
-		//intro.setOriginalUrl(originalUrl);
-
-//		System.out.println(intro.toString());
-//		
-//		System.out.println(originalUrl);
-
-		
-		mv.setViewName("createClubIntro");
-			
-		return mv;
-	}
-	*/
-	
-	@RequestMapping(value = "/clubIntroduction/write/create", method = RequestMethod.POST)
-	@ResponseBody
-	public ModelAndView createClubIntro(ModelAndView mv, MultipartHttpServletRequest request,
-			 MultipartFile file) throws ParseException {
-
-		ClubDTO info = new ClubDTO();
-		ClubDTO sns = new ClubDTO();
-		FileDTO infoImageFile = new FileDTO();
-		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-		int recentId = clubService.readRecentClub();
-
-		//int categoryId =  Integer.parseInt(request.getParameter("categoryId"));
-		String clubName = request.getParameter("clubName");
-		System.out.println(clubName);
-		int userId = Integer.parseInt(request.getParameter("userId"));
-		String clubDescription = request.getParameter("clubDescription");
-		System.out.println(userId);
-		String date = request.getParameter("foundationDate");
-		Date foundationDate = dateFormat.parse(date);
-		String clubLocation = request.getParameter("clubLocation");
-		String instagramLink = request.getParameter("instagramLink");
-		String facebookLink = request.getParameter("facebookLink");
+		int userId = 1;
 
 		MultipartFile imagefile = request.getFile("originalUrl");
 		String originalUrl = imagefile.getOriginalFilename();
 
-		//info.setCategoryId(categoryId);
+		info.setCategoryId(categoryId);
 		info.setClubName(clubName);
 		info.setUserId(userId);
 		info.setClubDescription(clubDescription);
@@ -238,18 +178,14 @@ public class ClubIntroductionController {
 		sns.setInstagramLink(instagramLink);
 		sns.setFacebookLink(facebookLink);
 		sns.setId(recentId);
-		
-		clubService.createClubIntro(info);
-		clubService.createClubSNS(sns);
-
-		
-		System.out.println(recentId);
-	
 		infoImageFile.setClubId(recentId);
 		infoImageFile.setOriginalUrl(originalUrl);
 		
+		clubService.createClubIntro(info);
+		clubService.createClubSNS(sns);
 		clubService.createClubIntroImage(infoImageFile);
-
+		
+	
 		System.out.println(info.toString());
 
 

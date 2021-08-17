@@ -48,7 +48,7 @@
 					<div class="title-bar">
 					<input id="userId" name="userId" value="1" style="display:none">
 						<p class="rows">동아리 분과  </p><!-- <input class="form-control title-input" type="text" id="categoryName"> -->
-						<select class="form-select select-option" aria-label="Default select example" id="categoryId" name="categoryId">
+						<select class="form-select select-option" aria-label="Default select example" name="categoryName">
 						  <option value="">--선택--</option>
 						  <c:forEach  items="${categoryNameList}" var="categoryNameList" varStatus="status">
 						  	<option value="${categoryNameList.categoryName}">${categoryNameList.categoryName}</option>
@@ -64,7 +64,7 @@
 					<div class="title-bar">
 						<p class="rows select-bar">창립연도   </p>
 						<!-- <input class="form-control title-input" type="date" id="foundationDate"> -->
-						<select class="form-select select-option" aria-label="Default select example" id="foundationDate">
+						<select class="form-select select-option" aria-label="Default select example" id="foundationDate" name="foundationDate">
 						  <option value="">--선택--</option>
 						  <c:forEach  items="${foundationYearList}" var="foundationYearList" varStatus="status">
 						  	<option value="${foundationYearList}">${foundationYearList}</option>
@@ -81,16 +81,17 @@
 					<div class="mb-3">
 						<textarea class="form-control textarea justify-content-center" rows="13" id="clubDescription" name="clubDescription"></textarea>
 					</div>
+					
 					<div class="mb-3">
   						<input class="form-control file" type="file" id="originalUrl" name="originalUrl" accept="image/*" multiple>
 					</div>
+					
 					<div>
 						<a class="btn btn-primary back-btn bottom-btn" href="./${categotyId}" role="button">뒤로</a>
-						<button class="btn btn-primary submit-btn bottom-btn" onclick="createClubIntro()">저장</button> 
+						<button class="btn btn-primary submit-btn bottom-btn">저장</button> 
 					</div>
 					</form>
 			</div>
-			
 		</div>
 	</div>
 	

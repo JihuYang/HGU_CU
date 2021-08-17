@@ -1,10 +1,10 @@
-function createClubIntro(){	
+/*function createClubIntro(){	
 	//var categoryId=document.getElementById("categoryId").selectedIndex+2;
 	var categoryId=1;
-	var foundationDate = $('#foundationDate').val();
+	//var foundationDate = $('#foundationDate').val();
 	//foundationDate+="-01-01";
 	
-	var val = foundationDate.options[foundationDate.selectedIndex].value;
+	//var val = foundationDate.options[foundationDate.selectedIndex].value;
 	console.log(categoryId);
 	$.ajax({
 		url: "/hgu/clubIntroduction/write/create",
@@ -15,22 +15,22 @@ function createClubIntro(){
 			categoryId: categoryId,
 			clubName: $('#clubName').val(),
 			clubLocation: $('#clubLocation').val(),
-			foundationDate: val,
+			//foundationDate: val,
 			instagramLink: $('#instagramLink').val(),
 			facebookLink: $('#facebookLink').val(),
 			clubDescription: $('#clubDescription').val(),
 			originalUrl: $('#originalUrl').val()
 		},
-		success: function(data){	
+		success: function(){	
 			console.log("동아리 소개 글쓰기 성공!!");
 			console.log("clubName: " + clubName);
 			location.href="/hgu/clubIntroduction";
 		}, 
-		error:function(request, status, error){
+		error:function(request, error){
 			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
         }
 	});
-}
+}*/
 
 function search(){
 	

@@ -168,7 +168,6 @@ public class ClubAdvertiseController {
 
 				// SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd-HHmmssSSS");
 				// int rand = (int)(Math.random()*1000);
-
 				// String reName = sdf.format(System.currentTimeMillis()) + "_" + rand + ext;
 
 				try {
