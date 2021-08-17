@@ -59,5 +59,12 @@ public class UserDAOImpl implements UserDAO {
 		userParam.put("userID", userID);
 		return sqlSession.selectOne(namespace+".readIsAdminByUserID", userParam);
 	}
+
+
+	@Override
+	public int updateAuthority(Map<String, Object> authorityParam) {
+		// TODO Auto-generated method stub
+		return sqlSession.update(namespace+".updateAuthority", authorityParam);
+	}
 	
 }

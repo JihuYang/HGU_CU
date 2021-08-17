@@ -1,6 +1,7 @@
 package com.walab.hgu.DAO;
 
 import java.util.List;
+import java.util.Map;
 
 import com.walab.hgu.DTO.CategoryDTO;
 import com.walab.hgu.DTO.ClubDTO;
@@ -25,9 +26,19 @@ public interface ClubDAO {
 	public int createClubSNS(ClubDTO sns);
 
 	public List<ClubDTO> getAllClubIntroduction(String keyword);
+	
 	public int readRecentClub();
 	
 	public int createClubIntroImage(FileDTO clubAdImage);
+
+	public int updateUserClub(Map<String, Object> userClub);
+	
+	public int updateUserNull(Map<String, Object> userClub);
+
+	public int getClubIdByName(String clubName);
+
+	public int getClubIdByUserId(int id);
+
 	
 
 }

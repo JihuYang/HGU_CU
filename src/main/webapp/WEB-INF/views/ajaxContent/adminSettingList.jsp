@@ -13,7 +13,7 @@
 				<td class="col-1" id="">환경변수 ${status.count}</td>
 				<td class="col-1 key">${settingList.key}</td>
 				<td class="col-1 value">
-				<input id="setting-input" class="form-control form-control-sm w-5" value="${settingList.value}">
+				<input id="setting-input" class="form-control form-control-sm w-5" name="settingValue" value="${settingList.value}">
 				</td>
 				
 			</tr>

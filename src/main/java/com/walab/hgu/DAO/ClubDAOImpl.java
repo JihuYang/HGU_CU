@@ -105,4 +105,31 @@ public class ClubDAOImpl implements ClubDAO{
 		sqlSession.insert(namespace+".createClubIntroImage", clubIntroImage);
 		return 0;
 	}
+
+	@Override
+	public int updateUserClub(Map<String, Object> userClub) {
+		
+		return sqlSession.update(namespace+".updateUserClub", userClub);
+	}
+	
+	@Override
+	public int updateUserNull(Map<String, Object> userClub) {
+		// TODO Auto-generated method stub
+		return sqlSession.update(namespace+".updateUserNull", userClub);
+	}
+
+	@Override
+	public int getClubIdByName(String clubName) {
+		Map<String, Object> clubParam = new HashMap<String, Object>();
+		clubParam.put("clubName", clubName);
+		return sqlSession.selectOne(namespace+".getClubIdByName", clubParam);
+	}
+
+	@Override
+	public int getClubIdByUserId(int id) {
+		Map<String, Object> clubParam = new HashMap<String, Object>();
+		clubParam.put("userId", id);
+		System.out.println(clubParam);
+		return sqlSession.selectOne(namespace+".getClubIdByUserId", clubParam);
+	}
 }

@@ -89,7 +89,27 @@
 				</ul>
 			</nav>
 		</div>
-		<div class="float-end"><button class="btn btn-primary search-btn">저장</button></div>
+		<div class="float-end"><button class="btn btn-primary search-btn" type="button" onclick="update()">저장</button></div>
+		<!-- <script type="text/javascript">
+			function update(){
+				var totalReservationWeek = document.getElementsByName("settingValue")[0].value;
+				var totalReservationDay = document.getElementsByName("settingValue")[1].value;
+				//alert(totalReservationWeek + " " +totalReservationDay);
+
+				$.ajax({
+				    url: "/hgu/admin/update",
+				    data: {"totalReservationWeek": totalReservationWeek, "totalReservationDay": totalReservationDay},
+				    type: "POST",
+				    success : function(data){
+				      alert("저장되었습니다.")
+				    },
+				    error : function(){
+				      alert("저장에 실패하였습니다")		
+				    }
+				  });
+				
+			}
+		</script> -->
 	</div>
 
 	<!-- Footer-->
@@ -98,6 +118,7 @@
 	<!-- Bootstrap core JS-->
 	<script
 		src="<%=request.getContextPath()%>/resources/js/pagenation.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/admin.js"></script>
 
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>

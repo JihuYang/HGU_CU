@@ -35,5 +35,12 @@ public class SettingDAOImpl implements SettingDAO {
 		// TODO Auto-generated method stub
 		return sqlSession.selectOne(namespace+".countInfo");
 	}
+
+
+	@Override
+	public int updateSetting(Map<String, Object> settingList) {
+		System.out.println(settingList);
+		return sqlSession.update(namespace+".updateSetting", settingList);
+	}
 	
 }

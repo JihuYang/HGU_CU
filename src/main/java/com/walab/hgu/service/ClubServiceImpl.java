@@ -1,6 +1,7 @@
 package com.walab.hgu.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -78,6 +79,31 @@ public class ClubServiceImpl implements ClubService{
 	public List<ClubDTO> getAllClubIntroduction(String keyword) {
 		List<ClubDTO> clubIntroList = clubDAO.getAllClubIntroduction(keyword);
 		return clubIntroList;
+	}
+
+	@Override
+	public int updateUserClub(Map<String, Object> userClub) {
+		
+		return clubDAO.updateUserClub(userClub);
+		
+	}
+	
+	@Override
+	public int updateUserNull(Map<String, Object> userClub) {
+		// TODO Auto-generated method stub
+		return clubDAO.updateUserNull(userClub);
+	}
+
+	@Override
+	public int getClubIdByName(String clubName) {
+		
+		return clubDAO.getClubIdByName(clubName);
+	}
+
+	@Override
+	public int getClubIdByUserId(int id) {
+		// TODO Auto-generated method stub
+		return clubDAO.getClubIdByUserId(id);
 	}
 	
 	@Override

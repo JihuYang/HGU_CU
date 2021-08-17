@@ -6,7 +6,7 @@
 	<select id="readUser" resultType="com.walab.hgu.DTO.UserDTO"
 		parameterType="hashmap">
 		SELECT u.id, name, email, u.admin, phone, clubName FROM (hguclub.user as u
-		INNER JOIN hguclub.club as c ON c.userId=u.id)
+		LEFT JOIN hguclub.club as c ON c.userId=u.id)
 		ORDER BY u.regdate DESC
 		LIMIT #{displayPost}, #{postNum}
 	</select>
@@ -23,5 +23,9 @@
 	<select id="readUserIDByEmail" resultType="int" parameterType="hashmap">
 		SELECT id FROM user WHERE email=#{email}
 	</select>
-	
+	<update id="updateAuthority" parameterType="hashmap">
+		UPDATE user
+		SET admin = #{admin}
+		WHERE id = #{id}
+	</update>
 </mapper>

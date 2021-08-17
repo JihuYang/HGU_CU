@@ -79,4 +79,24 @@
 		originalUrl)
 		VALUES (#{clubId}, #{originalUrl})
 	</insert>
+	<select id="getClubIdByName" parameterType="HashMap" resultType="int">
+		SELECT id
+		FROM club
+		WHERE clubName = #{clubName}
+	</select>
+	<select id="getClubIdByUserId" parameterType="HashMap" resultType="int">
+		SELECT id
+		FROM club
+		WHERE userId = #{userId}
+	</select>
+	<update id="updateUserClub" parameterType="HashMap" >
+		UPDATE club
+		SET userId = #{userId}
+		WHERE id = #{clubId}
+	</update>
+	<update id="updateUserNull" parameterType="HashMap">
+		UPDATE club
+		SET userId = null
+		WHERE id = #{clubId}
+	</update>
 </mapper>

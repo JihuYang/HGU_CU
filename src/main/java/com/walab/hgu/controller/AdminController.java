@@ -3,7 +3,12 @@ package com.walab.hgu.controller;
 import java.io.IOException;
 import java.sql.Time;
 import java.sql.Date;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -93,6 +98,30 @@ public class AdminController {
 		return mv;
 	}
 	
+	@ResponseBody
+	@RequestMapping(value = "/admin/update", method = RequestMethod.POST)
+	public ModelAndView updateSetting(ModelAndView mv,HttpServletRequest request, int totalReservationWeek,int totalReservationDay) {
+		
+		Map<String, Object> settingList = new HashMap<String, Object>();
+		settingList.put("totalReservation",totalReservationWeek);
+		settingList.put("id",1);
+		
+		settingService.updateSetting(settingList);
+		
+		Map<String, Object> settingList2 = new HashMap<String, Object>();
+		settingList2.put("totalReservation", totalReservationDay);
+		settingList2.put("id",2);
+		
+		settingService.updateSetting(settingList2);
+		
+//		System.out.println("totalReservationWeek: "+totalReservationWeek);
+//		System.out.println("totalReservationDay: "+totalReservationDay);
+		
+		mv.setViewName("admin");
+			
+		return mv;
+	}
+	
 	@RequestMapping(value = "/adminUser", method = RequestMethod.GET)
 	public ModelAndView readUser(ModelAndView mv, @RequestParam("num") int num) {
 		
@@ -114,8 +143,50 @@ public class AdminController {
 			
 		return mv;
 	}
-
 	
+	@ResponseBody
+	@RequestMapping(value = "/adminUser/clubUpdate", method = RequestMethod.POST)
+	public ModelAndView updateUserClub(ModelAndView mv,HttpServletRequest request, String clubName,int id) {
+		if(clubName.equals("없음")) {
+			int clubId = clubService.getClubIdByUserId(id);
+			
+			Map<String, Object> userClub = new HashMap<String, Object>();
+			userClub.put("clubId",clubId);
+			userClub.put("userId",id);
+			
+			clubService.updateUserNull(userClub);
+		}else {
+			int clubId = clubService.getClubIdByName(clubName);
+			
+			Map<String, Object> userClub = new HashMap<String, Object>();
+			userClub.put("clubId",clubId);
+			userClub.put("userId",id);
+			
+			clubService.updateUserClub(userClub);
+		}
+		
+		System.out.println(mv);
+		
+		mv.setViewName("adminUser");
+			
+		return mv;
+	}
+
+	@ResponseBody
+	@RequestMapping(value = "/adminUser/authorityUpdate", method = RequestMethod.POST)
+	public ModelAndView updateUserAuthority(ModelAndView mv,HttpServletRequest request,int authority, int id) {
+		Map<String, Object> authorityParam = new HashMap<String, Object>();
+		authorityParam.put("admin",authority);
+		authorityParam.put("id",id);
+		
+		userService.updateAuthority(authorityParam);
+		
+		System.out.println(mv);
+		
+		mv.setViewName("adminUser");
+			
+		return mv;
+	}
 	
 	@RequestMapping(value = "/adminReservation", method = RequestMethod.POST)
 	@ResponseBody

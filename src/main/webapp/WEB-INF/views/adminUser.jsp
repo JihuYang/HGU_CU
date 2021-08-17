@@ -99,6 +99,7 @@
 	<!-- Bootstrap core JS-->
 	<script
 		src="<%=request.getContextPath()%>/resources/js/pagenation.js"></script>
+	<script src="<%=request.getContextPath()%>/resources/js/admin.js"></script>
 
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
