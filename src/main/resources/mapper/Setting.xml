@@ -11,5 +11,9 @@
 		SELECT COUNT(*) as listCnt
 		FROM setting
 	</select>
+	<update id="updateSetting" parameterType="hashMap">
+		UPDATE setting 
+		SET  value = #{totalReservation} WHERE id = #{id};
+	</update>
 
 </mapper>
