@@ -9,6 +9,7 @@ public class FileDTO {
 	private int id;
 	private int communityInfoId;
 	private int clubAdvertiseId;
+	private int clubId;
 	private String originalUrl;
 	private String fileOriginalUrl;
 	private String realUrl;
@@ -70,6 +71,13 @@ public class FileDTO {
 	}
 	public void setFileOriginalUrl(String fileOriginalUrl) {
 		this.fileOriginalUrl = fileOriginalUrl;
+	}
+	
+	public int getClubId() {
+		return clubId;
+	}
+	public void setClubId(int clubId) {
+		this.clubId = clubId;
 	}
 	@Override
 	public String toString() {
