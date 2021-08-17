@@ -14,6 +14,14 @@
 		VALUES (#{eventName}, #{eventSpace}, #{eventContent}, #{startDate}, #{endDate});
 	</insert>
 	
+	<update id="updateEvent"
+		parameterType="com.walab.hgu.DTO.EventDTO">
+		UPDATE hguclub.event set eventName = #{eventName},
+		eventSpace=#{eventSpace},eventContent=#{eventContent} ,
+		startDate=#{startDate},endDate=#{endDate}
+		WHERE id = #{id}
+	</update>
+	
 	<!-- 행사일정 삭제 쿼리 -->
 	<delete id="deleteEvent"
 		parameterType="int">

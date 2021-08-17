@@ -8,6 +8,7 @@ public interface EventDAO {
 		
 	public List<EventDTO> readEvent();
 	//public EventDTO readEvent(int id);
+	public int updateEvent(EventDTO event);
 	public int deleteEvent(int id);
 	
 	public int createEvent(EventDTO event);

@@ -47,6 +47,14 @@ public class EventDAOImpl implements EventDAO {
 	}
 	
 	@Override
+	public int updateEvent(EventDTO event) {
+		
+		sqlSession.update(namespace+".updateEvent", event);
+		
+		return 0;
+	}
+	
+	@Override
 	public int deleteEvent(int id) {
 		
 		sqlSession.delete(namespace+".deleteEvent", id);

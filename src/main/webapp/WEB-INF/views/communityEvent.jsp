@@ -86,7 +86,7 @@
 						
 						<div class="modal-footer">
 							<button type="button" class="btn" id="saveBtn" onclick="createCommutinyEvent()">저장</button>
-							<button type="button" class="btn" id="updateBtn" onclick="updateCommutinyEvent()">수정</button>
+							<button type="button" class="btn" id="updateBtn">수정</button>
 							<button type="button" class="btn" id="deleteBtn">삭제</button>
 						</div>
 						</form>
@@ -155,15 +155,15 @@
 		            // window.open(event.url, 'gcalevent', 'width=700,height=600');
 		            var id = event.id;
 		    		var title = event.title;
-		    		document.getElementById('title').readOnly = true;
+		    		//document.getElementById('title').readOnly = true;
 		    		var content = event.content;
-		    		document.getElementById('eventContent').readOnly = true;
+		    		//document.getElementById('eventContent').readOnly = true;
 		    		var place = event.place;
-		    		document.getElementById('eventSpace').readOnly = true;
+		    		//document.getElementById('eventSpace').readOnly = true;
 		    		var startDate = moment(event.start).format("YYYY-MM-DD[T]HH:mm:ss");
-		    		document.getElementById('startDate').readOnly = true;
+		    		//document.getElementById('startDate').readOnly = true;
 		    		var endDate = moment(event.end).format("YYYY-MM-DD[T]HH:mm:ss");
-		    		document.getElementById('endDate').readOnly = true;
+		    		//document.getElementById('endDate').readOnly = true;
 		    		
 		    		$('#addModal').modal('show');
 		    		$('#title').val(title);
@@ -178,6 +178,42 @@
 					var deleteBtn=document.getElementById('deleteBtn');
 					deleteBtn.onclick = function(){
 						location.href='<%=request.getContextPath()%>/communityEvent/delete/'+id;
+					}
+					
+					var updateBtn=document.getElementById('updateBtn');
+					
+					updateBtn.onclick = function(){
+						<%-- location.href='<%=request.getContextPath()%>/communityEvent/update/'+id; --%>
+						var start = $('#startDate').val();
+						var end = $('#endDate').val();
+						if(end==null)
+							end=start;
+						start=start.replace("T"," ")+":00"; 
+						end=end.replace("T"," ")+":00"; 
+						
+						
+						console.log(start);
+						console.log(end);
+						
+						$.ajax({
+							url: "/hgu/communityEvent/update/"+id,
+							type: "POST",
+							async: false,
+							data: {
+								eventName: $('#title').val(),
+								eventSpace:$('#eventSpace').val(),
+								eventContent:$('#eventContent').val(),
+								start: start,
+								end: end
+							},
+							success: function(){	
+								console.log("행사일정 업데이트 성공!!");
+								location.href="/hgu/communityEvent";
+							}, 
+							error:function(request, error){
+								console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+					        }
+						});
 					}
 
 		            return false;

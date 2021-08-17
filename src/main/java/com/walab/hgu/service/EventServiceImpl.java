@@ -41,6 +41,12 @@ public class EventServiceImpl implements EventService{
 	}
 	
 	@Override
+	public int updateEvent(EventDTO event) {
+
+		return eventDAO.updateEvent(event);
+	}
+	
+	@Override
 	public int deleteEvent(int id) {
 
 		return eventDAO.deleteEvent(id);

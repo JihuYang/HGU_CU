@@ -3,7 +3,7 @@ function createCommutinyEvent(){
 	var startDate = $('#startDate').val();
 	var endDate = $('#endDate').val();
 	
-	startDate=endDate.replace("T"," ")+":00"; 
+	startDate=startDate.replace("T"," ")+":00"; 
 	endDate=endDate.replace("T"," ")+":00"; 	
 	
 	$.ajax({
