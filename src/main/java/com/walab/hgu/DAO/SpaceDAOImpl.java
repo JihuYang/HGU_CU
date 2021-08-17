@@ -26,6 +26,14 @@ public class SpaceDAOImpl implements SpaceDAO {
 				
 		return sqlSession.selectList(namespace+".readSpace", spaceParam);
 	}
+
+
+	@Override
+	public List<SpaceDTO> readSpaceByName(String spaceName) {
+		Map<String, Object> spaceList = new HashMap<String, Object>();
+		spaceList.put("spaceName", spaceName);
+		return sqlSession.selectList(namespace+".readSpaceByName", spaceList);
+	}
 	
 	
 }

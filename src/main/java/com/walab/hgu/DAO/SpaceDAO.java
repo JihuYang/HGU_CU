@@ -7,5 +7,7 @@ import com.walab.hgu.DTO.SpaceDTO;
 public interface SpaceDAO {
 		
 	public List<SpaceDTO> readSpace();
+
+	public List<SpaceDTO> readSpaceByName(String spaceName);
 	
 }

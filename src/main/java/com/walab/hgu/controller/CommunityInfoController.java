@@ -5,6 +5,8 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletOutputStream;
@@ -41,48 +43,50 @@ public class CommunityInfoController {
 	CommunityInfoService communityInfoService;
 
 	@RequestMapping(value = "/communityInfo", method = RequestMethod.GET)
-	public ModelAndView readCommunityInfo(ModelAndView mv, @RequestParam("num") int num, 
-			@RequestParam(value = "searchType",required = false, defaultValue = "title") String searchType, 
-			@RequestParam(value = "keyword",required = false, defaultValue = "") String keyword) {
-		
-		//ModelAndView mv = new ModelAndView();
-		
+	public ModelAndView readCommunityInfo(ModelAndView mv, @RequestParam("num") int num,
+			@RequestParam(value = "searchType", required = false, defaultValue = "title") String searchType,
+			@RequestParam(value = "keyword", required = false, defaultValue = "") String keyword) {
+
+		// ModelAndView mv = new ModelAndView();
+
 		Page page = new Page();
 		page.setNum(num);
-		page.setCount(communityInfoService.countInfo( searchType, keyword));
-		
+		page.setCount(communityInfoService.countInfo(searchType, keyword));
+
 		// 검색 타입과 검색어
 		page.setSearchType(searchType);
 		page.setKeyword(keyword);
-		
-		List<CommunityInfoDTO> communityInfoList = communityInfoService.readCommunityInfo(page.getDisplayPost(),page.getPostNum(),searchType,keyword);
-		
+
+		List<CommunityInfoDTO> communityInfoList = communityInfoService.readCommunityInfo(page.getDisplayPost(),
+				page.getPostNum(), searchType, keyword);
+
 		mv.addObject("communityInfoList", communityInfoList);
 		mv.addObject("page", page);
 		mv.addObject("selected", num);
-		
+
 		System.out.println(mv);
-		
+
 		mv.setViewName("communityInfo");
-		
+
 		return mv;
 	}
 
 	@RequestMapping(value = "/communityInfo/detail/{id}", method = RequestMethod.GET)
-	public ModelAndView readCommunityInfoDetail(@PathVariable int id, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView readCommunityInfoDetail(@PathVariable int id, HttpSession session, HttpServletRequest request,
+			HttpServletResponse response) {
 		ModelAndView mv = new ModelAndView();
-		
+
 		communityInfoService.updateViewCount(id);
 
 		CommunityInfoDTO communityInfoDetail = communityInfoService.readCommunityInfoDetail(id);
-		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file");
-		
-		String fileName = communityInfoDetail.getOriginalUrl();
-		System.out.println("filename: " + fileName);
-		
-		mv.addObject("communityInfoDetail", communityInfoDetail);
 
-		System.out.println(mv);
+		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file");
+
+		String fileName = communityInfoDetail.getOriginalUrl();
+
+		System.out.println("filename: " + fileName);
+
+		mv.addObject("communityInfoDetail", communityInfoDetail);
 
 		mv.setViewName("communityInfoDetail");
 
@@ -96,43 +100,40 @@ public class CommunityInfoController {
 
 		return mv;
 	}
-	
+
 	@RequestMapping(value = "/communityInfo/update/{id}", method = { RequestMethod.GET, RequestMethod.POST })
-	public ModelAndView updateCommunityInfo(@PathVariable int id, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView updateCommunityInfo(@PathVariable int id, HttpSession session, HttpServletRequest request,
+			HttpServletResponse response) {
 		ModelAndView mv = new ModelAndView();
-		
+
 		communityInfoService.updateViewCount(id);
 
 		CommunityInfoDTO communityInfoDetail = communityInfoService.readCommunityInfoDetail(id);
-		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file");
-		
-		String fileName = communityInfoDetail.getOriginalUrl();
-		System.out.println("filename: " + fileName);
-		
+
 		mv.addObject("communityInfoDetail", communityInfoDetail);
 
 		System.out.println(mv);
-
 
 		mv.setViewName("updateCommunityInfo");
 
 		return mv;
 	}
-	
+
 	@RequestMapping(value = "/communityInfo/delete/{id}", method = { RequestMethod.GET, RequestMethod.POST })
-	public ModelAndView deleteCommunityInfo(@PathVariable int id, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView deleteCommunityInfo(@PathVariable int id, HttpSession session, HttpServletRequest request,
+			HttpServletResponse response) {
 		ModelAndView mv = new ModelAndView();
-		
+
 		communityInfoService.deleteCommunityInfoFile(id);
 		communityInfoService.deleteCommunityInfo(id);
-		
+
 		CommunityInfoDTO communityInfoDetail = communityInfoService.readCommunityInfoDetail(id);
 		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file");
-		
-		//String fileName = communityInfoDetail.getOriginalUrl();
 
-		//System.out.println("filename: " + fileName);
-		
+		// String fileName = communityInfoDetail.getOriginalUrl();
+
+		// System.out.println("filename: " + fileName);
+
 		mv.addObject("communityInfoDetail", communityInfoDetail);
 
 		System.out.println(mv);
@@ -141,7 +142,7 @@ public class CommunityInfoController {
 
 		return mv;
 	}
-	
+
 	@RequestMapping(value = "/communityInfo/write/create", method = RequestMethod.POST)
 	@ResponseBody
 	public ModelAndView createCommunityInfo(ModelAndView mv, MultipartHttpServletRequest request, MultipartFile file) {
@@ -153,134 +154,143 @@ public class CommunityInfoController {
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 
-		MultipartFile newfile = request.getFile("file");
-		String originalUrl = newfile.getOriginalFilename();
+		List<MultipartFile> fileList = request.getFiles("file");
+		System.out.println(fileList);
 
 		info.setUserId(userId);
 		info.setTitle(title);
 		info.setContent(content);
 		info.setFile(file);
-		
+
 		communityInfoService.createCommunityInfo(info);
-		
+
 		int recentId = communityInfoService.readRecentCommunityInfo();
-		
+
 		System.out.println(recentId);
-	
-		infoFile.setCommunityInfoId(recentId);
-		infoFile.setOriginalUrl(originalUrl);
 		
-		communityInfoService.createCommunityInfoFile(infoFile);
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+		Date time = new Date();
+		String folder = format.format(time);
+		
+        for (MultipartFile newfile : fileList) { 
+    		String originalUrl = newfile.getOriginalFilename();
+    		
+    		infoFile.setCommunityInfoId(recentId);
+    		infoFile.setOriginalUrl(originalUrl);
+    		
+    		communityInfoService.createCommunityInfoFile(infoFile);
+    		
+            String originFileName = newfile.getOriginalFilename(); // 원본 파일 명
+            long fileSize = newfile.getSize(); // 파일 사이즈
+
+            System.out.println("originFileName : " + originFileName);
+            System.out.println("fileSize : " + fileSize);
+
+    		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file/" + folder);
+    		
+    		File dir = new File(saveDir);
+    		if (!dir.exists()) {
+    			dir.mkdirs();
+    		}
+
+    		if (!newfile.isEmpty()) {
+    			String ext = originalUrl.substring(originalUrl.lastIndexOf("."));
+
+    			// SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd-HHmmssSSS");
+    			// int rand = (int)(Math.random()*1000);
+
+    			// String reName = sdf.format(System.currentTimeMillis()) + "_" + rand + ext;
+
+    			try {
+    				newfile.transferTo(new File(saveDir + "/" + originalUrl));
+    			} catch (IllegalStateException | IOException e) {
+    				e.printStackTrace();
+    			}
+    		}
+
+    		System.out.println(saveDir);
+        }
 
 		System.out.println(info.toString());
 		System.out.println(infoFile.toString());
-
-
-		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file");
-
-		File dir = new File(saveDir);
-		if (!dir.exists()) {
-			dir.mkdirs();
-		}
-
-		if (!newfile.isEmpty()) {
-			String ext = originalUrl.substring(originalUrl.lastIndexOf("."));
-
-			// SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd-HHmmssSSS");
-			// int rand = (int)(Math.random()*1000);
-
-			// String reName = sdf.format(System.currentTimeMillis()) + "_" + rand + ext;
-
-			try {
-				newfile.transferTo(new File(saveDir + "/" + originalUrl));
-			} catch (IllegalStateException | IOException e) {
-				e.printStackTrace();
-			}
-		}
-
-		System.out.println(saveDir);
-
 
 		mv.setViewName("redirect:/communityInfo?num=1");
 
 		return mv;
 	}
-	
+
 	@RequestMapping(value = "/communityInfo/write/update", method = RequestMethod.POST)
 	@ResponseBody
 	public ModelAndView updateCommunityInfo(ModelAndView mv, MultipartHttpServletRequest request, MultipartFile file) {
 
 		CommunityInfoDTO info = new CommunityInfoDTO();
 		FileDTO infoFile = new FileDTO();
-		
+
 		int id = Integer.parseInt(request.getParameter("id"));
 		int userId = Integer.parseInt(request.getParameter("userId"));
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
-
-		MultipartFile newfile = request.getFile("file");
-		String originalUrl = newfile.getOriginalFilename();
 
 		info.setId(id);
 		info.setUserId(userId);
 		info.setTitle(title);
 		info.setContent(content);
 		info.setFile(file);
-		
-		communityInfoService.updateCommunityInfo(info);
-	
-		infoFile.setCommunityInfoId(id);
-		infoFile.setOriginalUrl(originalUrl);
-		
-		communityInfoService.updateCommunityInfoFile(infoFile);
 
+		communityInfoService.updateCommunityInfo(info);
+
+		List<MultipartFile> fileList = request.getFiles("file");
+		System.out.println(fileList);
+		
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+		Date time = new Date();
+		String folder = format.format(time);
+		
+        for (MultipartFile newfile : fileList) { 
+    		String originalUrl = newfile.getOriginalFilename();
+    		
+    		infoFile.setCommunityInfoId(id);
+    		infoFile.setOriginalUrl(originalUrl);
+    		
+    		communityInfoService.updateCommunityInfoFile(infoFile);
+    		
+            String originFileName = newfile.getOriginalFilename(); // 원본 파일 명
+            long fileSize = newfile.getSize(); // 파일 사이즈
+
+            System.out.println("originFileName : " + originFileName);
+            System.out.println("fileSize : " + fileSize);
+
+    		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file/" + folder);
+    		
+    		File dir = new File(saveDir);
+    		if (!dir.exists()) {
+    			dir.mkdirs();
+    		}
+
+    		if (!newfile.isEmpty()) {
+    			String ext = originalUrl.substring(originalUrl.lastIndexOf("."));
+
+    			// SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd-HHmmssSSS");
+    			// int rand = (int)(Math.random()*1000);
+
+    			// String reName = sdf.format(System.currentTimeMillis()) + "_" + rand + ext;
+
+    			try {
+    				newfile.transferTo(new File(saveDir + "/" + originalUrl));
+    			} catch (IllegalStateException | IOException e) {
+    				e.printStackTrace();
+    			}
+    		}
+
+    		System.out.println(saveDir);
+        }
+        
 		System.out.println(info.toString());
 		System.out.println(infoFile.toString());
-
-
-		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file");
-
-		File dir = new File(saveDir);
-		if (!dir.exists()) {
-			dir.mkdirs();
-		}
-
-		if (!newfile.isEmpty()) {
-			String ext = originalUrl.substring(originalUrl.lastIndexOf("."));
-
-			// SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd-HHmmssSSS");
-			// int rand = (int)(Math.random()*1000);
-
-			// String reName = sdf.format(System.currentTimeMillis()) + "_" + rand + ext;
-
-			try {
-				newfile.transferTo(new File(saveDir + "/" + originalUrl));
-			} catch (IllegalStateException | IOException e) {
-				e.printStackTrace();
-			}
-		}
-
-		System.out.println(saveDir);
-
-
+		
 		mv.setViewName("redirect:/communityInfo?num=1");
 
 		return mv;
-	}
-	@RequestMapping(value = "/communityInfo/upload.do", method = RequestMethod.POST)
-	@ResponseBody
-	public ModelAndView uploadFile(ModelAndView mv, MultipartHttpServletRequest request,
-			@RequestParam(value = "originalUrl") MultipartFile upload) {
-		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file");
-		MultipartFile f = upload;
-		File dir = new File(saveDir);
-		if (!dir.exists()) {
-			dir.mkdirs();
-		}
-		System.out.println(f);
-
-		return mv;
-
 	}
 
 	@RequestMapping("/communityInfo/detail/{id}/filedownload")
@@ -288,9 +298,19 @@ public class CommunityInfoController {
 		ModelAndView mv = new ModelAndView();
 
 		CommunityInfoDTO communityInfoDetail = communityInfoService.readCommunityInfoDetail(id);
-		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file");
 		
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+		
+		Date time = new Date();
+		
+		String folder = format.format(communityInfoDetail.getRegdate());
+	
+		System.out.println("download: " + folder);
+
+		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file/" + folder);
+
 		String fileName = communityInfoDetail.getOriginalUrl();
+
 		System.out.println("filename: " + fileName);
 
 		File file = new File(saveDir + "/" + fileName);

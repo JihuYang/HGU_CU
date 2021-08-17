@@ -39,12 +39,12 @@
         <div class="R_container h-auto h-min">
       		<div class="side_bar">	
        			<div class="reservation" style="background-color:#212721">
-                	<div OnClick="location.href ='./reservation'" style="cursor:pointer;">
+                	<div OnClick="location.href ='./reservation?spaceName=전체'" style="cursor:pointer;">
                 		<i class="fa fa-home fa-2x white" aria-hidden="true" style="padding-top:10px;"></i><br><div class="side_text">조회 및 예약하기</div>
                 	</div>
                </div>   
 	           <div class="reservation" style="background-color:#D0D0CE">
-	           	<div OnClick="location.href ='./myReservation'" style="cursor:pointer;">
+	           	<div OnClick="location.href ='./myReservation?spaceName=전체'" style="cursor:pointer;">
 	           	<i class="fa fa-user fa-2x" aria-hidden="true" style="padding-top:10px;"></i><br><div class="side_text">내 예약</div>
 	           	</div>
 	           </div>
@@ -54,11 +54,24 @@
         	
             <h3 style="text-align:center;">조회/예약하기</h3><br><br>
             <div>
-            
-            <c:forEach items="${spaceList}" var="spaceList">			
-				<input type="button" class="btn" name="btn_name" value="${spaceList.name}" onclick="btn_listener(event)"/>
-			</c:forEach>
-			
+            	<c:if test="${empty spaceName || spaceName ne '전체'}">
+	            	<input type="button" class="btn dp-none" name="btn_name" value="전체" onclick="btn_listener(event)"/>
+	            </c:if><!-- 
+	            <input type="button" class="btn dp-none" name="btn_name" value="전체" onclick="btn_listener(event)"/> -->
+	            <c:if test="${spaceName eq '전체'}">
+	            	<input type="button" class="btn active" name="btn_name" value="전체" onclick="btn_listener(event)"/>
+	            </c:if>
+				<c:set var="spaceName" value="${spaceName}" />
+	            <c:forEach items="${spaceList}" var="spaceList">
+	            	<c:choose>
+	        			<c:when test="${spaceList.name eq spaceName}">
+	        				<input type="button" class="btn active" name="btn_name" value="${spaceList.name}" onclick="btn_listener(event)"/>
+	        			</c:when>        
+	       				<c:when test="${spaceList.name ne spaceName}">
+	           				<input type="button" class="btn" name="btn_name" value="${spaceList.name}" onclick="btn_listener(event)"/>
+	         			</c:when>
+	    			</c:choose>
+				</c:forEach>
 			<br>
             <div class="section2">
                 <button type="button" class="btn_02" onclick="info()">이용안내</button>
@@ -84,15 +97,13 @@
 
   
   				function btn_listener(event){
-	  				var name=event.target.value;
-	  				
-	  				<c:forEach items="${spaceList}" var="space" >
-	  					if("${space.name}"==name){
-		  					document.getElementById("space_name").innerHTML="${space.name}";
-			                document.getElementById("space_capacity").innerHTML="${space.capacity}";
-			                document.getElementById("sapce_description").innerHTML="${space.description}";
-	  					}
-	  				</c:forEach>	          
+	  				var spaceName = event.target.value;
+				   
+	  				if(spaceName == "전체")
+	  					document.getElementsByClassName("dp-none")[0].style.display = "none";
+	  				//alert(spaceName);
+	  				location.href = "/hgu/reservation?spaceName=" + spaceName;
+	  				        
 			    }
   			
   			</script>
@@ -101,15 +112,15 @@
             <table id="space-table">
 	                <tr>
 	                    <td>공간</td>
-	                    <td id="space_name"></td>
+	                    <td id="space_name">${spaceList2[0].name}</td>
 	                </tr>
 	                <tr>
 	                    <td>수용 가능 인원</td>
-	                    <td id="space_capacity"></td>
+	                    <td id="space_capacity">${spaceList2[0].capacity}</td>
 	                </tr>
 	                <tr>
 	                    <td>추가 설명</td>
-	                    <td id="sapce_description"></td>
+	                    <td id="sapce_description">${spaceList2[0].description}</td>
 	                </tr>
 	            </table>
         

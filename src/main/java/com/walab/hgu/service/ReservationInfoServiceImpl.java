@@ -51,4 +51,10 @@ public class ReservationInfoServiceImpl implements ReservationInfoService{
 		return reservationInfoDAO.countInfo(keyword);
 	}
 
+	@Override
+	public List<ReservationInfoDTO> readReservationBySpaceName(String spaceName) {
+		List<ReservationInfoDTO> infoList = reservationInfoDAO.readReservationBySpaceName(spaceName);
+		return infoList;
+	}
+
 }

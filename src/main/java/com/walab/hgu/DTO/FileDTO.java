@@ -6,8 +6,10 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class FileDTO {
 
+
 	private int id;
 	private int communityInfoId;
+	private int communityMaterialId;
 	private int clubAdvertiseId;
 	private int clubId;
 	private String originalUrl;
@@ -28,6 +30,12 @@ public class FileDTO {
 	}
 	public void setCommunityInfoId(int communityInfoId) {
 		this.communityInfoId = communityInfoId;
+	}
+	public int getCommunityMaterialId() {
+		return communityMaterialId;
+	}
+	public void setCommunityMaterialId(int communityMaterialId) {
+		this.communityMaterialId = communityMaterialId;
 	}
 	public String getOriginalUrl() {
 		return originalUrl;
@@ -79,10 +87,13 @@ public class FileDTO {
 	public void setClubId(int clubId) {
 		this.clubId = clubId;
 	}
+
 	@Override
 	public String toString() {
-		return "FileDTO [id=" + id + ", communityInfoId=" + communityInfoId + ", originalUrl=" + originalUrl
-				+ ", realUrl=" + realUrl + ", file=" + file + ", order=" + order + ", regdate=" + regdate + "]";
+		return "FileDTO [id=" + id + ", communityInfoId=" + communityInfoId + ", communityMaterialId="
+				+ communityMaterialId + ", clubAdvertiseId=" + clubAdvertiseId + ", originalUrl=" + originalUrl
+				+ ", fileOriginalUrl=" + fileOriginalUrl + ", realUrl=" + realUrl + ", file=" + file + ", order="
+				+ order + ", regdate=" + regdate + "]";
 	}
 
 }

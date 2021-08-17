@@ -41,7 +41,7 @@
 	class="navbar navbar-expand-lg navbar-light fixed-top py-2 bg-white respy-4"
 	id="mainNav">
 	<div class="container px-4 px-lg-5 respx-3 ">
-		<img src="<%=request.getContextPath()%>/resources/assets/img/로고.png"
+		<img src="<%=request.getContextPath()%>/resources/assets/img/logo.png"
 			class="logo navbar-brand" onclick="location.href='<%=request.getContextPath()%>'">		<!--한동대학교 총동아리연합회<br>
 		<span id="name">HANDONG GLOBAL UNIVERSITY CLUB UNION</span></a> -->
 		<button class="navbar-toggler navbar-toggler-right" type="button"
