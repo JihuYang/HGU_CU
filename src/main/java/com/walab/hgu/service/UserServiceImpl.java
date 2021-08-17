@@ -1,6 +1,7 @@
 package com.walab.hgu.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -40,6 +41,12 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public int readAdminByUserID(int userID) {
 		return userDAO.readAdminByUserID(userID);
+	}
+
+	@Override
+	public int updateAuthority(Map<String, Object> authorityParam) {
+		// TODO Auto-generated method stub
+		return userDAO.updateAuthority(authorityParam);
 	}
 	
 	
