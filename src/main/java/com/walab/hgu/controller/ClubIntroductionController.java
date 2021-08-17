@@ -1,5 +1,7 @@
 package com.walab.hgu.controller;
 
+import java.io.File;
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -19,10 +21,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.walab.hgu.DTO.CategoryDTO;
+import com.walab.hgu.DTO.ClubAdvertiseDTO;
 import com.walab.hgu.DTO.ClubDTO;
+import com.walab.hgu.DTO.FileDTO;
 import com.walab.hgu.service.ClubService;
 import com.walab.hgu.service.SettingService;
 import com.walab.hgu.service.UserService;
@@ -127,7 +133,8 @@ public class ClubIntroductionController {
 		System.out.println(mv);
 		return mv;
 	}
-	
+
+	/*
 	@RequestMapping(value = "/clubIntroduction/write/create", method = RequestMethod.POST)
 	@ResponseBody
 	public ModelAndView createClubIntro(ModelAndView mv,
@@ -192,6 +199,87 @@ public class ClubIntroductionController {
 		
 		mv.setViewName("createClubIntro");
 			
+		return mv;
+	}
+	*/
+	
+	@RequestMapping(value = "/clubIntroduction/write/create", method = RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView createClubIntro(ModelAndView mv, MultipartHttpServletRequest request,
+			 MultipartFile file) throws ParseException {
+
+		ClubDTO info = new ClubDTO();
+		ClubDTO sns = new ClubDTO();
+		FileDTO infoImageFile = new FileDTO();
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		int recentId = clubService.readRecentClub();
+
+		//int categoryId =  Integer.parseInt(request.getParameter("categoryId"));
+		String clubName = request.getParameter("clubName");
+		System.out.println(clubName);
+		int userId = Integer.parseInt(request.getParameter("userId"));
+		String clubDescription = request.getParameter("clubDescription");
+		System.out.println(userId);
+		String date = request.getParameter("foundationDate");
+		Date foundationDate = dateFormat.parse(date);
+		String clubLocation = request.getParameter("clubLocation");
+		String instagramLink = request.getParameter("instagramLink");
+		String facebookLink = request.getParameter("facebookLink");
+
+		MultipartFile imagefile = request.getFile("originalUrl");
+		String originalUrl = imagefile.getOriginalFilename();
+
+		//info.setCategoryId(categoryId);
+		info.setClubName(clubName);
+		info.setUserId(userId);
+		info.setClubDescription(clubDescription);
+		info.setFoundationDate(foundationDate);
+		info.setClubLocation(clubLocation);
+		sns.setInstagramLink(instagramLink);
+		sns.setFacebookLink(facebookLink);
+		sns.setId(recentId);
+		
+		clubService.createClubIntro(info);
+		clubService.createClubSNS(sns);
+
+		
+		System.out.println(recentId);
+	
+		infoImageFile.setClubId(recentId);
+		infoImageFile.setOriginalUrl(originalUrl);
+		
+		clubService.createClubIntroImage(infoImageFile);
+
+		System.out.println(info.toString());
+
+
+		String saveDir = request.getSession().getServletContext().getRealPath("/resources/img/clubIntro");
+
+		File imgDir = new File(saveDir);
+		
+		if (!imgDir.exists()) {
+			imgDir.mkdirs();
+		}
+
+		if (!imagefile.isEmpty()) {
+			String ext = originalUrl.substring(originalUrl.lastIndexOf("."));
+
+			// SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd-HHmmssSSS");
+			// int rand = (int)(Math.random()*1000);
+
+			// String reName = sdf.format(System.currentTimeMillis()) + "_" + rand + ext;
+
+			try {
+				imagefile.transferTo(new File(saveDir + "/" + originalUrl));
+			} catch (IllegalStateException | IOException e) {
+				e.printStackTrace();
+			}
+		}
+
+		System.out.println(saveDir);
+
+		mv.setViewName("redirect:/clubIntroduction");
+
 		return mv;
 	}
 }

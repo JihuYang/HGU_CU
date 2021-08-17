@@ -87,7 +87,7 @@
 						<div class="modal-footer">
 							<button type="button" class="btn" id="saveBtn" onclick="createCommutinyEvent()">저장</button>
 							<button type="button" class="btn" id="updateBtn" onclick="updateCommutinyEvent()">수정</button>
-							<button type="button" class="btn" id="deleteBtn" onclick="deleteCommutinyEvent()">삭제</button>
+							<button type="button" class="btn" id="deleteBtn">삭제</button>
 						</div>
 						</form>
 					</div>
@@ -133,7 +133,7 @@
 				   <fmt:formatDate value="${eventList.startDate}" var="startDate" type="date" pattern="yyyy-MM-dd'T'HH:mm:ss"/>
 				   <fmt:formatDate value="${eventList.endDate}" var="endDate" type="date" pattern="yyyy-MM-dd'T'HH:mm:ss"/>
 				   {
-				 		id: 1,
+				 		id: '${eventList.id}',
 				 		title: '${eventList.eventName}',
 				 		start: '${startDate}',
 				 		end:'${endDate}',
@@ -153,6 +153,7 @@
 			   eventClick: function(event) {
 		            // opens events in a popup window
 		            // window.open(event.url, 'gcalevent', 'width=700,height=600');
+		            var id = event.id;
 		    		var title = event.title;
 		    		document.getElementById('title').readOnly = true;
 		    		var content = event.content;
@@ -173,6 +174,11 @@
 		    		document.getElementById("saveBtn").style.display = "none";
 					document.getElementById("deleteBtn").style.display = "block";
 					document.getElementById("updateBtn").style.display = "block";
+					
+					var deleteBtn=document.getElementById('deleteBtn');
+					deleteBtn.onclick = function(){
+						location.href='<%=request.getContextPath()%>/communityEvent/delete/'+id;
+					}
 
 		            return false;
 		        }
