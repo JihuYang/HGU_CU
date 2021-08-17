@@ -35,28 +35,28 @@
 				</td>
 
 				<td id="authority"><c:if test="${userList.admin == 2}">
-						<select class="adminSelect" onchange="updateAuthority(this.value,${userList.id)">
+						<select class="adminSelect" onchange="updateAuthority(this.value,${userList.id})">
 							<option value="2" selected>일반회원</option>
 							<option value="1">동아리대표자</option>
 							<option value="3">차단</option>
 							<option value="0">관리자</option>
 						</select>
 					</c:if> <c:if test="${userList.admin == 1}">
-						<select class="adminSelect" onchange="updateAuthority(this.value,${userList.id)">
+						<select class="adminSelect" onchange="updateAuthority(this.value,${userList.id})">
 							<option value="2">일반회원</option>
 							<option value="1" selected>동아리대표자</option>
 							<option value="3">차단</option>
 							<option value="0">관리자</option>
 						</select>
 					</c:if> <c:if test="${userList.admin == 3}">
-						<select class="adminSelect" onchange="updateAuthority(this.value,${userList.id)">
+						<select class="adminSelect" onchange="updateAuthority(this.value,${userList.id})">
 							<option value="2">일반회원</option>
 							<option value="1">동아리대표자</option>
 							<option value="3" selected>차단</option>
 							<option value="0">관리자</option>
 						</select>
 					</c:if> <c:if test="${userList.admin == 0}">
-						<select class="adminSelect" onchange="updateAuthority(this.value,${userList.id)">
+						<select class="adminSelect" onchange="updateAuthority(this.value,${userList.id})">
 							<option value="2">일반회원</option>
 							<option value="1">동아리대표자</option>
 							<option value="3">차단</option>
