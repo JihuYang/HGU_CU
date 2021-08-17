@@ -109,13 +109,6 @@ public class CommunityInfoController {
 		communityInfoService.updateViewCount(id);
 
 		CommunityInfoDTO communityInfoDetail = communityInfoService.readCommunityInfoDetail(id);
-		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
-		Date time = new Date();
-		String folder = format.format(time);
-
-		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file/" + folder);
-		String fileName = communityInfoDetail.getOriginalUrl();
-		System.out.println("filename: " + fileName);
 
 		mv.addObject("communityInfoDetail", communityInfoDetail);
 
@@ -161,8 +154,8 @@ public class CommunityInfoController {
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 
-		MultipartFile newfile = request.getFile("file");
-		String originalUrl = newfile.getOriginalFilename();
+		List<MultipartFile> fileList = request.getFiles("file");
+		System.out.println(fileList);
 
 		info.setUserId(userId);
 		info.setTitle(title);
@@ -174,42 +167,52 @@ public class CommunityInfoController {
 		int recentId = communityInfoService.readRecentCommunityInfo();
 
 		System.out.println(recentId);
-
-		infoFile.setCommunityInfoId(recentId);
-		infoFile.setOriginalUrl(originalUrl);
-
-		communityInfoService.createCommunityInfoFile(infoFile);
-
-		System.out.println(info.toString());
-		System.out.println(infoFile.toString());
-
+		
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 		Date time = new Date();
 		String folder = format.format(time);
+		
+        for (MultipartFile newfile : fileList) { 
+    		String originalUrl = newfile.getOriginalFilename();
+    		
+    		infoFile.setCommunityInfoId(recentId);
+    		infoFile.setOriginalUrl(originalUrl);
+    		
+    		communityInfoService.createCommunityInfoFile(infoFile);
+    		
+            String originFileName = newfile.getOriginalFilename(); // 원본 파일 명
+            long fileSize = newfile.getSize(); // 파일 사이즈
 
-		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file/" + folder);
+            System.out.println("originFileName : " + originFileName);
+            System.out.println("fileSize : " + fileSize);
 
-		File dir = new File(saveDir);
-		if (!dir.exists()) {
-			dir.mkdirs();
-		}
+    		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file/" + folder);
+    		
+    		File dir = new File(saveDir);
+    		if (!dir.exists()) {
+    			dir.mkdirs();
+    		}
 
-		if (!newfile.isEmpty()) {
-			String ext = originalUrl.substring(originalUrl.lastIndexOf("."));
+    		if (!newfile.isEmpty()) {
+    			String ext = originalUrl.substring(originalUrl.lastIndexOf("."));
 
-			// SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd-HHmmssSSS");
-			// int rand = (int)(Math.random()*1000);
+    			// SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd-HHmmssSSS");
+    			// int rand = (int)(Math.random()*1000);
 
-			// String reName = sdf.format(System.currentTimeMillis()) + "_" + rand + ext;
+    			// String reName = sdf.format(System.currentTimeMillis()) + "_" + rand + ext;
 
-			try {
-				newfile.transferTo(new File(saveDir + "/" + originalUrl));
-			} catch (IllegalStateException | IOException e) {
-				e.printStackTrace();
-			}
-		}
+    			try {
+    				newfile.transferTo(new File(saveDir + "/" + originalUrl));
+    			} catch (IllegalStateException | IOException e) {
+    				e.printStackTrace();
+    			}
+    		}
 
-		System.out.println(saveDir);
+    		System.out.println(saveDir);
+        }
+
+		System.out.println(info.toString());
+		System.out.println(infoFile.toString());
 
 		mv.setViewName("redirect:/communityInfo?num=1");
 
@@ -228,9 +231,6 @@ public class CommunityInfoController {
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 
-		MultipartFile newfile = request.getFile("file");
-		String originalUrl = newfile.getOriginalFilename();
-
 		info.setId(id);
 		info.setUserId(userId);
 		info.setTitle(title);
@@ -239,42 +239,55 @@ public class CommunityInfoController {
 
 		communityInfoService.updateCommunityInfo(info);
 
-		infoFile.setCommunityInfoId(id);
-		infoFile.setOriginalUrl(originalUrl);
-
-		communityInfoService.updateCommunityInfoFile(infoFile);
-
-		System.out.println(info.toString());
-		System.out.println(infoFile.toString());
-
+		List<MultipartFile> fileList = request.getFiles("file");
+		System.out.println(fileList);
+		
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 		Date time = new Date();
 		String folder = format.format(time);
+		
+        for (MultipartFile newfile : fileList) { 
+    		String originalUrl = newfile.getOriginalFilename();
+    		
+    		infoFile.setCommunityInfoId(id);
+    		infoFile.setOriginalUrl(originalUrl);
+    		
+    		communityInfoService.updateCommunityInfoFile(infoFile);
+    		
+            String originFileName = newfile.getOriginalFilename(); // 원본 파일 명
+            long fileSize = newfile.getSize(); // 파일 사이즈
 
-		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file/" + folder);
+            System.out.println("originFileName : " + originFileName);
+            System.out.println("fileSize : " + fileSize);
 
-		File dir = new File(saveDir);
-		if (!dir.exists()) {
-			dir.mkdirs();
-		}
+    		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file/" + folder);
+    		
+    		File dir = new File(saveDir);
+    		if (!dir.exists()) {
+    			dir.mkdirs();
+    		}
 
-		if (!newfile.isEmpty()) {
-			String ext = originalUrl.substring(originalUrl.lastIndexOf("."));
+    		if (!newfile.isEmpty()) {
+    			String ext = originalUrl.substring(originalUrl.lastIndexOf("."));
 
-			// SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd-HHmmssSSS");
-			// int rand = (int)(Math.random()*1000);
+    			// SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd-HHmmssSSS");
+    			// int rand = (int)(Math.random()*1000);
 
-			// String reName = sdf.format(System.currentTimeMillis()) + "_" + rand + ext;
+    			// String reName = sdf.format(System.currentTimeMillis()) + "_" + rand + ext;
 
-			try {
-				newfile.transferTo(new File(saveDir + "/" + originalUrl));
-			} catch (IllegalStateException | IOException e) {
-				e.printStackTrace();
-			}
-		}
+    			try {
+    				newfile.transferTo(new File(saveDir + "/" + originalUrl));
+    			} catch (IllegalStateException | IOException e) {
+    				e.printStackTrace();
+    			}
+    		}
 
-		System.out.println(saveDir);
-
+    		System.out.println(saveDir);
+        }
+        
+		System.out.println(info.toString());
+		System.out.println(infoFile.toString());
+		
 		mv.setViewName("redirect:/communityInfo?num=1");
 
 		return mv;
