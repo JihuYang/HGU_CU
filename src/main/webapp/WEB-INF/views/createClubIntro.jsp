@@ -42,10 +42,13 @@
 			</div>
 			<!-- 소개글 내용쓰기 -->
 			<div class="col-sm-10 justify-content-md-center">
+			<form method="POST" enctype="multipart/form-data" id="uploadForm"
+				action="<%=request.getContextPath()%>/clubIntroduction/write/create">
 				<div class="dp-it">
 					<div class="title-bar">
+					<input id="userId" name="userId" value="1" style="display:none">
 						<p class="rows">동아리 분과  </p><!-- <input class="form-control title-input" type="text" id="categoryName"> -->
-						<select class="form-select select-option" aria-label="Default select example">
+						<select class="form-select select-option" aria-label="Default select example" id="categoryId" name="categoryId">
 						  <option value="">--선택--</option>
 						  <c:forEach  items="${categoryNameList}" var="categoryNameList" varStatus="status">
 						  	<option value="${categoryNameList.categoryName}">${categoryNameList.categoryName}</option>
@@ -53,15 +56,15 @@
 						</select>
 					</div>
 					<div class="title-bar">
-						<p class="rows">동아리 이름  </p><input class="form-control title-input" type="text" id="clubName">
+						<p class="rows">동아리 이름  </p><input class="form-control title-input" type="text" id="clubName" name="clubName">
 					</div>
 					<div class="title-bar">
-						<p class="rows">동아리방 위치 </p><input class="form-control title-input" type="text" id="clubLocation">
+						<p class="rows">동아리방 위치 </p><input class="form-control title-input" type="text" id="clubLocation" name="clubLocation">
 					</div>
 					<div class="title-bar">
 						<p class="rows select-bar">창립연도   </p>
 						<!-- <input class="form-control title-input" type="date" id="foundationDate"> -->
-						<select class="form-select select-option" aria-label="Default select example">
+						<select class="form-select select-option" aria-label="Default select example" id="foundationDate">
 						  <option value="">--선택--</option>
 						  <c:forEach  items="${foundationYearList}" var="foundationYearList" varStatus="status">
 						  	<option value="${foundationYearList}">${foundationYearList}</option>
@@ -69,14 +72,14 @@
 						</select>
 					</div>
 					<div class="title-bar">
-						<p class="rows">인스타그램 주소</p><input class="form-control title-input" type="text" id="instagramLink">
+						<p class="rows">인스타그램 주소</p><input class="form-control title-input" type="text" id="instagramLink" name="instagramLink">
 					</div>
 					<div class="title-bar">
-						<p class="rows">페이스북 주소</p><input class="form-control title-input" type="text" id="facebookLink">
+						<p class="rows">페이스북 주소</p><input class="form-control title-input" type="text" id="facebookLink" name="facebookLink">
 					</div>
 				</div>
 					<div class="mb-3">
-						<textarea class="form-control textarea justify-content-center" rows="13" id="clubDescription"></textarea>
+						<textarea class="form-control textarea justify-content-center" rows="13" id="clubDescription" name="clubDescription"></textarea>
 					</div>
 					<div class="mb-3">
   						<input class="form-control file" type="file" id="originalUrl" name="originalUrl" accept="image/*" multiple>
@@ -85,9 +88,12 @@
 						<a class="btn btn-primary back-btn bottom-btn" href="./${categotyId}" role="button">뒤로</a>
 						<button class="btn btn-primary submit-btn bottom-btn" onclick="createClubIntro()">저장</button> 
 					</div>
+					</form>
 			</div>
+			
 		</div>
 	</div>
+	
 
 	<!-- Footer-->
 	<jsp:include page="/WEB-INF/views/inc/footer.jsp"/>

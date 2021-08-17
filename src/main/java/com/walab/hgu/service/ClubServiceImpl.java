@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.walab.hgu.DAO.ClubDAO;
 import com.walab.hgu.DTO.CategoryDTO;
 import com.walab.hgu.DTO.ClubDTO;
+import com.walab.hgu.DTO.FileDTO;
 
 @Service
 public class ClubServiceImpl implements ClubService{
@@ -103,6 +104,18 @@ public class ClubServiceImpl implements ClubService{
 	public int getClubIdByUserId(int id) {
 		// TODO Auto-generated method stub
 		return clubDAO.getClubIdByUserId(id);
+	}
+	
+	@Override
+	public int readRecentClub() {
+		int recentId = clubDAO.readRecentClub();
+
+		return recentId;
+	}
+	
+	@Override
+	public int createClubIntroImage(FileDTO clubIntroImage) {
+		return clubDAO.createClubIntroImage(clubIntroImage);
 	}
 	
 	

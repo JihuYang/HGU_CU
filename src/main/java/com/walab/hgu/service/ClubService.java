@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.walab.hgu.DTO.CategoryDTO;
 import com.walab.hgu.DTO.ClubDTO;
+import com.walab.hgu.DTO.FileDTO;
 
 public interface ClubService {
 	public List<ClubDTO> readClubIntroductionPreview(int categoryId, String keyword);
@@ -25,6 +26,10 @@ public interface ClubService {
 	public int createClubSNS(ClubDTO sns);
 	
 	public int createClubIntro(ClubDTO intro);
+	
+	public int createClubIntroImage(FileDTO clubIntroImage);
+	
+	public int readRecentClub();
 
 	public int updateUserClub(Map<String, Object> userClub);
 	

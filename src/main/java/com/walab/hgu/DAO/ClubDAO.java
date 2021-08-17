@@ -26,6 +26,10 @@ public interface ClubDAO {
 	public int createClubSNS(ClubDTO sns);
 
 	public List<ClubDTO> getAllClubIntroduction(String keyword);
+	
+	public int readRecentClub();
+	
+	public int createClubIntroImage(FileDTO clubAdImage);
 
 	public int updateUserClub(Map<String, Object> userClub);
 	

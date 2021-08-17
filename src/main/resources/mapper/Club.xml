@@ -13,6 +13,11 @@
 		AND clubName LIKE concat('%',#{keyword},'%')
 	</select>
 	
+	<select id="readRecentClub" resultType="int"
+		parameterType="hashmap">
+		SELECT MAX(id) FROM hguclub.club
+	</select>
+	
 	<select id="getCategoryNameList" resultType="com.walab.hgu.DTO.CategoryDTO">
 		Select id,categoryName FROM hguclub.category
 	</select>
@@ -61,8 +66,17 @@
 		VALUES (#{id},#{facebookLink},#{instagramLink})
 	</insert>
 	<insert id="createClubIntro" parameterType="com.walab.hgu.DTO.ClubDTO">
-		INSERT INTO hguclub.club (categoryId,clubName,clubDescription,foundationDate,clubLocation)
-		VALUES (#{categoryId},#{clubName},#{clubDescription},#{foundationDate},#{clubLocation})
+		INSERT INTO hguclub.club (clubName,clubDescription,foundationDate,clubLocation)
+		<!-- VALUES (#{categoryId},#{clubName},#{clubDescription},#{foundationDate},#{clubLocation}) -->
+		VALUES (#{clubName},#{clubDescription},#{foundationDate},#{clubLocation})
+	</insert>
+	
+	<!-- 동아리 홍보 이미지 업로드 쿼리 -->
+	<insert id="createClubIntroImage"
+		parameterType="com.walab.hgu.DTO.FileDTO">
+		INSERT INTO hguclub.clubImage (clubId,
+		originalUrl)
+		VALUES (#{clubId}, #{originalUrl})
 	</insert>
 	<select id="getClubIdByName" parameterType="HashMap" resultType="int">
 		SELECT id

@@ -11,6 +11,7 @@ public class FileDTO {
 	private int communityInfoId;
 	private int communityMaterialId;
 	private int clubAdvertiseId;
+	private int clubId;
 	private String originalUrl;
 	private String fileOriginalUrl;
 	private String realUrl;
@@ -80,6 +81,13 @@ public class FileDTO {
 		this.fileOriginalUrl = fileOriginalUrl;
 	}
 	
+	public int getClubId() {
+		return clubId;
+	}
+	public void setClubId(int clubId) {
+		this.clubId = clubId;
+	}
+
 	@Override
 	public String toString() {
 		return "FileDTO [id=" + id + ", communityInfoId=" + communityInfoId + ", communityMaterialId="
