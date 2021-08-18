@@ -104,6 +104,7 @@ public class ClubDTO {
 	public void setFacebookLink(String facebookLink) {
 		this.facebookLink = facebookLink;
 	}
+	
 	@Override
 	public String toString() {
 		return "ClubDTO [categoryId=" + categoryId + ", userId=" + userId + ", id=" + id + ", categoryName="

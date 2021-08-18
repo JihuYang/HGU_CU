@@ -89,27 +89,6 @@ public class ClubAdvertiseController {
 			return mv;
 		}
 		
-//		@RequestMapping(value = "/clubAdvertise/write/create", method = RequestMethod.POST)
-//		@ResponseBody
-//		public ModelAndView createClubAd(ModelAndView mv,
-//				@RequestParam(value="title") String title,
-//				@RequestParam(value="content") String content,
-//				@RequestParam(value="originalUrl") String originalUrl,
-//				@RequestParam(value="fileOriginalUrl") String fileOriginalUrl) {
-//			
-//			ClubAdvertiseDTO info = new ClubAdvertiseDTO();
-//			
-//			info.setTitle(title);
-//			info.setContent(content);
-//			
-//			//info.setOriginalUrl(originalUrl);
-//			
-//			clubAdvertiseService.createClubAd(info);
-//			
-//			mv.setViewName("createClubAd");
-//			
-//			return mv;
-//		}
 		@RequestMapping(value = "/clubAdvertise/write/create", method = RequestMethod.POST)
 		@ResponseBody
 		public ModelAndView createClubAd(ModelAndView mv, MultipartHttpServletRequest request, MultipartFile file) {
@@ -143,12 +122,9 @@ public class ClubAdvertiseController {
 			infoFile.setClubAdvertiseId(recentId);
 			infoFile.setFileOriginalUrl(fileOriginalUrl);
 			
-			clubAdvertiseService.createClubAdFile(infoFile);
-			clubAdvertiseService.createClubAdImage(infoImageFile);
 
 			System.out.println(info.toString());
 			System.out.println(infoFile.toString());
-
 
 			String saveDir = request.getSession().getServletContext().getRealPath("/resources/img");
 			String savefileDir = request.getSession().getServletContext().getRealPath("/resources/upload/file");
@@ -163,15 +139,21 @@ public class ClubAdvertiseController {
 				imgDir.mkdirs();
 			}
 
+			if (!imagefile.isEmpty()) {
+				String ext = originalUrl.substring(originalUrl.lastIndexOf("."));
+				try {
+					clubAdvertiseService.createClubAdImage(infoImageFile);
+					imagefile.transferTo(new File(saveDir + "/" + originalUrl));
+				} catch (IllegalStateException | IOException e) {
+					e.printStackTrace();
+				}
+			}
+			
 			if (!newfile.isEmpty()) {
 				String ext = originalUrl.substring(originalUrl.lastIndexOf("."));
 
-				// SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd-HHmmssSSS");
-				// int rand = (int)(Math.random()*1000);
-				// String reName = sdf.format(System.currentTimeMillis()) + "_" + rand + ext;
-
 				try {
-					imagefile.transferTo(new File(saveDir + "/" + originalUrl));
+					clubAdvertiseService.createClubAdFile(infoFile);
 					newfile.transferTo(new File(savefileDir + "/" + fileOriginalUrl));
 				} catch (IllegalStateException | IOException e) {
 					e.printStackTrace();

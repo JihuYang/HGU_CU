@@ -5,6 +5,7 @@ import java.util.Map;
 
 import com.walab.hgu.DTO.CategoryDTO;
 import com.walab.hgu.DTO.ClubDTO;
+import com.walab.hgu.DTO.CommunityInfoDTO;
 import com.walab.hgu.DTO.FileDTO;
 
 public interface ClubService {
@@ -38,5 +39,13 @@ public interface ClubService {
 	public int getClubIdByName(String clubName);
 
 	public int getClubIdByUserId(int id);
+	
+	public int updateClubIntro(ClubDTO clubInfo);
+	public int updateClubSNS(ClubDTO clubSNS);
+	public int updateClubImage(FileDTO clubImage);
+	
+	public int deleteClubIntroImage(int id);
+	public int deleteClubIntroduction(int id);
+	public int deleteClubSNS(int id);
 
 }

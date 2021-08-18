@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import com.walab.hgu.DTO.CategoryDTO;
 import com.walab.hgu.DTO.ClubDTO;
+import com.walab.hgu.DTO.CommunityInfoDTO;
 import com.walab.hgu.DTO.FileDTO;
 
 @Repository
@@ -131,5 +132,53 @@ public class ClubDAOImpl implements ClubDAO{
 		clubParam.put("userId", id);
 		System.out.println(clubParam);
 		return sqlSession.selectOne(namespace+".getClubIdByUserId", clubParam);
+	}
+	
+	@Override
+	public int updateClubIntro(ClubDTO clubIntro) {
+		
+		sqlSession.update(namespace+".updateClubIntro", clubIntro);
+
+		return 0;
+	}
+	
+	@Override
+	public int updateClubSNS(ClubDTO clubSNS) {
+		
+		sqlSession.update(namespace+".updateClubSNS", clubSNS);
+
+		return 0;
+	}
+	
+	@Override
+	public int updateClubImage(FileDTO clubImage) {
+		
+		sqlSession.update(namespace+".updateClubImage", clubImage);
+
+		return 0;
+	}
+	
+	@Override
+	public int deleteClubIntroImage(int id) {
+		
+		sqlSession.delete(namespace+".deleteClubIntroImage", id);
+		
+		return 0;
+	}
+	
+	@Override
+	public int deleteClubIntroduction(int id) {
+		
+		sqlSession.delete(namespace+".deleteClubIntroduction", id);
+		
+		return 0;
+	}
+	
+	@Override
+	public int deleteClubSNS(int id) {
+		
+		sqlSession.delete(namespace+".deleteClubSNS", id);
+		
+		return 0;
 	}
 }

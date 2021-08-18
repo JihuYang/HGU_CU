@@ -8,7 +8,7 @@
 	<c:forEach items="${clubAdvertiseList}" var="clubAdvertiseList" varStatus="status">
 		<tr style="cursor:pointer;" onClick="location.href='<%=request.getContextPath()%>/clubAdvertise/detail/${clubAdvertiseList.id}'">
 			<c:choose>
-				<c:when test="${clubAdvertiseList.originalUrl == null}">
+				<c:when test="${clubAdvertiseList.originalUrl eq null}">
 					<td><img
 						src="https://cdn.pixabay.com/photo/2014/09/26/04/22/water-461597__340.jpg"
 						class="img-thumbnail rounded clubAd-img"></td>

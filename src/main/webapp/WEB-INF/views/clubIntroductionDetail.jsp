@@ -72,7 +72,7 @@
 								varStatus="status" begin="0" end="0">
 								<div class="carousel-item active">
 									<img
-										src="<%=request.getContextPath()%>/resources/img/${clubImgList.originalUrl}"
+										src="<%=request.getContextPath()%>/resources/img/clubIntro/${clubImgList.originalUrl}"
 										class="d-block logo" alt="...">
 								</div>
 							</c:forEach>
@@ -80,7 +80,7 @@
 								varStatus="status" begin="1">
 								<div class="carousel-item">
 									<img
-										src="<%=request.getContextPath()%>/resources/img/${clubImgList.originalUrl}"
+										src="<%=request.getContextPath()%>/resources/img/clubIntro/${clubImgList.originalUrl}"
 										class="d-block logo" alt="...">
 								</div>
 							</c:forEach>
@@ -122,8 +122,16 @@
 					</div>
 				</div>
 			</div>
+			<div class="row justify-content-start mt-4 list-btn">
+				<button class="btn btn-primary search-btn list-btn" onclick="location.href='<%=request.getContextPath()%>/clubIntroduction'">목록</button>
+				<button class="btn btn-primary search-btn list-btn"
+					onclick="location.href='<%=request.getContextPath()%>/clubIntroduction/update/${clubDetailList[0].categoryId}/${clubDetailList[0].id}'">수정</button>
+				<button class="btn btn-primary search-btn list-btn"
+					onclick="location.href='<%=request.getContextPath()%>/clubIntroduction/delete/${clubDetailList[0].id}'">삭제</button>
+			</div>
 		</div>
 	</div>
+	
 	<jsp:include page="/WEB-INF/views/inc/footer.jsp" />
 	<!-- Bootstrap core JS-->
 	<script

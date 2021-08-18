@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.walab.hgu.DAO.ClubDAO;
 import com.walab.hgu.DTO.CategoryDTO;
 import com.walab.hgu.DTO.ClubDTO;
+import com.walab.hgu.DTO.CommunityInfoDTO;
 import com.walab.hgu.DTO.FileDTO;
 
 @Service
@@ -116,6 +117,42 @@ public class ClubServiceImpl implements ClubService{
 	@Override
 	public int createClubIntroImage(FileDTO clubIntroImage) {
 		return clubDAO.createClubIntroImage(clubIntroImage);
+	}
+	
+	@Override
+	public int updateClubIntro(ClubDTO clubInfo) {
+
+		return clubDAO.updateClubIntro(clubInfo);
+	}
+	
+	@Override
+	public int updateClubSNS(ClubDTO clubSNS) {
+
+		return clubDAO.updateClubSNS(clubSNS);
+	}
+
+	@Override
+	public int updateClubImage(FileDTO clubImage) {
+
+		return clubDAO.updateClubImage(clubImage);
+	}
+	
+	@Override
+	public int deleteClubIntroImage(int id) {
+
+		return clubDAO.deleteClubIntroImage(id);
+	}
+
+	@Override
+	public int deleteClubIntroduction(int id) {
+
+		return clubDAO.deleteClubIntroduction(id);
+	}
+	
+	@Override
+	public int deleteClubSNS(int id) {
+
+		return clubDAO.deleteClubSNS(id);
 	}
 	
 	

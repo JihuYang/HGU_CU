@@ -6,7 +6,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class FileDTO {
 
-
 	private int id;
 	private int communityInfoId;
 	private int communityMaterialId;
@@ -17,6 +16,7 @@ public class FileDTO {
 	private String realUrl;
 	private MultipartFile file; 
 	private int order;
+	private int clubOrder;
 	private Date regdate;
 	
 	public int getId() {
@@ -87,7 +87,14 @@ public class FileDTO {
 	public void setClubId(int clubId) {
 		this.clubId = clubId;
 	}
+	
 
+	public int getClubOrder() {
+		return clubOrder;
+	}
+	public void setClubOrder(int clubOrder) {
+		this.clubOrder = clubOrder;
+	}
 	@Override
 	public String toString() {
 		return "FileDTO [id=" + id + ", communityInfoId=" + communityInfoId + ", communityMaterialId="
