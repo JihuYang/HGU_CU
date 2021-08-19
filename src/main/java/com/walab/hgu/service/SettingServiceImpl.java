@@ -36,4 +36,10 @@ public class SettingServiceImpl implements SettingService{
 		return settingDAO.updateSetting(settingList);
 	}
 
+	@Override
+	public List<SettingDTO> readSetting() {
+		// TODO Auto-generated method stub
+		return settingDAO.readSetting();
+	}
+
 }

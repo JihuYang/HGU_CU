@@ -42,10 +42,9 @@
 				class="background-gray py-4 search-margin">
 				<div class="rows justify-content-center">
 					<select class="form-select form-select-sm search-selector">
-						<option value="titleNcontent" selected>제목+내용</option>
-						<option value="title">제목</option>
+						<option value="title" selected>제목</option>
+						<option value="titleNcontent">제목+내용</option>
 						<option value="content">내용</option>
-						<option value="writer">작성자</option>
 					</select>
 				</div>
 				<div class="rows justify-content-center">
@@ -97,23 +96,6 @@
 				<jsp:include page="/WEB-INF/views/ajaxContent/clubAdvertise.jsp" />
 			</div>
 		</div>
-		<div class="row h-auto align-items-center text-center">
-			<nav>
-				<ul class="pagination align-items-center justify-content-center">
-					<li class="page-item"><a class="page-link" href="#"
-						aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
-							<span class="sr-only">Previous</span>
-					</a></li>
-					<li class="page-item"><a class="page-link" href="#">1</a></li>
-					<li class="page-item"><a class="page-link" href="#">2</a></li>
-					<li class="page-item"><a class="page-link" href="#">3</a></li>
-					<li class="page-item"><a class="page-link" href="#"
-						aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
-							class="sr-only">Next</span>
-					</a></li>
-				</ul>
-			</nav>
-		</div>
 
 	</div>
 
@@ -121,7 +103,7 @@
 	<jsp:include page="/WEB-INF/views/inc/footer.jsp" />
 	<!-- Bootstrap core JS-->
 	<script
-		src="<%=request.getContextPath()%>/resources/assets/js/pagenation.js"></script>
+		src="<%=request.getContextPath()%>/resources/js/home.js"></script>
 
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>

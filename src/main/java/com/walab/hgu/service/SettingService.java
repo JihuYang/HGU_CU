@@ -8,6 +8,8 @@ import com.walab.hgu.DTO.SettingDTO;
 public interface SettingService {
 	
 	public List<SettingDTO> readSetting(int displayPost, int postNum);
+	
+	public List<SettingDTO> readSetting();
 
 	public int countInfo();
 

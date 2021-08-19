@@ -11061,3 +11061,10 @@ header.masthead h1, header.masthead .h1 {
 .h-min {
 	 min-height: 100%;
 }
+
+.noResult{
+	color:#326295;
+}
+.headLine{
+	margin-top:3rem;
+}

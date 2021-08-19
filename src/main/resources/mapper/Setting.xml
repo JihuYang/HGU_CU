@@ -3,8 +3,13 @@
 
 <mapper namespace="Setting">
 
-	<select id="readSetting" resultType="com.walab.hgu.DTO.SettingDTO" parameterType="hashmap">
-		SELECT * FROM setting;
+	<select id="readSettingWithParam" resultType="com.walab.hgu.DTO.SettingDTO" parameterType="hashmap">
+		SELECT * FROM setting
+		LIMIT #{displayPost}, #{postNum}
+ 	</select>
+ 	
+ 	<select id="readSetting" resultType="com.walab.hgu.DTO.SettingDTO" parameterType="hashmap">
+		SELECT * FROM setting
  	</select>
 
 	<select id="countInfo" resultType="int" parameterType="hashMap">

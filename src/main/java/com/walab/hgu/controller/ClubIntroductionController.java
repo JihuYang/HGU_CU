@@ -79,10 +79,13 @@ public class ClubIntroductionController {
 		//String categoryName = clubIntroList.get(0).getCategoryName();
 		
 		String categoryName = categoryNameList.get(categoryId-1).getCategoryName();
+		int newCategoryId = categoryNameList.get(categoryId-1).getId();
 		
 		
 		mv.addObject("clubIntroList", clubIntroList);
 		mv.addObject("categoryName", categoryName);
+		mv.addObject("newCategoryId", newCategoryId);
+		mv.addObject("keyword", keyword);
 		
 		mv.setViewName("clubIntroduction");
 		

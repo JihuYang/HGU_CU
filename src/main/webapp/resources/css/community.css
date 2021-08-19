@@ -364,6 +364,7 @@ tr{
 .list-btn{
 	margin-left: 0 !important;
 }
+
 @media ( max-width : 992px) {
 	#top_margin {
 		display: none;

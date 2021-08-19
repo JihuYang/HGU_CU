@@ -56,18 +56,26 @@
 						</c:if>
 						<c:if test="${categoryName ne null}">
 							<button class="btn btn-outline-secondary" type="button"
-								id="button-addon2" onclick="searchInCategory(${clubIntroList[0].categoryId})">
+								id="button-addon2" onclick="searchInCategory(${newCategoryId})">
 								<i class="fas fa-search"></i>
 							</button>
 						</c:if>
 					</div>
 				</div>
 				<!-- 동아리 내용 -->
-				<div class="club-content"style="display:flex; margin-top:80px;">
-					<div class="row logo-display">
-						<jsp:include page="/WEB-INF/views/ajaxContent/clubIntroduction.jsp"/>
+				<c:if test="${empty clubIntroList}">
+					<div class="mt-5rem">
+					<h5><span class="noResult">'${keyword}'</span>에 대한 검색 결과를 찾지 못하였습니다.</h5>
+					<p class="text-muted">* 단어의 철자가 정확한지 확인해 주세요<br>* 띄어쓰기가 정확한지 획인해 주세요</p>
 					</div>
-				</div>
+				</c:if>
+				<c:if test="${ !empty clubIntroList}">
+					<div class="club-content">
+						<div class="row logo-display">
+							<jsp:include page="/WEB-INF/views/ajaxContent/clubIntroduction.jsp"/>
+						</div>
+					</div>
+				</c:if>
 				<div class="btn-container">
 					<a class="btn btn-primary writing-btn" href="<%=request.getContextPath()%>/clubIntroduction/write" role="button">글쓰기</a>
 				</div>	

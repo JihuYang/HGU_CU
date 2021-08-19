@@ -26,7 +26,7 @@ public class SettingDAOImpl implements SettingDAO {
 		settingParam.put("displayPost", displayPost);
 		settingParam.put("postNum", postNum);
 				
-		return sqlSession.selectList(namespace+".readSetting", settingParam);
+		return sqlSession.selectList(namespace+".readSettingWithParam", settingParam);
 	}
 
 
@@ -41,6 +41,13 @@ public class SettingDAOImpl implements SettingDAO {
 	public int updateSetting(Map<String, Object> settingList) {
 		System.out.println(settingList);
 		return sqlSession.update(namespace+".updateSetting", settingList);
+	}
+
+
+	@Override
+	public List<SettingDTO> readSetting() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(namespace+".readSetting");
 	}
 	
 }
