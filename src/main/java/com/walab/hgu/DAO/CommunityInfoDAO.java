@@ -9,6 +9,8 @@ public interface CommunityInfoDAO {
 		
 	public List<CommunityInfoDTO> readCommunityInfo(int displayPost, int postNum, String searchType,String keyword);
 	public CommunityInfoDTO readCommunityInfoDetail(int id);
+	public List<FileDTO> readCommunityInfoFileDetail(int communityInfoId);
+	public FileDTO readCommunityInfoFileOneDetail(int id);
 	public int readRecentCommunityInfo();
 	public int createCommunityInfo(CommunityInfoDTO communityInfo);
 	public int createCommunityInfoFile(FileDTO communityInfoFile);

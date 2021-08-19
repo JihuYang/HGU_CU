@@ -39,6 +39,24 @@ public class CommunityInfoDAOImpl implements CommunityInfoDAO {
 		infoDetailList.put("id", id);
 				
 		return sqlSession.selectOne(namespace+".readCommunityInfoDetail", infoDetailList);
+	}
+	
+	@Override
+	public List<FileDTO> readCommunityInfoFileDetail(int communityInfoId) {
+		
+		Map<String, Object> infoFileDetailList = new HashMap<String, Object>();
+		infoFileDetailList.put("communityInfoId", communityInfoId);
+				
+		return sqlSession.selectList(namespace+".readCommunityInfoFileDetail", infoFileDetailList);
+	}	
+	
+	@Override
+	public FileDTO readCommunityInfoFileOneDetail(int id) {
+		
+		Map<String, Object> infoFileOneDetailList = new HashMap<String, Object>();
+		infoFileOneDetailList.put("id", id);
+				
+		return sqlSession.selectOne(namespace+".readCommunityInfoFileOneDetail", infoFileOneDetailList);
 	}	
 	
 	@Override

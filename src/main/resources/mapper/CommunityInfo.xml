@@ -7,10 +7,12 @@
 		resultType="com.walab.hgu.DTO.CommunityInfoDTO"
 		parameterType="hashMap">
 		SELECT c.id, name as writer, title, content, c.regdate, viewCount
-		FROM hguclub.communityInfo as c
+		FROM
+		hguclub.communityInfo as c
 		INNER JOIN hguclub.user as u ON
-		c.userId = u.id
-		
+		c.userId =
+		u.id
+
 		<if test='searchType.equals("title")'>
 			WHERE title LIKE concat('%',#{keyword},'%')
 		</if>
@@ -18,7 +20,8 @@
 			WHERE content LIKE concat('%',#{keyword},'%')
 		</if>
 		<if test='searchType.equals("title_content")'>
-			WHERE title LIKE concat('%',#{keyword},'%') or content LIKE concat('%',#{keyword},'%')
+			WHERE title LIKE concat('%',#{keyword},'%') or content
+			LIKE concat('%',#{keyword},'%')
 		</if>
 		ORDER BY c.regdate DESC
 		LIMIT #{displayPost}, #{postNum}
@@ -35,7 +38,19 @@
 		WHERE cI.userId = u.id and cI.id = #{id} and cIF.communityInfoId
 		= cI.id LIMIT 1
 	</select>
-
+	
+	<select id="readCommunityInfoFileDetail"
+		resultType="com.walab.hgu.DTO.FileDTO" parameterType="hashmap">
+		SELECT * FROM
+		hguclub.communityInfoFile WHERE communityInfoId=#{communityInfoId};
+	</select>
+	
+	<select id="readCommunityInfoFileOneDetail"
+		resultType="com.walab.hgu.DTO.FileDTO" parameterType="hashmap">
+		SELECT * FROM
+		hguclub.communityInfoFile WHERE id=#{id};
+	</select>	
+	
 	<select id="readRecentCommunityInfo" resultType="int"
 		parameterType="hashmap">
 		SELECT MAX(id) FROM hguclub.communityInfo
@@ -62,9 +77,9 @@
 		parameterType="com.walab.hgu.DTO.FileDTO">
 		UPDATE hguclub.communityInfoFile SET
 		originalUrl =
-		#{originalUrl} WHERE communityInfoId = #{communityInfoId}
+		#{originalUrl} WHERE communityInfoId = #{communityInfoId} AND id = #{id}
 	</update>
-	
+
 	<!-- 커뮤니티 공지사항 글 수정 쿼리 -->
 	<update id="updateCommunityInfo"
 		parameterType="com.walab.hgu.DTO.CommunityInfoDTO">
@@ -72,25 +87,25 @@
 		title=#{title},
 		content=#{content} WHERE id = #{id}
 	</update>
-	
+
 	<update id="updateViewCount" parameterType="int">
 		update communityInfo
 		set viewCount = viewCount + 1 where id = #{id}
 	</update>
-	
+
 	<!-- 커뮤니티 공지사항 파일 삭제 쿼리 -->
-	<delete id="deleteCommunityInfoFile"
-		parameterType="int">
-		DELETE FROM hguclub.communityInfoFile WHERE
+	<delete id="deleteCommunityInfoFile" parameterType="int">
+		DELETE FROM
+		hguclub.communityInfoFile WHERE
 		communityInfoId = #{id}
 	</delete>
 
 	<!-- 커뮤니티 공지사항 글 삭제 쿼리 -->
-	<delete id="deleteCommunityInfo"
-		parameterType="int">
-		DELETE FROM hguclub.communityInfo WHERE id = #{id}
+	<delete id="deleteCommunityInfo" parameterType="int">
+		DELETE FROM
+		hguclub.communityInfo WHERE id = #{id}
 	</delete>
-	
+
 
 	<select id="countInfo" resultType="int" parameterType="hashMap">
 		SELECT COUNT(*) as listCnt
@@ -102,7 +117,8 @@
 			WHERE content LIKE concat('%',#{keyword},'%')
 		</if>
 		<if test='searchType.equals("title_content")'>
-			WHERE title LIKE concat('%',#{keyword},'%') or content LIKE concat('%',#{keyword},'%')
+			WHERE title LIKE concat('%',#{keyword},'%') or content
+			LIKE concat('%',#{keyword},'%')
 		</if>
 	</select>
 
