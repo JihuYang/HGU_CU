@@ -23,6 +23,13 @@ public class UserServiceImpl implements UserService {
 		return userList;
 		
 	}
+	
+	public List<UserDTO> readAllUsers(){
+		
+		List<UserDTO> userList = userDAO.readAllUsers();
+		
+		return userList;
+	}
 
 	@Override
 	public int countInfo() {

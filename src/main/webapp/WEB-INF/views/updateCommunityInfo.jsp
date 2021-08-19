@@ -58,18 +58,24 @@
 					<textarea class="form-control textarea justify-content-center"
 						rows="13" id="content" name="content">${communityInfoDetail.content}</textarea>
 				</div>
-				<div class="mb-3">기존 파일명 : ${communityInfoDetail.originalUrl}</div>
+
 				<div class="mb-3">
-					<input class="form-control file" type="file" name="file" id="file"
-						multiple>
+					기존 파일명 :
+					<c:forEach items="${communityInfoFileDetail}"
+						var="communityInfoFileDetail" varStatus="status">${status.count}. ${communityInfoFileDetail.originalUrl}
+					</c:forEach>
+				</div>
+
+
+				<div class="mb-3">
+					<input class="form-control file" type="file" name="newfile"
+						id="newfile" multiple>
 				</div>
 				<div>
 					<a class="btn btn-primary back-btn bottom-btn" href="./"
 						role="button">뒤로</a>
-					<button class="btn btn-primary submit-btn bottom-btn" type="submit">
-						저장</button>
+					<button class="btn btn-primary submit-btn bottom-btn" type="submit">저장</button>
 				</div>
-
 			</form>
 
 		</div>
@@ -78,6 +84,16 @@
 	<!-- Footer-->
 	<jsp:include page="/WEB-INF/views/inc/footer.jsp" />
 	<!-- Bootstrap core JS-->
+	<script>
+		var fileCheck = document.getElementById("newfile").value;
+		if (!fileCheck) {
+			alert("파일이 없습니다!");
+			return false;
+		} else {
+alert('파일 있음');
+			}
+		
+	</script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 	<!-- SimpleLightbox plugin JS-->

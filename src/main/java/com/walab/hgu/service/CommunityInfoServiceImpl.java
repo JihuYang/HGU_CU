@@ -32,6 +32,24 @@ public class CommunityInfoServiceImpl implements CommunityInfoService {
 		return infoDetailList;
 
 	}
+	
+	@Override
+	public List<FileDTO> readCommunityInfoFileDetail(int communityInfoId) {
+
+		List<FileDTO> infoFileDetailList = communityInfoDAO.readCommunityInfoFileDetail(communityInfoId);
+
+		return infoFileDetailList;
+
+	}
+	
+	@Override
+	public FileDTO readCommunityInfoFileOneDetail(int id) {
+
+		FileDTO infoFileOneDetailList = communityInfoDAO.readCommunityInfoFileOneDetail(id);
+
+		return infoFileOneDetailList;
+
+	}
 
 	@Override
 	public int readRecentCommunityInfo() {

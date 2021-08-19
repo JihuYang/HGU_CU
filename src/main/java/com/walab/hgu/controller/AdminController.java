@@ -9,9 +9,12 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -63,9 +66,10 @@ public class AdminController {
 		
 		List<ReservationInfoDTO> reservationInfoList = reservationInfoService.readReservationInfoPaging(page.getDisplayPost(),page.getPostNum(),keyword);
 		List<SpaceDTO> spaceList = spaceService.readSpace();
-		
+		List<UserDTO> userList = userService.readAllUsers();
 		mv.addObject("reservationInfoList", reservationInfoList);
 		mv.addObject("spaceList", spaceList);
+		mv.addObject("userList", userList);
 		mv.addObject("page", page);
 		mv.addObject("selected", num);
 		
@@ -188,7 +192,7 @@ public class AdminController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "/adminReservation", method = RequestMethod.POST)
+	@RequestMapping(value = "/adminReservation/create", method = RequestMethod.POST)
 	@ResponseBody
 	public ModelAndView createAdminReservationInfo(ModelAndView mv,
 			@RequestParam(value="userId") int userId,
@@ -211,8 +215,51 @@ public class AdminController {
 
 		reservationInfoService.createAdminReservationInfo(info);
 	
-		mv.setViewName("adminReservation");
+		mv.setViewName("redirect:/adminReservation?num=1");
 			
+		return mv;
+	}
+	
+	@RequestMapping(value = "/adminReservation/update", method =RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView updateAdminReservationInfo(ModelAndView mv,
+			@RequestParam(value="userId") int id,
+			@RequestParam(value="userId") int userId,
+			@RequestParam(value="spaceId") int spaceId,
+			@RequestParam(value="startTime") Time startTime,
+			@RequestParam(value="endTime") Time endTime,
+			@RequestParam(value="purpose") String purpose,
+			@RequestParam(value="reservationDate") Date reservationDate) {
+		
+		ReservationInfoDTO info = new ReservationInfoDTO();
+		
+		info.setId(id);
+		info.setUserId(userId);
+		info.setSpaceId(spaceId);
+		info.setStartTime(startTime);
+		info.setEndTime(endTime);
+		info.setPurpose(purpose);
+		info.setReservationDate(reservationDate);
+		
+		System.out.println(info.toString());
+
+		reservationInfoService.updateAdminReservationInfo(info);
+	
+		mv.setViewName("redirect:/adminReservation?num=1");
+			
+		return mv;
+	}
+	
+	@RequestMapping(value = "/adminReservation/delete/{id}", method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView deleteEvent(@PathVariable int id, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
+		ModelAndView mv = new ModelAndView();
+		
+		reservationInfoService.deleteAdminReservation(id);
+
+		System.out.println(mv);
+
+		mv.setViewName("redirect:/adminReservation?num=1");
+
 		return mv;
 	}
 }
