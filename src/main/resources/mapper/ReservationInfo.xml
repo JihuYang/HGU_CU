@@ -15,7 +15,7 @@
  	
  	<!-- admin 예약 관리 페이지에서 쓰이는 페이징을 위한 쿼리  -->
  	<select id="readReservationInfoPaging" resultType="com.walab.hgu.DTO.ReservationInfoDTO" parameterType="hashmap">
-		SELECT r.userId, r.spaceId,r.reservationDate, r.startTime , r.endTime, r.purpose, 
+		SELECT r.id, r.userId, r.spaceId,r.reservationDate, r.startTime , r.endTime, r.purpose, 
 		r.memo, r.regdate,s.name as spaceName, u.name as person, u.email as email, u.phone as phone
 		FROM hguclub.reservationInfo as r
 		
@@ -57,12 +57,27 @@
 	</insert>
  	
  	
- 	<!-- 예약 추가(관리자) 쿼리 -->
+ 	<!-- 관리자 예약 추가 쿼리 -->
 	<insert id="createAdminReservationInfo"
 		parameterType="com.walab.hgu.DTO.ReservationInfoDTO">
 		INSERT INTO hguclub.reservationInfo (userId, spaceId, startTime, endTime, purpose, reservationDate) 
 		VALUES (#{userId}, #{spaceId}, #{startTime}, #{endTime}, #{purpose},#{reservationDate});
 	</insert>
+	
+	<!-- 관리자 예약 수정 쿼리 -->
+	<update id="updateAdminReservationInfo"
+		parameterType="com.walab.hgu.DTO.ReservationInfoDTO">
+		UPDATE hguclub.reservationInfo set userId = #{userId},
+		spaceId=#{spaceId},startTime=#{startTime} ,
+		endTime=#{endTime},purpose=#{purpose},reservationDate=#{reservationDate}
+		WHERE id = #{id}
+	</update>
+	
+	<!-- 관리자 예약 삭제 쿼리 -->
+	<delete id="deleteAdminReservation"
+		parameterType="int">
+		DELETE FROM hguclub.reservationInfo WHERE id = #{id}
+	</delete>
 
 </mapper>
 

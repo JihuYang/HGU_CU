@@ -8,6 +8,7 @@ import com.walab.hgu.DTO.UserDTO;
 public interface UserService {
 	
 	public List<UserDTO> readUser(int displayPost, int postNum);
+	public List<UserDTO> readAllUsers();
 
 	public int countInfo();
 	public int readUserIDByEmail(String email);

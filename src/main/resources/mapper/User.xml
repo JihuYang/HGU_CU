@@ -11,6 +11,11 @@
 		LIMIT #{displayPost}, #{postNum}
 	</select>
 	
+	<select id="readAllUsers" resultType="com.walab.hgu.DTO.UserDTO"
+		parameterType="hashmap">
+		SELECT * FROM hguclub.user
+	</select>
+	
 	<select id="countInfo" resultType="int">
 		SELECT COUNT(*) as listCnt
 		FROM user

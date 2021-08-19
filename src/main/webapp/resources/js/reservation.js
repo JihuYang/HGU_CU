@@ -6,13 +6,14 @@ function createAdminReservationInfo(){
 	var et=e.options[e.selectedIndex].value;
 	et=et+":00";
 	var spaceId=document.getElementById("spaceSelect").selectedIndex+1;
+	var userId=document.getElementById("userSelect").selectedIndex+1;
 
 	$.ajax({
-		url: "/hgu/adminReservation",
+		url: "/hgu/adminReservation/create",
 		type: "POST",
 		async: false,
 		data: {
-			userId: $('#reservationPerson').val(),
+			userId: userId,
 			spaceId: spaceId,
 			startTime: st,
 			endTime: et,
@@ -22,6 +23,39 @@ function createAdminReservationInfo(){
 		success: function(){	
 			console.log("예약 추가 성공!!");
 			location.href="/hgu/adminReservation";
+		}, 
+		error:function(request, error){
+			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+        }
+	});
+}
+
+function updateAdminReservationInfo(){
+	var s=document.getElementById("startTime");
+	var st=s.options[s.selectedIndex].value;
+	st=st+":00";
+	var e=document.getElementById("endTime");
+	var et=e.options[e.selectedIndex].value;
+	et=et+":00";
+	var spaceId=document.getElementById("spaceSelect").selectedIndex+1;
+	var userId=document.getElementById("userSelect").selectedIndex+1;
+
+	$.ajax({
+		url: "/hgu/adminReservation/update",
+		type: "POST",
+		async: false,
+		data: {
+			id:$('#id').val(),
+			userId: userId,
+			spaceId: spaceId,
+			startTime: st,
+			endTime: et,
+			purpose: $('#purpose').val(),
+			reservationDate: $('#reservationDate').val()
+		},
+		success: function(){	
+			console.log("예약 추가 성공!!");
+			location.href="/hgu/adminReservation?num=1"
 		}, 
 		error:function(request, error){
 			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);

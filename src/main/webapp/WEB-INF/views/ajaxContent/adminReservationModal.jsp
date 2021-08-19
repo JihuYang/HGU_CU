@@ -13,9 +13,12 @@
     <div class="modal-content">
       <form class="modal-body">
         <label for="reservationPerson">대여자 이름</label>
-  			<input class="form-control form-control-sm" id="reservationPerson">
-        <!-- <label for="user">사용 단체</label>
-  			<input class="form-control form-control-sm" id="user"> -->
+  			<!-- <input class="form-control form-control-sm" id="reservationPerson"> -->
+        	<select class='userSelect' id='userSelect'>
+		      	<c:forEach items="${userList}" var="userList">
+					<option value="${userList.id}">${userList.name} / ${userList.email}</option>
+				</c:forEach>
+			</select>
   		<label for="etc">장소</label>
   			<select class='spaceSelect' id='spaceSelect'>
 		      	<c:forEach items="${spaceList}" var="spaceList">
@@ -44,7 +47,8 @@
       </form>
       
       <div class="modal-footer">
-	      	<button type="button" class="btn btn-outline-secondary" onclick="createAdminReservationInfo()">등록</button>
+	      	<button type="button" class="btn btn-outline-secondary" id="createBtn" onclick="createAdminReservationInfo()">등록</button>
+	      	<button type="button" class="btn btn-outline-secondary" id="updateBtn" onclick="updateAdminReservationInfo()">등록</button>
 	        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" onclick="location.reload(true);">취소</button>
       </div>
       
@@ -55,11 +59,15 @@
 <script>
 	$("#openModalBtn").on('click', function(){
 		$(".modal-body")[0].reset();
+		document.getElementById("updateBtn").style.display = "none";
+		document.getElementById("createBtn").style.display = "block";
 		$('#addModal').modal('show');
 	});
 	
 	function editBtn(clickedId){
 		$(".modal-body")[0].reset();
+		document.getElementById("createBtn").style.display = "none";
+		document.getElementById("updateBtn").style.display = "block";
 		var name = $('#username'+clickedId).text();
 		var purpose = $('#purpose'+clickedId).text();
 		var space = $('#space'+clickedId).text();
@@ -70,7 +78,7 @@
 		var endTime = $('#endTime'+clickedId).text();
 		
 		$('#addModal').modal('show');
-		$('#reservationPerson').val(name);
+		$('#userSelect').val(name+" / "+email).attr("selected", "selected");
 		$('#purpose').val(purpose);
 		$("#spaceSelect").val(space).attr("selected", "selected");
 		$('#phone').val(phone);

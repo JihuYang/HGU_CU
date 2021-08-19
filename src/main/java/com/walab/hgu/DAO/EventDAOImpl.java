@@ -28,16 +28,6 @@ public class EventDAOImpl implements EventDAO {
 		return sqlSession.selectList(namespace+".readEvent", eventParam);
 	}
 	
-//	@Override
-//	public EventDTO readEvent(int id) {
-//		
-//		Map<String, Object> infoList = new HashMap<String, Object>();
-//		infoList.put("id", id);
-//		System.out.println(infoList);
-//				
-//		return sqlSession.selectOne(namespace+".readEvent", infoList);
-//	}
-	
 	@Override
 	public int createEvent(EventDTO event) {
 		

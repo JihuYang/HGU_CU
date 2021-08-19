@@ -139,6 +139,15 @@ thead, tbody, tfoot, tr, td, th {
 	width:120px;
 }
 
+.userSelect{
+	padding: 0.5rem;
+	border: 1px solid #D0D0CE;
+	border-radius: 0.5rem;
+	font-size:small;
+	width:300px;
+}
+
+
 .btn-warning{
 	font-size:small;
 	border:none;
