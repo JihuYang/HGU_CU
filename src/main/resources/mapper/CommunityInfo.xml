@@ -77,7 +77,7 @@
 		parameterType="com.walab.hgu.DTO.FileDTO">
 		UPDATE hguclub.communityInfoFile SET
 		originalUrl =
-		#{originalUrl} WHERE communityInfoId = #{communityInfoId}
+		#{originalUrl} WHERE communityInfoId = #{communityInfoId} AND id = #{id}
 	</update>
 
 	<!-- 커뮤니티 공지사항 글 수정 쿼리 -->

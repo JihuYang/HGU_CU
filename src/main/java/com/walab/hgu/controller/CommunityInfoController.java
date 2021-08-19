@@ -16,6 +16,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -115,7 +116,10 @@ public class CommunityInfoController {
 
 		CommunityInfoDTO communityInfoDetail = communityInfoService.readCommunityInfoDetail(id);
 
+		List<FileDTO> communityInfoFileDetail = communityInfoService.readCommunityInfoFileDetail(id);
+
 		mv.addObject("communityInfoDetail", communityInfoDetail);
+		mv.addObject("communityInfoFileDetail", communityInfoFileDetail);
 
 		System.out.println(mv);
 
@@ -240,55 +244,61 @@ public class CommunityInfoController {
 		info.setUserId(userId);
 		info.setTitle(title);
 		info.setContent(content);
-		info.setFile(file);
+		//info.setFile(file);
 
 		communityInfoService.updateCommunityInfo(info);
-
-		List<MultipartFile> fileList = request.getFiles("file");
-		System.out.println(fileList);
-
-		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
-		Date time = new Date();
-		String folder = format.format(time);
-
-		for (MultipartFile newfile : fileList) {
-			String originalUrl = newfile.getOriginalFilename();
-
-			infoFile.setCommunityInfoId(id);
-			infoFile.setOriginalUrl(originalUrl);
-
-			communityInfoService.updateCommunityInfoFile(infoFile);
-
-			String originFileName = newfile.getOriginalFilename(); // 원본 파일 명
-			long fileSize = newfile.getSize(); // 파일 사이즈
-
-			System.out.println("originFileName : " + originFileName);
-			System.out.println("fileSize : " + fileSize);
-
-			String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file/" + folder);
-
-			File dir = new File(saveDir);
-			if (!dir.exists()) {
-				dir.mkdirs();
-			}
-
-			if (!newfile.isEmpty()) {
-				String ext = originalUrl.substring(originalUrl.lastIndexOf("."));
-
-				// SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd-HHmmssSSS");
-				// int rand = (int)(Math.random()*1000);
-
-				// String reName = sdf.format(System.currentTimeMillis()) + "_" + rand + ext;
-
-				try {
-					newfile.transferTo(new File(saveDir + "/" + originalUrl));
-				} catch (IllegalStateException | IOException e) {
-					e.printStackTrace();
+		
+		List<MultipartFile> fileList = request.getFiles("newfile");
+		
+		if(fileList.get(0).getOriginalFilename() != "") {
+			//선택된 파일이 있을 때 기존의 파일을 모두 삭제
+			System.out.println("실행");
+			communityInfoService.deleteCommunityInfoFile(id);
+			System.out.println("update file");
+			SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+			Date time = new Date();
+			String folder = format.format(time);
+			for (MultipartFile newfile : fileList) {
+				String originalUrl = newfile.getOriginalFilename();
+	
+				infoFile.setCommunityInfoId(id);
+				infoFile.setOriginalUrl(originalUrl);
+				infoFile.setRegdate(info.getRegdate());
+				communityInfoService.createCommunityInfoFile(infoFile);
+	
+				String originFileName = newfile.getOriginalFilename(); // 원본 파일 명
+				long fileSize = newfile.getSize(); // 파일 사이즈
+	
+				System.out.println("originFileName : " + originFileName);
+				System.out.println("fileSize : " + fileSize);
+	
+				String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file/" + folder);
+	
+				File dir = new File(saveDir);
+				if (!dir.exists()) {
+					dir.mkdirs();
 				}
+	
+				if (!newfile.isEmpty()) {
+					String ext = originalUrl.substring(originalUrl.lastIndexOf("."));
+	
+					// SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd-HHmmssSSS");
+					// int rand = (int)(Math.random()*1000);
+	
+					// String reName = sdf.format(System.currentTimeMillis()) + "_" + rand + ext;
+	
+					try {
+						newfile.transferTo(new File(saveDir + "/" + originalUrl));
+					} catch (IllegalStateException | IOException e) {
+						e.printStackTrace();
+					}
+				}
+	
+				System.out.println(saveDir);
 			}
-
-			System.out.println(saveDir);
 		}
+			
+	
 
 		System.out.println(info.toString());
 		System.out.println(infoFile.toString());
