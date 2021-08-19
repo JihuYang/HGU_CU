@@ -44,6 +44,11 @@ public class ReservationInfoServiceImpl implements ReservationInfoService{
 		return reservationInfoDAO.createReservation(reservationInfo);
 		
 	}
+	
+	@Override
+	public int updateAdminReservationInfo(ReservationInfoDTO reservationInfo) {
+		return reservationInfoDAO.updateAdminReservationInfo(reservationInfo);
+	}
 
 	@Override
 	public int countInfo(String keyword) {
@@ -55,6 +60,11 @@ public class ReservationInfoServiceImpl implements ReservationInfoService{
 	public List<ReservationInfoDTO> readReservationBySpaceName(String spaceName) {
 		List<ReservationInfoDTO> infoList = reservationInfoDAO.readReservationBySpaceName(spaceName);
 		return infoList;
+	}
+	
+	@Override
+	public int deleteAdminReservation(int id){
+		return reservationInfoDAO.deleteAdminReservation(id);
 	}
 
 }

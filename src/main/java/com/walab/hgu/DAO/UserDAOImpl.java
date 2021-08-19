@@ -30,6 +30,16 @@ public class UserDAOImpl implements UserDAO {
 				
 		return sqlSession.selectList(namespace+".readUser", userList);
 	}
+	
+	@Override
+	public List<UserDTO> readAllUsers() {
+		
+		Map<String, Object> userList = new HashMap<String, Object>();
+		
+		System.out.println(userList);
+				
+		return sqlSession.selectList(namespace+".readAllUsers", userList);
+	}
 
 
 	@Override

@@ -72,5 +72,18 @@ public class ReservationInfoDAOImpl implements ReservationInfoDAO {
 		return sqlSession.selectList(namespace+".readReservationBySpaceName", reservationInfoParam);
 	}
 	
+	@Override
+	public int updateAdminReservationInfo(ReservationInfoDTO reservationInfo) {
+		return sqlSession.update(namespace+".updateAdminReservationInfo", reservationInfo);
+	}
+	
+	@Override
+	public int deleteAdminReservation(int id) {
+		
+		sqlSession.delete(namespace+".deleteAdminReservation", id);
+		
+		return 0;
+	}
+	
 	
 }

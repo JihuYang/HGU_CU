@@ -21,6 +21,7 @@
 	</thead>
 	<tbody class="align-items-center p-4">
 		<c:forEach items="${reservationInfoList}" var="reservationList" varStatus="status">
+		<div id="id" style="display:none">${reservationList.id}</div>
 		<c:if test="${reservationList.person != null}">
 			<tr>
 			<fmt:formatDate value="${reservationList.startTime}"
@@ -39,7 +40,7 @@
 				<td id="manage${status.count}" class="manage">
 					<button type="button" class="btn btn-warning" id="${status.count}"
 					onclick="editBtn(this.id)"data-toggle="modal" data-target="#editModal${status.count}">수정</button>
-					<button type="button" class="btn btn-warning">삭제</button>
+					<button type="button" class="btn btn-warning" onclick="location.href='<%=request.getContextPath()%>/adminReservation/delete/${reservationList.id}'">삭제</button>
 				</td>
 			</tr>
 		</c:if>
