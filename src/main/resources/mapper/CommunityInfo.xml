@@ -39,13 +39,13 @@
 	<select id="readCommunityInfoFileDetail"
 		resultType="com.walab.hgu.DTO.FileDTO" parameterType="hashmap">
 		SELECT * FROM
-		hguclub.communityInfoFile WHERE communityInfoId=#{communityInfoId};
+		hsca219.communityInfoFile WHERE communityInfoId=#{communityInfoId};
 	</select>
 	
 	<select id="readCommunityInfoFileOneDetail"
 		resultType="com.walab.hgu.DTO.FileDTO" parameterType="hashmap">
 		SELECT * FROM
-		hguclub.communityInfoFile WHERE id=#{id};
+		hsca219.communityInfoFile WHERE id=#{id};
 	</select>	
 
 	<select id="readRecentCommunityInfo" resultType="int"
