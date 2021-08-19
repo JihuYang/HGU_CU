@@ -80,6 +80,10 @@ public class CommunityInfoController {
 
 		CommunityInfoDTO communityInfoDetail = communityInfoService.readCommunityInfoDetail(id);
 
+		List<FileDTO> communityInfoFileDetail = communityInfoService.readCommunityInfoFileDetail(id);
+
+		System.out.println(communityInfoFileDetail);
+
 		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file");
 
 		String fileName = communityInfoDetail.getOriginalUrl();
@@ -87,6 +91,7 @@ public class CommunityInfoController {
 		System.out.println("filename: " + fileName);
 
 		mv.addObject("communityInfoDetail", communityInfoDetail);
+		mv.addObject("communityInfoFileDetail", communityInfoFileDetail);
 
 		mv.setViewName("communityInfoDetail");
 
@@ -167,49 +172,49 @@ public class CommunityInfoController {
 		int recentId = communityInfoService.readRecentCommunityInfo();
 
 		System.out.println(recentId);
-		
+
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 		Date time = new Date();
 		String folder = format.format(time);
-		
-        for (MultipartFile newfile : fileList) { 
-    		String originalUrl = newfile.getOriginalFilename();
-    		
-    		infoFile.setCommunityInfoId(recentId);
-    		infoFile.setOriginalUrl(originalUrl);
-    		
-    		communityInfoService.createCommunityInfoFile(infoFile);
-    		
-            String originFileName = newfile.getOriginalFilename(); // 원본 파일 명
-            long fileSize = newfile.getSize(); // 파일 사이즈
 
-            System.out.println("originFileName : " + originFileName);
-            System.out.println("fileSize : " + fileSize);
+		for (MultipartFile newfile : fileList) {
+			String originalUrl = newfile.getOriginalFilename();
 
-    		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file/" + folder);
-    		
-    		File dir = new File(saveDir);
-    		if (!dir.exists()) {
-    			dir.mkdirs();
-    		}
+			infoFile.setCommunityInfoId(recentId);
+			infoFile.setOriginalUrl(originalUrl);
 
-    		if (!newfile.isEmpty()) {
-    			String ext = originalUrl.substring(originalUrl.lastIndexOf("."));
+			communityInfoService.createCommunityInfoFile(infoFile);
 
-    			// SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd-HHmmssSSS");
-    			// int rand = (int)(Math.random()*1000);
+			String originFileName = newfile.getOriginalFilename(); // 원본 파일 명
+			long fileSize = newfile.getSize(); // 파일 사이즈
 
-    			// String reName = sdf.format(System.currentTimeMillis()) + "_" + rand + ext;
+			System.out.println("originFileName : " + originFileName);
+			System.out.println("fileSize : " + fileSize);
 
-    			try {
-    				newfile.transferTo(new File(saveDir + "/" + originalUrl));
-    			} catch (IllegalStateException | IOException e) {
-    				e.printStackTrace();
-    			}
-    		}
+			String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file/" + folder);
 
-    		System.out.println(saveDir);
-        }
+			File dir = new File(saveDir);
+			if (!dir.exists()) {
+				dir.mkdirs();
+			}
+
+			if (!newfile.isEmpty()) {
+				String ext = originalUrl.substring(originalUrl.lastIndexOf("."));
+
+				// SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd-HHmmssSSS");
+				// int rand = (int)(Math.random()*1000);
+
+				// String reName = sdf.format(System.currentTimeMillis()) + "_" + rand + ext;
+
+				try {
+					newfile.transferTo(new File(saveDir + "/" + originalUrl));
+				} catch (IllegalStateException | IOException e) {
+					e.printStackTrace();
+				}
+			}
+
+			System.out.println(saveDir);
+		}
 
 		System.out.println(info.toString());
 		System.out.println(infoFile.toString());
@@ -241,53 +246,53 @@ public class CommunityInfoController {
 
 		List<MultipartFile> fileList = request.getFiles("file");
 		System.out.println(fileList);
-		
+
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 		Date time = new Date();
 		String folder = format.format(time);
-		
-        for (MultipartFile newfile : fileList) { 
-    		String originalUrl = newfile.getOriginalFilename();
-    		
-    		infoFile.setCommunityInfoId(id);
-    		infoFile.setOriginalUrl(originalUrl);
-    		
-    		communityInfoService.updateCommunityInfoFile(infoFile);
-    		
-            String originFileName = newfile.getOriginalFilename(); // 원본 파일 명
-            long fileSize = newfile.getSize(); // 파일 사이즈
 
-            System.out.println("originFileName : " + originFileName);
-            System.out.println("fileSize : " + fileSize);
+		for (MultipartFile newfile : fileList) {
+			String originalUrl = newfile.getOriginalFilename();
 
-    		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file/" + folder);
-    		
-    		File dir = new File(saveDir);
-    		if (!dir.exists()) {
-    			dir.mkdirs();
-    		}
+			infoFile.setCommunityInfoId(id);
+			infoFile.setOriginalUrl(originalUrl);
 
-    		if (!newfile.isEmpty()) {
-    			String ext = originalUrl.substring(originalUrl.lastIndexOf("."));
+			communityInfoService.updateCommunityInfoFile(infoFile);
 
-    			// SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd-HHmmssSSS");
-    			// int rand = (int)(Math.random()*1000);
+			String originFileName = newfile.getOriginalFilename(); // 원본 파일 명
+			long fileSize = newfile.getSize(); // 파일 사이즈
 
-    			// String reName = sdf.format(System.currentTimeMillis()) + "_" + rand + ext;
+			System.out.println("originFileName : " + originFileName);
+			System.out.println("fileSize : " + fileSize);
 
-    			try {
-    				newfile.transferTo(new File(saveDir + "/" + originalUrl));
-    			} catch (IllegalStateException | IOException e) {
-    				e.printStackTrace();
-    			}
-    		}
+			String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file/" + folder);
 
-    		System.out.println(saveDir);
-        }
-        
+			File dir = new File(saveDir);
+			if (!dir.exists()) {
+				dir.mkdirs();
+			}
+
+			if (!newfile.isEmpty()) {
+				String ext = originalUrl.substring(originalUrl.lastIndexOf("."));
+
+				// SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd-HHmmssSSS");
+				// int rand = (int)(Math.random()*1000);
+
+				// String reName = sdf.format(System.currentTimeMillis()) + "_" + rand + ext;
+
+				try {
+					newfile.transferTo(new File(saveDir + "/" + originalUrl));
+				} catch (IllegalStateException | IOException e) {
+					e.printStackTrace();
+				}
+			}
+
+			System.out.println(saveDir);
+		}
+
 		System.out.println(info.toString());
 		System.out.println(infoFile.toString());
-		
+
 		mv.setViewName("redirect:/communityInfo?num=1");
 
 		return mv;
@@ -297,19 +302,19 @@ public class CommunityInfoController {
 	public void fileDownload(@PathVariable int id, HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView mv = new ModelAndView();
 
-		CommunityInfoDTO communityInfoDetail = communityInfoService.readCommunityInfoDetail(id);
-		
+		FileDTO communityInfoFileDetail = communityInfoService.readCommunityInfoFileOneDetail(id);
+
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
-		
+
 		Date time = new Date();
-		
-		String folder = format.format(communityInfoDetail.getRegdate());
-	
+
+		String folder = format.format(communityInfoFileDetail.getRegdate());
+
 		System.out.println("download: " + folder);
 
 		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file/" + folder);
 
-		String fileName = communityInfoDetail.getOriginalUrl();
+		String fileName = communityInfoFileDetail.getOriginalUrl();
 
 		System.out.println("filename: " + fileName);
 
