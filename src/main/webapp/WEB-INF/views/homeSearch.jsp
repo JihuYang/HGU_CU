@@ -41,17 +41,15 @@
 			<form accept-charset="UTF-8" name="searchForm"
 				class="background-gray py-4 search-margin">
 				<div class="rows justify-content-center">
-					<select class="form-select form-select-sm search-selector">
-						<option value="title" selected>제목</option>
-						<option value="titleNcontent">제목+내용</option>
-						<option value="content">내용</option>
+					<select class="form-select form-select-sm search-selector" name="searchType">
+						<option value="title" <c:if test="${page.searchType eq 'title'}">selected</c:if> >제목</option>
+						<option value="content" <c:if test="${page.searchType eq 'content'}">selected</c:if> >내용</option>
+						<option value="title_content" <c:if test="${page.searchType eq 'title_content'}">selected</c:if>>제목+내용</option>
 					</select>
 				</div>
 				<div class="rows justify-content-center">
-					<input
-						class="form-control form-control-sm search-input backgrond-white"
-						type="text">
-					<button class="btn btn-primary search-btn" type="submit">검색</button>
+					<input class="form-control form-control-sm search-input backgrond-white" type="text" name="keyword" value="${page.keyword}">
+					<button class="btn btn-primary search-btn" type="button" id="searchBtn" onclick="searchInSearchPage()">검색</button>
 				</div>
 			</form>
 			<div class="tag-list mb-5 text-start">
@@ -83,11 +81,20 @@
 				<h4>동아리 소개 내 검색결과 ${clubIntroListCount}건</h4>
 			</div>
 			<!-- 동아리 소개 리스트 -->
+			<c:if test="${empty clubIntroList}">
+					<div class="mt-5rem">
+					<hr>
+					<h5><span class="noResult">'${page.keyword}'</span>에 대한 검색 결과를 찾지 못하였습니다.</h5>
+					<p class="text-muted">* 단어의 철자가 정확한지 확인해 주세요<br>* 띄어쓰기가 정확한지 획인해 주세요</p>
+					</div>
+			</c:if>
+			<c:if test="${ !empty clubIntroList}">
 			<div class="club-content" style="display: flex;">
 				<div class="row logo-display">
 					<jsp:include page="/WEB-INF/views/ajaxContent/clubIntroduction.jsp" />
 				</div>
 			</div>
+			</c:if>
 			<div class="text-start p-3">
 				<h4>동아리 홍보 내 검색결과 ${clubAdvertiseListCount}건</h4>
 			</div>

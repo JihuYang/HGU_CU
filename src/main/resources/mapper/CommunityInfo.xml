@@ -7,8 +7,8 @@
 		resultType="com.walab.hgu.DTO.CommunityInfoDTO"
 		parameterType="hashMap">
 		SELECT c.id, name as writer, title, content, c.regdate, viewCount
-		FROM hguclub.communityInfo as c
-		INNER JOIN hguclub.user as u ON
+		FROM hsca219.communityInfo as c
+		INNER JOIN hsca219.user as u ON
 		c.userId = u.id
 		
 		<if test='searchType.equals("title")'>
@@ -30,7 +30,7 @@
 		SELECT cI.id, name as writer, title, content,
 		cI.regdate, viewCount, originalUrl, realUrl, cIF.order
 		FROM
-		hguclub.communityInfo as cI ,hguclub.user u, hguclub.communityInfoFile
+		hsca219.communityInfo as cI ,hsca219.user u, hsca219.communityInfoFile
 		as cIF
 		WHERE cI.userId = u.id and cI.id = #{id} and cIF.communityInfoId
 		= cI.id LIMIT 1
@@ -38,13 +38,13 @@
 
 	<select id="readRecentCommunityInfo" resultType="int"
 		parameterType="hashmap">
-		SELECT MAX(id) FROM hguclub.communityInfo
+		SELECT MAX(id) FROM hsca219.communityInfo
 	</select>
 
 	<!-- 커뮤니티 공지사항 글 작성 쿼리 -->
 	<insert id="creatCommunityInfo"
 		parameterType="com.walab.hgu.DTO.CommunityInfoDTO">
-		INSERT INTO hguclub.communityInfo (userId, title,
+		INSERT INTO hsca219.communityInfo (userId, title,
 		content)
 		VALUES (#{userId}, #{title}, #{content})
 	</insert>
@@ -52,7 +52,7 @@
 	<!-- 커뮤니티 공지사항 파일 업로드 쿼리 -->
 	<insert id="createCommunityInfoFile"
 		parameterType="com.walab.hgu.DTO.FileDTO">
-		INSERT INTO hguclub.communityInfoFile (communityInfoId,
+		INSERT INTO hsca219.communityInfoFile (communityInfoId,
 		originalUrl)
 		VALUES (#{communityInfoId}, #{originalUrl})
 	</insert>
@@ -60,7 +60,7 @@
 	<!-- 커뮤니티 공지사항 파일 수정 쿼리 -->
 	<update id="updateCommunityInfoFile"
 		parameterType="com.walab.hgu.DTO.FileDTO">
-		UPDATE hguclub.communityInfoFile SET
+		UPDATE hsca219.communityInfoFile SET
 		originalUrl =
 		#{originalUrl} WHERE communityInfoId = #{communityInfoId}
 	</update>
@@ -68,7 +68,7 @@
 	<!-- 커뮤니티 공지사항 글 수정 쿼리 -->
 	<update id="updateCommunityInfo"
 		parameterType="com.walab.hgu.DTO.CommunityInfoDTO">
-		UPDATE hguclub.communityInfo set userId = #{userId},
+		UPDATE hsca219.communityInfo set userId = #{userId},
 		title=#{title},
 		content=#{content} WHERE id = #{id}
 	</update>
@@ -81,14 +81,14 @@
 	<!-- 커뮤니티 공지사항 파일 삭제 쿼리 -->
 	<delete id="deleteCommunityInfoFile"
 		parameterType="int">
-		DELETE FROM hguclub.communityInfoFile WHERE
+		DELETE FROM hsca219.communityInfoFile WHERE
 		communityInfoId = #{id}
 	</delete>
 
 	<!-- 커뮤니티 공지사항 글 삭제 쿼리 -->
 	<delete id="deleteCommunityInfo"
 		parameterType="int">
-		DELETE FROM hguclub.communityInfo WHERE id = #{id}
+		DELETE FROM hsca219.communityInfo WHERE id = #{id}
 	</delete>
 	
 

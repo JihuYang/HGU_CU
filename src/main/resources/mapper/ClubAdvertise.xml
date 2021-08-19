@@ -22,7 +22,7 @@
 		
 		ORDER BY CA.regdate DESC
 		LIMIT #{displayPost}, #{postNum}
-		<!-- SELECT CA.id,title, content, originalUrl FROM hguclub.clubAdvertise CA
+		<!-- SELECT CA.id,title, content, originalUrl FROM hsca219.clubAdvertise CA
     	LEFT JOIN clubAdvertiseFile cAF on CA.id = cAF.clubAdvertiseId WHERE cAF.order = 1 ORDER BY CA.regdate DESC -->
 	</select>
 	
@@ -37,13 +37,13 @@
 		resultType="com.walab.hgu.DTO.ClubAdvertiseDTO"
 		parameterType="hashmap">
 		SELECT CA.id, CAF.fileOriginalUrl 
-			FROM clubAdvertise CA , hguclub.clubAdvertiseFile as CAF
+			FROM clubAdvertise CA , hsca219.clubAdvertiseFile as CAF
 			WHERE CA.id = #{id} and CA.id=CAF.clubAdvertiseId LIMIT 1
 	</select>
 	
 	<select id="readRecentClubAd" resultType="int"
 		parameterType="hashmap">
-		SELECT MAX(id) FROM hguclub.clubAdvertise
+		SELECT MAX(id) FROM hsca219.clubAdvertise
 	</select>
 	
 	<select id="getClubAdImg" resultType="com.walab.hgu.DTO.ClubAdvertiseDTO"
@@ -70,14 +70,14 @@
 	
 	<!-- 동아리 홍보  업로드 쿼리 -->
 	<insert id="createClubAd" parameterType="com.walab.hgu.DTO.ClubAdvertiseDTO">
-		INSERT INTO hguclub.clubAdvertise (title,content)
+		INSERT INTO hsca219.clubAdvertise (title,content)
 		VALUES (#{title},#{content})
 	</insert>
 	
 	<!-- 동아리 홍보 이미지 업로드 쿼리 -->
 	<insert id="createClubAdImage"
 		parameterType="com.walab.hgu.DTO.FileDTO">
-		INSERT INTO hguclub.clubAdvertiseImage (clubAdvertiseId,
+		INSERT INTO hsca219.clubAdvertiseImage (clubAdvertiseId,
 		originalUrl)
 		VALUES (#{clubAdvertiseId}, #{originalUrl})
 	</insert>
@@ -85,7 +85,7 @@
 	<!-- 동아리 홍보 일반 파일 업로드 쿼리 -->
 	<insert id="createClubAdFile"
 		parameterType="com.walab.hgu.DTO.FileDTO">
-		INSERT INTO hguclub.clubAdvertiseFile (clubAdvertiseId,
+		INSERT INTO hsca219.clubAdvertiseFile (clubAdvertiseId,
 		fileOriginalUrl)
 		VALUES (#{clubAdvertiseId}, #{fileOriginalUrl})
 	</insert>
@@ -93,21 +93,21 @@
 	<!-- 동아리 홍보 파일 삭제 쿼리 -->
 	<delete id="deleteClubAdvertiseFile"
 		parameterType="int">
-		DELETE FROM hguclub.clubAdvertiseFile WHERE
+		DELETE FROM hsca219.clubAdvertiseFile WHERE
 		clubAdvertiseId = #{id}
 	</delete>
 	
 	<!-- 동아리 홍보 이미지 삭제 쿼리 -->
 	<delete id="deleteClubAdvertiseImage"
 		parameterType="int">
-		DELETE FROM hguclub.clubAdvertiseImage WHERE
+		DELETE FROM hsca219.clubAdvertiseImage WHERE
 		clubAdvertiseId = #{id}
 	</delete>
 
 	<!-- 동아리 홍보 글 삭제 쿼리 -->
 	<delete id="deleteClubAdvertise"
 		parameterType="int">
-		DELETE FROM hguclub.clubAdvertise WHERE id = #{id}
+		DELETE FROM hsca219.clubAdvertise WHERE id = #{id}
 	</delete>
 
 </mapper>

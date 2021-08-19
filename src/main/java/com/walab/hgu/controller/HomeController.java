@@ -99,16 +99,10 @@ public class HomeController {
 	public ModelAndView searchHome(ModelAndView mv, @RequestParam("num") int num,
 			@RequestParam(value = "searchType", required = false, defaultValue = "title") String searchType,
 			@RequestParam(value = "keyword", required = false, defaultValue = "") String keyword) {
-		// ModelAndView mv = new ModelAndView();
 
-		// 게시물 총 갯수
-		int count = communityInfoService.countInfo(searchType, keyword);
-
-		// 한 페이지에 출력할 게시물 갯수
-		int postNum = 10;
-		// 하단 페이징 번호
-		int pageNum = (int) Math.ceil((double) count / postNum);
-
+		int count = communityInfoService.countInfo(searchType, keyword);// 게시물 총 갯수
+		int postNum = 10;// 한 페이지에 출력할 게시물 갯수
+		int pageNum = (int) Math.ceil((double) count / postNum);// 하단 페이징 번호
 		int displayPost = (num - 1) * postNum;
 
 		// 커뮤니티 공지사항 
@@ -146,6 +140,8 @@ public class HomeController {
 		mv.addObject("clubAdvertiseList", clubAdvertiseList);
 
 		mv.addObject("pageNum", pageNum);
+		mv.addObject("page", page);
+		mv.addObject("selected", num);
 
 		System.out.println(mv);
 		mv.setViewName("homeSearch");
