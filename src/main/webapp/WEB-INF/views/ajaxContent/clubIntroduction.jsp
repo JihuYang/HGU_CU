@@ -12,7 +12,7 @@
 	<div class="col-xs-6 col-sm-4 pd-0">
 		<div class="overlay-item overlay-effect">
 			<img
-				src="resources/img/clubIntro/${clubIntroList.originalUrl}"
+				src="resources/upload/clubIntro/${clubIntroList.originalUrl}"
 				alt="임시" /> <a
 				href="<%=request.getContextPath()%>/clubIntroduction/${clubIntroList.categoryId}/${clubIntroList.id}"
 				class="mask"> [${clubIntroList.clubName}]<br>창립일자:
