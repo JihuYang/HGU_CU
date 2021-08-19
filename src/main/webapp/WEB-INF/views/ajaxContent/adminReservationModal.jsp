@@ -33,17 +33,14 @@
   					<option value='8:30'>8:30</option> -->
   				</select>
   				<select id='endTime' class="endTime input-resize">
-			        <!-- <option value='9:00' selected>9:00</option>
-			        <option value='10:00' >10:00</option> -->
+			        <option value='9:00' selected>9:00</option>
+			        <option value='10:00' >10:00</option>
 				</select>
   			</div>
         <label for="purpose">사용 목적</label>
   			<input class="form-control form-control-sm" id="purpose">
-        <label for="contact">연락처(이메일)</label>
-        <div style="display:flex;">
-   			<input class="form-control form-control-sm" placeholder="전화번호" id="phone">
-   			<input class="form-control form-control-sm" placeholder="이메일" id="email">
-  		</div>
+
+  		<input class="form-control form-control-sm" id="updateId" style="display:none">
       </form>
       
       <div class="modal-footer">
@@ -68,21 +65,21 @@
 		$(".modal-body")[0].reset();
 		document.getElementById("createBtn").style.display = "none";
 		document.getElementById("updateBtn").style.display = "block";
-		var name = $('#username'+clickedId).text();
+		var name = $('#userName'+clickedId).text();
+		var userId = $('#userId'+clickedId).text();
 		var purpose = $('#purpose'+clickedId).text();
 		var space = $('#space'+clickedId).text();
-		var phone = $('#phone'+clickedId).text();
 		var email = $('#email'+clickedId).text();
 		var reservationDate = $('#reservationDate'+clickedId).text();
 		var startTime = $('#startTime'+clickedId).text();
 		var endTime = $('#endTime'+clickedId).text();
+		var updateId = $('#updateId'+clickedId).text();
 		
 		$('#addModal').modal('show');
-		$('#userSelect').val(name+" / "+email).attr("selected", "selected");
+		$('#updateId').val(updateId);
+		$('#userSelect').val(userId).attr("selected", "selected");
 		$('#purpose').val(purpose);
 		$("#spaceSelect").val(space).attr("selected", "selected");
-		$('#phone').val(phone);
-		$('#email').val(email);
 		$('#reservationDate').val(reservationDate);
 		$("#startTime").val(startTime).attr("selected", "selected");
 		$("#endTime")[0].innerHTML="<option value='"+endTime+"' selected>"+endTime+"</option>";

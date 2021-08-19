@@ -39,13 +39,15 @@ function updateAdminReservationInfo(){
 	et=et+":00";
 	var spaceId=document.getElementById("spaceSelect").selectedIndex+1;
 	var userId=document.getElementById("userSelect").selectedIndex+1;
+	var id = $('#updateId').val();
+	id=parseInt(id);
 
 	$.ajax({
 		url: "/hgu/adminReservation/update",
 		type: "POST",
 		async: false,
 		data: {
-			id:$('#id').val(),
+			id:$('#updateId').val(),
 			userId: userId,
 			spaceId: spaceId,
 			startTime: st,
