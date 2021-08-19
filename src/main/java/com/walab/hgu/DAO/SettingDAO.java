@@ -12,4 +12,6 @@ public interface SettingDAO {
 	public int countInfo();
 
 	public int updateSetting(Map<String, Object> settingList);
+
+	public List<SettingDTO> readSetting();
 }

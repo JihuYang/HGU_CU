@@ -6,7 +6,7 @@ public class SettingDTO {
 
 	private int id;
 	private String key;
-	private String value;
+	private int value;
 	private Date regdate;
 	
 
@@ -35,13 +35,13 @@ public class SettingDTO {
 
 
 
-	public String getValue() {
+	public int getValue() {
 		return value;
 	}
 
 
 
-	public void setValue(String value) {
+	public void setValue(int value) {
 		this.value = value;
 	}
 

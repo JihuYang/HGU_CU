@@ -5,6 +5,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
+<c:if test="${empty communityMaterialList}">
+			<hr class="headLine">
+			<h5><span class="noResult">'${page.keyword}'</span>에 대한 검색 결과를 찾지 못하였습니다.</h5>
+			<p class="text-muted">* 단어의 철자가 정확한지 확인해 주세요<br>* 띄어쓰기가 정확한지 획인해 주세요</p>
+</c:if>
+<c:if test="${ !empty communityMaterialList}">
 <table class="table text-center">
 	<thead>
 		<tr>
@@ -31,3 +37,4 @@
 		</c:forEach>
 	</tbody>
 </table>
+</c:if>
