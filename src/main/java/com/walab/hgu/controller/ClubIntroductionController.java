@@ -171,9 +171,6 @@ public class ClubIntroductionController {
 		int userId = 1;
 		int clubOrder = 1;
 
-		MultipartFile imagefile = request.getFile("originalUrl");
-		String originalUrl = imagefile.getOriginalFilename();
-
 		info.setCategoryId(categoryId);
 		info.setClubName(clubName);
 		info.setUserId(userId);
@@ -183,39 +180,43 @@ public class ClubIntroductionController {
 		sns.setInstagramLink(instagramLink);
 		sns.setFacebookLink(facebookLink);
 		sns.setId(recentId);
-		infoImageFile.setClubId(recentId);
-		infoImageFile.setOriginalUrl(originalUrl);
-		infoImageFile.setClubOrder(clubOrder);
-		
-		
+
 		clubService.createClubIntro(info);
 		clubService.createClubSNS(sns);
-		clubService.createClubIntroImage(infoImageFile);
 		
-		
+		List<MultipartFile> fileList = request.getFiles("file");
+		for (MultipartFile imgFile : fileList) {
+			String originalUrl = imgFile.getOriginalFilename();
+			infoImageFile.setClubId(recentId);
+			infoImageFile.setClubOrder(clubOrder);
+			infoImageFile.setOriginalUrl(originalUrl);
+			clubService.createClubIntroImage(infoImageFile);
+			
+			String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/clubIntro");
+
+			File imgDir = new File(saveDir);
+			
+			if (!imgDir.exists()) {
+				imgDir.mkdirs();
+			}
+
+			if (!imgFile.isEmpty()) {
+				String ext = originalUrl.substring(originalUrl.lastIndexOf("."));
+
+				try {
+					imgFile.transferTo(new File(saveDir + "/" + originalUrl));
+				} catch (IllegalStateException | IOException e) {
+					e.printStackTrace();
+				}
+			}
+
+			System.out.println(saveDir);
+
+		}
 	
 		System.out.println(info.toString());
 
 
-		String saveDir = request.getSession().getServletContext().getRealPath("/resources/img/clubIntro");
-
-		File imgDir = new File(saveDir);
-		
-		if (!imgDir.exists()) {
-			imgDir.mkdirs();
-		}
-
-		if (!imagefile.isEmpty()) {
-			String ext = originalUrl.substring(originalUrl.lastIndexOf("."));
-
-			try {
-				imagefile.transferTo(new File(saveDir + "/" + originalUrl));
-			} catch (IllegalStateException | IOException e) {
-				e.printStackTrace();
-			}
-		}
-
-		System.out.println(saveDir);
 
 		mv.setViewName("redirect:/clubIntroduction");
 
