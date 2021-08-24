@@ -8,6 +8,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.walab.hgu.DTO.ReservationInfoDTO;
 import com.walab.hgu.DTO.SettingDTO;
 
 @Repository
@@ -48,6 +49,13 @@ public class SettingDAOImpl implements SettingDAO {
 	public List<SettingDTO> readSetting() {
 		// TODO Auto-generated method stub
 		return sqlSession.selectList(namespace+".readSetting");
+	}
+
+
+	@Override
+	public List<ReservationInfoDTO> getOfficeHour() {
+		// TODO Auto-generated method stub
+		return sqlSession.selectList(namespace+".getOfficeHour");
 	}
 	
 }

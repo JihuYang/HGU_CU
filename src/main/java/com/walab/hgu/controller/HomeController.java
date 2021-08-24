@@ -25,6 +25,7 @@ import com.walab.hgu.DTO.ClubDTO;
 import com.walab.hgu.DTO.CommunityInfoDTO;
 import com.walab.hgu.DTO.CommunityMaterialDTO;
 import com.walab.hgu.DTO.Page;
+import com.walab.hgu.DTO.ReservationInfoDTO;
 import com.walab.hgu.DTO.SettingDTO;
 
 /**
@@ -71,15 +72,7 @@ public class HomeController {
 		}
 		List<CategoryDTO> categoryNameList = clubService.getCategoryNameList();
 		
-		List<SettingDTO> fullSettingList = settingService.readSetting();
-		List<Integer> officeHour = new ArrayList<>();
-		
-		for(int i=0;i<fullSettingList.size();i++) {
-			if(fullSettingList.get(i).getKey().equals("오피스 아워 시작 시간") || fullSettingList.get(i).getKey().equals("오피스 아워 마감 시간")) {
-				officeHour.add(fullSettingList.get(i).getValue());
-			}
-		}
-		
+		List<ReservationInfoDTO> officeHour = settingService.getOfficeHour();
 		
 		mv.addObject("categoryNameList", categoryNameList);// 인터셉터에서 넣어주기
 		mv.addObject("officeHour", officeHour);

@@ -82,17 +82,19 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value = "/admin", method = RequestMethod.GET)
-	public ModelAndView readSetting(ModelAndView mv, @RequestParam("num") int num) {
+	public ModelAndView readSetting(ModelAndView mv) {
+//		
+//		Page page = new Page();
+//		page.setNum(num); 
+//		page.setCount(settingService.countInfo());
 		
-		Page page = new Page();
-		page.setNum(num); 
-		page.setCount(settingService.countInfo());
+		List<SettingDTO> settingList = settingService.readSetting();
+		List<ReservationInfoDTO> officeHour = settingService.getOfficeHour();
 		
-		List<SettingDTO> settingList = settingService.readSetting(page.getDisplayPost(),page.getPostNum());
-		
-		mv.addObject("settingList", settingList); 
-		mv.addObject("page", page);
-		mv.addObject("selected", num);
+		mv.addObject("settingList", settingList);
+		mv.addObject("officeHour", officeHour);
+//		mv.addObject("page", page);
+//		mv.addObject("selected", num);
 		
 		System.out.println(mv);
 
@@ -103,23 +105,50 @@ public class AdminController {
 	}
 	
 	@ResponseBody
-	@RequestMapping(value = "/admin/update", method = RequestMethod.POST)
-	public ModelAndView updateSetting(ModelAndView mv,HttpServletRequest request, int totalReservationWeek,int totalReservationDay) {
+	@RequestMapping(value = "/admin/settingUpdate", method = RequestMethod.POST)
+	public ModelAndView updateSetting(ModelAndView mv,HttpServletRequest request, int value,int id) {
+		System.out.println(value);
 		
 		Map<String, Object> settingList = new HashMap<String, Object>();
-		settingList.put("totalReservation",totalReservationWeek);
-		settingList.put("id",1);
+		settingList.put("value",value);
+		settingList.put("id",id);
 		
 		settingService.updateSetting(settingList);
+
 		
-		Map<String, Object> settingList2 = new HashMap<String, Object>();
-		settingList2.put("totalReservation", totalReservationDay);
-		settingList2.put("id",2);
+		mv.setViewName("admin");
+			
+		return mv;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/admin/startHourUpdate", method = RequestMethod.POST)
+	public ModelAndView updateStartHour(ModelAndView mv,HttpServletRequest request, Time value,int id) {
+		System.out.println(value);
 		
-		settingService.updateSetting(settingList2);
+		Map<String, Object> officeHourStart = new HashMap<String, Object>();
+		officeHourStart.put("value",value);
+		officeHourStart.put("id",id);
 		
-//		System.out.println("totalReservationWeek: "+totalReservationWeek);
-//		System.out.println("totalReservationDay: "+totalReservationDay);
+		reservationInfoService.updateStartHour(officeHourStart);
+
+		
+		mv.setViewName("admin");
+			
+		return mv;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/admin/endHourUpdate", method = RequestMethod.POST)
+	public ModelAndView updateEndHour(ModelAndView mv,HttpServletRequest request, Time value,int id) {
+		System.out.println(value);
+		
+		Map<String, Object> officeHourEnd = new HashMap<String, Object>();
+		officeHourEnd.put("value",value);
+		officeHourEnd.put("id",id);
+		System.out.println(officeHourEnd);
+		reservationInfoService.updateEndHour(officeHourEnd);
+
 		
 		mv.setViewName("admin");
 			

@@ -73,6 +73,15 @@
 		WHERE id = #{id}
 	</update>
 	
+	
+	<!-- 오피스아워 업데이트  -->
+	<update id="updateStartHour" parameterType="hashmap">
+		UPDATE hsca219.officeHour t SET t.startTime = #{value} WHERE t.id = #{id}
+	</update>
+	<update id="updateEndHour" parameterType="hashmap">
+		UPDATE hsca219.officeHour t SET t.endTime = #{value} WHERE t.id = #{id}
+	</update>
+	
 	<!-- 관리자 예약 삭제 쿼리 -->
 	<delete id="deleteAdminReservation"
 		parameterType="int">

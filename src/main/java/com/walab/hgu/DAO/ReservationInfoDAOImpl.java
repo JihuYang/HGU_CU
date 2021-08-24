@@ -84,6 +84,18 @@ public class ReservationInfoDAOImpl implements ReservationInfoDAO {
 		
 		return 0;
 	}
+
+	//오피스아워 업데이트 
+	@Override
+	public void updateStartHour(Map<String, Object> officeHourStart) {
+		
+		sqlSession.update(namespace+".updateStartHour", officeHourStart);
+	}
+	@Override
+	public void updateEndHour(Map<String, Object> officeHourEnd) {
+		// TODO Auto-generated method stub
+		sqlSession.update(namespace+".updateEndHour", officeHourEnd);
+	}
 	
 	
 }

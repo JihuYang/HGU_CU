@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.walab.hgu.DAO.SettingDAO;
+import com.walab.hgu.DTO.ReservationInfoDTO;
 import com.walab.hgu.DTO.SettingDTO;
 
 @Service
@@ -40,6 +41,12 @@ public class SettingServiceImpl implements SettingService{
 	public List<SettingDTO> readSetting() {
 		// TODO Auto-generated method stub
 		return settingDAO.readSetting();
+	}
+
+	@Override
+	public List<ReservationInfoDTO> getOfficeHour() {
+		// TODO Auto-generated method stub
+		return settingDAO.getOfficeHour();
 	}
 
 }
