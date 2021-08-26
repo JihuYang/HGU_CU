@@ -104,6 +104,7 @@ public class ClubIntroductionController {
 		List<ClubDTO> clubDetailList = clubService.getClubDetailList(categoryId,clubId);
 		
 		List<CategoryDTO> categoryNameList = clubService.getCategoryNameList();
+		
 		String categoryName = categoryNameList.get(categoryId-1).getCategoryName();
 		
 		List<ClubDTO> clubImgList = clubService.getClubImg(clubId);
@@ -186,10 +187,12 @@ public class ClubIntroductionController {
 		
 		List<MultipartFile> fileList = request.getFiles("file");
 		for (MultipartFile imgFile : fileList) {
+			
 			String originalUrl = imgFile.getOriginalFilename();
 			infoImageFile.setClubId(recentId);
 			infoImageFile.setClubOrder(clubOrder);
 			infoImageFile.setOriginalUrl(originalUrl);
+			
 			clubService.createClubIntroImage(infoImageFile);
 			
 			String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/clubIntro");
@@ -210,7 +213,8 @@ public class ClubIntroductionController {
 				}
 			}
 
-			System.out.println(saveDir);
+			System.out.println("club introduction controller saveDir: " + saveDir);
+			clubOrder++;
 
 		}
 	

@@ -180,12 +180,14 @@ public class CommunityInfoController {
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 		Date time = new Date();
 		String folder = format.format(time);
-
+		int order = 1;
 		for (MultipartFile newfile : fileList) {
 			String originalUrl = newfile.getOriginalFilename();
 
 			infoFile.setCommunityInfoId(recentId);
 			infoFile.setOriginalUrl(originalUrl);
+			infoFile.setOrder(order);
+			order++;
 
 			communityInfoService.createCommunityInfoFile(infoFile);
 
