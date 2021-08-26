@@ -156,7 +156,7 @@
 							<ul class="pagination align-items-center justify-content-center">
 								<c:if test="${page[0].prev}">
 									<li class="page-item">
-										<a class="page-link" href="<%=request.getContextPath()%>/search?num=${page[0].startPageNum - 1}${page[0].searchTypeKeyword}&tag=공자사항" aria-label="Previous"> 
+										<a class="page-link" href="<%=request.getContextPath()%>/search?num=${page[0].startPageNum - 1}${page[0].searchTypeKeyword}&tag=공지사항" aria-label="Previous"> 
 											<span aria-hidden="true">&laquo;</span>
 											<span class="sr-only">Previous</span>
 										</a>
@@ -164,7 +164,7 @@
 								</c:if>		
 								<c:forEach begin="${page[0].startPageNum}" end="${page[0].endPageNum}" var="num">
 								 	<c:if test="${selected != num}">
-								 		<li class="page-item"><a class="page-link" href="<%=request.getContextPath()%>/search?num=${num}${page[0].searchTypeKeyword}&tag=공자사항">${num}</a></li>
+								 		<li class="page-item"><a class="page-link" href="<%=request.getContextPath()%>/search?num=${num}${page[0].searchTypeKeyword}&tag=공지사항">${num}</a></li>
 								 	</c:if>			 	
 									<c:if test="${selected == num}">
 										<li class="page-item active"><a class="page-link" href="#">${num}</a></li>
@@ -172,7 +172,7 @@
 					 			</c:forEach>				
 					 			<c:if test="${page[0].next}">
 									<li class="page-item">
-										<a class="page-link"  href="<%=request.getContextPath()%>/search?num=${page[0].endPageNum + 1}${page[0].searchTypeKeyword}&tag=공자사항" aria-label="Next"> 
+										<a class="page-link"  href="<%=request.getContextPath()%>/search?num=${page[0].endPageNum + 1}${page[0].searchTypeKeyword}&tag=공지사항" aria-label="Next"> 
 											<span aria-hidden="true">&raquo;</span> 
 											<span class="sr-only">Next</span>
 										</a>
@@ -387,6 +387,8 @@
 	<!-- Bootstrap core JS-->
 	<script
 		src="<%=request.getContextPath()%>/resources/js/home.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/resources/js/community.js"></script>
 
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>

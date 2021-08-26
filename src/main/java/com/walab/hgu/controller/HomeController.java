@@ -97,13 +97,13 @@ public class HomeController {
 		List<Page> page = new ArrayList<Page>(4);
 		for(int i=0;i<4;i++) {
 			page.add(new Page());
-			page.get(i).setNum(num);
+			page.get(i).setNum(num); 
 			page.get(i).setSearchType(searchType);
 			page.get(i).setKeyword(keyword);
 		}
-		System.out.println(tag);
 		// 커뮤니티 공지사항 
 		page.get(0).setCount(communityInfoService.countInfo(searchType, keyword));
+		//System.out.println("count: "+page.get(0).getCount());
 		List<CommunityInfoDTO> communityInfoList = communityInfoService.readCommunityInfo(page.get(0).getDisplayPost(),page.get(0).getPostNum(),searchType, keyword);
 		
 		// 커뮤니티 자료실
@@ -117,10 +117,10 @@ public class HomeController {
 		page.get(3).setCount(communityMaterialService.countInfo(searchType, keyword));
 		List<ClubAdvertiseDTO> clubAdvertiseList = clubAdvertiseService.readClubAdvertisePreview(page.get(3).getDisplayPost(),page.get(3).getPostNum(),searchType,keyword);
 		
-		int communityInfoListCount = communityInfoList.size();
-		int communityMaterialListCount = communityMaterialList.size();
-		int clubIntroListCount = clubIntroList.size();
-		int clubAdvertiseListCount = clubAdvertiseList.size();
+		int communityInfoListCount = page.get(0).getCount();
+		int communityMaterialListCount = page.get(1).getCount();
+		int clubIntroListCount = page.get(2).getCount();
+		int clubAdvertiseListCount = page.get(3).getCount();
 		
 		mv.addObject("communityInfoListCount", communityInfoListCount);
 		mv.addObject("communityMaterialListCount", communityMaterialListCount);
@@ -139,7 +139,7 @@ public class HomeController {
 		mv.addObject("tag", tag);
 
 		System.out.println(mv);
-		System.out.println("tag: "+tag);
+		//System.out.println("getSearchTypeKeyword: "+page.get(0).getSearchTypeKeyword());
 		mv.setViewName("homeSearch");
 
 		return mv;
