@@ -194,7 +194,7 @@ thead, tbody, tfoot, tr, td, th {
 	min-width:70px !important;
 }
 
-#setting-input{
+#setting-input, .officeHour-start, .officeHour-end{
 	width:120px;
 }
 

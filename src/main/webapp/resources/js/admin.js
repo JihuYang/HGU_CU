@@ -46,3 +46,51 @@ function updateAuthority(authority,id){
 				    }
 				  });
 }
+
+function updateSetting(value,id){
+		//alert(value);
+		
+		$.ajax({
+				    url: "/hgu/admin/settingUpdate",
+				    data: {"value": value, "id": id},
+				    type: "POST",
+				    success : function(data){
+				      alert("저장되었습니다.")
+				    },
+				    error : function(){
+				      alert("저장에 실패하였습니다")		
+				    }
+				  });
+}
+
+function updateStartHour(value,id){
+		//alert(value);
+		
+		$.ajax({
+				    url: "/hgu/admin/startHourUpdate",
+				    data: {"value": value, "id": id},
+				    type: "POST",
+				    success : function(data){
+				      alert("저장되었습니다.")
+				    },
+				    error : function(){
+				      alert("저장에 실패하였습니다")		
+				    }
+				  });
+}
+
+function updateEndHour(value,id){
+		//alert(value);
+		
+		$.ajax({
+				    url: "/hgu/admin/endHourUpdate",
+				    data: {"value": value, "id": id},
+				    type: "POST",
+				    success : function(data){
+				      alert("저장되었습니다.")
+				    },
+				    error : function(){
+				      alert("저장에 실패하였습니다")		
+				    }
+				  });
+}

@@ -1,6 +1,7 @@
 package com.walab.hgu.service;
 
 import java.util.List;
+import java.util.Map;
 
 import com.walab.hgu.DTO.ReservationInfoDTO;
 
@@ -14,5 +15,9 @@ public interface ReservationInfoService {
 	public List<ReservationInfoDTO> readReservationBySpaceName(String spaceName);
 	public int updateAdminReservationInfo(ReservationInfoDTO reservationInfo);
 	public int deleteAdminReservation(int id);
+	
+	//officeHour 업데이트
+	public void updateStartHour(Map<String, Object> officeHourStart);
+	public void updateEndHour(Map<String, Object> officeHourEnd);
 
 }

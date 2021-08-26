@@ -7,20 +7,20 @@
 	<select id="readReservationInfo" resultType="com.walab.hgu.DTO.ReservationInfoDTO" parameterType="hashmap">
 		SELECT r.userId, r.spaceId,r.reservationDate, r.startTime , r.endTime, r.purpose, 
 		r.memo, r.regdate,s.name as spaceName, u.name as person, u.email as email, u.phone as phone
-		FROM hguclub.reservationInfo as r
+		FROM hsca219.reservationInfo as r
 		
-		LEFT OUTER JOIN hguclub.user as u ON r.userId = u.id
-		RIGHT OUTER JOIN hguclub.space as s ON r.spaceId = s.id
+		LEFT OUTER JOIN hsca219.user as u ON r.userId = u.id
+		RIGHT OUTER JOIN hsca219.space as s ON r.spaceId = s.id
  	</select>
  	
  	<!-- admin 예약 관리 페이지에서 쓰이는 페이징을 위한 쿼리  -->
  	<select id="readReservationInfoPaging" resultType="com.walab.hgu.DTO.ReservationInfoDTO" parameterType="hashmap">
 		SELECT r.id, r.userId, r.spaceId,r.reservationDate, r.startTime , r.endTime, r.purpose, 
 		r.memo, r.regdate,s.name as spaceName, u.name as person, u.email as email, u.phone as phone
-		FROM hguclub.reservationInfo as r
+		FROM hsca219.reservationInfo as r
 		
-		LEFT OUTER JOIN hguclub.user as u ON r.userId = u.id
-		RIGHT OUTER JOIN hguclub.space as s ON r.spaceId = s.id
+		LEFT OUTER JOIN hsca219.user as u ON r.userId = u.id
+		RIGHT OUTER JOIN hsca219.space as s ON r.spaceId = s.id
 		
 		WHERE u.name LIKE concat('%',#{keyword},'%') or u.email LIKE concat('%',#{keyword},'%')
 		
@@ -32,10 +32,10 @@
  	<select id="readReservationBySpaceName" resultType="com.walab.hgu.DTO.ReservationInfoDTO" parameterType="hashmap">
 		SELECT r.userId, r.spaceId,r.reservationDate, r.startTime , r.endTime, r.purpose, 
 		r.memo, r.regdate,s.name as spaceName, u.name as person, u.email as email, u.phone as phone
-		FROM hguclub.reservationInfo as r
+		FROM hsca219.reservationInfo as r
 		
-		LEFT OUTER JOIN hguclub.user as u ON r.userId = u.id
-		RIGHT OUTER JOIN hguclub.space as s ON r.spaceId = s.id
+		LEFT OUTER JOIN hsca219.user as u ON r.userId = u.id
+		RIGHT OUTER JOIN hsca219.space as s ON r.spaceId = s.id
 		
 		WHERE s.name = #{spaceName}
  	</select>
@@ -44,7 +44,7 @@
  	<select id="countInfo" resultType="int" parameterType="hashmap">
  		SELECT COUNT(*) as listCnt
 		FROM reservationInfo as r
-		LEFT OUTER JOIN hguclub.user as u ON r.userId = u.id
+		LEFT OUTER JOIN hsca219.user as u ON r.userId = u.id
 		
 		WHERE u.name LIKE concat('%',#{keyword},'%') or u.email LIKE concat('%',#{keyword},'%')
 	</select>
@@ -52,7 +52,7 @@
  	<!-- 예약 추가 쿼리 -->
 	<insert id="createReservation"
 		parameterType="com.walab.hgu.DTO.ReservationInfoDTO">
-		INSERT INTO hguclub.reservationInfo (userId, spaceId, startTime, endTime, purpose, memo, reservationDate) 
+		INSERT INTO hsca219.reservationInfo (userId, spaceId, startTime, endTime, purpose, memo, reservationDate) 
 		VALUES (#{userId}, #{spaceId}, #{startTime}, #{endTime}, #{purpose},#{memo},#{reservationDate});
 	</insert>
  	
@@ -60,7 +60,7 @@
  	<!-- 관리자 예약 추가 쿼리 -->
 	<insert id="createAdminReservationInfo"
 		parameterType="com.walab.hgu.DTO.ReservationInfoDTO">
-		INSERT INTO hguclub.reservationInfo (userId, spaceId, startTime, endTime, purpose, reservationDate) 
+		INSERT INTO hsca219.reservationInfo (userId, spaceId, startTime, endTime, purpose, reservationDate) 
 		VALUES (#{userId}, #{spaceId}, #{startTime}, #{endTime}, #{purpose},#{reservationDate});
 	</insert>
 	
@@ -71,6 +71,15 @@
 		spaceId=#{spaceId},startTime=#{startTime} ,
 		endTime=#{endTime},purpose=#{purpose},reservationDate=#{reservationDate}
 		WHERE id = #{id}
+	</update>
+	
+	
+	<!-- 오피스아워 업데이트  -->
+	<update id="updateStartHour" parameterType="hashmap">
+		UPDATE hsca219.officeHour t SET t.startTime = #{value} WHERE t.id = #{id}
+	</update>
+	<update id="updateEndHour" parameterType="hashmap">
+		UPDATE hsca219.officeHour t SET t.endTime = #{value} WHERE t.id = #{id}
 	</update>
 	
 	<!-- 관리자 예약 삭제 쿼리 -->

@@ -48,10 +48,10 @@
 			<div class="col-lg-5 align-self-baseline ">
 				<p class="mb-5 text-muted">제 27대 총동아리연합회 ‘제자리’</p>
 				<div class="input-group mb-3">
-					<input type="text" class="form-control"
-						placeholder="공지사항, 동아리 홍보, 자료실 검색">
+					<input type="text" class="form-control" name="keyword"
+						placeholder="공지사항, 동아리 홍보, 동아리 소개, 자료실 검색">
 					<button class="btn btn-outline-secondary" type="button"
-						id="button-addon2" onclick="search()">
+						id="button-addon2" onclick="searchHome()">
 						<i class="fas fa-search"></i>
 					</button>
 				</div>
