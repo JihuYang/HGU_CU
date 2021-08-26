@@ -22,7 +22,7 @@
 				</c:when>
 				<c:when test="${clubAdvertiseList.originalUrl != null}">
 					<td><img
-						src="<%=request.getContextPath()%>/resources/img/${clubAdvertiseList.originalUrl}"
+						src="<%=request.getContextPath()%>/resources/upload/file/clubAd/${clubAdvertiseList.originalUrl}"
 						class="img-thumbnail rounded clubAd-img"></td>
 				</c:when>
 			</c:choose>

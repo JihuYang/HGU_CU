@@ -27,53 +27,60 @@
 <!-- Core theme CSS (includes Bootstrap)-->
 <jsp:include page="/WEB-INF/views/inc/header.jsp" />
 
+<link href="<%=request.getContextPath()%>/resources/css/styles.css"
+	rel="stylesheet" />
 <link
 	href="<%=request.getContextPath()%>/resources/css/createClubAd.css"
 	rel="stylesheet" />
 
 </head>
-<script src="<%=request.getContextPath()%>/resources/js/community.js"></script>
-
 <script src="https://kit.fontawesome.com/6333a60c65.js"></script>
-
 <body id="page-top">
 	<div class="container width-80 h-auto h-min">
 		<div
-			class="row h-auto align-items-center justify-content-center text-center">
-			<div class="col-lg-6 align-self-center">
-				<h3 class="font-weight-bold pt-title">공지사항</h3>
+			class="row h-25 align-items-center justify-content-center text-center">
+			<div class="align-self-center">
+				<h3 class="font-weight-bold pt-title">동아리 홍보</h3>
 			</div>
-		</div>
-		<div class="justify-content-md-center align-items-center">
-			<form method="POST" enctype="multipart/form-data" id="uploadForm" name="createForm"
-				action="<%=request.getContextPath()%>/communityInfo/write/create">
-				<input id="userId" name="userId" value='1' style="display: none;"></input>
-				<div class="title-bar">
-					<p class="rows title-bold">제목</p>
-					<input class="form-control title-input" type="text" id="title"
-						name="title" required>
-				</div>
-				<div class="mb-3">
-					<textarea class="form-control textarea justify-content-center"
-						rows="13" id="content" name="content" required></textarea>
-				</div>
-				<div class="mb-3">
-					<input class="form-control file" type="file" name="file" id="file"
-						multiple>
-				</div>
-				<div>
-					<a class="btn btn-primary back-btn bottom-btn" href="./"
-						role="button">뒤로</a>
-					<button class="btn btn-primary submit-btn bottom-btn" 
-						onclick="createCheck()">저장</button>
-				</div>
-			</form>
+			<!-- 홍보글 테이블 -->
+			<div class="col-sm-10 justify-content-md-center">
+				<form method="POST" enctype="multipart/form-data" id="uploadForm"
+					action="<%=request.getContextPath()%>/clubAdvertise/write/update">
+					<input id="userId" name="userId" value='1' style="display: none;"></input>
+					<div class="title-bar">
+						<p class="rows title-bold">제목</p>
+						<input class="form-control title-input" type="text" id="title"
+							name="title">
+					</div>
+					<div class="mb-3">
+						<textarea class="form-control textarea justify-content-center"
+							rows="13" id="content" name="content" required></textarea>
+					</div>
+					<div class="mb-3">
+						<p class="float-l">이미지 파일용</p>
+						<input class="form-control file" type="file" id="imagefile"
+							name="imagefile" accept="image/*" multiple>
+					</div>
+					<div class="mb-3">
+						<p class="float-l">첨부파일용</p>
+						<input class="form-control file" type="file" id="adfile"
+							name="adfile" multiple>
+					</div>
+					<div>
+						<a class="btn btn-primary back-btn bottom-btn" href="./"
+							role="button">뒤로</a>
+						<button class="btn btn-primary submit-btn bottom-btn">
+							<!-- onclick="createClubAd()" -->
+							저장
+						</button>
+					</div>
+				</form>
+			</div>
 		</div>
 	</div>
 
 	<!-- Footer-->
 	<jsp:include page="/WEB-INF/views/inc/footer.jsp" />
-
 	<!-- Bootstrap core JS-->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -82,7 +89,8 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
 	<!-- Core theme JS-->
 	<script src="<%=request.getContextPath()%>/resources/js/scripts.js"></script>
-	<script src="<%=request.getContextPath()%>/resources/js/community.js"></script>
+	<script
+		src="<%=request.getContextPath()%>/resources/js/clubAdvertise.js"></script>
 	<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
 	<!-- * *                               SB Forms JS                               * *-->
 	<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->

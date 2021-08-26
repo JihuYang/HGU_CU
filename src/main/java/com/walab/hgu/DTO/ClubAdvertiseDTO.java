@@ -5,7 +5,7 @@ import java.util.Date;
 import org.springframework.web.multipart.MultipartFile;
 
 public class ClubAdvertiseDTO {
-
+	
 	private int id;
 	private int clubId;
 	private String title;
@@ -15,6 +15,7 @@ public class ClubAdvertiseDTO {
 	private MultipartFile file; 
 	private MultipartFile imageFile; 
 	private Date regdate;
+	private int order;
 	
 	
 	public int getId() {
@@ -53,34 +54,36 @@ public class ClubAdvertiseDTO {
 	public void setOriginalUrl(String originalUrl) {
 		this.originalUrl = originalUrl;
 	}
-	
-	
 	public MultipartFile getFile() {
 		return file;
 	}
 	public void setFile(MultipartFile file) {
 		this.file = file;
 	}
-	
-	
 	public MultipartFile getImageFile() {
 		return imageFile;
 	}
 	public void setImageFile(MultipartFile imagefile) {
 		this.imageFile = imagefile;
 	}
-	
-	
 	public String getFileOriginalUrl() {
 		return fileOriginalUrl;
 	}
 	public void setFileOriginalUrl(String fileOriginalUrl) {
 		this.fileOriginalUrl = fileOriginalUrl;
 	}
+	public int getOrder() {
+		return order;
+	}
+	public void setOrder(int order) {
+		this.order = order;
+	}
+	
 	@Override
 	public String toString() {
 		return "ClubAdvertiseDTO [id=" + id + ", clubId=" + clubId + ", title=" + title + ", content=" + content
-				+ ", originalUrl=" + originalUrl + ", regdate=" + regdate + "]";
+				+ ", originalUrl=" + originalUrl + ", fileOriginalUrl=" + fileOriginalUrl + ", file=" + file
+				+ ", imageFile=" + imageFile + ", regdate=" + regdate + ", order=" + order + "]";
 	}
 	 
 }

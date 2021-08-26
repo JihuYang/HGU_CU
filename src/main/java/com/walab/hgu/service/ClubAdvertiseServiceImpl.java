@@ -23,6 +23,14 @@ public class ClubAdvertiseServiceImpl implements ClubAdvertiseService{
 		
 		return adList;
 	}
+	
+	@Override
+	public FileDTO readClubAdvertisePreviewImage(int id) {	
+
+		FileDTO imageFile = clubAdvertiseDAO.readClubAdvertisePreviewImage(id);
+		
+		return imageFile;
+	}
 
 	@Override
 	public List<ClubAdvertiseDTO> readClubAdvertiseDetail(int id) {
@@ -31,8 +39,8 @@ public class ClubAdvertiseServiceImpl implements ClubAdvertiseService{
 	}
 	
 	@Override
-	public ClubAdvertiseDTO readClubAdvertiseDetailId(int id) {
-		ClubAdvertiseDTO infoDetailList = clubAdvertiseDAO.readClubAdvertiseDetailId(id);
+	public List<FileDTO> readClubAdvertiseDetailFile(int id) {
+		List<FileDTO> infoDetailList = clubAdvertiseDAO.readClubAdvertiseDetailFile(id);
 
 		return infoDetailList;
 	}

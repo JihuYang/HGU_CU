@@ -99,7 +99,7 @@ function createCheck() {
 		document.createForm.submit();
 
 	} else {   //취소
-		history.back(-1);
+		return false;
 	}
 
 }

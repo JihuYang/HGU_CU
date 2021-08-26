@@ -32,7 +32,16 @@ public class ClubAdvertiseDAOImpl implements ClubAdvertiseDAO{
 				
 		return sqlSession.selectList(namespace+".readClubAdvertisePreview", clubAdvertiseParam);
 	}
+	
+	//동아리 홍보페이지 대표 이미지 read
+	@Override
+	public FileDTO readClubAdvertisePreviewImage(int id) {
+		
+		Map<String, Object> clubAdvertiseParam = new HashMap<String, Object>();
+		clubAdvertiseParam.put("id", id);
 
+		return sqlSession.selectOne(namespace+".readClubAdvertisePreviewImage", clubAdvertiseParam);
+	}
 
 	@Override
 	public List<ClubAdvertiseDTO> readClubAdvertiseDetail(int id) {
@@ -44,13 +53,12 @@ public class ClubAdvertiseDAOImpl implements ClubAdvertiseDAO{
 	}
 	
 	@Override
-	public ClubAdvertiseDTO readClubAdvertiseDetailId(int id) {
+	public List<FileDTO> readClubAdvertiseDetailFile(int id) {
 		
 		Map<String, Object> infoDetailList = new HashMap<String, Object>();
 		infoDetailList.put("id", id);
-		System.out.println(infoDetailList);
-				
-		return sqlSession.selectOne(namespace+".readClubAdvertiseDetailId", infoDetailList);
+		
+		return sqlSession.selectList(namespace+".readClubAdvertiseDetailFile", infoDetailList);
 	}
 
 
