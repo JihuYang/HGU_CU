@@ -21,14 +21,16 @@
 	</thead>
 	<tbody class="align-items-center p-4">
 		<c:forEach items="${reservationInfoList}" var="reservationList" varStatus="status">
-		<div id="id" style="display:none">${reservationList.id}</div>
+		
 		<c:if test="${reservationList.person != null}">
+		<div id="updateId${status.count}" style="display:none">${reservationList.id}</div>
+		<div id="userId${status.count}" style="display:none">${reservationList.userId}</div>
 			<tr>
 			<fmt:formatDate value="${reservationList.startTime}"
 				var="formattedStartTime" type="date" pattern="H:mm" />
 			<fmt:formatDate value="${reservationList.endTime}"
-				var="formattedEndTime" type="date" pattern="H:mm" /> 
-				<td id="username${status.count}" class="username">${reservationList.person}</td>
+				var="formattedEndTime" type="date" pattern="H:mm" />
+				<td id="userName${status.count}" class="userName">${reservationList.person}</td>
 				<td id="space${status.count}" class="reservation-space">${reservationList.spaceName}</td>	
 				<td id="time${status.count}" class="time">
 					<span id='reservationDate${status.count}'>${reservationList.reservationDate}</span>

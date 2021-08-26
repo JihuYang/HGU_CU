@@ -64,15 +64,14 @@
 
 			<table class="table text-center">
 				<tbody>
-					<tr>
-						<th scope="col" class="col-3 text-center file py-4">첨부파일</th>
-						<th scope="col" class="col-7 text-start px-3 py-4">파일이름.exel</th>
-					</tr>
-					<tr>
-						<th scope="col" class="col-3 text-center file py-4">첨부파일</th>
-						<th scope="col" class="col-7 text-start px-3 py-4"><a
-							href="/hgu/communityMaterial/detail/${communityMaterialDetail.id}/filedownload">${communityMaterialDetail.originalUrl}</a></th>
-					</tr>
+					<c:forEach items="${communityMaterialFileDetail}"
+						var="communityMaterialFileDetail" varStatus="status">
+						<tr>
+							<th scope="col" class="col-3 text-center file py-4">첨부파일</th>
+							<th scope="col" class="col-7 text-start px-3 py-4"><a
+								href="/hgu/communityMaterials/detail/${communityMaterialFileDetail.id}/filedownload">${communityMaterialFileDetail.originalUrl}</a></th>
+						</tr>
+					</c:forEach>
 				</tbody>
 			</table>
 

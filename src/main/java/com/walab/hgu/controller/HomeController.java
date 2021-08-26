@@ -139,6 +139,7 @@ public class HomeController {
 		mv.addObject("tag", tag);
 
 		System.out.println(mv);
+		System.out.println("tag: "+tag);
 		mv.setViewName("homeSearch");
 
 		return mv;

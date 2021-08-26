@@ -46,7 +46,7 @@
 		resultType="com.walab.hgu.DTO.FileDTO" parameterType="hashmap">
 		SELECT * FROM
 		hsca219.communityInfoFile WHERE id=#{id};
-	</select>	
+	</select>
 
 	<select id="readRecentCommunityInfo" resultType="int"
 		parameterType="hashmap">

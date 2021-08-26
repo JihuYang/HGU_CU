@@ -26,7 +26,7 @@
 		resultType="com.walab.hgu.DTO.CommunityMaterialDTO"
 		parameterType="hashmap">
 		SELECT cM.id, name as writer, title, content,
-		cM.regdate, viewCount,
+		cM.regdate, viewCount, cMF.order
 		originalUrl, realUrl
 		FROM
 		hsca219.communityMaterial as cM
@@ -35,7 +35,16 @@
 		WHERE cM.userId = u.id and cM.id = #{id} and cMF.communityMaterialId
 		= cM.id LIMIT 1
 	</select>
-
+	<select id="readCommunityMaterialFileDetail"
+		resultType="com.walab.hgu.DTO.FileDTO" parameterType="hashmap">
+		SELECT * FROM
+		hguclub.communityMaterialFile WHERE communityMaterialId=#{communityMaterialId};
+	</select>
+	<select id="readCommunityMaterialFileOneDetail"
+		resultType="com.walab.hgu.DTO.FileDTO" parameterType="hashmap">
+		SELECT * FROM
+		hguclub.communityMaterialFile WHERE id=#{id};
+	</select>
 	<select id="readRecentCommunityMaterial" resultType="int"
 		parameterType="hashmap">
 		SELECT MAX(id) FROM hsca219.communityMaterial
@@ -78,7 +87,8 @@
 		parameterType="com.walab.hgu.DTO.FileDTO">
 		UPDATE hsca219.communityMaterialFile SET
 		originalUrl =
-		#{originalUrl} WHERE communityMaterialId = #{communityMaterialId}
+		#{originalUrl} WHERE communityMaterialId = #{communityMaterialId} AND
+		id = #{id}
 	</update>
 
 	<!-- 커뮤니티 자료실 글 수정 쿼리 -->

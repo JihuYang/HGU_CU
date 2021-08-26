@@ -58,9 +58,14 @@
 					<textarea class="form-control textarea justify-content-center"
 						rows="13" id="content" name="content">${communityMaterialDetail.content}</textarea>
 				</div>
-				<div class="mb-3">기존 파일명 : ${communityMaterialDetail.originalUrl}</div>
 				<div class="mb-3">
-					<input class="form-control file" type="file" name="file" id="file"
+					기존 파일명 :
+					<c:forEach items="${communityMaterialFileDetail}"
+						var="communityMaterialFileDetail" varStatus="status">${status.count}. ${communityMaterialFileDetail.originalUrl}
+					</c:forEach>
+				</div>
+				<div class="mb-3">
+					<input class="form-control file" type="file" name="newfile" id="newfile"
 						multiple>
 				</div>
 				<div>
