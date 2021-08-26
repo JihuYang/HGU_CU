@@ -1,6 +1,7 @@
 package com.walab.hgu.service;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -65,6 +66,17 @@ public class ReservationInfoServiceImpl implements ReservationInfoService{
 	@Override
 	public int deleteAdminReservation(int id){
 		return reservationInfoDAO.deleteAdminReservation(id);
+	}
+
+	@Override //오피스아우 업데이트 
+	public void updateStartHour(Map<String, Object> officeHourStart) {
+		// TODO Auto-generated method stub
+		reservationInfoDAO.updateStartHour(officeHourStart);
+	}
+	@Override
+	public void updateEndHour(Map<String, Object> officeHourEnd) {
+		// TODO Auto-generated method stub
+		reservationInfoDAO.updateEndHour(officeHourEnd);
 	}
 
 }

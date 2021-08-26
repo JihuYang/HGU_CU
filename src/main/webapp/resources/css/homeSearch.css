@@ -2,6 +2,12 @@
 	border: none;
 }
 
+.clubAd-img{
+	width:200px;
+	height:150px;
+	object-fit: cover;
+}
+
 .background-gray {
 	background-color: rgb(242, 242, 242);
 }
@@ -11,6 +17,12 @@
 	border-radius: 6rem;
 	padding-top: 10rem;
 	padding-bottom: 10rem;
+}
+.more{
+	cursor:pointer;
+}
+.more:hover{
+	text-decoration:underline;
 }
 
 .space {
@@ -80,6 +92,12 @@
 	border-radius: 25px !important;
 	margin: 2px;
 	border: 3px solid #326295 !important;
+	width: 150px;
+}
+.no-tag {
+	border-radius: 25px !important;
+	margin: 2px;
+	border: 3px solid #D0D0CE !important;
 	width: 150px;
 }
 .search-margin{

@@ -25,6 +25,7 @@ import com.walab.hgu.DTO.ClubDTO;
 import com.walab.hgu.DTO.CommunityInfoDTO;
 import com.walab.hgu.DTO.CommunityMaterialDTO;
 import com.walab.hgu.DTO.Page;
+import com.walab.hgu.DTO.ReservationInfoDTO;
 import com.walab.hgu.DTO.SettingDTO;
 
 /**
@@ -71,15 +72,7 @@ public class HomeController {
 		}
 		List<CategoryDTO> categoryNameList = clubService.getCategoryNameList();
 		
-		List<SettingDTO> fullSettingList = settingService.readSetting();
-		List<Integer> officeHour = new ArrayList<>();
-		
-		for(int i=0;i<fullSettingList.size();i++) {
-			if(fullSettingList.get(i).getKey().equals("오피스 아워 시작 시간") || fullSettingList.get(i).getKey().equals("오피스 아워 마감 시간")) {
-				officeHour.add(fullSettingList.get(i).getValue());
-			}
-		}
-		
+		List<ReservationInfoDTO> officeHour = settingService.getOfficeHour();
 		
 		mv.addObject("categoryNameList", categoryNameList);// 인터셉터에서 넣어주기
 		mv.addObject("officeHour", officeHour);
@@ -98,41 +91,36 @@ public class HomeController {
 	@RequestMapping(value = "/search", method = RequestMethod.GET)
 	public ModelAndView searchHome(ModelAndView mv, @RequestParam("num") int num,
 			@RequestParam(value = "searchType", required = false, defaultValue = "title") String searchType,
-			@RequestParam(value = "keyword", required = false, defaultValue = "") String keyword) {
-		// ModelAndView mv = new ModelAndView();
-
-		// 게시물 총 갯수
-		int count = communityInfoService.countInfo(searchType, keyword);
-
-		// 한 페이지에 출력할 게시물 갯수
-		int postNum = 10;
-		// 하단 페이징 번호
-		int pageNum = (int) Math.ceil((double) count / postNum);
-
-		int displayPost = (num - 1) * postNum;
-
+			@RequestParam(value = "keyword", required = false, defaultValue = "") String keyword,
+			@RequestParam(value = "tag", required = false, defaultValue = "") String tag) {
+		
+		List<Page> page = new ArrayList<Page>(4);
+		for(int i=0;i<4;i++) {
+			page.add(new Page());
+			page.get(i).setNum(num); 
+			page.get(i).setSearchType(searchType);
+			page.get(i).setKeyword(keyword);
+		}
 		// 커뮤니티 공지사항 
-		List<CommunityInfoDTO> communityInfoList = communityInfoService.readCommunityInfo(displayPost, postNum,
-				searchType, keyword);
+		page.get(0).setCount(communityInfoService.countInfo(searchType, keyword));
+		//System.out.println("count: "+page.get(0).getCount());
+		List<CommunityInfoDTO> communityInfoList = communityInfoService.readCommunityInfo(page.get(0).getDisplayPost(),page.get(0).getPostNum(),searchType, keyword);
+		
 		// 커뮤니티 자료실
-		List<CommunityMaterialDTO> communityMaterialList = communityMaterialService.readCommunityMaterial(displayPost,
-				postNum, searchType, keyword);
+		page.get(1).setCount(communityMaterialService.countInfo(searchType, keyword));
+		List<CommunityMaterialDTO> communityMaterialList = communityMaterialService.readCommunityMaterial(page.get(1).getDisplayPost(),page.get(1).getPostNum(), searchType, keyword);
+		
 		// 동아리 소개
 		List<ClubDTO> clubIntroList = clubService.getAllClubIntroduction(keyword);
+		
 		// 동아리 홍보
-		Page page = new Page();
-		page.setPostNum(4);
-		page.setNum(num);
-		page.setCount(clubAdvertiseService.countInfo(searchType, keyword));
+		page.get(3).setCount(communityMaterialService.countInfo(searchType, keyword));
+		List<ClubAdvertiseDTO> clubAdvertiseList = clubAdvertiseService.readClubAdvertisePreview(page.get(3).getDisplayPost(),page.get(3).getPostNum(),searchType,keyword);
 		
-		page.setSearchType(searchType);
-		page.setKeyword(keyword);
-		List<ClubAdvertiseDTO> clubAdvertiseList = clubAdvertiseService.readClubAdvertisePreview(page.getDisplayPost(),page.getPostNum(),searchType,keyword);
-		
-		int communityInfoListCount = communityInfoList.size();
-		int communityMaterialListCount = communityMaterialList.size();
-		int clubIntroListCount = clubIntroList.size();
-		int clubAdvertiseListCount = clubAdvertiseList.size();
+		int communityInfoListCount = page.get(0).getCount();
+		int communityMaterialListCount = page.get(1).getCount();
+		int clubIntroListCount = page.get(2).getCount();
+		int clubAdvertiseListCount = page.get(3).getCount();
 		
 		mv.addObject("communityInfoListCount", communityInfoListCount);
 		mv.addObject("communityMaterialListCount", communityMaterialListCount);
@@ -145,9 +133,13 @@ public class HomeController {
 		mv.addObject("clubIntroList", clubIntroList);
 		mv.addObject("clubAdvertiseList", clubAdvertiseList);
 
-		mv.addObject("pageNum", pageNum);
+		//mv.addObject("pageNum", pageNum);
+		mv.addObject("page", page);
+		mv.addObject("selected", num);
+		mv.addObject("tag", tag);
 
 		System.out.println(mv);
+		//System.out.println("getSearchTypeKeyword: "+page.get(0).getSearchTypeKeyword());
 		mv.setViewName("homeSearch");
 
 		return mv;

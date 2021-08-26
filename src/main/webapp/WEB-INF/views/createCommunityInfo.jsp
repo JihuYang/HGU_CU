@@ -32,7 +32,10 @@
 	rel="stylesheet" />
 
 </head>
+<script src="<%=request.getContextPath()%>/resources/js/community.js"></script>
+
 <script src="https://kit.fontawesome.com/6333a60c65.js"></script>
+
 <body id="page-top">
 	<div class="container width-80 h-auto h-min">
 		<div
@@ -42,19 +45,18 @@
 			</div>
 		</div>
 		<div class="justify-content-md-center align-items-center">
-			<form method="POST" enctype="multipart/form-data" id="uploadForm"
+			<form method="POST" enctype="multipart/form-data" id="uploadForm" name="createForm"
 				action="<%=request.getContextPath()%>/communityInfo/write/create">
 				<input id="userId" name="userId" value='1' style="display: none;"></input>
 				<div class="title-bar">
 					<p class="rows title-bold">제목</p>
 					<input class="form-control title-input" type="text" id="title"
-						name="title">
+						name="title" required>
 				</div>
 				<div class="mb-3">
 					<textarea class="form-control textarea justify-content-center"
-						rows="13" id="content" name="content"></textarea>
+						rows="13" id="content" name="content" required></textarea>
 				</div>
-
 				<div class="mb-3">
 					<input class="form-control file" type="file" name="file" id="file"
 						multiple>
@@ -62,46 +64,16 @@
 				<div>
 					<a class="btn btn-primary back-btn bottom-btn" href="./"
 						role="button">뒤로</a>
-					<button class="btn btn-primary submit-btn bottom-btn" type="submit">
-						<!-- onclick="createCommunityInfo(); uploadFile();" -->
-						저장
-					</button>
+					<button class="btn btn-primary submit-btn bottom-btn" 
+						onclick="createCheck()">저장</button>
 				</div>
-
 			</form>
-
-			<%--  			<form accept-charset="UTF-8" name="searchForm"
-				action="<%=request.getContextPath()%>/communityInfo/upload.do" method="POST" enctype="multipart/form-data">
-				<div class="title-bar">
-					<p class="rows title-bold">제목</p>
-					<input class="form-control title-input" type="text">
-				</div>
-				<div class="mb-3">
-					<textarea class="form-control textarea justify-content-center"
-						rows="13"></textarea>
-				</div>
-				<div class="mb-3">
-					<input class="form-control file" type="file" name="upload"id = "upload" multiple >
-				</div>
-				<div>
-					<a class="btn btn-primary back-btn bottom-btn"
-						href="./" role="button">뒤로</a>
-					<button class="btn btn-primary submit-btn bottom-btn" onclick="location.href='<%=request.getContextPath()%>/communityInfo'" type="submit">저장</button>
-				</div>
-			</form> --%>
-
-			<!-- 
-			<form action="upload.do" method="post" enctype="multipart/form-data"> 
-							<label><input type="file" name="upload" id = "upload"/></label> 
-							<input type="submit" value="업로드" /> 
-			</form>
-				 -->
-
 		</div>
 	</div>
 
 	<!-- Footer-->
 	<jsp:include page="/WEB-INF/views/inc/footer.jsp" />
+
 	<!-- Bootstrap core JS-->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>

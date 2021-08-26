@@ -45,7 +45,7 @@
 				class="h-auto align-items-center justify-content-center text-center admin-nav-border">
 				<ul class="navbar-nav mr-auto">
 					<li class="nav-item mx-3"><a class="nav-link font-weight" style="background-color: rgb(239, 247, 253);"
-						href="<%=request.getContextPath()%>/admin?num=1">홈페이지 관리</a></li>
+						href="<%=request.getContextPath()%>/admin">홈페이지 관리</a></li>
 					<li class="nav-item mx-3"><a class="nav-link font-weight"
 						href="<%=request.getContextPath()%>/adminUser?num=1">회원 관리</a></li>
 					<li class="nav-item mx-3"><a class="nav-link font-weight"
@@ -61,7 +61,7 @@
 			<%@ include file="./ajaxContent/adminSettingList.jsp"%>
 
 		</div>
-		<div class="row h-auto align-items-center text-center">
+<%-- 		<div class="row h-auto align-items-center text-center">
 			<nav id="paginationBox">
 				<ul class="pagination align-items-center justify-content-center">
 					<c:if test="${page.prev}">
@@ -88,36 +88,14 @@
 					</c:if>
 				</ul>
 			</nav>
-		</div>
-		<div class="float-end"><button class="btn btn-primary search-btn" type="button" onclick="update()">저장</button></div>
-		<!-- <script type="text/javascript">
-			function update(){
-				var totalReservationWeek = document.getElementsByName("settingValue")[0].value;
-				var totalReservationDay = document.getElementsByName("settingValue")[1].value;
-				//alert(totalReservationWeek + " " +totalReservationDay);
-
-				$.ajax({
-				    url: "/hgu/admin/update",
-				    data: {"totalReservationWeek": totalReservationWeek, "totalReservationDay": totalReservationDay},
-				    type: "POST",
-				    success : function(data){
-				      alert("저장되었습니다.")
-				    },
-				    error : function(){
-				      alert("저장에 실패하였습니다")		
-				    }
-				  });
-				
-			}
-		</script> -->
+		</div> --%><!-- 
+		<div class="float-end"><button class="btn btn-primary search-btn" type="button" onclick="update()">저장</button></div> -->
 	</div>
 
 	<!-- Footer-->
 	<jsp:include page="/WEB-INF/views/inc/footer.jsp" />
 
 	<!-- Bootstrap core JS-->
-	<script
-		src="<%=request.getContextPath()%>/resources/js/pagenation.js"></script>
 	<script src="<%=request.getContextPath()%>/resources/js/admin.js"></script>
 
 	<script

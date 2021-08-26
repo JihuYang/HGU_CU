@@ -6,7 +6,7 @@
 
 	<select id="readClubIntroductionPreview" parameterType="HashMap" resultType="com.walab.hgu.DTO.ClubDTO">
 		SELECT CL.id,CL.clubName, u.name as clubCeoName, CL.clubLocation, u.phone,categoryId, categoryName, CL.foundationDate, cS.instagramLink, cS.facebookLink ,cI.originalUrl
-        FROM hguclub.club as CL ,hguclub.clubImage cI ,hguclub.category CA,hguclub.user u ,hguclub.clubSNS cS
+        FROM hsca219.club as CL ,hsca219.clubImage cI ,hsca219.category CA,hsca219.user u ,hsca219.clubSNS cS
 		where CA.id = CL.categoryId and CL.userId = u.id and  CL.id = cS.clubId and CL.id = cI.clubId
 		and CA.id = #{categoryId} and cI.`order` = 1
 		
@@ -15,16 +15,16 @@
 	
 	<select id="readRecentClub" resultType="int"
 		parameterType="hashmap">
-		SELECT MAX(id) FROM hguclub.club
+		SELECT MAX(id) FROM hsca219.club
 	</select>
 	
 	<select id="getCategoryNameList" resultType="com.walab.hgu.DTO.CategoryDTO">
-		Select id,categoryName FROM hguclub.category
+		Select id,categoryName FROM hsca219.category
 	</select>
 	
 	<select id="getClubDetailList" parameterType="HashMap" resultType="com.walab.hgu.DTO.ClubDTO">
 		SELECT CL.id,CL.clubName,u.name as clubCeoName,CL.clubLocation,CL.clubDescription,u.phone,categoryId,categoryName,CL.foundationDate,cS.instagramLink,cS.facebookLink ,cI.originalUrl
-        FROM hguclub.club as CL ,hguclub.clubImage cI ,hguclub.category CA,hguclub.user u ,hguclub.clubSNS cS
+        FROM hsca219.club as CL ,hsca219.clubImage cI ,hsca219.category CA,hsca219.user u ,hsca219.clubSNS cS
 		where CA.id = CL.categoryId and CL.userId = u.id and  CL.id = cS.clubId and CL.id = cI.clubId
 		and CA.id = #{categoryId} and CL.id = #{clubId} and cI.`order` = 1
 	</select>
@@ -37,14 +37,14 @@
 
 	<select id="getClubImg" parameterType="HashMap" resultType="com.walab.hgu.DTO.ClubDTO">
 		SELECT cI.originalUrl
-        FROM hguclub.club as CL ,hguclub.clubImage cI
+        FROM hsca219.club as CL ,hsca219.clubImage cI
 		where CL.id = cI.clubId
 		and CL.id = #{clubId} order by `order`
 	</select>
 	
 	<select id="getAllClubIntroduction" resultType="com.walab.hgu.DTO.ClubDTO" parameterType="hashMap">
 		SELECT CL.id,CL.clubName, u.name as clubCeoName, CL.clubLocation, u.phone,categoryId, categoryName, CL.foundationDate, cS.instagramLink, cS.facebookLink ,cI.originalUrl
-        FROM hguclub.club as CL ,hguclub.clubImage cI ,hguclub.category CA,hguclub.user u ,hguclub.clubSNS cS
+        FROM hsca219.club as CL ,hsca219.clubImage cI ,hsca219.category CA,hsca219.user u ,hsca219.clubSNS cS
 		where CA.id = CL.categoryId and CL.userId = u.id and  CL.id = cS.clubId and CL.id = cI.clubId
 		and cI.`order` = 1 
 		
@@ -57,17 +57,17 @@
 	
 	<select id="getClubList" parameterType="HashMap" resultType="com.walab.hgu.DTO.ClubDTO">
 		SELECT id,clubName
-		FROM hguclub.club
+		FROM hsca219.club
 		order by club.regdate DESC
 	</select>
 	
 	<insert id="createClubSNS" parameterType="com.walab.hgu.DTO.ClubDTO">
-		INSERT INTO hguclub.clubSNS (clubId,facebookLink,instagramLink)
+		INSERT INTO hsca219.clubSNS (clubId,facebookLink,instagramLink)
 		VALUES (#{id},#{facebookLink},#{instagramLink})
 	</insert>
 	
 	<insert id="createClubIntro" parameterType="com.walab.hgu.DTO.ClubDTO">
-		INSERT INTO hguclub.club (userId,categoryId,clubName,clubDescription,clubLocation,foundationDate)
+		INSERT INTO hsca219.club (userId,categoryId,clubName,clubDescription,clubLocation,foundationDate)
 		<!-- VALUES (#{categoryId},#{clubName},#{clubDescription},#{foundationDate},#{clubLocation}) -->
 		VALUES (#{userId},#{categoryId},#{clubName},#{clubDescription},#{clubLocation},#{foundationDate})
 	</insert>
@@ -75,7 +75,7 @@
 	<!-- 동아리 소개 이미지 업로드 쿼리 -->
 	<insert id="createClubIntroImage"
 		parameterType="com.walab.hgu.DTO.FileDTO">
-		INSERT INTO hguclub.clubImage (clubId,originalUrl,`order`)
+		INSERT INTO hsca219.clubImage (clubId,originalUrl,`order`)
 		VALUES (#{clubId},#{originalUrl},#{clubOrder})
 	</insert>
 	<select id="getClubIdByName" parameterType="HashMap" resultType="int">
@@ -102,7 +102,7 @@
 	<!-- 동아리 소개 이미지 수정 쿼리 -->
 	<update id="updateClubImage"
 		parameterType="com.walab.hgu.DTO.FileDTO">
-		UPDATE hguclub.clubImage SET
+		UPDATE hsca219.clubImage SET
 		originalUrl =
 		#{originalUrl} WHERE clubId = #{clubId}
 	</update>
@@ -110,7 +110,7 @@
 	<!-- 동아리 소개 SNS 수정 쿼리 -->
 	<update id="updateClubSNS"
 		parameterType="com.walab.hgu.DTO.ClubDTO">
-		UPDATE hguclub.clubSNS set facebookLink = #{facebookLink},
+		UPDATE hsca219.clubSNS set facebookLink = #{facebookLink},
 		instagramLink=#{instagramLink}
 		WHERE clubId = #{id}
 	</update>
@@ -118,7 +118,7 @@
 	<!-- 동아리 소개 글 수정 쿼리 -->
 	<update id="updateClubIntro"
 		parameterType="com.walab.hgu.DTO.ClubDTO">
-		UPDATE hguclub.club set categoryId = #{categoryId},
+		UPDATE hsca219.club set categoryId = #{categoryId},
 		clubName=#{clubName},userId=#{userId},
 		clubDescription=#{clubDescription},foundationDate=#{foundationDate},
 		clubLocation=#{clubLocation}
@@ -128,19 +128,19 @@
 	<!-- 동아리 소개 이미지 삭제 쿼리 -->
 	<delete id="deleteClubIntroImage"
 		parameterType="int">
-		DELETE FROM hguclub.clubImage WHERE
+		DELETE FROM hsca219.clubImage WHERE
 		clubId = #{id}
 	</delete>
 
 	<!-- 동아리 소개 글 삭제 쿼리 -->
 	<delete id="deleteClubIntroduction"
 		parameterType="int">
-		DELETE FROM hguclub.club WHERE id = #{id}
+		DELETE FROM hsca219.club WHERE id = #{id}
 	</delete>
 	
 	<!-- 동아리 SNS 삭제 쿼리 -->
 	<delete id="deleteClubSNS"
 		parameterType="int">
-		DELETE FROM hguclub.clubSNS WHERE clubId = #{id}
+		DELETE FROM hsca219.clubSNS WHERE clubId = #{id}
 	</delete>
 </mapper>

@@ -21,6 +21,7 @@ public class ReservationInfoDTO {
 	private Time endTime;
 	private String purpose;
 	private String memo;
+	private String Day;//officeHour 테이블 가져오기 위한 객체 추가 
 	private Date regdate;
 
 
@@ -154,6 +155,16 @@ public class ReservationInfoDTO {
 	@Override
 	public String toString() {
 		return "ReservaionDTO [id=" + id + " startTime="+startTime+" regdate=" + regdate+"]";
+	}
+
+
+	public String getDay() {
+		return Day;
+	}
+
+
+	public void setDay(String day) {
+		Day = day;
 	}
 	
 }

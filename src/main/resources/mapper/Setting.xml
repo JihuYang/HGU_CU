@@ -18,7 +18,13 @@
 	</select>
 	<update id="updateSetting" parameterType="hashMap">
 		UPDATE setting 
-		SET  value = #{totalReservation} WHERE id = #{id};
+		SET  value = #{value} WHERE id = #{id};
 	</update>
+	
+	
+	<select id="getOfficeHour" resultType="com.walab.hgu.DTO.ReservationInfoDTO">
+		SELECT *
+		FROM officeHour
+	</select>
 
 </mapper>

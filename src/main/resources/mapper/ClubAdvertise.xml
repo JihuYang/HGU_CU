@@ -1,15 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<!-- club 홍보  페이지에 보통 쓰일 쿼리들 모을 예정 -->
+<!-- club 홍보 페이지에 보통 쓰일 쿼리들 모을 예정 -->
 <mapper namespace="ClubAdvertise">
 
 	<select id="readClubAdvertisePreview"
 		resultType="com.walab.hgu.DTO.ClubAdvertiseDTO"
 		parameterType="hashmap">
-		select  CA.id,title, content, originalUrl
-		from clubAdvertise CA LEFT JOIN clubAdvertiseImage cAF on CA.id = cAF.clubAdvertiseId
-		
+		<!-- select CA.id, title, content, originalUrl, cAF.order from (hsca219.clubAdvertise 
+			as CA INNER JOIN hsca219.clubAdvertiseImage as cAF on CA.id = cAF.clubAdvertiseId 
+			) -->
+		select * from hsca219.clubAdvertise
+
 		<if test='searchType.equals("title")'>
 			WHERE title LIKE concat('%',#{keyword},'%')
 		</if>
@@ -17,43 +19,57 @@
 			WHERE content LIKE concat('%',#{keyword},'%')
 		</if>
 		<if test='searchType.equals("title_content")'>
-			WHERE title LIKE concat('%',#{keyword},'%') or content LIKE concat('%',#{keyword},'%')
+			WHERE title LIKE concat('%',#{keyword},'%') or content
+			LIKE concat('%',#{keyword},'%')
 		</if>
-		
-		ORDER BY CA.regdate DESC
+
+		ORDER BY regdate DESC
 		LIMIT #{displayPost}, #{postNum}
-		<!-- SELECT CA.id,title, content, originalUrl FROM hguclub.clubAdvertise CA
-    	LEFT JOIN clubAdvertiseFile cAF on CA.id = cAF.clubAdvertiseId WHERE cAF.order = 1 ORDER BY CA.regdate DESC -->
+		<!-- SELECT CA.id,title, content, originalUrl FROM hsca219.clubAdvertise 
+			CA LEFT JOIN clubAdvertiseFile cAF on CA.id = cAF.clubAdvertiseId WHERE cAF.order 
+			= 1 ORDER BY CA.regdate DESC -->
 	</select>
-	
-	<select id="readClubAdvertiseDetail" resultType="com.walab.hgu.DTO.ClubAdvertiseDTO"
-		parameterType="hashmap">
-			SELECT CA.id,title,content, CA.regdate
-			FROM clubAdvertise CA 
-			WHERE id = #{id}
+
+	<select id="readClubAdvertisePreviewImage"
+		resultType="com.walab.hgu.DTO.FileDTO" parameterType="hashmap">
+		SELECT * FROM hsca219.clubAdvertiseImage as CA WHERE CA.fileOrder=1 AND
+		clubAdvertiseId=#{id}
 	</select>
-	
-	<select id="readClubAdvertiseDetailId"
+
+	<select id="readClubAdvertiseDetail"
 		resultType="com.walab.hgu.DTO.ClubAdvertiseDTO"
 		parameterType="hashmap">
-		SELECT CA.id, CAF.fileOriginalUrl 
-			FROM clubAdvertise CA , hguclub.clubAdvertiseFile as CAF
-			WHERE CA.id = #{id} and CA.id=CAF.clubAdvertiseId LIMIT 1
+		SELECT CA.id,title,content, CA.regdate
+		FROM clubAdvertise
+		CA
+		WHERE id = #{id}
 	</select>
-	
+
+	<select id="readClubAdvertiseDetailFile"
+		resultType="com.walab.hgu.DTO.FileDTO" parameterType="hashmap">
+		SELECT * FROM
+		hsca219.clubAdvertiseFile WHERE id=#{id};
+		<!-- SELECT CA.id, CAF.fileOriginalUrl FROM clubAdvertise CA , hsca219.clubAdvertiseFile 
+			as CAF WHERE CA.id = #{id} and CA.id=CAF.clubAdvertiseId -->
+	</select>
+
 	<select id="readRecentClubAd" resultType="int"
 		parameterType="hashmap">
-		SELECT MAX(id) FROM hguclub.clubAdvertise
+		SELECT MAX(id) FROM hsca219.clubAdvertise
 	</select>
-	
-	<select id="getClubAdImg" resultType="com.walab.hgu.DTO.ClubAdvertiseDTO"
+
+	<select id="getClubAdImg"
+		resultType="com.walab.hgu.DTO.ClubAdvertiseDTO"
 		parameterType="hashmap">
-			SELECT originalUrl
-			FROM clubAdvertiseImage RIGHT JOIN clubAdvertise cA on cA.id = clubAdvertiseImage.clubAdvertiseId
-			WHERE clubAdvertiseId = #{id} ORDER BY `order`
-			
+		SELECT originalUrl, fileOrder
+		FROM clubAdvertiseImage RIGHT JOIN
+		clubAdvertise cA on cA.id =
+		clubAdvertiseImage.clubAdvertiseId
+		WHERE
+		clubAdvertiseId = #{id} ORDER BY `fileOrder`
+
 	</select>
-	
+
 	<select id="countInfo" resultType="int" parameterType="hashmap">
 		SELECT COUNT(*) as listCnt
 		FROM clubAdvertise
@@ -64,50 +80,55 @@
 			WHERE content LIKE concat('%',#{keyword},'%')
 		</if>
 		<if test='searchType.equals("title_content")'>
-			WHERE title LIKE concat('%',#{keyword},'%') or content LIKE concat('%',#{keyword},'%')
+			WHERE title LIKE concat('%',#{keyword},'%') or content
+			LIKE concat('%',#{keyword},'%')
 		</if>
 	</select>
-	
-	<!-- 동아리 홍보  업로드 쿼리 -->
-	<insert id="createClubAd" parameterType="com.walab.hgu.DTO.ClubAdvertiseDTO">
-		INSERT INTO hguclub.clubAdvertise (title,content)
-		VALUES (#{title},#{content})
+
+	<!-- 동아리 홍보 업로드 쿼리 -->
+	<insert id="createClubAd"
+		parameterType="com.walab.hgu.DTO.ClubAdvertiseDTO">
+		INSERT INTO hsca219.clubAdvertise (title,content)
+		VALUES
+		(#{title},#{content})
 	</insert>
-	
+
 	<!-- 동아리 홍보 이미지 업로드 쿼리 -->
 	<insert id="createClubAdImage"
 		parameterType="com.walab.hgu.DTO.FileDTO">
-		INSERT INTO hguclub.clubAdvertiseImage (clubAdvertiseId,
-		originalUrl)
-		VALUES (#{clubAdvertiseId}, #{originalUrl})
+		INSERT INTO hsca219.clubAdvertiseImage (clubAdvertiseId,
+		originalUrl, fileOrder)
+		VALUES (#{clubAdvertiseId}, #{originalUrl},
+		#{fileOrder})
 	</insert>
-	
+
 	<!-- 동아리 홍보 일반 파일 업로드 쿼리 -->
 	<insert id="createClubAdFile"
 		parameterType="com.walab.hgu.DTO.FileDTO">
-		INSERT INTO hguclub.clubAdvertiseFile (clubAdvertiseId,
-		fileOriginalUrl)
-		VALUES (#{clubAdvertiseId}, #{fileOriginalUrl})
+		INSERT INTO hsca219.clubAdvertiseFile (clubAdvertiseId,
+		fileOriginalUrl, fileOrder)
+		VALUES (#{clubAdvertiseId},
+		#{fileOriginalUrl}, #{fileOrder})
 	</insert>
-	
+
 	<!-- 동아리 홍보 파일 삭제 쿼리 -->
-	<delete id="deleteClubAdvertiseFile"
-		parameterType="int">
-		DELETE FROM hguclub.clubAdvertiseFile WHERE
+	<delete id="deleteClubAdvertiseFile" parameterType="int">
+		DELETE FROM
+		hsca219.clubAdvertiseFile WHERE
 		clubAdvertiseId = #{id}
 	</delete>
-	
+
 	<!-- 동아리 홍보 이미지 삭제 쿼리 -->
-	<delete id="deleteClubAdvertiseImage"
-		parameterType="int">
-		DELETE FROM hguclub.clubAdvertiseImage WHERE
+	<delete id="deleteClubAdvertiseImage" parameterType="int">
+		DELETE FROM
+		hsca219.clubAdvertiseImage WHERE
 		clubAdvertiseId = #{id}
 	</delete>
 
 	<!-- 동아리 홍보 글 삭제 쿼리 -->
-	<delete id="deleteClubAdvertise"
-		parameterType="int">
-		DELETE FROM hguclub.clubAdvertise WHERE id = #{id}
+	<delete id="deleteClubAdvertise" parameterType="int">
+		DELETE FROM
+		hsca219.clubAdvertise WHERE id = #{id}
 	</delete>
 
 </mapper>

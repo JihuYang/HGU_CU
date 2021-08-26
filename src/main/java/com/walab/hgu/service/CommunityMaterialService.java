@@ -14,6 +14,10 @@ public interface CommunityMaterialService {
 
 	public CommunityMaterialDTO readCommunityMaterialDetail(int id);
 
+	public List<FileDTO> readCommunityMaterialFileDetail(int communityMaterialId);
+
+	public FileDTO readCommunityMaterialFileOneDetail(int id);
+
 	public int createCommunityMaterial(CommunityMaterialDTO communityMaterial);
 
 	public int createCommunityMaterialFile(FileDTO communityMaterialFile);

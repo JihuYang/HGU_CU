@@ -10,13 +10,13 @@
  	<!-- 행사일정 추가 쿼리 -->
 	<insert id="createEvent"
 		parameterType="com.walab.hgu.DTO.EventDTO">
-		INSERT INTO hguclub.event (eventName, eventSpace, eventContent, startDate, endDate) 
+		INSERT INTO hsca219.event (eventName, eventSpace, eventContent, startDate, endDate) 
 		VALUES (#{eventName}, #{eventSpace}, #{eventContent}, #{startDate}, #{endDate});
 	</insert>
 	
 	<update id="updateEvent"
 		parameterType="com.walab.hgu.DTO.EventDTO">
-		UPDATE hguclub.event set eventName = #{eventName},
+		UPDATE hsca219.event set eventName = #{eventName},
 		eventSpace=#{eventSpace},eventContent=#{eventContent} ,
 		startDate=#{startDate},endDate=#{endDate}
 		WHERE id = #{id}
@@ -25,7 +25,7 @@
 	<!-- 행사일정 삭제 쿼리 -->
 	<delete id="deleteEvent"
 		parameterType="int">
-		DELETE FROM hguclub.event WHERE id = #{id}
+		DELETE FROM hsca219.event WHERE id = #{id}
 	</delete>
 
 </mapper>

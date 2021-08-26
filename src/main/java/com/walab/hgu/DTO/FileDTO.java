@@ -15,6 +15,7 @@ public class FileDTO {
 	private String fileOriginalUrl;
 	private String realUrl;
 	private MultipartFile file; 
+	private int fileOrder;
 	private int order;
 	private int clubOrder;
 	private Date regdate;
@@ -55,6 +56,12 @@ public class FileDTO {
 	public void setFile(MultipartFile file) {
 		this.file = file;
 	}
+	public int getFileOrder() {
+		return fileOrder;
+	}
+	public void setFileOrder(int fileOrder) {
+		this.fileOrder = fileOrder;
+	}
 	public int getOrder() {
 		return order;
 	}
@@ -87,8 +94,6 @@ public class FileDTO {
 	public void setClubId(int clubId) {
 		this.clubId = clubId;
 	}
-	
-
 	public int getClubOrder() {
 		return clubOrder;
 	}
@@ -98,9 +103,10 @@ public class FileDTO {
 	@Override
 	public String toString() {
 		return "FileDTO [id=" + id + ", communityInfoId=" + communityInfoId + ", communityMaterialId="
-				+ communityMaterialId + ", clubAdvertiseId=" + clubAdvertiseId + ", originalUrl=" + originalUrl
-				+ ", fileOriginalUrl=" + fileOriginalUrl + ", realUrl=" + realUrl + ", file=" + file + ", order="
-				+ order + ", regdate=" + regdate + "]";
+				+ communityMaterialId + ", clubAdvertiseId=" + clubAdvertiseId + ", clubId=" + clubId + ", originalUrl="
+				+ originalUrl + ", fileOriginalUrl=" + fileOriginalUrl + ", realUrl=" + realUrl + ", file=" + file
+				+ ", fileOrder=" + fileOrder + ", order=" + order + ", clubOrder=" + clubOrder + ", regdate=" + regdate
+				+ "]";
 	}
 
 }
