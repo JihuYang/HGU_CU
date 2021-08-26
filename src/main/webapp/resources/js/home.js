@@ -6,7 +6,7 @@ function searchHome(){
   			/*console.log(searchType)
   			console.log(keyword)*/
   			
-  			location.href = "/hgu/search?num=1"+"&keyword=" + keyword;
+  			location.href = "/hgu/search?num=1"+ "&searchType=title" +"&keyword=" + keyword;
   			
  		};
 }
@@ -23,4 +23,13 @@ function searchInSearchPage(){
   			location.href = "/hgu/search?num=1"+ "&searchType=" + searchType +"&keyword=" + keyword;
   			
  		};
+}
+
+function getContent(tag,searchType,keyword){
+	//alert(keyword);
+	if(typeof keyword == "undefined"){
+		keyword = "";
+	}
+	location.href = "/hgu/search?num=1&searchType=" + searchType +"&keyword=" + keyword + "&tag=" + tag;
+
 }

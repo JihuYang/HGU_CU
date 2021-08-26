@@ -1,4 +1,5 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ page session="false"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <link href="<%=request.getContextPath()%>/resources/css/footer.css" rel="stylesheet" />
@@ -16,7 +17,9 @@
 				<div class="small text-center text-muted">
 					오피스 아워 시간: <br>
 					<c:forEach items="${officeHour}" var="officeHour" varStatus="status">
-						${officeHour.day} : ${officeHour.startTime} ~ ${officeHour.endTime}<br>
+					<fmt:formatDate value="${officeHour.startTime}" var="formattedStartTime" type="time" pattern="HH:mm"/>
+					<fmt:formatDate value="${officeHour.endTime}" var="formattedEndTime" type="time" pattern="HH:mm"/>
+						${officeHour.day} : ${formattedStartTime} ~ ${formattedEndTime}<br>
 					</c:forEach>
 				</div>
 			</div>

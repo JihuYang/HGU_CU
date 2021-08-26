@@ -53,7 +53,9 @@ public class CommunityInfoController {
 		Page page = new Page();
 		page.setNum(num);
 		page.setCount(communityInfoService.countInfo(searchType, keyword));
-
+//		System.out.println(page.isPrev());
+//		System.out.println(page.isNext());
+		
 		// 검색 타입과 검색어
 		page.setSearchType(searchType);
 		page.setKeyword(keyword);
