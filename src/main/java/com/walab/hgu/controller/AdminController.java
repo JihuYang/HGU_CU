@@ -223,7 +223,7 @@ public class AdminController {
 	@RequestMapping(value = "/adminReservation/update", method =RequestMethod.POST)
 	@ResponseBody
 	public ModelAndView updateAdminReservationInfo(ModelAndView mv,
-			@RequestParam(value="userId") int id,
+			@RequestParam(value="id") int id,
 			@RequestParam(value="userId") int userId,
 			@RequestParam(value="spaceId") int spaceId,
 			@RequestParam(value="startTime") Time startTime,
