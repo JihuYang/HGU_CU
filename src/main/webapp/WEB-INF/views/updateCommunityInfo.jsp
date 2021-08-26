@@ -58,15 +58,12 @@
 					<textarea class="form-control textarea justify-content-center"
 						rows="13" id="content" name="content">${communityInfoDetail.content}</textarea>
 				</div>
-
 				<div class="mb-3">
 					기존 파일명 :
 					<c:forEach items="${communityInfoFileDetail}"
 						var="communityInfoFileDetail" varStatus="status">${status.count}. ${communityInfoFileDetail.originalUrl}
 					</c:forEach>
 				</div>
-
-
 				<div class="mb-3">
 					<input class="form-control file" type="file" name="newfile"
 						id="newfile" multiple>
@@ -84,16 +81,6 @@
 	<!-- Footer-->
 	<jsp:include page="/WEB-INF/views/inc/footer.jsp" />
 	<!-- Bootstrap core JS-->
-	<script>
-		var fileCheck = document.getElementById("newfile").value;
-		if (!fileCheck) {
-			alert("파일이 없습니다!");
-			return false;
-		} else {
-alert('파일 있음');
-			}
-		
-	</script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 	<!-- SimpleLightbox plugin JS-->

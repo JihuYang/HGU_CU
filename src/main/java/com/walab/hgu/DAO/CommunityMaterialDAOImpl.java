@@ -20,15 +20,16 @@ public class CommunityMaterialDAOImpl implements CommunityMaterialDAO {
 	private String namespace = "CommunityMaterial";
 
 	@Override
-	public List<CommunityMaterialDTO> readCommunityMaterial(int displayPost, int postNum,String searchType, String keyword) {
-		
+	public List<CommunityMaterialDTO> readCommunityMaterial(int displayPost, int postNum, String searchType,
+			String keyword) {
+
 		Map<String, Object> communityMaterialParam = new HashMap<String, Object>();
 		communityMaterialParam.put("displayPost", displayPost);
 		communityMaterialParam.put("postNum", postNum);
 		communityMaterialParam.put("searchType", searchType);
 		communityMaterialParam.put("keyword", keyword);
-				
-		return sqlSession.selectList(namespace+".readCommunityMaterial", communityMaterialParam);
+
+		return sqlSession.selectList(namespace + ".readCommunityMaterial", communityMaterialParam);
 	}
 
 	@Override
@@ -38,6 +39,24 @@ public class CommunityMaterialDAOImpl implements CommunityMaterialDAO {
 		materialDetailList.put("id", id);
 
 		return sqlSession.selectOne(namespace + ".readCommunityMaterialDetail", materialDetailList);
+	}
+
+	@Override
+	public List<FileDTO> readCommunityMaterialFileDetail(int communityMaterialId) {
+
+		Map<String, Object> infoFileDetailList = new HashMap<String, Object>();
+		infoFileDetailList.put("communityMaterialId", communityMaterialId);
+
+		return sqlSession.selectList(namespace + ".readCommunityMaterialFileDetail", infoFileDetailList);
+	}
+
+	@Override
+	public FileDTO readCommunityMaterialFileOneDetail(int id) {
+
+		Map<String, Object> materialFileOneDetailList = new HashMap<String, Object>();
+		materialFileOneDetailList.put("id", id);
+
+		return sqlSession.selectOne(namespace + ".readCommunityMaterialFileOneDetail", materialFileOneDetailList);
 	}
 
 	@Override
@@ -106,12 +125,12 @@ public class CommunityMaterialDAOImpl implements CommunityMaterialDAO {
 
 	@Override
 	public int countInfo(String searchType, String keyword) {
-		
+
 		Map<String, Object> communityMaterialParam = new HashMap<String, Object>();
 		communityMaterialParam.put("searchType", searchType);
 		communityMaterialParam.put("keyword", keyword);
-		
-		return sqlSession.selectOne(namespace+".countInfo",communityMaterialParam);
-	}	
-	
+
+		return sqlSession.selectOne(namespace + ".countInfo", communityMaterialParam);
+	}
+
 }

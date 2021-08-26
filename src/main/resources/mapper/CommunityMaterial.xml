@@ -7,8 +7,10 @@
 		resultType="com.walab.hgu.DTO.CommunityMaterialDTO"
 		parameterType="hashmap">
 		SELECT c.id, name as writer, title, content, c.regdate, viewCount
-		FROM hguclub.communityMaterial as c
-		INNER JOIN hguclub.user as u ON c.userId = u.id
+		FROM
+		hguclub.communityMaterial as c
+		INNER JOIN hguclub.user as u ON c.userId
+		= u.id
 		<if test='searchType.equals("title")'>
 			WHERE title LIKE concat('%',#{keyword},'%')
 		</if>
@@ -16,7 +18,8 @@
 			WHERE content LIKE concat('%',#{keyword},'%')
 		</if>
 		<if test='searchType.equals("title_content")'>
-			WHERE title LIKE concat('%',#{keyword},'%') or content LIKE concat('%',#{keyword},'%')
+			WHERE title LIKE concat('%',#{keyword},'%') or content
+			LIKE concat('%',#{keyword},'%')
 		</if>
 		ORDER BY c.regdate DESC
 		LIMIT #{displayPost}, #{postNum}
@@ -26,16 +29,29 @@
 		resultType="com.walab.hgu.DTO.CommunityMaterialDTO"
 		parameterType="hashmap">
 		SELECT cM.id, name as writer, title, content,
-		cM.regdate, viewCount,
+		cM.regdate, viewCount, cMF.order
 		originalUrl, realUrl
 		FROM
 		hguclub.communityMaterial as cM
-		,hguclub.user u, hguclub.communityMaterialFile
+		,hguclub.user u,
+		hguclub.communityMaterialFile
 		as cMF
-		WHERE cM.userId = u.id and cM.id = #{id} and cMF.communityMaterialId
+		WHERE cM.userId = u.id and cM.id =
+		#{id} and cMF.communityMaterialId
 		= cM.id LIMIT 1
 	</select>
+	<select id="readCommunityMaterialFileDetail"
+		resultType="com.walab.hgu.DTO.FileDTO" parameterType="hashmap">
+		SELECT * FROM
+		hguclub.communityMaterialFile WHERE communityMaterialId=#{communityMaterialId};
+	</select>
 
+	<select id="readCommunityMaterialFileOneDetail"
+		resultType="com.walab.hgu.DTO.FileDTO" parameterType="hashmap">
+		SELECT * FROM
+		hguclub.communityMaterialFile WHERE id=#{id};
+	</select>
+	
 	<select id="readRecentCommunityMaterial" resultType="int"
 		parameterType="hashmap">
 		SELECT MAX(id) FROM hguclub.communityMaterial
@@ -51,7 +67,8 @@
 			WHERE content LIKE concat('%',#{keyword},'%')
 		</if>
 		<if test='searchType.equals("title_content")'>
-			WHERE title LIKE concat('%',#{keyword},'%') or content LIKE concat('%',#{keyword},'%')
+			WHERE title LIKE concat('%',#{keyword},'%') or content
+			LIKE concat('%',#{keyword},'%')
 		</if>
 	</select>
 
@@ -78,7 +95,8 @@
 		parameterType="com.walab.hgu.DTO.FileDTO">
 		UPDATE hguclub.communityMaterialFile SET
 		originalUrl =
-		#{originalUrl} WHERE communityMaterialId = #{communityMaterialId}
+		#{originalUrl} WHERE communityMaterialId = #{communityMaterialId} AND
+		id = #{id}
 	</update>
 
 	<!-- 커뮤니티 자료실 글 수정 쿼리 -->

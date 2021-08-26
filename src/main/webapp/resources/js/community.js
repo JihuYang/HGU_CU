@@ -55,7 +55,7 @@ function uploadFile() {
 		processData: false,
 		contentType: false,
 		success: function(data) {
-			console.log("파일 업로드 성공!!");		
+			console.log("파일 업로드 성공!!");
 			//location.href = "/hgu/communityInfo";
 		},
 		error: function(e) {
@@ -64,32 +64,44 @@ function uploadFile() {
 	});
 }
 
-function searchInfo(){
-	
- 		document.getElementById("searchBtn").onclick = function () {
-    
-  			let searchType = document.getElementsByName("searchType")[0].value;
-  			let keyword =  document.getElementsByName("keyword")[0].value;
-  
-  			/* console.log(searchType)
-  			console.log(keyword) */
-  			//alert("23");
-  			location.href = "/hgu/communityInfo?num=1"+ "&searchType=" + searchType + "&keyword=" + keyword;
- 		};
+function searchInfo() {
+
+	document.getElementById("searchBtn").onclick = function() {
+
+		let searchType = document.getElementsByName("searchType")[0].value;
+		let keyword = document.getElementsByName("keyword")[0].value;
+
+		/* console.log(searchType)
+		console.log(keyword) */
+		//alert("23");
+		location.href = "/hgu/communityInfo?num=1" + "&searchType=" + searchType + "&keyword=" + keyword;
+	};
 }
 
-function searchMaterial(){
-	
- 		document.getElementById("searchBtn2").onclick = function () {
-    
-  			let searchType = document.getElementsByName("searchType")[0].value;
-  			let keyword =  document.getElementsByName("keyword")[0].value;
-  
-  			/*console.log(searchType)
-  			console.log(keyword)*/
-  			
-  			location.href = "/hgu/communityMaterials?num=1"+ "&searchType=" + searchType + "&keyword=" + keyword;
-  			
- 		};
-}
+function searchMaterial() {
 
+	document.getElementById("searchBtn2").onclick = function() {
+
+		let searchType = document.getElementsByName("searchType")[0].value;
+		let keyword = document.getElementsByName("keyword")[0].value;
+
+		/*console.log(searchType)
+		console.log(keyword)*/
+
+		location.href = "/hgu/communityMaterials?num=1" + "&searchType=" + searchType + "&keyword=" + keyword;
+
+	};
+}
+function createCheck() {
+
+	if (confirm("글을 등록하시겠습니까?") == true) {    //확인
+
+		document.createForm.submit();
+
+	} else {   //취소
+
+		return;
+
+	}
+
+}

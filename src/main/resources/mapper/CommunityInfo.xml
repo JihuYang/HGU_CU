@@ -38,19 +38,19 @@
 		WHERE cI.userId = u.id and cI.id = #{id} and cIF.communityInfoId
 		= cI.id LIMIT 1
 	</select>
-	
+
 	<select id="readCommunityInfoFileDetail"
 		resultType="com.walab.hgu.DTO.FileDTO" parameterType="hashmap">
 		SELECT * FROM
 		hguclub.communityInfoFile WHERE communityInfoId=#{communityInfoId};
 	</select>
-	
+
 	<select id="readCommunityInfoFileOneDetail"
 		resultType="com.walab.hgu.DTO.FileDTO" parameterType="hashmap">
 		SELECT * FROM
 		hguclub.communityInfoFile WHERE id=#{id};
-	</select>	
-	
+	</select>
+
 	<select id="readRecentCommunityInfo" resultType="int"
 		parameterType="hashmap">
 		SELECT MAX(id) FROM hguclub.communityInfo
@@ -77,7 +77,8 @@
 		parameterType="com.walab.hgu.DTO.FileDTO">
 		UPDATE hguclub.communityInfoFile SET
 		originalUrl =
-		#{originalUrl} WHERE communityInfoId = #{communityInfoId} AND id = #{id}
+		#{originalUrl} WHERE communityInfoId = #{communityInfoId} AND id =
+		#{id}
 	</update>
 
 	<!-- 커뮤니티 공지사항 글 수정 쿼리 -->

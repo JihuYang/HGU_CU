@@ -17,12 +17,14 @@ public class CommunityMaterialServiceImpl implements CommunityMaterialService {
 	CommunityMaterialDAO communityMaterialDAO;
 
 	@Override
-	public List<CommunityMaterialDTO> readCommunityMaterial(int displayPost, int postNum,String searchType, String keyword){
-		
-		List<CommunityMaterialDTO> infoList = communityMaterialDAO.readCommunityMaterial(displayPost, postNum,searchType,keyword);
+	public List<CommunityMaterialDTO> readCommunityMaterial(int displayPost, int postNum, String searchType,
+			String keyword) {
+
+		List<CommunityMaterialDTO> infoList = communityMaterialDAO.readCommunityMaterial(displayPost, postNum,
+				searchType, keyword);
 
 		return infoList;
-		
+
 	}
 
 	@Override
@@ -31,6 +33,24 @@ public class CommunityMaterialServiceImpl implements CommunityMaterialService {
 		CommunityMaterialDTO materialDetail = communityMaterialDAO.readCommunityMaterialDetail(id);
 
 		return materialDetail;
+	}
+
+	@Override
+	public List<FileDTO> readCommunityMaterialFileDetail(int communityMaterialId) {
+
+		List<FileDTO> materialFileDetailList = communityMaterialDAO.readCommunityMaterialFileDetail(communityMaterialId);
+
+		return materialFileDetailList;
+
+	}
+
+	@Override
+	public FileDTO readCommunityMaterialFileOneDetail(int id) {
+
+		FileDTO materialFileOneDetailList = communityMaterialDAO.readCommunityMaterialFileOneDetail(id);
+
+		return materialFileOneDetailList;
+
 	}
 
 	@Override
@@ -89,8 +109,7 @@ public class CommunityMaterialServiceImpl implements CommunityMaterialService {
 	@Override
 	public int countInfo(String searchType, String keyword) {
 		// TODO Auto-generated method stub
-		return communityMaterialDAO.countInfo(searchType,keyword);
+		return communityMaterialDAO.countInfo(searchType, keyword);
 	}
-
 
 }

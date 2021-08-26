@@ -71,25 +71,21 @@ public class CommunityInfoController {
 
 		return mv;
 	}
-
+	
+	// 각 페이지 read
 	@RequestMapping(value = "/communityInfo/detail/{id}", method = RequestMethod.GET)
 	public ModelAndView readCommunityInfoDetail(@PathVariable int id, HttpSession session, HttpServletRequest request,
 			HttpServletResponse response) {
 		ModelAndView mv = new ModelAndView();
-
+		
+		// 조회수 업데이트
 		communityInfoService.updateViewCount(id);
-
+		// 공지사항 read
 		CommunityInfoDTO communityInfoDetail = communityInfoService.readCommunityInfoDetail(id);
-
+		// 공지사항 file read
 		List<FileDTO> communityInfoFileDetail = communityInfoService.readCommunityInfoFileDetail(id);
 
-		System.out.println(communityInfoFileDetail);
-
 		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file");
-
-		String fileName = communityInfoDetail.getOriginalUrl();
-
-		System.out.println("filename: " + fileName);
 
 		mv.addObject("communityInfoDetail", communityInfoDetail);
 		mv.addObject("communityInfoFileDetail", communityInfoFileDetail);
@@ -106,52 +102,7 @@ public class CommunityInfoController {
 
 		return mv;
 	}
-
-	@RequestMapping(value = "/communityInfo/update/{id}", method = { RequestMethod.GET, RequestMethod.POST })
-	public ModelAndView updateCommunityInfo(@PathVariable int id, HttpSession session, HttpServletRequest request,
-			HttpServletResponse response) {
-		ModelAndView mv = new ModelAndView();
-
-		communityInfoService.updateViewCount(id);
-
-		CommunityInfoDTO communityInfoDetail = communityInfoService.readCommunityInfoDetail(id);
-
-		List<FileDTO> communityInfoFileDetail = communityInfoService.readCommunityInfoFileDetail(id);
-
-		mv.addObject("communityInfoDetail", communityInfoDetail);
-		mv.addObject("communityInfoFileDetail", communityInfoFileDetail);
-
-		System.out.println(mv);
-
-		mv.setViewName("updateCommunityInfo");
-
-		return mv;
-	}
-
-	@RequestMapping(value = "/communityInfo/delete/{id}", method = { RequestMethod.GET, RequestMethod.POST })
-	public ModelAndView deleteCommunityInfo(@PathVariable int id, HttpSession session, HttpServletRequest request,
-			HttpServletResponse response) {
-		ModelAndView mv = new ModelAndView();
-
-		communityInfoService.deleteCommunityInfoFile(id);
-		communityInfoService.deleteCommunityInfo(id);
-
-		CommunityInfoDTO communityInfoDetail = communityInfoService.readCommunityInfoDetail(id);
-		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file");
-
-		// String fileName = communityInfoDetail.getOriginalUrl();
-
-		// System.out.println("filename: " + fileName);
-
-		mv.addObject("communityInfoDetail", communityInfoDetail);
-
-		System.out.println(mv);
-
-		mv.setViewName("redirect:/communityInfo?num=1");
-
-		return mv;
-	}
-
+	
 	@RequestMapping(value = "/communityInfo/write/create", method = RequestMethod.POST)
 	@ResponseBody
 	public ModelAndView createCommunityInfo(ModelAndView mv, MultipartHttpServletRequest request, MultipartFile file) {
@@ -174,8 +125,6 @@ public class CommunityInfoController {
 		communityInfoService.createCommunityInfo(info);
 
 		int recentId = communityInfoService.readRecentCommunityInfo();
-
-		System.out.println(recentId);
 
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 		Date time = new Date();
@@ -218,8 +167,6 @@ public class CommunityInfoController {
 					e.printStackTrace();
 				}
 			}
-
-			System.out.println(saveDir);
 		}
 
 		System.out.println(info.toString());
@@ -229,7 +176,7 @@ public class CommunityInfoController {
 
 		return mv;
 	}
-
+	
 	@RequestMapping(value = "/communityInfo/write/update", method = RequestMethod.POST)
 	@ResponseBody
 	public ModelAndView updateCommunityInfo(ModelAndView mv, MultipartHttpServletRequest request, MultipartFile file) {
@@ -299,11 +246,45 @@ public class CommunityInfoController {
 				System.out.println(saveDir);
 			}
 		}
-			
-	
 
 		System.out.println(info.toString());
 		System.out.println(infoFile.toString());
+
+		mv.setViewName("redirect:/communityInfo?num=1");
+
+		return mv;
+	}
+	
+	@RequestMapping(value = "/communityInfo/update/{id}", method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView updateCommunityInfo(@PathVariable int id, HttpSession session, HttpServletRequest request,
+			HttpServletResponse response) {
+		ModelAndView mv = new ModelAndView();
+
+		communityInfoService.updateViewCount(id);
+
+		CommunityInfoDTO communityInfoDetail = communityInfoService.readCommunityInfoDetail(id);
+
+		List<FileDTO> communityInfoFileDetail = communityInfoService.readCommunityInfoFileDetail(id);
+
+		mv.addObject("communityInfoDetail", communityInfoDetail);
+		mv.addObject("communityInfoFileDetail", communityInfoFileDetail);
+
+		System.out.println(mv);
+
+		mv.setViewName("updateCommunityInfo");
+
+		return mv;
+	}
+
+	@RequestMapping(value = "/communityInfo/delete/{id}", method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView deleteCommunityInfo(@PathVariable int id, HttpSession session, HttpServletRequest request,
+			HttpServletResponse response) {
+		ModelAndView mv = new ModelAndView();
+
+		communityInfoService.deleteCommunityInfoFile(id);
+		communityInfoService.deleteCommunityInfo(id);
+
+		System.out.println(mv);
 
 		mv.setViewName("redirect:/communityInfo?num=1");
 
@@ -313,22 +294,15 @@ public class CommunityInfoController {
 	@RequestMapping("/communityInfo/detail/{id}/filedownload")
 	public void fileDownload(@PathVariable int id, HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView mv = new ModelAndView();
-
+		
+		// file read
 		FileDTO communityInfoFileDetail = communityInfoService.readCommunityInfoFileOneDetail(id);
-
+		// file의 regdate를 불러와 저장된 폴더 read
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
-
-		Date time = new Date();
-
 		String folder = format.format(communityInfoFileDetail.getRegdate());
-
-		System.out.println("download: " + folder);
-
 		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file/" + folder);
-
 		String fileName = communityInfoFileDetail.getOriginalUrl();
 
-		System.out.println("filename: " + fileName);
 
 		File file = new File(saveDir + "/" + fileName);
 		FileInputStream fis = null;
