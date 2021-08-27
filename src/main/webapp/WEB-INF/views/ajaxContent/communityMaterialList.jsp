@@ -11,7 +11,7 @@
 			<p class="text-muted">* 단어의 철자가 정확한지 확인해 주세요<br>* 띄어쓰기가 정확한지 획인해 주세요</p>
 </c:if>
 <c:if test="${ !empty communityMaterialList}">
-<table class="table text-center">
+<table class="table text-center table-layout-f">
 	<thead>
 		<tr>
 			<th scope="col" class="col-1 text-center">번호</th>
@@ -29,7 +29,7 @@
 			<tr class="tr-hover" style="cursor:pointer;" onClick="location.href='<%=request.getContextPath()%>/communityMaterials/detail/${communityMaterial.id}'">
 				<%-- <th scope="row">${fn:length(communityMaterialList) - status.index}</th> --%>
 				<th scope="row">${communityMaterial.id}</th>
-				<td class="text-start">${communityMaterial.title}</td>
+				<td class="text-start title-shortening">${communityMaterial.title}</td>
 				<td id="writer">${communityMaterial.writer}</td>
 				<td id="date">${formattedRegDate}</td>
 				<td id="count">${communityMaterial.viewCount}</td>

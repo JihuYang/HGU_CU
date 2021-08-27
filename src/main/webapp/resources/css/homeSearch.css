@@ -106,6 +106,13 @@
 .club-content{
 	display:flex; 
 }
+
+.clubAd-content{
+	overflow: hidden;
+  	text-overflow: ellipsis;
+  	white-space: nowrap;
+}  
+
 .logo-display{
 	display:inline-flex !important;
 }

@@ -357,7 +357,7 @@
 						<p class="text-muted">* 단어의 철자가 정확한지 확인해 주세요<br>* 띄어쓰기가 정확한지 획인해 주세요</p>
 					</c:if>
 					<c:if test="${ !empty clubAdvertiseList}">
-					<table class="table table-hover table-mb">
+					<table class="table table-hover table-mb" style="table-layout: fixed;">
 						<thead>
 								<tr>
 									<th scope="col" class="col-3 text-center">제목</th>

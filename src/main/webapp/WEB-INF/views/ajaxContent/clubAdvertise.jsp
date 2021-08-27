@@ -27,7 +27,7 @@
 				</c:when>
 			</c:choose>
 			<td>
-				<h5>${clubAdvertiseList.title}</h5>
+				<h5 class="clubAd-content">${clubAdvertiseList.title}</h5>
 				<p class="text-muted p-size clubAd-content">${clubAdvertiseList.content}</p>
 			</td>
 		</tr>
