@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletOutputStream;
@@ -31,212 +32,236 @@ import com.walab.hgu.service.ClubAdvertiseService;
 
 @Controller
 public class ClubAdvertiseController {
-		
+
 	@Autowired
 	ClubAdvertiseService clubAdvertiseService;
-	
-		//동아리 홍보 페이지 컨트롤러 
-		@RequestMapping(value = "/clubAdvertise", method = RequestMethod.GET)
-		public ModelAndView clubAdvertise(ModelAndView mv, @RequestParam("num") int num, 
-				@RequestParam(value = "searchType",required = false, defaultValue = "title") String searchType, 
-				@RequestParam(value = "keyword",required = false, defaultValue = "") String keyword) {
-			
-			Page page = new Page();
-			page.setPostNum(4);
-			page.setNum(num);
-			page.setCount(clubAdvertiseService.countInfo(searchType, keyword));
-			
-			page.setSearchType(searchType);
-			page.setKeyword(keyword);
-			
-			List<ClubAdvertiseDTO> clubAdvertiseList = clubAdvertiseService.readClubAdvertisePreview(page.getDisplayPost(),page.getPostNum(),searchType,keyword);
-			
-			mv.addObject("clubAdvertiseList", clubAdvertiseList);
-			mv.addObject("page", page);
-			mv.addObject("selected", num);
-			
-			mv.setViewName("clubAdvertise");
-			
-			System.out.println(mv);
-		
-			return mv;
+
+	// 동아리 홍보 페이지 컨트롤러
+	@RequestMapping(value = "/clubAdvertise", method = RequestMethod.GET)
+	public ModelAndView clubAdvertise(ModelAndView mv, HttpSession session, HttpServletRequest request,
+			@RequestParam("num") int num,
+			@RequestParam(value = "searchType", required = false, defaultValue = "title") String searchType,
+			@RequestParam(value = "keyword", required = false, defaultValue = "") String keyword) {
+
+		Page page = new Page();
+		page.setPostNum(4);
+		page.setNum(num);
+		page.setCount(clubAdvertiseService.countInfo(searchType, keyword));
+
+		page.setSearchType(searchType);
+		page.setKeyword(keyword);
+
+		List<ClubAdvertiseDTO> clubAdvertiseList = clubAdvertiseService.readClubAdvertisePreview(page.getDisplayPost(),
+				page.getPostNum(), searchType, keyword);
+
+		int count = 0;
+		for (ClubAdvertiseDTO list : clubAdvertiseList) {
+			FileDTO imageFile = clubAdvertiseService.readClubAdvertisePreviewImage(list.getId());
+			if (imageFile != null) {
+				clubAdvertiseList.get(count).setOriginalUrl(imageFile.getOriginalUrl());
+			}
+			count++;
 		}
-		
-		@RequestMapping(value = "/clubAdvertise/detail/{id}", method = RequestMethod.GET)
-		public ModelAndView readCommunityInfoDetail(@PathVariable int id, HttpSession session, HttpServletRequest request ) {
-			ModelAndView mv = new ModelAndView();
-			
-			List<ClubAdvertiseDTO> clubAdDetailList = clubAdvertiseService.readClubAdvertiseDetail(id);
-			
-			List<ClubAdvertiseDTO> clubAdImgList = clubAdvertiseService.getClubAdImg(id);  
-			
-			mv.addObject("clubAdDetailList", clubAdDetailList);
+
+		mv.addObject("clubAdvertiseList", clubAdvertiseList);
+		mv.addObject("page", page);
+		mv.addObject("selected", num);
+
+		mv.setViewName("clubAdvertise");
+
+		System.out.println(mv);
+
+		return mv;
+	}
+
+	@RequestMapping(value = "/clubAdvertise/detail/{id}", method = RequestMethod.GET)
+	public ModelAndView readCommunityInfoDetail(@PathVariable int id, HttpSession session, HttpServletRequest request) {
+		ModelAndView mv = new ModelAndView();
+
+		List<ClubAdvertiseDTO> clubAdDetailList = clubAdvertiseService.readClubAdvertiseDetail(id);
+
+		List<ClubAdvertiseDTO> clubAdImgList = clubAdvertiseService.getClubAdImg(id);
+
+		List<FileDTO> clubAdFileList = clubAdvertiseService.readClubAdvertiseDetailFile(id);
+		System.out.println(clubAdFileList);
+
+		mv.addObject("clubAdDetailList", clubAdDetailList);
+		mv.addObject("clubAdFileList", clubAdFileList);
 			mv.addObject("clubAdImgList", clubAdImgList);
-			
-			System.out.println(mv);
-			
-			mv.setViewName("clubAdvertiseDetail");
-				
-			return mv;
-		}
-		
-		//동아리 홍보 게시글 쓰는 페이지 
-		@RequestMapping(value = "/clubAdvertise/write", method = RequestMethod.GET)
-		public ModelAndView createClubAd(ModelAndView mv) {
-			
-			mv.setViewName("createClubAd");
-			
-			return mv;
-		}
-		
-		@RequestMapping(value = "/clubAdvertise/write/create", method = RequestMethod.POST)
-		@ResponseBody
-		public ModelAndView createClubAd(ModelAndView mv, MultipartHttpServletRequest request, MultipartFile file) {
 
-			ClubAdvertiseDTO info = new ClubAdvertiseDTO();
-			FileDTO infoFile = new FileDTO();
-			FileDTO infoImageFile = new FileDTO();
+		System.out.println(mv);
 
-			String title = request.getParameter("title");
-			String content = request.getParameter("content");
+		mv.setViewName("clubAdvertiseDetail");
 
-			MultipartFile imagefile = request.getFile("originalUrl");
-			String originalUrl = imagefile.getOriginalFilename();
-			
-			MultipartFile newfile = request.getFile("fileOriginalUrl");
-			String fileOriginalUrl = newfile.getOriginalFilename();
+		return mv;
+	}
 
-			info.setTitle(title);
-			info.setContent(content);
-			//info.setFile(file);
-			
-			clubAdvertiseService.createClubAd(info);
-			
-			int recentId = clubAdvertiseService.readRecentClubAd();
-			
-			System.out.println(recentId);
-		
+	// 동아리 홍보 게시글 쓰는 페이지
+	@RequestMapping(value = "/clubAdvertise/write", method = RequestMethod.GET)
+	public ModelAndView createClubAd(ModelAndView mv) {
+
+		mv.setViewName("createClubAd");
+
+		return mv;
+	}
+
+	@RequestMapping(value = "/clubAdvertise/write/create", method = RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView createClubAd(ModelAndView mv, MultipartHttpServletRequest request, MultipartFile file) {
+
+		ClubAdvertiseDTO info = new ClubAdvertiseDTO();
+		FileDTO infoFile = new FileDTO();
+		FileDTO infoImageFile = new FileDTO();
+
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+
+		info.setTitle(title);
+		info.setContent(content);
+		info.setFile(file);
+
+		clubAdvertiseService.createClubAd(info);
+
+		int recentId = clubAdvertiseService.readRecentClubAd();
+
+		List<MultipartFile> imagefile = request.getFiles("imagefile");
+		List<MultipartFile> adfile = request.getFiles("adfile");
+
+		// 이미지 파일 저장
+		int imgOrder = 1;
+		for (MultipartFile newfile : imagefile) {
+			String originalUrl = newfile.getOriginalFilename();
+
 			infoImageFile.setClubAdvertiseId(recentId);
 			infoImageFile.setOriginalUrl(originalUrl);
-			
-			infoFile.setClubAdvertiseId(recentId);
-			infoFile.setFileOriginalUrl(fileOriginalUrl);
-			
+			infoImageFile.setFileOrder(imgOrder);
+			imgOrder++;
 
-			System.out.println(info.toString());
-			System.out.println(infoFile.toString());
+			clubAdvertiseService.createClubAdImage(infoImageFile);
 
-			String saveDir = request.getSession().getServletContext().getRealPath("/resources/img");
-			String savefileDir = request.getSession().getServletContext().getRealPath("/resources/upload/file");
+			System.out.println("image file print: " + infoImageFile);
 
-			File imgDir = new File(saveDir);
-			File dir = new File(savefileDir);
+			String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file/clubAd");
+
+			File dir = new File(saveDir);
 			if (!dir.exists()) {
 				dir.mkdirs();
 			}
-			
-			if (!imgDir.exists()) {
-				imgDir.mkdirs();
-			}
 
-			if (!imagefile.isEmpty()) {
-				String ext = originalUrl.substring(originalUrl.lastIndexOf("."));
-				try {
-					clubAdvertiseService.createClubAdImage(infoImageFile);
-					imagefile.transferTo(new File(saveDir + "/" + originalUrl));
-				} catch (IllegalStateException | IOException e) {
-					e.printStackTrace();
-				}
-			}
-			
 			if (!newfile.isEmpty()) {
 				String ext = originalUrl.substring(originalUrl.lastIndexOf("."));
-
 				try {
-					clubAdvertiseService.createClubAdFile(infoFile);
-					newfile.transferTo(new File(savefileDir + "/" + fileOriginalUrl));
+					newfile.transferTo(new File(saveDir + "/" + originalUrl));
 				} catch (IllegalStateException | IOException e) {
 					e.printStackTrace();
 				}
 			}
-
-			System.out.println(saveDir);
-			System.out.println(savefileDir);
-
-
-			mv.setViewName("redirect:/clubAdvertise?num=1");
-
-			return mv;
 		}
-		
-		@RequestMapping(value = "/clubAdvertise/delete/{id}", method = { RequestMethod.GET, RequestMethod.POST })
-		public ModelAndView deleteclubAdvertise(@PathVariable int id, HttpSession session, HttpServletRequest request, HttpServletResponse response) {
-			ModelAndView mv = new ModelAndView();
-			
-			clubAdvertiseService.deleteClubAdvertiseFile(id);
-			clubAdvertiseService.deleteClubAdvertiseImage(id);
-			clubAdvertiseService.deleteClubAdvertise(id);
-			
-			
-			ClubAdvertiseDTO clubAdvertiseDetail = clubAdvertiseService.readClubAdvertiseDetailId(id);
-			//String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file");
-			
-			//String fileName = clubAdvertiseDetail.getOriginalUrl();
-			//System.out.println("filename: " + fileName);
-			
-			mv.addObject("clubAdvertiseDetail", clubAdvertiseDetail);
 
-			System.out.println(mv);
+		// 첨부파일 저장
+		int order = 1;
+		for (MultipartFile newfile : adfile) {
+			String originalUrl = newfile.getOriginalFilename();
 
-			mv.setViewName("redirect:/clubAdvertise?num=1");
+			infoFile.setClubAdvertiseId(recentId);
+			infoFile.setFileOriginalUrl(originalUrl);
+			infoFile.setFileOrder(order);
+			order++;
 
-			return mv;
-		}
-		
-		@RequestMapping("/clubAdvertise/detail/{id}/filedownload")
-		public void fileDownload(@PathVariable int id, HttpServletRequest request, HttpServletResponse response) {
-			ModelAndView mv = new ModelAndView();
+			clubAdvertiseService.createClubAdFile(infoFile);
 
-			ClubAdvertiseDTO clubAdDetail = clubAdvertiseService.readClubAdvertiseDetailId(id);
-			String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file");
-			
-			String fileName = clubAdDetail.getFileOriginalUrl();
-			System.out.println("filename: " + fileName);
+			String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file/clubAd");
 
-			File file = new File(saveDir + "/" + fileName);
-			FileInputStream fis = null;
-			BufferedInputStream bis = null;
-			ServletOutputStream sos = null;
-			try {
-				fis = new FileInputStream(file);
-				bis = new BufferedInputStream(fis);
-				sos = response.getOutputStream();
-				String reFilename = "";
-				boolean isMSIE = request.getHeader("user-agent").indexOf("MSIE") != -1
-						|| request.getHeader("user-agent").indexOf("Trident") != -1;
-				if (isMSIE) {
-					reFilename = URLEncoder.encode(fileName, "utf-8");
-					reFilename = reFilename.replaceAll("\\+", "%20");
-				} else {
-					reFilename = new String(fileName.getBytes("utf-8"), "ISO-8859-1");
-				}
-				response.setContentType("application/octet-stream;charset=utf-8");
-				response.addHeader("Content-Disposition", "attachment;filename=\"" + reFilename + "\"");
-				response.setContentLength((int) file.length());
-				int read = 0;
-				while ((read = bis.read()) != -1) {
-					sos.write(read);
-				}
-			} catch (IOException e) {
-				e.printStackTrace();
-			} finally {
+			File dir = new File(saveDir);
+			if (!dir.exists()) {
+				dir.mkdirs();
+			}
+
+			if (!newfile.isEmpty()) {
+				String ext = originalUrl.substring(originalUrl.lastIndexOf("."));
 				try {
-					sos.close();
-					bis.close();
-				} catch (IOException e) {
+					newfile.transferTo(new File(saveDir + "/" + originalUrl));
+				} catch (IllegalStateException | IOException e) {
 					e.printStackTrace();
 				}
 			}
 		}
+
+		System.out.println(info.toString());
+		System.out.println(infoFile.toString());
+
+		mv.setViewName("redirect:/clubAdvertise?num=1");
+
+		return mv;
+	}
+
+	@RequestMapping(value = "/clubAdvertise/delete/{id}", method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView deleteclubAdvertise(@PathVariable int id, HttpSession session, HttpServletRequest request,
+			HttpServletResponse response) {
+		ModelAndView mv = new ModelAndView();
+
+		clubAdvertiseService.deleteClubAdvertiseFile(id);
+		clubAdvertiseService.deleteClubAdvertiseImage(id);
+		clubAdvertiseService.deleteClubAdvertise(id);
+
+		List<FileDTO> clubAdvertiseDetail = clubAdvertiseService.readClubAdvertiseDetailFile(id);
+		// String saveDir =
+		// request.getSession().getServletContext().getRealPath("/resources/upload/file");
+
+		// String fileName = clubAdvertiseDetail.getOriginalUrl();
+		// System.out.println("filename: " + fileName);
+
+		mv.addObject("clubAdvertiseDetail", clubAdvertiseDetail);
+
+		System.out.println(mv);
+
+		mv.setViewName("redirect:/clubAdvertise?num=1");
+
+		return mv;
+	}
+
+	@RequestMapping("/clubAdvertise/detail/{id}/filedownload")
+	public void fileDownload(@PathVariable int id, HttpServletRequest request, HttpServletResponse response) {
+		ModelAndView mv = new ModelAndView();
+
+		FileDTO clubAdDetail = clubAdvertiseService.readClubAdvertiseDetailFile(id).get(0);
+		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file/clubAd");
+		String fileName = clubAdDetail.getFileOriginalUrl();
+
+		File file = new File(saveDir + "/" + fileName);
+		FileInputStream fis = null;
+		BufferedInputStream bis = null;
+		ServletOutputStream sos = null;
+		try {
+			fis = new FileInputStream(file);
+			bis = new BufferedInputStream(fis);
+			sos = response.getOutputStream();
+			String reFilename = "";
+			boolean isMSIE = request.getHeader("user-agent").indexOf("MSIE") != -1
+					|| request.getHeader("user-agent").indexOf("Trident") != -1;
+			if (isMSIE) {
+				reFilename = URLEncoder.encode(fileName, "utf-8");
+				reFilename = reFilename.replaceAll("\\+", "%20");
+			} else {
+				reFilename = new String(fileName.getBytes("utf-8"), "ISO-8859-1");
+			}
+			response.setContentType("application/octet-stream;charset=utf-8");
+			response.addHeader("Content-Disposition", "attachment;filename=\"" + reFilename + "\"");
+			response.setContentLength((int) file.length());
+			int read = 0;
+			while ((read = bis.read()) != -1) {
+				sos.write(read);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				sos.close();
+				bis.close();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 
 }

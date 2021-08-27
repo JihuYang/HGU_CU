@@ -20,14 +20,16 @@
 				</c:forEach>
 			</select>
   		<label for="etc">장소</label>
-  			<select class='spaceSelect' id='spaceSelect'>
+  			<select class='spaceSelect' id='spaceSelect' onchange="changeSpace(this)">
 		      	<c:forEach items="${spaceList}" var="spaceList">
 					<option value="${spaceList.name}">${spaceList.name}</option>
 				</c:forEach>
 			</select>
         <label for="user">대여 시간</label>
         <div style="display:flex;">
-  				<input class="form-control date" placeholder="yyyy-mm-dd" id="reservationDate">
+  				<!-- <input class="form-control date" placeholder="yyyy-mm-dd" id="reservationDate" onchange="changeDate(this)"> -->
+  				<input class="input-resize" id="date" type="date" name="date" onchange="changeDate(this)"
+						value=""						min=1999-01-01						max=2100-12-30>
   				<select id='startTime' class="startTime input-resize" onchange="handleTimeLimit(this)">
   					<!-- <option value='8:00' selected>8:00</option>
   					<option value='8:30'>8:30</option> -->
@@ -85,28 +87,84 @@
 		$("#endTime")[0].innerHTML="<option value='"+endTime+"' selected>"+endTime+"</option>";
 	}
 
-	$(function () {
+	/* $(function () {
         $("#reservationDate").datepicker({format: 'yyyy-mm-dd'});
-    });
+    }); */
+	
+	Date.prototype.addDays = function(days) {
+		var date = new Date(this.valueOf());
+		date.setDate(date.getDate() + days);
+		return date;
+	}
+		   
+	function DateFormat(date) {
+	    var year = date.getFullYear();
+	    var month = date.getMonth() + 1;
+	    month = month >= 10 ? month : '0' + month;
+	    var day = date.getDate();
+	    day = day >= 10 ? day : '0' + day;
+	    return [year, month, day].join('-');
+	}
+
+	var today =new Date();
+	var endDate = new Date();
+	      
+	today=DateFormat(today);
+	      
+	endDate.setDate(endDate.getDate() + 7);
+	endDate=DateFormat(endDate);
+		  
+	//today = yyyy+'-'+mm+'-'+dd;
+	document.getElementById("date").setAttribute("min", today);
+	  
+	//오늘 날짜부터 일주일까지
+	document.getElementById("date").setAttribute("max", endDate);
+		  
+	document.getElementById('date').value = new Date().toISOString().substring(0, 10);
+	
 	
 	/* 시작시간 구하기 */
 	var hour=7;
-  	var startTime = document.getElementById('startTime');
-	for(var i =0; i<32; i++){
-		var min =':00';
-		if(hour<10)
-			hour='0'+hour;
-		hour++;
-		if(i%2!=0){
-			hour--;
-			min=':30';
-		}
-		startTime.innerHTML+='<option value='+hour+min+'>'
-					+hour
-					+min
-					+'</option>';
-		}
- 
+	      	var startTime = document.getElementById('startTime');
+	      	var endTime = document.getElementById('endTime');
+	      	var spaceElem = document.getElementById('spaceSelect');
+	      	var spaceIndex = spaceElem.selectedIndex + 1;
+	      	var rvDate=$("#date").val();
+	      	var time;
+	      	var reservationList = new Array();
+	      	var StimeIdx;
+	
+			for(var i =0; i<32; i++){
+				var min =':00';
+				hour++;
+				if(i%2!=0){
+					hour--;
+					min=':30';
+				}
+				startTime.innerHTML+='<option value='+hour+min+'>'
+							+hour
+							+min
+							+'</option>';
+	    		
+			}
+	/* 종료시간 기본 값 설정 */
+	  var selectedStart = $("#startTime option:selected").val();
+	  time = selectedStart.split(':');
+	  time[0]++;
+	  endTime.innerHTML=
+		    "<option value="+time[0]+':'+time[1]+">"
+				+time[0]+':'
+				+time[1]
+				+"</option>";
+				
+		time[0]++;
+		 if(time[0]==25)
+			 time[0]=1;
+		 endTime.innerHTML+=
+			    "<option value="+time[0]+':'+time[1]+">"
+					+time[0]+':'
+					+time[1]
+					+"</option>";
   
 	/* 종료 시간 설정 */
   function handleTimeLimit(e){
@@ -133,6 +191,63 @@
 			+"</option>";
 	
   }
+  /* 예약 가능한 시간 설정하기 */
+	function disabledTime(){
+		<c:forEach items="${reservationInfoList}" var="reservationList">
+		<fmt:formatDate value="${reservationList.startTime}" var="formattedSTime" pattern="H:mm"/>
+		<fmt:formatDate value="${reservationList.endTime}" var="formattedETime" pattern="H:mm"/>
+	 	reservationList.push({disabledSTime:"${formattedSTime}",disabledETime:"${formattedETime}",
+	 			spaceId:"${reservationList.spaceId}",reservationDate:"${reservationList.reservationDate}"});
+		</c:forEach>
+	
+	
+		for(var j=0;j<reservationList.length;j++){
+			if(reservationList[j].spaceId==spaceIndex && reservationList[j].reservationDate==rvDate){
+				Stime = reservationList[j].disabledSTime.split(':');
+				Etime = reservationList[j].disabledETime.split(':');
+				var timeLimit = Etime[0]-Stime[0];
+				StimeIdx = $("#startTime option[value='"+reservationList[j].disabledSTime+"']").index();
+				console.log("index is "+StimeIdx);
+				Stime[0]++;
+				if(Stime[0]==8 || Stime[0]==9){
+					$('#endTime option').each(function() {
+		    		    $(this).prop('disabled', true);
+		    		});
+				}
+				else{
+					$("#endTime option[value='"+Stime[0]+":"+Stime[1]+"']").prop('disabled',true);
+				}
+					
+				for(var k=0;k<=(2*timeLimit-1);k++){
+					$("#startTime option:eq("+StimeIdx+")").prop('disabled',true);
+					console.log("loof index is "+StimeIdx);
+					StimeIdx++;
+				}
+			}
+		}
+	}
+  
+ 	disabledTime();
+ 	
+ 	function changeSpace(e){
+  	  spaceIndex = e.options[e.selectedIndex].index+1;
+  	  
+  	  $('#startTime option').each(function() {
+  		    $(this).prop('disabled', false);
+  		});
+  	  disabledTime();
+  	  console.log(spaceIndex);
+    }
+    
+    function changeDate(e){
+  	  rvDate=e.value;
+
+  	  $('#startTime option').each(function() {
+  		    $(this).prop('disabled', false);
+  		});
+  	  disabledTime();
+  	  console.log(rvDate);
+    }
 
 </script>
 

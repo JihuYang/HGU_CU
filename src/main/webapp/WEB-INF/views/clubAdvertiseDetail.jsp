@@ -62,7 +62,7 @@
 			<div class="px-4 detail-content">${clubAdDetailList[0].content}</div>
 			<c:forEach var="clubAdImgList" items="${clubAdImgList}" varStatus="status">
 				<div>
-					<img src="<%=request.getContextPath()%>/resources/img/${clubAdImgList.originalUrl}" alt="...">
+					  <img src="<%=request.getContextPath()%>/resources/upload/file/clubAd/${clubAdImgList.originalUrl}" alt="...">
 				</div>
 			</c:forEach>
 		</div>
@@ -70,16 +70,14 @@
 			class="row h-25 align-items-center justify-content-center text-center">
 
 			<table class="table text-center">
-				<tbody>
-					<tr>
-						<th scope="col" class="col-3 text-center file py-4">첨부파일</th>
-						<th scope="col" class="col-7 text-start px-3 py-4">파일이름.exel</th>
-					</tr>
-					<tr>
-						<th scope="col" class="col-3 text-center file py-4">첨부파일</th>
-						<th scope="col" class="col-7 text-start px-3 py-4"><a href="/hgu/clubAdvertise/detail/${clubAdDetailList[0].id}/filedownload">파일다운로드클릭</a></th>
-					</tr>
-				</tbody>
+					<c:forEach items="${clubAdFileList}"
+						var="clubAdFileList" varStatus="status">
+						<tr>
+							<th scope="col" class="col-3 text-center file py-4">첨부파일</th>
+							<th scope="col" class="col-7 text-start px-3 py-4"><a
+								href="/hgu/clubAdvertise/detail/${clubAdFileList.id}/filedownload">${clubAdFileList.fileOriginalUrl}</a></th>
+						</tr>
+					</c:forEach>
 			</table>
 
 			<div class="row justify-content-start mt-4 list-btn">

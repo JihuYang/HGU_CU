@@ -99,9 +99,7 @@ function createCheck() {
 		document.createForm.submit();
 
 	} else {   //취소
-
-		return;
-
+		return false;
 	}
 
 }
