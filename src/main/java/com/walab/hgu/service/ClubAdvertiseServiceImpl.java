@@ -10,25 +10,26 @@ import com.walab.hgu.DTO.ClubAdvertiseDTO;
 import com.walab.hgu.DTO.FileDTO;
 
 @Service
-public class ClubAdvertiseServiceImpl implements ClubAdvertiseService{
-	
+public class ClubAdvertiseServiceImpl implements ClubAdvertiseService {
+
 	@Autowired
-	ClubAdvertiseDAO clubAdvertiseDAO ;
+	ClubAdvertiseDAO clubAdvertiseDAO;
 
 	@Override
-	public List<ClubAdvertiseDTO> readClubAdvertisePreview(int displayPost, int postNum,String searchType, String keyword) {
-		
+	public List<ClubAdvertiseDTO> readClubAdvertisePreview(int displayPost, int postNum, String searchType,
+			String keyword) {
 
-		List<ClubAdvertiseDTO> adList = clubAdvertiseDAO.readClubAdvertisePreview(displayPost, postNum,searchType,keyword);
-		
+		List<ClubAdvertiseDTO> adList = clubAdvertiseDAO.readClubAdvertisePreview(displayPost, postNum, searchType,
+				keyword);
+
 		return adList;
 	}
-	
+
 	@Override
-	public FileDTO readClubAdvertisePreviewImage(int id) {	
+	public FileDTO readClubAdvertisePreviewImage(int id) {
 
 		FileDTO imageFile = clubAdvertiseDAO.readClubAdvertisePreviewImage(id);
-		
+
 		return imageFile;
 	}
 
@@ -37,20 +38,29 @@ public class ClubAdvertiseServiceImpl implements ClubAdvertiseService{
 		List<ClubAdvertiseDTO> infoDetailList = clubAdvertiseDAO.readClubAdvertiseDetail(id);
 		return infoDetailList;
 	}
-	
+
 	@Override
 	public List<FileDTO> readClubAdvertiseDetailFile(int id) {
 		List<FileDTO> infoDetailList = clubAdvertiseDAO.readClubAdvertiseDetailFile(id);
 
 		return infoDetailList;
 	}
+	
+	@Override
+	public FileDTO readClubAdvertiseDetailFileOne(int id) {
+		
+		FileDTO infoDetailOne = clubAdvertiseDAO.readClubAdvertiseDetailFileOne(id);
+
+		return infoDetailOne;
+	}
+
 
 	@Override
 	public List<ClubAdvertiseDTO> getClubAdImg(int id) {
 		List<ClubAdvertiseDTO> clubAdImgList = clubAdvertiseDAO.getClubAdImg(id);
 		return clubAdImgList;
 	}
-	
+
 	@Override
 	public int readRecentClubAd() {
 
@@ -62,31 +72,52 @@ public class ClubAdvertiseServiceImpl implements ClubAdvertiseService{
 
 	@Override
 	public int createClubAd(ClubAdvertiseDTO info) {
-		
+
 		return clubAdvertiseDAO.createClubAd(info);
-		
+
 	}
-	
+
 	@Override
 	public int createClubAdImage(FileDTO clubAdImage) {
 
 		return clubAdvertiseDAO.createClubAdImage(clubAdImage);
-		
+
 	}
-	
+
 	@Override
 	public int createClubAdFile(FileDTO clubAdFile) {
 
 		return clubAdvertiseDAO.createClubAdFile(clubAdFile);
-		
+
 	}
-	
+
+	@Override
+	public int updateClubAdvertise(ClubAdvertiseDTO info) {
+
+		return clubAdvertiseDAO.updateClubAdvertise(info);
+
+	}
+
+	@Override
+	public int updateClubAdvertiseFile(FileDTO clubAdvertiseFile) {
+
+		return clubAdvertiseDAO.updateClubAdvertiseFile(clubAdvertiseFile);
+
+	}
+
+	@Override
+	public int updateClubAdvertiseImage(FileDTO clubAdvertiseImage) {
+
+		return clubAdvertiseDAO.updateClubAdvertiseImage(clubAdvertiseImage);
+
+	}
+
 	@Override
 	public int deleteClubAdvertiseFile(int id) {
 
 		return clubAdvertiseDAO.deleteClubAdvertiseFile(id);
 	}
-	
+
 	@Override
 	public int deleteClubAdvertiseImage(int id) {
 
@@ -102,7 +133,7 @@ public class ClubAdvertiseServiceImpl implements ClubAdvertiseService{
 	@Override
 	public int countInfo(String searchType, String keyword) {
 		// TODO Auto-generated method stub
-		return clubAdvertiseDAO.countInfo(searchType,keyword);
+		return clubAdvertiseDAO.countInfo(searchType, keyword);
 	}
 
 }

@@ -38,28 +38,41 @@
 <body id="page-top">
 	<div class="container width-80 h-auto h-min">
 		<div
-			class="row h-25 align-items-center justify-content-center text-center">
-			<div class="align-self-center">
+			class="row h-auto align-items-center justify-content-center text-center">
+			<div class="col-lg-6 align-self-center">
 				<h3 class="font-weight-bold pt-title">동아리 홍보</h3>
 			</div>
-			<!-- 홍보글 테이블 -->
-			<div class="col-sm-10 justify-content-md-center">
+			<!-- 동아리 소개 수정 -->
+			<div class="justify-content-md-center align-items-center">
 				<form method="POST" enctype="multipart/form-data" id="uploadForm"
 					action="<%=request.getContextPath()%>/clubAdvertise/write/update">
-					<input id="userId" name="userId" value='1' style="display: none;"></input>
+					<input id="id" name="id" value='${clubAdDetailList[0].id}'
+						style="display: none;"></input>
 					<div class="title-bar">
 						<p class="rows title-bold">제목</p>
 						<input class="form-control title-input" type="text" id="title"
-							name="title">
+							name="title" value="${clubAdDetailList[0].title}">
 					</div>
 					<div class="mb-3">
 						<textarea class="form-control textarea justify-content-center"
-							rows="13" id="content" name="content" required></textarea>
+							rows="13" id="content" name="content" required>${clubAdDetailList[0].content}</textarea>
+					</div>
+					<div class="mb-3 text-start">
+						기존 파일명 :
+						<c:forEach items="${clubAdImgList}" var="clubAdImgList"
+							varStatus="status">${status.count}. ${clubAdImgList.originalUrl}
+					</c:forEach>
 					</div>
 					<div class="mb-3">
 						<p class="float-l">이미지 파일용</p>
 						<input class="form-control file" type="file" id="imagefile"
 							name="imagefile" accept="image/*" multiple>
+					</div>
+					<div class="mb-3 text-start">
+						기존 파일명 :
+						<c:forEach items="${clubAdFileList}" var="clubAdFileList"
+							varStatus="status">${status.count}. ${clubAdFileList.fileOriginalUrl}
+					</c:forEach>
 					</div>
 					<div class="mb-3">
 						<p class="float-l">첨부파일용</p>
