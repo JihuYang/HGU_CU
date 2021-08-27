@@ -13,7 +13,7 @@
 	
 	<select id="readAllUsers" resultType="com.walab.hgu.DTO.UserDTO"
 		parameterType="hashmap">
-		SELECT * FROM hguclub.user
+		SELECT * FROM hsca219.user
 	</select>
 	
 	<select id="countInfo" resultType="int">

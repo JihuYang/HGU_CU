@@ -1,6 +1,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page session="false"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <html>
 <head>
 <meta charset="utf-8" />
@@ -40,28 +42,27 @@
 
 <body id="page-top">
         <div class="R_container h-100">
-      		<div class="side_bar">	
-       			<div class="reservation" style="background-color:gray"><a href="./reservation">
-                	<div>
+            <div class="side_bar">	
+       			<div class="reservation" style="background-color:gray">
+                	<div OnClick="location.href ='./reservation?spaceName=전체'" style="cursor:pointer;">
                 		<i class="fa fa-home fa-2x white" aria-hidden="true" style="padding-top:10px;"></i><br><div class="side_text">조회 및 예약하기</div>
-                	</div></a>
+                	</div>
                </div>   
-	           <div class="reservation" style="background-color:gray"><a href="./myReservation">
-	           	<div>
+	           <div class="reservation" style="background-color:gray">
+	           	<div OnClick="location.href ='./myReservation?spaceName=전체'" style="cursor:pointer;">
 	           	<i class="fa fa-user fa-2x" aria-hidden="true" style="padding-top:10px;"></i><br><div class="side_text">내 예약</div>
-	           	</div></a>
+	           	</div>
 	           </div>
-	            
             </div>
            
         	<div class="content">
         	<div>
-        		<table class="table" style="text-align:left;">
+        		<table class="table" id="rvTable" style="text-align:left;">
 				  <tbody>
 				    <tr>
 				      <th scope="row">장소</th>
 				      	<td>
-					      	<select id='spaceSelect' class="input-resize">
+					      	<select id='spaceSelect' class="input-resize" onchange="changeSpace(this)">
 					      	<c:forEach items="${spaceList}" var="spaceList">
       							<option value="${spaceList.name}">${spaceList.name}</option>
     						</c:forEach>
@@ -82,8 +83,8 @@
 				    </tr>
 				    <tr>
 				      <th scope="row">날짜 *</th>
-				      <td><input class="input-resize" id="date" type="date" name="date"
-						value="2019-09-22"						min=1999-01-01						max=2100-12-30						></td>
+				      <td><input class="input-resize" id="date" type="date" name="date" onchange="changeDate(this)"
+						value="2019-09-22"						min=1999-01-01						max=2100-12-30></td>
 				    </tr>
 				    <tr>
 				      <th scope="row">시작 시간</th>
@@ -96,8 +97,8 @@
 				      <th scope="row">종료 시간</th>
 				      <td>
 				        <select id='endTime' name ='endTime' class="input-resize">
-					        <option value='9:00' selected> 9:00</option>
-					        <option value='10:00' >10:00</option>
+					        <!-- <option value='9:00' selected> 9:00</option>
+					        <option value='10:00' >10:00</option> -->
 						</select>
 					  </td>
 				    </tr>
@@ -117,7 +118,6 @@
 				</table>
 				<br>
 				</div>
-				<form>
 				<div>
 			<h3><font size="4">개인정보 수집·이용·제공 동의</font></h3>
 			<textarea readonly="readonly" style="width:100%;height:100px;">
@@ -164,44 +164,52 @@
 	</div>
 	
 	<script>
-	/* reserve.jsp */
-	Date.prototype.addDays = function(days) {
-		var date = new Date(this.valueOf());
-		date.setDate(date.getDate() + days);
-		return date;
-	}
-		   
-	function DateFormat(date) {
-	    var year = date.getFullYear();
-	    var month = date.getMonth() + 1;
-	    month = month >= 10 ? month : '0' + month;
-	    var day = date.getDate();
-	    day = day >= 10 ? day : '0' + day;
-	    return [year, month, day].join('-');
-	}
-
-	var today =new Date();
-	var endDate = new Date();
-	      
-	today=DateFormat(today);
-	      
-	endDate.setDate(endDate.getDate() + 7);
-	endDate=DateFormat(endDate);
+		/* reserve.jsp */
+		Date.prototype.addDays = function(days) {
+			var date = new Date(this.valueOf());
+			date.setDate(date.getDate() + days);
+			return date;
+		}
+			   
+		function DateFormat(date) {
+		    var year = date.getFullYear();
+		    var month = date.getMonth() + 1;
+		    month = month >= 10 ? month : '0' + month;
+		    var day = date.getDate();
+		    day = day >= 10 ? day : '0' + day;
+		    return [year, month, day].join('-');
+		}
+	
+		var today =new Date();
+		var endDate = new Date();
+		      
+		today=DateFormat(today);
+		      
+		endDate.setDate(endDate.getDate() + 7);
+		endDate=DateFormat(endDate);
+			  
+		//today = yyyy+'-'+mm+'-'+dd;
+		document.getElementById("date").setAttribute("min", today);
 		  
-	//today = yyyy+'-'+mm+'-'+dd;
-	document.getElementById("date").setAttribute("min", today);
-	  
-	//오늘 날짜부터 일주일까지
-	document.getElementById("date").setAttribute("max", endDate);
-		  
-	document.getElementById("reservable").innerHTML=today+" ~ "+endDate;
-		  
-	document.getElementById('date').value = new Date().toISOString().substring(0, 10);
+		//오늘 날짜부터 일주일까지
+		document.getElementById("date").setAttribute("max", endDate);
+			  
+		document.getElementById("reservable").innerHTML=today+" ~ "+endDate;
+			  
+		document.getElementById('date').value = new Date().toISOString().substring(0, 10);
 		  
 		  
 	      /* 시작시간 구하기 */
 			var hour=7;
 	      	var startTime = document.getElementById('startTime');
+	      	var endTime = document.getElementById('endTime');
+	      	var spaceElem = document.getElementById('spaceSelect');
+	      	var spaceIndex = spaceElem.selectedIndex + 1;
+	      	var rvDate=$("#date").val();
+	      	var time;
+	      	var reservationList = new Array();
+	      	var StimeIdx;
+	
 			for(var i =0; i<32; i++){
 				var min =':00';
 				hour++;
@@ -213,13 +221,70 @@
 							+hour
 							+min
 							+'</option>';
+	    		
+			}
+			
+			/* 예약 가능한 시간 설정하기 */
+			function disabledTime(){
+				<c:forEach items="${reservationInfoList}" var="reservationList">
+				<fmt:formatDate value="${reservationList.startTime}" var="formattedSTime" pattern="H:mm"/>
+				<fmt:formatDate value="${reservationList.endTime}" var="formattedETime" pattern="H:mm"/>
+			 	reservationList.push({disabledSTime:"${formattedSTime}",disabledETime:"${formattedETime}",
+			 			spaceId:"${reservationList.spaceId}",reservationDate:"${reservationList.reservationDate}"});
+				</c:forEach>
+			
+			
+				for(var j=0;j<reservationList.length;j++){
+					if(reservationList[j].spaceId==spaceIndex && reservationList[j].reservationDate==rvDate){
+						Stime = reservationList[j].disabledSTime.split(':');
+						Etime = reservationList[j].disabledETime.split(':');
+						var timeLimit = Etime[0]-Stime[0];
+						StimeIdx = $("#startTime option[value='"+reservationList[j].disabledSTime+"']").index();
+						console.log("index is "+StimeIdx);
+						Stime[0]++;
+						if(Stime[0]==8 || Stime[0]==9){
+							$('#endTime option').each(function() {
+				    		    $(this).prop('disabled', true);
+				    		});
+						}
+						else{
+							$("#endTime option[value='"+Stime[0]+":"+Stime[1]+"']").prop('disabled',true);
+						}
+							
+						for(var k=0;k<=(2*timeLimit-1);k++){
+							$("#startTime option:eq("+StimeIdx+")").prop('disabled',true);
+							console.log("loof index is "+StimeIdx);
+							StimeIdx++;
+						}
+					}
 				}
+			}
+			
+			
+			/* 종료시간 기본 값 설정 */
+		  var selectedStart = $("#startTime option:selected").val();
+		  time = selectedStart.split(':');
+		  time[0]++;
+		  endTime.innerHTML=
+			    "<option value="+time[0]+':'+time[1]+">"
+					+time[0]+':'
+					+time[1]
+					+"</option>";
+					
+			time[0]++;
+			 if(time[0]==25)
+				 time[0]=1;
+			 endTime.innerHTML+=
+				    "<option value="+time[0]+':'+time[1]+">"
+						+time[0]+':'
+						+time[1]
+						+"</option>";
 		  
-		  
-			/* 종료 시간 설정 */
+						
+			/* 시작 시간 선택 시 종료 시간 설정 */
 	      function handleTimeLimit(e){
 			 const text = e.options[e.selectedIndex].text;
-			 var time = text.split(':');
+			 time = text.split(':');
 			 time[0]++;
 			 document.getElementById('endTime').innerHTML=
 			    "<option value="+time[0]+':'+time[1]+">"
@@ -231,12 +296,21 @@
 			 if(time[0]==25)
 				 time[0]=1;
 			 document.getElementById('endTime').innerHTML+=
-				    "<option value="+time[0]+time[1]+">"
+				    "<option value="+time[0]+':'+time[1]+">"
 						+time[0]+':'
 						+time[1]
 						+"</option>";
-	      }
 			
+			if(e.options[e.selectedIndex+1].disabled==true){
+				$('#endTime option').each(function() {
+	    		    $(this).prop('disabled', true);
+	    		});
+			}
+			if(e.options[e.selectedIndex+2].disabled==true || e.options[e.selectedIndex+3].disabled==true)
+				$("#endTime option:eq(1)").prop('disabled',true);
+	      }
+		
+	      disabledTime();
 			
 	      function clause(){
 	    	  var checkBox = document.getElementById("checkbox");
@@ -247,6 +321,26 @@
 			  else
 				  target.disabled = true;
 		  }
+	      
+	      function changeSpace(e){
+	    	  spaceIndex = e.options[e.selectedIndex].index+1;
+	    	  
+	    	  $('#startTime option').each(function() {
+	    		    $(this).prop('disabled', false);
+	    		});
+	    	  disabledTime();
+	    	  console.log(spaceIndex);
+	      }
+	      
+	      function changeDate(e){
+	    	  rvDate=e.value;
+	
+	    	  $('#startTime option').each(function() {
+	    		    $(this).prop('disabled', false);
+	    		});
+	    	  disabledTime();
+	    	  console.log(rvDate);
+	      }
 	</script> 
          	
 	<!-- Footer-->

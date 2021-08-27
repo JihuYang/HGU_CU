@@ -74,6 +74,7 @@ function createReservation(){
 	et=et+":00";
 	var reservationDate=document.getElementById("date").value;
 	var spaceId=document.getElementById("spaceSelect").selectedIndex+1;
+	
 
 	$.ajax({
 		url: "/hgu/reserve",
@@ -110,3 +111,5 @@ function search(){
   			location.href = "/hgu/adminReservation?num=1" + "&keyword=" + keyword;
  		};
 }
+
+
