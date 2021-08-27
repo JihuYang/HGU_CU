@@ -5,7 +5,9 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URLEncoder;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletOutputStream;
@@ -83,11 +85,11 @@ public class ClubAdvertiseController {
 		List<ClubAdvertiseDTO> clubAdImgList = clubAdvertiseService.getClubAdImg(id);
 
 		List<FileDTO> clubAdFileList = clubAdvertiseService.readClubAdvertiseDetailFile(id);
-		System.out.println(clubAdFileList);
+		System.out.println("clubAdFileList: " + clubAdFileList);
 
 		mv.addObject("clubAdDetailList", clubAdDetailList);
 		mv.addObject("clubAdFileList", clubAdFileList);
-			mv.addObject("clubAdImgList", clubAdImgList);
+		mv.addObject("clubAdImgList", clubAdImgList);
 
 		System.out.println(mv);
 
@@ -195,6 +197,139 @@ public class ClubAdvertiseController {
 		return mv;
 	}
 
+	@RequestMapping(value = "/clubAdvertise/write/update", method = RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView updateClubAdvertise(ModelAndView mv, MultipartHttpServletRequest request, MultipartFile file) {
+
+		ClubAdvertiseDTO info = new ClubAdvertiseDTO();
+		FileDTO infoFile = new FileDTO();
+		FileDTO infoImageFile = new FileDTO();
+
+		int id = Integer.parseInt(request.getParameter("id"));
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+
+		info.setId(id);
+		info.setTitle(title);
+		info.setContent(content);
+		info.setFile(file);
+		
+		clubAdvertiseService.updateClubAdvertise(info);
+
+		// 동아리 소개 이미지 업데이트
+		List<MultipartFile> imagefile = request.getFiles("imagefile");
+
+		if (imagefile.get(0).getOriginalFilename() != "") {
+			// 선택된 파일이 있을 때 기존의 파일을 모두 삭제
+			System.out.println("실행");
+			clubAdvertiseService.deleteClubAdvertiseImage(id);
+			System.out.println("update file");
+			int imgOrder = 1;
+			for (MultipartFile newfile : imagefile) {
+				String originalUrl = newfile.getOriginalFilename();
+				
+				infoImageFile.setClubAdvertiseId(id);
+				infoImageFile.setOriginalUrl(originalUrl);
+				infoImageFile.setFileOrder(imgOrder);
+				imgOrder++;
+				
+				clubAdvertiseService.createClubAdImage(infoImageFile);
+
+				String originFileName = newfile.getOriginalFilename(); // 원본 파일 명
+				long fileSize = newfile.getSize(); // 파일 사이즈
+
+				System.out.println("originFileName : " + originFileName);
+				System.out.println("fileSize : " + fileSize);
+
+				String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file/clubAd");
+
+				File dir = new File(saveDir);
+				if (!dir.exists()) {
+					dir.mkdirs();
+				}
+
+				if (!newfile.isEmpty()) {
+					String ext = originalUrl.substring(originalUrl.lastIndexOf("."));
+					try {
+						newfile.transferTo(new File(saveDir + "/" + originalUrl));
+					} catch (IllegalStateException | IOException e) {
+						e.printStackTrace();
+					}
+				}
+
+				System.out.println(saveDir);
+			}
+		}
+
+		// 동아리 소개 첨부파일 업데이트
+		List<MultipartFile> adfile = request.getFiles("adfile");
+
+		if (adfile.get(0).getOriginalFilename() != "") {
+			// 선택된 파일이 있을 때 기존의 파일을 모두 삭제
+			System.out.println("실행");
+			clubAdvertiseService.deleteClubAdvertiseFile(id);
+			System.out.println("update file");
+			// 첨부파일 저장
+			int order = 1;
+			for (MultipartFile newfile : adfile) {
+				String originalUrl = newfile.getOriginalFilename();
+
+				infoFile.setClubAdvertiseId(id);
+				infoFile.setFileOriginalUrl(originalUrl);
+				infoFile.setFileOrder(order);
+				order++;
+
+				clubAdvertiseService.createClubAdFile(infoFile);
+
+				String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file/clubAd");
+
+				File dir = new File(saveDir);
+				if (!dir.exists()) {
+					dir.mkdirs();
+				}
+
+				if (!newfile.isEmpty()) {
+					String ext = originalUrl.substring(originalUrl.lastIndexOf("."));
+					try {
+						newfile.transferTo(new File(saveDir + "/" + originalUrl));
+					} catch (IllegalStateException | IOException e) {
+						e.printStackTrace();
+					}
+				}
+			}
+		}
+		System.out.println(info.toString());
+		System.out.println(infoFile.toString());
+
+		mv.setViewName("redirect:/clubAdvertise?num=1");
+
+		return mv;
+	}
+
+	@RequestMapping(value = "/clubAdvertise/update/{id}", method = { RequestMethod.GET, RequestMethod.POST })
+	public ModelAndView updateCommunityInfo(@PathVariable int id, HttpSession session, HttpServletRequest request,
+			HttpServletResponse response) {
+		
+		
+		ModelAndView mv = new ModelAndView();
+		
+		List<ClubAdvertiseDTO> clubAdDetailList = clubAdvertiseService.readClubAdvertiseDetail(id);
+
+		List<ClubAdvertiseDTO> clubAdImgList = clubAdvertiseService.getClubAdImg(id);
+
+		List<FileDTO> clubAdFileList = clubAdvertiseService.readClubAdvertiseDetailFile(id);
+		
+		mv.addObject("clubAdDetailList", clubAdDetailList);
+		mv.addObject("clubAdFileList", clubAdFileList);
+		mv.addObject("clubAdImgList", clubAdImgList);
+
+		System.out.println(mv);
+
+		mv.setViewName("updateClubAd");
+
+		return mv;
+	}
+
 	@RequestMapping(value = "/clubAdvertise/delete/{id}", method = { RequestMethod.GET, RequestMethod.POST })
 	public ModelAndView deleteclubAdvertise(@PathVariable int id, HttpSession session, HttpServletRequest request,
 			HttpServletResponse response) {
@@ -224,7 +359,8 @@ public class ClubAdvertiseController {
 	public void fileDownload(@PathVariable int id, HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView mv = new ModelAndView();
 
-		FileDTO clubAdDetail = clubAdvertiseService.readClubAdvertiseDetailFile(id).get(0);
+		FileDTO clubAdDetail = clubAdvertiseService.readClubAdvertiseDetailFileOne(id);
+		
 		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file/clubAd");
 		String fileName = clubAdDetail.getFileOriginalUrl();
 
