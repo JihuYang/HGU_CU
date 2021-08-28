@@ -74,7 +74,13 @@ function createReservation(){
 	et=et+":00";
 	var reservationDate=document.getElementById("date").value;
 	var spaceId=document.getElementById("spaceSelect").selectedIndex+1;
-	
+	/*
+	if(true){
+		alert("예약이 마감 되었습니다. 다른 시간을 선택해 주세요");
+		location.href = location.href;
+		return;
+	}
+	*/
 
 	$.ajax({
 		url: "/hgu/reserve",
@@ -97,10 +103,10 @@ function createReservation(){
 			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
         }
 	});
+	
 }
 
 function search(){
-	
  		document.getElementById("searchBtn").onclick = function () {
     
   			let keyword =  document.getElementsByName("keyword")[0].value;

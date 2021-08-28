@@ -56,15 +56,51 @@
 </div>
 
 <script>
+	Date.prototype.addDays = function(days) {
+		var date = new Date(this.valueOf());
+		date.setDate(date.getDate() + days);
+		return date;
+	}
+		   
+	function DateFormat(date) {
+	    var year = date.getFullYear();
+	    var month = date.getMonth() + 1;
+	    month = month >= 10 ? month : '0' + month;
+	    var day = date.getDate();
+	    day = day >= 10 ? day : '0' + day;
+	    return [year, month, day].join('-');
+	}
+	
+	var today =new Date();
+	var endDate = new Date();
+	      
+	today=DateFormat(today);
+	      
+	endDate.setDate(endDate.getDate() + 7);
+	endDate=DateFormat(endDate);
+		  
+	//today = yyyy+'-'+mm+'-'+dd;
+	document.getElementById("date").setAttribute("min", today);
+	  
+	//오늘 날짜부터 일주일까지
+	document.getElementById("date").setAttribute("max", endDate);
+		  
+	document.getElementById("date").value = new Date().toISOString().substring(0, 10);
+	
 	$("#openModalBtn").on('click', function(){
 		$(".modal-body")[0].reset();
 		document.getElementById("updateBtn").style.display = "none";
 		document.getElementById("createBtn").style.display = "block";
 		$('#addModal').modal('show');
+		
+		document.getElementById("date").value = new Date().toISOString().substring(0, 10);
 	});
 	
 	function editBtn(clickedId){
 		$(".modal-body")[0].reset();
+		$('#startTime option').each(function() {
+  		    $(this).prop('disabled', false);
+  		});
 		document.getElementById("createBtn").style.display = "none";
 		document.getElementById("updateBtn").style.display = "block";
 		var name = $('#userName'+clickedId).text();
@@ -82,71 +118,37 @@
 		$('#userSelect').val(userId).attr("selected", "selected");
 		$('#purpose').val(purpose);
 		$("#spaceSelect").val(space).attr("selected", "selected");
-		$('#reservationDate').val(reservationDate);
+		$('#date').val(reservationDate);
 		$("#startTime").val(startTime).attr("selected", "selected");
 		$("#endTime")[0].innerHTML="<option value='"+endTime+"' selected>"+endTime+"</option>";
 	}
 
-	/* $(function () {
-        $("#reservationDate").datepicker({format: 'yyyy-mm-dd'});
-    }); */
-	
-	Date.prototype.addDays = function(days) {
-		var date = new Date(this.valueOf());
-		date.setDate(date.getDate() + days);
-		return date;
-	}
-		   
-	function DateFormat(date) {
-	    var year = date.getFullYear();
-	    var month = date.getMonth() + 1;
-	    month = month >= 10 ? month : '0' + month;
-	    var day = date.getDate();
-	    day = day >= 10 ? day : '0' + day;
-	    return [year, month, day].join('-');
-	}
 
-	var today =new Date();
-	var endDate = new Date();
-	      
-	today=DateFormat(today);
-	      
-	endDate.setDate(endDate.getDate() + 7);
-	endDate=DateFormat(endDate);
-		  
-	//today = yyyy+'-'+mm+'-'+dd;
-	document.getElementById("date").setAttribute("min", today);
-	  
-	//오늘 날짜부터 일주일까지
-	document.getElementById("date").setAttribute("max", endDate);
-		  
-	document.getElementById('date').value = new Date().toISOString().substring(0, 10);
-	
-	
 	/* 시작시간 구하기 */
 	var hour=7;
-	      	var startTime = document.getElementById('startTime');
-	      	var endTime = document.getElementById('endTime');
-	      	var spaceElem = document.getElementById('spaceSelect');
-	      	var spaceIndex = spaceElem.selectedIndex + 1;
-	      	var rvDate=$("#date").val();
-	      	var time;
-	      	var reservationList = new Array();
-	      	var StimeIdx;
+   	var startTime = document.getElementById('startTime');
+   	var endTime = document.getElementById('endTime');
+   	var spaceElem = document.getElementById('spaceSelect');
+   	var spaceIndex = spaceElem.selectedIndex + 1;
+   	var rvDate=$("#date").val();
+   	var time;
+   	var reservationList = new Array();
+   	var StimeIdx;
+
+	for(var i =0; i<32; i++){
+		var min =':00';
+		hour++;
+		if(i%2!=0){
+			hour--;
+			min=':30';
+		}
+		startTime.innerHTML+='<option value='+hour+min+'>'
+					+hour
+					+min
+					+'</option>';
+   		
+	}
 	
-			for(var i =0; i<32; i++){
-				var min =':00';
-				hour++;
-				if(i%2!=0){
-					hour--;
-					min=':30';
-				}
-				startTime.innerHTML+='<option value='+hour+min+'>'
-							+hour
-							+min
-							+'</option>';
-	    		
-			}
 	/* 종료시간 기본 값 설정 */
 	  var selectedStart = $("#startTime option:selected").val();
 	  time = selectedStart.split(':');
