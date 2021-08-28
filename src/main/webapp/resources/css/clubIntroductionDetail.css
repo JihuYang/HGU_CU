@@ -18,6 +18,11 @@
     max-width: 480px;
     
 }
+
+.min-h{
+	min-height: 413px;
+}
+
 .logo{
 	float:right;
 	width: 380px;

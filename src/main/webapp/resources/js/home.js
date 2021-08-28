@@ -6,7 +6,7 @@ function searchHome(){
   			/*console.log(searchType)
   			console.log(keyword)*/
   			
-  			location.href = "/hgu/search?num=1"+ "&searchType=title" +"&keyword=" + keyword;
+  			location.href = "/search?num=1"+ "&searchType=title" +"&keyword=" + keyword;
   			
  		};
 }
@@ -20,7 +20,7 @@ function searchInSearchPage(){
   			/*console.log(searchType)
   			console.log(keyword)*/
   			
-  			location.href = "/hgu/search?num=1"+ "&searchType=" + searchType +"&keyword=" + keyword;
+  			location.href = "/search?num=1"+ "&searchType=" + searchType +"&keyword=" + keyword;
   			
  		};
 }
@@ -30,6 +30,6 @@ function getContent(tag,searchType,keyword){
 	if(typeof keyword == "undefined"){
 		keyword = "";
 	}
-	location.href = "/hgu/search?num=1&searchType=" + searchType +"&keyword=" + keyword + "&tag=" + tag;
+	location.href = "/search?num=1&searchType=" + searchType +"&keyword=" + keyword + "&tag=" + tag;
 
 }

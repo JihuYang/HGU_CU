@@ -122,7 +122,7 @@
 				if(spaceName == "전체")
 					document.getElementsByClassName("dp-none")[0].style.display = "none";
 				//alert(spaceName);
-				location.href = "/hgu/myReservation?spaceName=" + spaceName;
+				location.href = "/myReservation?spaceName=" + spaceName;
 				        
 	    }
 	</script>

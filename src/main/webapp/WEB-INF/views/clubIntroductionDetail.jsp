@@ -45,7 +45,7 @@
 				<h3 class="font-weight-bold pt-title">${categoryName}동아리소개</h3>
 				<p class="text-muted mb-0">한동대 ${categoryName} 모든 동아리들을 응원합니다 !</p>
 			</div>
-			<div class="col-sm-10">
+			<div class="col-sm-10 min-h">
 				<hr>
 				<!-- 동아리 대표 내용  -->
 				<div class="align">

@@ -1,6 +1,6 @@
 function createClubAd(){
 	$.ajax({
-		url: "/hgu/clubAdvertise/write/create",
+		url: "/clubAdvertise/write/create",
 		type: "POST",
 		async: false,
 		data: {
@@ -12,7 +12,7 @@ function createClubAd(){
 		success: function(data){	
 			console.log("동아리 홍보 글쓰기 성공!!");
 			console.log("title: " + title);
-			location.href="/hgu/clubAdvertise";
+			location.href="/clubAdvertise";
 		}, 
 		error:function(request, status, error){
 		console.log("동아리 홍보 글쓰기 실패..");
@@ -31,6 +31,6 @@ function search(){
   			/* console.log(searchType)
   			console.log(keyword) */
   			//alert("23");
-  			location.href = "/hgu/clubAdvertise?num=1"+ "&searchType=" + searchType + "&keyword=" + keyword;
+  			location.href = "/clubAdvertise?num=1"+ "&searchType=" + searchType + "&keyword=" + keyword;
  		};
 }
