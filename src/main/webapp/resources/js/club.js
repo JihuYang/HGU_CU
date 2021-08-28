@@ -7,7 +7,7 @@
 	//var val = foundationDate.options[foundationDate.selectedIndex].value;
 	console.log(categoryId);
 	$.ajax({
-		url: "/hgu/clubIntroduction/write/create",
+		url: "/clubIntroduction/write/create",
 		type: "POST",
 		async: false,
 		data: {
@@ -24,7 +24,7 @@
 		success: function(){	
 			console.log("동아리 소개 글쓰기 성공!!");
 			console.log("clubName: " + clubName);
-			location.href="/hgu/clubIntroduction";
+			location.href="/clubIntroduction";
 		}, 
 		error:function(request, error){
 			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -41,7 +41,7 @@ function search(){
   			/* console.log(searchType)
   			console.log(keyword) */
   			//alert(keyword);
-  			location.href = "/hgu/clubIntroduction" + "?keyword=" + keyword;
+  			location.href = "/clubIntroduction" + "?keyword=" + keyword;
  		};
 }
 
@@ -54,6 +54,6 @@ function searchInCategory(categoryId){
   			/* console.log(searchType)
   			console.log(keyword) */
   			//alert(keyword);
-  			location.href = "/hgu/clubIntroduction/"+ categoryId + "?keyword=" + keyword;
+  			location.href = "/clubIntroduction/"+ categoryId + "?keyword=" + keyword;
  		};
 }

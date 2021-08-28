@@ -4,7 +4,7 @@ function update(){
 				//alert(totalReservationWeek + " " +totalReservationDay);
 
 				$.ajax({
-				    url: "/hgu/admin/update",
+				    url: "/admin/update",
 				    data: {"totalReservationWeek": totalReservationWeek, "totalReservationDay": totalReservationDay},
 				    type: "POST",
 				    success : function(data){
@@ -21,7 +21,7 @@ function updateClub(clubName,id){
 		//alert(clubName);
 		
 		$.ajax({
-				    url: "/hgu/adminUser/clubUpdate",
+				    url: "/adminUser/clubUpdate",
 				    data: {"clubName": clubName, "id": id},
 				    type: "POST",
 				    success : function(data){
@@ -35,7 +35,7 @@ function updateClub(clubName,id){
 
 function updateAuthority(authority,id){
 	$.ajax({
-				    url: "/hgu/adminUser/authorityUpdate",
+				    url: "/adminUser/authorityUpdate",
 				    data: {"authority": authority, "id": id},
 				    type: "POST",
 				    success : function(data){
@@ -51,7 +51,7 @@ function updateSetting(value,id){
 		//alert(value);
 		
 		$.ajax({
-				    url: "/hgu/admin/settingUpdate",
+				    url: "/admin/settingUpdate",
 				    data: {"value": value, "id": id},
 				    type: "POST",
 				    success : function(data){
@@ -67,7 +67,7 @@ function updateStartHour(value,id){
 		//alert(value);
 		
 		$.ajax({
-				    url: "/hgu/admin/startHourUpdate",
+				    url: "/admin/startHourUpdate",
 				    data: {"value": value, "id": id},
 				    type: "POST",
 				    success : function(data){
@@ -83,7 +83,7 @@ function updateEndHour(value,id){
 		//alert(value);
 		
 		$.ajax({
-				    url: "/hgu/admin/endHourUpdate",
+				    url: "/admin/endHourUpdate",
 				    data: {"value": value, "id": id},
 				    type: "POST",
 				    success : function(data){

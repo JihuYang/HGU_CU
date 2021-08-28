@@ -7,7 +7,7 @@ function createCommutinyEvent(){
 	endDate=endDate.replace("T"," ")+":00"; 	
 	
 	$.ajax({
-		url: "/hgu/communityEvent",
+		url: "/communityEvent",
 		type: "POST",
 		async: false,
 		data: {
@@ -19,7 +19,7 @@ function createCommutinyEvent(){
 		},
 		success: function(data){	
 			console.log("행사일정 추가 성공!!");
-			location.href="/hgu/communityEvent";
+			location.href="/communityEvent";
 		}, 
 		error:function(request, error){
 			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);

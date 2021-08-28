@@ -17,7 +17,7 @@
 			<c:choose>
 				<c:when test="${clubAdvertiseList.originalUrl eq null}">
 					<td><img
-						src="https://cdn.pixabay.com/photo/2014/09/26/04/22/water-461597__340.jpg"
+						src="${defaultImage}"
 						class="img-thumbnail rounded clubAd-img"></td>
 				</c:when>
 				<c:when test="${clubAdvertiseList.originalUrl != null}">

@@ -1,6 +1,6 @@
 function createCommunityInfo() {
 	$.ajax({
-		url: "/hgu/communityInfo/write/create",
+		url: "/communityInfo/write/create",
 		type: "POST",
 		async: false,
 		data: {
@@ -12,7 +12,7 @@ function createCommunityInfo() {
 		success: function(data) {
 			console.log("커뮤니티 글쓰기 성공!!");
 			console.log("userId: " + userId);
-			location.href = "/hgu/communityInfo";
+			location.href = "/communityInfo";
 		},
 		error: function(request, status, error) {
 			console.log("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
@@ -22,7 +22,7 @@ function createCommunityInfo() {
 
 function createCommunityMaterial() {
 	$.ajax({
-		url: "/hgu/communityMaterials/write/create",
+		url: "/communityMaterials/write/create",
 		type: "POST",
 		async: false,
 		data: {
@@ -33,7 +33,7 @@ function createCommunityMaterial() {
 		success: function(data) {
 			console.log("커뮤니티 글쓰기 성공!!");
 			console.log("userId: " + userId);
-			location.href = "/hgu/communityMaterials";
+			location.href = "/communityMaterials";
 		},
 		error: function(request, status, error) {
 			console.log("커뮤니티 글쓰기 실패..");
@@ -48,7 +48,7 @@ function uploadFile() {
 	$.ajax({
 		type: "POST",
 		enctype: 'multipart/form-data',
-		url: "/hgu/communityInfo/upload.do",
+		url: "/communityInfo/upload.do",
 		data: {
 			originalUrl: $("input[name=file]")[0].files[0]
 		},
@@ -56,7 +56,7 @@ function uploadFile() {
 		contentType: false,
 		success: function(data) {
 			console.log("파일 업로드 성공!!");
-			//location.href = "/hgu/communityInfo";
+			//location.href = "/communityInfo";
 		},
 		error: function(e) {
 			console.log("code:" + request.status + "\n" + "message:" + request.responseText + "\n" + "error:" + error);
@@ -74,7 +74,7 @@ function searchInfo() {
 		/* console.log(searchType)
 		console.log(keyword) */
 		//alert("23");
-		location.href = "/hgu/communityInfo?num=1" + "&searchType=" + searchType + "&keyword=" + keyword;
+		location.href = "/communityInfo?num=1" + "&searchType=" + searchType + "&keyword=" + keyword;
 	};
 }
 
@@ -88,7 +88,7 @@ function searchMaterial() {
 		/*console.log(searchType)
 		console.log(keyword)*/
 
-		location.href = "/hgu/communityMaterials?num=1" + "&searchType=" + searchType + "&keyword=" + keyword;
+		location.href = "/communityMaterials?num=1" + "&searchType=" + searchType + "&keyword=" + keyword;
 
 	};
 }

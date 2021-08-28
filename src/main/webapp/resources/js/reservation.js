@@ -9,7 +9,7 @@ function createAdminReservationInfo(){
 	var userId=document.getElementById("userSelect").selectedIndex+1;
 
 	$.ajax({
-		url: "/hgu/adminReservation/create",
+		url: "/adminReservation/create",
 		type: "POST",
 		async: false,
 		data: {
@@ -22,7 +22,7 @@ function createAdminReservationInfo(){
 		},
 		success: function(){	
 			console.log("예약 추가 성공!!");
-			location.href="/hgu/adminReservation?num=1";
+			location.href="/adminReservation?num=1";
 		}, 
 		error:function(request, error){
 			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -43,7 +43,7 @@ function updateAdminReservationInfo(){
 	id=parseInt(id);
 
 	$.ajax({
-		url: "/hgu/adminReservation/update",
+		url: "/adminReservation/update",
 		type: "POST",
 		async: false,
 		data: {
@@ -57,7 +57,7 @@ function updateAdminReservationInfo(){
 		},
 		success: function(){	
 			console.log("예약 추가 성공!!");
-			location.href="/hgu/adminReservation?num=1"
+			location.href="/adminReservation?num=1"
 		}, 
 		error:function(request, error){
 			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -83,7 +83,7 @@ function createReservation(){
 	*/
 
 	$.ajax({
-		url: "/hgu/reserve",
+		url: "/reserve",
 		type: "POST",
 		async: false,
 		data: {
@@ -97,7 +97,7 @@ function createReservation(){
 		},
 		success: function(){	
 			console.log("예약 추가 성공!!");
-			location.href="/hgu/reservation";
+			location.href="/reservation";
 		}, 
 		error:function(request, error){
 			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -114,7 +114,7 @@ function search(){
   			/* console.log(searchType)
   			console.log(keyword) */
   			//alert(keyword);
-  			location.href = "/hgu/adminReservation?num=1" + "&keyword=" + keyword;
+  			location.href = "/adminReservation?num=1" + "&keyword=" + keyword;
  		};
 }
 
