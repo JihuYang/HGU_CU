@@ -114,7 +114,7 @@ public class HomeController {
 		List<ClubDTO> clubIntroList = clubService.getAllClubIntroduction(keyword);
 		
 		// 동아리 홍보
-		page.get(3).setCount(communityMaterialService.countInfo(searchType, keyword));
+		page.get(3).setCount(clubAdvertiseService.countInfo(searchType, keyword));
 		List<ClubAdvertiseDTO> clubAdvertiseList = clubAdvertiseService.readClubAdvertisePreview(page.get(3).getDisplayPost(),page.get(3).getPostNum(),searchType,keyword);
 		
 		int communityInfoListCount = page.get(0).getCount();

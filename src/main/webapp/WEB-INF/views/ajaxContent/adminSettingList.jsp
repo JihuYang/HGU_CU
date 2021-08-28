@@ -25,6 +25,9 @@
 				<td class=" value">
 				<input class="form-control form-control-sm w-5 officeHour-start" name="timeValue" value="${officeHour.startTime}" onchange="updateStartHour(this.value,${officeHour.id})">
 				</td>
+				<td >
+				~
+				</td>
 				<td class=" value">
 				<input class="form-control form-control-sm w-5 officeHour-end" name="timeValue" value="${officeHour.endTime}" onchange="updateEndHour(this.value,${officeHour.id})">
 				</td>

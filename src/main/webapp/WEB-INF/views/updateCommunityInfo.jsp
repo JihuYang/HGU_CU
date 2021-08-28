@@ -41,8 +41,7 @@
 				<h3 class="font-weight-bold pt-title">공지사항</h3>
 			</div>
 		</div>
-		<!-- 홍보글 테이블 -->
-
+		<!-- 커뮤니티 공지사항 수정 -->
 		<div class="justify-content-md-center align-items-center">
 			<form method="POST" enctype="multipart/form-data" id="uploadForm"
 				action="<%=request.getContextPath()%>/communityInfo/write/update">

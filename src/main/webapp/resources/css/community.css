@@ -5,6 +5,14 @@
 	padding-bottom: 10rem;
 }
 
+.table-layout-f{
+	table-layout: fixed;
+}
+.title-shortening{
+	overflow: hidden;
+  	text-overflow: ellipsis;
+  	white-space: nowrap;
+}
 .space {
 	padding-bottom: 2rem;
 }

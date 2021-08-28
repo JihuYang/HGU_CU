@@ -15,6 +15,8 @@ public interface ClubAdvertiseDAO {
 	public List<ClubAdvertiseDTO> readClubAdvertiseDetail(int id);
 
 	public List<FileDTO> readClubAdvertiseDetailFile(int id);
+	
+	public FileDTO readClubAdvertiseDetailFileOne(int id);
 
 	public List<ClubAdvertiseDTO> getClubAdImg(int id);
 
@@ -25,6 +27,12 @@ public interface ClubAdvertiseDAO {
 	public int createClubAdImage(FileDTO clubAdImage);
 
 	public int createClubAdFile(FileDTO clubAdFile);
+
+	public int updateClubAdvertise(ClubAdvertiseDTO info);
+
+	public int updateClubAdvertiseFile(FileDTO clubAdvertiseFile);
+
+	public int updateClubAdvertiseImage(FileDTO clubAdvertiseImage);
 
 	public int countInfo(String searchType, String keyword);
 

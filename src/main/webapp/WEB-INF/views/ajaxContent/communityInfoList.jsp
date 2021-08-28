@@ -12,7 +12,7 @@
 			<p class="text-muted">* 단어의 철자가 정확한지 확인해 주세요<br>* 띄어쓰기가 정확한지 획인해 주세요</p>
 </c:if>
 <c:if test="${ !empty communityInfoList}">
-	<table class="table text-center">
+	<table class="table text-center table-layout-f">
 		<thead>
 			<tr>
 				<th scope="col" class="col-1 text-center">번호</th>
@@ -30,7 +30,7 @@
 					<tr class="tr-hover" style="cursor:pointer;" onClick="location.href='<%=request.getContextPath()%>/communityInfo/detail/${communityInfo.id}'">
 						<%-- <th scope="row">${fn:length(communityInfoList) - status.index}</th> --%>
 						<th scope="row">${communityInfo.id}</th>
-						<td class="text-start">${communityInfo.title}</td>
+						<td class="text-start title-shortening">${communityInfo.title}</td>
 						<td id="writer">${communityInfo.writer}</td>
 						<td id="date">${formattedRegDate}</td>
 						<td id="count">${communityInfo.viewCount}</td>

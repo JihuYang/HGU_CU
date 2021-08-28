@@ -32,7 +32,8 @@
 
 	<select id="readClubAdvertisePreviewImage"
 		resultType="com.walab.hgu.DTO.FileDTO" parameterType="hashmap">
-		SELECT * FROM hsca219.clubAdvertiseImage as CA WHERE CA.fileOrder=1 AND
+		SELECT * FROM
+		hsca219.clubAdvertiseImage as CA WHERE CA.fileOrder=1 AND
 		clubAdvertiseId=#{id}
 	</select>
 
@@ -46,6 +47,14 @@
 	</select>
 
 	<select id="readClubAdvertiseDetailFile"
+		resultType="com.walab.hgu.DTO.FileDTO" parameterType="hashmap">
+		SELECT * FROM
+		hsca219.clubAdvertiseFile WHERE clubAdvertiseId=#{id};
+		<!-- SELECT CA.id, CAF.fileOriginalUrl FROM clubAdvertise CA , hsca219.clubAdvertiseFile 
+			as CAF WHERE CA.id = #{id} and CA.id=CAF.clubAdvertiseId -->
+	</select>
+	
+	<select id="readClubAdvertiseDetailFileOne"
 		resultType="com.walab.hgu.DTO.FileDTO" parameterType="hashmap">
 		SELECT * FROM
 		hsca219.clubAdvertiseFile WHERE id=#{id};
@@ -62,11 +71,13 @@
 		resultType="com.walab.hgu.DTO.ClubAdvertiseDTO"
 		parameterType="hashmap">
 		SELECT originalUrl, fileOrder
-		FROM clubAdvertiseImage RIGHT JOIN
+		FROM clubAdvertiseImage
+		RIGHT JOIN
 		clubAdvertise cA on cA.id =
 		clubAdvertiseImage.clubAdvertiseId
 		WHERE
-		clubAdvertiseId = #{id} ORDER BY `fileOrder`
+		clubAdvertiseId = #{id} ORDER
+		BY `fileOrder`
 
 	</select>
 
@@ -110,6 +121,31 @@
 		VALUES (#{clubAdvertiseId},
 		#{fileOriginalUrl}, #{fileOrder})
 	</insert>
+
+	<!-- 동아리 홍보 이미지수정 쿼리 -->
+	<update id="updateClubAdvertiseImage"
+		parameterType="com.walab.hgu.DTO.FileDTO">
+		UPDATE hsca219.clubAdvertiseImage SET
+		originalUrl =
+		#{originalUrl}, fileOrder = #{fileOrder} WHERE id = #{id}
+	</update>
+	
+		<!-- 동아리 홍보 파일 수정 쿼리 -->
+	<update id="updateClubAdvertiseFile"
+		parameterType="com.walab.hgu.DTO.FileDTO">
+		UPDATE hsca219.clubAdvertiseFile SET
+		fileOriginalUrl =
+		#{fileOriginalUrl}, fileOrder = #{fileOrder} WHERE clubAdvertiseId =
+		#{clubAdvertiseId} AND id = #{id}
+	</update>
+
+	<!-- 동아리 홍보 글 수정 쿼리 -->
+	<update id="updateClubAdvertise"
+		parameterType="com.walab.hgu.DTO.ClubAdvertiseDTO">
+		UPDATE hsca219.clubAdvertise set
+		title=#{title},
+		content=#{content} WHERE id = #{id}
+	</update>
 
 	<!-- 동아리 홍보 파일 삭제 쿼리 -->
 	<delete id="deleteClubAdvertiseFile" parameterType="int">

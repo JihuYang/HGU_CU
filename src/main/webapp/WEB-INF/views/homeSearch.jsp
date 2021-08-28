@@ -152,7 +152,7 @@
 						</c:if>
 					</c:if>
 					<c:if test="${!empty tag && tag ne '전체'}">
-						<nav id="paginationBox">
+						<nav id="pagination-comInfo">
 							<ul class="pagination align-items-center justify-content-center">
 								<c:if test="${page[0].prev}">
 									<li class="page-item">
@@ -244,6 +244,35 @@
 								<div class="more" onclick="getContent('자료실','${page[1].searchType}','${page[1].keyword}')">더보기</div>
 					</c:if>	
 				</c:if>
+				<c:if test="${!empty tag && tag ne '전체'}">
+					<nav id="pagination-mate">
+						<ul class="pagination align-items-center justify-content-center">
+							<c:if test="${page[1].prev}">
+								<li class="page-item"><a class="page-link" href="<%=request.getContextPath()%>/search?num=${page[1].startPageNum - 1}${page[1].searchTypeKeyword}&tag=자료실"
+									aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+										<span class="sr-only">Previous</span>
+								</a></li>
+							</c:if>
+							
+							 <c:forEach begin="${page[1].startPageNum}" end="${page[1].endPageNum}" var="num">
+							 	<c:if test="${selected != num}">
+							 		<li class="page-item"><a class="page-link" href="<%=request.getContextPath()%>/search?num=${num}${page[1].searchTypeKeyword}&tag=자료실">${num}</a></li>
+							 	</c:if>
+							 	
+							 	<c:if test="${selected == num}">
+							 		<li class="page-item active"><a class="page-link" href="#">${num}</a></li>
+							 	</c:if>
+		 					</c:forEach>
+		 					
+		 					<c:if test="${page[1].next}">
+			 					<li class="page-item"><a class="page-link"  href="<%=request.getContextPath()%>/search?num=${page[1].endPageNum + 1}${page[1].searchTypeKeyword}&tag=자료실"
+									aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
+										class="sr-only">Next</span>
+								</a></li>
+							</c:if>
+						</ul>
+					</nav>
+				</c:if>
 			</c:if>
 			
 			
@@ -328,43 +357,47 @@
 						<p class="text-muted">* 단어의 철자가 정확한지 확인해 주세요<br>* 띄어쓰기가 정확한지 획인해 주세요</p>
 					</c:if>
 					<c:if test="${ !empty clubAdvertiseList}">
-					<table class="table table-hover table-mb">
-						<c:if test="${empty tag || tag eq '전체'}">
-							<c:forEach items="${clubAdvertiseList}" var="clubAdvertiseList" end="2">
-								<tr style="cursor:pointer;" onClick="location.href='<%=request.getContextPath()%>/clubAdvertise/detail/${clubAdvertiseList.id}'">
-									<c:choose>
-										<c:when test="${clubAdvertiseList.originalUrl eq null}">
-											<td><img src="https://cdn.pixabay.com/photo/2014/09/26/04/22/water-461597__340.jpg" class="img-thumbnail rounded clubAd-img"></td>
-										</c:when>
-										<c:when test="${clubAdvertiseList.originalUrl != null}">
-											<td><img src="<%=request.getContextPath()%>/resources/img/${clubAdvertiseList.originalUrl}" class="img-thumbnail rounded clubAd-img"></td>
-										</c:when>
-									</c:choose>
-									<td>
-										<h5>${clubAdvertiseList.title}</h5>
-										<p class="text-muted p-size clubAd-content">${clubAdvertiseList.content}</p>
-									</td>
+					<table class="table table-hover table-mb" style="table-layout: fixed;">
+						<thead>
+								<tr>
+									<th scope="col" class="col-3 text-center">제목</th>
+									<th scope="col" class="col-5 text-center">내용</th>
 								</tr>
-							</c:forEach>
-						</c:if>
-						<c:if test="${!empty tag && tag ne '전체'}">
-							<c:forEach items="${clubAdvertiseList}" var="clubAdvertiseList" varStatus="status">
-								<tr style="cursor:pointer;" onClick="location.href='<%=request.getContextPath()%>/clubAdvertise/detail/${clubAdvertiseList.id}'">
-									<c:choose>
-										<c:when test="${clubAdvertiseList.originalUrl eq null}">
-											<td><img src="https://cdn.pixabay.com/photo/2014/09/26/04/22/water-461597__340.jpg" class="img-thumbnail rounded clubAd-img"></td>
-										</c:when>
-										<c:when test="${clubAdvertiseList.originalUrl != null}">
-											<td><img src="<%=request.getContextPath()%>/resources/img/${clubAdvertiseList.originalUrl}" class="img-thumbnail rounded clubAd-img"></td>
-										</c:when>
-									</c:choose>
-									<td>
-										<h5>${clubAdvertiseList.title}</h5>
-										<p class="text-muted p-size clubAd-content">${clubAdvertiseList.content}</p>
-									</td>
-								</tr>
-							</c:forEach>
-						</c:if>
+						</thead>
+						<tbody>
+							<c:if test="${empty tag || tag eq '전체'}">
+								<c:forEach items="${clubAdvertiseList}" var="clubAdvertiseList" end="2">
+									<tr style="cursor:pointer;" onClick="location.href='<%=request.getContextPath()%>/clubAdvertise/detail/${clubAdvertiseList.id}'">
+										<%-- <c:choose>
+											<c:when test="${clubAdvertiseList.originalUrl eq null}">
+												<td><img src="https://cdn.pixabay.com/photo/2014/09/26/04/22/water-461597__340.jpg" class="img-thumbnail rounded clubAd-img"></td>
+											</c:when>
+											<c:when test="${clubAdvertiseList.originalUrl != null}">
+												<td><img src="<%=request.getContextPath()%>/resources/img/${clubAdvertiseList.originalUrl}" class="img-thumbnail rounded clubAd-img"></td>
+											</c:when>
+										</c:choose> --%>
+										<th class="col-3 text-center">${clubAdvertiseList.title}</th>
+										<td class="col-5 text-center text-muted p-size clubAd-content">${clubAdvertiseList.content}</td>
+									</tr>
+								</c:forEach>
+							</c:if>
+							<c:if test="${!empty tag && tag ne '전체'}">
+								<c:forEach items="${clubAdvertiseList}" var="clubAdvertiseList" varStatus="status">
+									<tr style="cursor:pointer;" onClick="location.href='<%=request.getContextPath()%>/clubAdvertise/detail/${clubAdvertiseList.id}'">
+										<%-- <c:choose>
+											<c:when test="${clubAdvertiseList.originalUrl eq null}">
+												<td><img src="https://cdn.pixabay.com/photo/2014/09/26/04/22/water-461597__340.jpg" class="img-thumbnail rounded clubAd-img"></td>
+											</c:when>
+											<c:when test="${clubAdvertiseList.originalUrl != null}">
+												<td><img src="<%=request.getContextPath()%>/resources/img/${clubAdvertiseList.originalUrl}" class="img-thumbnail rounded clubAd-img"></td>
+											</c:when>
+										</c:choose> --%>
+										<th class="col-3 text-center">${clubAdvertiseList.title}</th>
+										<td class="col-5 text-center text-muted p-size clubAd-content">${clubAdvertiseList.content}</td>
+									</tr>
+								</c:forEach>
+							</c:if>
+						</tbody>
 					</table>
 					</c:if>
 					<c:if test="${empty tag || tag eq '전체'}">
@@ -372,6 +405,35 @@
 								<div class="more" onclick="getContent('동아리홍보','${page[3].searchType}','${page[3].keyword}')">더보기</div>
 						</c:if>
 					</c:if>	
+					<c:if test="${!empty tag && tag ne '전체'}">
+						<nav id="pagination-clubAd">
+							<ul class="pagination align-items-center justify-content-center">
+							<c:if test="${page[3].prev}">
+								<li class="page-item"><a class="page-link" href="<%=request.getContextPath()%>/search?num=${page[3].startPageNum - 1}${page[3].searchTypeKeyword}&tag=동아리홍보"
+									aria-label="Previous"> <span aria-hidden="true">&laquo;</span>
+										<span class="sr-only">Previous</span>
+								</a></li>
+							</c:if>
+							
+							 <c:forEach begin="${page[3].startPageNum}" end="${page[3].endPageNum}" var="num">
+							 	<c:if test="${selected != num}">
+							 		<li class="page-item"><a class="page-link" href="<%=request.getContextPath()%>/search?num=${num}${page[3].searchTypeKeyword}&tag=동아리홍보">${num}</a></li>
+							 	</c:if>
+							 	
+							 	<c:if test="${selected == num}">
+							 		<li class="page-item active"><a class="page-link" href="#">${num}</a></li>
+							 	</c:if>
+		 					</c:forEach>
+		 					
+		 					<c:if test="${page[3].next}">
+			 					<li class="page-item"><a class="page-link"  href="<%=request.getContextPath()%>/search?num=${page[3].endPageNum + 1}${page[3].searchTypeKeyword}&tag=동아리홍보"
+									aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span
+										class="sr-only">Next</span>
+								</a></li>
+							</c:if>
+							</ul>
+						</nav>
+					</c:if>
 				</div>
 			</c:if>
 			
