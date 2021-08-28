@@ -87,6 +87,14 @@ a:link, a:visited {
 	}
 }
 
+#img-div{
+	text-align:center;
+}
+
+#clubAdImg{
+	max-width:80%;
+}
+
 @media ( max-width : 576px) {
 	.search-btn {
 		margin-right: 3px !important;

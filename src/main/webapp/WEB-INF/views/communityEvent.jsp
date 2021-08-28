@@ -196,7 +196,7 @@
 						console.log(end);
 						
 						$.ajax({
-							url: "/hgu/communityEvent/update/"+id,
+							url: "/communityEvent/update/"+id,
 							type: "POST",
 							async: false,
 							data: {
@@ -208,7 +208,7 @@
 							},
 							success: function(){	
 								console.log("행사일정 업데이트 성공!!");
-								location.href="/hgu/communityEvent";
+								location.href="/communityEvent";
 							}, 
 							error:function(request, error){
 								console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);

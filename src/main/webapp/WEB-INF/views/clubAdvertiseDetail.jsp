@@ -61,8 +61,8 @@
 		<div class="row h-auto align-items-center justify-content-center">
 			<div class="px-4 detail-content">${clubAdDetailList[0].content}</div>
 			<c:forEach var="clubAdImgList" items="${clubAdImgList}" varStatus="status">
-				<div>
-					  <img src="<%=request.getContextPath()%>/resources/upload/file/clubAd/${clubAdImgList.originalUrl}" alt="...">
+				<div id="img-div">
+					  <img id="clubAdImg" src="<%=request.getContextPath()%>/resources/upload/file/clubAd/${clubAdImgList.originalUrl}" alt="...">
 				</div>
 			</c:forEach>
 		</div>
@@ -75,7 +75,7 @@
 						<tr>
 							<th scope="col" class="col-3 text-center file py-4">첨부파일</th>
 							<th scope="col" class="col-7 text-start px-3 py-4"><a
-								href="/hgu/clubAdvertise/detail/${clubAdFileList.id}/filedownload">${clubAdFileList.fileOriginalUrl}</a></th>
+								href="/clubAdvertise/detail/${clubAdFileList.id}/filedownload">${clubAdFileList.fileOriginalUrl}</a></th>
 						</tr>
 					</c:forEach>
 			</table>
