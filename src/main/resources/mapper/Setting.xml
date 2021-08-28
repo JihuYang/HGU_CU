@@ -3,26 +3,33 @@
 
 <mapper namespace="Setting">
 
-	<select id="readSettingWithParam" resultType="com.walab.hgu.DTO.SettingDTO" parameterType="hashmap">
-		SELECT * FROM setting
+	<select id="readSettingWithParam"
+		resultType="com.walab.hgu.DTO.SettingDTO" parameterType="hashmap">
+		SELECT * FROM
+		setting
 		LIMIT #{displayPost}, #{postNum}
- 	</select>
- 	
- 	<select id="readSetting" resultType="com.walab.hgu.DTO.SettingDTO" parameterType="hashmap">
-		SELECT * FROM setting
- 	</select>
+	</select>
+
+	<select id="readSetting"
+		resultType="com.walab.hgu.DTO.SettingDTO" parameterType="hashmap">
+		SELECT * FROM
+		setting
+	</select>
 
 	<select id="countInfo" resultType="int" parameterType="hashMap">
-		SELECT COUNT(*) as listCnt
+		SELECT
+		COUNT(*) as listCnt
 		FROM setting
 	</select>
+	
 	<update id="updateSetting" parameterType="hashMap">
-		UPDATE setting 
-		SET  value = #{value} WHERE id = #{id};
+		UPDATE setting
+		SET value = #{value} WHERE id = #{id};
 	</update>
-	
-	
-	<select id="getOfficeHour" resultType="com.walab.hgu.DTO.ReservationInfoDTO">
+
+
+	<select id="getOfficeHour"
+		resultType="com.walab.hgu.DTO.ReservationInfoDTO">
 		SELECT *
 		FROM officeHour
 	</select>

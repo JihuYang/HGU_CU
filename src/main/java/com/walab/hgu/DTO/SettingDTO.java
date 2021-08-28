@@ -8,62 +8,52 @@ public class SettingDTO {
 	private String key;
 	private int value;
 	private Date regdate;
-	
-
+	private String textValue;
 
 	public int getId() {
 		return id;
 	}
 
-
-
 	public void setId(int id) {
 		this.id = id;
 	}
-
-
 
 	public String getKey() {
 		return key;
 	}
 
-
-
 	public void setKey(String key) {
 		this.key = key;
 	}
-
-
 
 	public int getValue() {
 		return value;
 	}
 
-
-
 	public void setValue(int value) {
 		this.value = value;
 	}
 
+	public String getTextValue() {
+		return textValue;
+	}
 
+	public void setTextValue(String textValue) {
+		this.textValue = textValue;
+	}
 
 	public Date getRegdate() {
 		return regdate;
 	}
 
-
-
 	public void setRegdate(Date regdate) {
 		this.regdate = regdate;
 	}
 
-
-
 	@Override
 	public String toString() {
-		return "SettingDTO [ id=" + id + ", key=" + key + ", value=" + value
-				+ ", regdate=" + regdate + "]";
+		return "SettingDTO [id=" + id + ", key=" + key + ", value=" + value + ", regdate=" + regdate + ", textValue="
+				+ textValue + "]";
 	}
-	
-	
+
 }

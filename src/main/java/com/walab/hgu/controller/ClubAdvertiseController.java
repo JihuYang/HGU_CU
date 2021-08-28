@@ -30,13 +30,18 @@ import com.walab.hgu.DTO.ClubAdvertiseDTO;
 import com.walab.hgu.DTO.CommunityInfoDTO;
 import com.walab.hgu.DTO.FileDTO;
 import com.walab.hgu.DTO.Page;
+import com.walab.hgu.DTO.SettingDTO;
 import com.walab.hgu.service.ClubAdvertiseService;
+import com.walab.hgu.service.SettingService;
 
 @Controller
 public class ClubAdvertiseController {
 
 	@Autowired
 	ClubAdvertiseService clubAdvertiseService;
+	
+	@Autowired
+	SettingService settingService;
 
 	// 동아리 홍보 페이지 컨트롤러
 	@RequestMapping(value = "/clubAdvertise", method = RequestMethod.GET)
@@ -64,7 +69,10 @@ public class ClubAdvertiseController {
 			}
 			count++;
 		}
+		
+		String defaultImage = settingService.readSetting().get(2).getTextValue();
 
+		mv.addObject("defaultImage", defaultImage);
 		mv.addObject("clubAdvertiseList", clubAdvertiseList);
 		mv.addObject("page", page);
 		mv.addObject("selected", num);
