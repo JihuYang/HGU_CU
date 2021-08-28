@@ -4,7 +4,7 @@ function update(){
 				//alert(totalReservationWeek + " " +totalReservationDay);
 
 				$.ajax({
-				    url: "/hgu/admin/update",
+				    url: "/admin/update",
 				    data: {"totalReservationWeek": totalReservationWeek, "totalReservationDay": totalReservationDay},
 				    type: "POST",
 				    success : function(data){

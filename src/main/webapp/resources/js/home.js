@@ -6,7 +6,7 @@ function searchHome(){
   			/*console.log(searchType)
   			console.log(keyword)*/
   			
-  			location.href = "/hgu/search?num=1"+ "&searchType=title" +"&keyword=" + keyword;
+  			location.href = "/search?num=1"+ "&searchType=title" +"&keyword=" + keyword;
   			
  		};
 }
