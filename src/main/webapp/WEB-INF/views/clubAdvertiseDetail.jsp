@@ -61,7 +61,7 @@
 		<div class="row h-auto align-items-center justify-content-center">
 			<div class="px-4 detail-content">${clubAdDetailList[0].content}</div>
 			<c:forEach var="clubAdImgList" items="${clubAdImgList}" varStatus="status">
-				<div id="img-div">
+				<div id="img-div" class="p-4">
 					  <img id="clubAdImg" src="<%=request.getContextPath()%>/resources/upload/file/clubAd/${clubAdImgList.originalUrl}" alt="...">
 				</div>
 			</c:forEach>

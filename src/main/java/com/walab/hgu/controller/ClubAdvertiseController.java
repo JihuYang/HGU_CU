@@ -145,9 +145,9 @@ public class ClubAdvertiseController {
 			infoImageFile.setClubAdvertiseId(recentId);
 			infoImageFile.setOriginalUrl(originalUrl);
 			infoImageFile.setFileOrder(imgOrder);
-			imgOrder++;
 
 			clubAdvertiseService.createClubAdImage(infoImageFile);
+			imgOrder++;
 
 			System.out.println("image file print: " + infoImageFile);
 
@@ -239,9 +239,9 @@ public class ClubAdvertiseController {
 				infoImageFile.setClubAdvertiseId(id);
 				infoImageFile.setOriginalUrl(originalUrl);
 				infoImageFile.setFileOrder(imgOrder);
-				imgOrder++;
 				
 				clubAdvertiseService.createClubAdImage(infoImageFile);
+				imgOrder++;
 
 				String originFileName = newfile.getOriginalFilename(); // 원본 파일 명
 				long fileSize = newfile.getSize(); // 파일 사이즈

@@ -1,162 +1,171 @@
-.pt-title{
+.pt-title {
 	padding-top: 4em !important;
-    padding-bottom: 0 !important;
+	padding-bottom: 0 !important;
 }
 
-.club-content{
-	display:flex; 
-	margin-top:80px;
-}
-.search-bar{
-	float:right !important;
-	display:block !important;
+.club-content {
+	display: flex;
+	margin-top: 80px;
 }
 
-.mt-5rem{
-	margin-top:5rem;
+.search-bar {
+	float: right !important;
+	display: block !important;
 }
 
-.mb-0{
-	margin-bottom:0px;
+.mt-5rem {
+	margin-top: 5rem;
 }
 
-.pd-0{
-	padding-right:0;
-	padding-left:0;
+.mb-0 {
+	margin-bottom: 0px;
+}
+
+.pd-0 {
+	padding-right: 0;
+	padding-left: 0;
 }
 
 .btn {
-  display: inline-block;
-  font-family: "Merriweather Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  font-weight: 400;
-  line-height: 1.5;
-  color: rgb(185, 185, 185);
-  text-align: center;
-  text-decoration: none;
-  vertical-align: middle;
-  cursor: pointer;
-  -webkit-user-select: none;
-     -moz-user-select: none;
-      -ms-user-select: none;
-          user-select: none;
-  background-color: rgb(242, 242, 242);
-  border: none !important;
-  padding: 0.375rem 0.75rem;
-  font-size: 1rem;
-  border-radius: 0.25rem;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+	display: inline-block;
+	font-family: "Merriweather Sans", -apple-system, BlinkMacSystemFont,
+		"Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif,
+		"Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+		"Noto Color Emoji";
+	font-weight: 400;
+	line-height: 1.5;
+	color: rgb(185, 185, 185);
+	text-align: center;
+	text-decoration: none;
+	vertical-align: middle;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	background-color: rgb(242, 242, 242);
+	border: none !important;
+	padding: 0.375rem 0.75rem;
+	font-size: 1rem;
+	border-radius: 0.25rem;
+	transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+		border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
-.form-control{
+
+.form-control {
 	border: none;
 }
 
-.logos{
-	width:33%;
-	position:relative;
+.logos {
+	width: 33%;
+	position: relative;
 }
 
-.logo-display{
-	display:inline-flex !important;
+.logo-display {
+	display: inline-flex !important;
 }
 
-.btn-container{
-	position:relative;
+.btn-container {
+	position: relative;
 }
 
-.writing-btn{
+.writing-btn {
 	background-color: #326295 !important;
 	border-color: #326295 !important;
 	color: white !important;
 	height: 32px;
-    padding-bottom: 2px;
-    padding-top: 2px;
-    position:absolute;
-    top:0;
-    right:0;
-    
+	padding-bottom: 2px;
+	padding-top: 2px;
+	position: absolute;
+	top: 0;
+	right: 0;
 }
 
 .overlay-item {
-       display: block;
-       position: relative;
-       overflow: hidden;
-       text-align: center;
-       margin: 0.5em 0.5em !important;
+	display: block;
+	position: relative;
+	overflow: hidden;
+	text-align: center;
+	margin: 0.5em 0.5em !important;
+}
 
-    }
-    .overlay-item .mask {
-       display: block;
-       position: absolute;
-       overflow: scroll;
-       top: 15;
-       left: 15;
-       height: 100%;
-       width: 100%;
-    }
-    .overlay-item img {
-       display: block;
-       width: 100%;
-       height: auto;
-       x-margin-right: auto;
-       x-margin-left: auto;
-    }
-    .overlay-item a {
-       text-align: center !important;
-       color:black;
-       text-decoration:none;
-    }
+.overlay-item .mask {
+	display: block;
+	position: absolute;
+	overflow: scroll;
+	top: 15;
+	left: 15;
+	height: 100%;
+	width: 100%;
+}
 
-    .overlay-effect img {
-       -webkit-transform: scaleY(1);
-       -moz-transform: scaleY(1);
-       -o-transform: scaleY(1);
-       -ms-transform: scaleY(1);
-       transform: scaleY(1);
-       -webkit-transition: all 0.7s ease-in-out;
-       -moz-transition: all 0.7s ease-in-out;
-       -o-transition: all 0.7s ease-in-out;
-       -ms-transition: all 0.7s ease-in-out;
-       transition: all 0.7s ease-in-out;
-    }
-    .overlay-effect .mask {
-       background-color: rgba(255, 255, 255, 0.3);
-       -webkit-transition: all 0.5s linear;
-       -moz-transition: all 0.5s linear;
-       -o-transition: all 0.5s linear;
-       -ms-transition: all 0.5s linear;
-       transition: all 0.5s linear;
-       -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
-       filter: alpha(opacity=0);
-       opacity: 0;
-    }
-    
-    .overlay-effect:hover img {
-       -webkit-transform: scale(10);
-       -moz-transform: scale(10);
-       -o-transform: scale(10);
-       -ms-transform: scale(10);
-       transform: scale(10);
-       -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
-       filter: alpha(opacity=0);
-       opacity: 0;
-    }
-    .overlay-effect:hover .mask {
-       -ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=100)";
-       filter: alpha(opacity=100);
-       opacity: 1;
-    }
+.overlay-item img {
+	display: block;
 
-    @media screen and (max-width: 992px) and (min-width: 576px) { 	
-	.pd-0{
-	padding-right:0;
-	padding-left:0;
-	width:auto;
+	margin-right: auto;
+	margin-left: auto;
+	
+	
+}
+
+.overlay-item a {
+	text-align: center !important;
+	color: black;
+	text-decoration: none;
+}
+
+.overlay-effect img {
+	-webkit-transform: scaleY(1);
+	-moz-transform: scaleY(1);
+	-o-transform: scaleY(1);
+	-ms-transform: scaleY(1);
+	transform: scaleY(1);
+	-webkit-transition: all 0.7s ease-in-out;
+	-moz-transition: all 0.7s ease-in-out;
+	-o-transition: all 0.7s ease-in-out;
+	-ms-transition: all 0.7s ease-in-out;
+	transition: all 0.7s ease-in-out;
+}
+
+.overlay-effect .mask {
+	background-color: rgba(255, 255, 255, 0.3);
+	-webkit-transition: all 0.5s linear;
+	-moz-transition: all 0.5s linear;
+	-o-transition: all 0.5s linear;
+	-ms-transition: all 0.5s linear;
+	transition: all 0.5s linear;
+	-ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	filter: alpha(opacity = 0);
+	opacity: 0;
+}
+
+.overlay-effect:hover img {
+	-webkit-transform: scale(10);
+	-moz-transform: scale(10);
+	-o-transform: scale(10);
+	-ms-transform: scale(10);
+	transform: scale(10);
+	-ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=0)";
+	filter: alpha(opacity = 0);
+	opacity: 0;
+}
+
+.overlay-effect:hover .mask {
+	-ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=100)";
+	filter: alpha(opacity = 100);
+	opacity: 1;
+}
+
+@media screen and (max-width: 992px) and (min-width: 576px) {
+	.pd-0 {
+		padding-right: 0;
+		padding-left: 0;
+		width: auto;
 	}
 }
 
-@media screen and (max-width: 992px) { 	
-	.overlay-item a{
-	font-size : 1.5em !important; 
-	} 
-	
+@media screen and (max-width: 992px) {
+	.overlay-item a {
+		font-size: 1.5em !important;
+	}
 }
