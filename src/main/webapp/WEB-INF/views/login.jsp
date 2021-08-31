@@ -58,6 +58,8 @@
 						<input type="password" class="form-control" placeholder="비밀번호" />
 					</div>
 					<div class="input-group mb-3">
+					<div class="g-signin2" data-onsuccess="onSignIn" onclick="location.href='<%=request.getContextPath()%>/loginGoogle'"></div>
+					
 						 <button type="button" class="btn btn-secondary " onclick="location.href='<%=request.getContextPath()%>/loginGoogle'">로그인</button>
 <!-- 						<div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark">로그인</div> -->						
 						<button type="button" class="btn btn-secondary ">회원가입</button>
@@ -74,7 +76,6 @@
 		function onSignIn(googleUser) {
 			// Useful data for your client-side scripts:
 			var profile = googleUser.getBasicProfile();
-			console.log("ID: " + profile.getId()); // Don't send this directly to your server!
 			console.log('Full Name: ' + profile.getName());
 			console.log('Given Name: ' + profile.getGivenName());
 			console.log('Family Name: ' + profile.getFamilyName());

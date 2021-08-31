@@ -91,7 +91,7 @@
 					</div>
 					
 					<div class="mb-3">
-  						<input class="form-control file" type="file" id="originalUrl" name="originalUrl" accept="image/*" multiple>
+  						<input class="form-control file" type="file" id="file" name="file" accept="image/*" multiple>
 					</div>
 					
 					<div>

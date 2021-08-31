@@ -37,7 +37,7 @@ public class LoginController {
 	final static String GOOGLE_AUTH_BASE_URL = "https://accounts.google.com/o/oauth2/v2/auth";
 	final static String GOOGLE_TOKEN_BASE_URL = "https://oauth2.googleapis.com/token";
 	final static String GOOGLE_REVOKE_TOKEN_BASE_URL = "https://oauth2.googleapis.com/revoke";
-	final static String REDIRECTION_URL = "http://localhost:8080/hgu/google/auth";
+	final static String REDIRECTION_URL = "http://localhost:8080/google/auth";
 
 //	@Value("${api.client_id}")
 	String clientId = "client_id=330229354393-gevcnmd1sbv0fvmjovljh695o8pjq8q6.apps.googleusercontent.com";
