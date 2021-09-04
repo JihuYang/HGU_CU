@@ -54,8 +54,7 @@ public class ClubIntroductionController {
 		
 		if(request.getSession().getAttribute("user") != null) {
 			int admin = ((UserDTO)request.getSession().getAttribute("user")).getAdmin();
-			mv.addObject("admin", admin);
-			
+			mv.addObject("admin", admin);	
 		}
 		// System.out.println(categoryId);
 		List<ClubDTO> clubIntroList = clubService.getAllClubIntroduction(keyword);
@@ -109,7 +108,16 @@ public class ClubIntroductionController {
 //		HashMap<String, Integer> clubMappingInfo = new HashMap<String, Integer>();
 //		clubMappingInfo.put("categoryId", categoryId);
 //		clubMappingInfo.put("clubId", clubId);
+		
+		if(request.getSession().getAttribute("user") != null) {
+			int admin = ((UserDTO)request.getSession().getAttribute("user")).getAdmin();
+			mv.addObject("admin", admin);
+			int userId = ((UserDTO)request.getSession().getAttribute("user")).getId();
+			mv.addObject("userId", userId);
+		}
+		
 		List<ClubDTO> clubDetailList = clubService.getClubDetailList(categoryId, clubId);
+		System.out.println("clubDetailList: " + clubDetailList);
 
 		List<CategoryDTO> categoryNameList = clubService.getCategoryNameList();
 
@@ -175,8 +183,10 @@ public class ClubIntroductionController {
 				break;
 			}
 		}
+		int userId = ((UserDTO)request.getSession().getAttribute("user")).getId();
+		int admin = ((UserDTO)request.getSession().getAttribute("user")).getAdmin();
+		mv.addObject("admin", admin);
 
-		int userId = 1;
 		int imgOrder = 1;
 
 		info.setCategoryId(categoryId);

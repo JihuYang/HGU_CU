@@ -31,7 +31,7 @@
 
 	<select id="getClubDetailList" parameterType="HashMap"
 		resultType="com.walab.hgu.DTO.ClubDTO">
-		SELECT CL.id,CL.clubName,u.name as
+		SELECT CL.id,CL.clubName,CL.userId, u.name as
 		clubCeoName,CL.clubLocation,CL.clubDescription,u.phone,categoryId,categoryName,CL.foundationDate,cS.instagramLink,cS.facebookLink
 		,cI.originalUrl, cI.fileOrder
 		FROM hsca219.club as CL ,hsca219.clubImage cI ,hsca219.category

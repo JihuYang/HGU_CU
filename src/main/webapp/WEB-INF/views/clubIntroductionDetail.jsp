@@ -61,7 +61,7 @@
 						<p class="text-align">인스타그램: ${clubDetailList.instagramLink}</p>
 						<p class="text-align">페이스북: ${clubDetailList.facebookLink}</p>
 						<p class="text-align content-size">
-							동아리 소개: <br>${clubDetailList.clubDescription}</p>
+						<c:set var="clubUserId" value="${clubDetailList.userId}" />						
 					</c:forEach>
 				</div>
 				<div class="logo">
@@ -124,10 +124,12 @@
 			</div>
 			<div class="row justify-content-start mt-4 list-btn">
 				<button class="btn btn-primary search-btn list-btn" onclick="location.href='<%=request.getContextPath()%>/clubIntroduction'">목록</button>
+				<c:if test="${clubUserId eq userId || admin eq 0}">
 				<button class="btn btn-primary search-btn list-btn"
 					onclick="location.href='<%=request.getContextPath()%>/clubIntroduction/update/${clubDetailList[0].categoryId}/${clubDetailList[0].id}'">수정</button>
 				<button class="btn btn-primary search-btn list-btn"
 					onclick="location.href='<%=request.getContextPath()%>/clubIntroduction/delete/${clubDetailList[0].id}'">삭제</button>
+				</c:if>
 			</div>
 		</div>
 	</div>
