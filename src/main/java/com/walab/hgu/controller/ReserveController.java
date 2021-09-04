@@ -96,12 +96,10 @@ public class ReserveController {
 		int result = reservationInfoService.createReservation(info);
 		
 		System.out.println("DB 예약 확인:"+ result);
-		
-		String message = "reservaionAgain";
-		
+	
 		if(result == 0){
-			mv.addObject("message",message);
-			mv.setViewName("redirect:/reserve");
+			
+		    return mv;
 		}
 	
 		else {
