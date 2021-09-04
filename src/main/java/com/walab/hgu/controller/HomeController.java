@@ -11,7 +11,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.walab.hgu.service.ClubAdvertiseService;
@@ -51,16 +50,16 @@ public class HomeController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView header(ModelAndView mv, HttpServletRequest httpServletRequest) {
-
-		if (httpServletRequest.getSession().getAttribute("user") != null) {
-			int userID = ((UserDTO) httpServletRequest.getSession().getAttribute("user")).getId();
+		
+		if(httpServletRequest.getSession().getAttribute("user") != null) {
+			int userID = ((UserDTO)httpServletRequest.getSession().getAttribute("user")).getId();
 			System.out.println(userID);
 			mv.addObject("userID", userID);
 		}
 		List<CategoryDTO> categoryNameList = clubService.getCategoryNameList();
-
+		
 		List<ReservationInfoDTO> officeHour = settingService.getOfficeHour();
-
+		
 		mv.addObject("categoryNameList", categoryNameList);// 인터셉터에서 넣어주기
 		mv.addObject("officeHour", officeHour);
 		mv.setViewName("home");
@@ -80,28 +79,26 @@ public class HomeController {
 			@RequestParam(value = "searchType", required = false, defaultValue = "title") String searchType,
 			@RequestParam(value = "keyword", required = false, defaultValue = "") String keyword,
 			@RequestParam(value = "tag", required = false, defaultValue = "") String tag) {
-
+		
 		List<Page> page = new ArrayList<Page>(4);
-		for (int i = 0; i < 4; i++) {
+		for(int i=0;i<4;i++) {
 			page.add(new Page());
-			page.get(i).setNum(num);
+			page.get(i).setNum(num); 
 			page.get(i).setSearchType(searchType);
 			page.get(i).setKeyword(keyword);
 		}
-		// 커뮤니티 공지사항
+		// 커뮤니티 공지사항 
 		page.get(0).setCount(communityInfoService.countInfo(searchType, keyword));
-		// System.out.println("count: "+page.get(0).getCount());
-		List<CommunityInfoDTO> communityInfoList = communityInfoService.readCommunityInfo(page.get(0).getDisplayPost(),
-				page.get(0).getPostNum(), searchType, keyword);
-
+		//System.out.println("count: "+page.get(0).getCount());
+		List<CommunityInfoDTO> communityInfoList = communityInfoService.readCommunityInfo(page.get(0).getDisplayPost(),page.get(0).getPostNum(),searchType, keyword);
+		
 		// 커뮤니티 자료실
 		page.get(1).setCount(communityMaterialService.countInfo(searchType, keyword));
-		List<CommunityMaterialDTO> communityMaterialList = communityMaterialService
-				.readCommunityMaterial(page.get(1).getDisplayPost(), page.get(1).getPostNum(), searchType, keyword);
-
+		List<CommunityMaterialDTO> communityMaterialList = communityMaterialService.readCommunityMaterial(page.get(1).getDisplayPost(),page.get(1).getPostNum(), searchType, keyword);
+		
 		// 동아리 소개
 		List<ClubDTO> clubIntroList = clubService.getAllClubIntroduction(keyword);
-
+		
 		// 동아리 홍보
 		page.get(3).setCount(clubAdvertiseService.countInfo(searchType, keyword));
 		List<ClubAdvertiseDTO> clubAdvertiseList = clubAdvertiseService
@@ -111,29 +108,30 @@ public class HomeController {
 		int communityMaterialListCount = page.get(1).getCount();
 		int clubIntroListCount = page.get(2).getCount();
 		int clubAdvertiseListCount = page.get(3).getCount();
-
+		int allCount = communityInfoListCount+communityMaterialListCount+clubIntroListCount+clubAdvertiseListCount;
+		
+		
 		mv.addObject("communityInfoListCount", communityInfoListCount);
 		mv.addObject("communityMaterialListCount", communityMaterialListCount);
 		mv.addObject("clubIntroListCount", clubIntroListCount);
 		mv.addObject("clubAdvertiseListCount", clubAdvertiseListCount);
+		mv.addObject("allCount", allCount);
+
 
 		mv.addObject("communityInfoList", communityInfoList);
 		mv.addObject("communityMaterialList", communityMaterialList);
 		mv.addObject("clubIntroList", clubIntroList);
 		mv.addObject("clubAdvertiseList", clubAdvertiseList);
 
-		// mv.addObject("pageNum", pageNum);
+		//mv.addObject("pageNum", pageNum);
 		mv.addObject("page", page);
 		mv.addObject("selected", num);
 		mv.addObject("tag", tag);
 
 		System.out.println(mv);
-		// System.out.println("getSearchTypeKeyword:
-		// "+page.get(0).getSearchTypeKeyword());
+		//System.out.println("getSearchTypeKeyword: "+page.get(0).getSearchTypeKeyword());
 		mv.setViewName("homeSearch");
 
 		return mv;
 	}
-
-
 }

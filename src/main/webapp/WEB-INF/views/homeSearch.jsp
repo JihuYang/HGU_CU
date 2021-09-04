@@ -55,35 +55,35 @@
 			</form>
 			<div class="tag-list mb-5 text-start">
 				<c:if test="${tag eq '전체' || empty tag}">
-					<input type="button" class="tag backgrond-white py-2" name="btn_name" onclick="getContent('전체','${page[0].searchType}','${page[0].keyword}')" value="전체" /> 
+					<input type="button" class="tag backgrond-white py-2" name="btn_name" onclick="getContent('전체','${page[0].searchType}','${page[0].keyword}')" value="전체 ${allCount}" /> 
 					<input type="button" class="no-tag backgrond-white py-2" name="btn_name" onclick="getContent('공지사항','${page[0].searchType}','${page[0].keyword}')" value="공지사항 ${communityInfoListCount}" /> 
 					<input type="button" class="no-tag backgrond-white py-2" name="btn_name" onclick="getContent('자료실','${page[0].searchType}','${page[0].keyword}')" value="자료실 ${communityMaterialListCount}" />
 					<input type="button" class="no-tag backgrond-white py-2" name="btn_name" onclick="getContent('동아리소개','${page[0].searchType}','${page[0].keyword}')" value="동아리 소개 ${clubIntroListCount}" />
 					<input type="button" class="no-tag backgrond-white py-2" name="btn_name" onclick="getContent('동아리홍보','${page[0].searchType}','${page[0].keyword}')" value="동아리 홍보 ${clubAdvertiseListCount}" />
 				</c:if>
 				<c:if test="${tag eq '공지사항'}">
-					<input type="button" class="no-tag backgrond-white py-2" name="btn_name" onclick="getContent('전체','${page[0].searchType}','${page[0].keyword}')" value="전체" /> 
+					<input type="button" class="no-tag backgrond-white py-2" name="btn_name" onclick="getContent('전체','${page[0].searchType}','${page[0].keyword}')" value="전체 ${allCount}" /> 
 					<input type="button" class="tag backgrond-white py-2" name="btn_name" onclick="getContent('공지사항','${page[0].searchType}','${page[0].keyword}')" value="공지사항 ${communityInfoListCount}" /> 
 					<input type="button" class="no-tag backgrond-white py-2" name="btn_name" onclick="getContent('자료실','${page[0].searchType}','${page[0].keyword}')" value="자료실 ${communityMaterialListCount}" />
 					<input type="button" class="no-tag backgrond-white py-2" name="btn_name" onclick="getContent('동아리소개','${page[0].searchType}','${page[0].keyword}')" value="동아리 소개 ${clubIntroListCount}" />
 					<input type="button" class="no-tag backgrond-white py-2" name="btn_name" onclick="getContent('동아리홍보','${page[0].searchType}','${page[0].keyword}')" value="동아리 홍보 ${clubAdvertiseListCount}" />
 				</c:if>
 				<c:if test="${tag eq '자료실'}">
-					<input type="button" class="no-tag backgrond-white py-2" name="btn_name" onclick="getContent('전체','${page[0].searchType}','${page[0].keyword}')" value="전체" /> 
+					<input type="button" class="no-tag backgrond-white py-2" name="btn_name" onclick="getContent('전체','${page[0].searchType}','${page[0].keyword}')" value="전체 ${allCount}" /> 
 					<input type="button" class="no-tag backgrond-white py-2" name="btn_name" onclick="getContent('공지사항','${page[0].searchType}','${page[0].keyword}')" value="공지사항 ${communityInfoListCount}" /> 
 					<input type="button" class="tag backgrond-white py-2" name="btn_name" onclick="getContent('자료실','${page[0].searchType}','${page[0].keyword}')" value="자료실 ${communityMaterialListCount}" />
 					<input type="button" class="no-tag backgrond-white py-2" name="btn_name" onclick="getContent('동아리소개','${page[0].searchType}','${page[0].keyword}')" value="동아리 소개 ${clubIntroListCount}" />
 					<input type="button" class="no-tag backgrond-white py-2" name="btn_name" onclick="getContent('동아리홍보','${page[0].searchType}','${page[0].keyword}')" value="동아리 홍보 ${clubAdvertiseListCount}" />
 				</c:if>
 				<c:if test="${tag eq '동아리소개'}">
-					<input type="button" class="no-tag backgrond-white py-2" name="btn_name" onclick="getContent('전체','${page[0].searchType}','${page[0].keyword}')" value="전체" /> 
+					<input type="button" class="no-tag backgrond-white py-2" name="btn_name" onclick="getContent('전체','${page[0].searchType}','${page[0].keyword}')" value="전체 ${allCount}" /> 
 					<input type="button" class="no-tag backgrond-white py-2" name="btn_name" onclick="getContent('공지사항','${page[0].searchType}','${page[0].keyword}')" value="공지사항 ${communityInfoListCount}" /> 
 					<input type="button" class="no-tag backgrond-white py-2" name="btn_name" onclick="getContent('자료실','${page[0].searchType}','${page[0].keyword}')" value="자료실 ${communityMaterialListCount}" />
 					<input type="button" class="tag backgrond-white py-2" name="btn_name" onclick="getContent('동아리소개','${page[0].searchType}','${page[0].keyword}')" value="동아리 소개 ${clubIntroListCount}" />
 					<input type="button" class="no-tag backgrond-white py-2" name="btn_name" onclick="getContent('동아리홍보','${page[0].searchType}','${page[0].keyword}')" value="동아리 홍보 ${clubAdvertiseListCount}" />
 				</c:if>
 				<c:if test="${tag eq '동아리홍보'}">
-					<input type="button" class="no-tag backgrond-white py-2" name="btn_name" onclick="getContent('전체','${page[0].searchType}','${page[0].keyword}')" value="전체" /> 
+					<input type="button" class="no-tag backgrond-white py-2" name="btn_name" onclick="getContent('전체','${page[0].searchType}','${page[0].keyword}')" value="전체 ${allCount}" /> 
 					<input type="button" class="no-tag backgrond-white py-2" name="btn_name" onclick="getContent('공지사항','${page[0].searchType}','${page[0].keyword}')" value="공지사항 ${communityInfoListCount}" /> 
 					<input type="button" class="no-tag backgrond-white py-2" name="btn_name" onclick="getContent('자료실','${page[0].searchType}','${page[0].keyword}')" value="자료실 ${communityMaterialListCount}" />
 					<input type="button" class="no-tag backgrond-white py-2" name="btn_name" onclick="getContent('동아리소개','${page[0].searchType}','${page[0].keyword}')" value="동아리 소개 ${clubIntroListCount}" />
