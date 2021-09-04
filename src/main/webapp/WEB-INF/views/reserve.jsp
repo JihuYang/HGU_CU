@@ -28,7 +28,7 @@
 	rel="stylesheet" />
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css" rel="stylesheet">
 <!-- Core theme CSS (includes Bootstrap)-->
-<jsp:include page="/WEB-INF/views/inc/header.jsp"/>
+<jsp:include page= "<%=\"./inc/\".concat(((String)request.getAttribute(\"header\")))%>" />
 <link href="<%=request.getContextPath()%>/resources/css/reservation.css" rel="stylesheet" />
 
 

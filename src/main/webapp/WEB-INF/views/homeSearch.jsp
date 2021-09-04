@@ -30,7 +30,7 @@
 	rel="stylesheet" />
 
 </head>
-<jsp:include page="/WEB-INF/views/inc/header.jsp" />
+<jsp:include page= "<%=\"./inc/\".concat(((String)request.getAttribute(\"header\")))%>" />
 <link href="<%=request.getContextPath()%>/resources/css/homeSearch.css"
 	rel="stylesheet" />
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>

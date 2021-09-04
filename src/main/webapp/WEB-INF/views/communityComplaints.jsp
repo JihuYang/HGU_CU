@@ -28,7 +28,7 @@
 <link href="<%=request.getContextPath()%>/resources/css/styles.css" rel="stylesheet" />
 
 </head>
-<jsp:include page="/WEB-INF/views/inc/header.jsp" />
+<jsp:include page= "<%=\"./inc/\".concat(((String)request.getAttribute(\"header\")))%>" />
 <link href="<%=request.getContextPath()%>/resources/css/community.css" rel="stylesheet" />
 
 <script src="https://kit.fontawesome.com/6333a60c65.js"></script>

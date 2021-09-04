@@ -26,7 +26,7 @@
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css"
 	rel="stylesheet" />
-<jsp:include page="/WEB-INF/views/inc/header.jsp" />
+<jsp:include page= "<%=\"./inc/\".concat(((String)request.getAttribute(\"header\")))%>" />
 
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="<%=request.getContextPath()%>/resources/css/styles.css"

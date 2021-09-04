@@ -31,7 +31,7 @@
 <!-- <script src="@@path/vendor/vanillajs-datepicker/dist/js/datepicker.min.js"></script> -->
 
 </head>
-<jsp:include page="/WEB-INF/views/inc/header.jsp" />
+<jsp:include page= "<%=\"./inc/\".concat(((String)request.getAttribute(\"header\")))%>" />
 <link href="<%=request.getContextPath()%>/resources/css/admin.css" rel="stylesheet" />
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <script src="https://kit.fontawesome.com/6333a60c65.js"></script>

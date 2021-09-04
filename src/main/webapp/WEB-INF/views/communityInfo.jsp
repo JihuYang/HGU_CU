@@ -29,7 +29,7 @@
 	rel="stylesheet" />
 
 </head>
-<jsp:include page="/WEB-INF/views/inc/header.jsp" />
+<jsp:include page= "<%=\"./inc/\".concat(((String)request.getAttribute(\"header\")))%>" />
 <link href="<%=request.getContextPath()%>/resources/css/home.css"
 	rel="stylesheet" />
 <link href="<%=request.getContextPath()%>/resources/css/community.css"

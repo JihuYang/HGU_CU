@@ -29,7 +29,7 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css"
 	rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
-<jsp:include page="/WEB-INF/views/inc/header.jsp"/>
+<jsp:include page= "<%=\"./inc/\".concat(((String)request.getAttribute(\"header\")))%>" />
 
 <link href="<%=request.getContextPath()%>/resources/css/createClubIntro.css" rel="stylesheet" />
 
