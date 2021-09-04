@@ -15,7 +15,7 @@
 				src="resources/upload/clubIntro/${clubIntroList.originalUrl}"
 				alt="임시" /> <a
 				href="<%=request.getContextPath()%>/clubIntroduction/${clubIntroList.categoryId}/${clubIntroList.id}"
-				class="mask"> [${clubIntroList.clubName}]<br>창립일자:
+				class="mask "> [${clubIntroList.clubName}]<br>창립일자:
 				${formattedFdDate}년<br>대표자명: ${clubIntroList.clubCeoName}<br>연락처:
 				${clubIntroList.phone}<br>동방: ${clubIntroList.clubLocation}<br>인스타그램:
 				${clubIntroList.instagramLink}<br>페이스북:

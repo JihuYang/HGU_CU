@@ -80,7 +80,7 @@
 								varStatus="status" begin="1">
 								<div class="carousel-item">
 									<img
-										src="<%=request.getContextPath()%>/resources/img/clubIntro/${clubImgList.originalUrl}"
+										src="<%=request.getContextPath()%>/resources/upload/clubIntro/${clubImgList.originalUrl}"
 										class="d-block logo" alt="...">
 								</div>
 							</c:forEach>

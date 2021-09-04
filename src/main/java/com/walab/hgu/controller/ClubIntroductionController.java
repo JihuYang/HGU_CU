@@ -44,133 +44,133 @@ public class ClubIntroductionController {
 	SettingService settingService;
 	@Autowired
 	UserService userService;
-	
-	//동아리 홍보 페이지 컨트롤러
+
+	// 동아리 홍보 페이지 컨트롤러
 	@RequestMapping(value = "/clubIntroduction")
 	public ModelAndView clubIntroductionDefault(HttpSession session, HttpServletRequest request,
-			@RequestParam(value = "keyword",required = false, defaultValue = "") String keyword) {
+			@RequestParam(value = "keyword", required = false, defaultValue = "") String keyword) {
 		ModelAndView mv = new ModelAndView();
-		//System.out.println(categoryId);
+		// System.out.println(categoryId);
 		List<ClubDTO> clubIntroList = clubService.getAllClubIntroduction(keyword);
-		//List<CategoryDTO> categoryNameList = clubService.getCategoryNameList();
-		//String categoryName = clubIntroList.get(0).getCategoryName();
-		
+		// List<CategoryDTO> categoryNameList = clubService.getCategoryNameList();
+		// String categoryName = clubIntroList.get(0).getCategoryName();
+
 		mv.addObject("clubIntroList", clubIntroList);
-		System.out.println("clubIntroList 입니다"+clubIntroList);
+		System.out.println("clubIntroList 입니다" + clubIntroList);
 		mv.addObject("keyword", keyword);
-		
+
 		mv.setViewName("clubIntroduction");
-		
+
 		System.out.println(mv);
-		
+
 		return mv;
 	}
-	
-	//동아리 소개 분과별 페이 
+
+	// 동아리 소개 분과별 페이지
 	@RequestMapping(value = "/clubIntroduction/{categoryId}")
 	public ModelAndView clubIntroduction(@PathVariable int categoryId, HttpSession session, HttpServletRequest request,
-			@RequestParam(value = "keyword",required = false, defaultValue = "") String keyword ) {
+			@RequestParam(value = "keyword", required = false, defaultValue = "") String keyword) {
 		ModelAndView mv = new ModelAndView();
-		
+
 		System.out.println(categoryId);
-		
-		List<ClubDTO> clubIntroList = clubService.readClubIntroductionPreview(categoryId,keyword);
+
+		List<ClubDTO> clubIntroList = clubService.readClubIntroductionPreview(categoryId, keyword);
 		List<CategoryDTO> categoryNameList = clubService.getCategoryNameList();
-		//String categoryName = clubIntroList.get(0).getCategoryName();
-		
-		String categoryName = categoryNameList.get(categoryId-1).getCategoryName();
-		int newCategoryId = categoryNameList.get(categoryId-1).getId();
-		
-		
+		// String categoryName = clubIntroList.get(0).getCategoryName();
+
+		String categoryName = categoryNameList.get(categoryId - 1).getCategoryName();
+		int newCategoryId = categoryNameList.get(categoryId - 1).getId();
+
 		mv.addObject("clubIntroList", clubIntroList);
 		mv.addObject("categoryName", categoryName);
 		mv.addObject("newCategoryId", newCategoryId);
 		mv.addObject("keyword", keyword);
-		
+
 		mv.setViewName("clubIntroduction");
-		
+
 		System.out.println(mv);
-		
+
 		return mv;
 	}
-	
-	@RequestMapping(value = "/clubIntroduction/{categoryId}/{clubId}", method = RequestMethod.GET)//나중에는 동아리별 이름이나 번호로 연결하면 될것같아요..? 
-	public ModelAndView clubIntroductionDetail(@PathVariable int categoryId,@PathVariable int clubId, HttpSession session, HttpServletRequest request ) {
+
+	@RequestMapping(value = "/clubIntroduction/{categoryId}/{clubId}", method = RequestMethod.GET) // 나중에는 동아리별 이름이나 번호로
+																									// 연결하면 될것같아요..?
+	public ModelAndView clubIntroductionDetail(@PathVariable int categoryId, @PathVariable int clubId,
+			HttpSession session, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
-		
+
 //		HashMap<String, Integer> clubMappingInfo = new HashMap<String, Integer>();
 //		clubMappingInfo.put("categoryId", categoryId);
 //		clubMappingInfo.put("clubId", clubId);
-		List<ClubDTO> clubDetailList = clubService.getClubDetailList(categoryId,clubId);
-		
+		List<ClubDTO> clubDetailList = clubService.getClubDetailList(categoryId, clubId);
+
 		List<CategoryDTO> categoryNameList = clubService.getCategoryNameList();
-		
-		String categoryName = categoryNameList.get(categoryId-1).getCategoryName();
-		
+
+		String categoryName = categoryNameList.get(categoryId - 1).getCategoryName();
+
 		List<ClubDTO> clubImgList = clubService.getClubImg(clubId);
-		
+
 		mv.addObject("categoryName", categoryName);
 		mv.addObject("clubDetailList", clubDetailList);
 		mv.addObject("clubImgList", clubImgList);
 		mv.setViewName("clubIntroductionDetail");
-		
+
 		System.out.println(mv);
-		
-		
+		System.out.println("clubDetailList in controller: " +clubDetailList);
+
+
 		return mv;
 	}
-	
-	//동아리 홍보 글쓰기 
-	@RequestMapping(value = "/clubIntroduction/write", method = RequestMethod.GET)//나중에는 동아리별 이름이나 번호로 연결하면 될것같아요..? 
+
+	// 동아리 홍보 글쓰기
+	@RequestMapping(value = "/clubIntroduction/write", method = RequestMethod.GET) // 나중에는 동아리별 이름이나 번호로 연결하면 될것같아요..?
 	public ModelAndView createClubIntro(Locale locale, Model model) {
 		ModelAndView mv = new ModelAndView();
-		
-		//int foundationYearEnd = settingService.getFoundationYearEnd();
+
+		// int foundationYearEnd = settingService.getFoundationYearEnd();
 		int recentYear = Calendar.getInstance().get(Calendar.YEAR);
 		List<CategoryDTO> categoryNameList = clubService.getCategoryNameList();
-		
+
 		List<Integer> foundationYearList = new ArrayList<Integer>();
-		for(int i=1995;i<=recentYear;i++) {
+		for (int i = 1995; i <= recentYear; i++) {
 			foundationYearList.add(i);
 		}
 		mv.addObject("foundationYearList", foundationYearList);
 		mv.addObject("categoryNameList", categoryNameList);
 		mv.setViewName("createClubIntro");
-		 
+
 		System.out.println(mv);
 		return mv;
 	}
 
-	
 	@RequestMapping(value = "/clubIntroduction/write/create", method = RequestMethod.POST)
 	@ResponseBody
 	public ModelAndView createClubIntro(ModelAndView mv, MultipartHttpServletRequest request,
-			@RequestParam(value="categoryName") String categoryName,
-			@RequestParam(value="clubName") String clubName,
-			@RequestParam(value="clubLocation") String clubLocation,
-			@RequestParam(value="foundationDate") @DateTimeFormat(pattern = "yyyy")Date foundationDate,
-			@RequestParam(value="instagramLink") String instagramLink,
-			@RequestParam(value="facebookLink") String facebookLink,
-			@RequestParam(value="clubDescription") String clubDescription
-			) throws ParseException {
+			@RequestParam(value = "categoryName") String categoryName,
+			@RequestParam(value = "clubName") String clubName,
+			@RequestParam(value = "clubLocation") String clubLocation,
+			@RequestParam(value = "foundationDate") @DateTimeFormat(pattern = "yyyy") Date foundationDate,
+			@RequestParam(value = "instagramLink") String instagramLink,
+			@RequestParam(value = "facebookLink") String facebookLink,
+			@RequestParam(value = "clubDescription") String clubDescription) throws ParseException {
 
 		ClubDTO info = new ClubDTO();
 		ClubDTO sns = new ClubDTO();
 		FileDTO infoImageFile = new FileDTO();
-		int recentId = clubService.readRecentClub()+1;
-		
+		int recentId = clubService.readRecentClub() + 1;
+
 		List<CategoryDTO> categoryNameList = clubService.getCategoryNameList();
-		int categoryId =0;
-		
-		for(int i=0;i<categoryNameList.size();i++) {
-			if(categoryNameList.get(i).getCategoryName().equals(categoryName)) {
-				categoryId=i+1;
+		int categoryId = 0;
+
+		for (int i = 0; i < categoryNameList.size(); i++) {
+			if (categoryNameList.get(i).getCategoryName().equals(categoryName)) {
+				categoryId = i + 1;
 				break;
 			}
 		}
 
 		int userId = 1;
-		int clubOrder = 1;
+		int imgOrder = 1;
 
 		info.setCategoryId(categoryId);
 		info.setClubName(clubName);
@@ -184,21 +184,20 @@ public class ClubIntroductionController {
 
 		clubService.createClubIntro(info);
 		clubService.createClubSNS(sns);
-		
+
 		List<MultipartFile> fileList = request.getFiles("file");
 		for (MultipartFile imgFile : fileList) {
-			
+
 			String originalUrl = imgFile.getOriginalFilename();
 			infoImageFile.setClubId(recentId);
-			infoImageFile.setClubOrder(clubOrder);
+			infoImageFile.setFileOrder(imgOrder);
 			infoImageFile.setOriginalUrl(originalUrl);
-			
 			clubService.createClubIntroImage(infoImageFile);
-			
+
 			String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/clubIntro");
 
 			File imgDir = new File(saveDir);
-			
+
 			if (!imgDir.exists()) {
 				imgDir.mkdirs();
 			}
@@ -214,31 +213,28 @@ public class ClubIntroductionController {
 			}
 
 			System.out.println("club introduction controller saveDir: " + saveDir);
-			clubOrder++;
+			imgOrder++;
 
 		}
-	
-		System.out.println(info.toString());
-
-
 
 		mv.setViewName("redirect:/clubIntroduction");
 
 		return mv;
 	}
-	
-	@RequestMapping(value = "/clubIntroduction/update/{categoryId}/{id}", method = { RequestMethod.GET, RequestMethod.POST })
-	public ModelAndView updateCommunityInfo(@PathVariable int id,@PathVariable int categoryId, HttpSession session, HttpServletRequest request,
-			HttpServletResponse response) {
+
+	@RequestMapping(value = "/clubIntroduction/update/{categoryId}/{id}", method = { RequestMethod.GET,
+			RequestMethod.POST })
+	public ModelAndView updateCommunityInfo(@PathVariable int id, @PathVariable int categoryId, HttpSession session,
+			HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView mv = new ModelAndView();
 
-		List<ClubDTO> clubDetailList = clubService.getClubDetailList(categoryId,id);
-		
+		List<ClubDTO> clubDetailList = clubService.getClubDetailList(categoryId, id);
+
 		List<CategoryDTO> categoryNameList = clubService.getCategoryNameList();
-		String categoryName = categoryNameList.get(categoryId-1).getCategoryName();
-		
+		String categoryName = categoryNameList.get(categoryId - 1).getCategoryName();
+
 		List<ClubDTO> clubImgList = clubService.getClubImg(id);
-		
+
 		mv.addObject("categoryName", categoryName);
 		mv.addObject("clubDetailList", clubDetailList);
 		mv.addObject("clubImgList", clubImgList);
@@ -247,17 +243,17 @@ public class ClubIntroductionController {
 
 		return mv;
 	}
-	
+
 	@RequestMapping(value = "/clubIntroduction/write/update", method = RequestMethod.POST)
 	@ResponseBody
 	public ModelAndView updateCommunityInfo(ModelAndView mv, MultipartHttpServletRequest request, MultipartFile file,
-			@RequestParam(value="categoryName") String categoryName,
-			@RequestParam(value="clubName") String clubName,
-			@RequestParam(value="clubLocation") String clubLocation,
-			@RequestParam(value="foundationDate") @DateTimeFormat(pattern = "yyyy")Date foundationDate,
-			@RequestParam(value="instagramLink") String instagramLink,
-			@RequestParam(value="facebookLink") String facebookLink,
-			@RequestParam(value="clubDescription") String clubDescription) {
+			@RequestParam(value = "categoryName") String categoryName,
+			@RequestParam(value = "clubName") String clubName,
+			@RequestParam(value = "clubLocation") String clubLocation,
+			@RequestParam(value = "foundationDate") @DateTimeFormat(pattern = "yyyy") Date foundationDate,
+			@RequestParam(value = "instagramLink") String instagramLink,
+			@RequestParam(value = "facebookLink") String facebookLink,
+			@RequestParam(value = "clubDescription") String clubDescription) {
 
 		ClubDTO info = new ClubDTO();
 		ClubDTO sns = new ClubDTO();
@@ -265,18 +261,18 @@ public class ClubIntroductionController {
 
 		int id = Integer.parseInt(request.getParameter("id"));
 		int userId = Integer.parseInt(request.getParameter("userId"));
-		
+
 		List<CategoryDTO> categoryNameList = clubService.getCategoryNameList();
-		int categoryId =0;
-		
-		for(int i=0;i<categoryNameList.size();i++) {
-			if(categoryNameList.get(i).getCategoryName().equals(categoryName)) {
-				categoryId=i+1;
+		int categoryId = 0;
+
+		for (int i = 0; i < categoryNameList.size(); i++) {
+			if (categoryNameList.get(i).getCategoryName().equals(categoryName)) {
+				categoryId = i + 1;
 				break;
 			}
 		}
-		//int categoryId = Integer.parseInt(request.getParameter("categoryId"));
-		//int clubOrder = 1;
+		// int categoryId = Integer.parseInt(request.getParameter("categoryId"));
+		// int clubOrder = 1;
 
 		info.setId(id);
 		info.setCategoryId(categoryId);
@@ -288,94 +284,84 @@ public class ClubIntroductionController {
 		sns.setInstagramLink(instagramLink);
 		sns.setFacebookLink(facebookLink);
 		sns.setId(id);
-//		infoImageFile.setClubId(id);
-//		infoImageFile.setOriginalUrl(originalUrl);
-//		infoImageFile.setClubOrder(clubOrder);
-		
-		MultipartFile imagefile = request.getFile("originalUrl");
-		String originalUrl = imagefile.getOriginalFilename();
 
-		
 		clubService.updateClubSNS(sns);
-
+		
 		List<MultipartFile> fileList = request.getFiles("file");
 		System.out.println(fileList);
 		
-		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
-		Date time = new Date();
-		String folder = format.format(time);
+		int imgOrder = 1;
 		
-        for (MultipartFile newfile : fileList) { 
-    		String newOriginalUrl = newfile.getOriginalFilename();
-    		
-    		infoImageFile.setClubId(id);
-    		infoImageFile.setOriginalUrl(newOriginalUrl);
-    		
-    		clubService.updateClubImage(infoImageFile);
-    		
-    		
-            String originFileName = newfile.getOriginalFilename(); // 원본 파일 명
-            long fileSize = newfile.getSize(); // 파일 사이즈
+		if(fileList.get(0).getOriginalFilename() != "") {
+			//선택된 파일이 있을 때 기존의 파일을 모두 삭제
+			System.out.println("실행");
+			clubService.deleteClubIntroImage(id);
+			
+			for (MultipartFile newfile : fileList) {
+				String originalUrl = newfile.getOriginalFilename();
+	
+				infoImageFile.setClubId(id);
+				infoImageFile.setOriginalUrl(originalUrl);
+				infoImageFile.setFileOrder(imgOrder);
+	
+				clubService.createClubIntroImage(infoImageFile);
+	
+				String originFileName = newfile.getOriginalFilename(); // 원본 파일 명
+				long fileSize = newfile.getSize(); // 파일 사이즈
+	
+				System.out.println("originFileName : " + originFileName);
+				System.out.println("fileSize : " + fileSize);
+	
+				String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/clubIntro");
+	
+				File dir = new File(saveDir);
+				if (!dir.exists()) {
+					dir.mkdirs();
+				}
+	
+				if (!newfile.isEmpty()) {
+					String ext = originalUrl.substring(originalUrl.lastIndexOf("."));
+					try {
+						newfile.transferTo(new File(saveDir + "/" + originalUrl));
+					} catch (IllegalStateException | IOException e) {
+						e.printStackTrace();
+					}
+				}
+	
+				System.out.println(saveDir);
+			}
+		}
 
-            System.out.println("originFileName : " + originFileName);
-            System.out.println("fileSize : " + fileSize);
-
-    		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file/" + folder);
-    		
-    		File dir = new File(saveDir);
-    		if (!dir.exists()) {
-    			dir.mkdirs();
-    		}
-
-    		if (!newfile.isEmpty()) {
-    			String ext = originalUrl.substring(originalUrl.lastIndexOf("."));
-
-    			// SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd-HHmmssSSS");
-    			// int rand = (int)(Math.random()*1000);
-
-    			// String reName = sdf.format(System.currentTimeMillis()) + "_" + rand + ext;
-
-    			try {
-    				newfile.transferTo(new File(saveDir + "/" + originalUrl));
-    			} catch (IllegalStateException | IOException e) {
-    				e.printStackTrace();
-    			}
-    		}
-
-    		System.out.println(saveDir);
-        }
-        
-        clubService.updateClubIntro(info);
+		clubService.updateClubIntro(info);
 		System.out.println(info.toString());
 		System.out.println(infoImageFile.toString());
-		
+
 		mv.setViewName("redirect:/clubIntroduction");
 
 		return mv;
 	}
-	
+
 	@RequestMapping(value = "/clubIntroduction/delete/{id}", method = { RequestMethod.GET, RequestMethod.POST })
-	public ModelAndView deleteClubIntroduction(@PathVariable int id, 
-			@RequestParam(value = "keyword",required = false, defaultValue = "") String keyword,
-			HttpSession session, HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView deleteClubIntroduction(@PathVariable int id,
+			@RequestParam(value = "keyword", required = false, defaultValue = "") String keyword, HttpSession session,
+			HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView mv = new ModelAndView();
-		
+
 		clubService.deleteClubIntroImage(id);
 		clubService.deleteClubSNS(id);
 		clubService.deleteClubIntroduction(id);
-		
-		
-		List<ClubDTO> clubIntroList = clubService.getAllClubIntroduction(keyword);
-	
-		mv.addObject("clubIntroList", clubIntroList);
-		System.out.println("clubIntroList 입니다"+clubIntroList);
-		mv.addObject("keyword", keyword);
 
-		System.out.println(mv);
+//		List<ClubDTO> clubIntroList = clubService.getAllClubIntroduction(keyword);
+//
+//		mv.addObject("clubIntroList", clubIntroList);
+//		System.out.println("clubIntroList 입니다" + clubIntroList);
+//		mv.addObject("keyword", keyword);
+//
+//		System.out.println(mv);
 
 		mv.setViewName("redirect:/clubIntroduction");
 
 		return mv;
 	}
-	
+
 }
