@@ -104,7 +104,7 @@ readIsAdminByUserID<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"
 				<ul class="navbar-nav my-2 my-lg-0">
 					<li class="nav-item button-padding border-none">
 						<button type="button" class=" login-btn btn-outline-secondary "
-							onclick="location.href='<%=request.getContextPath()%>loginGoogle'">회원가입 및 로그인</button>
+							onclick="location.href='<%=request.getContextPath()%>/loginGoogle'">회원가입 및 로그인</button>
 					</li>
 				</ul>
 			</div>

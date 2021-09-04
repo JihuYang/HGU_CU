@@ -31,6 +31,7 @@ import com.walab.hgu.DTO.CategoryDTO;
 import com.walab.hgu.DTO.ClubAdvertiseDTO;
 import com.walab.hgu.DTO.ClubDTO;
 import com.walab.hgu.DTO.FileDTO;
+import com.walab.hgu.DTO.UserDTO;
 import com.walab.hgu.service.ClubService;
 import com.walab.hgu.service.SettingService;
 import com.walab.hgu.service.UserService;
@@ -50,6 +51,12 @@ public class ClubIntroductionController {
 	public ModelAndView clubIntroductionDefault(HttpSession session, HttpServletRequest request,
 			@RequestParam(value = "keyword", required = false, defaultValue = "") String keyword) {
 		ModelAndView mv = new ModelAndView();
+		
+		if(request.getSession().getAttribute("user") != null) {
+			int admin = ((UserDTO)request.getSession().getAttribute("user")).getAdmin();
+			mv.addObject("admin", admin);
+			
+		}
 		// System.out.println(categoryId);
 		List<ClubDTO> clubIntroList = clubService.getAllClubIntroduction(keyword);
 		// List<CategoryDTO> categoryNameList = clubService.getCategoryNameList();

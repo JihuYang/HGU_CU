@@ -6,7 +6,9 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class ClubAdvertiseDTO {
 	
+
 	private int id;
+	private int writer;
 	private int clubId;
 	private String title;
 	private String content;
@@ -23,6 +25,12 @@ public class ClubAdvertiseDTO {
 	}
 	public void setId(int id) {
 		this.id = id;
+	}
+	public int getWriter() {
+		return writer;
+	}
+	public void setWriter(int writer) {
+		this.writer = writer;
 	}
 	public int getClubId() {
 		return clubId;
@@ -81,9 +89,9 @@ public class ClubAdvertiseDTO {
 	
 	@Override
 	public String toString() {
-		return "ClubAdvertiseDTO [id=" + id + ", clubId=" + clubId + ", title=" + title + ", content=" + content
-				+ ", originalUrl=" + originalUrl + ", fileOriginalUrl=" + fileOriginalUrl + ", file=" + file
-				+ ", imageFile=" + imageFile + ", regdate=" + regdate + ", order=" + order + "]";
+		return "ClubAdvertiseDTO [id=" + id + ", writer=" + writer + ", clubId=" + clubId + ", title=" + title
+				+ ", content=" + content + ", originalUrl=" + originalUrl + ", fileOriginalUrl=" + fileOriginalUrl
+				+ ", file=" + file + ", imageFile=" + imageFile + ", regdate=" + regdate + ", order=" + order + "]";
 	}
 	 
 }

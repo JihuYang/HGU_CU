@@ -33,8 +33,13 @@
 </head>
 <jsp:include page= "<%=\"./inc/\".concat(((String)request.getAttribute(\"header\")))%>" />
 <link href="<%=request.getContextPath()%>/resources/css/community.css" rel="stylesheet"/>
+<link href="<%=request.getContextPath()%>/resources/css/calendar.css" rel="stylesheet"/>
 
-<link rel='stylesheet' href='https://fullcalendar.io/releases/fullcalendar/3.9.0/fullcalendar.min.css'>
+
+<!-- <link rel='stylesheet' href='https://fullcalendar.io/releases/fullcalendar/3.9.0/fullcalendar.min.css'> 
+ --><!-- <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/fullcalendar@5.9.0/main.min.css'> -->
+
+
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <script src="https://kit.fontawesome.com/6333a60c65.js"></script>
@@ -102,8 +107,14 @@
 				src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
 			<script
 				src='https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment-with-locales.min.js'></script>
-			<script
-				src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/fullcalendar.js'></script>
+<!-- 			<script
+				src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.0.1/fullcalendar.js'></script>  -->
+				
+					<script src="<%=request.getContextPath()%>/resources/js/calendar.js"></script>
+				
+<!-- 		<script
+				src='https://cdn.jsdelivr.net/npm/fullcalendar@5.9.0/main.min.js'></script> -->
+				
 			<script
 				src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js'></script>
 			<script
