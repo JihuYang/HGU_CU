@@ -86,9 +86,14 @@ function createReservation(){
 			reservationDate: reservationDate,
 			memo: $('#memo').val()
 		},
-		success: function(data){
-			alert(data.msg);
-			console.log("예약 추가 성공!!");
+		success: function(result){
+			location.href = "/reservation";
+			if(result==0){
+				alert("예약이 마감 되었습니다. 시간을 다시 선택하여 주세요.");
+			}
+			else if(result==1){
+				alert("예약이 완료 되었습니다.");
+			}
 		}, 
 		error:function(request, error){
 			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);

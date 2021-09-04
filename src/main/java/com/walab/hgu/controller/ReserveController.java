@@ -63,8 +63,7 @@ public class ReserveController {
 	}
 	
 	@RequestMapping(value = "/reserve", method = RequestMethod.POST)
-	@ResponseBody
-	public ModelAndView createReservation(ModelAndView mv, HttpServletRequest httpServletRequest,
+	public @ResponseBody Object createReservation(ModelAndView mv, HttpServletRequest httpServletRequest,
 			@RequestParam(value="spaceId") int spaceId,
 			@RequestParam(value="reservationDate") Date reservationDate,
 			@RequestParam(value="startTime")Time startTime,
@@ -96,16 +95,17 @@ public class ReserveController {
 		int result = reservationInfoService.createReservation(info);
 		
 		System.out.println("DB 예약 확인:"+ result);
+		
+		String errorMsg="reservationAgain";
+		String successMsg="reservationSuccess";
 	
 		if(result == 0){
-			
-		    return mv;
+			return 0;
 		}
 	
 		else {
-			mv.setViewName("redirect:/reservation");
+			return 1;
 		}
-		return mv;
 	}
 	
 }
