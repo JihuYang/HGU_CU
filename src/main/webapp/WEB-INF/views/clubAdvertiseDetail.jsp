@@ -55,8 +55,7 @@
 			class="row h-auto align-items-center justify-content-end text-end">
 			<fmt:formatDate value="${clubAdDetailList[0].regdate}"
 				var="formattedRegDate" type="date" pattern="yyyy-MM-dd" />
-			<div class="py-3 detail-info">조회수 :
-				<%-- ${communityInfoDetailList[0].viewCount}  --%>0 | ${formattedRegDate}</div>
+			<div class="py-3 detail-info">작성일 : ${formattedRegDate}</div>
 		</div>
 		<div class="row h-auto align-items-center justify-content-center">
 			<div class="px-4 detail-content">${clubAdDetailList[0].content}</div>

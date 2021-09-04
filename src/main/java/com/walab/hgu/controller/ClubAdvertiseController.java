@@ -52,8 +52,9 @@ public class ClubAdvertiseController {
 			@RequestParam(value = "keyword", required = false, defaultValue = "") String keyword) {
 
 		if(request.getSession().getAttribute("user") != null) {
-			int userID = ((UserDTO)request.getSession().getAttribute("user")).getId();
-			mv.addObject("userID", userID);
+			int admin = ((UserDTO)request.getSession().getAttribute("user")).getAdmin();
+			mv.addObject("admin", admin);
+			
 		}
 
 
@@ -125,7 +126,8 @@ public class ClubAdvertiseController {
 	@RequestMapping(value = "/clubAdvertise/write/create", method = RequestMethod.POST)
 	@ResponseBody
 	public ModelAndView createClubAd(ModelAndView mv, MultipartHttpServletRequest request, MultipartFile file) {
-
+		
+		
 		ClubAdvertiseDTO info = new ClubAdvertiseDTO();
 		FileDTO infoFile = new FileDTO();
 		FileDTO infoImageFile = new FileDTO();

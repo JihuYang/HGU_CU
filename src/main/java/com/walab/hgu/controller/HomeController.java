@@ -53,9 +53,9 @@ public class HomeController {
 		
 		if(httpServletRequest.getSession().getAttribute("user") != null) {
 			int userID = ((UserDTO)httpServletRequest.getSession().getAttribute("user")).getId();
-			System.out.println(userID);
 			mv.addObject("userID", userID);
 		}
+		
 		List<CategoryDTO> categoryNameList = clubService.getCategoryNameList();
 		
 		List<ReservationInfoDTO> officeHour = settingService.getOfficeHour();
