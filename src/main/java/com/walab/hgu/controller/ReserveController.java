@@ -1,12 +1,15 @@
 package com.walab.hgu.controller;
 
 import java.text.DateFormat;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -62,7 +65,7 @@ public class ReserveController {
 			@RequestParam(value="startTime")Time startTime,
 			@RequestParam(value="endTime")Time endTime,
 			@RequestParam(value="purpose")String purpose,
-			@RequestParam(value="memo")String memo){
+			@RequestParam(value="memo")String memo, HttpServletResponse response) throws IOException{
 		
 		ReservationInfoDTO info = new ReservationInfoDTO();
 		
@@ -74,12 +77,22 @@ public class ReserveController {
 		info.setPurpose(purpose);
 		info.setMemo(memo);
 		
-		System.out.println(info.toString());
+		System.out.println("예약 정보:"+info.toString());
 
-		reservationInfoService.createReservation(info);
+		int result = reservationInfoService.createReservation(info);
+		
+		System.out.println("DB 예약 확인:"+ result);
+		
+		String message = "reservaionAgain";
+		
+		if(result == 0){
+			mv.addObject("message",message);
+			mv.setViewName("redirect:/reserve");
+		}
 	
-		mv.setViewName("redirect:/reservation");
-			
+		else {
+			mv.setViewName("redirect:/reservation");
+		}
 		return mv;
 	}
 	

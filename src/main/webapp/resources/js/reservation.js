@@ -85,7 +85,6 @@ function createReservation(){
 	$.ajax({
 		url: "/reserve",
 		type: "POST",
-		async: false,
 		data: {
 			userId: 1,
 			spaceId: spaceId,
@@ -95,9 +94,9 @@ function createReservation(){
 			reservationDate: reservationDate,
 			memo: $('#memo').val()
 		},
-		success: function(){	
+		success: function(data){
+			location.href = "/reserve?message=reservationAgain";
 			console.log("예약 추가 성공!!");
-			location.href="/reservation";
 		}, 
 		error:function(request, error){
 			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);

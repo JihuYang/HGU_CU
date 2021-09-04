@@ -30,12 +30,7 @@
 <!-- Core theme CSS (includes Bootstrap)-->
 <jsp:include page="/WEB-INF/views/inc/header.jsp"/>
 <link href="<%=request.getContextPath()%>/resources/css/reservation.css" rel="stylesheet" />
-<link href="<%=request.getContextPath()%>/resources/css/calendar.css" rel="stylesheet"/>
 
-<!-- calendar를 위한 라이브러리 -->
-<link href="./resources/css/fullcalendar.css" rel="stylesheet"/>
-<script src="./resources/js/fullcalendar.js"></script>
-<script src="./resources/js/daygrid.js"></script>
 
 </head>
 <script src="https://kit.fontawesome.com/6333a60c65.js"></script>
@@ -162,6 +157,8 @@
 	
 	</div>  
 	</div>
+
+
 	
 	<script>
 		/* reserve.jsp */
