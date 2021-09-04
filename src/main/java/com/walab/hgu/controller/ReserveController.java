@@ -1,6 +1,8 @@
 package com.walab.hgu.controller;
 
 import java.text.DateFormat;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Date;
 import java.sql.Time;
 import java.util.List;
@@ -8,6 +10,7 @@ import java.util.Locale;
 
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -61,20 +64,20 @@ public class ReserveController {
 	
 	@RequestMapping(value = "/reserve", method = RequestMethod.POST)
 	@ResponseBody
-	public ModelAndView createReservation(ModelAndView mv,
+	public ModelAndView createReservation(ModelAndView mv, HttpServletRequest httpServletRequest,
 			@RequestParam(value="spaceId") int spaceId,
 			@RequestParam(value="reservationDate") Date reservationDate,
 			@RequestParam(value="startTime")Time startTime,
 			@RequestParam(value="endTime")Time endTime,
 			@RequestParam(value="purpose")String purpose,
-			@RequestParam(value="memo")String memo, HttpServletRequest httpServletRequest){
+			@RequestParam(value="memo")String memo) throws IOException{
+		
 		int userId = 0;
 		if (httpServletRequest.getSession().getAttribute("user") != null) {
 			userId = ((UserDTO) httpServletRequest.getSession().getAttribute("user")).getId();
 			System.out.println("userId" + userId);
 			String userName = ((UserDTO) httpServletRequest.getSession().getAttribute("user")).getName();
 			System.out.println("userName" + userName);
-
 			mv.addObject("userID", userId);
 		} 
 		
@@ -88,12 +91,22 @@ public class ReserveController {
 		info.setPurpose(purpose);
 		info.setMemo(memo);
 		
-		System.out.println(info.toString());
+		System.out.println("예약 정보:"+info.toString());
 
-		reservationInfoService.createReservation(info);
+		int result = reservationInfoService.createReservation(info);
+		
+		System.out.println("DB 예약 확인:"+ result);
+		
+		String message = "reservaionAgain";
+		
+		if(result == 0){
+			mv.addObject("message",message);
+			mv.setViewName("redirect:/reserve");
+		}
 	
-		mv.setViewName("redirect:/reservation");
-			
+		else {
+			mv.setViewName("redirect:/reservation");
+		}
 		return mv;
 	}
 	

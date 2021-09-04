@@ -154,7 +154,7 @@ public class ReservationInfoDTO {
 
 	@Override
 	public String toString() {
-		return "ReservaionDTO [id=" + id + " startTime="+startTime+" regdate=" + regdate+"]";
+		return "ReservaionDTO [id=" + id + " startTime="+startTime+" regdate=" + regdate+"memo= "+memo+"]";
 	}
 
 

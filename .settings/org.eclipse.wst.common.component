@@ -10,7 +10,7 @@
     
     
     
-    <wb-module deploy-name="hgu-1.0.0-BUILD-SNAPSHOT">
+    <wb-module deploy-name="HGU_CU">
                                                                                                 
         
         
@@ -59,12 +59,31 @@
         
         
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
+                                                        
+        
+        
+        
+        
+        
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/resources"/>
+                                                
+        
+        
+        
+        
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/test/java"/>
                                                 
         
         
         
         
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/target/generated-sources/annotations"/>
+                                                
+        
+        
+        
+        
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/target/generated-test-sources/test-annotations"/>
                                                                                         		
         
         
@@ -77,7 +96,7 @@
         
         
         <property name="java-output-path" value="target/classes"/>
-        <property name="context-root" value="hgu"/>
+        <property name="context-root" value="/"/>
                                                                                         	
     
     
