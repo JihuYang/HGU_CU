@@ -32,7 +32,7 @@
 		FROM user
 	</select>
 
-	<select id="reaadminByUserID" resultType="int"
+	<select id="readIsAdminByUserID" resultType="int"
 		parameterType="hashmap">
 		SELECT admin FROM hsca219.user WHERE id=${userID}
 	</select>

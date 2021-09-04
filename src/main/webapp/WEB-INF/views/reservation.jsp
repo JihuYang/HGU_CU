@@ -32,7 +32,7 @@
 <link rel='stylesheet' href='https://fullcalendar.io/releases/fullcalendar/3.9.0/fullcalendar.min.css'>
 
 </head>
-<jsp:include page="/WEB-INF/views/inc/header.jsp"/>
+<jsp:include page= "<%=\"./inc/\".concat(((String)request.getAttribute(\"header\")))%>" />
 <script src="https://kit.fontawesome.com/6333a60c65.js"></script>
 
 <body id="page-top">

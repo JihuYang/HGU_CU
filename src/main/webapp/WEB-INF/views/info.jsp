@@ -25,7 +25,7 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css"
 	rel="stylesheet" />
 </head>
-<jsp:include page="/WEB-INF/views/inc/header.jsp" />
+<jsp:include page= "<%=\"./inc/\".concat(((String)request.getAttribute(\"header\")))%>" />
 
 <script src="https://kit.fontawesome.com/6333a60c65.js"></script>
 <body id="page-top">

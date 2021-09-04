@@ -11,7 +11,6 @@ function createAdminReservationInfo(){
 	$.ajax({
 		url: "/adminReservation/create",
 		type: "POST",
-		async: false,
 		data: {
 			userId: userId,
 			spaceId: spaceId,
@@ -20,16 +19,16 @@ function createAdminReservationInfo(){
 			purpose: $('#purpose').val(),
 			reservationDate: $('#reservationDate').val()
 		},
-		success: function(){	
+		success: function(data){	
 			console.log("예약 추가 성공!!");
-			location.href="/adminReservation?num=1";
+			console.log(data);
 		}, 
 		error:function(request, error){
 			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
         }
 	});
 }
-
+//location.href="/adminReservation?num=1";
 function updateAdminReservationInfo(){
 	var s=document.getElementById("startTime");
 	var st=s.options[s.selectedIndex].value;
@@ -74,13 +73,6 @@ function createReservation(){
 	et=et+":00";
 	var reservationDate=document.getElementById("date").value;
 	var spaceId=document.getElementById("spaceSelect").selectedIndex+1;
-	/*
-	if(true){
-		alert("예약이 마감 되었습니다. 다른 시간을 선택해 주세요");
-		location.href = location.href;
-		return;
-	}
-	*/
 
 	$.ajax({
 		url: "/reserve",
@@ -94,9 +86,14 @@ function createReservation(){
 			reservationDate: reservationDate,
 			memo: $('#memo').val()
 		},
-		success: function(data){
-			location.href = "/reserve?message=reservationAgain";
-			console.log("예약 추가 성공!!");
+		success: function(result){
+			location.href = "/reservation";
+			if(result==0){
+				alert("예약이 마감 되었습니다. 시간을 다시 선택하여 주세요.");
+			}
+			else if(result==1){
+				alert("예약이 완료 되었습니다.");
+			}
 		}, 
 		error:function(request, error){
 			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);

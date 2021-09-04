@@ -28,7 +28,7 @@
 	rel="stylesheet" />
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css" rel="stylesheet">
 <!-- Core theme CSS (includes Bootstrap)-->
-<jsp:include page="/WEB-INF/views/inc/header.jsp"/>
+<jsp:include page= "<%=\"./inc/\".concat(((String)request.getAttribute(\"header\")))%>" />
 <link href="<%=request.getContextPath()%>/resources/css/reservation.css" rel="stylesheet" />
 
 
@@ -36,6 +36,17 @@
 <script src="https://kit.fontawesome.com/6333a60c65.js"></script>
 
 <body id="page-top">
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+    $(function(){
+        var responseMessage = ${message};
+        if(responseMessage != ""){
+            alert(responseMessage)
+        }
+    }) 
+</script>
+
         <div class="R_container h-100">
             <div class="side_bar">	
        			<div class="reservation" style="background-color:gray">

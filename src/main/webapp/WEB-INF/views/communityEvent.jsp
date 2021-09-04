@@ -31,7 +31,7 @@
 <link href="https://unpkg.com/gijgo@1.9.13/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 
 </head>
-<jsp:include page="/WEB-INF/views/inc/header.jsp" />
+<jsp:include page= "<%=\"./inc/\".concat(((String)request.getAttribute(\"header\")))%>" />
 <link href="<%=request.getContextPath()%>/resources/css/community.css" rel="stylesheet"/>
 
 <link rel='stylesheet' href='https://fullcalendar.io/releases/fullcalendar/3.9.0/fullcalendar.min.css'>
