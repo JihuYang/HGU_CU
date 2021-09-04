@@ -121,11 +121,14 @@ public class HomeController {
 		int communityMaterialListCount = page.get(1).getCount();
 		int clubIntroListCount = page.get(2).getCount();
 		int clubAdvertiseListCount = page.get(3).getCount();
+		int allCount = communityInfoListCount+communityMaterialListCount+clubIntroListCount+clubAdvertiseListCount;
+		
 		
 		mv.addObject("communityInfoListCount", communityInfoListCount);
 		mv.addObject("communityMaterialListCount", communityMaterialListCount);
 		mv.addObject("clubIntroListCount", clubIntroListCount);
 		mv.addObject("clubAdvertiseListCount", clubAdvertiseListCount);
+		mv.addObject("allCount", allCount);
 
 
 		mv.addObject("communityInfoList", communityInfoList);
