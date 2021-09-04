@@ -85,7 +85,7 @@
 						multiple>
 				</div>
 				<div>
-					<a class="btn btn-primary back-btn bottom-btn" href="./"
+					<a class="btn btn-primary back-btn bottom-btn" href="<%=request.getContextPath()%>/communityInfo?num=1"
 						role="button">뒤로</a>
 					<button class="btn btn-primary submit-btn bottom-btn" 
 						id="submitBtn" onclick="createCheck()">저장</button><!-- onclick="createCheck()" -->

@@ -53,10 +53,22 @@
 					<input class="form-control title-input" type="text" id="title"
 						name="title" value="${communityInfoDetail.title}">
 				</div>
-				<div class="mb-3">
-					<textarea class="form-control textarea justify-content-center"
-						rows="13" id="content" name="content">${communityInfoDetail.content}</textarea>
+				<div class="mb-3" id="content" style="display:inline-block;width:100%;">
+					<%-- <textarea class="form-control textarea justify-content-center"
+						rows="13" id="content" name="content">${communityInfoDetail.content}</textarea> --%>
 				</div>
+				<input id="newContent" type="hidden" name="newContent" value="">
+					<script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+					<script type="text/javascript">
+					      const content = new toastui.Editor({
+					        el: document.querySelector('#content'),
+					        height: '600px',
+					        initialValue: '${communityInfoDetail.content}',
+					        initialEditType: 'wysiwyg',
+					        hideModeSwitch: 'true'
+					      });
+					</script>
+				
 				<div class="mb-3">
 					기존 파일명 :
 					<c:forEach items="${communityInfoFileDetail}"
