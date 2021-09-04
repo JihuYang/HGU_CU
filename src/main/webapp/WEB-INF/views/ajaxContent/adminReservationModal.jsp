@@ -191,6 +191,13 @@
 			+time[0]+':'
 			+time[1]
 			+"</option>";
+ 	if(e.options[e.selectedIndex+1].disabled==true){
+		$('#endTime option').each(function() {
+		    $(this).prop('disabled', true);
+		});
+	}
+	if(e.options[e.selectedIndex+2].disabled==true || e.options[e.selectedIndex+3].disabled==true)
+		$("#endTime option:eq(1)").prop('disabled',true);
 	
   }
   /* 예약 가능한 시간 설정하기 */

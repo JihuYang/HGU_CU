@@ -29,7 +29,8 @@
 <link href="<%=request.getContextPath()%>/resources/css/styles.css" rel="stylesheet" />
 <link href="<%=request.getContextPath()%>/resources/css/home.css" rel="stylesheet" />
 <link href="<%=request.getContextPath()%>/resources/css/reservation.css" rel="stylesheet" />
-<link rel='stylesheet' href='https://fullcalendar.io/releases/fullcalendar/3.9.0/fullcalendar.min.css'>
+<!-- <link rel='stylesheet' href='https://fullcalendar.io/releases/fullcalendar/3.9.0/fullcalendar.min.css'> -->
+<link href="<%=request.getContextPath()%>/resources/css/reservationCalendar.css" rel="stylesheet" />
 
 </head>
 <jsp:include page= "<%=\"./inc/\".concat(((String)request.getAttribute(\"header\")))%>" />
@@ -135,8 +136,9 @@
 	
 		<script src='https://fullcalendar.io/releases/fullcalendar/3.9.0/lib/moment.min.js'></script>
 		<script src='https://fullcalendar.io/releases/fullcalendar/3.9.0/lib/jquery.min.js'></script>
-		<script src='https://fullcalendar.io/releases/fullcalendar/3.9.0/fullcalendar.min.js'></script> 
-
+		<!-- <script src='https://fullcalendar.io/releases/fullcalendar/3.9.0/fullcalendar.min.js'></script> --> 
+		<script src="<%=request.getContextPath()%>/resources/js/reservationCalendar.js"></script>
+		
 		<script type="text/javascript">
 		 $(function() {
 			  $('#calendar').fullCalendar({
@@ -170,7 +172,7 @@
 				 	{
 				 		id: 3,
 				 		title: 'Test3',
-				 		start: '1900-07-13T14:00:00',
+				 		start: '1900-07-13T16:00:00',
 				 		end: '1900-07-13T16:00:00'
 				 	}
 				 ],

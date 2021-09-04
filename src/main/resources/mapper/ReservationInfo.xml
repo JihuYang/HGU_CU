@@ -50,15 +50,6 @@
 		
 		WHERE u.name LIKE concat('%',#{keyword},'%') or u.email LIKE concat('%',#{keyword},'%')
 	</select>
- 	
- 	<!-- 예약 추가 쿼리 -->
- 	<!-- 
-	<insert id="createReservation"
-		parameterType="com.walab.hgu.DTO.ReservationInfoDTO">
-		INSERT INTO hsca219.reservationInfo (userId, spaceId, startTime, endTime, purpose, memo, reservationDate) 
-		VALUES (#{userId}, #{spaceId}, #{startTime}, #{endTime}, #{purpose},#{memo},#{reservationDate});
-	</insert>
-	 -->
 	
 	<!-- 예약 추가 쿼리 -->
 	<insert id="createReservation"
@@ -66,7 +57,7 @@
 		INSERT INTO hsca219.reservationInfo (userId, spaceId, startTime, endTime, purpose, memo, reservationDate) 
 		SELECT #{userId}, #{spaceId}, #{startTime}, #{endTime}, #{purpose},#{memo},#{reservationDate}
 		FROM DUAL WHERE NOT EXISTS(SELECT * FROM hsca219.reservationInfo WHERE spaceId = #{spaceId} 
-		AND reservationDate = #{reservationDate} AND startTime = #{startTime})
+		AND reservationDate = #{reservationDate} AND #{startTime}=startTime)
 	</insert>
  	
  	
