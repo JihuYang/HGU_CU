@@ -106,12 +106,9 @@ readIsAdminByUserID<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"
 			</div>
 			<div class="justify-content-md-end">
 				<ul class="navbar-nav my-2 my-lg-0">
-					<li class="nav-item button-padding button-left border-none">
-						<button type="button" class=" login-btn btn-outline-secondary ">회원가입</button>
-					</li>
 					<li class="nav-item button-padding border-none">
 						<button type="button" class=" login-btn btn-outline-secondary "
-							onclick="location.href='<%=request.getContextPath()%>/login'">로그아웃</button>
+							onclick="location.href='<%=request.getContextPath()%>/loginGoogle/cancel'">로그아웃</button>
 					</li>
 				</ul>
 			</div>

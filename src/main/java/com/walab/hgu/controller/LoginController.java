@@ -125,7 +125,9 @@ public class LoginController {
 		// 회원 정보가 있는 경우  기존의 아이디를 불러옴
 		else {
 			request.getSession().setAttribute("user", ud);
+			int id = userService.readUserIDByEmail(userInfo.get("email"));
 			ud.setId(userService.readUserIDByEmail(userInfo.get("email")));
+			ud.setAdmin(userService.readAdminByUserID(id));
 			session.setAttribute("tempUser", ud);
 			session.setAttribute("token", result.getAccessToken());
 			
