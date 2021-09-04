@@ -121,6 +121,8 @@ public class CommunityInfoController {
 		int userId = Integer.parseInt(request.getParameter("userId"));
 		String title = request.getParameter("title");
 		String content = request.getParameter("newContent");
+		
+		content = content.replaceAll("(\r|\n|\r\n|\n\r)","");
 
 		List<MultipartFile> fileList = request.getFiles("file");
 		System.out.println(fileList);
@@ -129,7 +131,6 @@ public class CommunityInfoController {
 		info.setTitle(title);
 		info.setContent(content);
 		info.setFile(file);
-		System.out.println("title: "+title);
 		System.out.println("content: "+content);
 		
 		communityInfoService.createCommunityInfo(info);
@@ -200,7 +201,7 @@ public class CommunityInfoController {
 		int id = Integer.parseInt(request.getParameter("id"));
 		int userId = Integer.parseInt(request.getParameter("userId"));
 		String title = request.getParameter("title");
-		String content = request.getParameter("content");
+		String content = request.getParameter("newContent");
 
 		info.setId(id);
 		info.setUserId(userId);

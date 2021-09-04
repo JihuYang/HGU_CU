@@ -38,12 +38,12 @@
 	<select id="readCommunityMaterialFileDetail"
 		resultType="com.walab.hgu.DTO.FileDTO" parameterType="hashmap">
 		SELECT * FROM
-		hguclub.communityMaterialFile WHERE communityMaterialId=#{communityMaterialId};
+		hsca219.communityMaterialFile WHERE communityMaterialId=#{communityMaterialId};
 	</select>
 	<select id="readCommunityMaterialFileOneDetail"
 		resultType="com.walab.hgu.DTO.FileDTO" parameterType="hashmap">
 		SELECT * FROM
-		hguclub.communityMaterialFile WHERE id=#{id};
+		hsca219.communityMaterialFile WHERE id=#{id};
 	</select>
 	<select id="readRecentCommunityMaterial" resultType="int"
 		parameterType="hashmap">

@@ -1,5 +1,5 @@
-/*function createClubIntro(){	
-	//var categoryId=document.getElementById("categoryId").selectedIndex+2;
+function createClubIntro(){	
+/*	//var categoryId=document.getElementById("categoryId").selectedIndex+2;
 	var categoryId=1;
 	//var foundationDate = $('#foundationDate').val();
 	//foundationDate+="-01-01";
@@ -29,8 +29,10 @@
 		error:function(request, error){
 			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
         }
-	});
-}*/
+	});*/
+	document.getElementById("newContent").value = content.getHTML();
+	alert("update 내용 : "+document.getElementById("newContent").value);
+}
 
 function search(){
 	
@@ -56,4 +58,10 @@ function searchInCategory(categoryId){
   			//alert(keyword);
   			location.href = "/clubIntroduction/"+ categoryId + "?keyword=" + keyword;
  		};
+}
+
+function updateClub(){
+	alert("수정");
+	document.getElementById("newContent").value = content.getHTML();
+	alert("update 내용 : "+document.getElementById("newContent").value);
 }

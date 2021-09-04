@@ -169,13 +169,15 @@ public class ClubIntroductionController {
 			@RequestParam(value = "foundationDate") @DateTimeFormat(pattern = "yyyy") Date foundationDate,
 			@RequestParam(value = "instagramLink") String instagramLink,
 			@RequestParam(value = "facebookLink") String facebookLink,
-			@RequestParam(value = "clubDescription") String clubDescription) throws ParseException {
+			@RequestParam(value = "newContent") String newContent) throws ParseException {
 
 		ClubDTO info = new ClubDTO();
 		ClubDTO sns = new ClubDTO();
 		FileDTO infoImageFile = new FileDTO();
 		int recentId = clubService.readRecentClub() + 1;
 
+		newContent = newContent.replaceAll("(\r|\n|\r\n|\n\r)","");
+		
 		List<CategoryDTO> categoryNameList = clubService.getCategoryNameList();
 		int categoryId = 0;
 
@@ -194,7 +196,7 @@ public class ClubIntroductionController {
 		info.setCategoryId(categoryId);
 		info.setClubName(clubName);
 		info.setUserId(userId);
-		info.setClubDescription(clubDescription);
+		info.setClubDescription(newContent);
 		info.setFoundationDate(foundationDate);
 		info.setClubLocation(clubLocation);
 		sns.setInstagramLink(instagramLink);
@@ -272,7 +274,7 @@ public class ClubIntroductionController {
 			@RequestParam(value = "foundationDate") @DateTimeFormat(pattern = "yyyy") Date foundationDate,
 			@RequestParam(value = "instagramLink") String instagramLink,
 			@RequestParam(value = "facebookLink") String facebookLink,
-			@RequestParam(value = "clubDescription") String clubDescription) {
+			@RequestParam(value = "newContent") String newContent) {
 
 		ClubDTO info = new ClubDTO();
 		ClubDTO sns = new ClubDTO();
@@ -297,7 +299,7 @@ public class ClubIntroductionController {
 		info.setCategoryId(categoryId);
 		info.setClubName(clubName);
 		info.setUserId(userId);
-		info.setClubDescription(clubDescription);
+		info.setClubDescription(newContent);
 		info.setFoundationDate(foundationDate);
 		info.setClubLocation(clubLocation);
 		sns.setInstagramLink(instagramLink);

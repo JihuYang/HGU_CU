@@ -112,6 +112,15 @@
 		VALUES
 		(#{clubId},#{originalUrl},#{fileOrder})
 	</insert>
+	
+	<!-- <insert id="createCommunityInfoFile"
+		parameterType="com.walab.hgu.DTO.FileDTO">
+		INSERT INTO hsca219.clubImage (clubId,
+		originalUrl,fileOrder)
+		SELECT #{clubId},#{originalUrl},#{fileOrder}
+		WHERE #{originalUrl} != ' '
+	</insert> -->
+	
 	<select id="getClubIdByName" parameterType="HashMap"
 		resultType="int">
 		SELECT id
