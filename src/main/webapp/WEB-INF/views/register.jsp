@@ -42,7 +42,7 @@
 <link href="<%=request.getContextPath()%>/resources/js/register.js" rel="stylesheet" />
 
 
-<script src="https://kit.fontawesome.com/6333a60c65.js""></script>
+<script src="https://kit.fontawesome.com/6333a60c65.js"></script>
 <body id="page-top">
 	<!-- Masthead-->
 	<div class="container px-4 px-lg-5 h-100">

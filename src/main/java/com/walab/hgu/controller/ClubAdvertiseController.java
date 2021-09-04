@@ -52,10 +52,9 @@ public class ClubAdvertiseController {
 			@RequestParam(value = "keyword", required = false, defaultValue = "") String keyword) {
 
 		if(request.getSession().getAttribute("user") != null) {
-			int userID = ((UserDTO)request.getSession().getAttribute("user")).getId();
-			mv.addObject("userID", userID);
+			int admin = ((UserDTO)request.getSession().getAttribute("user")).getAdmin();
+			mv.addObject("admin", admin);		
 		}
-
 
 		Page page = new Page();
 		page.setPostNum(4);
@@ -94,6 +93,13 @@ public class ClubAdvertiseController {
 	@RequestMapping(value = "/clubAdvertise/detail/{id}", method = RequestMethod.GET)
 	public ModelAndView readCommunityInfoDetail(@PathVariable int id, HttpSession session, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
+		
+		if(request.getSession().getAttribute("user") != null) {
+			int userId = ((UserDTO)request.getSession().getAttribute("user")).getId();
+			int admin = ((UserDTO)request.getSession().getAttribute("user")).getAdmin();
+			mv.addObject("userId", userId);		
+			mv.addObject("admin", admin);		
+		}
 
 		List<ClubAdvertiseDTO> clubAdDetailList = clubAdvertiseService.readClubAdvertiseDetail(id);
 
@@ -125,7 +131,9 @@ public class ClubAdvertiseController {
 	@RequestMapping(value = "/clubAdvertise/write/create", method = RequestMethod.POST)
 	@ResponseBody
 	public ModelAndView createClubAd(ModelAndView mv, MultipartHttpServletRequest request, MultipartFile file) {
-
+		
+		int id = ((UserDTO)request.getSession().getAttribute("user")).getId();
+		
 		ClubAdvertiseDTO info = new ClubAdvertiseDTO();
 		FileDTO infoFile = new FileDTO();
 		FileDTO infoImageFile = new FileDTO();
@@ -133,6 +141,7 @@ public class ClubAdvertiseController {
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
 
+		info.setWriter(id);
 		info.setTitle(title);
 		info.setContent(content);
 		info.setFile(file);
@@ -215,6 +224,7 @@ public class ClubAdvertiseController {
 	@RequestMapping(value = "/clubAdvertise/write/update", method = RequestMethod.POST)
 	@ResponseBody
 	public ModelAndView updateClubAdvertise(ModelAndView mv, MultipartHttpServletRequest request, MultipartFile file) {
+		
 
 		ClubAdvertiseDTO info = new ClubAdvertiseDTO();
 		FileDTO infoFile = new FileDTO();
