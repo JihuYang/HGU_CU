@@ -18,6 +18,16 @@ public class UserDAOImpl implements UserDAO {
 	
 	private String namespace = "User";
 	
+	@Override
+	public int createUserInfo(UserDTO userInfo) {
+		Map<String, Object> user = new HashMap<String, Object>();
+		user.put("usedInfo", userInfo);
+		System.out.println(user);
+
+		return sqlSession.insert(namespace+".createUserInfo", userInfo);
+
+	}
+
 	
 	@Override
 	public List<UserDTO> readUser(int displayPost, int postNum) {

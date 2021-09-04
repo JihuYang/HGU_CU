@@ -3,34 +3,48 @@
 
 <mapper namespace="User">
 
+
+	<insert id="createUserInfo"
+		parameterType="com.walab.hgu.DTO.UserDTO">
+		INSERT INTO hsca219.user
+		(name,email,phone,admin)
+		VALUES
+		(#{name},#{email},#{phone},#{admin})
+	</insert>
+
 	<select id="readUser" resultType="com.walab.hgu.DTO.UserDTO"
 		parameterType="hashmap">
-		SELECT u.id, name, email, u.admin, phone, clubName FROM (hsca219.user as u
+		SELECT u.id, name, email, u.admin, phone, clubName FROM
+		(hsca219.user as u
 		LEFT JOIN hsca219.club as c ON c.userId=u.id)
-		ORDER BY u.regdate DESC
+		ORDER
+		BY u.regdate DESC
 		LIMIT #{displayPost}, #{postNum}
 	</select>
-	
+
 	<select id="readAllUsers" resultType="com.walab.hgu.DTO.UserDTO"
 		parameterType="hashmap">
 		SELECT * FROM hsca219.user
 	</select>
-	
+
 	<select id="countInfo" resultType="int">
 		SELECT COUNT(*) as listCnt
 		FROM user
 	</select>
-	
-	<select id="reaadminByUserID" resultType="int" parameterType="hashmap">
+
+	<select id="reaadminByUserID" resultType="int"
+		parameterType="hashmap">
 		SELECT admin FROM hsca219.user WHERE id=${userID}
 	</select>
-	
-	<select id="readUserIDByEmail" resultType="int" parameterType="hashmap">
+
+	<select id="readUserIDByEmail" resultType="int"
+		parameterType="hashmap">
 		SELECT id FROM user WHERE email=#{email}
 	</select>
 	<update id="updateAuthority" parameterType="hashmap">
 		UPDATE user
-		SET admin = #{admin}
+		SET admin
+		= #{admin}
 		WHERE id = #{id}
 	</update>
 </mapper>
