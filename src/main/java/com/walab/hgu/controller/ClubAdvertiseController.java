@@ -131,8 +131,10 @@ public class ClubAdvertiseController {
 		FileDTO infoImageFile = new FileDTO();
 
 		String title = request.getParameter("title");
-		String content = request.getParameter("content");
+		String content = request.getParameter("newContent");
 
+		content = content.replaceAll("(\r|\n|\r\n|\n\r)","");
+		
 		info.setTitle(title);
 		info.setContent(content);
 		info.setFile(file);
@@ -222,7 +224,7 @@ public class ClubAdvertiseController {
 
 		int id = Integer.parseInt(request.getParameter("id"));
 		String title = request.getParameter("title");
-		String content = request.getParameter("content");
+		String content = request.getParameter("newContent");
 
 		info.setId(id);
 		info.setTitle(title);
