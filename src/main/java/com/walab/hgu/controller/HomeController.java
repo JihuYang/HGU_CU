@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -46,22 +47,7 @@ public class HomeController {
 	UserService userService;
 	@Autowired
 	ClubAdvertiseService clubAdvertiseService;
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
-//	@RequestMapping(value = "/", method = RequestMethod.GET)
-//	public String home(Locale locale, Model model) {
-//		logger.info("Welcome home! The client locale is {}.", locale);
-//		
-//		Date date = new Date();
-//		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
-//		
-//		String formattedDate = dateFormat.format(date);
-//		
-//		model.addAttribute("serverTime", formattedDate );
-//		
-//		return "home";
-//	}
+
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public ModelAndView header(ModelAndView mv, HttpServletRequest httpServletRequest) {
 		
@@ -115,8 +101,9 @@ public class HomeController {
 		
 		// 동아리 홍보
 		page.get(3).setCount(clubAdvertiseService.countInfo(searchType, keyword));
-		List<ClubAdvertiseDTO> clubAdvertiseList = clubAdvertiseService.readClubAdvertisePreview(page.get(3).getDisplayPost(),page.get(3).getPostNum(),searchType,keyword);
-		
+		List<ClubAdvertiseDTO> clubAdvertiseList = clubAdvertiseService
+				.readClubAdvertisePreview(page.get(3).getDisplayPost(), page.get(3).getPostNum(), searchType, keyword);
+
 		int communityInfoListCount = page.get(0).getCount();
 		int communityMaterialListCount = page.get(1).getCount();
 		int clubIntroListCount = page.get(2).getCount();

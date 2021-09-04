@@ -97,6 +97,10 @@ readIsAdminByUserID<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"
 						class="nav-link"
 						onclick="location.href='<%=request.getContextPath()%>/clubAdvertise?num=1'">동아리
 							홍보</a></li>
+					<li class="nav-item nav-bottom-border mx-2"><a
+						class="nav-link"
+						onclick="location.href='<%=request.getContextPath()%>/admin?num=1'">관리자</a></li>
+
 				</ul>
 
 			</div>
@@ -107,7 +111,7 @@ readIsAdminByUserID<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"
 					</li>
 					<li class="nav-item button-padding border-none">
 						<button type="button" class=" login-btn btn-outline-secondary "
-							onclick="location.href='<%=request.getContextPath()%>/loginGoogle'">로그아웃</button>
+							onclick="location.href='<%=request.getContextPath()%>/login'">로그아웃</button>
 					</li>
 				</ul>
 			</div>

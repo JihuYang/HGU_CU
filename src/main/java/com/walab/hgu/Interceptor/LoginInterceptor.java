@@ -28,7 +28,7 @@ public class LoginInterceptor extends HandlerInterceptorAdapter{
 		id = userService.readUserIDByEmail(userDTO.getEmail());
 		if(id > 0) {
 			userDTO.setId(id);
-			userDTO.setAdmin(userService.readAdminByUserID(id));
+			//userDTO.setAdmin(userService.readAdminByUserID(id));
 			session.setAttribute("user", userDTO);
 			modelAndView.setView(new RedirectView("/",true));
 		}

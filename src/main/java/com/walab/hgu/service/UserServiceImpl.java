@@ -16,35 +16,41 @@ public class UserServiceImpl implements UserService {
 	UserDAO userDAO;
 
 	@Override
+	public int createUserInfo(UserDTO userInfo) {
+
+		return userDAO.createUserInfo(userInfo);
+
+	}
+
+	@Override
 	public List<UserDTO> readUser(int displayPost, int postNum) {
-		
-		List<UserDTO> userList = userDAO.readUser(displayPost,postNum);
+
+		List<UserDTO> userList = userDAO.readUser(displayPost, postNum);
 
 		return userList;
-		
+
 	}
-	
-	public List<UserDTO> readAllUsers(){
-		
+
+	public List<UserDTO> readAllUsers() {
+
 		List<UserDTO> userList = userDAO.readAllUsers();
-		
+
 		return userList;
 	}
 
 	@Override
 	public int countInfo() {
-		// TODO Auto-generated method stub
 		return userDAO.countInfo();
 	}
-	
+
 	@Override
 	public int readUserIDByEmail(String email) {
-		
+
 		int userID = userDAO.readUserIDByEmail(email);
-		
+
 		return userID;
 	}
-	
+
 	@Override
 	public int readAdminByUserID(int userID) {
 		return userDAO.readAdminByUserID(userID);
@@ -55,7 +61,5 @@ public class UserServiceImpl implements UserService {
 		// TODO Auto-generated method stub
 		return userDAO.updateAuthority(authorityParam);
 	}
-	
-	
 
 }

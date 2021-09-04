@@ -33,6 +33,8 @@
 
 </head>
 <jsp:include page="/WEB-INF/views/inc/header.jsp" />
+
+
 <link href="<%=request.getContextPath()%>/resources/css/home.css"
 	rel="stylesheet" />
 
