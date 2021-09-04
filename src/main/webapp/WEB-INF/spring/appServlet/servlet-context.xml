@@ -65,11 +65,11 @@
 	</beans:bean>
 
 
-<!-- 	<beans:bean id="loginInterceptor"
+ 	<beans:bean id="loginInterceptor"
 		class="com.walab.hgu.Interceptor.LoginInterceptor" />
 		
 	<beans:bean id="commonInterceptor"
-		class="com.walab.hgu.Interceptor.CommonInterceptor" /> -->
+		class="com.walab.hgu.Interceptor.CommonInterceptor" /> 
 	
 	<!-- spring-donwload bean -->
 	<beans:bean
@@ -81,7 +81,7 @@
 		class="com.walab.hgu.utils.DownloadView" />
 	<!-- /spring-donwload bean -->
 	
-<!-- 	<interceptors>
+	<interceptors>
 		<interceptor>
 			<mapping path="/register" />
 			<exclude-mapping path="/resources/**" />
@@ -95,6 +95,6 @@
 			<exclude-mapping path="/login/**" />
 			<beans:ref bean="commonInterceptor" />
 		</interceptor>
-	</interceptors> -->
+	</interceptors> 
 	
 </beans:beans>

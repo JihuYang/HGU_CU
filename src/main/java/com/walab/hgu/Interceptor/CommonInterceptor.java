@@ -38,11 +38,11 @@ public class CommonInterceptor extends HandlerInterceptorAdapter {
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			ModelAndView modelAndView) throws Exception {
 		if(request.getSession().getAttribute("user") == null) {
-			request.setAttribute("header", "logoutHeader.jsp");
+			request.setAttribute("header", "headerLogut.jsp");
 		}else if(((UserDTO)request.getSession().getAttribute("user")).getAdmin() > 0) {
-			request.setAttribute("header", "adminHeader.jsp");
+			request.setAttribute("header", "headerAdmin.jsp");
 		}else {
-			request.setAttribute("header", "loginHeader.jsp");
+			request.setAttribute("header", "headerLogin.jsp");
 		}
 		
 		
