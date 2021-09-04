@@ -25,6 +25,15 @@ public class ReservationInfoServiceImpl implements ReservationInfoService{
 	}
 	
 	@Override
+	public List<ReservationInfoDTO> readReservationInfoById(int userId){
+		
+		List<ReservationInfoDTO> infoList = reservationInfoDAO.readReservationInfoById(userId);
+		
+		return infoList;
+		
+	}
+	
+	@Override
 	public List<ReservationInfoDTO> readReservationInfoPaging(int displayPost, int postNum,String keyword) {
 		
 		List<ReservationInfoDTO> infoList = reservationInfoDAO.readReservationInfoPaging(displayPost,postNum,keyword);

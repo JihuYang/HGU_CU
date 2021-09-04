@@ -32,6 +32,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.walab.hgu.DTO.CommunityInfoDTO;
 import com.walab.hgu.DTO.FileDTO;
 import com.walab.hgu.DTO.Page;
+import com.walab.hgu.DTO.UserDTO;
 import com.walab.hgu.service.CommunityInfoService;
 
 /**
@@ -44,12 +45,17 @@ public class CommunityInfoController {
 	CommunityInfoService communityInfoService;
 
 	@RequestMapping(value = "/communityInfo", method = RequestMethod.GET)
-	public ModelAndView readCommunityInfo(ModelAndView mv, @RequestParam("num") int num,
+	public ModelAndView readCommunityInfo(ModelAndView mv, HttpServletRequest request,
+			@RequestParam("num") int num,
 			@RequestParam(value = "searchType", required = false, defaultValue = "title") String searchType,
 			@RequestParam(value = "keyword", required = false, defaultValue = "") String keyword) {
 
 		// ModelAndView mv = new ModelAndView();
-
+		if(request.getSession().getAttribute("user") != null) {
+			int admin = ((UserDTO)request.getSession().getAttribute("user")).getAdmin();
+			mv.addObject("admin", admin);		
+		}
+		
 		Page page = new Page();
 		page.setNum(num);
 		page.setCount(communityInfoService.countInfo(searchType, keyword));

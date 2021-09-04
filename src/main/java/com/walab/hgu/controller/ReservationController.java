@@ -33,8 +33,11 @@ public class ReservationController {
 	@RequestMapping(value = "/reservation", method = RequestMethod.GET)
 	public ModelAndView readSpace(ModelAndView mv,
 			@RequestParam(value = "spaceName",required = false, defaultValue = "") String spaceName,
-			HttpServletRequest httpServletRequest) {
-		
+			HttpServletRequest request) {
+		if(request.getSession().getAttribute("user") != null) {
+			int userId = ((UserDTO)request.getSession().getAttribute("user")).getId();
+			mv.addObject("userId", userId);		
+		}
 		System.out.println(spaceName);
 		List<SpaceDTO> spaceList = spaceService.readSpace();
 		List<SpaceDTO> spaceList2 = spaceService.readSpaceByName(spaceName);
