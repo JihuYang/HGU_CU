@@ -36,6 +36,17 @@
 <script src="https://kit.fontawesome.com/6333a60c65.js"></script>
 
 <body id="page-top">
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script>
+    $(function(){
+        var responseMessage = ${message};
+        if(responseMessage != ""){
+            alert(responseMessage)
+        }
+    }) 
+</script>
+
         <div class="R_container h-100">
             <div class="side_bar">	
        			<div class="reservation" style="background-color:gray">
