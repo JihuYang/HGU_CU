@@ -30,7 +30,16 @@
 <link
 	href="<%=request.getContextPath()%>/resources/css/createClubAd.css"
 	rel="stylesheet" />
-
+	<!-- Editor's Dependecy Style -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.min.css"
+  />
+<!-- Editor's Style -->
+  <link
+    rel="stylesheet"
+    href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css"
+  />
 </head>
 <script src="https://kit.fontawesome.com/6333a60c65.js"></script>
 <body id="page-top">
@@ -53,10 +62,28 @@
 					<input class="form-control title-input" type="text" id="title"
 						name="title" value="${communityInfoDetail.title}">
 				</div>
-				<div class="mb-3">
-					<textarea class="form-control textarea justify-content-center"
-						rows="13" id="content" name="content">${communityInfoDetail.content}</textarea>
+				<div class="mb-3" id="content" style="display:inline-block;width:100%;">
+					<%-- <textarea class="form-control textarea justify-content-center"
+						rows="13" id="content" name="content">${communityInfoDetail.content}</textarea> --%>
 				</div>
+				<input id="newContent" type="hidden" name="newContent" value="">
+					<script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+					<script type="text/javascript">
+						 /*alert('${communityInfoDetail.content}');*/
+						/*const oldContent = '${communityInfoDetail.content}'; */
+						
+					
+					      const content = new toastui.Editor({
+					        el: document.querySelector('#content'),
+					        height: '600px',
+					        initialValue: '',
+					        initialEditType: 'wysiwyg',
+					        hideModeSwitch: 'true'
+					      });
+
+					      content.setHTML('${communityInfoDetail.content}',true);
+					</script>
+				
 				<div class="mb-3">
 					기존 파일명 :
 					<c:forEach items="${communityInfoFileDetail}"
@@ -70,7 +97,7 @@
 				<div>
 					<a class="btn btn-primary back-btn bottom-btn" href="./"
 						role="button">뒤로</a>
-					<button class="btn btn-primary submit-btn bottom-btn" type="submit">저장</button>
+					<button class="btn btn-primary submit-btn bottom-btn" type="submit" onclick="updateInfo()">저장</button>
 				</div>
 			</form>
 

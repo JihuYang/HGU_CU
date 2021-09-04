@@ -32,7 +32,17 @@
 <link
 	href="<%=request.getContextPath()%>/resources/css/createClubAd.css"
 	rel="stylesheet" />
-
+	<!-- Editor's Dependecy Style -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.min.css"
+  />
+<!-- Editor's Style -->
+  <link
+    rel="stylesheet"
+    href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css"
+  />
+  
 </head>
 <script src="https://kit.fontawesome.com/6333a60c65.js"></script>
 <body id="page-top">
@@ -53,10 +63,28 @@
 						<input class="form-control title-input" type="text" id="title"
 							name="title" value="${clubAdDetailList[0].title}">
 					</div>
-					<div class="mb-3">
-						<textarea class="form-control textarea justify-content-center"
-							rows="13" id="content" name="content" required>${clubAdDetailList[0].content}</textarea>
+					<div class="mb-3" id="content" style="display:inline-block;width:100%;text-align:left;">
+						<%-- <textarea class="form-control textarea justify-content-center"
+							rows="13" id="content" name="content" required>${clubAdDetailList[0].content}</textarea> --%>
 					</div>
+					<input id="newContent" type="hidden" name="newContent" value="">
+					<script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+					<script type="text/javascript">
+						 alert('${clubAdDetailList[0].content}');
+						/*const oldContent = '${communityInfoDetail.content}'; */
+						
+					
+					      const content = new toastui.Editor({
+					        el: document.querySelector('#content'),
+					        height: '600px',
+					        initialValue: '',
+					        initialEditType: 'wysiwyg',
+					        hideModeSwitch: 'true'
+					      });
+
+					      content.setHTML('${clubAdDetailList[0].content}',true);
+					</script>
+					
 					<div class="mb-3 text-start">
 						기존 파일명 :
 						<c:forEach items="${clubAdImgList}" var="clubAdImgList"
@@ -82,7 +110,7 @@
 					<div>
 						<a class="btn btn-primary back-btn bottom-btn" href="./"
 							role="button">뒤로</a>
-						<button class="btn btn-primary submit-btn bottom-btn">
+						<button class="btn btn-primary submit-btn bottom-btn" onclick="updateClubAd()">
 							<!-- onclick="createClubAd()" -->
 							저장
 						</button>

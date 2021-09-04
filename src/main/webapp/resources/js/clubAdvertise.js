@@ -1,5 +1,5 @@
 function createClubAd(){
-	$.ajax({
+	/*$.ajax({
 		url: "/clubAdvertise/write/create",
 		type: "POST",
 		async: false,
@@ -18,7 +18,9 @@ function createClubAd(){
 		console.log("동아리 홍보 글쓰기 실패..");
 			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
         }
-	});
+	});*/
+	document.getElementById("newContent").value = content.getHTML();
+	alert("update 내용 : "+document.getElementById("newContent").value);
 }
 
 function search(){
@@ -33,4 +35,9 @@ function search(){
   			//alert("23");
   			location.href = "/clubAdvertise?num=1"+ "&searchType=" + searchType + "&keyword=" + keyword;
  		};
+}
+
+function updateClubAd(){
+	document.getElementById("newContent").value = content.getHTML();
+	alert("update 내용 : "+document.getElementById("newContent").value);
 }

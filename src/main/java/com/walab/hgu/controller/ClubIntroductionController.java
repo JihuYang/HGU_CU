@@ -54,8 +54,7 @@ public class ClubIntroductionController {
 		
 		if(request.getSession().getAttribute("user") != null) {
 			int admin = ((UserDTO)request.getSession().getAttribute("user")).getAdmin();
-			mv.addObject("admin", admin);
-			
+			mv.addObject("admin", admin);	
 		}
 		// System.out.println(categoryId);
 		List<ClubDTO> clubIntroList = clubService.getAllClubIntroduction(keyword);
@@ -109,7 +108,16 @@ public class ClubIntroductionController {
 //		HashMap<String, Integer> clubMappingInfo = new HashMap<String, Integer>();
 //		clubMappingInfo.put("categoryId", categoryId);
 //		clubMappingInfo.put("clubId", clubId);
+		
+		if(request.getSession().getAttribute("user") != null) {
+			int admin = ((UserDTO)request.getSession().getAttribute("user")).getAdmin();
+			mv.addObject("admin", admin);
+			int userId = ((UserDTO)request.getSession().getAttribute("user")).getId();
+			mv.addObject("userId", userId);
+		}
+		
 		List<ClubDTO> clubDetailList = clubService.getClubDetailList(categoryId, clubId);
+		System.out.println("clubDetailList: " + clubDetailList);
 
 		List<CategoryDTO> categoryNameList = clubService.getCategoryNameList();
 
@@ -159,13 +167,15 @@ public class ClubIntroductionController {
 			@RequestParam(value = "foundationDate") @DateTimeFormat(pattern = "yyyy") Date foundationDate,
 			@RequestParam(value = "instagramLink") String instagramLink,
 			@RequestParam(value = "facebookLink") String facebookLink,
-			@RequestParam(value = "clubDescription") String clubDescription) throws ParseException {
+			@RequestParam(value = "newContent") String newContent) throws ParseException {
 
 		ClubDTO info = new ClubDTO();
 		ClubDTO sns = new ClubDTO();
 		FileDTO infoImageFile = new FileDTO();
 		int recentId = clubService.readRecentClub() + 1;
 
+		newContent = newContent.replaceAll("(\r|\n|\r\n|\n\r)","");
+		
 		List<CategoryDTO> categoryNameList = clubService.getCategoryNameList();
 		int categoryId = 0;
 
@@ -175,14 +185,16 @@ public class ClubIntroductionController {
 				break;
 			}
 		}
+		int userId = ((UserDTO)request.getSession().getAttribute("user")).getId();
+		int admin = ((UserDTO)request.getSession().getAttribute("user")).getAdmin();
+		mv.addObject("admin", admin);
 
-		int userId = 1;
 		int imgOrder = 1;
 
 		info.setCategoryId(categoryId);
 		info.setClubName(clubName);
 		info.setUserId(userId);
-		info.setClubDescription(clubDescription);
+		info.setClubDescription(newContent);
 		info.setFoundationDate(foundationDate);
 		info.setClubLocation(clubLocation);
 		sns.setInstagramLink(instagramLink);
@@ -260,7 +272,7 @@ public class ClubIntroductionController {
 			@RequestParam(value = "foundationDate") @DateTimeFormat(pattern = "yyyy") Date foundationDate,
 			@RequestParam(value = "instagramLink") String instagramLink,
 			@RequestParam(value = "facebookLink") String facebookLink,
-			@RequestParam(value = "clubDescription") String clubDescription) {
+			@RequestParam(value = "newContent") String newContent) {
 
 		ClubDTO info = new ClubDTO();
 		ClubDTO sns = new ClubDTO();
@@ -285,7 +297,7 @@ public class ClubIntroductionController {
 		info.setCategoryId(categoryId);
 		info.setClubName(clubName);
 		info.setUserId(userId);
-		info.setClubDescription(clubDescription);
+		info.setClubDescription(newContent);
 		info.setFoundationDate(foundationDate);
 		info.setClubLocation(clubLocation);
 		sns.setInstagramLink(instagramLink);

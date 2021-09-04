@@ -61,20 +61,20 @@
 		</div>
 		<div
 			class="row h-25 align-items-center justify-content-center text-center">
-
-			<table class="table text-center">
-				<tbody>
-					<c:forEach items="${communityInfoFileDetail}"
-						var="communityInfoFileDetail" varStatus="status">
-						<tr>
-							<th scope="col" class="col-3 text-center file py-4">첨부파일</th>
-							<th scope="col" class="col-7 text-start px-3 py-4"><a
-								href="/communityInfo/detail/${communityInfoFileDetail.id}/filedownload">${communityInfoFileDetail.originalUrl}</a></th>
-						</tr>
-					</c:forEach>
-				</tbody>
-			</table>
-
+			<c:if test="${!empty communityInfoFileDetail}">
+				<table class="table text-center">
+					<tbody>
+						<c:forEach items="${communityInfoFileDetail}"
+							var="communityInfoFileDetail" varStatus="status">
+							<tr>
+								<th scope="col" class="col-3 text-center file py-4">첨부파일</th>
+								<th scope="col" class="col-7 text-start px-3 py-4"><a
+									href="/communityInfo/detail/${communityInfoFileDetail.id}/filedownload">${communityInfoFileDetail.originalUrl}</a></th>
+							</tr>
+						</c:forEach>
+					</tbody>
+				</table>
+			</c:if>
 			<div class="row justify-content-start mt-4 list-btn">
 				<button class="btn btn-primary search-btn list-btn"
 					onclick="location.href='<%=request.getContextPath()%>/communityInfo?num=1'">목록</button>

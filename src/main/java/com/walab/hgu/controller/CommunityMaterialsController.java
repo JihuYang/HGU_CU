@@ -114,8 +114,10 @@ public class CommunityMaterialsController {
 		//int userId = ((UserDTO)servletRequest.getSession().getAttribute("user")).getId();
 		int userId = Integer.parseInt(request.getParameter("userId"));
 		String title = request.getParameter("title");
-		String content = request.getParameter("content");
+		String content = request.getParameter("newContent");
 
+		content = content.replaceAll("(\r|\n|\r\n|\n\r)","");
+		
 		List<MultipartFile> fileList = request.getFiles("file");
 		System.out.println(fileList);
 

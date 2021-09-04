@@ -90,7 +90,6 @@
 				<button class="btn btn-primary search-btn list-btn"
 					onclick="location.href='<%=request.getContextPath()%>/clubAdvertise/delete/${clubAdDetailList[0].id}'">삭제</button>
 				</c:if>
-
 			</div>
 		</div>
 	</div>

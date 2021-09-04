@@ -111,3 +111,13 @@ function createCheck() {
 	}
 
 }
+
+function updateInfo(){
+	document.getElementById("newContent").value = content.getHTML();
+	alert("update 내용 : "+document.getElementById("newContent").value);
+}
+
+function createMate(){
+		document.getElementById("newContent").value = content.getHTML();
+	alert("update 내용 : "+document.getElementById("newContent").value);
+}
