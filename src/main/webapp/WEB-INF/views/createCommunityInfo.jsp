@@ -29,11 +29,18 @@
 
 <link
 	href="<%=request.getContextPath()%>/resources/css/createClubAd.css"
-	rel="stylesheet" />
-<!-- SmartEditor2 라이브러리 -->  <%-- 
-<script type="text/javascript" src="<%=request.getContextPath()%>/se2/js/HuskyEZCreator.js" charset="utf-8"></script>  --%><!-- 
+	rel="stylesheet" /><!-- 
 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script> -->
-
+<!-- Editor's Dependecy Style -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.48.4/codemirror.min.css"
+  />
+  <!-- Editor's Style -->
+  <link
+    rel="stylesheet"
+    href="https://uicdn.toast.com/editor/latest/toastui-editor.min.css"
+  />
 </head>
 <script src="<%=request.getContextPath()%>/resources/js/community.js"></script>
 
@@ -56,10 +63,23 @@
 					<input class="form-control title-input" type="text" id="title"
 						name="title" required>
 				</div>
-				<div class="mb-3">
-					<textarea class="form-control textarea justify-content-center"
-						rows="13" id="content" name="content" required></textarea>
+				
+				<div class="mb-3" id="content" style="display:inline-block;width:100%;">
+						<!-- <textarea class="form-control textarea justify-content-center"
+							rows="13" id="content" name="content" required></textarea> -->
 				</div>
+				<input id="newContent" type="hidden" name="newContent" value="">
+					<script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
+					<script type="text/javascript">
+					      const content = new toastui.Editor({
+					        el: document.querySelector('#content'),
+					        height: '600px',
+					        initialValue: '',
+					        initialEditType: 'wysiwyg',
+					        hideModeSwitch: 'true'
+					      });
+					</script>
+				
 				<div class="mb-3">
 					<input class="form-control file" type="file" name="file" id="file"
 						multiple>
@@ -68,7 +88,7 @@
 					<a class="btn btn-primary back-btn bottom-btn" href="./"
 						role="button">뒤로</a>
 					<button class="btn btn-primary submit-btn bottom-btn" 
-						onclick="createCheck()">저장</button>
+						id="submitBtn" onclick="createCheck()">저장</button><!-- onclick="createCheck()" -->
 				</div>
 			</form>
 		</div>
@@ -86,75 +106,6 @@
 	<!-- Core theme JS-->
 	<script src="<%=request.getContextPath()%>/resources/js/scripts.js"></script>
 	<script src="<%=request.getContextPath()%>/resources/js/community.js"></script>
-	<!-- 네이버 글쓰기 자바스크립 -->
-
-<script type="text/javascript" src="<%=request.getContextPath()%>/se2/js/HuskyEZCreator.js" charset="utf-8"></script>
-
-<script type="text/javascript">
-
-var oEditors = [];
-
-nhn.husky.EZCreator.createInIFrame({
-
-oAppRef : oEditors,
-
-elPlaceHolder : "content",
-
-//SmartEditor2Skin.html 파일이 존재하는 경로
-
-sSkinURI : "se2/SmartEditor2Skin.html",
-
-htParams : {
-
-// 툴바 사용 여부 (true:사용/ false:사용하지 않음)
-
-bUseToolbar : true,
-
-// 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
-
-bUseVerticalResizer : true,
-
-// 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
-
-bUseModeChanger : true,
-
-fOnBeforeUnload : function() {
-
-}
-
-},
-
-fOnAppLoad : function() {
-
-//기존 저장된 내용의 text 내용을 에디터상에 뿌려주고자 할때 사용
-
-oEditors.getById["smartEditor"].exec("PASTE_HTML", [ "" ]);
-
-},
-
-fCreator : "createSEditor2"
-
-});
-
-
-//네이버 에디터 작성 데이터 전송하기 
-
-$("#submitBoardBtn").click(function() {
-
-oEditors.getById["smartEditor"].exec("UPDATE_CONTENTS_FIELD", []);
-
-});
-
-
-$("#submitModifyBoardBtn").click(function() {
-
-oEditors.getById["smartEditor"].exec("UPDATE_CONTENTS_FIELD", []);
-
-});
-
-</script>
-
-	<script type="text/javascript" src = "<%=request.getContextPath()%>/resources/js/notice-write.js"></script>
 
 	<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
 	<!-- * *                               SB Forms JS                               * *-->
