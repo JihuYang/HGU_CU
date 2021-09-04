@@ -232,6 +232,54 @@
 	    		
 			}
 			
+			/* 종료시간 기본 값 설정 */
+			  var selectedStart = $("#startTime option:selected").val();
+			  time = selectedStart.split(':');
+			  time[0]++;
+			  endTime.innerHTML=
+				    "<option value="+time[0]+':'+time[1]+">"
+						+time[0]+':'
+						+time[1]
+						+"</option>";
+						
+				time[0]++;
+				 if(time[0]==25)
+					 time[0]=1;
+				 endTime.innerHTML+=
+					    "<option value="+time[0]+':'+time[1]+">"
+							+time[0]+':'
+							+time[1]
+							+"</option>";
+			
+		/* 시작 시간 선택 시 종료 시간 설정 */
+	      function handleTimeLimit(e){
+			 const text = e.options[e.selectedIndex].text;
+			 time = text.split(':');
+			 time[0]++;
+			 document.getElementById('endTime').innerHTML=
+			    "<option value="+time[0]+':'+time[1]+">"
+					+time[0]+':'
+					+time[1]
+					+"</option>";
+		
+			 time[0]++;
+			 if(time[0]==25)
+				 time[0]=1;
+			 document.getElementById('endTime').innerHTML+=
+				    "<option value="+time[0]+':'+time[1]+">"
+						+time[0]+':'
+						+time[1]
+						+"</option>";
+			
+			if(e.options[e.selectedIndex+1].disabled==true){
+				$('#endTime option').each(function() {
+	    		    $(this).prop('disabled', true);
+	    		});
+			}
+			if(e.options[e.selectedIndex+2].disabled==true || e.options[e.selectedIndex+3].disabled==true)
+				$("#endTime option:eq(1)").prop('disabled',true);
+	      }			
+			
 			/* 예약 가능한 시간 설정하기 */
 			function disabledTime(){
 				<c:forEach items="${reservationInfoList}" var="reservationList">
@@ -267,56 +315,6 @@
 					}
 				}
 			}
-			
-			
-			/* 종료시간 기본 값 설정 */
-		  var selectedStart = $("#startTime option:selected").val();
-		  time = selectedStart.split(':');
-		  time[0]++;
-		  endTime.innerHTML=
-			    "<option value="+time[0]+':'+time[1]+">"
-					+time[0]+':'
-					+time[1]
-					+"</option>";
-					
-			time[0]++;
-			 if(time[0]==25)
-				 time[0]=1;
-			 endTime.innerHTML+=
-				    "<option value="+time[0]+':'+time[1]+">"
-						+time[0]+':'
-						+time[1]
-						+"</option>";
-		  
-						
-			/* 시작 시간 선택 시 종료 시간 설정 */
-	      function handleTimeLimit(e){
-			 const text = e.options[e.selectedIndex].text;
-			 time = text.split(':');
-			 time[0]++;
-			 document.getElementById('endTime').innerHTML=
-			    "<option value="+time[0]+':'+time[1]+">"
-					+time[0]+':'
-					+time[1]
-					+"</option>";
-		
-			 time[0]++;
-			 if(time[0]==25)
-				 time[0]=1;
-			 document.getElementById('endTime').innerHTML+=
-				    "<option value="+time[0]+':'+time[1]+">"
-						+time[0]+':'
-						+time[1]
-						+"</option>";
-			
-			if(e.options[e.selectedIndex+1].disabled==true){
-				$('#endTime option').each(function() {
-	    		    $(this).prop('disabled', true);
-	    		});
-			}
-			if(e.options[e.selectedIndex+2].disabled==true || e.options[e.selectedIndex+3].disabled==true)
-				$("#endTime option:eq(1)").prop('disabled',true);
-	      }
 		
 	      disabledTime();
 			
@@ -329,7 +327,7 @@
 			  else
 				  target.disabled = true;
 		  }
-	      
+	    
 	      function changeSpace(e){
 	    	  spaceIndex = e.options[e.selectedIndex].index+1;
 	    	  

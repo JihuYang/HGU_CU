@@ -135,6 +135,7 @@ public class CommunityInfoController {
 		Date time = new Date();
 		String folder = format.format(time);
 		int order = 1;
+		
 		for (MultipartFile newfile : fileList) {
 			String originalUrl = newfile.getOriginalFilename();
 
@@ -142,7 +143,9 @@ public class CommunityInfoController {
 			infoFile.setOriginalUrl(originalUrl);
 			infoFile.setOrder(order);
 			order++;
-
+			System.out.println("originalUrl : " + originalUrl);
+			
+	
 			communityInfoService.createCommunityInfoFile(infoFile);
 
 			String originFileName = newfile.getOriginalFilename(); // 원본 파일 명
@@ -172,7 +175,7 @@ public class CommunityInfoController {
 					e.printStackTrace();
 				}
 			}
-		}
+		}	
 
 		System.out.println(info.toString());
 		System.out.println(infoFile.toString());

@@ -52,12 +52,12 @@ public class ClubAdvertiseController {
 			@RequestParam(value = "keyword", required = false, defaultValue = "") String keyword) {
 
 		if(request.getSession().getAttribute("user") != null) {
-			int userID = ((UserDTO)request.getSession().getAttribute("user")).getId();
-			mv.addObject("userID", userID);
+			int admin = ((UserDTO)request.getSession().getAttribute("user")).getAdmin();
+			mv.addObject("admin", admin);		
 		}
 
 
-		Page page = new Page();
+	    Page page = new Page();
 		page.setPostNum(4);
 		page.setNum(num);
 		page.setCount(clubAdvertiseService.countInfo(searchType, keyword));
@@ -95,6 +95,13 @@ public class ClubAdvertiseController {
 	public ModelAndView readCommunityInfoDetail(@PathVariable int id, HttpSession session, HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
 
+		
+		if(request.getSession().getAttribute("user") != null) {
+			int userId = ((UserDTO)request.getSession().getAttribute("user")).getId();
+			int admin = ((UserDTO)request.getSession().getAttribute("user")).getAdmin();
+			mv.addObject("userId", userId);		
+			mv.addObject("admin", admin);		
+		}
 		List<ClubAdvertiseDTO> clubAdDetailList = clubAdvertiseService.readClubAdvertiseDetail(id);
 
 		List<ClubAdvertiseDTO> clubAdImgList = clubAdvertiseService.getClubAdImg(id);
@@ -126,6 +133,8 @@ public class ClubAdvertiseController {
 	@ResponseBody
 	public ModelAndView createClubAd(ModelAndView mv, MultipartHttpServletRequest request, MultipartFile file) {
 
+		int id = ((UserDTO)request.getSession().getAttribute("user")).getId();
+		
 		ClubAdvertiseDTO info = new ClubAdvertiseDTO();
 		FileDTO infoFile = new FileDTO();
 		FileDTO infoImageFile = new FileDTO();
@@ -135,6 +144,7 @@ public class ClubAdvertiseController {
 
 		content = content.replaceAll("(\r|\n|\r\n|\n\r)","");
 		
+		info.setWriter(id);
 		info.setTitle(title);
 		info.setContent(content);
 		info.setFile(file);

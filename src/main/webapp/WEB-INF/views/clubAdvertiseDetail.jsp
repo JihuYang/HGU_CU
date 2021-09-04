@@ -39,8 +39,7 @@
 <script src="https://kit.fontawesome.com/6333a60c65.js"></script>
 <body id="page-top">
 	<div class="container width-80 h-auto h-min">
-		<div
-			class="row align-items-center justify-content-center text-center">
+		<div class="row align-items-center justify-content-center text-center">
 			<div class="align-self-end">
 				<h3 class="font-weight-bold pt-title">동아리홍보</h3>
 			</div>
@@ -55,14 +54,16 @@
 			class="row h-auto align-items-center justify-content-end text-end">
 			<fmt:formatDate value="${clubAdDetailList[0].regdate}"
 				var="formattedRegDate" type="date" pattern="yyyy-MM-dd" />
-			<div class="py-3 detail-info">조회수 :
-				<%-- ${communityInfoDetailList[0].viewCount}  --%>0 | ${formattedRegDate}</div>
+			<div class="py-3 detail-info">작성일 : ${formattedRegDate}</div>
 		</div>
 		<div class="row h-auto align-items-center justify-content-center">
 			<div class="px-4 detail-content">${clubAdDetailList[0].content}</div>
-			<c:forEach var="clubAdImgList" items="${clubAdImgList}" varStatus="status">
+			<c:forEach var="clubAdImgList" items="${clubAdImgList}"
+				varStatus="status">
 				<div id="img-div" class="p-4">
-					  <img id="clubAdImg" src="<%=request.getContextPath()%>/resources/upload/file/clubAd/${clubAdImgList.originalUrl}" alt="...">
+					<img id="clubAdImg"
+						src="<%=request.getContextPath()%>/resources/upload/file/clubAd/${clubAdImgList.originalUrl}"
+						alt="...">
 				</div>
 			</c:forEach>
 		</div>
@@ -70,22 +71,25 @@
 			class="row h-25 align-items-center justify-content-center text-center">
 
 			<table class="table text-center">
-					<c:forEach items="${clubAdFileList}"
-						var="clubAdFileList" varStatus="status">
-						<tr>
-							<th scope="col" class="col-3 text-center file py-4">첨부파일</th>
-							<th scope="col" class="col-7 text-start px-3 py-4"><a
-								href="/clubAdvertise/detail/${clubAdFileList.id}/filedownload">${clubAdFileList.fileOriginalUrl}</a></th>
-						</tr>
-					</c:forEach>
+				<c:forEach items="${clubAdFileList}" var="clubAdFileList"
+					varStatus="status">
+					<tr>
+						<th scope="col" class="col-3 text-center file py-4">첨부파일</th>
+						<th scope="col" class="col-7 text-start px-3 py-4"><a
+							href="/clubAdvertise/detail/${clubAdFileList.id}/filedownload">${clubAdFileList.fileOriginalUrl}</a></th>
+					</tr>
+				</c:forEach>
 			</table>
 
 			<div class="row justify-content-start mt-4 list-btn">
-				<button class="btn btn-primary search-btn list-btn" onclick="location.href='<%=request.getContextPath()%>/clubAdvertise?num=1'">목록</button>
+				<button class="btn btn-primary search-btn list-btn"
+					onclick="location.href='<%=request.getContextPath()%>/clubAdvertise?num=1'">목록</button>
+				<c:if test="${userId eq clubAdDetailList[0].writer || admin eq 0}">
 				<button class="btn btn-primary search-btn list-btn"
 					onclick="location.href='<%=request.getContextPath()%>/clubAdvertise/update/${clubAdDetailList[0].id}'">수정</button>
 				<button class="btn btn-primary search-btn list-btn"
 					onclick="location.href='<%=request.getContextPath()%>/clubAdvertise/delete/${clubAdDetailList[0].id}'">삭제</button>
+				</c:if>
 			</div>
 		</div>
 	</div>

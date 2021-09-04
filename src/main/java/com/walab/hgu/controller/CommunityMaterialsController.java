@@ -41,10 +41,17 @@ public class CommunityMaterialsController {
 	CommunityMaterialService communityMaterialService;
 
 	@RequestMapping(value = "/communityMaterials", method = RequestMethod.GET)
-	public ModelAndView readCommunityMaterial(ModelAndView mv, @RequestParam("num") int num,
+	public ModelAndView readCommunityMaterial(ModelAndView mv, HttpSession session, HttpServletRequest request,
+			@RequestParam("num") int num,
 			@RequestParam(value = "searchType", required = false, defaultValue = "title") String searchType,
 			@RequestParam(value = "keyword", required = false, defaultValue = "") String keyword) {
-
+		
+		if(request.getSession().getAttribute("user") != null) {
+			int admin = ((UserDTO)request.getSession().getAttribute("user")).getAdmin();
+			mv.addObject("admin", admin);
+			
+		}
+		
 		Page page = new Page();
 		page.setNum(num);
 		page.setCount(communityMaterialService.countInfo(searchType, keyword));
