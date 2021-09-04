@@ -26,6 +26,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.walab.hgu.DTO.UserDTO;
 import com.walab.hgu.DTO.ClubAdvertiseDTO;
 import com.walab.hgu.DTO.CommunityInfoDTO;
 import com.walab.hgu.DTO.FileDTO;
@@ -49,6 +50,12 @@ public class ClubAdvertiseController {
 			@RequestParam("num") int num,
 			@RequestParam(value = "searchType", required = false, defaultValue = "title") String searchType,
 			@RequestParam(value = "keyword", required = false, defaultValue = "") String keyword) {
+
+		if(request.getSession().getAttribute("user") != null) {
+			int userID = ((UserDTO)request.getSession().getAttribute("user")).getId();
+			mv.addObject("userID", userID);
+		}
+
 
 		Page page = new Page();
 		page.setPostNum(4);

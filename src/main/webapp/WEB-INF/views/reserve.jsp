@@ -71,7 +71,7 @@
 				    </tr>
 				    <tr>
 				      <th scope="row">이름</th>
-				      <td>${reservationInfoList[1].person}</td>
+				      <td>${userName}</td>
 				    </tr>
 				    <tr>
 				      <th scope="row">이메일</th>
