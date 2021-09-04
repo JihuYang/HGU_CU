@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
@@ -25,6 +26,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.walab.hgu.DTO.ReservationInfoDTO;
 import com.walab.hgu.DTO.SpaceDTO;
+import com.walab.hgu.DTO.UserDTO;
 import com.walab.hgu.service.ReservationInfoService;
 import com.walab.hgu.service.SpaceService;
 
@@ -41,11 +43,15 @@ public class ReserveController {
 	SpaceService spaceService;
 
 	@RequestMapping(value = "/reserve", method = RequestMethod.GET)
-	public ModelAndView readReservationInfo(ModelAndView mv) {
+	public ModelAndView readReservationInfo(ModelAndView mv,  HttpServletRequest httpServletRequest) {
 
 		List<ReservationInfoDTO> reservationInfoList = reservationInfoService.readReservationInfo();
 		List<SpaceDTO> spaceList = spaceService.readSpace();
-		
+		String userName= "admin";
+		if (httpServletRequest.getSession().getAttribute("user") != null) {
+			userName = ((UserDTO) httpServletRequest.getSession().getAttribute("user")).getName();
+		} 
+		mv.addObject("userName", userName);
 		mv.addObject("reservationInfoList", reservationInfoList);
 		mv.addObject("spaceList", spaceList);
 		
@@ -58,14 +64,22 @@ public class ReserveController {
 	
 	@RequestMapping(value = "/reserve", method = RequestMethod.POST)
 	@ResponseBody
-	public ModelAndView createReservation(ModelAndView mv,
+	public ModelAndView createReservation(ModelAndView mv, HttpServletRequest httpServletRequest,
 			@RequestParam(value="spaceId") int spaceId,
-			@RequestParam(value="userId") int userId,
 			@RequestParam(value="reservationDate") Date reservationDate,
 			@RequestParam(value="startTime")Time startTime,
 			@RequestParam(value="endTime")Time endTime,
 			@RequestParam(value="purpose")String purpose,
-			@RequestParam(value="memo")String memo, HttpServletResponse response) throws IOException{
+			@RequestParam(value="memo")String memo) throws IOException{
+		
+		int userId = 0;
+		if (httpServletRequest.getSession().getAttribute("user") != null) {
+			userId = ((UserDTO) httpServletRequest.getSession().getAttribute("user")).getId();
+			System.out.println("userId" + userId);
+			String userName = ((UserDTO) httpServletRequest.getSession().getAttribute("user")).getName();
+			System.out.println("userName" + userName);
+			mv.addObject("userID", userId);
+		} 
 		
 		ReservationInfoDTO info = new ReservationInfoDTO();
 		

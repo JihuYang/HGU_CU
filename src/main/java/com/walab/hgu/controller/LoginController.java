@@ -9,6 +9,7 @@ import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -31,10 +32,14 @@ import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.walab.hgu.DTO.GoogleOAuthRequestDTO;
 import com.walab.hgu.DTO.GoogleOAuthResponseDTO;
 import com.walab.hgu.DTO.UserDTO;
+import com.walab.hgu.service.UserService;
 
 @Controller
 @RequestMapping("/loginGoogle")
 public class LoginController {
+	
+	@Autowired
+	UserService userService;
 	
 	final static String GOOGLE_AUTH_BASE_URL = "https://accounts.google.com/o/oauth2/v2/auth";
 	final static String GOOGLE_TOKEN_BASE_URL = "https://oauth2.googleapis.com/token";
@@ -107,17 +112,27 @@ public class LoginController {
 		UserDTO ud = new UserDTO();
 		ud.setEmail(userInfo.get("email"));
 		ud.setName(userInfo.get("name"));
-		System.out.println("Login Controller: " + ud);
-		session.setAttribute("tempUser", ud);
-		session.setAttribute("token", result.getAccessToken());
-		
-		model.addObject("tempUser", ud);
-		
-		System.out.println("Login Controller mv: " + model);
-		System.out.println("Login Controller session: " + session.getAttribute("tempUser"));
 
-		//model.setView(new RedirectView("/register",true));
-		model.setViewName("register");
+		// 회원 정보가 없는 경우 회원 가입 페이지로 연결
+		if(userService.readUserIDByEmail(ud.getEmail())==0) {
+			session.setAttribute("tempUser", ud);
+			session.setAttribute("token", result.getAccessToken());
+			
+			model.addObject("tempUser", ud);
+			model.setViewName("register");
+
+		} 
+		// 회원 정보가 있는 경우  기존의 아이디를 불러옴
+		else {
+			request.getSession().setAttribute("user", ud);
+			ud.setId(userService.readUserIDByEmail(userInfo.get("email")));
+			session.setAttribute("tempUser", ud);
+			session.setAttribute("token", result.getAccessToken());
+			
+			model.addObject("tempUser", ud);
+			model.setViewName("home");
+		}
+		
 
 		return model;
 

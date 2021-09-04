@@ -25,6 +25,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.walab.hgu.DTO.UserDTO;
 import com.walab.hgu.DTO.CommunityMaterialDTO;
 import com.walab.hgu.DTO.FileDTO;
 import com.walab.hgu.DTO.Page;
@@ -97,12 +98,13 @@ public class CommunityMaterialsController {
 
 	@RequestMapping(value = "/communityMaterials/write/create", method = RequestMethod.POST)
 	@ResponseBody
-	public ModelAndView createCommunityMaterial(ModelAndView mv, MultipartHttpServletRequest request,
+	public ModelAndView createCommunityMaterial(ModelAndView mv, MultipartHttpServletRequest request, HttpServletRequest servletRequest,
 			MultipartFile file) {
 
 		CommunityMaterialDTO material = new CommunityMaterialDTO();
 		FileDTO materialFile = new FileDTO();
-
+		
+		//int userId = ((UserDTO)servletRequest.getSession().getAttribute("user")).getId();
 		int userId = Integer.parseInt(request.getParameter("userId"));
 		String title = request.getParameter("title");
 		String content = request.getParameter("content");
