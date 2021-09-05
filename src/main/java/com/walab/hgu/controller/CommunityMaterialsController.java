@@ -191,7 +191,7 @@ public class CommunityMaterialsController {
 		int id = Integer.parseInt(request.getParameter("id"));
 		int userId = Integer.parseInt(request.getParameter("userId"));
 		String title = request.getParameter("title");
-		String content = request.getParameter("content");
+		String content = request.getParameter("newContent");
 
 		material.setId(id);
 		material.setUserId(userId);

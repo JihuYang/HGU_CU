@@ -19,7 +19,7 @@ public class CommonInterceptor extends HandlerInterceptorAdapter {
 			ModelAndView modelAndView) throws Exception {
 		if(request.getSession().getAttribute("user") == null) {
 			request.setAttribute("header", "headerLogout.jsp");
-		}else if(((UserDTO)request.getSession().getAttribute("user")).getAdmin() > 0) {
+		}else if(((UserDTO)request.getSession().getAttribute("user")).getAdmin() == 0) {
 			request.setAttribute("header", "headerAdmin.jsp");
 		}else {
 			request.setAttribute("header", "headerLogin.jsp");

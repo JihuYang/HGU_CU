@@ -114,4 +114,9 @@ function search(){
  		};
 }
 
+function login() {
+	alert("로그인 후 이용할 수 있는 기능입니다.");
+	if(confirm("로그인 창으로 이동하시겠습니까?")) location.href="<%=request.getContextPath()%>/loginGoogle";
+}
+
 

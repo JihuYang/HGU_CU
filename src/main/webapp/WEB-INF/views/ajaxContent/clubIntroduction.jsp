@@ -10,10 +10,17 @@
 	<fmt:formatDate value="${clubIntroList.foundationDate}"
 		var="formattedFdDate" type="date" pattern="yyyy" />
 	<div class="col-xs-6 col-sm-4 pd-0">
+
 		<div class="overlay-item overlay-effect">
-			<img
-				src="resources/upload/clubIntro/${clubIntroList.originalUrl}"
-				alt="임시" /> <a
+			<c:choose>
+				<c:when test="${clubIntroList.originalUrl eq null}">
+					<img src="${defaultImage}">
+				</c:when>
+				<c:when test="${clubIntroList.originalUrl != null}">
+					<img src="resources/upload/clubIntro/${clubIntroList.originalUrl}"/>
+				</c:when>
+			</c:choose>
+			<a
 				href="<%=request.getContextPath()%>/clubIntroduction/${clubIntroList.categoryId}/${clubIntroList.id}"
 				class="mask "> [${clubIntroList.clubName}]<br>창립일자:
 				${formattedFdDate}년<br>대표자명: ${clubIntroList.clubCeoName}<br>연락처:

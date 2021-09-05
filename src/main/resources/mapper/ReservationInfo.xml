@@ -12,7 +12,18 @@
 		LEFT OUTER JOIN hsca219.user as u ON r.userId = u.id
 		RIGHT OUTER JOIN hsca219.space as s ON r.spaceId = s.id
 		
-		WHERE r.reservationDate between CURDATE()-1 and (CURDATE() + INTERVAL 8 DAY)
+		WHERE r.reservationDate between CURDATE()-1 and (CURDATE() + INTERVAL 30 DAY)
+ 	</select>
+ 	
+ 		<select id="readReservationInfoById" resultType="com.walab.hgu.DTO.ReservationInfoDTO" parameterType="hashmap">
+		SELECT r.userId, r.spaceId,r.reservationDate, r.startTime , r.endTime, r.purpose, 
+		r.memo, r.regdate,s.name as spaceName, u.name as person, u.email as email, u.phone as phone
+		FROM hsca219.reservationInfo as r
+		
+		LEFT OUTER JOIN hsca219.user as u ON r.userId = u.id
+		RIGHT OUTER JOIN hsca219.space as s ON r.spaceId = s.id
+		
+		WHERE r.reservationDate between CURDATE()-1 and (CURDATE() + INTERVAL 30 DAY) AND r.userId = #{userId}
  	</select>
  	
  	<!-- admin 예약 관리 페이지에서 쓰이는 페이징을 위한 쿼리  -->
@@ -40,6 +51,17 @@
 		RIGHT OUTER JOIN hsca219.space as s ON r.spaceId = s.id
 		
 		WHERE s.name = #{spaceName}
+ 	</select>
+ 	
+ 	 <select id="readReservationBySpaceNameById" resultType="com.walab.hgu.DTO.ReservationInfoDTO" parameterType="hashmap">
+		SELECT r.userId, r.spaceId,r.reservationDate, r.startTime , r.endTime, r.purpose, 
+		r.memo, r.regdate,s.name as spaceName, u.name as person, u.email as email, u.phone as phone
+		FROM hsca219.reservationInfo as r
+		
+		LEFT OUTER JOIN hsca219.user as u ON r.userId = u.id
+		RIGHT OUTER JOIN hsca219.space as s ON r.spaceId = s.id
+		
+		WHERE s.name = #{spaceName} AND r.userId = #{userId}
  	</select>
  	
  	

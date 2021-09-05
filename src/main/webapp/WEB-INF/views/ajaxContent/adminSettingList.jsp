@@ -13,7 +13,14 @@
 				<td  id="">환경변수 ${status.count}</td>
 				<td class=" key">${settingList.key}</td>
 				<td class=" value">
+			<c:choose>
+				<c:when test="${settingList.textValue eq null}">
 				<input id="setting-input" class="form-control form-control-sm w-5" name="settingValue" value="${settingList.value}" onchange="updateSetting(this.value,${settingList.id})">
+				</c:when>
+				<c:when test="${settingList.textValue != null}">
+				<input id="setting-input" class="form-control form-control-sm w-5" name="settingValue" value="${settingList.textValue}" onchange="updateSetting(this.value,${settingList.id})">
+				</c:when>
+			</c:choose>
 				</td>
 				
 			</tr>

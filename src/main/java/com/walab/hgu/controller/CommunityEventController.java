@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.walab.hgu.DTO.EventDTO;
 import com.walab.hgu.DTO.FileDTO;
 import com.walab.hgu.DTO.ReservationInfoDTO;
+import com.walab.hgu.DTO.UserDTO;
 import com.walab.hgu.service.EventService;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -37,10 +38,14 @@ public class CommunityEventController {
 	EventService eventService;
 
 	@RequestMapping(value = "/communityEvent", method = RequestMethod.GET)
-	public ModelAndView communityEvent(ModelAndView mv) {
+	public ModelAndView communityEvent(ModelAndView mv, HttpServletRequest request) {
 
 		List<EventDTO> eventList = eventService.readEvent();
 		
+		if(request.getSession().getAttribute("user") != null) {
+			int admin = ((UserDTO)request.getSession().getAttribute("user")).getAdmin();
+			mv.addObject("admin", admin);		
+		}
 		mv.addObject("eventList", eventList);
 		
 		mv.setViewName("communityEvent");

@@ -60,7 +60,9 @@ public class ClubIntroductionController {
 		List<ClubDTO> clubIntroList = clubService.getAllClubIntroduction(keyword);
 		// List<CategoryDTO> categoryNameList = clubService.getCategoryNameList();
 		// String categoryName = clubIntroList.get(0).getCategoryName();
+		String defaultImage = settingService.readSetting().get(2).getTextValue();
 
+		mv.addObject("defaultImage", defaultImage);
 		mv.addObject("clubIntroList", clubIntroList);
 		System.out.println("clubIntroList 입니다" + clubIntroList);
 		mv.addObject("keyword", keyword);

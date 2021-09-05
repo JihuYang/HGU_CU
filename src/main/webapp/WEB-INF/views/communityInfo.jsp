@@ -49,11 +49,13 @@
 
 			<!-- 공지사항 리스트  -->
 			<%@ include file="./ajaxContent/communityInfoList.jsp"%>
-
-			<div class="row justify-content-end">
+			<c:if test="${admin == 0}">
+			<div class="row justify-content-end mt-5">
 				<button class="btn btn-primary search-btn"
 					onclick="location.href='<%=request.getContextPath()%>/communityInfo/write'">글쓰기</button>
 			</div>
+			</c:if>
+			
 		</div>
 		<div class="row h-auto align-items-center text-center">
 			<form accept-charset="UTF-8" name="searchForm">
