@@ -29,11 +29,10 @@
 		parameterType="hashmap">
 		SELECT cI.id, name as writer, title, content,
 		cI.regdate, viewCount, originalUrl, realUrl, cIF.order
-		FROM
-		hsca219.communityInfo as cI ,hsca219.user u, hsca219.communityInfoFile
-		as cIF
-		WHERE cI.userId = u.id and cI.id = #{id} and cIF.communityInfoId
-		= cI.id LIMIT 1
+		FROM hsca219.communityInfo as cI 
+		LEFT JOIN user u on u.id = cI.userId
+		LEFT JOIN communityInfoFile cIF on cI.id = cIF.communityInfoId
+		WHERE cI.id = #{id} LIMIT 1
 	</select>
 
 	<select id="readCommunityInfoFileDetail"
