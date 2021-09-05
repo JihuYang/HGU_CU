@@ -109,8 +109,9 @@
 		parameterType="com.walab.hgu.DTO.FileDTO">
 		INSERT INTO hsca219.clubAdvertiseImage (clubAdvertiseId,
 		originalUrl, fileOrder)
-		VALUES (#{clubAdvertiseId}, #{originalUrl},
-		#{fileOrder})
+		SELECT #{clubAdvertiseId}, #{originalUrl},
+		#{fileOrder} 
+		WHERE #{originalUrl} !=' '
 	</insert>
 
 	<!-- 동아리 홍보 일반 파일 업로드 쿼리 -->
@@ -118,8 +119,9 @@
 		parameterType="com.walab.hgu.DTO.FileDTO">
 		INSERT INTO hsca219.clubAdvertiseFile (clubAdvertiseId,
 		fileOriginalUrl, fileOrder)
-		VALUES (#{clubAdvertiseId},
-		#{fileOriginalUrl}, #{fileOrder})
+		SELECT #{clubAdvertiseId},
+		#{fileOriginalUrl}, #{fileOrder}
+		WHERE #{fileOriginalUrl} != ' '
 	</insert>
 
 	<!-- 동아리 홍보 이미지수정 쿼리 -->
