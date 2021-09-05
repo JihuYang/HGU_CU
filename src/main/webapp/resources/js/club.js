@@ -31,7 +31,7 @@ function createClubIntro(){
         }
 	});*/
 	document.getElementById("newContent").value = content.getHTML();
-	alert("update 내용 : "+document.getElementById("newContent").value);
+	//alert("update 내용 : "+document.getElementById("newContent").value);
 }
 
 function search(){
@@ -61,7 +61,7 @@ function searchInCategory(categoryId){
 }
 
 function updateClub(){
-	alert("수정");
+	//alert("수정");
 	document.getElementById("newContent").value = content.getHTML();
-	alert("update 내용 : "+document.getElementById("newContent").value);
+	//alert("update 내용 : "+document.getElementById("newContent").value);
 }

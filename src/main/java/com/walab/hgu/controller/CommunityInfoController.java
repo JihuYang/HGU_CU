@@ -90,9 +90,12 @@ public class CommunityInfoController {
 		communityInfoService.updateViewCount(id);
 		// 공지사항 read
 		CommunityInfoDTO communityInfoDetail = communityInfoService.readCommunityInfoDetail(id);
+		System.out.println("communityInfoDetail: "+communityInfoDetail);
+		
 		// 공지사항 file read
 		List<FileDTO> communityInfoFileDetail = communityInfoService.readCommunityInfoFileDetail(id);
-
+		System.out.println("communityInfoFileDetail: "+communityInfoFileDetail);
+		
 		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file");
 
 		mv.addObject("communityInfoDetail", communityInfoDetail);
@@ -109,7 +112,7 @@ public class CommunityInfoController {
 		mv.setViewName("createCommunityInfo");
 
 		return mv;
-	}
+	} 
 	
 	@RequestMapping(value = "/communityInfo/write/create", method = RequestMethod.POST)
 	@ResponseBody

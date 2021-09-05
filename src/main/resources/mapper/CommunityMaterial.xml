@@ -25,15 +25,11 @@
 	<select id="readCommunityMaterialDetail"
 		resultType="com.walab.hgu.DTO.CommunityMaterialDTO"
 		parameterType="hashmap">
-		SELECT cM.id, name as writer, title, content,
-		cM.regdate, viewCount, cMF.order
-		originalUrl, realUrl
-		FROM
-		hsca219.communityMaterial as cM
-		,hsca219.user u, hsca219.communityMaterialFile
-		as cMF
-		WHERE cM.userId = u.id and cM.id = #{id} and cMF.communityMaterialId
-		= cM.id LIMIT 1
+		SELECT cM.id, name as writer, title, content, cM.regdate, viewCount, cMF.order originalUrl, realUrl
+		FROM hsca219.communityMaterial as cM
+		LEFT JOIN user u on u.id = cM.userId
+		LEFT JOIN communityMaterialFile cMF on cM.id = cMF.communityMaterialId 
+		WHERE  cM.id = #{id} LIMIT 1
 	</select>
 	<select id="readCommunityMaterialFileDetail"
 		resultType="com.walab.hgu.DTO.FileDTO" parameterType="hashmap">

@@ -20,7 +20,7 @@ function createClubAd(){
         }
 	});*/
 	document.getElementById("newContent").value = content.getHTML();
-	alert("update 내용 : "+document.getElementById("newContent").value);
+	//alert("update 내용 : "+document.getElementById("newContent").value);
 }
 
 function search(){
@@ -39,5 +39,5 @@ function search(){
 
 function updateClubAd(){
 	document.getElementById("newContent").value = content.getHTML();
-	alert("update 내용 : "+document.getElementById("newContent").value);
+	//alert("update 내용 : "+document.getElementById("newContent").value);
 }
