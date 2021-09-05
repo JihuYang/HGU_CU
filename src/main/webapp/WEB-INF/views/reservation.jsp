@@ -24,63 +24,98 @@
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css"
 	rel="stylesheet" />
-<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css" rel="stylesheet">
+<link
+	href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css"
+	rel="stylesheet">
 <!-- Core theme CSS (includes Bootstrap)-->
-<link href="<%=request.getContextPath()%>/resources/css/styles.css" rel="stylesheet" />
-<link href="<%=request.getContextPath()%>/resources/css/home.css" rel="stylesheet" />
-<link href="<%=request.getContextPath()%>/resources/css/reservation.css" rel="stylesheet" />
+<link href="<%=request.getContextPath()%>/resources/css/styles.css"
+	rel="stylesheet" />
+<link href="<%=request.getContextPath()%>/resources/css/home.css"
+	rel="stylesheet" />
+<link href="<%=request.getContextPath()%>/resources/css/reservation.css"
+	rel="stylesheet" />
 <!-- <link rel='stylesheet' href='https://fullcalendar.io/releases/fullcalendar/3.9.0/fullcalendar.min.css'> -->
-<link href="<%=request.getContextPath()%>/resources/css/reservationCalendar.css" rel="stylesheet" />
+<link
+	href="<%=request.getContextPath()%>/resources/css/reservationCalendar.css"
+	rel="stylesheet" />
 
 </head>
 <jsp:include page= "<%=\"./inc/\".concat(((String)request.getAttribute(\"header\")))%>" />
+
 <script src="https://kit.fontawesome.com/6333a60c65.js"></script>
 
 <body id="page-top">
-        <div class="R_container h-auto h-min">
-      		<div class="side_bar">	
-       			<div class="reservation" style="background-color:#212721">
-                	<div OnClick="location.href ='./reservation?spaceName=전체'" style="cursor:pointer;">
-                		<i class="fa fa-home fa-2x white" aria-hidden="true" style="padding-top:10px;"></i><br><div class="side_text">조회 및 예약하기</div>
-                	</div>
-               </div>   
-	           <div class="reservation" style="background-color:#D0D0CE">
-	           	<div OnClick="location.href ='./myReservation?spaceName=전체'" style="cursor:pointer;">
-	           	<i class="fa fa-user fa-2x" aria-hidden="true" style="padding-top:10px;"></i><br><div class="side_text">내 예약</div>
-	           	</div>
-	           </div>
-            </div>
-           
-        	<div class="content">
-        	
-            <h3 style="text-align:center;">조회/예약하기</h3><br><br>
-            <div>
-            	<c:if test="${empty spaceName || spaceName ne '전체'}">
-	            	<input type="button" class="btn dp-none" name="btn_name" value="전체" onclick="btn_listener(event)"/>
-	            </c:if><!-- 
+	<div class="R_container h-auto h-min">
+		<div class="side_bar">
+			<div class="reservation" style="background-color: #212721">
+				<div OnClick="location.href ='./reservation?spaceName=전체'"
+					style="cursor: pointer;">
+					<i class="fa fa-home fa-2x white" aria-hidden="true"
+						style="padding-top: 10px;"></i><br>
+					<div class="side_text">조회 및 예약하기</div>
+				</div>
+			</div>
+			<c:if test="${not empty userId}">
+				<div class="reservation" style="background-color: #D0D0CE">
+					<div OnClick="location.href ='./myReservation?spaceName=전체'"
+						style="cursor: pointer;">
+						<i class="fa fa-user fa-2x" aria-hidden="true"
+							style="padding-top: 10px;"></i><br>
+						<div class="side_text">내 예약</div>
+					</div>
+				</div>
+			</c:if>
+		</div>
+
+		<div class="content">
+
+			<h3 style="text-align: center;">조회/예약하기</h3>
+			<br> <br>
+			<div>
+				<c:if test="${empty spaceName || spaceName ne '전체'}">
+					<input type="button" class="btn dp-none" name="btn_name" value="전체"
+						onclick="btn_listener(event)" />
+				</c:if>
+				<!-- 
 	            <input type="button" class="btn dp-none" name="btn_name" value="전체" onclick="btn_listener(event)"/> -->
-	            <c:if test="${spaceName eq '전체'}">
-	            	<input type="button" class="btn active" name="btn_name" value="전체" onclick="btn_listener(event)"/>
-	            </c:if>
+				<c:if test="${spaceName eq '전체'}">
+					<input type="button" class="btn active" name="btn_name" value="전체"
+						onclick="btn_listener(event)" />
+				</c:if>
 				<c:set var="spaceName" value="${spaceName}" />
-	            <c:forEach items="${spaceList}" var="spaceList">
-	            	<c:choose>
-	        			<c:when test="${spaceList.name eq spaceName}">
-	        				<input type="button" class="btn active" name="btn_name" value="${spaceList.name}" onclick="btn_listener(event)"/>
-	        			</c:when>        
-	       				<c:when test="${spaceList.name ne spaceName}">
-	           				<input type="button" class="btn" name="btn_name" value="${spaceList.name}" onclick="btn_listener(event)"/>
-	         			</c:when>
-	    			</c:choose>
+				<c:forEach items="${spaceList}" var="spaceList">
+					<c:choose>
+						<c:when test="${spaceList.name eq spaceName}">
+							<input type="button" class="btn active" name="btn_name"
+								value="${spaceList.name}" onclick="btn_listener(event)" />
+						</c:when>
+						<c:when test="${spaceList.name ne spaceName}">
+							<input type="button" class="btn" name="btn_name"
+								value="${spaceList.name}" onclick="btn_listener(event)" />
+						</c:when>
+					</c:choose>
 				</c:forEach>
-			<br>
-            <div class="section2">
-                <button type="button" class="btn_02" onclick="info()">이용안내</button>
-                <button type="button" class="btn_02" onclick="info(); location.href='./reserve'">예약하기</button>
-            </div>
-            
-            
-            <script type="text/javascript">
+				<br>
+				<div class="section2">
+					<button type="button" class="btn_02" onclick="info()">이용안내</button>
+					<c:choose>
+						<c:when test="${not empty userId}">
+							<button type="button" class="btn_02"
+								onclick="info(); location.href='./reserve'">예약하기</button>
+						</c:when>
+						<c:when test="${empty userId}">
+							<button type="button" class="btn_02" onclick="login()">예약하기</button>
+						</c:when>
+					</c:choose>
+
+				</div>
+
+
+				<script type="text/javascript">
+				function login() {
+					alert("로그인 후 이용할 수 있는 기능입니다.");
+					if(confirm("로그인 창으로 이동하시겠습니까?")) location.href="<%=request.getContextPath()%>/loginGoogle";
+				}
   				function info() { 
   					alert("<이용안내>"
       						+"\n1. 각 공간의 이용시간을 준수합니다."
@@ -108,41 +143,44 @@
 			    }
   			
   			</script>
-  			 </div>
-		 
-            <table id="space-table">
-	                <tr>
-	                    <td>공간</td>
-	                    <td id="space_name">${spaceList2[0].name}</td>
-	                </tr>
-	                <tr>
-	                    <td>수용 가능 인원</td>
-	                    <td id="space_capacity">${spaceList2[0].capacity}</td>
-	                </tr>
-	                <tr>
-	                    <td>추가 설명</td>
-	                    <td id="sapce_description">${spaceList2[0].description}</td>
-	                </tr>
-	            </table>
-        
-            <div class="section3">
-                <div>예약</div>
-                <div>지난예약</div>
-            </div>
-            
-            <br>
-  
-        <div id='calendar'></div>
-	
-		<!-- <script src='https://fullcalendar.io/releases/fullcalendar/3.9.0/lib/moment.min.js'></script> -->
-		<!-- <script src='https://fullcalendar.io/releases/fullcalendar/3.9.0/lib/jquery.min.js'></script> -->
+			</div>
 
-		<!-- <script src='https://fullcalendar.io/releases/fullcalendar/3.9.0/fullcalendar.min.js'></script> --> 
-		<script src="<%=request.getContextPath()%>/resources/js/calendarjQuery.js"></script>
-		<script src="<%=request.getContextPath()%>/resources/js/calendarMoment.js"></script>
-		<script src="<%=request.getContextPath()%>/resources/js/reservationCalendar.js"></script>
-	
-		<script type="text/javascript">
+			<table id="space-table">
+				<tr>
+					<td>공간</td>
+					<td id="space_name">${spaceList2[0].name}</td>
+				</tr>
+				<tr>
+					<td>수용 가능 인원</td>
+					<td id="space_capacity">${spaceList2[0].capacity}</td>
+				</tr>
+				<tr>
+					<td>추가 설명</td>
+					<td id="sapce_description">${spaceList2[0].description}</td>
+				</tr>
+			</table>
+
+			<div class="section3">
+				<div>예약</div>
+				<div>지난예약</div>
+			</div>
+
+			<br>
+
+			<div id='calendar'></div>
+
+			<!-- <script src='https://fullcalendar.io/releases/fullcalendar/3.9.0/lib/moment.min.js'></script> -->
+			<!-- <script src='https://fullcalendar.io/releases/fullcalendar/3.9.0/lib/jquery.min.js'></script> -->
+
+			<!-- <script src='https://fullcalendar.io/releases/fullcalendar/3.9.0/fullcalendar.min.js'></script> -->
+			<script
+				src="<%=request.getContextPath()%>/resources/js/calendarjQuery.js"></script>
+			<script
+				src="<%=request.getContextPath()%>/resources/js/calendarMoment.js"></script>
+			<script
+				src="<%=request.getContextPath()%>/resources/js/reservationCalendar.js"></script>
+
+			<script type="text/javascript">
 		 $(function() {
 			  $('#calendar').fullCalendar({
 			    selectable: true,
@@ -188,13 +226,13 @@
 			});
 	
 		</script>
-        </div>
-        </div>
-         
-        <!-- Footer-->
-		<jsp:include page="/WEB-INF/views/inc/footer.jsp"/>
-            
-            
+		</div>
+	</div>
+
+	<!-- Footer-->
+	<jsp:include page="/WEB-INF/views/inc/footer.jsp" />
+
+
 	<!-- Bootstrap core JS-->
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>

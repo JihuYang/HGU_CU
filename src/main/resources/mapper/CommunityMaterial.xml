@@ -69,13 +69,24 @@
 	</insert>
 
 	<!-- 커뮤니티 자료실 파일 업로드 쿼리 -->
-	<insert id="createCommunityMaterialFile"
+	<!-- <insert id="createCommunityMaterialFile"
 		parameterType="com.walab.hgu.DTO.FileDTO">
 		INSERT INTO hsca219.communityMaterialFile
 		(communityMaterialId,
 		originalUrl)
 		VALUES (#{communityMaterialId},
 		#{originalUrl})
+	</insert> -->
+	
+	<!-- 커뮤니티 자료실 파일 업로드 쿼리 -->
+	<insert id="createCommunityMaterialFile"
+		parameterType="com.walab.hgu.DTO.FileDTO">
+		INSERT INTO hsca219.communityMaterialFile
+		(communityMaterialId,
+		originalUrl)
+		SELECT #{communityMaterialId},
+		#{originalUrl}
+		WHERE #{originalUrl} != ' '
 	</insert>
 
 	<!-- 커뮤니티 자료실 파일 수정 쿼리 -->

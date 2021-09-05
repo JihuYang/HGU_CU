@@ -39,6 +39,16 @@ public class ReservationInfoDAOImpl implements ReservationInfoDAO {
 	}
 	
 	@Override
+	public List<ReservationInfoDTO> readReservationInfoById(int userId) {
+		
+		Map<String, Object> reservationInfoParam = new HashMap<String, Object>();
+		reservationInfoParam.put("userId", userId);
+		System.out.println("userId in dao: " + userId);
+		
+		return sqlSession.selectList(namespace+".readReservationInfoById", reservationInfoParam);
+	}
+	
+	@Override
 	public int createAdminReservationInfo(ReservationInfoDTO reservationInfo) {
 		
 		sqlSession.insert(namespace+".createAdminReservationInfo", reservationInfo);
@@ -68,6 +78,16 @@ public class ReservationInfoDAOImpl implements ReservationInfoDAO {
 		reservationInfoParam.put("spaceName", spaceName);
 		
 		return sqlSession.selectList(namespace+".readReservationBySpaceName", reservationInfoParam);
+	}
+	
+	@Override
+	public List<ReservationInfoDTO> readReservationBySpaceNameById(String spaceName, int userId) {
+		
+		Map<String, Object> reservationInfoParam = new HashMap<String, Object>();
+		reservationInfoParam.put("spaceName", spaceName);
+		reservationInfoParam.put("userId", userId);
+
+		return sqlSession.selectList(namespace+".readReservationBySpaceNameById", reservationInfoParam);
 	}
 	
 	@Override

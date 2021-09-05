@@ -90,7 +90,6 @@
 				</ul>
 			</nav>
 		</div>
-		<div class="float-end"><button class="btn btn-primary search-btn">저장</button></div>
 	</div>
 
 	<!-- Footer-->
