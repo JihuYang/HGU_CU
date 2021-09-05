@@ -69,6 +69,7 @@
 		VALUES (#{communityInfoId}, #{originalUrl})
 	</insert> -->
 	
+	<!-- 커뮤니티 공지사항 파일 업로드 쿼리 -->
 	<insert id="createCommunityInfoFile"
 		parameterType="com.walab.hgu.DTO.FileDTO">
 		INSERT INTO hsca219.communityInfoFile (communityInfoId,
