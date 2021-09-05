@@ -88,12 +88,13 @@
 								<input type="datetime-local" id="endDate"/>
 							</div>
 						</div>
-						
+						<c:if test="${admin eq 0}">
 						<div class="modal-footer">
 							<button type="button" class="btn" id="saveBtn" onclick="createCommutinyEvent()">저장</button>
 							<button type="button" class="btn" id="updateBtn">수정</button>
 							<button type="button" class="btn" id="deleteBtn">삭제</button>
 						</div>
+						</c:if>
 						</form>
 					</div>
 				</div>
@@ -233,10 +234,11 @@
 			}); 
 		</script>
 		</div>
-		
-		<div class="row justify-content-end mb-4" style="width:90%;">
-			<button class="btn btn-primary search-btn" id="eventAddBtn">추가</button>
-		</div>
+		<c:if test="${admin eq 0}">
+			<div class="row justify-content-end mb-4" style="width:90%;">
+				<button class="btn btn-primary search-btn" id="eventAddBtn">추가</button>
+			</div>
+		</c:if>
 	</div>
 	
 	<script>
