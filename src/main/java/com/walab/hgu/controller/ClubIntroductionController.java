@@ -202,7 +202,7 @@ public class ClubIntroductionController {
 		sns.setId(recentId);
 
 		clubService.createClubIntro(info);
-		clubService.createClubSNS(sns);
+		
 
 		List<MultipartFile> fileList = request.getFiles("file");
 		for (MultipartFile imgFile : fileList) {
@@ -235,6 +235,7 @@ public class ClubIntroductionController {
 			imgOrder++;
 
 		}
+		clubService.createClubSNS(sns);
 
 		mv.setViewName("redirect:/clubIntroduction");
 

@@ -105,21 +105,21 @@
 	</insert>
 
 	<!-- 동아리 소개 이미지 업로드 쿼리 -->
-	<insert id="createClubIntroImage"
+	<!-- <insert id="createClubIntroImage"
 		parameterType="com.walab.hgu.DTO.FileDTO">
 		INSERT INTO hsca219.clubImage
 		(clubId,originalUrl,fileOrder)
 		VALUES
 		(#{clubId},#{originalUrl},#{fileOrder})
-	</insert>
+	</insert> -->
 	
-	<!-- <insert id="createCommunityInfoFile"
+	<insert id="createClubIntroImage"
 		parameterType="com.walab.hgu.DTO.FileDTO">
 		INSERT INTO hsca219.clubImage (clubId,
 		originalUrl,fileOrder)
 		SELECT #{clubId},#{originalUrl},#{fileOrder}
 		WHERE #{originalUrl} != ' '
-	</insert> -->
+	</insert>
 	
 	<select id="getClubIdByName" parameterType="HashMap"
 		resultType="int">
