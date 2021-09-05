@@ -79,7 +79,7 @@
 		INSERT INTO hsca219.reservationInfo (userId, spaceId, startTime, endTime, purpose, memo, reservationDate) 
 		SELECT #{userId}, #{spaceId}, #{startTime}, #{endTime}, #{purpose},#{memo},#{reservationDate}
 		FROM DUAL WHERE NOT EXISTS(SELECT * FROM hsca219.reservationInfo WHERE spaceId = #{spaceId} 
-		AND reservationDate = #{reservationDate} AND #{startTime}=startTime)
+		AND reservationDate = #{reservationDate} AND #{startTime} BETWEEN startTime AND DATE_SUB(endTime, INTERVAL 30 MINUTE))
 	</insert>
  	
  	
