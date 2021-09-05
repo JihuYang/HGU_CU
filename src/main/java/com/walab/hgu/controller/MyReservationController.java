@@ -38,18 +38,21 @@ public class MyReservationController {
 		List<ReservationInfoDTO> reservationInfoList = new ArrayList<ReservationInfoDTO>();
 		int admin = ((UserDTO)request.getSession().getAttribute("user")).getAdmin();
 		int userId = ((UserDTO)request.getSession().getAttribute("user")).getId();
-
+		
+		// 관리자인 경우 전체 예약 내역 확인 가능
 		if(admin == 0) {
 			if(spaceName.equals("전체")) {
 				reservationInfoList = reservationInfoService.readReservationInfo();
 			}else {
 				reservationInfoList = reservationInfoService.readReservationBySpaceName(spaceName);
 			}
-		} else {
+		} 
+		// 관리자가 아닌 경우 본인의 예약 내역만 확인 가능
+		else {
 			if(spaceName.equals("전체")) {
 				reservationInfoList = reservationInfoService.readReservationInfoById(userId);
 			}else {
-				reservationInfoList = reservationInfoService.readReservationBySpaceName(spaceName);
+				reservationInfoList = reservationInfoService.readReservationBySpaceNameById(spaceName, userId);
 			}
 			
 			

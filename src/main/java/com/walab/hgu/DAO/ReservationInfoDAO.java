@@ -14,6 +14,7 @@ public interface ReservationInfoDAO {
 	public int createReservation(ReservationInfoDTO reservationInfo);
 	public int countInfo(String keyword);
 	public List<ReservationInfoDTO> readReservationBySpaceName(String spaceName);
+	public List<ReservationInfoDTO> readReservationBySpaceNameById(String spaceName, int userId);
 	public int updateAdminReservationInfo(ReservationInfoDTO reservationInfo);
 	public int deleteAdminReservation(int id);
 	

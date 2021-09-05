@@ -53,6 +53,17 @@
 		WHERE s.name = #{spaceName}
  	</select>
  	
+ 	 <select id="readReservationBySpaceNameById" resultType="com.walab.hgu.DTO.ReservationInfoDTO" parameterType="hashmap">
+		SELECT r.userId, r.spaceId,r.reservationDate, r.startTime , r.endTime, r.purpose, 
+		r.memo, r.regdate,s.name as spaceName, u.name as person, u.email as email, u.phone as phone
+		FROM hsca219.reservationInfo as r
+		
+		LEFT OUTER JOIN hsca219.user as u ON r.userId = u.id
+		RIGHT OUTER JOIN hsca219.space as s ON r.spaceId = s.id
+		
+		WHERE s.name = #{spaceName} AND r.userId = #{userId}
+ 	</select>
+ 	
  	
  	<select id="countInfo" resultType="int" parameterType="hashmap">
  		SELECT COUNT(*) as listCnt

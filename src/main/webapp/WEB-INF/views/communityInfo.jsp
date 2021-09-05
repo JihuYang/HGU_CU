@@ -49,7 +49,7 @@
 
 			<!-- 공지사항 리스트  -->
 			<%@ include file="./ajaxContent/communityInfoList.jsp"%>
-			<c:if test="${admin < 2}">
+			<c:if test="${admin == 0}">
 			<div class="row justify-content-end mt-5">
 				<button class="btn btn-primary search-btn"
 					onclick="location.href='<%=request.getContextPath()%>/communityInfo/write'">글쓰기</button>

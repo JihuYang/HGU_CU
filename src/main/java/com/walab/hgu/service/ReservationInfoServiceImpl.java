@@ -73,6 +73,12 @@ public class ReservationInfoServiceImpl implements ReservationInfoService{
 	}
 	
 	@Override
+	public List<ReservationInfoDTO> readReservationBySpaceNameById(String spaceName, int userId) {
+		List<ReservationInfoDTO> infoList = reservationInfoDAO.readReservationBySpaceNameById(spaceName, userId);
+		return infoList;
+	}
+	
+	@Override
 	public int deleteAdminReservation(int id){
 		return reservationInfoDAO.deleteAdminReservation(id);
 	}
