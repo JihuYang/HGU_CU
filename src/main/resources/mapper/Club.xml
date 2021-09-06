@@ -19,16 +19,12 @@
 		AND clubName LIKE concat('%',#{keyword},'%') -->
 		SELECT CL.id,CL.clubName, u.name as clubCeoName,
 		CL.clubLocation, u.phone,categoryId, categoryName, CL.foundationDate,
-		cS.instagramLink, cS.facebookLink ,cI.originalUrl
+		cS.instagramLink, cS.facebookLink
 		FROM hsca219.club as CL
-        LEFT JOIN hsca219.clubImage cI ON CL.id = cI.clubId
-        
 	    LEFT JOIN hsca219.category CA ON CA.id = CL.categoryId
         LEFT JOIN hsca219.user u ON CL.userId = u.id
         LEFT JOIN hsca219.clubSNS cS ON CL.id = cS.clubId
-		and CA.id
-		= #{categoryId} and cI.fileOrder = 1
-
+		where CA.id = #{categoryId}
 		AND clubName LIKE concat('%',#{keyword},'%')
 	</select>
 
@@ -52,7 +48,7 @@
 		LEFT JOIN category c on c.id = CL.categoryId
 		LEFT JOIN user u on u.id = CL.userId
 		LEFT JOIN clubSNS cS on CL.id = cS.clubId
-		where CA.id = #{categoryId} and CL.id = #{clubId} LIMIT 1
+		where c.id = #{categoryId} and CL.id = #{clubId} LIMIT 1
 	</select>
 
 	<select id="readClubList" parameterType="HashMap"
@@ -76,14 +72,11 @@
 		resultType="com.walab.hgu.DTO.ClubDTO" parameterType="hashMap">
 		SELECT CL.id,CL.clubName, u.name as clubCeoName, CL.clubLocation,
 		u.phone,categoryId, categoryName, CL.foundationDate, cS.instagramLink,
-		cS.facebookLink ,cI.originalUrl
+		cS.facebookLink
 		FROM hsca219.club as CL
-        LEFT JOIN hsca219.clubImage cI ON CL.id = cI.clubId
         LEFT JOIN hsca219.category CA ON CA.id = CL.categoryId
         LEFT JOIN hsca219.user u ON CL.userId = u.id
         LEFT JOIN hsca219.clubSNS cS ON CL.id = cS.clubId 
-		and
-		cI.fileOrder = 1
 
 		AND clubName LIKE concat('%',#{keyword},'%')
 
@@ -91,7 +84,12 @@
 		<!-- 현재, 이미지가 없는 동아리들은 order자체가 없기 때문에 불러와지지 않는다. 없는 동아리들은 디폴트 이미지를 넣게하면 
 			될 듯 -->
 	</select>
-
+	<select id="readClubPreviewImage"
+		resultType="com.walab.hgu.DTO.FileDTO" parameterType="hashmap">
+		SELECT * FROM
+		hsca219.clubImage as cI WHERE cI.fileOrder=1 AND
+		clubId=#{id}
+	</select>
 
 	<select id="getClubList" parameterType="HashMap"
 		resultType="com.walab.hgu.DTO.ClubDTO">

@@ -5,7 +5,6 @@ import java.util.Map;
 
 import com.walab.hgu.DTO.CategoryDTO;
 import com.walab.hgu.DTO.ClubDTO;
-import com.walab.hgu.DTO.CommunityInfoDTO;
 import com.walab.hgu.DTO.FileDTO;
 
 public interface ClubDAO {
@@ -47,5 +46,7 @@ public interface ClubDAO {
 	public int deleteClubIntroImage(int id);
 	public int deleteClubIntroduction(int id);
 	public int deleteClubSNS(int id);
+
+	public FileDTO readClubPreviewImage(int id);
 
 }

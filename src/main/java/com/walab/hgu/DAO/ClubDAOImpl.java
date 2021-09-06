@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 
 import com.walab.hgu.DTO.CategoryDTO;
 import com.walab.hgu.DTO.ClubDTO;
-import com.walab.hgu.DTO.CommunityInfoDTO;
 import com.walab.hgu.DTO.FileDTO;
 
 @Repository
@@ -92,6 +91,14 @@ public class ClubDAOImpl implements ClubDAO{
 		clubPreviewParam.put("keyword", keyword);
 		
 		return sqlSession.selectList(namespace+".getAllClubIntroduction", clubPreviewParam);
+	}
+	
+	@Override
+	public FileDTO readClubPreviewImage(int id) {
+		Map<String, Object> clubPreviewParam = new HashMap<String, Object>();
+		clubPreviewParam.put("id", id);
+		
+		return sqlSession.selectOne(namespace + ".readClubPreviewImage", clubPreviewParam);
 	}
 	
 	@Override
