@@ -112,7 +112,7 @@ public class CommunityMaterialsController {
 		FileDTO materialFile = new FileDTO();
 		
 		//int userId = ((UserDTO)servletRequest.getSession().getAttribute("user")).getId();
-		int userId = Integer.parseInt(request.getParameter("userId"));
+		int userId = ((UserDTO)request.getSession().getAttribute("user")).getId();
 		String title = request.getParameter("title");
 		String content = request.getParameter("newContent");
 
