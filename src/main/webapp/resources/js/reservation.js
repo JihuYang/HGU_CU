@@ -74,7 +74,7 @@ function createReservation(){
 	var reservationDate=document.getElementById("date").value;
 	var spaceId=document.getElementById("spaceSelect").selectedIndex+1;
 	
-	if(e.options[e.selectedIndex+1].disabled==true){
+	if(e.options[e.selectedIndex].disabled==true){
 		alert("예약이 마감 되었습니다. 시간을 다시 선택하여 주세요.");
 		return location.href="/reservation";
 	}
