@@ -36,7 +36,7 @@ public class RegisterController {
 		String name = httpServletRequest.getParameter("name");
 		String email = httpServletRequest.getParameter("email");
 		String phoneNumber = httpServletRequest.getParameter("phone");
-		int admin = 0;
+		int admin = 2;
 
 		UserDTO u = new UserDTO();
 		u.setName(name);
