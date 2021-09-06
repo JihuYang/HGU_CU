@@ -81,7 +81,7 @@
 				    </tr>
 				    <tr>
 				      <th scope="row">이메일</th>
-				      <td>${reservationInfoList[1].email}</td>
+				      <td>${email}</td>
 				    </tr>
 				    <tr>
 				      <th scope="row">예약 가능한 기간</th>
