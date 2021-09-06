@@ -86,6 +86,11 @@ public class CommunityInfoController {
 			HttpServletResponse response) {
 		ModelAndView mv = new ModelAndView();
 		
+		if(request.getSession().getAttribute("user") != null) {
+			int admin = ((UserDTO)request.getSession().getAttribute("user")).getAdmin();
+			mv.addObject("admin", admin);		
+		}
+		
 		// 조회수 업데이트
 		communityInfoService.updateViewCount(id);
 		// 공지사항 read
@@ -121,7 +126,7 @@ public class CommunityInfoController {
 		CommunityInfoDTO info = new CommunityInfoDTO();
 		FileDTO infoFile = new FileDTO();
 
-		int userId = Integer.parseInt(request.getParameter("userId"));
+		int userId = ((UserDTO)request.getSession().getAttribute("user")).getId();
 		String title = request.getParameter("title");
 		String content = request.getParameter("newContent");
 		

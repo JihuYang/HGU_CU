@@ -48,9 +48,12 @@ public class ReserveController {
 		List<ReservationInfoDTO> reservationInfoList = reservationInfoService.readReservationInfo();
 		List<SpaceDTO> spaceList = spaceService.readSpace();
 		String userName= "admin";
+		String email = "email";
 		if (httpServletRequest.getSession().getAttribute("user") != null) {
 			userName = ((UserDTO) httpServletRequest.getSession().getAttribute("user")).getName();
+			email = ((UserDTO)httpServletRequest.getSession().getAttribute("user")).getEmail();
 		} 
+		mv.addObject("email", email);
 		mv.addObject("userName", userName);
 		mv.addObject("reservationInfoList", reservationInfoList);
 		mv.addObject("spaceList", spaceList);

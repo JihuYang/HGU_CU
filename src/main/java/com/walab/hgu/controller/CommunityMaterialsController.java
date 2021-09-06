@@ -78,6 +78,11 @@ public class CommunityMaterialsController {
 			HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
 
+		if(request.getSession().getAttribute("user") != null) {
+			int admin = ((UserDTO)request.getSession().getAttribute("user")).getAdmin();
+			mv.addObject("admin", admin);		
+		}
+		
 		// 조회수 업데이트
 		communityMaterialService.updateViewCount(id);
 		// 자료실 read
@@ -112,7 +117,7 @@ public class CommunityMaterialsController {
 		FileDTO materialFile = new FileDTO();
 		
 		//int userId = ((UserDTO)servletRequest.getSession().getAttribute("user")).getId();
-		int userId = Integer.parseInt(request.getParameter("userId"));
+		int userId = ((UserDTO)request.getSession().getAttribute("user")).getId();
 		String title = request.getParameter("title");
 		String content = request.getParameter("newContent");
 

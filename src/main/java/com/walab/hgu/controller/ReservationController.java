@@ -36,7 +36,9 @@ public class ReservationController {
 			HttpServletRequest request) {
 		if(request.getSession().getAttribute("user") != null) {
 			int userId = ((UserDTO)request.getSession().getAttribute("user")).getId();
-			mv.addObject("userId", userId);		
+			String email = ((UserDTO)request.getSession().getAttribute("user")).getEmail();
+			mv.addObject("userId", userId);	
+			mv.addObject("email", email);		
 		}
 		System.out.println(spaceName);
 		List<SpaceDTO> spaceList = spaceService.readSpace();
@@ -48,8 +50,6 @@ public class ReservationController {
 			reservationInfoList = reservationInfoService.readReservationBySpaceName(spaceName);
 		}
 		System.out.println(reservationInfoList);
-//		System.out.println(spaceList2);
-//		System.out.println(spaceList);
 
 		mv.addObject("spaceList", spaceList);
 		mv.addObject("spaceList2", spaceList2);
@@ -58,8 +58,6 @@ public class ReservationController {
 		
 		mv.setViewName("reservation");
 		
-		//System.out.println(mv);
-	
 		return mv;
 	}
 	

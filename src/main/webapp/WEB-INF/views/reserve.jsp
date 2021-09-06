@@ -81,7 +81,7 @@
 				    </tr>
 				    <tr>
 				      <th scope="row">이메일</th>
-				      <td>${reservationInfoList[1].email}</td>
+				      <td>${email}</td>
 				    </tr>
 				    <tr>
 				      <th scope="row">예약 가능한 기간</th>
@@ -103,8 +103,6 @@
 				      <th scope="row">종료 시간</th>
 				      <td>
 				        <select id='endTime' name ='endTime' class="input-resize">
-					        <!-- <option value='9:00' selected> 9:00</option>
-					        <option value='10:00' >10:00</option> -->
 						</select>
 					  </td>
 				    </tr>
@@ -232,44 +230,30 @@
 	    		
 			}
 			
-			/* 종료시간 기본 값 설정 */
-			  var selectedStart = $("#startTime option:selected").val();
-			  time = selectedStart.split(':');
-			  time[0]++;
-			  endTime.innerHTML=
+		/* 종료시간 기본 값 설정 */
+		var selectedStart = $("#startTime option:selected").val();
+		function endTimeSetting(e){
+			  time = e.split(':');
+			  
+			  if(time[0]==25)
+					 time[0]=1;
+			  for(var i =0;i<2;i++){
+					  time[0]++
+			  		
+			  	document.getElementById('endTime').innerHTML+=
 				    "<option value="+time[0]+':'+time[1]+">"
 						+time[0]+':'
 						+time[1]
 						+"</option>";
-						
-				time[0]++;
-				 if(time[0]==25)
-					 time[0]=1;
-				 endTime.innerHTML+=
-					    "<option value="+time[0]+':'+time[1]+">"
-							+time[0]+':'
-							+time[1]
-							+"</option>";
+			  	}
+		 }
+		 endTimeSetting(selectedStart);
 			
 		/* 시작 시간 선택 시 종료 시간 설정 */
 	      function handleTimeLimit(e){
 			 const text = e.options[e.selectedIndex].text;
-			 time = text.split(':');
-			 time[0]++;
-			 document.getElementById('endTime').innerHTML=
-			    "<option value="+time[0]+':'+time[1]+">"
-					+time[0]+':'
-					+time[1]
-					+"</option>";
-		
-			 time[0]++;
-			 if(time[0]==25)
-				 time[0]=1;
-			 document.getElementById('endTime').innerHTML+=
-				    "<option value="+time[0]+':'+time[1]+">"
-						+time[0]+':'
-						+time[1]
-						+"</option>";
+			 $('#endTime').children('option').remove();
+			 endTimeSetting(text);
 			
 			if(e.options[e.selectedIndex+1].disabled==true){
 				$('#endTime option').each(function() {
