@@ -52,9 +52,19 @@
 			class="row h-auto align-items-center justify-content-end text-end">
 			<fmt:formatDate value="${communityMaterialDetail.regdate}"
 				var="formattedRegDate" type="date" pattern="yyyy-MM-dd" />
-			<div class="py-3 detail-info">작성자:
+			<c:choose>
+				<c:when test="${admin == 0}">
+				<div class="py-3 detail-info">작성자:
 				${communityMaterialDetail.writer} | 조회수 :
 				${communityMaterialDetail.viewCount} | ${formattedRegDate}</div>
+				</c:when>
+				<c:otherwise>
+				<div class="py-3 detail-info">작성자:
+				관리자 | 조회수 :
+				${communityMaterialDetail.viewCount} | ${formattedRegDate}</div>						
+				</c:otherwise>
+			</c:choose>
+
 		</div>
 		<div class="row h-auto align-items-center justify-content-center">
 			<div class="px-4 detail-content">${communityMaterialDetail.content}</div>

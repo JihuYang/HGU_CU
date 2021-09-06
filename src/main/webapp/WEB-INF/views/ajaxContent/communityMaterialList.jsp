@@ -30,7 +30,14 @@
 				<%-- <th scope="row">${fn:length(communityMaterialList) - status.index}</th> --%>
 				<th scope="row">${communityMaterial.id}</th>
 				<td class="text-start title-shortening">${communityMaterial.title}</td>
-				<td id="writer">${communityMaterial.writer}</td>
+				<c:choose>
+					<c:when test="${admin == 0}">
+					<td id="writer">${communityMaterial.writer}</td>
+					</c:when>
+					<c:otherwise>
+					<td id="writer">관리자</td>							
+					</c:otherwise>
+				</c:choose>				
 				<td id="date">${formattedRegDate}</td>
 				<td id="count">${communityMaterial.viewCount}</td>
 			</tr>

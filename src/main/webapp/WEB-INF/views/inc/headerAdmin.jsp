@@ -76,7 +76,7 @@ readIsAdminByUserID<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"
 						</ul></li>
 					<li class="nav-item nav-bottom-border mx-2"><a
 						class="nav-link"
-						onclick="location.href='<%=request.getContextPath()%>/reservation'">시설
+						onclick="location.href='<%=request.getContextPath()%>/reservation?spaceName=전체'">시설
 							예약</a></li>
 					<li class="nav-item nav-bottom-border mx-2 dropdown"
 						id="dropdown-display-community"><a

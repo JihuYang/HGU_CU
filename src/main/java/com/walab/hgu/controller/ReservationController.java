@@ -37,6 +37,8 @@ public class ReservationController {
 		if(request.getSession().getAttribute("user") != null) {
 			int userId = ((UserDTO)request.getSession().getAttribute("user")).getId();
 			String email = ((UserDTO)request.getSession().getAttribute("user")).getEmail();
+			int admin = ((UserDTO)request.getSession().getAttribute("user")).getAdmin();
+			mv.addObject("admin", admin);	
 			mv.addObject("userId", userId);	
 			mv.addObject("email", email);		
 		}

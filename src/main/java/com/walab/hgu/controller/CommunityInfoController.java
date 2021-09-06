@@ -207,7 +207,7 @@ public class CommunityInfoController {
 		FileDTO infoFile = new FileDTO();
 
 		int id = Integer.parseInt(request.getParameter("id"));
-		int userId = Integer.parseInt(request.getParameter("userId"));
+		int userId = ((UserDTO)request.getSession().getAttribute("user")).getId();
 		String title = request.getParameter("title");
 		String content = request.getParameter("newContent");
 		
