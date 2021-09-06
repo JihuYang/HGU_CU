@@ -169,10 +169,6 @@
 
 			<div id='calendar'></div>
 
-			<!-- <script src='https://fullcalendar.io/releases/fullcalendar/3.9.0/lib/moment.min.js'></script> -->
-			<!-- <script src='https://fullcalendar.io/releases/fullcalendar/3.9.0/lib/jquery.min.js'></script> -->
-
-			<!-- <script src='https://fullcalendar.io/releases/fullcalendar/3.9.0/fullcalendar.min.js'></script> -->
 			<script
 				src="<%=request.getContextPath()%>/resources/js/calendarjQuery.js"></script>
 			<script
@@ -206,6 +202,7 @@
 				 	{
 				 		title: "${reservationInfoList.spaceName}",
 				 		start: '${reservationInfoList.reservationDate}T${reservationInfoList.startTime}',
+				 		end: '${reservationInfoList.reservationDate}T${reservationInfoList.endTime}',
 				 		allDay: false,
 				 		rendering:'list-item'
 				 	},
