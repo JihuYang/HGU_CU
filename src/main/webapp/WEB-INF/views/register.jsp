@@ -64,7 +64,7 @@
 				</div>
 				<div class="input-group mb-1">
 					<input type="tel" id="phone" name="phone" class="form-control" pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{3,4}" maxlength="13"
-						placeholder="전화번호를 입력하세요.">
+						placeholder="전화번호를 입력하세요." required>
 				</div>
 				<div class="m-3">
 					<button id="userInfoBtn" class="btn btn-secondary">회원가입</button>
@@ -93,7 +93,7 @@
 					},
 					success: function(data) {
 						console.log(name);
-						alert("성공적으로 정보가 등록되었습니다.");
+						alert("회원가입이 완료되었습니다.");
 						location.href="<%=request.getContextPath()%>/";
 					},
 					error: function(request, status, error) {
@@ -102,14 +102,6 @@
 				});
 			}
 		});
-
-		var patt = new RegExp("[0-9]{2,3}-[0-9]{3,4}-[0-9]{3,4}");
-		var res = patt.test( $("#tlno").val());
-
-		if( !patt.test( $("#tlno").val()) ){
-		    alert("전화번호를 정확히 입력하여 주십시오.");
-		    return false;
-		}
 
 
 	})

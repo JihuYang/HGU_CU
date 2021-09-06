@@ -35,8 +35,7 @@
 	rel="stylesheet" />
 
 </head>
-<script src="https://kit.fontawesome.com/6333a60c65.js"
-	crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/6333a60c65.js"></script>
 <body id="page-top">
 	<div class="container px-4 px-lg-5 h-auto h-min">
 		<div

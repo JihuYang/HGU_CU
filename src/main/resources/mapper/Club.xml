@@ -6,13 +6,26 @@
 
 	<select id="readClubIntroductionPreview" parameterType="HashMap"
 		resultType="com.walab.hgu.DTO.ClubDTO">
-		SELECT CL.id,CL.clubName, u.name as clubCeoName,
+<!-- 		SELECT CL.id,CL.clubName, u.name as clubCeoName,
 		CL.clubLocation, u.phone,categoryId, categoryName, CL.foundationDate,
 		cS.instagramLink, cS.facebookLink ,cI.originalUrl
 		FROM hsca219.club as CL ,hsca219.clubImage cI ,hsca219.category
 		CA,hsca219.user u ,hsca219.clubSNS cS
 		where CA.id = CL.categoryId and
 		CL.userId = u.id and CL.id = cS.clubId and CL.id = cI.clubId
+		and CA.id
+		= #{categoryId} and cI.fileOrder = 1
+
+		AND clubName LIKE concat('%',#{keyword},'%') -->
+		SELECT CL.id,CL.clubName, u.name as clubCeoName,
+		CL.clubLocation, u.phone,categoryId, categoryName, CL.foundationDate,
+		cS.instagramLink, cS.facebookLink ,cI.originalUrl
+		FROM hsca219.club as CL
+        LEFT JOIN hsca219.clubImage cI ON CL.id = cI.clubId
+        
+	    LEFT JOIN hsca219.category CA ON CA.id = CL.categoryId
+        LEFT JOIN hsca219.user u ON CL.userId = u.id
+        LEFT JOIN hsca219.clubSNS cS ON CL.id = cS.clubId
 		and CA.id
 		= #{categoryId} and cI.fileOrder = 1
 

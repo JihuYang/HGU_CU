@@ -64,7 +64,7 @@
 			<h4 class="mb-4 ps-5 py-5">총동아리연합회칙</h4>
 			<a class="col-8 mx-auto d-block btn mb-5"
 				href="<%=request.getContextPath()%>/resources/assets/img/총동아리연합회칙 개정안(2021.06 개정).pdf"
-				download>총동아리연합회칙 다운로드</a>
+				>총동아리연합회칙 다운로드</a>
 		</div>
 	</div>
 
