@@ -52,6 +52,7 @@
 			class="row h-auto align-items-center justify-content-end text-end">
 			<fmt:formatDate value="${communityInfoDetail.regdate}"
 				var="formattedRegDate" type="date" pattern="yyyy-MM-dd" />
+				
 			<div class="py-3 detail-info">작성자:
 				${communityInfoDetail.writer} | 조회수 :
 				${communityInfoDetail.viewCount} | ${formattedRegDate}</div>
@@ -75,13 +76,16 @@
 					</tbody>
 				</table>
 			</c:if>
+
 			<div class="row justify-content-start mt-4 list-btn">
 				<button class="btn btn-primary search-btn list-btn"
 					onclick="location.href='<%=request.getContextPath()%>/communityInfo?num=1'">목록</button>
+			<c:if test="${admin == 0}">					
 				<button class="btn btn-primary search-btn list-btn"
 					onclick="location.href='<%=request.getContextPath()%>/communityInfo/update/${communityInfoDetail.id}'">수정</button>
 				<button class="btn btn-primary search-btn list-btn"
 					onclick="location.href='<%=request.getContextPath()%>/communityInfo/delete/${communityInfoDetail.id}'">삭제</button>
+			</c:if>
 			</div>
 		</div>
 	</div>

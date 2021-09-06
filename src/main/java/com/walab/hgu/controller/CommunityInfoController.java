@@ -86,6 +86,11 @@ public class CommunityInfoController {
 			HttpServletResponse response) {
 		ModelAndView mv = new ModelAndView();
 		
+		if(request.getSession().getAttribute("user") != null) {
+			int admin = ((UserDTO)request.getSession().getAttribute("user")).getAdmin();
+			mv.addObject("admin", admin);		
+		}
+		
 		// 조회수 업데이트
 		communityInfoService.updateViewCount(id);
 		// 공지사항 read

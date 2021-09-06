@@ -78,6 +78,11 @@ public class CommunityMaterialsController {
 			HttpServletRequest request) {
 		ModelAndView mv = new ModelAndView();
 
+		if(request.getSession().getAttribute("user") != null) {
+			int admin = ((UserDTO)request.getSession().getAttribute("user")).getAdmin();
+			mv.addObject("admin", admin);		
+		}
+		
 		// 조회수 업데이트
 		communityMaterialService.updateViewCount(id);
 		// 자료실 read
