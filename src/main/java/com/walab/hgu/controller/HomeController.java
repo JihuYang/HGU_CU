@@ -49,7 +49,7 @@ public class HomeController {
 	ClubAdvertiseService clubAdvertiseService;
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
-	public ModelAndView header(ModelAndView mv, HttpServletRequest httpServletRequest) {
+	public ModelAndView home(ModelAndView mv, HttpServletRequest httpServletRequest) {
 		
 		if(httpServletRequest.getSession().getAttribute("user") != null) {
 			int userID = ((UserDTO)httpServletRequest.getSession().getAttribute("user")).getId();
