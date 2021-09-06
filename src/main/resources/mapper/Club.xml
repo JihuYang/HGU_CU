@@ -21,7 +21,7 @@
 
 	<select id="readRecentClub" resultType="int"
 		parameterType="hashmap">
-		SELECT count(id) FROM hsca219.club
+		select id FROM club order by regdate DESC LIMIT 1
 	</select>
 
 	<select id="getCategoryNameList"

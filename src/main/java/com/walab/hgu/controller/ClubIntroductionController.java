@@ -175,7 +175,8 @@ public class ClubIntroductionController {
 		ClubDTO sns = new ClubDTO();
 		FileDTO infoImageFile = new FileDTO();
 		int recentId = clubService.readRecentClub() + 1;
-
+		System.out.println("recentId: "+recentId);
+		
 		newContent = newContent.replaceAll("(\r|\n|\r\n|\n\r)","");
 		
 		List<CategoryDTO> categoryNameList = clubService.getCategoryNameList();
@@ -192,7 +193,7 @@ public class ClubIntroductionController {
 		mv.addObject("admin", admin);
 
 		int imgOrder = 1;
-
+		
 		info.setCategoryId(categoryId);
 		info.setClubName(clubName);
 		info.setUserId(userId);
