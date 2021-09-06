@@ -97,7 +97,7 @@ public class ClubDAOImpl implements ClubDAO{
 	@Override
 	public int readRecentClub() {
 		Map<String, Object> recentId = new HashMap<String, Object>();
-
+		
 		return sqlSession.selectOne(namespace+".readRecentClub", recentId);
 	}
 	
