@@ -30,7 +30,7 @@ public class CommonInterceptor extends HandlerInterceptorAdapter {
 			throws Exception {
 		// 로그인하지 않을 경우 시설 예약 불가
 		if(request.getSession().getAttribute("user") == null) {
-			if(request.getRequestURI().contains("reserve")) {
+			if(request.getRequestURI().contains("reserve") || request.getRequestURI().contains("admin") || request.getRequestURI().contains("update") || request.getRequestURI().contains("delete") || request.getRequestURI().contains("create") || request.getRequestURI().contains("write")) {
 				response.sendRedirect(request.getContextPath() + "/");
 		        return false;
 			}

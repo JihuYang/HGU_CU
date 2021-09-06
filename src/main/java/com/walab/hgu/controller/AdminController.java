@@ -229,7 +229,7 @@ public class AdminController {
 			@RequestParam(value="startTime") Time startTime,
 			@RequestParam(value="endTime") Time endTime,
 			@RequestParam(value="purpose") String purpose,
-			@RequestParam(value="reservationDate") Date reservationDate) {
+			@RequestParam(value="date") Date date) {
 		
 		ReservationInfoDTO info = new ReservationInfoDTO();
 		
@@ -238,7 +238,7 @@ public class AdminController {
 		info.setStartTime(startTime);
 		info.setEndTime(endTime);
 		info.setPurpose(purpose);
-		info.setReservationDate(reservationDate);
+		info.setReservationDate(date);
 		
 		System.out.println(info.toString());
 
@@ -258,7 +258,7 @@ public class AdminController {
 			@RequestParam(value="startTime") Time startTime,
 			@RequestParam(value="endTime") Time endTime,
 			@RequestParam(value="purpose") String purpose,
-			@RequestParam(value="reservationDate") Date reservationDate) {
+			@RequestParam(value="date") Date date) {
 		
 		ReservationInfoDTO info = new ReservationInfoDTO();
 		
@@ -268,7 +268,7 @@ public class AdminController {
 		info.setStartTime(startTime);
 		info.setEndTime(endTime);
 		info.setPurpose(purpose);
-		info.setReservationDate(reservationDate);
+		info.setReservationDate(date);
 		
 		System.out.println(info.toString());
 

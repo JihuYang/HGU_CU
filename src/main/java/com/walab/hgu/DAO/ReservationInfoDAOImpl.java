@@ -91,6 +91,15 @@ public class ReservationInfoDAOImpl implements ReservationInfoDAO {
 	}
 	
 	@Override
+	public List<ReservationInfoDTO> readSumReservation(int userId){
+		
+		Map<String, Object> reservationInfoParam = new HashMap<String, Object>();
+		reservationInfoParam.put("userId", userId);
+
+		return sqlSession.selectList(namespace+".readSumReservation", reservationInfoParam);
+	}
+	
+	@Override
 	public int updateAdminReservationInfo(ReservationInfoDTO reservationInfo) {
 		return sqlSession.update(namespace+".updateAdminReservationInfo", reservationInfo);
 	}

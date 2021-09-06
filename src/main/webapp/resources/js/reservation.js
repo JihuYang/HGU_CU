@@ -17,11 +17,11 @@ function createAdminReservationInfo(){
 			startTime: st,
 			endTime: et,
 			purpose: $('#purpose').val(),
-			reservationDate: $('#reservationDate').val()
+			date: $('#date').val()
 		},
 		success: function(data){	
 			console.log("예약 추가 성공!!");
-			console.log(data);
+			location.href="/adminReservation?num=1"
 		}, 
 		error:function(request, error){
 			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
@@ -52,7 +52,7 @@ function updateAdminReservationInfo(){
 			startTime: st,
 			endTime: et,
 			purpose: $('#purpose').val(),
-			reservationDate: $('#reservationDate').val()
+			date: $('#date').val()
 		},
 		success: function(){	
 			console.log("예약 추가 성공!!");
