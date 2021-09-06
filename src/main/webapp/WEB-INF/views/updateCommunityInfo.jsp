@@ -53,7 +53,8 @@
 		<!-- 커뮤니티 공지사항 수정 -->
 		<div class="justify-content-md-center align-items-center">
 			<form method="POST" enctype="multipart/form-data" id="uploadForm"
-				action="<%=request.getContextPath()%>/communityInfo/write/update">
+				action="<%=request.getContextPath()%>/communityInfo/write/update"
+				onsubmit="return confirm('글을 수정하시겠습니까?');">
 				<input id="userId" name="userId" value='1' style="display: none;"></input>
 				<input id="id" name="id" value='${communityInfoDetail.id}'
 					style="display: none;"></input>
@@ -80,7 +81,7 @@
 					        initialEditType: 'wysiwyg',
 					        hideModeSwitch: 'true'
 					      });
-							alert("${communityInfoDetail.content}");
+							/* alert("${communityInfoDetail.content}"); */
 					      content.setHTML("${communityInfoDetail.content}",true);
 					</script>
 				

@@ -55,7 +55,8 @@
 
 		<div class="justify-content-md-center align-items-center">
 			<form method="POST" enctype="multipart/form-data" id="uploadForm"
-				action="<%=request.getContextPath()%>/communityMaterials/write/update">
+				action="<%=request.getContextPath()%>/communityMaterials/write/update"
+				onsubmit="return confirm('글을 수정하시겠습니까?');">
 				<input id="userId" name="userId" value='1' style="display: none;"></input>
 				<input id="id" name="id" value='${communityMaterialDetail.id}'
 					style="display: none;"></input>

@@ -56,7 +56,8 @@
 		</div>
 		<div class="justify-content-md-center align-items-center">
 			<form method="POST" enctype="multipart/form-data" id="uploadForm" name="createForm"
-				action="<%=request.getContextPath()%>/communityInfo/write/create">
+				action="<%=request.getContextPath()%>/communityInfo/write/create" 
+				onsubmit="return confirm('글을 등록하시겠습니까?');">
 				<input id="userId" name="userId" value='1' style="display: none;"></input>
 				<div class="title-bar">
 					<p class="rows title-bold">제목</p>
@@ -88,7 +89,7 @@
 					<a class="btn btn-primary back-btn bottom-btn" href="<%=request.getContextPath()%>/communityInfo?num=1"
 						role="button">뒤로</a>
 					<button class="btn btn-primary submit-btn bottom-btn" 
-						id="submitBtn" onclick="createCheck()">저장</button><!-- onclick="createCheck()" -->
+						id="submitBtn">저장</button><!-- onclick="createCheck()" -->
 				</div>
 			</form>
 		</div>
