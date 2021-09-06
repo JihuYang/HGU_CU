@@ -192,6 +192,8 @@ public class CommunityMaterialsController {
 		int userId = Integer.parseInt(request.getParameter("userId"));
 		String title = request.getParameter("title");
 		String content = request.getParameter("newContent");
+		
+		content = content.replaceAll("(\r|\n|\r\n|\n\r)","");
 
 		material.setId(id);
 		material.setUserId(userId);

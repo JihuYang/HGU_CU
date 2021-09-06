@@ -100,7 +100,7 @@ function createCheck() {
 	 // !!여기!! editor.getHtml()을 사용해서 에디터 내용 받아오기
 	//document.querySelector('#newContent').insertAdjacentHTML('afterbegin' ,content.getHTML());
 	document.getElementById("newContent").value = content.getHTML();
-	//alert("create 내용 : "+document.getElementById("newContent").value);
+	alert("create 내용 : "+document.getElementById("newContent").value);
 
 	if (confirm("글을 등록하시겠습니까?") == true) {    //확인
 
@@ -114,7 +114,7 @@ function createCheck() {
 
 function updateInfo(){
 	document.getElementById("newContent").value = content.getHTML();
-	//alert("update 내용 : "+document.getElementById("newContent").value);
+	alert("update 내용 : "+document.getElementById("newContent").value);
 }
 
 function createMate(){
@@ -124,5 +124,5 @@ function createMate(){
 
 function updateMate(){
 		document.getElementById("newContent").value = content.getHTML();
-	//alert("update 내용 : "+document.getElementById("newContent").value);
+	alert("update 내용 : "+document.getElementById("newContent").value);
 }
