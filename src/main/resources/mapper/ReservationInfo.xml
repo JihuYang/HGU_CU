@@ -83,7 +83,7 @@
 	</insert>
  	
  	<!-- 하루동안 예약한 시간 계산 쿼리 -->
- 	<select id="readSumReservation" parameterType="com.walab.hgu.DTO.ReservationInfoDTO">
+ 	<select id="readSumReservation" resultType="com.walab.hgu.DTO.ReservationInfoDTO" parameterType="com.walab.hgu.DTO.ReservationInfoDTO">
 		SELECT userId, spaceId, reservationDate, 
         sum(TIMEDIFF(endTime, startTime)) as sumReservation 
         FROM hsca219.reservationInfo

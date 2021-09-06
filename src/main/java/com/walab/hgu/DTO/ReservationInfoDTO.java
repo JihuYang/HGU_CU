@@ -16,7 +16,7 @@ public class ReservationInfoDTO {
 	private Date reservationDate;
 	private Time startTime;
 	private Time endTime;
-	private Time sumReservation;
+	private int sumReservation;
 	private String purpose;
 	private String memo;
 	private String Day;//officeHour 테이블 가져오기 위한 객체 추가 
@@ -119,12 +119,12 @@ public class ReservationInfoDTO {
 		this.endTime = endTime;
 	}
 	
-	public Time getSumReservation() {
+	public int getSumReservation() {
 		return sumReservation;
 	}
 
 
-	public void setSumReservation(Time sumReservation) {
+	public void setSumReservation(int sumReservation) {
 		this.sumReservation = sumReservation;
 	}
 
