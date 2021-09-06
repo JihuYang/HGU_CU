@@ -63,6 +63,7 @@ public class ClubIntroductionController {
 		String defaultImage = settingService.readSetting().get(2).getTextValue();
 
 		mv.addObject("defaultImage", defaultImage);
+		System.out.println("defaultImage 입니다" + defaultImage);
 		mv.addObject("clubIntroList", clubIntroList);
 		System.out.println("clubIntroList 입니다" + clubIntroList);
 		mv.addObject("keyword", keyword);
@@ -214,6 +215,7 @@ public class ClubIntroductionController {
 			infoImageFile.setClubId(recentId);
 			infoImageFile.setFileOrder(imgOrder);
 			infoImageFile.setOriginalUrl(originalUrl);
+			imgOrder++;
 			clubService.createClubIntroImage(infoImageFile);
 
 			String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/clubIntro");
@@ -235,7 +237,7 @@ public class ClubIntroductionController {
 			}
 
 			System.out.println("club introduction controller saveDir: " + saveDir);
-			imgOrder++;
+
 
 		}
 		clubService.createClubSNS(sns);
@@ -326,6 +328,7 @@ public class ClubIntroductionController {
 				infoImageFile.setClubId(id);
 				infoImageFile.setOriginalUrl(originalUrl);
 				infoImageFile.setFileOrder(imgOrder);
+				imgOrder++;
 	
 				clubService.createClubIntroImage(infoImageFile);
 	

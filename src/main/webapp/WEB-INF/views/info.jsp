@@ -27,6 +27,7 @@
 </head>
 <jsp:include page= "<%=\"./inc/\".concat(((String)request.getAttribute(\"header\")))%>" />
 
+
 <script src="https://kit.fontawesome.com/6333a60c65.js"></script>
 <body id="page-top">
 	<div class="container width-80 h-auto h-min">
@@ -37,7 +38,16 @@
 			</div>
 		</div>
 		<div class="container px-4 px-lg-5 text-start">
-			<h4 class="mb-4 ps-5 py-5">총동아리연합회란</h4>
+			<h4 class="mb-4 ps-5 pt-5">총동아리연합회란</h4>
+			<div class="mb-4 ps-5 py-5">총동아리연합회는 교내의 동아리들에게 봉사하기 위해 조직된 동아리 대표기구로서 
+			소속 동아리의 관리 및 제반 업무를 담당합니다.<br>
+			 총학생회 및 학교 행사시 동아리 관련 부문을 담당합니다. <br>
+			 총동아리연합회는 회장단을 비롯하여 총무국,
+				지원국, 행정국, 소통국 4개의 국으로 구성되어 있습니다. <br><br>
+				총무국 : 총무국은 예산 및 물품 관리, 집행부 내 업무 지원을
+				담당하는 국입니다. <br>지원국 : 지원국은 동아리 역량강화, 동아리 홍보 관련 업무를 담당하는 국입니다. <br>행정국 : 행정국은
+				장비 및 시설대여, 각종 회의 관련 업무를 담당하는 국입니다. <br>소통국 : 소통국은 밴드연습실, CCR, 지하연습실 등과
+				관련하여 집행부와 학생들 간의 소통을 담당하는 국입니다.</div>
 		</div>
 		<div class="container px-4 px-lg-5 text-start">
 			<h4 class="mb-4 ps-5 py-5">총동아리연합회 구성도</h4>
@@ -52,7 +62,9 @@
 		</div>
 		<div class="container px-4 px-lg-5 text-start">
 			<h4 class="mb-4 ps-5 py-5">총동아리연합회칙</h4>
-			<a class = "col-8 mx-auto d-block btn mb-5" href="<%=request.getContextPath()%>/resources/assets/img/총동아리연합회칙 개정안(2021.06 개정).pdf" download>총동아리연합회칙 다운로드</a>
+			<a class="col-8 mx-auto d-block btn mb-5"
+				href="<%=request.getContextPath()%>/resources/assets/img/총동아리연합회칙 개정안(2021.06 개정).pdf"
+				download>총동아리연합회칙 다운로드</a>
 		</div>
 	</div>
 

@@ -13,7 +13,7 @@
 
 		<div class="overlay-item overlay-effect">
 			<c:choose>
-				<c:when test="${clubIntroList.originalUrl eq null}">
+				<c:when test="${clubIntroList.originalUrl == null}">
 					<img src="${defaultImage}">
 				</c:when>
 				<c:when test="${clubIntroList.originalUrl != null}">
