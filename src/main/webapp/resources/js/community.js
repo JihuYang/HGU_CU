@@ -97,21 +97,18 @@ function searchMaterial() {
 }
 
 function deleteInfo(){
-	if(confirm("정말 삭제하시겠습니까?"))
+	if(confirm("글을 삭제 하시겠습니까?"))
 		location.href="/communityInfo/delete/"+$("#communityInfoDetailId").text();
 }
 
 function updateInfo(){
 	document.getElementById("newContent").value = content.getHTML();
-	alert("update 내용 : "+document.getElementById("newContent").value);
 }
 
 function createMate(){
-		document.getElementById("newContent").value = content.getHTML();
-	//alert("create 내용 : "+document.getElementById("newContent").value);
+	document.getElementById("newContent").value = content.getHTML();
 }
 
 function updateMate(){
-		document.getElementById("newContent").value = content.getHTML();
-	alert("update 내용 : "+document.getElementById("newContent").value);
+	document.getElementById("newContent").value = content.getHTML();
 }
