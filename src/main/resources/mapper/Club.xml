@@ -21,7 +21,7 @@
 
 	<select id="readRecentClub" resultType="int"
 		parameterType="hashmap">
-		SELECT MAX(id) FROM hsca219.club
+		SELECT count(id) FROM hsca219.club
 	</select>
 
 	<select id="getCategoryNameList"
