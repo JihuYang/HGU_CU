@@ -52,6 +52,9 @@ public class ReserveController {
 		if (httpServletRequest.getSession().getAttribute("user") != null) {
 			userName = ((UserDTO) httpServletRequest.getSession().getAttribute("user")).getName();
 			email = ((UserDTO)httpServletRequest.getSession().getAttribute("user")).getEmail();
+			int admin = ((UserDTO)httpServletRequest.getSession().getAttribute("user")).getAdmin();
+			mv.addObject("admin", admin);
+
 		} 
 		mv.addObject("email", email);
 		mv.addObject("userName", userName);
@@ -79,6 +82,8 @@ public class ReserveController {
 			userId = ((UserDTO) httpServletRequest.getSession().getAttribute("user")).getId();
 			System.out.println("userId" + userId);
 			String userName = ((UserDTO) httpServletRequest.getSession().getAttribute("user")).getName();
+			int admin = ((UserDTO)httpServletRequest.getSession().getAttribute("user")).getAdmin();
+			mv.addObject("admin", admin);
 			System.out.println("userName" + userName);
 			mv.addObject("userID", userId);
 		} 

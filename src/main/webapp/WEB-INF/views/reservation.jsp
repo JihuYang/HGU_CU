@@ -99,13 +99,19 @@
 				<div class="section2">
 					<button type="button" class="btn_02" onclick="info()">이용안내</button>
 					<c:choose>
-						<c:when test="${not empty userId}">
-							<button type="button" class="btn_02"
-								onclick="info(); location.href='./reserve'">예약하기</button>
-						</c:when>
 						<c:when test="${empty userId}">
 							<button type="button" class="btn_02" onclick="login()">예약하기</button>
 						</c:when>
+						<c:when test="${not empty userId}">
+							<c:if test="${admin eq 3}">
+								<button type="button" class="btn_02" onclick="block()">예약하기</button>
+							</c:if>	
+							<c:if test="${admin != 3}">
+								<button type="button" class="btn_02"
+									onclick="info(); location.href='./reserve'">예약하기</button>
+							</c:if>
+						</c:when>
+					
 					</c:choose>
 
 				</div>
@@ -115,6 +121,10 @@
 				function login() {
 					alert("로그인 후 이용할 수 있는 기능입니다.");
 					if(confirm("로그인 창으로 이동하시겠습니까?")) location.href="<%=request.getContextPath()%>/loginGoogle";
+				}
+				function block() {
+					alert("관리자에 의해 차단된 계정입니다. 예약이 불가능합니다.");
+					location.href="<%=request.getContextPath()%>/reservation?spaceName=전체";
 				}
   				function info() { 
   					alert("<이용안내>"
