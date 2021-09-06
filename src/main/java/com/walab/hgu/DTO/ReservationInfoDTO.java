@@ -1,14 +1,11 @@
 package com.walab.hgu.DTO;
 
 import java.sql.Time;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.sql.Date;
-import java.util.TimeZone;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class ReservationInfoDTO {
+
 	private int id;
 	private int userId;
 	private int spaceId;
@@ -19,6 +16,7 @@ public class ReservationInfoDTO {
 	private Date reservationDate;
 	private Time startTime;
 	private Time endTime;
+	private Time sumReservation;
 	private String purpose;
 	private String memo;
 	private String Day;//officeHour 테이블 가져오기 위한 객체 추가 
@@ -120,7 +118,15 @@ public class ReservationInfoDTO {
 	public void setEndTime(Time endTime) {
 		this.endTime = endTime;
 	}
+	
+	public Time getSumReservation() {
+		return sumReservation;
+	}
 
+
+	public void setSumReservation(Time sumReservation) {
+		this.sumReservation = sumReservation;
+	}
 
 	public String getPurpose() {
 		return purpose;
@@ -152,12 +158,6 @@ public class ReservationInfoDTO {
 	}
 
 
-	@Override
-	public String toString() {
-		return "ReservaionDTO [id=" + id + " startTime="+startTime+" regdate=" + regdate+"memo= "+memo+"]";
-	}
-
-
 	public String getDay() {
 		return Day;
 	}
@@ -165,6 +165,15 @@ public class ReservationInfoDTO {
 
 	public void setDay(String day) {
 		Day = day;
+	}
+	
+	@Override
+	public String toString() {
+		return "ReservationInfoDTO [id=" + id + ", userId=" + userId + ", spaceId=" + spaceId + ", spaceName="
+				+ spaceName + ", person=" + person + ", email=" + email + ", phone=" + phone + ", reservationDate="
+				+ reservationDate + ", startTime=" + startTime + ", endTime=" + endTime + ", sumReservation="
+				+ sumReservation + ", purpose=" + purpose + ", memo=" + memo + ", Day=" + Day + ", regdate=" + regdate
+				+ "]";
 	}
 	
 }

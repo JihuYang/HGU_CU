@@ -82,6 +82,12 @@
 		AND reservationDate = #{reservationDate} AND #{startTime} BETWEEN startTime AND DATE_SUB(endTime, INTERVAL 30 MINUTE))
 	</insert>
  	
+ 	<!-- 하루동안 예약한 시간 계산 쿼리 -->
+ 	<select id="readSumReservation" parameterType="com.walab.hgu.DTO.ReservationInfoDTO">
+		SELECT userId, spaceId, reservationDate, sum(timediff(endTime,
+		startTime)) as sumReservation FROM hsca219.reservationInfo
+		where userId = 1 GROUP BY reservationDate
+ 	</select>>
  	
  	<!-- 관리자 예약 추가 쿼리 -->
 	<insert id="createAdminReservationInfo"
