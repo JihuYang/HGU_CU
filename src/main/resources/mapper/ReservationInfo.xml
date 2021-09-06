@@ -87,8 +87,8 @@
 		SELECT userId, spaceId, reservationDate, 
         sum(TIMEDIFF(endTime, startTime)) as sumReservation 
         FROM hsca219.reservationInfo
-		where userId = 1 GROUP BY reservationDate;
- 	</select>>
+		where userId = #{userId} GROUP BY reservationDate;
+ 	</select>
  	
  	<!-- 관리자 예약 추가 쿼리 -->
 	<insert id="createAdminReservationInfo"

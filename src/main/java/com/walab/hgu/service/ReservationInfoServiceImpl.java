@@ -79,6 +79,12 @@ public class ReservationInfoServiceImpl implements ReservationInfoService{
 	}
 	
 	@Override
+	public List<ReservationInfoDTO> readSumReservation(int userId) {
+		List<ReservationInfoDTO> infoList = reservationInfoDAO.readSumReservation(userId);
+		return infoList;
+	}
+	
+	@Override
 	public int deleteAdminReservation(int id){
 		return reservationInfoDAO.deleteAdminReservation(id);
 	}
