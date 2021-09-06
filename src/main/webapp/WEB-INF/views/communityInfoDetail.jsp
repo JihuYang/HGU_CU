@@ -94,17 +94,19 @@
 				<button class="btn btn-primary search-btn list-btn"
 					onclick="location.href='<%=request.getContextPath()%>/communityInfo/update/${communityInfoDetail.id}'">수정</button>
 				<button class="btn btn-primary search-btn list-btn"
-					onclick="location.href='<%=request.getContextPath()%>/communityInfo/delete/${communityInfoDetail.id}'">삭제</button>
+					onclick="deleteInfo()">삭제</button>
 			</c:if>
 			</div>
 		</div>
 	</div>
 
+	<div id="communityInfoDetailId" style="display:none;">${communityInfoDetail.id}</div>
+
 	<!-- Footer-->
 	<jsp:include page="/WEB-INF/views/inc/footer.jsp" />
 	<!-- Bootstrap core JS-->
 
-
+	<script src="<%=request.getContextPath()%>/resources/js/community.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
 	<!-- SimpleLightbox plugin JS-->
