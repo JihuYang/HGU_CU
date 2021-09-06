@@ -7,6 +7,11 @@ function createAdminReservationInfo(){
 	et=et+":00";
 	var spaceId=document.getElementById("spaceSelect").selectedIndex+1;
 	var userId=document.getElementById("userSelect").selectedIndex+1;
+	
+	if(e.options[e.selectedIndex].disabled==true || s.options[s.selectedIndex].disabled==true){
+		alert("예약이 마감 되었습니다. 시간을 다시 선택하여 주세요.");
+		return location.href="/adminReservation?num=1";
+	}
 
 	$.ajax({
 		url: "/adminReservation/create",
