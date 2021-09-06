@@ -123,7 +123,7 @@
 				</div>
 			</div>
 			<!-- 버튼들 -->
-				<div class="row justify-content-start mt-4 list-btn">
+				<div class="row justify-content-start mt-4 col-sm-10">
 					<button class="btn btn-primary search-btn list-btn" onclick="location.href='<%=request.getContextPath()%>/clubIntroduction'">목록</button>
 					<c:if test="${clubUserId eq userId || admin eq 0}">
 					<button class="btn btn-primary search-btn list-btn"
