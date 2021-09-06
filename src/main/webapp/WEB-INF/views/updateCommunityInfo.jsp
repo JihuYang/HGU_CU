@@ -80,8 +80,8 @@
 					        initialEditType: 'wysiwyg',
 					        hideModeSwitch: 'true'
 					      });
-
-					      content.setHTML('${communityInfoDetail.content}',true);
+							alert("${communityInfoDetail.content}");
+					      content.setHTML("${communityInfoDetail.content}",true);
 					</script>
 				
 				<div class="mb-3">

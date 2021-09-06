@@ -210,6 +210,8 @@ public class CommunityInfoController {
 		int userId = ((UserDTO)request.getSession().getAttribute("user")).getId();
 		String title = request.getParameter("title");
 		String content = request.getParameter("newContent");
+		
+		content = content.replaceAll("(\r|\n|\r\n|\n\r)","");
 
 		info.setId(id);
 		info.setUserId(userId);

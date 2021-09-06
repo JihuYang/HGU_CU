@@ -119,6 +119,10 @@
 	position:relative;
 } 
 
+.list-btns{
+	margin-left: 8rem !important;
+}
+
 .list-btn{
 	margin-left: 0 !important;
 }

@@ -3,7 +3,6 @@ package com.walab.hgu.controller;
 import java.io.File;
 import java.io.IOException;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -28,7 +27,6 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.walab.hgu.DTO.CategoryDTO;
-import com.walab.hgu.DTO.ClubAdvertiseDTO;
 import com.walab.hgu.DTO.ClubDTO;
 import com.walab.hgu.DTO.FileDTO;
 import com.walab.hgu.DTO.UserDTO;
@@ -58,12 +56,21 @@ public class ClubIntroductionController {
 		}
 		// System.out.println(categoryId);
 		List<ClubDTO> clubIntroList = clubService.getAllClubIntroduction(keyword);
+		
+		int count = 0;
+		for (ClubDTO list : clubIntroList) {
+			FileDTO imageFile = clubService.readClubPreviewImage(list.getId());
+			if (imageFile != null) {
+				clubIntroList.get(count).setOriginalUrl(imageFile.getOriginalUrl());
+			}
+			count++;
+		}
 		// List<CategoryDTO> categoryNameList = clubService.getCategoryNameList();
 		// String categoryName = clubIntroList.get(0).getCategoryName();
 		String defaultImage = settingService.readSetting().get(2).getTextValue();
 
 		mv.addObject("defaultImage", defaultImage);
-		System.out.println("defaultImage 입니다" + defaultImage);
+		//System.out.println("defaultImage 입니다" + defaultImage);
 		mv.addObject("clubIntroList", clubIntroList);
 		System.out.println("clubIntroList 입니다" + clubIntroList);
 		mv.addObject("keyword", keyword);
@@ -84,12 +91,25 @@ public class ClubIntroductionController {
 		System.out.println(categoryId);
 
 		List<ClubDTO> clubIntroList = clubService.readClubIntroductionPreview(categoryId, keyword);
+		int count = 0;
+		for (ClubDTO list : clubIntroList) {
+			FileDTO imageFile = clubService.readClubPreviewImage(list.getId());
+			if (imageFile != null) {
+				clubIntroList.get(count).setOriginalUrl(imageFile.getOriginalUrl());
+			}
+			count++;
+		}
+		
 		List<CategoryDTO> categoryNameList = clubService.getCategoryNameList();
 		// String categoryName = clubIntroList.get(0).getCategoryName();
 
 		String categoryName = categoryNameList.get(categoryId - 1).getCategoryName();
 		int newCategoryId = categoryNameList.get(categoryId - 1).getId();
 
+		String defaultImage = settingService.readSetting().get(2).getTextValue();
+
+		mv.addObject("defaultImage", defaultImage);
+		//System.out.println("defaultImage 입니다" + defaultImage);
 		mv.addObject("clubIntroList", clubIntroList);
 		mv.addObject("categoryName", categoryName);
 		mv.addObject("newCategoryId", newCategoryId);
@@ -175,8 +195,6 @@ public class ClubIntroductionController {
 		ClubDTO info = new ClubDTO();
 		ClubDTO sns = new ClubDTO();
 		FileDTO infoImageFile = new FileDTO();
-		int recentId = clubService.readRecentClub() + 1;
-		System.out.println("recentId: "+recentId);
 		
 		newContent = newContent.replaceAll("(\r|\n|\r\n|\n\r)","");
 		
@@ -201,11 +219,16 @@ public class ClubIntroductionController {
 		info.setClubDescription(newContent);
 		info.setFoundationDate(foundationDate);
 		info.setClubLocation(clubLocation);
+		clubService.createClubIntro(info);
+		
+		int recentId = clubService.readRecentClub();
+		System.out.println("recentId: "+recentId);
+		
 		sns.setInstagramLink(instagramLink);
 		sns.setFacebookLink(facebookLink);
 		sns.setId(recentId);
 
-		clubService.createClubIntro(info);
+		clubService.createClubSNS(sns);
 		
 
 		List<MultipartFile> fileList = request.getFiles("file");
@@ -240,7 +263,6 @@ public class ClubIntroductionController {
 
 
 		}
-		clubService.createClubSNS(sns);
 
 		mv.setViewName("redirect:/clubIntroduction");
 
