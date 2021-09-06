@@ -175,8 +175,6 @@ public class ClubIntroductionController {
 		ClubDTO info = new ClubDTO();
 		ClubDTO sns = new ClubDTO();
 		FileDTO infoImageFile = new FileDTO();
-		int recentId = clubService.readRecentClub() + 1;
-		System.out.println("recentId: "+recentId);
 		
 		newContent = newContent.replaceAll("(\r|\n|\r\n|\n\r)","");
 		
@@ -201,6 +199,11 @@ public class ClubIntroductionController {
 		info.setClubDescription(newContent);
 		info.setFoundationDate(foundationDate);
 		info.setClubLocation(clubLocation);
+		clubService.createClubIntro(info);
+		
+		int recentId = clubService.readRecentClub() + 1;
+		System.out.println("recentId: "+recentId);
+		
 		sns.setInstagramLink(instagramLink);
 		sns.setFacebookLink(facebookLink);
 		sns.setId(recentId);

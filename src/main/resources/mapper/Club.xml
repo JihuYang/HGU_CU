@@ -34,12 +34,12 @@
 		SELECT CL.id,CL.clubName,CL.userId, u.name as
 		clubCeoName,CL.clubLocation,CL.clubDescription,u.phone,categoryId,categoryName,CL.foundationDate,cS.instagramLink,cS.facebookLink
 		,cI.originalUrl, cI.fileOrder
-		FROM hsca219.club as CL ,hsca219.clubImage cI ,hsca219.category
-		CA,hsca219.user u ,hsca219.clubSNS cS
-		where CA.id = CL.categoryId and
-		CL.userId = u.id and CL.id = cS.clubId and CL.id = cI.clubId
-		and CA.id
-		= #{categoryId} and CL.id = #{clubId} LIMIT 1
+		FROM hsca219.club as CL 
+		LEFT JOIN clubImage cI on CL.id = cI.clubId
+		LEFT JOIN category c on c.id = CL.categoryId
+		LEFT JOIN user u on u.id = CL.userId
+		LEFT JOIN clubSNS cS on CL.id = cS.clubId
+		where CA.id = #{categoryId} and CL.id = #{clubId} LIMIT 1
 	</select>
 
 	<select id="readClubList" parameterType="HashMap"
