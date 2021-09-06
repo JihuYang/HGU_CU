@@ -52,7 +52,8 @@
 		<!-- 자료실 글 작성 -->
 		<div class="justify-content-md-center align-items-center">
 			<form method="POST" enctype="multipart/form-data" id="uploadForm"
-				action="<%=request.getContextPath()%>/communityMaterials/write/create">
+				action="<%=request.getContextPath()%>/communityMaterials/write/create"
+				onsubmit="return confirm('글을 등록하시겠습니까?');">
 				<input id="userId" name="userId" value='1' style="display: none;"></input>
 				<div class="title-bar">
 					<p class="rows title-bold">제목</p>

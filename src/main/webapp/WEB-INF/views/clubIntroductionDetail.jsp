@@ -122,15 +122,16 @@
 					</div>
 				</div>
 			</div>
-			<div class="row justify-content-start mt-4 list-btn">
-				<button class="btn btn-primary search-btn list-btn" onclick="location.href='<%=request.getContextPath()%>/clubIntroduction'">목록</button>
-				<c:if test="${clubUserId eq userId || admin eq 0}">
-				<button class="btn btn-primary search-btn list-btn"
-					onclick="location.href='<%=request.getContextPath()%>/clubIntroduction/update/${clubDetailList[0].categoryId}/${clubDetailList[0].id}'">수정</button>
-				<button class="btn btn-primary search-btn list-btn"
-					onclick="location.href='<%=request.getContextPath()%>/clubIntroduction/delete/${clubDetailList[0].id}'">삭제</button>
-				</c:if>
-			</div>
+			<!-- 버튼들 -->
+				<div class="row justify-content-start mt-4 list-btn">
+					<button class="btn btn-primary search-btn list-btn" onclick="location.href='<%=request.getContextPath()%>/clubIntroduction'">목록</button>
+					<c:if test="${clubUserId eq userId || admin eq 0}">
+					<button class="btn btn-primary search-btn list-btn"
+						onclick="location.href='<%=request.getContextPath()%>/clubIntroduction/update/${clubDetailList[0].categoryId}/${clubDetailList[0].id}'">수정</button>
+					<button class="btn btn-primary search-btn list-btn"
+						onclick="location.href='<%=request.getContextPath()%>/clubIntroduction/delete/${clubDetailList[0].id}'">삭제</button>
+					</c:if>
+				</div>
 		</div>
 	</div>
 	
