@@ -31,7 +31,14 @@
 						<%-- <th scope="row">${fn:length(communityInfoList) - status.index}</th> --%>
 						<th scope="row">${communityInfo.id}</th>
 						<td class="text-start title-shortening">${communityInfo.title}</td>
-						<td id="writer">${communityInfo.writer}</td>
+						<c:choose>
+							<c:when test="${admin == 0}">
+							<td id="writer">${communityInfo.writer}</td>
+							</c:when>
+							<c:otherwise>
+							<td id="writer">관리자</td>							
+							</c:otherwise>
+						</c:choose>
 						<td id="date">${formattedRegDate}</td>
 						<td id="count">${communityInfo.viewCount}</td>
 					</tr>
