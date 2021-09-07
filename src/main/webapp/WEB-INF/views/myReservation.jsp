@@ -55,13 +55,13 @@
 
 		</div>
 
-		<div class="content" style="height: 100vh;">
+		<div class="content">
 
 			<h3 style="text-align: center;">내 예약 목록</h3>
 			<br>
 			<br>
 
-			<div>
+			<div class="top-btns">
 				<c:if test="${empty spaceName || spaceName ne '전체'}">
 	            	<input type="button" class="btn dp-none" name="btn_name" value="전체" onclick="btn_listener(event)"/>
 	            </c:if><!-- 
@@ -83,7 +83,7 @@
 			</div>
 
 
-			<div>
+			<div class="myRvTable">
 				<select id="selectbox" class="form-select form-select-sm"
 					aria-label=".form-select-sm example">
 					<option selected>정렬 방법 선택</option>

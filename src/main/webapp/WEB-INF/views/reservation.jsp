@@ -71,7 +71,7 @@
 
 			<h3 style="text-align: center;">조회/예약하기</h3>
 			<br> <br>
-			<div id="top-btns">
+			<div class="top-btns">
 				<c:if test="${empty spaceName || spaceName ne '전체'}">
 					<input type="button" class="btn dp-none" name="btn_name" value="전체"
 						onclick="btn_listener(event)" />
