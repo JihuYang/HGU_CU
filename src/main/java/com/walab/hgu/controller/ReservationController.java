@@ -40,7 +40,9 @@ public class ReservationController {
 			int admin = ((UserDTO)request.getSession().getAttribute("user")).getAdmin();
 			mv.addObject("admin", admin);	
 			mv.addObject("userId", userId);	
-			mv.addObject("email", email);		
+			mv.addObject("email", email);	
+			List<ReservationInfoDTO> reservationSum = reservationInfoService.readSumReservation(userId);
+			System.out.println("reservationSum: " + reservationSum);
 		}
 		System.out.println(spaceName);
 		List<SpaceDTO> spaceList = spaceService.readSpace();
@@ -53,6 +55,8 @@ public class ReservationController {
 		}
 		System.out.println(reservationInfoList);
 
+
+		
 		mv.addObject("spaceList", spaceList);
 		mv.addObject("spaceList2", spaceList2);
 		mv.addObject("reservationInfoList", reservationInfoList);

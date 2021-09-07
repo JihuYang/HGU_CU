@@ -60,10 +60,10 @@
 	width: 33%;
 	position: relative;
 }
-
+/* 
 .logo-display {
-	display: inline-flex !important;
-}
+	display: contents !important;
+} */
 
 .btn-container {
 	position: relative;
@@ -101,10 +101,10 @@
 
 .overlay-item img {
 	display: block;
-
 	margin-right: auto;
 	margin-left: auto;
-	
+	max-height: 230px;
+    max-width: 100%;
 	
 }
 
