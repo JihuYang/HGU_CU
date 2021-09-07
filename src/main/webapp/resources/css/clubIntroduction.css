@@ -67,6 +67,8 @@
 	display: contents !important;
 } */
 
+
+
 .btn-container {
 	position: relative;
 }
@@ -156,6 +158,10 @@
 	-ms-filter: "progid: DXImageTransform.Microsoft.Alpha(Opacity=100)";
 	filter: alpha(opacity = 100);
 	opacity: 1;
+}
+
+.club-content .row{
+	width:100%;
 }
 
 @media screen and (max-width: 992px) and (min-width: 576px) {
