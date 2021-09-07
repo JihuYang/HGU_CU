@@ -158,4 +158,9 @@ function login() {
 	if(confirm("로그인 창으로 이동하시겠습니까?")) location.href="<%=request.getContextPath()%>/loginGoogle";
 }
 
+function myReservationDelete(id){
+	if(confirm("예약을 삭제 하시겠습니까?"))
+		location.href="/myReservation/delete/"+id;
+}
+
 

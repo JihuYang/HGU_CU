@@ -102,7 +102,7 @@
 					    <td>사용목적</td>
 					    <td>신청인</td>
 					    <td>신청일</td>
-					    <td>예약상태</td>
+					    <td>예약취소</td>
 				    </tr>
 				  </thead>
 				  <tbody>
@@ -132,7 +132,7 @@
 
 	<!-- Footer-->
 	<jsp:include page="/WEB-INF/views/inc/footer.jsp" />
-
+	<script src="<%=request.getContextPath()%>/resources/js/reservation.js"></script>
 
 	<!-- Bootstrap core JS-->
 	<script

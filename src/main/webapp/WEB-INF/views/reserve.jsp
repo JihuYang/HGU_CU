@@ -47,7 +47,7 @@
     }) 
 </script>
 
-        <div class="R_container h-100">
+        <div class="R_container">
             <div class="side_bar">	
        			<div class="reservation" style="background-color:gray">
                 	<div OnClick="location.href ='./reservation?spaceName=전체'" style="cursor:pointer;">
@@ -62,6 +62,7 @@
             </div>
            
         	<div class="content">
+        	<div id="reserveSection">
         	<div>
         		<table class="table" id="rvTable" style="text-align:left;">
 				  <tbody>
@@ -115,7 +116,7 @@
 				    <tr>
 				      <th scope="row">추가사항</th>
 				      <td>
-						<textarea id="memo" name="memo" style="height: 90%; width: 99%" placeholder="예상 인원, 구체적인 활동 내용 등"></textarea>
+						<textarea id="memo" name="memo" style="height: 90%; width: 99%" placeholder="예상 인원, 구체적인 활동 내용 등" ></textarea>
 					  </td>
 				    </tr>
 				  </tbody>
@@ -158,12 +159,12 @@
 		약관에 동의하시겠습니까?<br>
 
 		<br/>
-			<div class="buttonContainer w3-right">
+			<div class="buttonContainer w3-right" style="margin-bottom:40px;">
 			<input type="button" id="reserve_button" class="w3-button w3-blue" name="btn" disabled value="예약하기" onclick="validatation(); createReservation()">
 			<input type="button" id="cancle_button" class="w3-button w3-red" value="취소하기" onclick="location.href='./reservation'">
                         
          	</div>
-	
+		</div>
 	</div>  
 	</div>
 

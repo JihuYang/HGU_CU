@@ -111,6 +111,14 @@ public class ReservationInfoDAOImpl implements ReservationInfoDAO {
 		
 		return 0;
 	}
+	
+	@Override
+	public int deleteMyReservation(int id) {
+		
+		sqlSession.delete(namespace+".deleteAdminReservation", id);
+		
+		return 0;
+	}
 
 	//오피스아워 업데이트 
 	@Override

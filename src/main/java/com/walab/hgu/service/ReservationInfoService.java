@@ -18,6 +18,7 @@ public interface ReservationInfoService {
 	public List<ReservationInfoDTO> readSumReservation(int userId);
 	public int updateAdminReservationInfo(ReservationInfoDTO reservationInfo);
 	public int deleteAdminReservation(int id);
+	public int deleteMyReservation(int id);
 	
 	//officeHour 업데이트
 	public void updateStartHour(Map<String, Object> officeHourStart);

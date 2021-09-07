@@ -5,7 +5,7 @@
 
 
 	<select id="readReservationInfo" resultType="com.walab.hgu.DTO.ReservationInfoDTO" parameterType="hashmap">
-		SELECT r.userId, r.spaceId,r.reservationDate, r.startTime , r.endTime, r.purpose, 
+		SELECT r.id, r.userId, r.spaceId,r.reservationDate, r.startTime , r.endTime, r.purpose, 
 		r.memo, r.regdate,s.name as spaceName, u.name as person, u.email as email, u.phone as phone
 		FROM hsca219.reservationInfo as r
 		
@@ -16,7 +16,7 @@
  	</select>
  	
  		<select id="readReservationInfoById" resultType="com.walab.hgu.DTO.ReservationInfoDTO" parameterType="hashmap">
-		SELECT r.userId, r.spaceId,r.reservationDate, r.startTime , r.endTime, r.purpose, 
+		SELECT r.id, r.userId, r.spaceId,r.reservationDate, r.startTime , r.endTime, r.purpose, 
 		r.memo, r.regdate,s.name as spaceName, u.name as person, u.email as email, u.phone as phone
 		FROM hsca219.reservationInfo as r
 		
@@ -43,7 +43,7 @@
  	
  	<!-- 예약페이지에서 특정 공간 예약만 가져오려고  -->
  	<select id="readReservationBySpaceName" resultType="com.walab.hgu.DTO.ReservationInfoDTO" parameterType="hashmap">
-		SELECT r.userId, r.spaceId,r.reservationDate, r.startTime , r.endTime, r.purpose, 
+		SELECT r.id, r.userId, r.spaceId,r.reservationDate, r.startTime , r.endTime, r.purpose, 
 		r.memo, r.regdate,s.name as spaceName, u.name as person, u.email as email, u.phone as phone
 		FROM hsca219.reservationInfo as r
 		
@@ -54,7 +54,7 @@
  	</select>
  	
  	 <select id="readReservationBySpaceNameById" resultType="com.walab.hgu.DTO.ReservationInfoDTO" parameterType="hashmap">
-		SELECT r.userId, r.spaceId,r.reservationDate, r.startTime , r.endTime, r.purpose, 
+		SELECT r.id, r.userId, r.spaceId,r.reservationDate, r.startTime , r.endTime, r.purpose, 
 		r.memo, r.regdate,s.name as spaceName, u.name as person, u.email as email, u.phone as phone
 		FROM hsca219.reservationInfo as r
 		
@@ -117,6 +117,12 @@
 	
 	<!-- 관리자 예약 삭제 쿼리 -->
 	<delete id="deleteAdminReservation"
+		parameterType="int">
+		DELETE FROM hsca219.reservationInfo WHERE id = #{id}
+	</delete>
+	
+	<!-- 내 예약 삭제 쿼리 -->
+	<delete id="deleteMyReservation"
 		parameterType="int">
 		DELETE FROM hsca219.reservationInfo WHERE id = #{id}
 	</delete>
