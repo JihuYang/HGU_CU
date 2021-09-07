@@ -103,6 +103,11 @@ public class ReservationInfoServiceImpl implements ReservationInfoService{
 	public int deleteAdminReservation(int id){
 		return reservationInfoDAO.deleteAdminReservation(id);
 	}
+	
+	@Override
+	public int deleteMyReservation(int id){
+		return reservationInfoDAO.deleteMyReservation(id);
+	}
 
 	@Override //오피스아우 업데이트 
 	public void updateStartHour(Map<String, Object> officeHourStart) {

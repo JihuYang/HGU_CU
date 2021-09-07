@@ -23,6 +23,7 @@ public interface ReservationInfoDAO {
 
 	public int updateAdminReservationInfo(ReservationInfoDTO reservationInfo);
 	public int deleteAdminReservation(int id);
+	public int deleteMyReservation(int id);
 	
 	//오피스아워 업데이
 	public void updateStartHour(Map<String, Object> officeHourStart);

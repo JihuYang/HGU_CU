@@ -25,6 +25,7 @@
   	text-overflow: ellipsis;
   	white-space: nowrap;
   	width: 600px;
+  	height: 30px;
 }
 .position{
 	position:relative;

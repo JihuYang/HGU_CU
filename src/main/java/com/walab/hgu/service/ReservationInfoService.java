@@ -22,6 +22,7 @@ public interface ReservationInfoService {
 	public int readTimeDifference(Time startTime, Time endTime);
 	public int updateAdminReservationInfo(ReservationInfoDTO reservationInfo);
 	public int deleteAdminReservation(int id);
+	public int deleteMyReservation(int id);
 	
 	//officeHour 업데이트
 	public void updateStartHour(Map<String, Object> officeHourStart);

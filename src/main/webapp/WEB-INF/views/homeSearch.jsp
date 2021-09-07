@@ -377,7 +377,7 @@
 											</c:when>
 										</c:choose> --%>
 										<th class="col-3 text-center">${clubAdvertiseList.title}</th>
-										<td class="col-5 text-center text-muted p-size clubAd-content">${clubAdvertiseList.content}</td>
+										<td id="clubAd-content"class="col-5">${clubAdvertiseList.content}</td>
 									</tr>
 								</c:forEach>
 							</c:if>
@@ -393,7 +393,7 @@
 											</c:when>
 										</c:choose> --%>
 										<th class="col-3 text-center">${clubAdvertiseList.title}</th>
-										<td class="col-5 text-center text-muted p-size clubAd-content">${clubAdvertiseList.content}</td>
+										<td id="clubAd-content"class="col-5">${clubAdvertiseList.content}</td>
 									</tr>
 								</c:forEach>
 							</c:if>
@@ -436,7 +436,12 @@
 					</c:if>
 				</div>
 			</c:if>
-			
+			<script type="text/javascript">
+				var content = document.getElementById('clubAd-content');
+				var realContent = content.firstChild;
+	
+				realContent.className = 'text-center text-muted p-size clubAd-content';
+			</script>
 			
 			
 			
