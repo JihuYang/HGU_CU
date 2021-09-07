@@ -60,8 +60,9 @@
 						<p class="text-align">동방: ${clubDetailList.clubLocation}</p>
 						<p class="text-align">인스타그램: ${clubDetailList.instagramLink}</p>
 						<p class="text-align">페이스북: ${clubDetailList.facebookLink}</p>
-						<p class="text-align content-size">
-						<c:set var="clubUserId" value="${clubDetailList.userId}" />						
+						<div class="text-align content-size">
+						<c:set var="clubUserId" value="${clubDetailList.userId}" />
+						동아리 설명글:<br/><br/>${clubDetailList.clubDescription} </div>				
 					</c:forEach>
 				</div>
 				<div class="logo">
