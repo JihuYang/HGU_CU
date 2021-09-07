@@ -87,6 +87,12 @@ public class ReservationInfoServiceImpl implements ReservationInfoService{
 	}
 	
 	@Override
+	public List<ReservationInfoDTO> readWeekSumReservation(int userId) {
+		List<ReservationInfoDTO> infoList = reservationInfoDAO.readWeekSumReservation(userId);
+		return infoList;
+	}
+
+	@Override
 	public int readTimeDifference(Time startTime, Time endTime) {
 		int infoList = reservationInfoDAO.readTimeDifference(startTime, endTime);
 		return infoList;

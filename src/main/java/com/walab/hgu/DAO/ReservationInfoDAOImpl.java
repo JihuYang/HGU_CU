@@ -103,6 +103,15 @@ public class ReservationInfoDAOImpl implements ReservationInfoDAO {
 	}
 	
 	@Override
+	public List<ReservationInfoDTO> readWeekSumReservation(int userId) {
+		
+		Map<String, Object> reservationInfoParam = new HashMap<String, Object>();
+		reservationInfoParam.put("userId", userId);
+
+		return sqlSession.selectList(namespace+".readWeekSumReservation", reservationInfoParam);
+	}
+	
+	@Override
 	public int readTimeDifference(Time startTime, Time endTime){
 		Map<String, Object> reservationInfoParam = new HashMap<String, Object>();
 		reservationInfoParam.put("startTime", startTime);

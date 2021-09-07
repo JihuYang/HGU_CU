@@ -49,7 +49,10 @@ function validate(){
 		success: function(result){
 			if(result==0){
 				alert("하루에 예약 가능한 시간을 초과하였습니다.");
-  				location.href = "/reservation";
+  				location.href = "/reservation?spaceName=전체";
+			} else if(result==-1){
+				alert("일주일에 예약 가능한 시간을 초과하였습니다.");
+  				location.href = "/reservation?spaceName=전체";
 			}
 			else if(result==1){
 				createReservation();

@@ -18,6 +18,7 @@ public interface ReservationInfoDAO {
 	public List<ReservationInfoDTO> readReservationBySpaceName(String spaceName);
 	public List<ReservationInfoDTO> readReservationBySpaceNameById(String spaceName, int userId);
 	public List<ReservationInfoDTO> readSumReservation(int userId, Date reservationDate);
+	public List<ReservationInfoDTO> readWeekSumReservation(int userId);
 	public int readTimeDifference(Time startTime, Time endTime);
 
 	public int updateAdminReservationInfo(ReservationInfoDTO reservationInfo);
