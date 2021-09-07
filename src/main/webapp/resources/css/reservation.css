@@ -6,7 +6,11 @@
 	padding:7px;
 	margin:0;
 }
-
+#top-btns{
+	text-align: center;
+    align-items:center;
+    font-weight:bold;
+}
 .reservation{
 	color:#212721;
 }
@@ -42,30 +46,33 @@ a:link ,a:visited{
 .R_container{
 	width:100%;
 	height:auto;
-	margin-top:100px;
+	margin-top:65px;
 }
 
 .R_container .content{
-    margin-left:200px;
+    margin-left:120px;
     padding:50px;
     padding-bottom:10px;
     margin-top:0; 
 }
 
 .section2{
-    display: grid;
+    /* display: grid;
     grid-template-columns: 1fr 1fr;
+    justify-content: space-around; */
+    text-align: center;
+    align-items:center;
+    font-weight:bold;
 }
 
 .section3{
-    display: flex;
-    justify-content: space-around;
     text-align: center;
 }
 
 .section3 div{
-    width: 100%;
-    margin: 10px;
+    width:97% !important;
+    padding:5px 0;
+    margin:10px auto;
 	border:none !important;
     background-color: #D0D0CE !important; 
     border-radius:5px;
@@ -78,7 +85,7 @@ a:link ,a:visited{
 
 .btn{
     border-radius: 25px !important;
-    margin: 2px;
+    margin: auto;
     border:3px solid#D0D0CE !important;
 }
 
@@ -96,13 +103,17 @@ a:link ,a:visited{
 
 
 .btn_02{
-    margin: 10px;
-    background-color: #D0D0CE;
+	width:150px !important;
+    margin: 20px 20px;
+    padding:10px 0;
+    background-color: #326295;
+    color:white;
     outline:none;
     box-shadow: none;
     border: 0;
     outline:0;
     border-radius:25px;
+    font-weight:bold;
 }
 
 table td{
@@ -112,7 +123,7 @@ table td{
 
 #space-table{
     border: 1px solid #D0D0CE;
-    width:98%;
+    width:82%;
     margin:auto;
 }
 
@@ -143,7 +154,7 @@ table td{
 }
 
 #calendar{
-	max-width: 900px;
+	max-width: 1000px;
 	margin:0 auto;
 }
 

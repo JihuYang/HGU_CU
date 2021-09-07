@@ -71,7 +71,7 @@
 
 			<h3 style="text-align: center;">조회/예약하기</h3>
 			<br> <br>
-			<div>
+			<div id="top-btns">
 				<c:if test="${empty spaceName || spaceName ne '전체'}">
 					<input type="button" class="btn dp-none" name="btn_name" value="전체"
 						onclick="btn_listener(event)" />
@@ -95,7 +95,7 @@
 						</c:when>
 					</c:choose>
 				</c:forEach>
-				<br>
+				</div>
 				<div class="section2">
 					<button type="button" class="btn_02" onclick="info()">이용안내</button>
 					<c:choose>
@@ -153,7 +153,7 @@
 			    }
   			
   			</script>
-			</div>
+			
 
 			<table id="space-table">
 				<tr>
@@ -170,15 +170,14 @@
 				</tr>
 			</table>
 
-			<div class="section3">
+			<!-- <div class="section3">
 				<div>예약 현황</div>
-				<!-- <div>지난예약</div> -->
-			</div>
+			</div> -->
 
 			<br>
-
-			<div id='calendar'></div>
-
+			
+			<div id='calendar'>
+			</div>
 			<script
 				src="<%=request.getContextPath()%>/resources/js/calendarjQuery.js"></script>
 			<script
