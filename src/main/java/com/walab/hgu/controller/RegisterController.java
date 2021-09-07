@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.walab.hgu.service.UserService;
 import com.walab.hgu.DTO.UserDTO;
@@ -29,11 +30,33 @@ public class RegisterController {
 		return "register";
 	}
 
+//	@RequestMapping(value = "/registerSave", method = RequestMethod.POST)
+//	@ResponseBody
+//	public void registerSave(HttpServletRequest httpServletRequest) {
+//
+//		String name = httpServletRequest.getParameter("name");
+//		String email = httpServletRequest.getParameter("email");
+//		String phoneNumber = httpServletRequest.getParameter("phone");
+//		int admin = 2;
+//
+//		UserDTO u = new UserDTO();
+//		u.setName(name);
+//		u.setEmail(email);
+//		u.setPhone(phoneNumber);
+//		u.setAdmin(admin);
+//		System.out.println("registerSave Controller: " + u);
+//		int result = userService.createUserInfo(u);
+//		System.out.println(result);
+//		u.setId(userService.readUserIDByEmail(email));
+//		httpServletRequest.getSession().setAttribute("user", u);
+//
+//	}
+	
 	@RequestMapping(value = "/registerSave", method = RequestMethod.POST)
 	@ResponseBody
-	public void registerSave(HttpServletRequest httpServletRequest) {
+	public ModelAndView registerSave(ModelAndView mv, HttpServletRequest httpServletRequest) {
 
-		String name = httpServletRequest.getParameter("name");
+		String name = httpServletRequest.getParameter("userName");
 		String email = httpServletRequest.getParameter("email");
 		String phoneNumber = httpServletRequest.getParameter("phone");
 		int admin = 2;
@@ -48,7 +71,10 @@ public class RegisterController {
 		System.out.println(result);
 		u.setId(userService.readUserIDByEmail(email));
 		httpServletRequest.getSession().setAttribute("user", u);
-
+		
+		mv.setViewName("redirect:/");
+		
+		return mv;
 	}
 
 }
