@@ -6,13 +6,11 @@ function validatation(){
 	var et=e.options[e.selectedIndex].value;
 	et=et+":00";
 	var spaceId=document.getElementById("spaceSelect").selectedIndex+1;
-	var userId=document.getElementById("userSelect").selectedIndex+1;
 
 	$.ajax({
 		url: "/adminReservation/validate",
 		type: "POST",
 		data: {
-			userId: userId,
 			spaceId: spaceId,
 			startTime: st,
 			endTime: et,
@@ -26,6 +24,42 @@ function validatation(){
 			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
         }
 	});
+}
+
+function validate(){	
+	var s=document.getElementById("startTime");
+	var st=s.options[s.selectedIndex].value;
+	st=st+":00";
+	var e=document.getElementById("endTime");
+	var et=e.options[e.selectedIndex].value;
+	et=et+":00";
+	var reservationDate=document.getElementById("date").value;
+	var spaceId=document.getElementById("spaceSelect").selectedIndex+1;
+	
+		
+	$.ajax({
+		url: "/validate",
+		type: "POST",
+		data: {
+			spaceId: spaceId,
+			startTime: st,
+			endTime: et,
+			reservationDate: reservationDate,
+		},
+		success: function(result){
+			if(result==0){
+				alert("하루에 예약 가능한 시간을 초과하였습니다.");
+  				location.href = "/reservation";
+			}
+			else if(result==1){
+				createReservation();
+			}
+		}, 
+		error:function(request, error){
+			console.log("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+        }
+	});
+	
 }
 function createAdminReservationInfo(){	
 	var s=document.getElementById("startTime");

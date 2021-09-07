@@ -226,8 +226,7 @@ public class AdminController {
 	
 	@RequestMapping(value = "/adminReservation/validate", method = RequestMethod.POST)
 	@ResponseBody
-	public ModelAndView validation(ModelAndView mv,
-			@RequestParam(value="userId") int userId,
+	public ModelAndView validation(ModelAndView mv, HttpServletRequest httpServletRequest,
 			@RequestParam(value="spaceId") int spaceId,
 			@RequestParam(value="startTime") Time startTime,
 			@RequestParam(value="endTime") Time endTime,
@@ -235,8 +234,10 @@ public class AdminController {
 			@RequestParam(value="date") Date date) {
 		
 		ReservationInfoDTO info = new ReservationInfoDTO();
-		
-		info.setUserId(userId);
+		System.out.println("date: " + date);
+		int userID = ((UserDTO)httpServletRequest.getSession().getAttribute("user")).getId();
+		mv.addObject("userID", userID);
+		info.setUserId(userID);
 		info.setSpaceId(spaceId);
 		info.setStartTime(startTime);
 		info.setEndTime(endTime);
@@ -245,7 +246,7 @@ public class AdminController {
 		
 		System.out.println(info.toString());
 
-		reservationInfoService.createAdminReservationInfo(info);
+		//reservationInfoService.createAdminReservationInfo(info);
 	
 		mv.setViewName("redirect:/adminReservation?num=1");
 			
@@ -260,7 +261,6 @@ public class AdminController {
 			@RequestParam(value="startTime") Time startTime,
 			@RequestParam(value="endTime") Time endTime,
 			@RequestParam(value="date") Date date) {
-		
 		ReservationInfoDTO info = new ReservationInfoDTO();
         SimpleDateFormat simpleDateFormat
         = new SimpleDateFormat("HH:mm:ss");
