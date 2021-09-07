@@ -2,6 +2,9 @@ package com.walab.hgu.controller;
 
 import java.io.IOException;
 import java.sql.Time;
+import java.text.SimpleDateFormat;
+import java.time.Duration;
+import java.time.Period;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -221,9 +224,9 @@ public class AdminController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "/adminReservation/create", method = RequestMethod.POST)
+	@RequestMapping(value = "/adminReservation/validate", method = RequestMethod.POST)
 	@ResponseBody
-	public ModelAndView createAdminReservationInfo(ModelAndView mv,
+	public ModelAndView validation(ModelAndView mv,
 			@RequestParam(value="userId") int userId,
 			@RequestParam(value="spaceId") int spaceId,
 			@RequestParam(value="startTime") Time startTime,
@@ -238,6 +241,41 @@ public class AdminController {
 		info.setStartTime(startTime);
 		info.setEndTime(endTime);
 		info.setPurpose(purpose);
+		info.setReservationDate(date);
+		
+		System.out.println(info.toString());
+
+		reservationInfoService.createAdminReservationInfo(info);
+	
+		mv.setViewName("redirect:/adminReservation?num=1");
+			
+		return mv;
+	}
+	
+	@RequestMapping(value = "/adminReservation/create", method = RequestMethod.POST)
+	@ResponseBody
+	public ModelAndView createAdminReservationInfo(ModelAndView mv,
+			@RequestParam(value="userId") int userId,
+			@RequestParam(value="spaceId") int spaceId,
+			@RequestParam(value="startTime") Time startTime,
+			@RequestParam(value="endTime") Time endTime,
+			@RequestParam(value="date") Date date) {
+		
+		ReservationInfoDTO info = new ReservationInfoDTO();
+        SimpleDateFormat simpleDateFormat
+        = new SimpleDateFormat("HH:mm:ss");
+
+    // Parsing the Time Period
+//    Date date1 = simpleDateFormat.parse(startTime);
+//    Date date2 = simpleDateFormat.parse(startTime);
+//		Math.abs(endTime -  startTime);
+//		Duration duration = Duration.between(startTime, endTime);
+//
+//		Time interval = Period.between(endTime, startTime);
+		info.setUserId(userId);
+		info.setSpaceId(spaceId);
+		info.setStartTime(startTime);
+		info.setEndTime(endTime);
 		info.setReservationDate(date);
 		
 		System.out.println(info.toString());
