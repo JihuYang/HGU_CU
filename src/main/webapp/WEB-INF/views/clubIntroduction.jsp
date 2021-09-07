@@ -80,7 +80,7 @@
 				</c:if>
 				<c:if test="${ !empty clubIntroList}">
 					<div class="club-content">
-						<div class="row ">
+						<div class="row">
 							<jsp:include
 								page="/WEB-INF/views/ajaxContent/clubIntroduction.jsp" />
 						</div>
