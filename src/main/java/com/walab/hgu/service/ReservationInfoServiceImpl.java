@@ -1,5 +1,7 @@
 package com.walab.hgu.service;
 
+import java.sql.Date;
+import java.sql.Time;
 import java.util.List;
 import java.util.Map;
 
@@ -79,11 +81,23 @@ public class ReservationInfoServiceImpl implements ReservationInfoService{
 	}
 	
 	@Override
-	public List<ReservationInfoDTO> readSumReservation(int userId) {
-		List<ReservationInfoDTO> infoList = reservationInfoDAO.readSumReservation(userId);
+	public List<ReservationInfoDTO> readSumReservation(int userId, Date reservationDate) {
+		List<ReservationInfoDTO> infoList = reservationInfoDAO.readSumReservation(userId, reservationDate);
 		return infoList;
 	}
 	
+	@Override
+	public List<ReservationInfoDTO> readWeekSumReservation(int userId) {
+		List<ReservationInfoDTO> infoList = reservationInfoDAO.readWeekSumReservation(userId);
+		return infoList;
+	}
+
+	@Override
+	public int readTimeDifference(Time startTime, Time endTime) {
+		int infoList = reservationInfoDAO.readTimeDifference(startTime, endTime);
+		return infoList;
+	
+	}
 	@Override
 	public int deleteAdminReservation(int id){
 		return reservationInfoDAO.deleteAdminReservation(id);

@@ -23,3 +23,8 @@
 	border: none;
 }
 
+body { 
+	background-image: url("/resources/img/hgu_home.png"); 
+	background-size : cover ; 
+	background-position: center top;
+}

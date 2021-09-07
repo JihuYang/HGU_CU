@@ -160,7 +160,7 @@
 
 		<br/>
 			<div class="buttonContainer w3-right" style="margin-bottom:40px;">
-			<input type="button" id="reserve_button" class="w3-button w3-blue" name="btn" disabled value="예약하기" onclick="validatation(); createReservation()">
+			<input type="button" id="reserve_button" class="w3-button w3-blue" name="btn" disabled value="예약하기" onclick="validate();">
 			<input type="button" id="cancle_button" class="w3-button w3-red" value="취소하기" onclick="location.href='./reservation'">
                         
          	</div>

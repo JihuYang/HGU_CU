@@ -41,8 +41,6 @@ public class ReservationController {
 			mv.addObject("admin", admin);	
 			mv.addObject("userId", userId);	
 			mv.addObject("email", email);	
-			List<ReservationInfoDTO> reservationSum = reservationInfoService.readSumReservation(userId);
-			System.out.println("reservationSum: " + reservationSum);
 		}
 		System.out.println(spaceName);
 		List<SpaceDTO> spaceList = spaceService.readSpace();

@@ -1,5 +1,7 @@
 package com.walab.hgu.DAO;
 
+import java.sql.Date;
+import java.sql.Time;
 import java.util.List;
 import java.util.Map;
 
@@ -15,7 +17,10 @@ public interface ReservationInfoDAO {
 	public int countInfo(String keyword);
 	public List<ReservationInfoDTO> readReservationBySpaceName(String spaceName);
 	public List<ReservationInfoDTO> readReservationBySpaceNameById(String spaceName, int userId);
-	public List<ReservationInfoDTO> readSumReservation(int userId);
+	public List<ReservationInfoDTO> readSumReservation(int userId, Date reservationDate);
+	public List<ReservationInfoDTO> readWeekSumReservation(int userId);
+	public int readTimeDifference(Time startTime, Time endTime);
+
 	public int updateAdminReservationInfo(ReservationInfoDTO reservationInfo);
 	public int deleteAdminReservation(int id);
 	public int deleteMyReservation(int id);

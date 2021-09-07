@@ -28,6 +28,7 @@
 .logo{
 	float:right;
 	width: 380px;
+	position:relative;
 }
 
 .carousel-inner {
@@ -37,7 +38,7 @@
     
 }
 
-@media screen and (max-width: 1199px) { 
+@media screen and (max-width: 1326px) { 
 	.logo{
 		width: 100%;
 		float:none;

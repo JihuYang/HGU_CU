@@ -43,7 +43,7 @@
 		<div
 			class="row h-auto align-items-center justify-content-center text-center">
 			<div class="col-lg-6 align-self-end">
-				<h3 class="font-weight-bold pt-title">${categoryName}동아리 소개</h3>
+				<h3 class="font-weight-bold pt-title">${categoryName} 동아리 소개</h3>
 				<p class="text-muted mb-0">한동대 ${categoryName} 모든 동아리들을 응원합니다 !</p>
 			</div>
 			<div class="col-sm-10 justify-content-md-center">
