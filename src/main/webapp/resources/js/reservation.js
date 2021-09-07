@@ -49,7 +49,10 @@ function validate(){
 		success: function(result){
 			if(result==0){
 				alert("하루에 예약 가능한 시간을 초과하였습니다.");
-  				location.href = "/reservation";
+  				location.href = "/reservation?spaceName=전체";
+			} else if(result==-1){
+				alert("일주일에 예약 가능한 시간을 초과하였습니다.");
+  				location.href = "/reservation?spaceName=전체";
 			}
 			else if(result==1){
 				createReservation();
@@ -190,6 +193,11 @@ function search(){
 function login() {
 	alert("로그인 후 이용할 수 있는 기능입니다.");
 	if(confirm("로그인 창으로 이동하시겠습니까?")) location.href="<%=request.getContextPath()%>/loginGoogle";
+}
+
+function myReservationDelete(id){
+	if(confirm("예약을 삭제 하시겠습니까?"))
+		location.href="/myReservation/delete/"+id;
 }
 
 

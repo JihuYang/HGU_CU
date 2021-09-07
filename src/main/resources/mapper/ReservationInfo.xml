@@ -5,7 +5,7 @@
 
 
 	<select id="readReservationInfo" resultType="com.walab.hgu.DTO.ReservationInfoDTO" parameterType="hashmap">
-		SELECT r.userId, r.spaceId,r.reservationDate, r.startTime , r.endTime, r.purpose, 
+		SELECT r.id, r.userId, r.spaceId,r.reservationDate, r.startTime , r.endTime, r.purpose, 
 		r.memo, r.regdate,s.name as spaceName, u.name as person, u.email as email, u.phone as phone
 		FROM hsca219.reservationInfo as r
 		
@@ -16,7 +16,7 @@
  	</select>
  	
  		<select id="readReservationInfoById" resultType="com.walab.hgu.DTO.ReservationInfoDTO" parameterType="hashmap">
-		SELECT r.userId, r.spaceId,r.reservationDate, r.startTime , r.endTime, r.purpose, 
+		SELECT r.id, r.userId, r.spaceId,r.reservationDate, r.startTime , r.endTime, r.purpose, 
 		r.memo, r.regdate,s.name as spaceName, u.name as person, u.email as email, u.phone as phone
 		FROM hsca219.reservationInfo as r
 		
@@ -43,7 +43,7 @@
  	
  	<!-- 예약페이지에서 특정 공간 예약만 가져오려고  -->
  	<select id="readReservationBySpaceName" resultType="com.walab.hgu.DTO.ReservationInfoDTO" parameterType="hashmap">
-		SELECT r.userId, r.spaceId,r.reservationDate, r.startTime , r.endTime, r.purpose, 
+		SELECT r.id, r.userId, r.spaceId,r.reservationDate, r.startTime , r.endTime, r.purpose, 
 		r.memo, r.regdate,s.name as spaceName, u.name as person, u.email as email, u.phone as phone
 		FROM hsca219.reservationInfo as r
 		
@@ -54,7 +54,7 @@
  	</select>
  	
  	 <select id="readReservationBySpaceNameById" resultType="com.walab.hgu.DTO.ReservationInfoDTO" parameterType="hashmap">
-		SELECT r.userId, r.spaceId,r.reservationDate, r.startTime , r.endTime, r.purpose, 
+		SELECT r.id, r.userId, r.spaceId,r.reservationDate, r.startTime , r.endTime, r.purpose, 
 		r.memo, r.regdate,s.name as spaceName, u.name as person, u.email as email, u.phone as phone
 		FROM hsca219.reservationInfo as r
 		
@@ -90,6 +90,14 @@
 		where userId = #{userId} AND reservationDate = #{reservationDate} GROUP BY reservationDate;
  	</select>
  	
+ 	<!-- 일주일동안 예약한 시간 계산 쿼리 -->
+ 	<select id="readWeekSumReservation" resultType="com.walab.hgu.DTO.ReservationInfoDTO" parameterType="com.walab.hgu.DTO.ReservationInfoDTO">
+		SELECT SUM(sumReservation) as sumReservation FROM (SELECT sum(TIMEDIFF(endTime, startTime)) as sumReservation 
+        FROM hsca219.reservationInfo as rI INNER JOIN hsca219.space as s ON rI.spaceId = s.id
+		where userId = #{userId} AND reservationDate between CURDATE() and (CURDATE() + INTERVAL 7 DAY) 
+		GROUP BY reservationDate)c;
+	 </select>
+
  	 <select id="readTimeDifference" resultType="int" parameterType="com.walab.hgu.DTO.ReservationInfoDTO">
         SELECT sum(TIMEDIFF(#{endTime}, #{startTime})) as sumReservation;
  	</select>
@@ -121,6 +129,12 @@
 	
 	<!-- 관리자 예약 삭제 쿼리 -->
 	<delete id="deleteAdminReservation"
+		parameterType="int">
+		DELETE FROM hsca219.reservationInfo WHERE id = #{id}
+	</delete>
+	
+	<!-- 내 예약 삭제 쿼리 -->
+	<delete id="deleteMyReservation"
 		parameterType="int">
 		DELETE FROM hsca219.reservationInfo WHERE id = #{id}
 	</delete>

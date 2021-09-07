@@ -21,7 +21,7 @@
     <td>${reservationInfo.purpose}</td>
     <td>${reservationInfo.person}</td>
     <td>${formattedRegDate}</td>
-    <td></td>
+    <td><button type="button" class="btn btn-secondary delete-btn" onclick="myReservationDelete(${reservationInfo.id})">삭제</button></td>
   </tr>
   </c:if>
  </c:forEach>

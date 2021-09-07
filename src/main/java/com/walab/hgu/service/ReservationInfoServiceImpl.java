@@ -87,6 +87,12 @@ public class ReservationInfoServiceImpl implements ReservationInfoService{
 	}
 	
 	@Override
+	public List<ReservationInfoDTO> readWeekSumReservation(int userId) {
+		List<ReservationInfoDTO> infoList = reservationInfoDAO.readWeekSumReservation(userId);
+		return infoList;
+	}
+
+	@Override
 	public int readTimeDifference(Time startTime, Time endTime) {
 		int infoList = reservationInfoDAO.readTimeDifference(startTime, endTime);
 		return infoList;
@@ -95,6 +101,11 @@ public class ReservationInfoServiceImpl implements ReservationInfoService{
 	@Override
 	public int deleteAdminReservation(int id){
 		return reservationInfoDAO.deleteAdminReservation(id);
+	}
+	
+	@Override
+	public int deleteMyReservation(int id){
+		return reservationInfoDAO.deleteMyReservation(id);
 	}
 
 	@Override //오피스아우 업데이트 

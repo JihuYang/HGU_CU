@@ -6,10 +6,24 @@
 	padding:7px;
 	margin:0;
 }
-#top-btns{
+.top-btns{
 	text-align: center;
     align-items:center;
     font-weight:bold;
+}
+
+.top-btns .btn{
+	margin-top:10px;
+}
+
+.myRvTable{
+	width:87%;
+	margin:20px auto;
+}
+
+#reserveSection{
+	width:87%;
+	margin:auto;
 }
 .reservation{
 	color:#212721;
@@ -27,7 +41,7 @@ a:link ,a:visited{
 .side_bar{
 	position:fixed;
 	width:200px;
-	height:200px;
+	height:170px;
 	background-color:#fff;
 	top:80px;
     bottom:0;
@@ -50,16 +64,14 @@ a:link ,a:visited{
 }
 
 .R_container .content{
-    margin-left:120px;
+    margin-left:200px;
     padding:50px;
     padding-bottom:10px;
-    margin-top:0; 
+    margin-top:0;
+    margin-right:100px; 
 }
 
 .section2{
-    /* display: grid;
-    grid-template-columns: 1fr 1fr;
-    justify-content: space-around; */
     text-align: center;
     align-items:center;
     font-weight:bold;
@@ -121,10 +133,22 @@ table td{
 	text-align:center;
 }
 
+#rvTable td{
+	vertical-align: middle;
+	text-align:left;
+}
+
+#rvTable th{
+	vertical-align: middle;
+	text-align:left;
+	padding:10px 50px;
+}
+
 #space-table{
     border: 1px solid #D0D0CE;
-    width:82%;
+    width:100%;
     margin:auto;
+    max-width:1000px;
 }
 
 #space-table td{
