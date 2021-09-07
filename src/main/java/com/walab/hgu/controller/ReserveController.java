@@ -136,12 +136,16 @@ public class ReserveController {
 		info.setStartTime(startTime);
 		info.setEndTime(endTime);
 		info.setReservationDate(reservationDate);
+		
+//		List<ReservationInfoDTO> weekInfoList = reservationInfoService.readWeekSumReservation(userID);
+//		System.out.println("weekInfoList: " + weekInfoList);
+		
 		if(admin != 0) {
 			int intervalTime = reservationInfoService.readTimeDifference(startTime, endTime);
 	
 			List<ReservationInfoDTO> reservationInfoList = reservationInfoService.readSumReservation(userID, reservationDate);
-			List<ReservationInfoDTO> weekInfoList = reservationInfoService.readWeekSumReservation(userID);
 			List<SettingDTO> settingList = settingService.readSetting();
+			
 			int dayLimit = settingList.get(1).getValue();
 			dayLimit *= 10000;
 			
@@ -150,18 +154,26 @@ public class ReserveController {
 			
 			if(!reservationInfoList.isEmpty()) {
 				int sumReserve = reservationInfoList.get(0).getSumReservation();
-				int sumWeekReserve = weekInfoList.get(0).getSumReservation();
 				System.out.println("sumReserve: " + sumReserve);
-				System.out.println("sumWeekReserve: " + sumWeekReserve);
 				System.out.println("dayLimit: " + dayLimit);
-				System.out.println("weekLimit: " + weekLimit);
 
 				if (intervalTime + sumReserve > dayLimit) {
 					return 0;
-				} else if(intervalTime + sumWeekReserve > weekLimit) {
-					return -1;
 				} else return 1;
-			} else return 1;
+			}
+//			List<ReservationInfoDTO> weekInfoList = reservationInfoService.readWeekSumReservation(userID);
+//			System.out.println("weekInfoList: " + weekInfoList);
+
+//			if(!weekInfoList.isEmpty()) {
+//				int sumWeekReserve = weekInfoList.get(0).getSumReservation();
+//				System.out.println("sumWeekReserve: " + weekInfoList);
+//				System.out.println("weekLimit: " + weekLimit);
+//				if (intervalTime + sumWeekReserve > weekLimit) {
+//					return -1;
+//				} else return 1;
+//			}
+
+			else return 1;
 		} else return 1;
 	}
 

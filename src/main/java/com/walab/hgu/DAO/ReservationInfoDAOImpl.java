@@ -107,6 +107,7 @@ public class ReservationInfoDAOImpl implements ReservationInfoDAO {
 		
 		Map<String, Object> reservationInfoParam = new HashMap<String, Object>();
 		reservationInfoParam.put("userId", userId);
+		System.out.println("dao userid: " + userId);
 
 		return sqlSession.selectList(namespace+".readWeekSumReservation", reservationInfoParam);
 	}
