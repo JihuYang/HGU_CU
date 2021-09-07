@@ -88,11 +88,16 @@
 				<button class="btn btn-primary search-btn list-btn"
 					onclick="location.href='<%=request.getContextPath()%>/clubAdvertise/update/${clubAdDetailList[0].id}'">수정</button>
 				<button class="btn btn-primary search-btn list-btn"
-					onclick="location.href='<%=request.getContextPath()%>/clubAdvertise/delete/${clubAdDetailList[0].id}'">삭제</button>
+					onclick="deleteClubAd()">삭제</button>
 				</c:if>
 			</div>
 		</div>
 	</div>
+	
+	<div id="clubAdId" style="display:none;">${clubAdDetailList[0].id}</div>
+	<script src="<%=request.getContextPath()%>/resources/js/clubAdvertise.js"></script>
+	
+	
 	<jsp:include page="/WEB-INF/views/inc/footer.jsp" />
 	<!-- Bootstrap core JS-->
 	<script

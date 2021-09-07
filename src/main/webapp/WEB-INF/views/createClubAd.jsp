@@ -54,7 +54,8 @@
 			<!-- 홍보글 테이블 -->
 			<div class="col-sm-10 justify-content-md-center">
 				<form method="POST" enctype="multipart/form-data" id="uploadForm"
-					action="<%=request.getContextPath()%>/clubAdvertise/write/create">
+					action="<%=request.getContextPath()%>/clubAdvertise/write/create"
+					onsubmit="return confirm('글을 등록하시겠습니까?');">
 					<input id="userId" name="userId" value='1' style="display: none;"></input>
 					<div class="title-bar">
 						<p class="rows title-bold">제목</p>

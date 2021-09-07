@@ -72,6 +72,11 @@
 	transition: border 0.5s ease;
 }
 
+.login-btn{
+	background-color:#326295 !important;
+	color: white !important;
+}
+
 @media ( max-width : 576px) {
 	#mainNav .logo {
 		width: 200px;

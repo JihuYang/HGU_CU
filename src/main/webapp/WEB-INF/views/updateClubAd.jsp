@@ -55,7 +55,8 @@
 			<!-- 동아리 소개 수정 -->
 			<div class="justify-content-md-center align-items-center">
 				<form method="POST" enctype="multipart/form-data" id="uploadForm"
-					action="<%=request.getContextPath()%>/clubAdvertise/write/update">
+					action="<%=request.getContextPath()%>/clubAdvertise/write/update"
+					onsubmit="return confirm('글을 수정하시겠습니까?');">
 					<input id="id" name="id" value='${clubAdDetailList[0].id}'
 						style="display: none;"></input>
 					<div class="title-bar">
@@ -70,7 +71,7 @@
 					<input id="newContent" type="hidden" name="newContent" value="">
 					<script src="https://uicdn.toast.com/editor/latest/toastui-editor-all.min.js"></script>
 					<script type="text/javascript">
-						 alert('${clubAdDetailList[0].content}');
+						 /* alert('${clubAdDetailList[0].content}'); */
 						/*const oldContent = '${communityInfoDetail.content}'; */
 						
 					

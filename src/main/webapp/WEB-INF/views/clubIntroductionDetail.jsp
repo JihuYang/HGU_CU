@@ -129,12 +129,13 @@
 					<button class="btn btn-primary search-btn list-btn"
 						onclick="location.href='<%=request.getContextPath()%>/clubIntroduction/update/${clubDetailList[0].categoryId}/${clubDetailList[0].id}'">수정</button>
 					<button class="btn btn-primary search-btn list-btn"
-						onclick="location.href='<%=request.getContextPath()%>/clubIntroduction/delete/${clubDetailList[0].id}'">삭제</button>
+						onclick="deleteClubIntro()">삭제</button>
 					</c:if>
 				</div>
 		</div>
 	</div>
-	
+	<div id="clubIntroductionId" style="display:none;">${clubDetailList[0].id}</div>
+	<script src="<%=request.getContextPath()%>/resources/js/club.js"></script>
 	<jsp:include page="/WEB-INF/views/inc/footer.jsp" />
 	<!-- Bootstrap core JS-->
 	<script
