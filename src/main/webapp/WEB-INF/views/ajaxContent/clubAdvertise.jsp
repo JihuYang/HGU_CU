@@ -28,9 +28,17 @@
 			</c:choose>
 			<td>
 				<h5 class="clubAd-content">${clubAdvertiseList.title}</h5>
-				<p class="text-muted p-size clubAd-content">${clubAdvertiseList.content}</p>
+				<div id="clubAd-content">${clubAdvertiseList.content}</div>
 			</td>
 		</tr>
 	</c:forEach>
 </table>
 </c:if>
+
+<script type="text/javascript">
+var content = document.getElementById('clubAd-content');
+var realContent = content.firstChild;
+
+realContent.className = 'text-muted p-size clubAd-content';
+
+</script>>

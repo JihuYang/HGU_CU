@@ -23,7 +23,7 @@
 	border: none;
 }
 
-body { 
+.home-img { 
 	background-image: url("/resources/img/hgu_home.png"); 
 	background-size : cover ; 
 	background-position: center top;
