@@ -1,5 +1,7 @@
 package com.walab.hgu.DAO;
 
+import java.sql.Date;
+import java.sql.Time;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -91,14 +93,24 @@ public class ReservationInfoDAOImpl implements ReservationInfoDAO {
 	}
 	
 	@Override
-	public List<ReservationInfoDTO> readSumReservation(int userId){
+	public List<ReservationInfoDTO> readSumReservation(int userId, Date reservationDate) {
 		
 		Map<String, Object> reservationInfoParam = new HashMap<String, Object>();
 		reservationInfoParam.put("userId", userId);
+		reservationInfoParam.put("reservationDate", reservationDate);
 
 		return sqlSession.selectList(namespace+".readSumReservation", reservationInfoParam);
 	}
 	
+	@Override
+	public int readTimeDifference(Time startTime, Time endTime){
+		Map<String, Object> reservationInfoParam = new HashMap<String, Object>();
+		reservationInfoParam.put("startTime", startTime);
+		reservationInfoParam.put("endTime", endTime);
+
+		return sqlSession.selectOne(namespace+".readTimeDifference", reservationInfoParam);		
+	}
+
 	@Override
 	public int updateAdminReservationInfo(ReservationInfoDTO reservationInfo) {
 		return sqlSession.update(namespace+".updateAdminReservationInfo", reservationInfo);

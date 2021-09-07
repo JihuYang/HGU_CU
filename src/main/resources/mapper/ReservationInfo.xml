@@ -84,10 +84,14 @@
  	
  	<!-- 하루동안 예약한 시간 계산 쿼리 -->
  	<select id="readSumReservation" resultType="com.walab.hgu.DTO.ReservationInfoDTO" parameterType="com.walab.hgu.DTO.ReservationInfoDTO">
-		SELECT userId, spaceId, reservationDate, 
+		SELECT name as spaceName, userId, spaceId, reservationDate, 
         sum(TIMEDIFF(endTime, startTime)) as sumReservation 
-        FROM hsca219.reservationInfo
-		where userId = #{userId} GROUP BY reservationDate;
+        FROM hsca219.reservationInfo as rI INNER JOIN hsca219.space as s ON rI.spaceId = s.id
+		where userId = #{userId} AND reservationDate = #{reservationDate} GROUP BY reservationDate;
+ 	</select>
+ 	
+ 	 <select id="readTimeDifference" resultType="int" parameterType="com.walab.hgu.DTO.ReservationInfoDTO">
+        SELECT sum(TIMEDIFF(#{endTime}, #{startTime})) as sumReservation;
  	</select>
  	
  	<!-- 관리자 예약 추가 쿼리 -->
