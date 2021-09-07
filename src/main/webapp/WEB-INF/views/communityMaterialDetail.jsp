@@ -92,13 +92,15 @@
 				<button class="btn btn-primary search-btn list-btn"
 					onclick="location.href='<%=request.getContextPath()%>/communityMaterials/update/${communityMaterialDetail.id}'">수정</button>
 				<button class="btn btn-primary search-btn list-btn"
-					onclick="location.href='<%=request.getContextPath()%>/communityMaterials/delete/${communityMaterialDetail.id}'">삭제</button>
+					onclick="deleteMete()">삭제</button>
 			</c:if>
 			</div>
 		</div>
 
 	</div>
-
+	
+	<div id="communityMaterialDetailId" style="display:none;">${communityMaterialDetail.id}</div>
+	<script src="<%=request.getContextPath()%>/resources/js/community.js"></script>
 	<!-- Footer-->
 	<jsp:include page="/WEB-INF/views/inc/footer.jsp" />
 	<!-- Bootstrap core JS-->

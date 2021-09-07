@@ -101,6 +101,7 @@
 	</div>
 
 	<div id="communityInfoDetailId" style="display:none;">${communityInfoDetail.id}</div>
+	<script src="<%=request.getContextPath()%>/resources/js/club.js"></script>
 
 	<!-- Footer-->
 	<jsp:include page="/WEB-INF/views/inc/footer.jsp" />
