@@ -1,3 +1,5 @@
+*:focus { outline:none !important; }
+
 .h-auto{
 	height:auto;
 }

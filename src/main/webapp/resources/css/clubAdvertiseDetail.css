@@ -1,3 +1,5 @@
+*:focus { outline:none !important; }
+
 .pt-title{
 	padding-top: 4em !important;
     padding-bottom: 1em !important;

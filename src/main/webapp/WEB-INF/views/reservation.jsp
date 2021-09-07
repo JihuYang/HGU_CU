@@ -171,8 +171,8 @@
 			</table>
 
 			<div class="section3">
-				<div>예약</div>
-				<div>지난예약</div>
+				<div>예약 현황</div>
+				<!-- <div>지난예약</div> -->
 			</div>
 
 			<br>

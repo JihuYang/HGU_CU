@@ -54,7 +54,8 @@
 			<!-- 소개글 내용쓰기 -->
 			<div class="col-sm-10 justify-content-md-center">
 			<form method="POST" enctype="multipart/form-data" id="uploadForm"
-				action="<%=request.getContextPath()%>/clubIntroduction/write/update">
+				action="<%=request.getContextPath()%>/clubIntroduction/write/update"
+				onsubmit="return confirm('글을 수정하시겠습니까?');">
 				<input id="id" name="id" value='${clubDetailList[0].id}'
 					style="display: none;"></input>
 				<div class="dp-it">

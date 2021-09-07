@@ -53,7 +53,8 @@
 			<!-- 소개글 내용쓰기 -->
 			<div class="col-sm-10 justify-content-md-center">
 			<form method="POST" enctype="multipart/form-data" id="uploadForm"
-				action="<%=request.getContextPath()%>/clubIntroduction/write/create">
+				action="<%=request.getContextPath()%>/clubIntroduction/write/create"
+				onsubmit="return confirm('글을 등록하시겠습니까?');">
 				<div class="dp-it">
 					<div class="title-bar">
 					<input id="userId" name="userId" value="1" style="display:none">

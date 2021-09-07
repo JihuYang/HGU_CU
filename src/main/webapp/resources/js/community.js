@@ -112,3 +112,8 @@ function createMate(){
 function updateMate(){
 	document.getElementById("newContent").value = content.getHTML();
 }
+
+function deleteMete(){
+	if(confirm("글을 삭제 하시겠습니까?"))
+		location.href="/communityMaterials/delete/"+$("#communityMaterialDetailId").text();
+}

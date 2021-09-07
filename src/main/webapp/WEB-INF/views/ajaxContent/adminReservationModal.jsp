@@ -8,7 +8,8 @@
 
 
 <!-- 추가 모달 -->
-<div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="addModal" tabindex="-1" role="dialog" 
+aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
     <div class="modal-content">
       <form class="modal-body">
@@ -31,12 +32,8 @@
   				<input class="input-resize" id="date" type="date" name="date" onchange="changeDate(this)"
 						value=""						min=1999-01-01						max=2100-12-30>
   				<select id='startTime' class="startTime input-resize" onchange="handleTimeLimit(this)">
-  					<!-- <option value='8:00' selected>8:00</option>
-  					<option value='8:30'>8:30</option> -->
   				</select>
   				<select id='endTime' class="endTime input-resize">
-			        <option value='9:00' selected>9:00</option>
-			        <option value='10:00' >10:00</option>
 				</select>
   			</div>
         <label for="purpose">사용 목적</label>
@@ -87,12 +84,15 @@
 		  
 	document.getElementById("date").value = new Date().toISOString().substring(0, 10);
 	
+
+	
 	$("#openModalBtn").on('click', function(){
 		$(".modal-body")[0].reset();
 		document.getElementById("updateBtn").style.display = "none";
 		document.getElementById("createBtn").style.display = "block";
 		$('#addModal').modal('show');
-		
+		$('#startTime').find('option:first').attr('selected', 'selected');
+		$('#endTime').find('option:first').attr('selected', 'selected');
 		document.getElementById("date").value = new Date().toISOString().substring(0, 10);
 	});
 	

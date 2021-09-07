@@ -65,3 +65,8 @@ function updateClub(){
 	document.getElementById("newContent").value = content.getHTML();
 	//alert("update 내용 : "+document.getElementById("newContent").value);
 }
+
+function deleteClubIntro(){
+	if(confirm("글을 삭제 하시겠습니까?"))
+		location.href="/clubIntroduction/delete/"+$("#clubIntroductionId").text();
+}
