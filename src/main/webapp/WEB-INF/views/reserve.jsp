@@ -91,7 +91,7 @@
 				    <tr>
 				      <th scope="row">날짜 *</th>
 				      <td><input class="input-resize" id="date" type="date" name="date" onchange="changeDate(this)"
-						value="2019-09-22"						min=1999-01-01						max=2100-12-30></td>
+						value=""						min=1999-01-01						max=2100-12-30></td>
 				    </tr>
 				    <tr>
 				      <th scope="row">시작 시간</th>
@@ -189,7 +189,8 @@
 	
 		var today =new Date();
 		var endDate = new Date();
-		      
+		
+		today.setDate(today.getDate() + 1);
 		today=DateFormat(today);
 		      
 		endDate.setDate(endDate.getDate() + 7);
@@ -203,7 +204,7 @@
 			  
 		document.getElementById("reservable").innerHTML=today+" ~ "+endDate;
 			  
-		document.getElementById('date').value = new Date().toISOString().substring(0, 10);
+		//document.getElementById('date').value = new Date().toISOString().substring(0, 10);
 		  
 		  
 	      /* 시작시간 구하기 */

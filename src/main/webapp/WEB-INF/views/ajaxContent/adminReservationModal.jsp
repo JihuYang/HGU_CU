@@ -53,6 +53,17 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
 </div>
 
 <script>
+	var hour=7;
+	var startTime = document.getElementById('startTime');
+	var endTime = document.getElementById('endTime');
+	var spaceElem = document.getElementById('spaceSelect');
+	var spaceIndex = spaceElem.selectedIndex + 1;
+	var rvDate=$("#date").val();
+	var time;
+	var reservationList = new Array();
+	var StimeIdx;
+	
+	
 	Date.prototype.addDays = function(days) {
 		var date = new Date(this.valueOf());
 		date.setDate(date.getDate() + days);
@@ -70,7 +81,7 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
 	
 	var today =new Date();
 	var endDate = new Date();
-	      
+
 	today=DateFormat(today);
 	      
 	endDate.setDate(endDate.getDate() + 7);
@@ -78,6 +89,7 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
 		  
 	//today = yyyy+'-'+mm+'-'+dd;
 	document.getElementById("date").setAttribute("min", today);
+	document.getElementById("date").value = new Date().toISOString().substring(0, 10);
 	  
 	//오늘 날짜부터 일주일까지
 	document.getElementById("date").setAttribute("max", endDate);
@@ -105,35 +117,28 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
 		document.getElementById("updateBtn").style.display = "block";
 		var name = $('#userName'+clickedId).text();
 		var userId = $('#userId'+clickedId).text();
-		var purpose = $('#purpose'+clickedId).text();
-		var space = $('#space'+clickedId).text();
+		var eiditPurpose = $('#purpose'+clickedId).text();
+		var editSpace = $('#space'+clickedId).text();
 		var email = $('#email'+clickedId).text();
-		var reservationDate = $('#reservationDate'+clickedId).text();
-		var startTime = $('#startTime'+clickedId).text();
-		var endTime = $('#endTime'+clickedId).text();
+		var editReservationDate = $('#reservationDate'+clickedId).text();
+		var editStartTime = $('#startTime'+clickedId).text();
+		var editEndTime = $('#endTime'+clickedId).text();
 		var updateId = $('#updateId'+clickedId).text();
 		
 		$('#addModal').modal('show');
 		$('#updateId').val(updateId);
 		$('#userSelect').val(userId).attr("selected", "selected");
-		$('#purpose').val(purpose);
-		$("#spaceSelect").val(space).attr("selected", "selected");
-		$('#date').val(reservationDate);
-		$("#startTime").val(startTime).attr("selected", "selected");
-		$("#endTime")[0].innerHTML="<option value='"+endTime+"' selected>"+endTime+"</option>";
+		$('#purpose').val(eiditPurpose);
+		$("#spaceSelect").val(editSpace).attr("selected", "selected");
+		$('#date').val(editReservationDate);
+		$("#startTime").val(editStartTime).attr("selected", "selected");
+		$("#endTime")[0].innerHTML="<option value='"+editEndTime+"' selected>"+editEndTime+"</option>";
+		
 	}
 
 
 	/* 시작시간 구하기 */
-	var hour=7;
-   	var startTime = document.getElementById('startTime');
-   	var endTime = document.getElementById('endTime');
-   	var spaceElem = document.getElementById('spaceSelect');
-   	var spaceIndex = spaceElem.selectedIndex + 1;
-   	var rvDate=$("#date").val();
-   	var time;
-   	var reservationList = new Array();
-   	var StimeIdx;
+	
 
 	for(var i =0; i<32; i++){
 		var min =':00';
