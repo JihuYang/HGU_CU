@@ -46,7 +46,7 @@ readIsAdminByUserID<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"
 	id="mainNav">
 	<div class="container px-4 px-lg-5 respx-3 ">
 		<img src="<%=request.getContextPath()%>/resources/assets/img/logo.png"
-			class="logo navbar-brand"
+			class="logo navbar-brand cursor-p"
 			onclick="location.href='<%=request.getContextPath()%>/'">
 		<!--한동대학교 총동아리연합회<br>
 		<span id="name">HANDONG GLOBAL UNIVERSITY CLUB UNION</span></a> -->
@@ -59,10 +59,10 @@ readIsAdminByUserID<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<div class="justify-content-md-center">
 				<ul class="navbar-nav my-2 my-lg-0">
-					<li class="nav-item nav-bottom-border mx-2"
+					<li class="nav-item nav-bottom-border mx-2 cursor-p"
 						onclick="location.href='<%=request.getContextPath()%>/info'"><a
 						class="nav-link">총동연 소개</a></li>
-					<li class="nav-item nav-bottom-border mx-2 dropdown"
+					<li class="nav-item nav-bottom-border mx-2 dropdown cursor-p"
 						id="dropdown-display"><a class="nav-link dropdown-toggle"
 						data-toggle="dropdown"
 						onclick="location.href='<%=request.getContextPath()%>/clubIntroduction'">동아리
@@ -70,34 +70,34 @@ readIsAdminByUserID<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"
 						<ul class="dropdown-menu" id="dropdown-content">
 							<c:forEach items="${categoryNameList}" var="categoryNameList"
 								varStatus="status">
-								<li><a class="dropdown-item"
+								<li class="cursor-p"><a class="dropdown-item"
 									href="<%=request.getContextPath()%>/clubIntroduction/${categoryNameList.id}">${categoryNameList.categoryName}</a></li>
 							</c:forEach>
 						</ul></li>
-					<li class="nav-item nav-bottom-border mx-2"><a
+					<li class="nav-item nav-bottom-border mx-2 cursor-p"><a
 						class="nav-link"
 						onclick="location.href='<%=request.getContextPath()%>/reservation?spaceName=전체'">시설
 							예약</a></li>
-					<li class="nav-item nav-bottom-border mx-2 dropdown"
+					<li class="nav-item nav-bottom-border mx-2 dropdown cursor-p"
 						id="dropdown-display-community"><a
 						class="nav-link dropdown-toggle" data-toggle="dropdown"
 						onclick="location.href='<%=request.getContextPath()%>/communityInfo?num=1'">커뮤니티</a>
 						<ul class="dropdown-menu dropdown-menu-community"
 							id="dropdown-content-community">
-							<li><a class="dropdown-item"
+							<li class="cursor-p"><a class="dropdown-item"
 								onclick="location.href='<%=request.getContextPath()%>/communityInfo?num=1'">공지사항</a></li>
-							<li><a class="dropdown-item"
+							<li class="cursor-p"><a class="dropdown-item"
 								onclick="location.href='<%=request.getContextPath()%>/communityMaterials?num=1'">자료실</a></li>
-							<li><a class="dropdown-item"
+							<li class="cursor-p"><a class="dropdown-item"
 								onclick="location.href='<%=request.getContextPath()%>/communityEvent'">행사일정</a></li>
-							<li><a class="dropdown-item"
+							<li class="cursor-p"><a class="dropdown-item"
 								onclick="location.href='<%=request.getContextPath()%>/communityComplaints'">민원</a></li>
 						</ul></li>
-					<li class="nav-item nav-bottom-border mx-2"><a
+					<li class="nav-item nav-bottom-border mx-2 cursor-p"><a
 						class="nav-link"
 						onclick="location.href='<%=request.getContextPath()%>/clubAdvertise?num=1'">동아리
 							홍보</a></li>
-					<li class="nav-item nav-bottom-border mx-2"><a
+					<li class="nav-item nav-bottom-border mx-2 cursor-p"><a
 						class="nav-link"
 						onclick="location.href='<%=request.getContextPath()%>/admin?num=1'">관리자</a></li>
 
@@ -106,7 +106,7 @@ readIsAdminByUserID<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"
 			</div>
 			<div class="justify-content-md-end">
 				<ul class="navbar-nav my-2 my-lg-0">
-					<li class="nav-item button-padding border-none">
+					<li class="nav-item button-padding border-none cursor-p">
 						<button type="button" class=" login-btn btn-outline-secondary "
 							onclick="location.href='<%=request.getContextPath()%>/loginGoogle/cancel'">로그아웃</button>
 					</li>

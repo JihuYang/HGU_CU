@@ -11073,3 +11073,6 @@ header.masthead h1, header.masthead .h1 {
 .headLine{
 	margin-top:3rem;
 }
+.cursor-p:hover{
+	cursor:pointer;
+}
