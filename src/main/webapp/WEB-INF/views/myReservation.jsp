@@ -84,12 +84,12 @@
 
 
 			<div class="myRvTable">
-				<select id="selectbox" class="form-select form-select-sm"
+				<!-- <select id="selectbox" class="form-select form-select-sm"
 					aria-label=".form-select-sm example">
 					<option selected>정렬 방법 선택</option>
 					<option value="1">신청일 순</option>
 					<option value="2">사용일 순</option>
-				</select>
+				</select> -->
 			
                 <table class="table">
 				  <thead class="table-light">

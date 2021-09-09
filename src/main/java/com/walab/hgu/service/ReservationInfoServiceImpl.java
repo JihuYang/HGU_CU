@@ -89,6 +89,7 @@ public class ReservationInfoServiceImpl implements ReservationInfoService{
 	@Override
 	public List<ReservationInfoDTO> readWeekSumReservation(int userId) {
 		List<ReservationInfoDTO> infoList = reservationInfoDAO.readWeekSumReservation(userId);
+		System.out.println("service: " + userId);
 		return infoList;
 	}
 

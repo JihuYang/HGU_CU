@@ -107,6 +107,7 @@ public class ReservationInfoDAOImpl implements ReservationInfoDAO {
 		
 		Map<String, Object> reservationInfoParam = new HashMap<String, Object>();
 		reservationInfoParam.put("userId", userId);
+		System.out.println("dao userid: " + userId);
 
 		return sqlSession.selectList(namespace+".readWeekSumReservation", reservationInfoParam);
 	}
@@ -136,7 +137,7 @@ public class ReservationInfoDAOImpl implements ReservationInfoDAO {
 	@Override
 	public int deleteMyReservation(int id) {
 		
-		sqlSession.delete(namespace+".deleteAdminReservation", id);
+		sqlSession.delete(namespace+".deleteMyReservation", id);
 		
 		return 0;
 	}
