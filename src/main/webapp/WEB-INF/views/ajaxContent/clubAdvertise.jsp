@@ -41,4 +41,4 @@ var realContent = content.firstChild;
 
 realContent.className = 'text-muted p-size clubAd-content';
 
-</script>>
+</script>
