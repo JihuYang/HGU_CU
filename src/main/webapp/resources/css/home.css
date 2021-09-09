@@ -25,6 +25,23 @@
 
 .home-img { 
 	background-image: url("/resources/img/hgu_home.png"); 
-	background-size : cover ; 
 	background-position: center top;
+	background-repeat:no-repeat;
+	/* background-size: auto 103%; */
+    background-size: cover;
+    height: 97%;
+} 
+/* .container {
+	position:relative;
 }
+.container::after {
+	content: "";
+	background-image: url("/resources/img/hgu_home.png"); 
+	background-size: auto 103%;
+	background-position: center top;
+	background-repeat:no-repeat;
+	z-index: -1;
+	position: absolute;
+  top: 0;
+  left: 0;
+} */
