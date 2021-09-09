@@ -91,11 +91,15 @@
  	</select>
  	
  	<!-- 일주일동안 예약한 시간 계산 쿼리 -->
- 	<select id="readWeekSumReservation" resultType="int" parameterType="com.walab.hgu.DTO.ReservationInfoDTO">
-		SELECT SUM(sumReservation) as sumReservation FROM (SELECT sum(TIMEDIFF(endTime, startTime)) as sumReservation 
+ 	<select id="readWeekSumReservation" resultType="com.walab.hgu.DTO.ReservationInfoDTO" parameterType="com.walab.hgu.DTO.ReservationInfoDTO">
+<!-- 		SELECT SUM(sumReservation) as sumReservation FROM (SELECT sum(TIMEDIFF(endTime, startTime)) as sumReservation 
         FROM hsca219.reservationInfo as rI INNER JOIN hsca219.space as s ON rI.spaceId = s.id
 		where userId = #{userId} AND reservationDate between CURDATE() and (CURDATE() + INTERVAL 7 DAY) 
-		GROUP BY reservationDate)c;
+		GROUP BY reservationDate)c; -->
+		SELECT sum(TIMEDIFF(endTime, startTime)) as sumReservation 
+        FROM hsca219.reservationInfo as rI INNER JOIN hsca219.space as s ON rI.spaceId = s.id
+		where userId = #{userId} AND reservationDate between CURDATE() and (CURDATE() + INTERVAL 7 DAY) 
+		GROUP BY reservationDate
 	 </select>
 
  	<!-- 사용자가 선택한 시간 계산 쿼리 -->

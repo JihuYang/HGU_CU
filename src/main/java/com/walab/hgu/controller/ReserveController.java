@@ -161,17 +161,21 @@ public class ReserveController {
 					return 0;
 				} else return 1;
 			}
-//			List<ReservationInfoDTO> weekInfoList = reservationInfoService.readWeekSumReservation(userID);
-//			System.out.println("weekInfoList: " + weekInfoList);
+			List<ReservationInfoDTO> weekInfoList = reservationInfoService.readWeekSumReservation(userID);
+			System.out.println("weekInfoList: " + weekInfoList);
 
-//			if(!weekInfoList.isEmpty()) {
-//				int sumWeekReserve = weekInfoList.get(0).getSumReservation();
-//				System.out.println("sumWeekReserve: " + weekInfoList);
-//				System.out.println("weekLimit: " + weekLimit);
-//				if (intervalTime + sumWeekReserve > weekLimit) {
-//					return -1;
-//				} else return 1;
-//			}
+			if(!weekInfoList.isEmpty()) {
+				int sumWeekReserve = 0;
+				for (ReservationInfoDTO temp: weekInfoList) {
+					sumWeekReserve += temp.getSumReservation();
+				}
+				System.out.println("weekInfoList: " + weekInfoList);
+				System.out.println("sumWeekReserve: " + sumWeekReserve);
+				System.out.println("weekLimit: " + weekLimit);
+				if (intervalTime + sumWeekReserve > weekLimit) {
+					return -1;
+				} else return 1;
+			}
 
 			else return 1;
 		} else return 1;

@@ -25,6 +25,7 @@ import com.walab.hgu.DTO.ClubAdvertiseDTO;
 import com.walab.hgu.DTO.ClubDTO;
 import com.walab.hgu.DTO.CommunityInfoDTO;
 import com.walab.hgu.DTO.CommunityMaterialDTO;
+import com.walab.hgu.DTO.FileDTO;
 import com.walab.hgu.DTO.Page;
 import com.walab.hgu.DTO.ReservationInfoDTO;
 import com.walab.hgu.DTO.SettingDTO;
@@ -98,6 +99,19 @@ public class HomeController {
 		
 		// 동아리 소개
 		List<ClubDTO> clubIntroList = clubService.getAllClubIntroduction(keyword);
+		int count = 0;
+		for (ClubDTO list : clubIntroList) {
+			FileDTO imageFile = clubService.readClubPreviewImage(list.getId());
+			if (imageFile != null) {
+				clubIntroList.get(count).setOriginalUrl(imageFile.getOriginalUrl());
+			}
+			count++;
+		}
+		// List<CategoryDTO> categoryNameList = clubService.getCategoryNameList();
+		// String categoryName = clubIntroList.get(0).getCategoryName();
+		String defaultImage = settingService.readSetting().get(2).getTextValue();
+
+		mv.addObject("defaultImage", defaultImage);
 		
 		// 동아리 홍보
 		page.get(3).setCount(clubAdvertiseService.countInfo(searchType, keyword));
