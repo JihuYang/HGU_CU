@@ -15,7 +15,7 @@
 					개인정보처리 방침<br>
 				</div>
 				<div class="small text-center text-muted">
-					오피스 아워 시간: <br>
+					오피스 아워: <br>
 					<c:forEach items="${officeHour}" var="officeHour" varStatus="status">
 					<fmt:formatDate value="${officeHour.startTime}" var="formattedStartTime" type="time" pattern="HH:mm"/>
 					<fmt:formatDate value="${officeHour.endTime}" var="formattedEndTime" type="time" pattern="HH:mm"/>

@@ -81,7 +81,7 @@
 						multiple>
 				</div>
 				<div>
-					<a class="btn btn-primary back-btn bottom-btn" href="./"
+					<a class="btn btn-primary back-btn bottom-btn" href="javascript:history.back()"
 						role="button">뒤로</a>
 					<button class="btn btn-primary submit-btn bottom-btn" type="submit" onclick="createMate()">
 						<!-- onclick="createCommunityInfo(); uploadFile();" -->

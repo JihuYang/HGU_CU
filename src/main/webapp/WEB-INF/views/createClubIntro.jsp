@@ -109,7 +109,7 @@
 					</div>
 					
 					<div>
-						<a class="btn btn-primary back-btn bottom-btn" href="./${categotyId}" role="button">뒤로</a>
+						<a class="btn btn-primary back-btn bottom-btn" href="javascript:history.back()" role="button">뒤로</a><!-- href="./${categotyId}" -->
 						<button class="btn btn-primary submit-btn bottom-btn" onclick="createClubIntro()">저장</button> 
 					</div>
 					</form>

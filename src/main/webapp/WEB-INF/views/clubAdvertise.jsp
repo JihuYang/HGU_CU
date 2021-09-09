@@ -44,9 +44,8 @@
 				<h3 class="font-weight-bold pt-title">동아리 홍보</h3>
 			</div>
 			<!-- 홍보글 테이블 -->
-			<div
-				class="col-sm-10 align-self-baseline table-responsive table-height">
-				<jsp:include page="/WEB-INF/views/ajaxContent/clubAdvertise.jsp" />
+			<div class="col-sm-10 align-self-baseline table-responsive table-height">
+				<jsp:include page="/WEB-INF/views/ajaxContent/clubAdvertise.jsp"/>
 			</div>
 			<div class="col-sm-10 justify-content-md-center position mt-5">
 				<div class="search-form">

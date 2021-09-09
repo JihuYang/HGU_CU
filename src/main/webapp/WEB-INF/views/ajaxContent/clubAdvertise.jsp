@@ -40,5 +40,4 @@ var content = document.getElementById('clubAd-content');
 var realContent = content.firstChild;
 
 realContent.className = 'text-muted p-size clubAd-content';
-
 </script>

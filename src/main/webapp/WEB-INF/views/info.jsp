@@ -24,6 +24,24 @@
 <link
 	href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css"
 	rel="stylesheet" />
+	<style>
+		.ps-5-custom {
+			    padding-left: 3rem !important;
+			}
+			
+		@media screen and (max-width: 1023px){
+			.px-4{
+				padding-right: 0px !important;
+				padding-left: 0px !important;
+			}
+			.ps-5-custom {
+			    padding-left: 0 !important;
+			}
+			.width-80 {
+			    width: 95%;
+			}
+		}
+	</style>
 </head>
 <jsp:include page= "<%=\"./inc/\".concat(((String)request.getAttribute(\"header\")))%>" />
 
@@ -38,8 +56,8 @@
 			</div>
 		</div>
 		<div class="container px-4 px-lg-5 text-start">
-			<h4 class="mb-4 ps-5 pt-5">총동아리연합회란</h4>
-			<div class="mb-4 ps-5 py-5">총동아리연합회는 교내의 동아리들에게 봉사하기 위해 조직된 동아리 대표기구로서 
+			<h4 class="mb-4 ps-5-custom pt-5">총동아리연합회란</h4>
+			<div class="mb-4 ps-5-custom py-5">총동아리연합회는 교내의 동아리들에게 봉사하기 위해 조직된 동아리 대표기구로서 
 			소속 동아리의 관리 및 제반 업무를 담당합니다.<br>
 			 총학생회 및 학교 행사시 동아리 관련 부문을 담당합니다. <br>
 			 총동아리연합회는 회장단을 비롯하여 총무국,
@@ -50,18 +68,18 @@
 				관련하여 집행부와 학생들 간의 소통을 담당하는 국입니다.</div>
 		</div>
 		<div class="container px-4 px-lg-5 text-start">
-			<h4 class="mb-4 ps-5 py-5">총동아리연합회 구성도</h4>
+			<h4 class="mb-4 ps-5-custom py-5">총동아리연합회 구성도</h4>
 			<img src="./resources/assets/img/구성도.svg"
 				class="img-fluid col-8 mx-auto d-block" alt="총동아리연합회 구성도">
 
 		</div>
 		<div class="container px-4 px-lg-5 text-start">
-			<h4 class="mb-4 ps-5 py-5">총동아리연합회 집행부 조직도</h4>
+			<h4 class="mb-4 ps-5-custom py-5">총동아리연합회 집행부 조직도</h4>
 			<img src="./resources/assets/img/조직도.svg"
 				class="img-fluid col-8 mx-auto d-block" alt="총동아리연합회 집행부 조직도">
 		</div>
 		<div class="container px-4 px-lg-5 text-start">
-			<h4 class="mb-4 ps-5 py-5">총동아리연합회칙</h4>
+			<h4 class="mb-4 ps-5-custom py-5">총동아리연합회칙</h4>
 			<a class="col-8 mx-auto d-block btn mb-5"
 				href="<%=request.getContextPath()%>/resources/assets/img/총동아리연합회칙 개정안(2021.06 개정).pdf"
 				>총동아리연합회칙 다운로드</a>

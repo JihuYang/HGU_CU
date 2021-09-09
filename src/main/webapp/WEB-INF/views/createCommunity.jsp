@@ -55,7 +55,7 @@
   						<input class="form-control file" type="file" multiple>
 					</div>
 					<div>
-						<a class="btn btn-primary back-btn bottom-btn" href="./communityInfo" role="button">뒤로</a>
+						<a class="btn btn-primary back-btn bottom-btn" href="javascript:history.back()" role="button">뒤로</a>
 					</div>
 				</form>
 				
