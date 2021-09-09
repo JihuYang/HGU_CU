@@ -124,8 +124,14 @@
 											<%-- <th scope="row">${fn:length(communityInfoList) - status.index}</th> --%>
 											<th scope="row">${communityInfo.id}</th>
 											<td class="text-start">${communityInfo.title}</td>
-											<td id="writer">${communityInfo.writer}</td>
-											<td id="date">${formattedRegDate}</td>
+											<c:choose>
+												<c:when test="${admin == 0}">
+												<td id="writer">${communityInfo.writer}</td>
+												</c:when>
+												<c:otherwise>
+												<td id="writer">관리자</td>							
+												</c:otherwise>
+											</c:choose>											<td id="date">${formattedRegDate}</td>
 											<td id="count">${communityInfo.viewCount}</td>
 										</tr>
 								</c:forEach>
@@ -138,8 +144,14 @@
 											<%-- <th scope="row">${fn:length(communityInfoList) - status.index}</th> --%>
 											<th scope="row">${communityInfo.id}</th>
 											<td class="text-start">${communityInfo.title}</td>
-											<td id="writer">${communityInfo.writer}</td>
-											<td id="date">${formattedRegDate}</td>
+											<c:choose>
+												<c:when test="${admin == 0}">
+												<td id="writer">${communityInfo.writer}</td>
+												</c:when>
+												<c:otherwise>
+												<td id="writer">관리자</td>							
+												</c:otherwise>
+											</c:choose>													<td id="date">${formattedRegDate}</td>
 											<td id="count">${communityInfo.viewCount}</td>
 									</tr>
 								</c:forEach>
@@ -216,8 +228,14 @@
 											<%-- <th scope="row">${fn:length(communityMaterialList) - status.index}</th> --%>
 											<th scope="row">${communityMaterial.id}</th>
 											<td class="text-start">${communityMaterial.title}</td>
-											<td id="writer">${communityMaterial.writer}</td>
-											<td id="date">${formattedRegDate}</td>
+											<c:choose>
+												<c:when test="${admin == 0}">
+												<td id="writer">${communityMaterial.writer}</td>
+												</c:when>
+												<c:otherwise>
+												<td id="writer">관리자</td>							
+												</c:otherwise>
+											</c:choose>													<td id="date">${formattedRegDate}</td>
 											<td id="count">${communityMaterial.viewCount}</td>
 										</tr>
 									</c:forEach>
@@ -230,8 +248,14 @@
 											<%-- <th scope="row">${fn:length(communityMaterialList) - status.index}</th> --%>
 											<th scope="row">${communityMaterial.id}</th>
 											<td class="text-start">${communityMaterial.title}</td>
-											<td id="writer">${communityMaterial.writer}</td>
-											<td id="date">${formattedRegDate}</td>
+											<c:choose>
+												<c:when test="${admin == 0}">
+												<td id="writer">${communityMaterial.writer}</td>
+												</c:when>
+												<c:otherwise>
+												<td id="writer">관리자</td>							
+												</c:otherwise>
+											</c:choose>												<td id="date">${formattedRegDate}</td>
 											<td id="count">${communityMaterial.viewCount}</td>
 										</tr>
 									</c:forEach>
@@ -300,14 +324,22 @@
 									var="formattedFdDate" type="date" pattern="yyyy" />
 								<div class="col-xs-6 col-sm-4 pd-0">
 									<div class="overlay-item overlay-effect">
-										<img src="resources/upload/clubIntro/${clubIntroList.originalUrl}" alt="임시" /> 
-											<a href="<%=request.getContextPath()%>/clubIntroduction/${clubIntroList.categoryId}/${clubIntroList.id}" class="mask"> 
-											[${clubIntroList.clubName}]<br>창립일자:
+										<c:choose>
+											<c:when test="${clubIntroList.originalUrl == null}">
+												<img src="${defaultImage}">
+											</c:when>
+											<c:when test="${clubIntroList.originalUrl != null}">
+												<img src="/resources/upload/clubIntro/${clubIntroList.originalUrl}"/>
+											</c:when>
+										</c:choose>
+										<a
+											href="<%=request.getContextPath()%>/clubIntroduction/${clubIntroList.categoryId}/${clubIntroList.id}"
+											class="mask "> [${clubIntroList.clubName}]<br>창립일자:
 											${formattedFdDate}년<br>대표자명: ${clubIntroList.clubCeoName}<br>연락처:
 											${clubIntroList.phone}<br>동방: ${clubIntroList.clubLocation}<br>인스타그램:
 											${clubIntroList.instagramLink}<br>페이스북:
 											${clubIntroList.facebookLink}
-											</a>
+										</a>
 									</div>
 								</div>
 							</c:forEach>
@@ -318,14 +350,22 @@
 									var="formattedFdDate" type="date" pattern="yyyy" />
 								<div class="col-xs-6 col-sm-4 pd-0">
 									<div class="overlay-item overlay-effect">
-										<img src="resources/upload/clubIntro/${clubIntroList.originalUrl}" alt="임시" /> 
-											<a href="<%=request.getContextPath()%>/clubIntroduction/${clubIntroList.categoryId}/${clubIntroList.id}" class="mask"> 
-											[${clubIntroList.clubName}]<br>창립일자:
+										<c:choose>
+											<c:when test="${clubIntroList.originalUrl == null}">
+												<img src="${defaultImage}">
+											</c:when>
+											<c:when test="${clubIntroList.originalUrl != null}">
+												<img src="/resources/upload/clubIntro/${clubIntroList.originalUrl}"/>
+											</c:when>
+										</c:choose>
+										<a
+											href="<%=request.getContextPath()%>/clubIntroduction/${clubIntroList.categoryId}/${clubIntroList.id}"
+											class="mask "> [${clubIntroList.clubName}]<br>창립일자:
 											${formattedFdDate}년<br>대표자명: ${clubIntroList.clubCeoName}<br>연락처:
 											${clubIntroList.phone}<br>동방: ${clubIntroList.clubLocation}<br>인스타그램:
 											${clubIntroList.instagramLink}<br>페이스북:
 											${clubIntroList.facebookLink}
-											</a>
+										</a>
 									</div>
 								</div>
 							</c:forEach>
