@@ -167,15 +167,16 @@
 		            // window.open(event.url, 'gcalevent', 'width=700,height=600');
 		            var id = event.id;
 		    		var title = event.title;
-		    		//document.getElementById('title').readOnly = true;
+		    		document.getElementById('title').readOnly = true;
 		    		var content = event.content;
-		    		//document.getElementById('eventContent').readOnly = true;
+		    		document.getElementById('eventContent').readOnly = true;
 		    		var place = event.place;
-		    		//document.getElementById('eventSpace').readOnly = true;
+		    		document.getElementById('eventSpace').readOnly = true;
 		    		var startDate = moment(event.start).format("YYYY-MM-DD[T]HH:mm:ss");
-		    		//document.getElementById('startDate').readOnly = true;
+		    		document.getElementById('startDate').readOnly = true;
 		    		var endDate = moment(event.end).format("YYYY-MM-DD[T]HH:mm:ss");
-		    		//document.getElementById('endDate').readOnly = true;
+		    		document.getElementById('endDate').readOnly = true; 
+		    		
 		    		
 		    		$('#addModal').modal('show');
 		    		$('#title').val(title);
