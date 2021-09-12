@@ -188,4 +188,12 @@ public class ClubDAOImpl implements ClubDAO{
 		
 		return 0;
 	}
+
+	@Override
+	public int countInfo(String keyword) {
+		Map<String, Object> clubCount = new HashMap<String, Object>();
+		clubCount.put("keyword", keyword);
+		
+		return sqlSession.selectOne(namespace+".countInfo", clubCount);
+	}
 }

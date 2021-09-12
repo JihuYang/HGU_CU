@@ -161,6 +161,12 @@ public class ClubServiceImpl implements ClubService{
 
 		return clubDAO.deleteClubSNS(id);
 	}
+
+	@Override
+	public int countInfo(String keyword) {
+		// TODO Auto-generated method stub
+		return clubDAO.countInfo(keyword);
+	}
 	
 	
 

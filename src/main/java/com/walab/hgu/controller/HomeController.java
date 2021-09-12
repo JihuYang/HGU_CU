@@ -98,6 +98,7 @@ public class HomeController {
 		List<CommunityMaterialDTO> communityMaterialList = communityMaterialService.readCommunityMaterial(page.get(1).getDisplayPost(),page.get(1).getPostNum(), searchType, keyword);
 		
 		// 동아리 소개
+		page.get(2).setCount(clubService.countInfo(keyword));
 		List<ClubDTO> clubIntroList = clubService.getAllClubIntroduction(keyword);
 		int count = 0;
 		for (ClubDTO list : clubIntroList) {
