@@ -308,6 +308,8 @@ public class ClubIntroductionController {
 
 		int id = Integer.parseInt(request.getParameter("id"));
 		int userId = Integer.parseInt(request.getParameter("userId"));
+		
+		newContent = newContent.replaceAll("(\r|\n|\r\n|\n\r)","");
 
 		List<CategoryDTO> categoryNameList = clubService.getCategoryNameList();
 		int categoryId = 0;
@@ -320,7 +322,7 @@ public class ClubIntroductionController {
 		}
 		// int categoryId = Integer.parseInt(request.getParameter("categoryId"));
 		// int clubOrder = 1;
-
+		
 		info.setId(id);
 		info.setCategoryId(categoryId);
 		info.setClubName(clubName);
