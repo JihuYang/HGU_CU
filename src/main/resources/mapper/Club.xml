@@ -78,7 +78,7 @@
         LEFT JOIN hsca219.user u ON CL.userId = u.id
         LEFT JOIN hsca219.clubSNS cS ON CL.id = cS.clubId 
 
-		AND clubName LIKE concat('%',#{keyword},'%')
+		WHERE clubName LIKE concat('%',#{keyword},'%')
 
 		ORDER BY clubName
 		<!-- 현재, 이미지가 없는 동아리들은 order자체가 없기 때문에 불러와지지 않는다. 없는 동아리들은 디폴트 이미지를 넣게하면 
