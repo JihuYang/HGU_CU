@@ -200,4 +200,9 @@ function myReservationDelete(id){
 		location.href="/myReservation/delete/"+id;
 }
 
+function myReservationDelete(id){
+	if(confirm("예약을 삭제 하시겠습니까?"))
+		location.href="/adminReservation/delete/"+id;
+}
+
 
