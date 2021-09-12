@@ -98,6 +98,11 @@
 		order by club.regdate
 		DESC
 	</select>
+	
+	<select id="countInfo" parameterType="hashmap" resultType="int">
+		SELECT COUNT(*)
+		FROM club
+	</select>
 
 	<insert id="createClubSNS"
 		parameterType="com.walab.hgu.DTO.ClubDTO">

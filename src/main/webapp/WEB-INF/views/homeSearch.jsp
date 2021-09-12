@@ -49,6 +49,7 @@
 					</select>
 				</div>
 				<div class="rows justify-content-center">
+					<input hidden="hidden" />
 					<input class="form-control form-control-sm search-input backgrond-white" type="text" name="keyword" value="${page[0].keyword}">
 					<button class="btn btn-primary search-btn" type="button" id="searchBtn" onclick="searchInSearchPage()">검색</button>
 				</div>
@@ -300,7 +301,6 @@
 			</c:if>
 			
 			
-			
 			<!-- 동아리소개 파트  -->
 			<c:if test="${empty tag || tag eq '전체' || tag eq '동아리소개'}">
 				<div class="text-start p-3">
@@ -404,18 +404,10 @@
 									<th scope="col" class="col-5 text-center">내용</th>
 								</tr>
 						</thead>
-						<tbody>
+						<tbody class="align-items-center">
 							<c:if test="${empty tag || tag eq '전체'}">
 								<c:forEach items="${clubAdvertiseList}" var="clubAdvertiseList" end="2">
 									<tr style="cursor:pointer;" onClick="location.href='<%=request.getContextPath()%>/clubAdvertise/detail/${clubAdvertiseList.id}'">
-										<%-- <c:choose>
-											<c:when test="${clubAdvertiseList.originalUrl eq null}">
-												<td><img src="https://cdn.pixabay.com/photo/2014/09/26/04/22/water-461597__340.jpg" class="img-thumbnail rounded clubAd-img"></td>
-											</c:when>
-											<c:when test="${clubAdvertiseList.originalUrl != null}">
-												<td><img src="<%=request.getContextPath()%>/resources/img/${clubAdvertiseList.originalUrl}" class="img-thumbnail rounded clubAd-img"></td>
-											</c:when>
-										</c:choose> --%>
 										<th class="col-3 text-center">${clubAdvertiseList.title}</th>
 										<td id="clubAd-content"class="col-5">${clubAdvertiseList.content}</td>
 									</tr>
@@ -424,14 +416,6 @@
 							<c:if test="${!empty tag && tag ne '전체'}">
 								<c:forEach items="${clubAdvertiseList}" var="clubAdvertiseList" varStatus="status">
 									<tr style="cursor:pointer;" onClick="location.href='<%=request.getContextPath()%>/clubAdvertise/detail/${clubAdvertiseList.id}'">
-										<%-- <c:choose>
-											<c:when test="${clubAdvertiseList.originalUrl eq null}">
-												<td><img src="https://cdn.pixabay.com/photo/2014/09/26/04/22/water-461597__340.jpg" class="img-thumbnail rounded clubAd-img"></td>
-											</c:when>
-											<c:when test="${clubAdvertiseList.originalUrl != null}">
-												<td><img src="<%=request.getContextPath()%>/resources/img/${clubAdvertiseList.originalUrl}" class="img-thumbnail rounded clubAd-img"></td>
-											</c:when>
-										</c:choose> --%>
 										<th class="col-3 text-center">${clubAdvertiseList.title}</th>
 										<td id="clubAd-content"class="col-5">${clubAdvertiseList.content}</td>
 									</tr>
@@ -481,6 +465,8 @@
 				var realContent = content.firstChild;
 	
 				realContent.className = 'text-center text-muted p-size clubAd-content';
+				realContent.style.marginBottom = "0px";
+				realContent.setAttribute( 'align', 'center' );
 			</script>
 			
 			
@@ -502,6 +488,8 @@
 	<!-- SimpleLightbox plugin JS-->
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
+	<!-- Core theme JS-->
+	<script src="<%=request.getContextPath()%>/resources/js/scripts.js"></script>
 
 </body>
 </html>

@@ -114,5 +114,8 @@
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
 
+	<!-- Core theme JS-->
+	<script src="<%=request.getContextPath()%>/resources/js/scripts.js"></script>
+
 </body>
 </html>

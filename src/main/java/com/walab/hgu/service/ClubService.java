@@ -49,4 +49,6 @@ public interface ClubService {
 
 	public FileDTO readClubPreviewImage(int id);
 
+	public int countInfo(String keyword);
+
 }
