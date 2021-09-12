@@ -111,7 +111,8 @@ function updateAdminReservationInfo(){
 	var userId=document.getElementById("userSelect").selectedIndex+1;
 	var id = $('#updateId').val();
 	id=parseInt(id);
-
+	
+	$("#userSelect").attr("disabled", false);
 	$.ajax({
 		url: "/adminReservation/update",
 		type: "POST",
