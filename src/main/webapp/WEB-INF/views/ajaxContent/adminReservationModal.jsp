@@ -15,7 +15,10 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
       <form class="modal-body">
         <label for="reservationPerson">대여자 이름</label>
   			<!-- <input class="form-control form-control-sm" id="reservationPerson"> -->
-        	<select disabled class='userSelect' id='userSelect' style=" -moz-appearance: none; -webkit-appearance: none;">
+<%--   			<input value="${userList.id}" id='userSelect' style="display:none;"/>
+ --%>        	
+ 
+ 			<select onFocus="this.initialSelect = this.selectedIndex;" onChange="this.selectedIndex = this.initialSelect;" class='userSelect' id='userSelect' style=" -moz-appearance: none; -webkit-appearance: none;">
 		      	<c:forEach items="${userList}" var="userList">
 					<option value="${userList.id}">${userList.name} / ${userList.email}</option>
 				</c:forEach>
