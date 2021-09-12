@@ -41,8 +41,8 @@
 				<td class="email"><span id="phone${status.count}">${reservationList.phone}</span> <span id="email${status.count}">${reservationList.email}</span> </td>
 				<td id="manage${status.count}" class="manage">
 					<button type="button" class="btn btn-warning" id="${status.count}"
-					onclick="editBtn(this.id)"data-toggle="modal" data-target="#editModal${status.count}">수정</button>
-					<button type="button" class="btn btn-warning" onclick="location.href='<%=request.getContextPath()%>/adminReservation/delete/${reservationList.id}'">삭제</button>
+					onclick="editBtn(this.id)"data-toggle="modal" data-target="#editModal${status.count}">수정</button>myReservationDelete(${reservationInfo.id})
+					<button type="button" class="btn btn-warning" onclick="location.href='adminReservationDelete(${reservationList.id})">삭제</button>
 				</td>
 			</tr>
 		</c:if>
