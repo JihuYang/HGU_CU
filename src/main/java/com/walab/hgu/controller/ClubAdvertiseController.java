@@ -235,6 +235,8 @@ public class ClubAdvertiseController {
 		int id = Integer.parseInt(request.getParameter("id"));
 		String title = request.getParameter("title");
 		String content = request.getParameter("newContent");
+		
+		content = content.replaceAll("(\r|\n|\r\n|\n\r)","");
 
 		info.setId(id);
 		info.setTitle(title);
