@@ -106,8 +106,6 @@
 	<jsp:include page="/WEB-INF/views/inc/footer.jsp" />
 
 	<!-- Bootstrap core JS-->
-	<script
-		src="<%=request.getContextPath()%>/resources/assets/js/pagenation.js"></script>
 		<script src="<%=request.getContextPath()%>/resources/js/reservation.js"></script>
 
 	<script
@@ -120,6 +118,6 @@
 	<!-- * *                               SB Forms JS                               * *-->
 	<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
 	<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-	<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-</body>
+<!-- 	<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+ --></body>
 </html>

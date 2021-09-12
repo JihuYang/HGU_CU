@@ -184,13 +184,14 @@
 				src="<%=request.getContextPath()%>/resources/js/calendarMoment.js"></script>
 			<script
 				src="<%=request.getContextPath()%>/resources/js/reservationCalendar.js"></script>
-
+		
 			<script type="text/javascript">
 		 $(function() {
 			  $('#calendar').fullCalendar({
 			    selectable: true,
 			    allDaySlot: false,
 			    eventLimit:true,
+			    defaultView: 'agendaWeek',
 			    longPressDelay: 0,
 			    header: {
 			      left: 'prev,next today',
@@ -247,10 +248,5 @@
 		src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
 	<!-- Core theme JS-->
 	<script src="<%=request.getContextPath()%>/resources/js/scripts.js"></script>
-	<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-	<!-- * *                               SB Forms JS                               * *-->
-	<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-	<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-	<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 </body>
 </html>

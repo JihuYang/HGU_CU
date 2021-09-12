@@ -15,7 +15,7 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
       <form class="modal-body">
         <label for="reservationPerson">대여자 이름</label>
   			<!-- <input class="form-control form-control-sm" id="reservationPerson"> -->
-        	<select class='userSelect' id='userSelect'>
+        	<select disabled class='userSelect' id='userSelect' style=" -moz-appearance: none; -webkit-appearance: none;">
 		      	<c:forEach items="${userList}" var="userList">
 					<option value="${userList.id}">${userList.name} / ${userList.email}</option>
 				</c:forEach>
@@ -63,7 +63,6 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
 	var reservationList = new Array();
 	var StimeIdx;
 	
-	
 	Date.prototype.addDays = function(days) {
 		var date = new Date(this.valueOf());
 		date.setDate(date.getDate() + days);
@@ -89,12 +88,12 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
 		  
 	//today = yyyy+'-'+mm+'-'+dd;
 	document.getElementById("date").setAttribute("min", today);
-	document.getElementById("date").value = new Date().toISOString().substring(0, 10);
+	//document.getElementById("date").value = new Date().toISOString().substring(0, 10);
 	  
 	//오늘 날짜부터 일주일까지
 	document.getElementById("date").setAttribute("max", endDate);
 		  
-	document.getElementById("date").value = new Date().toISOString().substring(0, 10);
+	//document.getElementById("date").value = new Date().toISOString().substring(0, 10);
 	
 
 	
@@ -105,7 +104,8 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
 		$('#addModal').modal('show');
 		$('#startTime').find('option:first').attr('selected', 'selected');
 		$('#endTime').find('option:first').attr('selected', 'selected');
-		document.getElementById("date").value = new Date().toISOString().substring(0, 10);
+		/* document.getElementById("date").value = new Date().toISOString().substring(0, 10); */
+		disabledTime();
 	});
 	
 	function editBtn(clickedId){
@@ -113,6 +113,7 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
 		$('#startTime option').each(function() {
   		    $(this).prop('disabled', false);
   		});
+		
 		document.getElementById("createBtn").style.display = "none";
 		document.getElementById("updateBtn").style.display = "block";
 		var name = $('#userName'+clickedId).text();
@@ -130,9 +131,10 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
 		$('#userSelect').val(userId).attr("selected", "selected");
 		$('#purpose').val(eiditPurpose);
 		$("#spaceSelect").val(editSpace).attr("selected", "selected");
-		$('#date').val(editReservationDate);
+		/* $('#date').val(editReservationDate); */
 		$("#startTime").val(editStartTime).attr("selected", "selected");
 		$("#endTime")[0].innerHTML="<option value='"+editEndTime+"' selected>"+editEndTime+"</option>";
+		disabledTime();
 		
 	}
 
@@ -223,6 +225,8 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
 				StimeIdx = $("#startTime option[value='"+reservationList[j].disabledSTime+"']").index();
 				console.log("index is "+StimeIdx);
 				Stime[0]++;
+				
+				
 				if(Stime[0]==8 || Stime[0]==9){
 					$('#endTime option').each(function() {
 		    		    $(this).prop('disabled', true);
@@ -240,8 +244,6 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
 			}
 		}
 	}
-  
- 	disabledTime();
  	
  	function changeSpace(e){
   	  spaceIndex = e.options[e.selectedIndex].index+1;

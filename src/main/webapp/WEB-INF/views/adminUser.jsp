@@ -25,7 +25,7 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.css"
 	rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
-<link href="./resources/css/styles.css" rel="stylesheet" />
+<link href="<%=request.getContextPath()%>/resources/css/styles.css" rel="stylesheet" />
 
 </head>
 <jsp:include page= "<%=\"./inc/\".concat(((String)request.getAttribute(\"header\")))%>" />
@@ -96,8 +96,6 @@
 	<jsp:include page="/WEB-INF/views/inc/footer.jsp" />
 
 	<!-- Bootstrap core JS-->
-	<script
-		src="<%=request.getContextPath()%>/resources/js/pagenation.js"></script>
 	<script src="<%=request.getContextPath()%>/resources/js/admin.js"></script>
 
 	<script
@@ -110,6 +108,6 @@
 	<!-- * *                               SB Forms JS                               * *-->
 	<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
 	<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-	<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-</body>
+<!-- 	<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+ --></body>
 </html>
