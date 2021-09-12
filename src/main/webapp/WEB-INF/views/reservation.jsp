@@ -184,7 +184,7 @@
 				src="<%=request.getContextPath()%>/resources/js/calendarMoment.js"></script>
 			<script
 				src="<%=request.getContextPath()%>/resources/js/reservationCalendar.js"></script>
-
+		
 			<script type="text/javascript">
 		 $(function() {
 			  $('#calendar').fullCalendar({
