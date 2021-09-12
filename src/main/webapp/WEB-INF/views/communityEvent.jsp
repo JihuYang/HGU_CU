@@ -167,15 +167,28 @@
 		            // window.open(event.url, 'gcalevent', 'width=700,height=600');
 		            var id = event.id;
 		    		var title = event.title;
-		    		document.getElementById('title').readOnly = true;
-		    		var content = event.content;
-		    		document.getElementById('eventContent').readOnly = true;
-		    		var place = event.place;
-		    		document.getElementById('eventSpace').readOnly = true;
-		    		var startDate = moment(event.start).format("YYYY-MM-DD[T]HH:mm:ss");
-		    		document.getElementById('startDate').readOnly = true;
+		    		var content = event.content;	    		
+		    		var place = event.place;		    		
+		    		var startDate = moment(event.start).format("YYYY-MM-DD[T]HH:mm:ss");		    		
 		    		var endDate = moment(event.end).format("YYYY-MM-DD[T]HH:mm:ss");
-		    		document.getElementById('endDate').readOnly = true; 
+		    		
+		    		
+		    		var admin = '<c:out value="${admin}"/>';
+		    		console.log(admin);
+		    		if(admin== '0'){
+		    			document.getElementById('title').readOnly = false;
+		    			document.getElementById('eventSpace').readOnly = false;
+		    			document.getElementById('startDate').readOnly = false;
+		    			document.getElementById('endDate').readOnly = false; 
+		    		}
+		    		
+		    		else{
+		    			document.getElementById('title').readOnly = true;
+		    			document.getElementById('eventContent').readOnly = true;
+		    			document.getElementById('eventSpace').readOnly = true;
+		    			document.getElementById('startDate').readOnly = true;
+		    			document.getElementById('endDate').readOnly = true; 
+		    		}
 		    		
 		    		
 		    		$('#addModal').modal('show');

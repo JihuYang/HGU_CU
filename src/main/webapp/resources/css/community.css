@@ -325,6 +325,10 @@ tr{
 	background-color:#f4f4f4 !important;
 }
 
+/* 행사 일정 */
+#startDate, #endDate, #eventContent, #eventSpace{
+	font-size:0.9rem;
+}
 
 @media(max-width: 992px){
 	#top_margin{
