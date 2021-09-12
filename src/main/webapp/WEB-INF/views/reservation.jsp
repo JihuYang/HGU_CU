@@ -184,13 +184,14 @@
 				src="<%=request.getContextPath()%>/resources/js/calendarMoment.js"></script>
 			<script
 				src="<%=request.getContextPath()%>/resources/js/reservationCalendar.js"></script>
-
+		
 			<script type="text/javascript">
 		 $(function() {
 			  $('#calendar').fullCalendar({
 			    selectable: true,
 			    allDaySlot: false,
 			    eventLimit:true,
+			    defaultView: 'agendaWeek',
 			    longPressDelay: 0,
 			    header: {
 			      left: 'prev,next today',
