@@ -65,6 +65,7 @@
 	margin-left: 10px !important;
 	display: inline-block !important;
 	width: 300px !important;
+	border-width: 0;
 }
 
 .pagnation {
@@ -106,15 +107,17 @@
     border-color: #326295 !important;
     color:white;
     height: 32px;
-    padding-bottom: 2px;
-    padding-top: 2px;
+    padding: 2px 0px 2px 0px;
+    width: 30px !important;
+    font-size: small;
 	}
 	
-	.search-input {
-    margin-right: 10px !important;
-    margin-left: 10px !important;
+	.search-input { 
+    margin-right: 0px !important;
+    margin-left: 0px !important;
     display: inline-block !important;
     width: 150px !important;
+    border-width: 0;
 	}
 	
 	.search-form {

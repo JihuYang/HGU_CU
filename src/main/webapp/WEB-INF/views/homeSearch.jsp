@@ -41,14 +41,12 @@
 			class="row h-auto align-items-center justify-content-center text-center">
 			<form accept-charset="UTF-8" name="searchForm"
 				class="background-gray py-4 search-margin">
-				<div class="rows justify-content-center">
+				<div class="rows d-flex justify-content-center">
 					<select class="form-select form-select-sm search-selector" name="searchType">
 						<option value="title" <c:if test="${page[0].searchType eq 'title'}">selected</c:if> >제목</option>
 						<option value="content" <c:if test="${page[0].searchType eq 'content'}">selected</c:if> >내용</option>
 						<option value="title_content" <c:if test="${page[0].searchType eq 'title_content'}">selected</c:if>>제목+내용</option>
 					</select>
-				</div>
-				<div class="rows justify-content-center">
 					<input hidden="hidden" />
 					<input class="form-control form-control-sm search-input backgrond-white" type="text" name="keyword" value="${page[0].keyword}">
 					<button class="btn btn-primary search-btn" type="button" id="searchBtn" onclick="searchInSearchPage()">검색</button>

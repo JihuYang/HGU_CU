@@ -58,17 +58,15 @@
 			
 		</div>
 		<div class="row h-auto align-items-center text-center">
-			<form accept-charset="UTF-8" name="searchForm">
-				<div class="rows justify-content-center">
-					<select class="form-select form-select-sm search-selector" name="searchType">
+			<form accept-charset="UTF-8" name="searchForm" >
+				<div class="rows d-flex justify-content-center">
+					<select class="form-select form-select-sm search-selector me-1" name="searchType">
 						<option value="title" <c:if test="${page.searchType eq 'title'}">selected</c:if> >제목</option>
 						<option value="content" <c:if test="${page.searchType eq 'content'}">selected</c:if> >내용</option>
 						<option value="title_content" <c:if test="${page.searchType eq 'title_content'}">selected</c:if>>제목+내용</option>
 					</select>
-				</div>
-				<div class="rows justify-content-center">
 					<input hidden="hidden" />
-					<input class="form-control form-control-sm search-input"
+					<input class="form-control form-control-sm search-input me-1"
 						type="text" name="keyword" value="${page.keyword}">
 					<button class="btn btn-primary search-btn" type="button" id="searchBtn"  onclick="searchInfo()">검색</button> 
 				</div>
