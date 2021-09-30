@@ -112,6 +112,18 @@
     font-size: small;
 	}
 	
+	.writing-btn{
+	background-color: lightgray !important;
+	border-color: lightgray !important;
+	color: black !important;
+	height: 32px;
+	padding: 2px 0px 2px 0px;
+    width: 50px !important;
+    font-size: small;
+	float: right;
+    
+	}
+	
 	.search-input { 
     margin-right: 0px !important;
     margin-left: 0px !important;

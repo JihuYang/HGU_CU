@@ -37,7 +37,16 @@
 	padding-bottom: 2px;
 	padding-top: 2px;
 }
-
+.writing-btn{
+	margin-right: 10px !important;
+	margin-left: 10px !important;
+	background-color: #326295 !important;
+	border-color: #326295 !important;
+	width: 75px !important;
+	height: 32px;
+	padding-bottom: 2px;
+	padding-top: 2px;
+}
 .search-input {
 	margin-right: 10px !important;
 	margin-left: 10px !important;
@@ -445,7 +454,15 @@ tr{
     width: 30px !important;
     font-size: small;
 	}
-	
+	.writing-btn{
+	margin-right: 10px !important;
+	margin-left: 10px !important;
+	border-color: #326295 !important;
+	height: 32px;
+	padding: 2px 0px 2px 0px;
+    width: 50px !important;
+    font-size: small;
+	}
 	.search-input {
     margin-right: 0.25rem !important;
     margin-left: 0px !important;
