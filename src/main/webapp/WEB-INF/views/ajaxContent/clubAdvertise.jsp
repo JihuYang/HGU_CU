@@ -28,7 +28,7 @@
 			</c:choose>
 			<td>
 				<h5 class="clubAd-content">${clubAdvertiseList.title}</h5>
-				<div id="clubAd-content">${clubAdvertiseList.content}</div>
+				<div class="p-content">${clubAdvertiseList.content}</div>
 			</td>
 		</tr>
 	</c:forEach>
@@ -36,8 +36,9 @@
 </c:if>
 
 <script type="text/javascript">
-var content = document.getElementById('clubAd-content');
-var realContent = content.firstChild;
+var content = document.getElementsByClassName('p-content');
 
-realContent.className = 'text-muted p-size clubAd-content';
+for(i=0;i<content.length;i++){
+	content[i].firstChild.className = 'text-muted p-size clubAd-content';	
+}
 </script>
