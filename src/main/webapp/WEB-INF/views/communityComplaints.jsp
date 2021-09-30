@@ -43,7 +43,7 @@
 				class="row h-75 align-items-center justify-content-center text-center">
 				<div class="col-lg-8 align-self-baseline complaints">
 					<h5 class="space">민원 및 문의사항은 아래 메일을 통해 연락주시면 감사하겠습니다.</h5>
-					<h5><a href="mailto: clubunion@handong.edu"">clubunion@handong.edu</a></h5>
+					<h5><a href="mailto: clubunion@handong.edu">clubunion@handong.edu</a></h5>
 				</div>
 			</div>
 		</div>

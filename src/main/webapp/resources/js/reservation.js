@@ -111,7 +111,8 @@ function updateAdminReservationInfo(){
 	var userId=document.getElementById("userSelect").selectedIndex+1;
 	var id = $('#updateId').val();
 	id=parseInt(id);
-
+	
+	$("#userSelect").attr("disabled", false);
 	$.ajax({
 		url: "/adminReservation/update",
 		type: "POST",
@@ -200,7 +201,7 @@ function myReservationDelete(id){
 		location.href="/myReservation/delete/"+id;
 }
 
-function myReservationDelete(id){
+function adminReservationDelete(id){
 	if(confirm("예약을 삭제 하시겠습니까?"))
 		location.href="/adminReservation/delete/"+id;
 }

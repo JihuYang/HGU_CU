@@ -10,12 +10,12 @@
 				<div class="small text-center text-muted align-self-center">
 					오피스 위치: 학관 219호(A)/218<br>
 					전화번호: 내선번호 1635(054-260)<br>
-					메일: clubunion@handong.edu <br>
-					총동연 인스타 계정: @hgu_clubunion<br>
+					메일: <a style="text-decoration: none;" href="mailto: clubunion@handong.edu">clubunion@handong.edu</a> <br>
+					총동연 인스타 계정: <a style="text-decoration: none;"  target="_blank" href="https://www.instagram.com/hgu_clubunion/">@hgu_clubunion</a><br>
 					개인정보처리 방침<br>
 				</div>
 				<div class="small text-center text-muted">
-					오피스 아워: <br>
+					오피스 아워 <br>
 					<c:forEach items="${officeHour}" var="officeHour" varStatus="status">
 					<fmt:formatDate value="${officeHour.startTime}" var="formattedStartTime" type="time" pattern="HH:mm"/>
 					<fmt:formatDate value="${officeHour.endTime}" var="formattedEndTime" type="time" pattern="HH:mm"/>

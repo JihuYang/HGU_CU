@@ -49,9 +49,9 @@
 			</div>
 			<div class="col-sm-10 justify-content-md-center position mt-5">
 				<div class="search-form">
-					<form accept-charset="UTF-8" class="form-form" name="searchForm"
+					<form accept-charset="UTF-8" class="form-form d-flex justify-content-center" name="searchForm"
 						action="<%=request.getContextPath()%>/clubAdvertise" method="POST">
-						<div class="rows">
+						<div class="rows me-1">
 							<!-- 검색 기능바 -->
 							<select class="form-select form-select-sm search-selector"
 								name="searchType">

@@ -17,7 +17,7 @@
 					<img src="${defaultImage}">
 				</c:when>
 				<c:when test="${clubIntroList.originalUrl != null}">
-					<img src="/resources/upload/clubIntro/${clubIntroList.originalUrl}"/>
+					<img src="/tomcat/webapps/uploads/${clubIntroList.originalUrl}"/>
 				</c:when>
 			</c:choose>
 			<a

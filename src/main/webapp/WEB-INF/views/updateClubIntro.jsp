@@ -117,7 +117,12 @@
 
 					      content.setHTML('${clubDetailList[0].clubDescription}',true);
 					</script>
-					
+					<div class="mb-3 text-start">
+						기존 파일명 :
+							<c:forEach items="${clubImgList}"
+								var="clubImgList" varStatus="status">${status.count}. ${clubImgList.originalUrl}
+							</c:forEach>
+					</div>
 					<div class="mb-3">
   						<input class="form-control file" type="file" id="file" name="file" accept="image/*" multiple>
 					</div>
