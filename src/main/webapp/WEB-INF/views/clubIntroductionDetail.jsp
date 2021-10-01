@@ -73,7 +73,7 @@
 								varStatus="status" begin="0" end="0">
 								<div class="carousel-item active">
 									<img
-										src="<%=request.getContextPath()%>/resources/upload/clubIntro/${clubImgList.originalUrl}"
+										src="http://hsca219.cafe24.com/uploads/clubIntro/${clubImgList.originalUrl}"
 										class="d-block logo" alt="...">
 								</div>
 							</c:forEach>

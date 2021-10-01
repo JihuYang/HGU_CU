@@ -170,7 +170,7 @@ public class ClubAdvertiseController {
 
 			System.out.println("image file print: " + infoImageFile);
 
-			String saveDir = "http://hsca219.cafe24.com/uploads/clubAdvertise";
+			String saveDir = "tomcat/webapps/uploads/clubAdvertise";
 
 			File dir = new File(saveDir);
 			if (!dir.exists()) {
@@ -185,7 +185,6 @@ public class ClubAdvertiseController {
 					e.printStackTrace();
 				}
 			}
-			System.out.println("saveDir in /clubAdvertise/write/create: " + saveDir);
 
 		}
 
@@ -201,8 +200,7 @@ public class ClubAdvertiseController {
 
 			clubAdvertiseService.createClubAdFile(infoFile);
 
-			String saveDir = "http://hsca219.cafe24.com/uploads/clubAdvertise";
-			//String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file/clubAd");
+			String saveDir = "tomcat/webapps/uploads/clubAdvertise";
 
 			File dir = new File(saveDir);
 			if (!dir.exists()) {
@@ -272,9 +270,8 @@ public class ClubAdvertiseController {
 
 				System.out.println("originFileName : " + originFileName);
 				System.out.println("fileSize : " + fileSize);
-				String saveDir = "http://hsca219.cafe24.com/uploads/clubAdvertise";
+				String saveDir = "tomcat/webapps/uploads/clubAdvertise";
 
-				//String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file/clubAd");
 
 				File dir = new File(saveDir);
 				if (!dir.exists()) {
@@ -313,9 +310,7 @@ public class ClubAdvertiseController {
 				order++;
 
 				clubAdvertiseService.createClubAdFile(infoFile);
-				String saveDir = "http://hsca219.cafe24.com/uploads/clubAdvertise";
-
-				//String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file/clubAd");
+				String saveDir = "tomcat/webapps/uploads/clubAdvertise";
 
 				File dir = new File(saveDir);
 				if (!dir.exists()) {
