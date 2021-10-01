@@ -241,8 +241,8 @@ public class ClubIntroductionController {
 			imgOrder++;
 			clubService.createClubIntroImage(infoImageFile);
 
-			String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/clubIntro");
-			//String saveDir = "/tomcat/webapps/uploads";
+			String saveDir = "tomcat/webapps/uploads/clubIntro/";
+
 			File imgDir = new File(saveDir);
 
 			if (!imgDir.exists()) {
@@ -362,8 +362,7 @@ public class ClubIntroductionController {
 				System.out.println("originFileName : " + originFileName);
 				System.out.println("fileSize : " + fileSize);
 	
-				String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/clubIntro");
-				//String saveDir = "/tomcat/webapps/uploads";
+				String saveDir = "tomcat/webapps/uploads/clubIntro/";
 	
 				File dir = new File(saveDir);
 				if (!dir.exists()) {

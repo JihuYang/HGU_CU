@@ -170,7 +170,7 @@ public class ClubAdvertiseController {
 
 			System.out.println("image file print: " + infoImageFile);
 
-			String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file/clubAd");
+			String saveDir = "tomcat/webapps/uploads/clubAdvertise";
 
 			File dir = new File(saveDir);
 			if (!dir.exists()) {
@@ -185,6 +185,7 @@ public class ClubAdvertiseController {
 					e.printStackTrace();
 				}
 			}
+
 		}
 
 		// 첨부파일 저장
@@ -199,7 +200,7 @@ public class ClubAdvertiseController {
 
 			clubAdvertiseService.createClubAdFile(infoFile);
 
-			String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file/clubAd");
+			String saveDir = "tomcat/webapps/uploads/clubAdvertise";
 
 			File dir = new File(saveDir);
 			if (!dir.exists()) {
@@ -269,8 +270,8 @@ public class ClubAdvertiseController {
 
 				System.out.println("originFileName : " + originFileName);
 				System.out.println("fileSize : " + fileSize);
+				String saveDir = "tomcat/webapps/uploads/clubAdvertise";
 
-				String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file/clubAd");
 
 				File dir = new File(saveDir);
 				if (!dir.exists()) {
@@ -309,8 +310,7 @@ public class ClubAdvertiseController {
 				order++;
 
 				clubAdvertiseService.createClubAdFile(infoFile);
-
-				String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file/clubAd");
+				String saveDir = "tomcat/webapps/uploads/clubAdvertise";
 
 				File dir = new File(saveDir);
 				if (!dir.exists()) {
@@ -389,8 +389,9 @@ public class ClubAdvertiseController {
 		ModelAndView mv = new ModelAndView();
 
 		FileDTO clubAdDetail = clubAdvertiseService.readClubAdvertiseDetailFileOne(id);
-		
-		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file/clubAd");
+		String saveDir = "http://hsca219.cafe24.com/uploads/clubAdvertise";
+
+		//String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file/clubAd");
 		String fileName = clubAdDetail.getFileOriginalUrl();
 
 		File file = new File(saveDir + "/" + fileName);

@@ -90,8 +90,6 @@ public class CommunityMaterialsController {
 		// 자료실 file read
 		List<FileDTO> communityMaterialFileDetail = communityMaterialService.readCommunityMaterialFileDetail(id);
 
-		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file");
-
 		mv.addObject("communityMaterialDetail", communityMaterialDetail);
 		mv.addObject("communityMaterialFileDetail", communityMaterialFileDetail);
 
@@ -155,7 +153,7 @@ public class CommunityMaterialsController {
 			System.out.println("originFileName : " + originFileName);
 			System.out.println("fileSize : " + fileSize);
 
-			String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file/" + folder);
+			String saveDir = "tomcat/webapps/uploads/communityMaterials/" + folder;
 
 			File dir = new File(saveDir);
 			if (!dir.exists()) {
@@ -232,8 +230,8 @@ public class CommunityMaterialsController {
 				System.out.println("originFileName : " + originFileName);
 				System.out.println("fileSize : " + fileSize);
 
-				String saveDir = request.getSession().getServletContext()
-						.getRealPath("/resources/upload/file/" + folder);
+				String saveDir = "tomcat/webapps/uploads/communityMaterials/" + folder;
+
 
 				File dir = new File(saveDir);
 				if (!dir.exists()) {
@@ -309,7 +307,7 @@ public class CommunityMaterialsController {
 		// file의 regdate를 불러와 저장된 폴더 read
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 		String folder = format.format(communityMaterialFileDetail.getRegdate());
-		String saveDir = request.getSession().getServletContext().getRealPath("/resources/upload/file/" + folder);
+		String saveDir = "tomcat/webapps/uploads/communityMaterials/" + folder;
 		String fileName = communityMaterialFileDetail.getOriginalUrl();
 
 		File file = new File(saveDir + "/" + fileName);

@@ -40,6 +40,14 @@
 			.width-80 {
 			    width: 95%;
 			}
+		@media ( max-width : 768px){
+			.width-80{
+				width: 100% !important;
+			}
+			.col-8{
+				width: 100% !important;
+			}
+			
 		}
 	</style>
 </head>
