@@ -192,6 +192,11 @@
 			    allDaySlot: false,
 			    eventLimit:true,
 			    defaultView: 'agendaWeek',
+			    views:{
+			    	agendaWeek:{
+			    		columnFormat: 'ddd'
+			    	},
+			    },
 			    longPressDelay: 0,
 			    header: {
 			      left: 'prev,next today',

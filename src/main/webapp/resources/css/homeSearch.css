@@ -195,6 +195,31 @@
 	}
 }
 
+@media (max-width: 768px){
+	.search-selector {
+	width: 70px !important;
+	margin-right: 0.25rem !important;
+	}
+	.search-btn {
+    margin-right: 0 !important;
+    margin-left: 0 !important;
+    background-color: #326295 !important;
+    border-color: #326295 !important;
+    color:white;
+    height: 32px;
+    padding: 2px 0px 2px 0px;
+    width: 30px !important;
+    font-size: small;
+	}
+	.search-input { 
+    margin-right: 0.25rem !important;
+    margin-left: 0px !important;
+    display: inline-block !important;
+    width: 150px !important;
+    border-width: 0;
+	}
+}
+
 @media screen and (max-width: 992px) { 	
 	.overlay-item a{
 	font-size : 1.5em !important; 

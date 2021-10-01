@@ -6,3 +6,8 @@
 	display: flex;
     justify-content: space-evenly;
 }
+@media ( max-width : 768px){
+	.small{
+		font-size: 0.7rem !important;
+	}
+}
