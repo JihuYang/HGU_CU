@@ -62,7 +62,7 @@
 				varStatus="status">
 				<div id="img-div" class="p-4">
 					<img id="clubAdImg"
-						src="<%=request.getContextPath()%>/resources/upload/file/clubAd/${clubAdImgList.originalUrl}"
+						src="http://hsca219.cafe24.com/uploads/clubAdvertise/${clubAdImgList.originalUrl}"
 						alt="...">
 				</div>
 			</c:forEach>

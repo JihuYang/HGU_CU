@@ -21,9 +21,12 @@
 						class="img-thumbnail rounded clubAd-img"></td>
 				</c:when>
 				<c:when test="${clubAdvertiseList.originalUrl != null}">
-					<td><img
+<%-- 					<td><img
 						src="<%=request.getContextPath()%>/resources/upload/file/clubAd/${clubAdvertiseList.originalUrl}"
-						class="img-thumbnail rounded clubAd-img"></td>
+						class="img-thumbnail rounded clubAd-img"></td> --%>
+					<td><img
+						src="http://hsca219.cafe24.com/uploads/clubAdvertise/${clubAdvertiseList.originalUrl}"
+						class="img-thumbnail rounded clubAd-img"></td>		
 				</c:when>
 			</c:choose>
 			<td>
