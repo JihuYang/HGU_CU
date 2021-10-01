@@ -254,5 +254,13 @@ table td{
 	td{
 		padding:7px 2px !important;
 	}
+	
+	.section2{
+		display:flex;
+	}
+	
+	#rvTable th{
+		padding:0;
+	}
 }
 
